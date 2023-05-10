@@ -6,10 +6,10 @@
         "description"   "Lead Developer"
         "css"   "lead_author"
     }
-    "76561198072015344"
-    {
-        "name"  "Abraham Blink'in"
-        "description"   "Contributor"
-        "css"   "contributor"
-    }
+//    "76561198072015344"
+//    {
+//        "name"  "Abraham Blink'in"
+//        "description"   "Contributor"
+//        "css"   "contributor"
+//    }
 }
