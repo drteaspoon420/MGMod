@@ -28,3 +28,6 @@ ex. `drteaspoon_multicast` in folder `/abilities/drteaspoon/multicast/`
 ### Items
 Contributions welcome only if left unpurchable. Even if item is not added to the shop they are still visibile when searched and may cause crashes in some cases.
 TODO: I want to create custom shop UI for custom items at some point. Possibly mode/setting on the item sandbox.
+
+### Units
+Sure!
