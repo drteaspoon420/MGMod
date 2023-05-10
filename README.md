@@ -34,9 +34,16 @@ TODO: I want to create custom shop UI for custom items at some point. Possibly m
 ### Units
 Sure!
 
+# Credits
+I would like to thank everyone who even in small part, directly or inderectly has contributed to this modes existance. I hope to see more direct contributions to make this coolest dota 2 sandbox where one can play with rules and bend dota into experiences we have yet to try.
+
 ## Direct Authors
 Lead Development by DrTeaSpoon
 
 ## Indirect Authors
 Timers Library by bmddota
 David Kolf's JSON module for Lua 5.1/5.2 by David Heiko Kolf
+
+## Special thanks
+Exposure and Feedback by Baumi and his community.
+Help and Support by Mod Dota community. moddota.com <3
