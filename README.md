@@ -8,10 +8,10 @@ Core of the MGMod.
 More info on plugin system at `game/dota_addons/mgmod/scripts/vscripts/plugin_system/Readme.md`
 
 ## Usage Guide
-In Accordance to MIT License.
+In Accordance to Apache License 2.0
 
 ## Contribution Guide
-Anyone is welcome to contribute if they are willing to contribute under MIT License.
+Anyone is welcome to contribute if they are willing to contribute under Apache License 2.0
 ### General
 General improves to UI, script utility functions etc. are welcome, but will get curated. Not sure how to define guidelines here.
 Inclusion of TypeScript or other XYZLanguage -> Lua transcompiling is not welcome. This project does not need extra complexity in it's stack that requires maintenance.
