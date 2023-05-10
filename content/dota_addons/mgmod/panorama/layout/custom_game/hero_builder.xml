@@ -1,0 +1,46 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/hero_builder.js" />
+	</scripts>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/hero_builder.css" />
+	</styles>
+	<snippets>
+		<snippet name="ButtonBar_HeroBuilder">
+			<Button class="ButtonBar_HeroBuilder" />
+		</snippet>
+		<snippet name="WindowButton">
+            <Panel id="WindowButton" hittest="false">
+            </Panel>
+		</snippet>
+		<snippet name="WindowPanel">
+            <Panel id="WindowPanel" hittest="false">
+            </Panel>
+		</snippet>
+		<snippet name="Row">
+            <Panel id="Row" class="Row" hittest="false">
+            </Panel>
+		</snippet>
+		<snippet name="AbilityChoise">
+            <Button id="AbilityChoise">
+				<DOTAAbilityImage id="AbilityImage"/>
+            </Button>
+		</snippet>
+		<snippet name="TalentChoise">
+            <Panel id="TalentChoise" hittest="false">
+            </Panel>
+		</snippet>
+    </snippets>
+	<Panel class="HeroBuilderRoot">
+		<Panel id="WindowRoot" class="hidden">
+			<Panel id="SearchBox">
+				<TextEntry id="SearchBoxInput" maxchars="100" placeholder="Search" oninputsubmit="OnSubmitSearch()" />
+				<Panel id="UnitSkillList"></Panel>
+	<!-- 			<TextEntry id="SlotInput" maxchars="100" placeholder="data" text="0" /> -->
+			</Panel>
+			<Panel id="HeroBuilderMain">
+			</Panel>
+		</Panel>
+    </Panel>
+</root>

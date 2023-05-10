@@ -1,0 +1,6 @@
+"list"
+{
+"sandking_epicenter" "1"
+"oracle_fortunes_end" "1"
+"elder_titan_echo_stomp" "1"
+}

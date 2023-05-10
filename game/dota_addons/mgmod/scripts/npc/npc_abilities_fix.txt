@@ -1,0 +1,123 @@
+"DOTAAbilities"
+{
+	"throw_snowball" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"throw_coal" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"healing_campfire" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"shoot_firework" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"consumable_hidden" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"seasonal_throw_snowball" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"seasonal_summon_snowman" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"seasonal_summon_penguin" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"seasonal_decorate_tree" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"seasonal_festive_firework" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"frostivus2018_throw_snowball" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"frostivus2018_summon_snowman" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"frostivus2018_decorate_tree" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"frostivus2018_festive_firework" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"seasonal_summon_cny_balloon" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"seasonal_summon_dragon" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"seasonal_summon_cny_tree" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"seasonal_firecrackers" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"seasonal_summon_ti9_balloon" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	}
+	"seasonal_ti9_shovel" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	}
+	"seasonal_ti9_instruments" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	}
+	"seasonal_ti9_monkey" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	}
+	"seasonal_ti10_portal" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	}
+	"seasonal_ti10_disco_ball" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	}
+	"seasonal_ti10_soccer_ball" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"seasonal_ti10_hot_potato" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	}
+	"seasonal_ti11_balloon" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	}
+	"seasonal_ti11_bubble_gun" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"seasonal_ti11_duel" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	"seasonal_ti11_conga_line" {
+		"AssociatedConsumable"		"0"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+}

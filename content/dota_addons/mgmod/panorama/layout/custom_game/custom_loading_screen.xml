@@ -1,0 +1,11 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/custom_loading_screen.css" />
+	</styles>
+	<Panel class="LoadingRoot">
+		<Panel id="seq" >
+			<Image id="seq_bg" class="SeqBg" src="file://{images}/custom_game/loading_screen.png" />
+		</Panel>
+	</Panel>
+</root>

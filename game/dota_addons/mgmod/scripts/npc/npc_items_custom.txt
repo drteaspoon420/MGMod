@@ -1,0 +1,11 @@
+#base "npc_items_fix.txt" //contains the fixes to allow using these builtin items
+
+//#base "valvemodes\npc_items_new_bloom_2017.txt"
+//#base "valvemodes\npc_items_winter_2018.txt"
+//#base "valvemodes\npc_items_jungle_spirits_2019.txt"
+//#base "valvemodes\npc_items_diretide2020.txt"
+//#base "valvemodes\npc_items_aghanim.txt"
+//#base "valvemodes\npc_items_winter2022.txt"
+"DOTAAbilities"
+{
+}

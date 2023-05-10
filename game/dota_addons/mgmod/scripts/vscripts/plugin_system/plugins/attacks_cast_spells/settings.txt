@@ -1,0 +1,114 @@
+"plugin_settings"
+{
+    "Order" "1337"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    
+    "ACSP_PROC"
+    {
+        "Order" "1"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "100"
+    }
+    
+    "ACSP_PROC_ITEM"
+    {
+        "Order" "2"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "0"
+    }
+    
+    "ACSP_PROC_PROBLEM"
+    {
+        "Order" "3"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "15"
+    }
+    
+    "ACSP_PROC_ILL"
+    {
+        "Order" "4"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "0"
+    }
+
+    "ACSP_NO_ULT" {
+        "Order" "5"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+
+    "ACSP_NO_RANDOM" {
+        "Order" "6"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+
+    "ACSP_STRICT" {
+        "Order" "7"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+
+    "ACSP_SILENCE" {
+        "Order" "8"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+
+    "ACSP_BREAK" {
+        "Order" "9"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+
+    "ACSP_IMMUNE" {
+        "Order" "10"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+
+    "ACSP_TROLLS" {
+        "Order" "11"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+
+    "ACSP_PROC_MODE" {
+        "Order" "12"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+
+    "ACSP_MODERN" {
+        "Order" "13"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+
+    "ACSP_CHAOS" {
+        "Order" "14"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+
+    "ACSP_DELAY"
+    {
+        "Order" "15"
+        "TYPE" "number"
+        "UNIT" "s"
+        "DEFAULT" "0.1"
+    }
+
+    "forced_ability_leveling" {
+        "Order" "16"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+}

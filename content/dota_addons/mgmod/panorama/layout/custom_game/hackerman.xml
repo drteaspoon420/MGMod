@@ -1,0 +1,25 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/hackerman.js" />
+	</scripts>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/hackerman.css" />
+	</styles>
+	<snippets>
+		<snippet name="ButtonBar_Hackerman">
+			<Button class="ButtonBar_Hackerman" />
+		</snippet>
+		<snippet name="Row">
+            <Panel id="Row" class="Row" hittest="false">
+            </Panel>
+		</snippet>
+    </snippets>
+	<Panel class="HackermanRoot">
+		<Panel id="WindowRoot" class="hidden">
+			<Panel id="Hacker"><TextEntry id="HackerInput" maxchars="100" placeholder="Search" oninputsubmit="OnSubmitHack()" /></Panel>
+			<Panel id="HackerOutput">
+			</Panel>
+		</Panel>
+    </Panel>
+</root>

@@ -1,0 +1,4 @@
+"list"
+{
+"silencer_global_silence" "1"
+}

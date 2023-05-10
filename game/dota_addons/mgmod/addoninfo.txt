@@ -1,0 +1,9 @@
+"AddonInfo"
+{
+	"EnablePickRules"                 "1"
+	"maps"                            "dota"
+	"dota"
+	{
+		"MaxPlayers"	"10"
+	}
+}

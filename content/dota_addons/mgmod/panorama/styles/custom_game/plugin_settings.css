@@ -1,0 +1,136 @@
+.WindowRoot {
+	margin-top: 50px;
+	max-height: 700px;
+}
+
+#WindowRoot {
+	flow-children: right;
+}
+
+#PluginList {
+	height: 700px;
+	width: 300px;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #444a7c ), to( #353261 ) );
+	border-radius: 5px;
+}
+
+#PluginSettingsBox {
+	margin-left: 5px;
+}
+
+#PluginListInternalScroll {
+	flow-children: down;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	margin: 10px;
+	border-radius: 5px;
+	overflow: clip scroll;
+}
+
+.PluginSettings {
+	flow-children: down;
+	height: 700px;
+	width: 600px;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #444a7c ), to( #353261 ) );
+	border-radius: 5px;
+}
+
+.PluginSettingsHeader {
+	flow-children: right;
+	margin: 5px;
+	border-radius: 5px;
+}
+
+.PluginLabel {
+	height: 24px;
+	width: 100%;
+	border-bottom: 2px solid #111111FF;
+}
+.PluginLabel:hover {
+	background-color: rgb(182, 182, 182);
+}
+
+#PluginLabelText {
+	font-size: 18px;
+	text-align: center;
+	horizontal-align: center;
+}
+
+.plugin_enabled_label {
+	background-color: rgb(133, 133, 133);
+}
+.plugin_enabled_text {
+	color: rgb(72, 255, 0);
+	font-weight: bold;
+}
+
+
+#PluginSettingsInternalScroll {
+	padding: 5px;
+	flow-children: down;
+	height: 100%;
+	width: 100%;
+	margin: 10px;
+	border-radius: 5px;
+	overflow: clip scroll;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #16161a ), to( #0b0b0e ) );
+
+}
+
+
+.SettingChanged {
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #14251b ), to( #335a30 ) );
+}
+
+.SettingGeneral {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.SettingTypeBoolean {
+	flow-children: right;
+}
+
+.SettingTypeNumber {
+	flow-children: right;
+}
+#SettingTypeNumberInput {
+	width: 100px;
+}
+#SettingTypeNumberLabel {
+	text-align: center;
+	horizontal-align: center;
+	vertical-align: center;
+	padding-left: 5px;
+}
+
+#SettingsSaveSlots {
+	flow-children: down;
+}
+.SettingsSaveSlot {
+	height: 30px;
+	width: 30px;
+	margin-top: 4px;
+	border-radius: 10px 0px 0px 10px;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #16161a ), to( #0b0b0e ) );
+}
+#SettingsSaveSlotText {
+	text-align: center;
+	horizontal-align: center;
+	vertical-align: center;
+	color: rgb(255, 255, 255);
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.SettingsSaveSlot:hover {
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #4c775b ), to( #33af2f ) );
+}
+
+.active_slot {
+	box-shadow: inset #5eff00 0px 0px 0px 4px;
+}
+.slot_selected {
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #4a408d ), to( #482e9e ) );
+}

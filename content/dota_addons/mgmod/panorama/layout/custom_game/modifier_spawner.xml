@@ -1,0 +1,40 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/modifier_spawner.js" />
+	</scripts>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/modifier_spawner.css" />
+	</styles>
+	<snippets>
+		<snippet name="ButtonBar_ModifierSpawner">
+			<Button class="ButtonBar_ModifierSpawner" />
+		</snippet>
+		<snippet name="WindowButton">
+            <Panel id="WindowButton" hittest="false">
+            </Panel>
+		</snippet>
+		<snippet name="WindowPanel">
+            <Panel id="WindowPanel" hittest="false">
+            </Panel>
+		</snippet>
+		<snippet name="Row">
+            <Panel id="Row" class="Row" hittest="false">
+            </Panel>
+		</snippet>
+		<snippet name="ModifierChoise">
+            <Button id="ModifierChoise">
+				<DOTAAbilityImage id="ModifierImage"/>
+            </Button>
+		</snippet>
+    </snippets>
+	<Panel class="ModifierSpawnerRoot">
+		<Panel id="WindowRoot" class="hidden">
+			<Panel id="SearchBox">
+				<TextEntry id="SearchBoxInput" maxchars="100" placeholder="Search" oninputsubmit="OnSubmitSearch()" />
+				<TextEntry id="ModifierDataInput" maxchars="100" placeholder="data" text="duration=5,stack=1,distance=1000" /></Panel>
+			<Panel id="ModifierSpawnerRoot">
+			</Panel>
+		</Panel>
+    </Panel>
+</root>

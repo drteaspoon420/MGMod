@@ -1,0 +1,12 @@
+"plugin_settings"
+{
+    "Order" "5"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "pre_random" {
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+}

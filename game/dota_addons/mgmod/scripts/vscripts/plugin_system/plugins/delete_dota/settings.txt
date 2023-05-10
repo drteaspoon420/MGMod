@@ -1,0 +1,93 @@
+"plugin_settings"
+{
+    "Order" "4"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "delete_radiant" {
+        "Order" "1"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "delete_dire" {
+        "Order" "2"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "delete_tier_1" {
+        "Order" "3"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "delete_tier_2" {
+        "Order" "4"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "delete_tier_3" {
+        "Order" "5"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "delete_tier_4" {
+        "Order" "6"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "delete_barracks" {
+        "Order" "7"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "delete_fillers" {
+        "Order" "8"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "delete_outposts" {
+        "Order" "9"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "delete_ancient" {
+        "Order" "10"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "delete_creep_spawning" {
+        "Order" "20"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "delete_neutral_spawns" {
+        "Order" "21"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "delete_rune_spawns" {
+        "Order" "22"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "delete_roshan" {
+        "Order" "23"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "delete_shops" {
+        "Order" "24"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "delete_fountain" {
+        "Order" "25"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "thanos_snap" {
+        "Order" "999"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+}

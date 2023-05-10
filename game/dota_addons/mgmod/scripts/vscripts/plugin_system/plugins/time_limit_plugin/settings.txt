@@ -1,0 +1,15 @@
+"plugin_settings"
+{
+    "Order" "6"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "time_limit"
+    {
+        "Order" "2"
+        "TYPE" "number"
+        "UNIT" "min"
+        "DEFAULT" "25"
+    }
+}

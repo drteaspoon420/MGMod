@@ -1,0 +1,8 @@
+"list"
+{
+"warlock_upheaval" "1"
+"windrunner_powershot" "1"
+"item_travel_boots" "1"
+"item_travel_boots_2" "1"
+"item_helm_of_the_dominator" "1"
+}

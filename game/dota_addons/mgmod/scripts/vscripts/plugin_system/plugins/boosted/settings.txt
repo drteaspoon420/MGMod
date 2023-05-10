@@ -1,0 +1,24 @@
+"plugin_settings"
+{
+    "Order" "69420"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "points_mode" {
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "allow_reallocation" {
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "souls_integration" {
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "souls_per_point" {
+        "TYPE" "number"
+        "DEFAULT" "50"
+    }
+}

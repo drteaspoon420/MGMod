@@ -1,0 +1,459 @@
+
+
+PluginSystem = class({})
+_G.PluginSystem = PluginSystem
+PluginSystem.StateRegistry = {}
+PluginSystem.CommandRegistery = {}
+PluginSystem.PluginsFile = {}
+PluginSystem.LobbySettings = {}
+PluginSystem.LobbySettingsSaves = {}
+PluginSystem.InternalEvents = {}
+PluginSystem.unit_cache = {}
+PluginSystem.current_save_slot = 0
+
+local JSON = require("utils/dkjson")
+GAMEMODE_SAVE_ID = "mgmod"
+
+tStates = {}
+tStates["DOTA_GAMERULES_STATE_INIT"] = DOTA_GAMERULES_STATE_INIT
+tStates["DOTA_GAMERULES_STATE_WAIT_FOR_PLAYERS_TO_LOAD"] = DOTA_GAMERULES_STATE_WAIT_FOR_PLAYERS_TO_LOAD
+tStates["DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP"] = DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP
+tStates["DOTA_GAMERULES_STATE_HERO_SELECTION"] = DOTA_GAMERULES_STATE_HERO_SELECTION
+tStates["DOTA_GAMERULES_STATE_STRATEGY_TIME"] = DOTA_GAMERULES_STATE_STRATEGY_TIME
+tStates["DOTA_GAMERULES_STATE_TEAM_SHOWCASE"] = DOTA_GAMERULES_STATE_TEAM_SHOWCASE
+tStates["DOTA_GAMERULES_STATE_WAIT_FOR_MAP_TO_LOAD"] = DOTA_GAMERULES_STATE_WAIT_FOR_MAP_TO_LOAD
+tStates["DOTA_GAMERULES_STATE_PRE_GAME"] = DOTA_GAMERULES_STATE_PRE_GAME
+tStates["DOTA_GAMERULES_STATE_SCENARIO_SETUP"] = DOTA_GAMERULES_STATE_SCENARIO_SETUP
+tStates["DOTA_GAMERULES_STATE_GAME_IN_PROGRESS"] = DOTA_GAMERULES_STATE_GAME_IN_PROGRESS
+tStates["DOTA_GAMERULES_STATE_POST_GAME"] = DOTA_GAMERULES_STATE_POST_GAME
+tStates["DOTA_GAMERULES_STATE_DISCONNECT"] = DOTA_GAMERULES_STATE_DISCONNECT
+
+
+--Loading all plugins
+function PluginSystem:Init()
+    print("[PluginSystem] init")
+
+    CustomGameEventManager:RegisterListener("settings_save_slot",function(i,tEvent) PluginSystem:settings_save_slot(tEvent) end)
+    CustomGameEventManager:RegisterListener("setting_change",PluginSystem.setting_change)
+    GameRules:SetSafeToLeave(true)
+    --GameRules:SetCustomGameAccountRecordSaveFunction( Dynamic_Wrap( PluginSystem, "SaveHostSettings_PartA" ), self )
+    GameRules:SetCustomGameEndDelay(15)
+    GameRules:SetCustomGameSetupAutoLaunchDelay(420)
+    GameRules:SetCustomGameSetupRemainingTime(-1)
+    GameRules:SetCustomGameSetupTimeout(-1)
+
+	local file = LoadKeyValues('scripts/vscripts/plugin_system/plugins.txt')
+    if not (file == nil or not next(file)) then
+        PluginSystem.PluginsFile = file
+    end
+
+    for sPlugin,tSettings in pairs(PluginSystem.PluginsFile) do
+        if tSettings.Path then --if you really want custom path
+            require(tSettings.Path .. "/plugin")
+        else
+            require("plugin_system/plugins/" ..sPlugin .. "/plugin")
+        end
+        print("file loaded " .. sPlugin)
+        local main_class = tSettings.MainClass
+        local state_regs = tSettings.StateRegistrations or {}
+        local cmd_regs = tSettings.CmdRegistrations or {}
+        PluginSystem.LobbySettings[sPlugin] = {}
+        local settings
+        if tSettings.Path then
+            settings = LoadKeyValues("scripts/vscripts/".. tSettings.Path .."/settings.txt")
+        else
+            settings = LoadKeyValues("scripts/vscripts/plugin_system/plugins/".. sPlugin .."/settings.txt")
+        end
+        if not (settings == nil or not next(settings)) then
+            PluginSystem:LoadDefaultSettings(sPlugin,settings)
+        else
+            PluginSystem.LobbySettings[sPlugin].enabled = {}
+            PluginSystem.LobbySettings[sPlugin].enabled.DEFAULT = 0
+            PluginSystem.LobbySettings[sPlugin].enabled.TYPE = "boolean"
+            PluginSystem.LobbySettings[sPlugin].enabled.VALUE = 0
+        end
+        for state_function,state_string in pairs(state_regs) do
+            PluginSystem:RegisterState(tStates[state_string],_G[main_class],state_function,sPlugin)
+        end
+        for cmd_regs_string,cmd_regs_function in pairs(cmd_regs) do
+            PluginSystem:RegisterCmd(cmd_regs_string,_G[main_class],cmd_regs_function,sPlugin)
+        end
+    end
+    for sPlugin,tSettings in pairs(PluginSystem.PluginsFile) do
+        local init_function = tSettings.InitFunction or nil
+        if init_function ~= nil then
+            local main_class = tSettings.MainClass
+            _G[main_class][init_function]()
+        end
+    end
+    
+end
+
+function PluginSystem:setting_change(tEvent)
+    local iPlayer = tEvent.PlayerID
+    local sPlugin = tEvent.plugin
+    local sSetting = tEvent.setting
+    local sValue = tEvent.value
+    if not PluginSystem:Sanitize(sPlugin,sSetting,sValue) then return end
+    CustomNetTables:SetTableValue("plugin_settings",sPlugin,PluginSystem.LobbySettings[sPlugin])
+end
+
+function PluginSystem:Reflect(tEvent)
+    local iOrigin = tEvent.PlayerID
+    tEvent.PlayerID = nil
+    for iPlayer = 0,DOTA_MAX_PLAYERS do
+        if PlayerResource:IsValidPlayer(iPlayer) then
+            if iOrigin ~= iPlayer then
+                local hPlayer = PlayerResource:GetPlayer(iPlayer)
+                if hPlayer ~= nil then
+                    CustomGameEventManager:Send_ServerToPlayer(hPlayer,"setting_change",tEvent)
+                end
+            end
+        end
+    end
+end
+
+function PluginSystem:GetSetting(sPlugin,sSetting)
+    if PluginSystem.LobbySettings[sPlugin] == nil then return nil end
+    if PluginSystem.LobbySettings[sPlugin][sSetting] == nil then return nil end
+    if PluginSystem.LobbySettings[sPlugin][sSetting].VALUE == nil then return nil end
+    return PluginSystem.LobbySettings[sPlugin][sSetting].VALUE
+end
+
+function PluginSystem:GetAllSetting(sPlugin)
+    if PluginSystem.LobbySettings[sPlugin] == nil then return {} end
+    local t = {}
+    for k,v in pairs(PluginSystem.LobbySettings[sPlugin]) do
+        if type(v) == "table" then
+            if v.VALUE ~= nil then
+                if v.TYPE == "boolean" then
+                    t[k] = v.VALUE == 1
+                end
+                if v.TYPE == "number" then
+                    t[k] = tonumber(v.VALUE)
+                end
+            end
+        end
+    end
+    return t
+end
+
+function PluginSystem:Sanitize(sPlugin,sSetting,sValue)
+    if PluginSystem.LobbySettings[sPlugin] == nil then return false end
+    if PluginSystem.LobbySettings[sPlugin][sSetting] == nil then return false end
+    if PluginSystem.LobbySettings[sPlugin][sSetting].VALUE == nil then return false end
+
+    if PluginSystem.LobbySettings[sPlugin][sSetting].TYPE == "number" then
+        if tonumber(sValue) == nil then
+            return false
+        end
+        PluginSystem.LobbySettings[sPlugin][sSetting].VALUE = sValue
+    elseif PluginSystem.LobbySettings[sPlugin][sSetting].TYPE == "boolean" then
+        if sValue == "1" or sValue == "true" or sValue == "TRUE" or sValue == "True" or sValue == 1 or sValue == true then
+            PluginSystem.LobbySettings[sPlugin][sSetting].VALUE = 1
+        elseif sValue == "0" or sValue == "false" or sValue == "FALSE" or sValue == "False" or sValue == 0 or sValue == false then
+            PluginSystem.LobbySettings[sPlugin][sSetting].VALUE = 0
+        else
+            return false
+        end
+    else
+        if tonumber(sValue) == nil then
+            PluginSystem.LobbySettings[sPlugin][sSetting].VALUE = sValue
+        else
+            PluginSystem.LobbySettings[sPlugin][sSetting].VALUE = tonumber(sValue)
+        end
+    end
+    return true
+end
+
+function PluginSystem:SetSetting(sPlugin,sSetting,sValue)
+    if not PluginSystem:Sanitize(sPlugin,sSetting,sValue) then return end
+    local tEvent = {
+        plugin = sPlugin,
+        setting = sSetting,
+        value = tostring(sValue),
+    }
+    for iPlayer = 0,DOTA_MAX_PLAYERS do
+        if PlayerResource:IsValidPlayer(iPlayer) then
+            local hPlayer = PlayerResource:GetPlayer(iPlayer)
+            if hPlayer ~= nil then
+                CustomGameEventManager:Send_ServerToPlayer(hPlayer,"setting_change",tEvent)
+            end
+        end
+    end
+end
+
+function PluginSystem:LoadDefaultSettings(sPlugin,tSettings)
+    if tSettings.enabled == nil then
+        tSettings.enabled = {}
+        tSettings.enabled.DEFAULT = 0
+        tSettings.enabled.TYPE = "boolean"
+    end
+    for k,_ in pairs(tSettings) do
+        if type(tSettings[k]) == "table" then
+            tSettings[k].VALUE = tSettings[k].DEFAULT
+        end
+    end
+    PluginSystem.LobbySettings[sPlugin] = tSettings
+    CustomNetTables:SetTableValue("plugin_settings",sPlugin,tSettings)
+end
+
+--Plugin Registration and Calling
+---
+function PluginSystem:ProcRegisteredGameStates(iState)
+    if DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP == iState then
+        PluginSystem:LoadHostSettings()
+    end
+    if DOTA_GAMERULES_STATE_HERO_SELECTION  == iState then
+        PluginSystem:SaveHostSettings()
+    end
+    if PluginSystem.StateRegistry[iState] ~= nil then
+        for k,v in pairs(PluginSystem.StateRegistry[iState]) do
+            if PluginSystem.LobbySettings[v.plugin_name].enabled.VALUE == 1 then
+                v.plugin[v.method](v.plugin)
+            end
+        end
+    end
+end
+
+function PluginSystem:RegisterState(iState,hPlugin,hMethod,sPlugin)
+    if PluginSystem.StateRegistry[iState] == nil then PluginSystem.StateRegistry[iState] = {} end
+    table.insert(PluginSystem.StateRegistry[iState],{plugin = hPlugin, method = hMethod, plugin_name = sPlugin})
+end
+
+
+function PluginSystem:InternalEvent_Register(sEvent,fCallback)
+    if PluginSystem.InternalEvents[sEvent] == nil then PluginSystem.InternalEvents[sEvent] = {} end
+    table.insert(PluginSystem.InternalEvents[sEvent],fCallback)
+end
+
+function PluginSystem:InternalEvent_Call(sEvent,tEvent)
+    if PluginSystem.InternalEvents[sEvent] == nil then return end
+    print(tEvent)
+    for k,v in pairs(PluginSystem.InternalEvents[sEvent]) do
+        v(tEvent)
+    end
+end
+
+function PluginSystem:RegisterCmd(sMain,hPlugin,hMethod,sPlugin)
+    print("registering",sMain,"for",sPlugin)
+    if PluginSystem.CommandRegistery[sMain] == nil then PluginSystem.CommandRegistery[sMain] = {} end
+    table.insert(PluginSystem.CommandRegistery[sMain],{plugin = hPlugin, method = hMethod, plugin_name = sPlugin})
+end
+
+function PluginSystem:ProcRegisteredCommands(bTeam,iPlayer,sText)
+    local tCmdParts = Toolbox:split(sText," ")
+    local sMain = tCmdParts[1]
+    if PluginSystem.CommandRegistery[sMain] ~= nil then
+        for k,v in pairs(PluginSystem.CommandRegistery[sMain]) do
+            if PluginSystem.LobbySettings[v.plugin_name].enabled.VALUE == 1 then
+                v.plugin[v.method](v.plugin,tCmdParts,bTeam,iPlayer)
+            end
+        end
+    end
+end
+
+ListenToGameEvent("game_rules_state_change", function()
+    local iState = GameRules:State_Get()
+    PluginSystem:ProcRegisteredGameStates(iState)
+end,nil)
+
+ListenToGameEvent("player_chat", function(keys)
+	local sText = keys.text
+    if string.sub(sText, 1, 1) == "-" then
+        local bTeam = keys.teamonly
+        local iPlayer = keys.userid
+        PluginSystem:ProcRegisteredCommands(bTeam,iPlayer,sText)
+    end
+end,nil)
+PluginSystem:Init()
+
+
+
+---
+--Spawn helpers
+--[[ 
+ListenToGameEvent("npc_spawned", function(event)
+    if GameRules:State_Get() < DOTA_GAMERULES_STATE_HERO_SELECTION then return end
+    PluginSystem:SpawnEvent(event)
+end,nil)
+
+
+    
+function PluginSystem:SpawnEvent(event)
+    local hUnit = EntIndexToHScript(event.entindex)
+    if not hUnit.IsRealHero then return end
+    if PluginSystem.unit_cache[event.entindex] ~= nil then return end
+    PluginSystem.unit_cache[event.entindex] = true
+    Timers:CreateTimer(0,function()
+        if not hUnit:IsHero() then
+            --other units 
+            FireGameEventLocal("npc_first_spawned_unit",{entindex = event.entindex})
+            return
+        else
+            if not hUnit:IsRealHero() then
+                --heroes (illusions included)
+                FireGameEventLocal("npc_first_spawned_hero",{entindex = event.entindex})
+                return
+            else
+                local hPlayer = hUnit:GetPlayerOwner()
+                local hHero
+                if hPlayer ~= nil then
+                    hHero = hPlayer:GetAssignedHero()
+                    if hHero:entindex() == event.entindex then
+                        --hereos (absolutely real main heroes)
+                        FireGameEventLocal("npc_first_spawned_main_hero",{entindex = event.entindex, player = hPlayer:GetPlayerID()})
+                        return
+                    end
+                end
+                --heroes (clones and super illusions)
+                FireGameEventLocal("npc_first_spawned_real_hero",{entindex = event.entindex})
+            end
+        end
+    end)
+end ]]
+
+---
+--Online save system
+function PluginSystem:GenerateSave()
+	local s = ""
+    for sPlugin,tSetting in pairs(PluginSystem.LobbySettings) do
+		if type(tSetting) == "table" then
+			for key,val in pairs(tSetting) do
+                if type(val) == "table" then
+                    if val.DEFAULT ~= val.VALUE then
+                        s = s .. sPlugin .. "&" .. key .. "&" .. val.VALUE .. "|"
+                    end
+                end
+			end
+		end
+	end
+	if string.len(s)  > 0 then
+		s = string.sub(s,1,-2)
+	end
+	print(s)
+	return s
+end
+
+
+function PluginSystem:SendSettingSave(slot)
+	local host = Toolbox:GetHostId()
+    local steamid = tostring(PlayerResource:GetSteamID(host))
+    if steamid == "0" then
+        return
+    end
+    local url = "http://drteaspoon.fi:3000/butmodes/settings"
+    local req = CreateHTTPRequestScriptVM("POST", url)
+	local save = PluginSystem:GenerateSave()
+	
+    local hParams = {
+        player = steamid,
+        modeid = tostring(GAMEMODE_SAVE_ID),
+		slot = tonumber(slot),
+		data = save
+    }
+    req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", GetDedicatedServerKeyV3(GAMEMODE_SAVE_ID))
+	req:SetHTTPRequestHeaderValue("Content-Type", "application/json;charset=UTF-8")
+	req:SetHTTPRequestRawPostBody("application/json", json.encode(hParams))
+
+    req:Send(function(res)
+        if res.StatusCode ~= 200 then
+			print(res.Body)
+            print("something went wrong")
+        else
+            print("all ok")
+			CustomNetTables:SetTableValue("save_slots", "slot_" .. slot, {data = save})
+        end
+    end)
+end
+
+function PluginSystem:GetSettingSave(slot)
+	local host = Toolbox:GetHostId()
+    local steamid = tostring(PlayerResource:GetSteamID(host))
+    if steamid == "0" then
+        print("nope, it's a bot!")
+        return
+    end
+    local url = "http://drteaspoon.fi:3000/butmodes/settings?steamid=" .. steamid .. "&modeid=" .. GAMEMODE_SAVE_ID .. "&slot=" .. slot
+    local req = CreateHTTPRequestScriptVM("GET", url)
+    req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", GetDedicatedServerKeyV3(GAMEMODE_SAVE_ID))
+
+    req:Send(function(res)
+        if res.StatusCode ~= 200 then
+			print(res.Body)
+            print("something went wrong")
+        else
+			local data = JSON.decode(res.Body)
+            print(res.Body)
+			if (#data == 1 and data[1] and data[1].result and #data[1].result == 1 and data[1].result[1].data) then
+				CustomNetTables:SetTableValue("save_slots", "slot_" .. slot, {data = data[1].result[1].data})
+			end
+        end
+    end)
+end
+
+
+function PluginSystem:LoadHostSettings()
+    for i=0,6 do
+        PluginSystem:GetSettingSave(i)
+    end
+end
+
+function PluginSystem:SaveHostSettings()
+    PluginSystem:SendSettingSave(PluginSystem.current_save_slot)
+end
+
+function PluginSystem:settings_save_slot(tEvent)
+    local iPlayer = tEvent.PlayerID
+    DeepPrintTable(tEvent)
+	if not Toolbox:IsHost(iPlayer) then return end
+    local iSlot = tEvent.slot
+    if iSlot == nil then return end
+    PluginSystem.current_save_slot = iSlot
+    PluginSystem:ApplySaveSlot(iSlot)
+end
+
+function PluginSystem:ApplySaveSlot(iSlot)
+    print("loading slot",iSlot)
+    local sSettings = CustomNetTables:GetTableValue("save_slots", "slot_" .. iSlot)
+    if not (sSettings and sSettings.data and type(sSettings.data) == "string") then return end
+    local tSettings = PluginSystem:LoadSettingsString(sSettings.data)
+    if tSettings and type(tSettings) == "table" then
+        if not next(tSettings) then return end
+        for sPlugin,tSetting in pairs(PluginSystem.LobbySettings) do
+            if type(tSetting) == "table" then
+                if tSettings[sPlugin] == nil then
+                    for key,val in pairs(tSetting) do
+                        if type(val) == "table" then
+                            PluginSystem:SetSetting(sPlugin,key,val.DEFAULT)
+                        end
+                    end
+                else
+                    for key,val in pairs(tSetting) do
+                        if type(val) == "table" then
+                            if tSettings[sPlugin][key] ~= nil and val.DEFAULT ~= tSettings[sPlugin][key] then
+                                PluginSystem:SetSetting(sPlugin,key,tSettings[sPlugin][key])
+                            else
+                                PluginSystem:SetSetting(sPlugin,key,val.DEFAULT)
+                            end
+                        end
+                    end
+                end
+            end
+            CustomNetTables:SetTableValue("plugin_settings",sPlugin,PluginSystem.LobbySettings[sPlugin])
+        end
+    end
+end
+
+function PluginSystem:LoadSettingsString(s)
+	local t = Toolbox:split(s,"|")
+    local r = {}
+	for i=1,#t do
+		local o = Toolbox:split(t[i],"&")
+        if r[o[1]] == nil then
+            r[o[1]] = {}
+        end
+        r[o[1]][o[2]] = o[3]
+	end
+    return r
+end

@@ -1,0 +1,13 @@
+#base "npc_abilities_fix.txt" //contains the fixes to allow using these builtin abilities
+#base "npc_abilities_acs.txt" //attacks cast spells
+#base "npc_abilities_drteaspoon.txt"
+
+//#base "valvemodes\npc_abilities_new_bloom_2017.txt"
+//#base "valvemodes\npc_abilities_winter_2018.txt"
+//#base "valvemodes\npc_abilities_jungle_spirits_2019.txt"
+//#base "valvemodes\npc_abilities_diretide2020.txt"
+//#base "valvemodes\npc_abilities_aghanim.txt"
+//#base "valvemodes\npc_abilities_winter2022.txt"
+"DOTAAbilities"
+{
+}

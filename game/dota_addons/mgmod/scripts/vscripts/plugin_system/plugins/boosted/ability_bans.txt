@@ -1,0 +1,11 @@
+"bans"
+{
+    "ability_capture" "1"
+    "special_bonus_attributes" "1"
+    "abyssal_underlord_portal_warp" "1"
+    "generic_hidden" "1"
+    "ability_base" "1"
+    "default_attack" "1"
+    "attribute_bonus" "1"
+}
+

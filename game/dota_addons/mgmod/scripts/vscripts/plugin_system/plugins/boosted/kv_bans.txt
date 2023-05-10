@@ -1,0 +1,10 @@
+"bans"
+{
+    "LinkedSpecialBonus" "1"
+    "CalculateSpellDamageTooltip" "1"
+    "RequiresShard" "1"
+    "RequiresScepter" "1"
+    "var_type" "1"
+    "LinkedSpecialBonusOperation" "1"
+}
+

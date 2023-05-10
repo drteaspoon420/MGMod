@@ -1,0 +1,39 @@
+"DOTAUnits"
+{
+	"npc_dota_spell_bomb"	
+	{
+		"Model"						"models/items/courier/bookwyrm/bookwyrm_flying.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"n_creep_Ranged"
+		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
+		"Level"						"1"
+		"ModelScale" 				"1"
+		"Ability1"					"channelled_bomb"			// Ability 1
+		"Ability2"					""			// Ability 2
+		"Ability3"					""			// Ability 3
+		"Ability4"					""			// Ability 4
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NONE"
+		"RingRadius"				"40"
+		"HealthBarOffset"			"170"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementSpeed"				"1000"
+		"StatusHealth"				"6969"		// Base health.
+		"StatusHealthRegen"			"500"		// Health regeneration rate.
+		"StatusMana"				"6969"			// Base mana.
+		"StatusManaRegen"			"500.0"		// Mana regeneration rate.		 
+		"VisionDaytimeRange"		"1000"		// Range of vision during day light.
+		"VisionNighttimeRange"		"1000"		// Range of vision at night time.
+		"TeamName"					"DOTA_TEAM_NEUTRALS"						// Team name.
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"Creature"
+		{
+			"HPGain"					"0"
+			"DamageGain"				"0"
+			"ArmorGain"					"0"
+			"MagicResistGain"			"0"
+			"MoveSpeedGain"				"0"
+			"BountyGain"				"0"
+			"XPGain"					"0"
+		}
+	}
+}

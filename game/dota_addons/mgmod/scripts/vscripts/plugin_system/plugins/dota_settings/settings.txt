@@ -1,0 +1,104 @@
+"plugin_settings"
+{
+    "Order" "0"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "courier_enabled"
+    {
+        "Order" "0"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "univeral_Shop"
+    {
+        "Order" "1"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "single_buyback"
+    {
+        "Order" "2"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "hero_banning"
+    {
+        "Order" "3"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+
+    "pregame_time"
+    {
+        "Order" "6"
+        "TYPE" "number"
+        "UNIT" "s"
+        "DEFAULT" "60"
+    }
+    "heropick_time"
+    {
+        "Order" "7"
+        "TYPE" "number"
+        "UNIT" "s"
+        "DEFAULT" "60"
+    }
+    "strategy_time"
+    {
+        "Order" "8"
+        "TYPE" "number"
+        "UNIT" "s"
+        "DEFAULT" "10"
+    }
+
+    "gold_gain_percent"
+    {
+        "Order" "10"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "100"
+    }
+    "xp_gain_percent"
+    {
+        "Order" "15"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "100"
+    }
+    "death_time_percent"
+    {
+        "Order" "20"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "100"
+    }
+    "courier_turbo"
+    {
+        "Order" "24"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "courier_speed"
+    {
+        "Order" "25"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "100"
+    }
+    "max_level"
+    {
+        "Order" "99"
+        "TYPE" "number"
+        "DEFAULT" "30"
+    }
+    "agh_shard_time"
+    {
+        "Order" "50"
+        "TYPE" "number"
+        "UNIT" "min"
+        "DEFAULT" "15"
+    }
+//BACKDOOR_PROTECTION
+//ALLOW_SAME_HERO_SELECTION
+}

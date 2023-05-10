@@ -1,0 +1,72 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/plugin_settings.js" />
+	</scripts>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/plugin_settings.css" />
+	</styles>
+	<snippets>
+		<snippet name="PluginLabel">
+            <Panel id="PluginLabel" class="PluginLabel">
+			<Label id="PluginLabelText" text="unknown"/>
+            </Panel>
+		</snippet>
+		<snippet name="PluginSettings">
+			<Panel id="PluginSettings" class="PluginSettings">
+				<Panel id="PluginSettingsHeader" class="PluginSettingsHeader">
+					<ToggleButton id="PluginEnabled" text="unknown" />
+				</Panel>
+				<Panel id="PluginSettingsInternalScroll">
+				</Panel>
+			</Panel>
+		</snippet>
+
+		<snippet name="SettingTypeBoolean">
+            <Panel id="SettingTypeBoolean" class="SettingTypeBoolean SettingGeneral">
+				<ToggleButton id="SettingTypeBooleanInput" text="unknown" />
+            </Panel>
+		</snippet>
+
+		<snippet name="SettingTypeText">
+            <Panel id="SettingTypeText" class="SettingTypeText SettingGeneral">
+				<ToggleButton id="SettingTypeTextInput" text="unknown" />
+				<Label id="SettingTypeTextLabel" text="unknown"/>
+            </Panel>
+		</snippet>
+
+		<snippet name="SettingTypeNumber">
+            <Panel id="SettingTypeNumber" class="SettingTypeNumber SettingGeneral">
+				<TextEntry id="SettingTypeNumberInput" text="unknown" />
+				<Label id="SettingTypeNumberLabel" text="unknown"/>
+            </Panel>
+		</snippet>
+
+		<snippet name="SettingTypeDropdown">
+            <Panel id="SettingTypeDropdown" class="SettingTypeDropdown SettingGeneral">
+				<DropDown id="SettingTypeDropdownInput" oninputsubmit="OnDropDownChanged()">
+				</DropDown>
+            </Panel>
+		</snippet>
+
+		
+		<snippet name="SettingsSaveSlot">
+            <Button id="SettingsSaveSlot" class="SettingsSaveSlot">
+			<Label id="SettingsSaveSlotText" text="§"/>
+            </Button>
+		</snippet>
+
+    </snippets>
+	<Panel class="WindowRoot">
+		<Panel id="WindowRoot">
+			<Panel id="SettingsSaveSlots">
+			</Panel>
+			<Panel id="PluginList">
+				<Panel id="PluginListInternalScroll">
+				</Panel>
+			</Panel>
+			<Panel id="PluginSettingsBox">
+			</Panel>
+		</Panel>
+    </Panel>
+</root>

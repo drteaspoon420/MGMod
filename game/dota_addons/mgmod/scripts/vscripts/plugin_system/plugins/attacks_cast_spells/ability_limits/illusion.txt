@@ -1,0 +1,13 @@
+"list"
+{
+"antimage_blink" "1"
+"chaos_knight_phantasm" "1"
+"naga_siren_mirror_image" "1"
+"phantom_lancer_spirit_lance" "1"
+"phantom_lancer_doppelwalk" "1"
+"spectre_haunt" "1"
+"terrorblade_conjure_image" "1"
+"arc_warden_tempest_double" "1"
+"item_manta" "1"
+"item_illusionsts_cape" "1"
+}

@@ -1,0 +1,38 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/item_spawner.js" />
+	</scripts>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/item_spawner.css" />
+	</styles>
+	<snippets>
+		<snippet name="ButtonBar_ItemSpawner">
+			<Button class="ButtonBar_ItemSpawner" />
+		</snippet>
+		<snippet name="WindowButton">
+            <Panel id="WindowButton" hittest="false">
+            </Panel>
+		</snippet>
+		<snippet name="WindowPanel">
+            <Panel id="WindowPanel" hittest="false">
+            </Panel>
+		</snippet>
+		<snippet name="Row">
+            <Panel id="Row" class="Row" hittest="false">
+            </Panel>
+		</snippet>
+		<snippet name="ItemChoise">
+            <Button id="ItemChoise">
+				<DOTAItemImage id="ItemImage"/>
+            </Button>
+		</snippet>
+    </snippets>
+	<Panel class="ItemSpawnerRoot">
+		<Panel id="WindowRoot" class="hidden">
+			<Panel id="SearchBox"><TextEntry id="SearchBoxInput" maxchars="100" placeholder="Search" oninputsubmit="OnSubmitSearch()" /></Panel>
+			<Panel id="ItemSpawnerRoot">
+			</Panel>
+		</Panel>
+    </Panel>
+</root>

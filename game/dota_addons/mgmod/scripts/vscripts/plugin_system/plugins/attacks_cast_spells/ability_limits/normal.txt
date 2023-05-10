@@ -1,0 +1,16 @@
+"list"
+{
+"chen_holy_persuasion" "1"
+"ember_spirit_sleight_of_fist" "1"
+"enigma_black_hole" "1"
+"enchantress_enchant" "1"
+"furion_wrath_of_nature" "1"
+"life_stealer_infest" "1"
+"life_stealer_consume" "1"
+"life_stealer_assimilate" "1"
+"morphling_morph" "1"
+"enraged_wildkin_tornado" "1"
+"zuus_thundergods_wrath" "1"
+"enigma_demonic_conversion" "1"
+"item_hand_of_midas" "1"
+}

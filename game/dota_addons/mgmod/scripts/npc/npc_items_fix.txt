@@ -1,0 +1,31 @@
+"DOTAAbilities"
+{
+	"item_river_painter" {
+		"AssociatedConsumable"		"0"
+		"PlayerSpecificCooldown"		"0"
+	}
+	"item_river_painter2" {
+		"AssociatedConsumable"		"0"
+		"PlayerSpecificCooldown"		"0"
+	}
+	"item_river_painter3" {
+		"AssociatedConsumable"		"0"
+		"PlayerSpecificCooldown"		"0"
+	}
+	"item_river_painter4" {
+		"AssociatedConsumable"		"0"
+		"PlayerSpecificCooldown"		"0"
+	}
+	"item_river_painter5" {
+		"AssociatedConsumable"		"0"
+		"PlayerSpecificCooldown"		"0"
+	}
+	"item_river_painter6" {
+		"AssociatedConsumable"		"0"
+		"PlayerSpecificCooldown"		"0"
+	}
+	"item_river_painter7" {
+		"AssociatedConsumable"		"0"
+		"PlayerSpecificCooldown"		"0"
+	}
+}

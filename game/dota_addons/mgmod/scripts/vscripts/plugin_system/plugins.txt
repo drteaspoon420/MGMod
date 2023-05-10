@@ -1,0 +1,145 @@
+"Plugins"
+{
+    "dota_settings" {
+        "MainClass" "DotaSettingsPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+            "ApplySettingsStartGame" "DOTA_GAMERULES_STATE_GAME_IN_PROGRESS"
+        }
+    }
+
+    "hero_builder" {
+        "Order" "420"
+        "MainClass" "HeroBuilderPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "PreGameStuff" "DOTA_GAMERULES_STATE_HERO_SELECTION" 
+        }
+    }
+    "item_spawner" {
+        "MainClass" "ItemSpawnerPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "PreGameStuff" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+    }
+    "unit_spawner" {
+        "MainClass" "UnitSpawnerPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "PreGameStuff" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+    }
+    "modifier_spawner" {
+        "MainClass" "ModifierSpawnerPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "PreGameStuff" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+    }
+
+    
+    "souls_plugin" {
+        "MainClass" "SoulsPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+    }
+    
+    "bots_plugin" {
+        "MainClass" "BotsPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+            "ApplySettings2" "DOTA_GAMERULES_STATE_STRATEGY_TIME"
+        }
+    }
+    
+    "attacks_cast_spells" {
+        "MainClass" "AttacksCastSpellsPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+    }
+    
+    "kill_limit_plugin" {
+        "MainClass" "KillLimitPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_GAME_IN_PROGRESS"
+        }
+    }
+    
+    "time_limit_plugin" {
+        "MainClass" "TimeLimitPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_GAME_IN_PROGRESS"
+        }
+    }
+    "boosted" {
+        "MainClass" "BoostedPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+    }
+
+    "delete_dota" {
+        "MainClass" "DeleteDotaPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+        "CmdRegistrations" {
+            "-thanos" "ThanosSnap"
+        }
+    }
+    
+    "zombies" {
+        "MainClass" "ZombiesPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_GAME_IN_PROGRESS"
+        }
+    }
+    
+//    "custom_shop" {
+//        "MainClass" "CustomShopPlugin"
+//        "InitFunction" "Init"
+//        "StateRegistrations" {
+//            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+//        }
+//    }
+
+    "mammonite" {
+        "MainClass" "MammonitePlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+    }
+
+    "devstuff" {
+        "MainClass" "DevStuffPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+        "CmdRegistrations" {
+            "-mods" "ShortCutMods"
+        }
+    }
+
+ //   "freeforall" {
+ //       "MainClass" "FreeForAllPlugin"
+ //       "InitFunction" "Init"
+ //       "StateRegistrations" {
+ //           "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+ //       }
+ //   }
+
+}

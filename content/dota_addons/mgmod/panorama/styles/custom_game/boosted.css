@@ -1,0 +1,230 @@
+.WindowRoot {
+	margin-top: 50px;
+	max-height: 700px;
+}
+
+#WindowRoot {
+	flow-children: right;
+}
+
+#AbilityList {
+	height: 700px;
+	width: 300px;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #444a7c ), to( #353261 ) );
+	border-radius: 5px;
+	flow-children: down;
+}
+
+#BoostedBox {
+	margin-left: 5px;
+}
+
+#AbilityListInternalScroll {
+	flow-children: down;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	margin: 10px;
+	border-radius: 5px;
+	overflow: clip scroll;
+}
+
+.AbilitySettings {
+	flow-children: down;
+	height: 700px;
+	width: 600px;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #444a7c ), to( #353261 ) );
+	border-radius: 5px;
+}
+
+.AbilitySettingsHeader {
+	flow-children: right;
+	margin: 5px;
+	border-radius: 5px;
+}
+
+.AbilityLabel {
+	height: 24px;
+	width: 100%;
+	border-bottom: 2px solid #111111FF;
+}
+.AbilityLabel:hover {
+	background-color: rgb(182, 182, 182);
+}
+
+#AbilityLabelText {
+	font-size: 18px;
+	text-align: center;
+	horizontal-align: center;
+}
+
+.plugin_enabled_label {
+	background-color: rgb(133, 133, 133);
+}
+.plugin_enabled_text {
+	color: rgb(72, 255, 0);
+	font-weight: bold;
+}
+
+
+#AbilitySettingsInternalScroll {
+	padding: 5px;
+	flow-children: down;
+	height: 100%;
+	width: 100%;
+	margin: 10px;
+	border-radius: 5px;
+	overflow: clip scroll;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #16161a ), to( #0b0b0e ) );
+}
+
+
+.SettingChanged {
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #14251b ), to( #335a30 ) );
+}
+
+.SettingGeneral {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.SettingTypeBoolean {
+	flow-children: right;
+}
+
+.AbilitySpecial {
+	flow-children: right;
+}
+#AbilitySpecialInput {
+	width: 100px;
+}
+#AbilitySpecialLabel {
+	text-align: center;
+	horizontal-align: center;
+	vertical-align: center;
+	padding-left: 5px;
+}
+
+
+#ButtonBar_Boosted {
+	height: 32px;
+	width: 32px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 100% 100%;
+    background-image: url("file://{resources}/images/custom_game/boosted_list.png");
+}
+.hidden
+{
+	visibility: collapse;
+}
+
+#PlayerDetails {
+
+}
+#BoostedPoints {
+
+}
+
+.AbilitySpecialPoints {
+	flow-children: right;
+	
+}
+#AbilitySpecialPointsValue {
+	font-size: 20px;
+	text-align: center;
+	horizontal-align: center;
+	vertical-align: center;
+}
+.AbilityValueContainer {
+	vertical-align: center;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+#AbilitySpecialPointsText {
+	font-size: 18px;
+	text-align: center;
+	horizontal-align: center;
+	
+}
+
+.current_value {
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 100% 100%;
+	width: 123px;
+	height: 48px;
+    background-image: url("file://{resources}/images/custom_game/ui/button_m_01.png");
+}
+
+.BasicButtonBG {
+	height: 48px;
+	width: 48px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 100% 100%;
+    background-image: url("file://{resources}/images/custom_game/ui/button_03.png");
+}
+.BasicButtonBG_Plus {
+	height: 48px;
+	width: 48px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 100% 100%;
+    background-image: url("file://{resources}/images/custom_game/ui/plus_bg.png");
+	
+}
+
+.BasicButton_Plus:hover {
+    background-image: url("file://{resources}/images/custom_game/ui/plus.png");
+}
+
+.BasicButton_Plus {
+	height: 48px;
+	width: 48px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 100% 100%;
+    background-image: url("file://{resources}/images/custom_game/ui/plus_bg.png");
+}
+
+.BasicButtonBG_Minus {
+	height: 48px;
+	width: 48px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 100% 100%;
+    background-image: url("file://{resources}/images/custom_game/ui/minus_bg.png");
+	
+}
+.BasicButton_Minus:hover {
+    background-image: url("file://{resources}/images/custom_game/ui/minus.png");
+}
+
+.BasicButton_Minus {
+	height: 48px;
+	width: 48px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 100% 100%;
+	background-image: url("file://{resources}/images/custom_game/ui/minus_bg.png");
+}
+
+#PlayerDetails {
+	height: 64px;
+	width: 64px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 100% 100%;
+    background-image: url("file://{resources}/images/custom_game/ui/button_03.png");
+}
+#BoostedPoints {
+	font-size: 24px;
+	text-align: center;
+	horizontal-align: center;
+	vertical-align: center;
+	font-weight: bold;
+}
+
+.centerpls{
+}

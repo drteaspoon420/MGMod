@@ -1,0 +1,30 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+  custom_net_tables =
+  [
+    "plugin_settings",
+    
+    "ability_registery",
+    "item_registery",
+    "unit_registery",
+    "modifier_registery",
+    
+    "souls_collected",
+
+    "lod_pool",
+    "lod_builds",
+    "lod_bans",
+
+    "boosted_upgrades_0",
+    "boosted_upgrades_1",
+    "boosted_upgrades_2",
+    "boosted_upgrades_3",
+    "boosted_upgrades_4",
+    "boosted_upgrades_5",
+    "boosted_upgrades_6",
+    "boosted_upgrades_7",
+    "boosted_upgrades_8",
+    "boosted_upgrades_9",
+    "save_slots",
+  ]
+}

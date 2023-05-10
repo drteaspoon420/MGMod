@@ -1,0 +1,8 @@
+"list"
+{
+"tidehunter_anchor_smash" "1"
+"arc_warden_tempest_double" "1"
+"monkey_king_boundless_strike" "1"
+"mars_gods_rebuke" "1"
+"void_spirit_astral_step" "1"
+}

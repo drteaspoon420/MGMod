@@ -1,0 +1,33 @@
+"plugin_settings"
+{
+    "Order" "421"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "limited_mode" {
+        "Order" "0"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "dota_items" {
+        "Order" "1"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "custom_items" {
+        "Order" "2"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+//    "host_only" {
+//        "Order" "6"
+//        "TYPE" "boolean"
+//        "DEFAULT" "0"
+//    }
+//    "host_bans" {
+//        "Order" "7"
+//        "TYPE" "boolean"
+//        "DEFAULT" "0"
+//    }
+}

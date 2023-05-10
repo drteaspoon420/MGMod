@@ -1,0 +1,141 @@
+// No spaces in event names, max length 32
+// All strings are case sensitive
+//
+// valid data key types are:
+//   string : a zero terminated string
+//   bool   : unsigned int, 1 bit
+//   byte   : unsigned int, 8 bit
+//   short  : signed int, 16 bit
+//   long   : signed int, 32 bit
+//   float  : float, 32 bit
+//   uint64 : unsigned int 64 bit
+//   local  : any data, but not networked to clients
+//
+// following key names are reserved:
+//   local      : if set to 1, event is not networked to clients
+//   unreliable : networked, but unreliable
+//   suppress   : never fire this event
+//   time	: firing server time
+//   eventid	: holds the event ID
+
+"CustomEvents"
+{
+	"setting_change"
+	{
+		"plugin"	"string"
+		"setting"	"string"
+		"value"		"string"
+	}
+	"open_window"
+	{
+		"window_id" "string"
+	}
+	"settings_save_slot" {
+		"slot" "short"
+	}
+	"npc_first_spawned_hero"
+	{
+		"entindex" "short"
+	}
+	"npc_first_spawned_real_hero"
+	{
+		"entindex" "short"
+	}
+	"npc_first_spawned_main_hero"
+	{
+		"entindex" "short"
+		"player" "short"
+	}
+	"npc_first_spawned_unit"
+	{
+		"entindex" "short"
+	}
+
+	"add_basic_ability"
+	{
+		"target" "short"
+		"level" "short"
+		"ability" "string"
+		"force" "bool"
+		"slot" "short"
+	}
+//	"add_ultimate_ability"
+//	{
+//		"target" "short"
+//		"level" "short"
+//		"ability" "string"
+//		"force" "bool"
+//		"slot" "short"
+//	}
+	"add_talent_ability"
+	{
+		"target" "short"
+		"level" "short"
+		"ability" "string"
+		"force" "bool"
+		"slot" "short"
+	}
+	"ban_basic_ability"
+	{
+		"ability" "string"
+	}
+	"ban_talent_ability"
+	{
+		"ability" "string"
+	}
+	"add_basic_item"
+	{
+		"target" "short"
+		"item" "string"
+	}
+	"add_basic_unit"
+	{
+		"target" "short"
+		"unit" "string"
+	}
+	"add_basic_modifier"
+	{
+		"target" "short"
+		"modifier" "string"
+		"data" "string"
+	}
+	"hero_builder_error"
+	{
+		"ability" "string"
+	}
+	"item_spawner_error"
+	{
+		"ability" "string"
+	}
+	"unit_spawner_error"
+	{
+		"ability" "string"
+	}
+	"modifier_spawner_error"
+	{
+		"ability" "string"
+	}
+
+	
+	"hackerman"
+	{
+		"cmd" "string"
+	}
+
+	"boost_player"
+	{
+		"ability" "string"
+		"key" "string"
+		"value" "float"
+	}
+	"boost_player_recheck"
+	{
+	}
+
+	"souls_colected"
+	{
+		"team" "short"
+		"increase" "short"
+		"total" "short"
+	}
+}

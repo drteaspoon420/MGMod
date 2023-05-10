@@ -1,0 +1,43 @@
+"plugin_settings"
+{
+    "Order" "420"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "limited_mode" {
+        "Order" "0"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "dota_abilities" {
+        "Order" "1"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "custom_abilities" {
+        "Order" "2"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "host_only" {
+        "Order" "6"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "host_bans" {
+        "Order" "7"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "disable_after_prematch" {
+        "Order" "8"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "slot_id_limit" {
+        "Order" "9"
+        "TYPE" "number"
+        "DEFAULT" "-1"
+    }
+}

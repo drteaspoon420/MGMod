@@ -1,0 +1,73 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/boosted.js" />
+	</scripts>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/boosted.css" />
+	</styles>
+	<snippets>
+		<snippet name="ButtonBar_Boosted">
+			<Button class="ButtonBar_Boosted" />
+		</snippet>
+
+		<snippet name="AbilityLabel">
+            <Panel id="AbilityLabel" class="AbilityLabel">
+			<Label id="AbilityLabelText" text="unknown"/>
+            </Panel>
+		</snippet>
+		<snippet name="AbilitySettings">
+			<Panel id="AbilitySettings" class="AbilitySettings">
+				<Panel id="AbilitySettingsInternalScroll">
+				</Panel>
+			</Panel>
+		</snippet>
+
+
+		<snippet name="AbilitySpecial">
+            <Panel id="AbilitySpecial" class="AbilitySpecial">
+				<TextEntry id="AbilitySpecialInput" text="1" />
+				<Label id="AbilitySpecialText" text="unknown"/>
+            </Panel>
+		</snippet>
+
+		<snippet name="AbilitySpecialPoints">
+            <Panel id="AbilitySpecialPoints" class="AbilitySpecialPoints">
+				<Panel class="BasicButtonBG">
+					<Panel class="BasicButtonBG_Minus">
+						<Button id="LevelupSpecial_Minus" class="BasicButton_Minus">
+						</Button>
+					</Panel>
+				</Panel>
+				<Panel class="AbilityValueContainer current_value">
+					<Label id="AbilitySpecialPointsValue" text="1" />
+					
+				</Panel>
+				<Panel class="BasicButtonBG">
+					<Panel class="BasicButtonBG_Plus">
+						<Button id="LevelupSpecial_Plus" class="BasicButton_Plus">
+						</Button>
+					</Panel>
+				</Panel>
+				<Panel class="AbilityValueContainer">
+					<Panel class="centerpls">
+						<Label id="AbilitySpecialPointsText" html="true" text="unknown"/>
+					</Panel>
+				</Panel>
+            </Panel>
+		</snippet>
+    </snippets>
+	<Panel class="WindowRoot">
+		<Panel id="WindowRoot" class="hidden">
+			<Panel id="AbilityList">
+				<Panel id="AbilityListInternalScroll">
+				</Panel>
+			</Panel>
+			<Panel id="BoostedBox">
+			</Panel>
+			<Panel id="PlayerDetails" class="hidden">
+				<Label id="BoostedPoints" text="0"/>
+			</Panel>
+		</Panel>
+    </Panel>
+</root>

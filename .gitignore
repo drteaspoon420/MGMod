@@ -1,0 +1,11 @@
+
+content/dota_addons/mgmod/localaccountrecord.txt
+*.vcss_c
+*.vjs_c
+*.vpcf_c
+*.vxml_c
+*.vtex_c
+*.bin
+*.vpk
+*.vmdl_c
+game/dota_addons/mgmod/panorama_debugger.cfg

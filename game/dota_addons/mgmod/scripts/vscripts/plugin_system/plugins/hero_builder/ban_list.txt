@@ -1,0 +1,13 @@
+"ban_list"
+{
+    "dawnbreaker_luminosity" "1"
+    "ability_capture" "1"
+    "ability_base" "1"
+    "default_attack" "1"
+    "attribute_bonus" "1"
+    "special_bonus_attributes" "1"
+    "generic_hidden" "1"
+    "special_bonus_generic_talent" "1"
+    "miniboss_unyielding_shield" "1"
+    "miniboss_reflect" "1"
+}
