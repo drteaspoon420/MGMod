@@ -33,3 +33,10 @@ TODO: I want to create custom shop UI for custom items at some point. Possibly m
 
 ### Units
 Sure!
+
+## Direct Authors
+Lead Development by DrTeaSpoon
+
+## Indirect Authors
+Timers Library by bmddota
+David Kolf's JSON module for Lua 5.1/5.2 by David Heiko Kolf
