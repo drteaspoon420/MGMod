@@ -1,0 +1,30 @@
+"DOTAAbilities"
+{
+
+	"weak_creature"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"abilities/abrahamblinkin/weak_creature"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		
+		"AbilityValues"
+		{
+			"damage_amp"					"-70"
+			"heal_amp"						"-70"
+			"mp_restore_amp"				"-70"
+		}
+	}
+	
+	"ability_chaos_cast"
+	{
+		
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"abilities/abrahamblinkin/ability_chaos_cast"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"chaos_knight_chaos_strike"
+		"MaxLevel"						"1"
+		"AbilityCooldown"				"60"
+		"AbilityChargeRestoreTime"		"30"
+		"AbilityCharges"				"2"
+	}
+}

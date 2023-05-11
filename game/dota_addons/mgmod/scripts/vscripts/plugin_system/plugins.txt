@@ -134,6 +134,14 @@
         }
     }
 
+    "twisted_spells" {
+        "MainClass" "TwistedSpellsPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+    }
+
  //   "freeforall" {
  //       "MainClass" "FreeForAllPlugin"
  //       "InitFunction" "Init"

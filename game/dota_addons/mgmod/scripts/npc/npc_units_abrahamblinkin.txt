@@ -1,0 +1,41 @@
+
+"DOTAUnits"
+{
+	"Version"	"1"
+	//=================================================================================
+
+	"npc_dota_subcaster"
+	{
+		// General
+		//----------------------------------------------------------------
+		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
+		"SoundSet"					""					// Name of sound set.
+		"Model"						"models/development/invisiblebox.vmdl"
+		"ModelScale"				"1"
+		"Level"						"1"
+
+		"Ability1"					"weak_creature"
+
+		"AttackDamageMin"			"21"		// Damage range min.
+		"AttackDamageMax"			"26"		// Damage range max.
+
+		"StatusHealth"				"1000000"			// Base health.
+		"StatusHealthRegen"			"1000000"
+		"StatusMana"				"600"
+		"StatusManaRegen"			"0"			// Base mana.
+		"StatusStartingMana"		"1000"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"550"			// Speed
+		"MovementTurnRate"			"1"			// Turning rate.
+		"VisionDaytimeRange"		"0"		// Range of vision during day light.
+		"VisionNighttimeRange"		"0"		// Range of vision at night time.
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"1"
+
+		"AttackRange"				"1"		// Range within a target can be attacked.
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"ProjectileSpeed"			"0"		// Speed of projectile.
+
+		"WakesNeutrals"				"0"
+	}
+}
