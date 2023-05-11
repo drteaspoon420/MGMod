@@ -1,0 +1,24 @@
+"plugin_settings"
+{
+    "Order" "69400"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "damage_percent" {
+        "TYPE" "number"
+        "DEFAULT" "30"
+    }
+    "radius_percent" {
+        "TYPE" "number"
+        "DEFAULT" "30"
+    }
+    "heal_percent" {
+        "TYPE" "number"
+        "DEFAULT" "30"
+    }
+    "mana_percent" {
+        "TYPE" "number"
+        "DEFAULT" "30"
+    }
+}
