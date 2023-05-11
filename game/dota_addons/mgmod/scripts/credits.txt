@@ -4,6 +4,12 @@
     {
         "name"  "DrTeaSpoon"
         "description"   "Lead Developer"
-        "css"   "lead_author"
+        "css"   "lead_author" //css style to be used in lobby screen. needs to be implemented
+    }
+    "76561198072015344" //steamid
+    {
+        "name"  "Abraham Blink'in"
+        "description"   "Contributor"
+        "css"   "contributor" //css style to be used in lobby screen. needs to be implemented
     }
 }

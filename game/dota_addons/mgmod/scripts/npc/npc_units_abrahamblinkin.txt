@@ -19,8 +19,8 @@
 		"AttackDamageMin"			"21"		// Damage range min.
 		"AttackDamageMax"			"26"		// Damage range max.
 
-		"StatusHealth"				"1000000"			// Base health.
-		"StatusHealthRegen"			"1000000"
+		"StatusHealth"				"100000"			// Base health.
+		"StatusHealthRegen"			"900"
 		"StatusMana"				"600"
 		"StatusManaRegen"			"0"			// Base mana.
 		"StatusStartingMana"		"1000"
