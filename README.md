@@ -1,7 +1,7 @@
 # MGMod
 MGMod for Dota 2. A little project to make modular experience of dota 2. Each module or 'plugin' should be self contained 'thing' and if left disabled should clean itself up from UI, etc.
 To make contributing easier I suggest you make symbolic link from the content/game folders to your appropriate dota 2 addon folders.
-https://www.howtogeek.com/16226/complete-guide-to-symbolic-links-symlinks-on-windows-or-linux/
+Example and details can be found in the `SETUP.md`
 
 ## Plugin System
 Core of the MGMod.
