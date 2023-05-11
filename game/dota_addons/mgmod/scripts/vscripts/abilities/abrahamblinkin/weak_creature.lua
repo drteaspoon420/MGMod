@@ -49,6 +49,29 @@ end
 
 function modifier_weak_creature:OnCreated()
 	self:StartIntervalThink(8)
+	if not IsServer() then return end
+	self.damage_percent = TwistedSpellsPlugin.settings.damage_percent
+	self.heal_percent = TwistedSpellsPlugin.settings.heal_percent
+	self.mana_percent = TwistedSpellsPlugin.settings.mana_percent
+	self.radius_percent = TwistedSpellsPlugin.settings.radius_percent
+    self:SetHasCustomTransmitterData(true)
+	self:SendBuffRefreshToClients()
+end
+
+function modifier_weak_creature:AddCustomTransmitterData()
+    return {
+		damage_percent = self.damage_percent,
+		heal_percent = self.heal_percent,
+		mana_percent = self.mana_percent,
+		radius_percent = self.radius_percent
+	}
+end
+
+function modifier_weak_creature:HandleCustomTransmitterData( data )
+	self.damage_percent = data.damage_percent
+	self.heal_percent = data.heal_percent
+	self.mana_percent = data.mana_percent
+	self.radius_percent = data.radius_percent
 end
 
 function modifier_weak_creature:OnIntervalThink()
@@ -56,15 +79,15 @@ function modifier_weak_creature:OnIntervalThink()
 end
 
 function modifier_weak_creature:GetModifierDamageOutgoing_Percentage()
-	return -100 + TwistedSpellsPlugin.settings.damage_percent * self:GetAbility().damage
+	return -100 + self.damage_percent * self:GetAbility().damage
 end
 
 function modifier_weak_creature:GetModifierHealAmplify_PercentageSource()
-	return -100 + TwistedSpellsPlugin.settings.heal_percent * self:GetAbility().heal
+	return -100 + self.heal_percent * self:GetAbility().heal
 end
 
 function modifier_weak_creature:GetModifierMPRestoreAmplify_Percentage()
-	return -100 + TwistedSpellsPlugin.settings.mana_percent * self:GetAbility().mana
+	return -100 + self.mana_percent * self:GetAbility().mana
 end
 
 function modifier_weak_creature:GetModifierOverrideAbilitySpecial( params )
@@ -87,7 +110,7 @@ function modifier_weak_creature:GetModifierOverrideAbilitySpecialValue( params )
 	local amped = base_value
 
 	if string.match(szSpecialValueName, "radius") then
-		base_value = base_value * (ability.radius) * ( TwistedSpellsPlugin.settings.radius_percent/100 )
+		base_value = base_value * (ability.radius) * ( self.radius_percent/100 )
 	end
 
 	return base_value

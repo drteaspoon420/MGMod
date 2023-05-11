@@ -225,113 +225,113 @@ function SplitSubcast( caster, chaos_ability, ability_name, origin, original_ang
     local unit = subcasters[i]
 
     -- if unit==nil then return end
-    
-    unit:SetAbsOrigin( origin )
-    -- unit.busy = true
-    local angle_mult = i - 1 -- times to increment the angle, starting at 0 for the first iteration
-    
-    local y_degrees = offset_angle_degrees + ( angle_increment_degrees * angle_mult )
-    local rotation = QAngle( 0, y_degrees, 0 )
+    if unit ~= nil then
+      unit:SetAbsOrigin( origin )
+      -- unit.busy = true
+      local angle_mult = i - 1 -- times to increment the angle, starting at 0 for the first iteration
+      
+      local y_degrees = offset_angle_degrees + ( angle_increment_degrees * angle_mult )
+      local rotation = QAngle( 0, y_degrees, 0 )
 
-    local random_degrees = vector_cast_rotation + ( angle_increment_degrees * angle_mult )
-    local random_vector_rotation = QAngle( 0, random_degrees, 0 )
-    local rand_rot_pos = unit:GetAbsOrigin() + ( unit:GetForwardVector() * ( dist_from_origin + dist_increment * i ) )
+      local random_degrees = vector_cast_rotation + ( angle_increment_degrees * angle_mult )
+      local random_vector_rotation = QAngle( 0, random_degrees, 0 )
+      local rand_rot_pos = unit:GetAbsOrigin() + ( unit:GetForwardVector() * ( dist_from_origin + dist_increment * i ) )
 
-    local cast_type = nil
-    local isVTarget_b = false
+      local cast_type = nil
+      local isVTarget_b = false
 
-    local new_forward = RotateOrientation( rotation, original_angles )
-    local rand_vector_forward = RotateOrientation( random_vector_rotation, original_angles )
+      local new_forward = RotateOrientation( rotation, original_angles )
+      local rand_vector_forward = RotateOrientation( random_vector_rotation, original_angles )
 
-    local weak_abil = unit:FindAbilityByName( "weak_creature" )
-    if weak_abil == nil then
-      weak_abil = unit:AddAbility( "weak_creature" )
-    end
-    weak_abil.damage = damage_fl
-    weak_abil.radius = radius_fl
+      local weak_abil = unit:FindAbilityByName( "weak_creature" )
+      if weak_abil == nil then
+        weak_abil = unit:AddAbility( "weak_creature" )
+      end
+      weak_abil.damage = damage_fl
+      weak_abil.radius = radius_fl
 
-    -- print(unit)
-    local ability = unit:FindAbilityByName( ability_name )
-    if ability == nil then
-      ability = unit:AddAbility(ability_name)
-    else
-      ability:EndCooldown()
-    end
+      -- print(unit)
+      local ability = unit:FindAbilityByName( ability_name )
+      if ability == nil then
+        ability = unit:AddAbility(ability_name)
+      else
+        ability:EndCooldown()
+      end
 
-    ability:SetHidden(false)
-    local abilityBehavior = GetCastTypeString( ability )
+      ability:SetHidden(false)
+      local abilityBehavior = GetCastTypeString( ability )
 
-    ability:SetLevel( chaos_ability:GetLevel() )
-    -- ability:EndCooldown()
+      ability:SetLevel( chaos_ability:GetLevel() )
+      -- ability:EndCooldown()
 
-    unit:SetAbsAngles( 0, new_forward.y, 0 )
-    local pos_1 = origin + ( unit:GetForwardVector() * ( dist_from_origin + ( dist_increment * i ) ) ) -- get incremented distance from origin at designated angle
-    local pos_1_cast = pos_1 + ( unit:GetForwardVector() * dist_from_subcaster ) -- get point at dist_from_subcaster ahead of pos_1, to cast at
+      unit:SetAbsAngles( 0, new_forward.y, 0 )
+      local pos_1 = origin + ( unit:GetForwardVector() * ( dist_from_origin + ( dist_increment * i ) ) ) -- get incremented distance from origin at designated angle
+      local pos_1_cast = pos_1 + ( unit:GetForwardVector() * dist_from_subcaster ) -- get point at dist_from_subcaster ahead of pos_1, to cast at
 
-    unit:SetAbsAngles( 0, rand_vector_forward.y, 0 )
-    local pos_2 = pos_1_cast
-    local pos_2_cast = pos_1 + ( unit:GetForwardVector() * dist_from_subcaster ) -- get point at dist_from_subcaster ahead of pos_1, to cast at
-    -- local radius = ability:GetSpecialValueFor("radius")
-    
-    if string.match( abilityBehavior, "DOTA_ABILITY_BEHAVIOR_VECTOR_TARGETING") then
+      unit:SetAbsAngles( 0, rand_vector_forward.y, 0 )
+      local pos_2 = pos_1_cast
+      local pos_2_cast = pos_1 + ( unit:GetForwardVector() * dist_from_subcaster ) -- get point at dist_from_subcaster ahead of pos_1, to cast at
+      -- local radius = ability:GetSpecialValueFor("radius")
+      
+      if string.match( abilityBehavior, "DOTA_ABILITY_BEHAVIOR_VECTOR_TARGETING") then
+
+        local order_params = {
+          UnitIndex = unit:GetEntityIndex(),
+          OrderType = DOTA_UNIT_ORDER_VECTOR_TARGET_POSITION,
+          AbilityIndex = ability:GetEntityIndex(),
+          TargetIndex = unit:GetEntityIndex(),
+          Position = pos_1_cast,
+          Queue = false
+        }
+        DelayCastWithOrders( unit, order_params, 0 )
+
+        cast_type = DOTA_UNIT_ORDER_CAST_POSITION
+        isVTarget_b = true
+
+      elseif string.match(abilityBehavior, "DOTA_ABILITY_BEHAVIOR_POINT") then
+        cast_type = DOTA_UNIT_ORDER_CAST_POSITION
+        unit:SetAbsOrigin( origin )
+      elseif string.match(abilityBehavior, "DOTA_ABILITY_BEHAVIOR_NO_TARGET") then
+        cast_type = DOTA_UNIT_ORDER_CAST_NO_TARGET
+      elseif string.match(abilityBehavior, "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET") then
+        cast_type = DOTA_UNIT_ORDER_CAST_TARGET
+      end
+
+      -- local subcaster_origin_spun = unit:GetAbsOrigin() + ( unit:GetForwardVector() * ( dist_from_origin + dist_increment * i ) )
+
+      unit:SetAbsAngles( 0, new_forward.y, 0 )
+      -- local subcaster_origin = unit:GetAbsOrigin() + ( unit:GetForwardVector() * ( dist_from_origin + dist_increment * i ) )
+      -- local cast_pos = unit:GetAbsOrigin() + ( unit:GetForwardVector() * dist_from_subcaster )
+
+      local cast_pos = nil
+      -- if isVTarget_b then
+      if vector_cast_rotation~=nil and vector_cast_rotation~=0 then -- should cast from pos_2, targeting pos_2_cast
+        unit:SetAbsOrigin( pos_2 )
+        cast_pos = pos_2_cast
+      else
+        unit:SetAbsOrigin( pos_1 )
+        cast_pos = pos_1_cast
+      end
+      -- end
 
       local order_params = {
         UnitIndex = unit:GetEntityIndex(),
-        OrderType = DOTA_UNIT_ORDER_VECTOR_TARGET_POSITION,
+        OrderType = cast_type,
         AbilityIndex = ability:GetEntityIndex(),
         TargetIndex = unit:GetEntityIndex(),
-        Position = pos_1_cast,
+        Position = cast_pos,
         Queue = false
       }
-      DelayCastWithOrders( unit, order_params, 0 )
 
-      cast_type = DOTA_UNIT_ORDER_CAST_POSITION
-      isVTarget_b = true
+      DelayCastWithOrders( unit, order_params, delay*i )
+      unit.busy = true
 
-    elseif string.match(abilityBehavior, "DOTA_ABILITY_BEHAVIOR_POINT") then
-      cast_type = DOTA_UNIT_ORDER_CAST_POSITION
-      unit:SetAbsOrigin( origin )
-    elseif string.match(abilityBehavior, "DOTA_ABILITY_BEHAVIOR_NO_TARGET") then
-      cast_type = DOTA_UNIT_ORDER_CAST_NO_TARGET
-    elseif string.match(abilityBehavior, "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET") then
-      cast_type = DOTA_UNIT_ORDER_CAST_TARGET
+      Timers:CreateTimer( delay+4, function()
+        ability:EndCooldown()
+        unit.busy = false
+        return nil
+      end)
     end
-
-    -- local subcaster_origin_spun = unit:GetAbsOrigin() + ( unit:GetForwardVector() * ( dist_from_origin + dist_increment * i ) )
-
-    unit:SetAbsAngles( 0, new_forward.y, 0 )
-    -- local subcaster_origin = unit:GetAbsOrigin() + ( unit:GetForwardVector() * ( dist_from_origin + dist_increment * i ) )
-    -- local cast_pos = unit:GetAbsOrigin() + ( unit:GetForwardVector() * dist_from_subcaster )
-
-    local cast_pos = nil
-    -- if isVTarget_b then
-    if vector_cast_rotation~=nil and vector_cast_rotation~=0 then -- should cast from pos_2, targeting pos_2_cast
-      unit:SetAbsOrigin( pos_2 )
-      cast_pos = pos_2_cast
-    else
-      unit:SetAbsOrigin( pos_1 )
-      cast_pos = pos_1_cast
-    end
-    -- end
-
-    local order_params = {
-      UnitIndex = unit:GetEntityIndex(),
-      OrderType = cast_type,
-      AbilityIndex = ability:GetEntityIndex(),
-      TargetIndex = unit:GetEntityIndex(),
-      Position = cast_pos,
-      Queue = false
-    }
-
-    DelayCastWithOrders( unit, order_params, delay*i )
-    unit.busy = true
-
-    Timers:CreateTimer( delay+4, function()
-      ability:EndCooldown()
-      unit.busy = false
-      return nil
-    end)
-
   end
 end
 
