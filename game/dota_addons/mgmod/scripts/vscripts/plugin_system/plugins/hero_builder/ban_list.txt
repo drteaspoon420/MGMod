@@ -8,6 +8,5 @@
     "special_bonus_attributes" "1"
     "generic_hidden" "1"
     "special_bonus_generic_talent" "1"
-    "miniboss_unyielding_shield" "1"
     "miniboss_reflect" "1"
 }
