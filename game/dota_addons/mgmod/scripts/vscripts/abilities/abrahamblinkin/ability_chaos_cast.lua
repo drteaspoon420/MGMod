@@ -101,7 +101,7 @@ end
 ---- Ability Extra Logic
 -------------------
 
-function BeginCastStormRadial( caster, chaos_ability, ability_name, origin, cast_qty, delay, min_dist, max_dist )
+function BeginCastStormRadial( caster, chaos_ability, ability_name, origin, cast_qty, delay, min_dist, max_dist, min_radius, max_radius )
 
   if IsClient() then return end
 
@@ -113,8 +113,15 @@ function BeginCastStormRadial( caster, chaos_ability, ability_name, origin, cast
   chaos_ability.pos = {}
 
   for i=1,cast_qty do
+
     chaos_ability.pos[i] = GetRandomPointInRadius( origin, min_dist, max_dist )
     local unit = subcasters[i]
+
+    local weak_abil = unit:FindAbilityByName( "weak_creature" )
+    if weak_abil == nil then
+      weak_abil = unit:AddAbility( "weak_creature" )
+    end
+    weak_abil.radius = RandomInt( 10*min_radius, 10*max_radius ) / 10
 
     -- print(unit)
     local ability = unit:FindAbilityByName( ability_name )
@@ -177,8 +184,13 @@ function SplitSubcast( caster, chaos_ability, ability_name, origin, original_ang
   --------------
 
   local original_ability = hero:FindAbilityByName(ability_name)
-  local has_secondary = GetReturnReleaseOrEndAbilityName( original_ability:GetName() )~=nil
-  local is_secondary = IsReturnReleaseOrEndAbilityName( original_ability:GetName() )
+  local has_secondary = false
+  local is_secondary = false
+
+  if original_ability~=nil then
+    has_secondary = GetReturnReleaseOrEndAbilityName( original_ability:GetName() )~=nil
+    is_secondary = IsReturnReleaseOrEndAbilityName( original_ability:GetName() )
+  end
 
   if has_secondary then
     local secondary_ability_name = GetReturnReleaseOrEndAbilityName( original_ability:GetName() )
@@ -196,7 +208,7 @@ function SplitSubcast( caster, chaos_ability, ability_name, origin, original_ang
     end
   end
 
-  if is_secondary or original_ability.prepped_casters~=nil then
+  if is_secondary and original_ability~=nil and original_ability.prepped_casters~=nil then
 
     -- DeepPrint(original_ability.prepped_casters)
 
@@ -235,7 +247,7 @@ function SplitSubcast( caster, chaos_ability, ability_name, origin, original_ang
 
       local random_degrees = vector_cast_rotation + ( angle_increment_degrees * angle_mult )
       local random_vector_rotation = QAngle( 0, random_degrees, 0 )
-      local rand_rot_pos = unit:GetAbsOrigin() + ( unit:GetForwardVector() * ( dist_from_origin + dist_increment * i ) )
+      -- local rand_rot_pos = unit:GetAbsOrigin() + ( unit:GetForwardVector() * ( dist_from_origin + dist_increment * i ) )
 
       local cast_type = nil
       local isVTarget_b = false
@@ -371,7 +383,7 @@ function GetCastTypeString( ability )
   return abilityBehavior
 end
 
---SplitSubcast( ability_name, origin, original_angles, cast_qty, delay, angle_increment_degrees, offset_angle_degrees, dist_from_origin, dist_from_subcaster, dist_increment, radius_fl, damage_fl, vector_cast_rotation)
+--SplitSubcast( caster, ability_name, origin, original_angles, cast_qty, delay, angle_increment_degrees, offset_angle_degrees, dist_from_origin, dist_from_subcaster, dist_increment, radius_fl, damage_fl, vector_cast_rotation)
 
 function ability_chaos_cast:ChaosCastPointSpell( ability, pos ) -- pos is an optional parameter that chooses an origin other than the caster's location
 
@@ -389,65 +401,69 @@ function ability_chaos_cast:ChaosCastPointSpell( ability, pos ) -- pos is an opt
   local posNeg2 = posNegTable[ RandomInt(1,2) ]
   local vector_rotation = RandomInt( -180, 180 )
   local caster = ability:GetCaster()
+  local forced_pattern = TwistedSpellsPlugin.settings.force_pattern
+
+  if forced_pattern > 0 and forced_pattern < 11 then
+    pattern = forced_pattern
+  end
 
   local subs = GetSubcasters( caster )
   if subs==nil then
     CreateSubcasters( caster, 21 )
   end
 
-  -- print("Pattern is " .. pattern)
+  --SplitSubcast( caster, ability_name, spellname, origin, original_angles, cast_qty, delay, angle_increment_degrees, offset_angle_degrees, dist_from_origin, dist_from_subcaster, dist_increment, radius_fl, damage_fl, random_rotation )`
 
-  if pattern==1 then -- casts your spell four in four rows, in an 'x' pattern around you. The four prongs of this 'x' shape are usually curved 
-    local dist_increment = RandomInt( 100, 200 ) -- distance between each cast on each row
-    local angle_increment_degrees = RandomInt(-7,7) -- curve of the four rows on your spell
-    local delay = RandomInt(1,3)/16 -- how quickly to cast these spells in succession
-    SplitSubcast( caster, ability, spellName, origin, original_angles, 3, delay, angle_increment_degrees*5, 0, 0, 150, dist_increment, 1, 1, vector_rotation ) -- prong in front of you
-    SplitSubcast( caster, ability, spellName, origin, original_angles, 3, delay, angle_increment_degrees*5, 120, 0, 150, dist_increment, 1, 1, vector_rotation + 90 ) -- prong left of you
-    SplitSubcast( caster, ability, spellName, origin, original_angles, 3, delay, angle_increment_degrees*5, 240, 0, 150, dist_increment, 1, 1, vector_rotation + 180 ) -- prong behind you
-    -- SplitSubcast( caster, ability, spellName, origin, original_angles, 3, delay, angle_increment_degrees*5, 270, 0, 150, dist_increment, 1, 1, vector_rotation + 270 ) -- prong right of you
-
-  elseif pattern==2 then -- casts your spell in x number of rows leading away from you (4 rows would make an 'x' around you). These spells cast instantly and are never curved.
-    local rows = RandomInt(3,5) -- random number of prongs
-    local dist_increment = RandomInt(50,100) -- distance between each cast on each row
-    SplitSubcast( caster, ability, spellName, origin, original_angles, rows*4, 0, 360/rows, 0, 1, 130, dist_increment, 0.4, 0.4, vector_rotation ) -- three lines
-
-  elseif pattern==3 then -- cast your ability in a wave in front of you
-    local delay = RandomInt( 3, 10 ) / 10 -- time between waves
-    local dist = RandomInt( 150, 250 ) -- distance between waves
-    local spread = RandomInt( 30, 70 ) -- width of wave
-    for i=1,3 do
-      Timers:CreateTimer( delay*(i-1), function()
-        SplitSubcast( caster, ability, spellName, origin, original_angles, 1+i, 0, spread*2/(2+i), -spread, dist*i, 300, 1, 1, 1, 0 )
+  if pattern==1 then -- casts your spell in 3-5 rows, 3-4 casts long. Usually curved 
+    local dist_increment = RandomInt( 80, 150 ) -- distance between each cast on each row
+    local angle_increment_degrees = RandomInt(-30,30) -- curve of the four rows on your spell
+    local rows = RandomInt(3,5)
+    local instances = RandomInt(3,4)
+    for i=1,instances do
+      Timers:CreateTimer( 0.4*i, function()
+        SplitSubcast( caster, ability, spellName, origin, original_angles, rows, 0, 360/rows, 0, 1, dist_increment*i, 0, 0.6*i, 1, vector_rotation + (angle_increment_degrees*i) ) -- cast on four sides
         self.RemoveSelf = true
         return nil
       end)
     end
 
-  elseif pattern==4 then -- instantly cast your ability in a ring around you
+  elseif pattern==2 then -- casts your spell in x number of rows leading away from you (4 rows would make an 'x' around you). These spells cast instantly and are never curved.    
+    for i=1,4 do
+      SplitSubcast( caster, ability, spellName, origin, original_angles, 4, 0, 90, 0, 1, 100*i, 0, 0.6*i, 1, vector_rotation ) -- cast on four sides
+    end
+
+  elseif pattern==3 then -- cast your ability in a wave in front of you
+    local spread = 45
+    for i=1,4 do
+      Timers:CreateTimer( 0.4*i, function()
+        SplitSubcast( caster, ability, spellName, origin, original_angles, 1+i, 0, spread/i, -spread/2, 200*i, 100*i, 0, 1+(0.5*i), 1, 0 )
+        self.RemoveSelf = true
+        return nil
+      end)
+    end
+
+  elseif pattern==4 then -- instantly cast your ability in a single ring around you
     local magnitude = RandomInt( 5, 10 )
     SplitSubcast( caster, ability, spellName, origin, original_angles, magnitude, 0, 360/magnitude, 0, 0, magnitude*40*posNeg, 0, 5/magnitude, 5/magnitude, vector_rotation*posNeg )
     
   elseif pattern==5 then -- spiral
-    --SplitSubcast( caster, ability_name, spellname, origin, original_angles, cast_qty, delay, angle_increment_degrees, offset_angle_degrees, dist_from_origin, dist_from_subcaster, dist_increment, radius_fl, damage_fl, rotation )`
-    local magnitude = 10 -- distance between waves
-    local rand = RandomInt(1,2)
-
-    SplitSubcast( caster, ability, spellName, origin, original_angles, magnitude, 0.15, 45, 90, 0, 150, magnitude*7, 1, 1, vector_rotation ) -- progressive spiral
-    if rand==1 then
-      SplitSubcast( caster, ability, spellName, origin, original_angles, magnitude, 0.15, 45*posNeg, 270, 0, 150, magnitude*7, 1, 1, vector_rotation ) -- flipped progressive spiral
+    for i=1,20 do
+      Timers:CreateTimer( 0.1*i, function()
+        local progression = 180 + (600/(10+i/2)*i)*posNeg
+        SplitSubcast( caster, ability, spellName, origin, original_angles, 1, 0, 0, progression, 45*i, 100, 0, 0.2*i, 1, progression + vector_rotation ) -- progressive spiral
+        self.RemoveSelf = true
+        return nil
+      end)
     end
-    -- SplitSubcast( caster, ability, spellName, origin, original_angles, magnitude, 0.15, 30, -90, 0, 1, magnitude*3, 1, 1, vector_rotation ) -- progressive spiral
-    -- SplitSubcast( caster, ability, spellName, origin, original_angles, 12, 0.1, 25, 180, 150*posNeg, 1, 60, 1, 1 ) -- progressive spiral
 
   elseif pattern==6 then -- cast a totally random 'storm' of your spell in an area around you
-    BeginCastStormRadial( caster, ability, spellName, origin, 10, 0.25, 100, 600 )
+    BeginCastStormRadial( caster, ability, spellName, origin, 10, 0.25, 100, 600, 0.5, 2 )
 
-  elseif pattern==7 then -- Cast multiple times, crawling forward each cast, with growing radius
-    -- local vector_rotation = RandomInt(1,360)
-    local rand = RandomInt(3,6)
+  elseif pattern==7 then -- Cast multiple times, crawling forward each cast, with growing radius and damage
+    local rand = RandomInt(5,8)
     for i=1,rand do
       Timers:CreateTimer( 0.2*i, function()
-        SplitSubcast( caster, ability, spellName, ability:GetCaster():GetAbsOrigin(), original_angles, 1, 0, 0, 0, 0, 75, 300*i, 0.5 * i, 0.3*i, 0 ) -- progressive spiral
+        SplitSubcast( caster, ability, spellName, ability:GetCaster():GetAbsOrigin(), original_angles, 1, 0, 0, 0, 0, 75, 200*i, 3*i/rand, 3*i/rand, 0 ) -- progressive spiral
         self.RemoveSelf = true
         return nil
       end)
@@ -455,34 +471,39 @@ function ability_chaos_cast:ChaosCastPointSpell( ability, pos ) -- pos is an opt
 
   elseif pattern==8 then -- repeatedly cast your ability in a growing ring around you
 
-    SplitSubcast( caster, ability, spellName, origin, original_angles, 5, 0, 360/5, 0, 150, 150, 0, 1, 1, vector_rotation*posNeg )
+    SplitSubcast( caster, ability, spellName, origin, original_angles, 7, 0, 360/7, 0, 200, 0, 0, 1, 1, vector_rotation*posNeg )
 
-      Timers:CreateTimer( 1, function()
-        SplitSubcast( caster, ability, spellName, origin, original_angles, 8, 0, 360/8, 0, 300, 150, 0, 1.3, 1, vector_rotation*posNeg2 )
+      Timers:CreateTimer( 0.4, function()
+        SplitSubcast( caster, ability, spellName, origin, original_angles, 7, 0, 360/7, 25.7, 350, 0, 0, 1.7, 1, vector_rotation*posNeg2 )
+
+        Timers:CreateTimer( 0.4, function()
+          SplitSubcast( caster, ability, spellName, origin, original_angles, 7, 0, 360/7, 0, 500, 0, 0, 2.4, 1, vector_rotation*posNeg )
+          self.RemoveSelf = true
+          return nil
+        end)
+
         self.RemoveSelf = true
         return nil
       end)
 
   elseif pattern==9 then
-    for i=1,4 do
-      Timers:CreateTimer( 1*i, function()
-        SplitSubcast( caster, ability, spellName, origin, original_angles, 1, 0, 0, 0, 150*i, 150, 0, 1, 1, vector_rotation )
-        SplitSubcast( caster, ability, spellName, origin, original_angles, 1, 0, 0, 0, 150*i, 150, 0, 1, 1, -vector_rotation )
-        self.RemoveSelf = true
-        return nil
-      end)
-    end
-
-  elseif pattern==10 then
     for i=1,3 do
-      local angle = RandomInt(20,35)
       Timers:CreateTimer( 1*i, function()
-        SplitSubcast( caster, ability, spellName, origin, original_angles, 1, 0, 0, angle, 200*i, 150, 0, 1, 1, vector_rotation )
-        SplitSubcast( caster, ability, spellName, origin, original_angles, 1, 0, 0, -angle, 200*i, 150, 0, 1, 1, -vector_rotation )
+        SplitSubcast( caster, ability, spellName, ability:GetCaster():GetOrigin(), original_angles, 1, 0, 0, 0, posNeg*i*150, 200, 0, 1, 1, vector_rotation )
+        SplitSubcast( caster, ability, spellName, ability:GetCaster():GetOrigin(), original_angles, 1, 0, 0, 0, posNeg*i*150, 200, 0, 1, 1, -vector_rotation )
         self.RemoveSelf = true
         return nil
       end)
     end
+    
+  elseif pattern==10 then -- instantly cast your ability in a single ring around you
+    local star_points = RandomInt( 5, 8 )
+    SplitSubcast( caster, ability, spellName, origin, original_angles, star_points, 0, 360/star_points, 0, 250, 250, 0, 1, 1, 180 + 180/star_points )
+
+    if spellName=="lion_impale" and star_points==5 and origin~=caster:GetAbsOrigin() then -- if lion made a pentagram away from himself (~1/57 chance), summon a chaos golem, lol
+      SplitSubcast( caster, ability, "warlock_rain_of_chaos", origin, original_angles, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0 ) -- doesn't give control of golem, but still funny
+    end
+    
   end
 
 end
