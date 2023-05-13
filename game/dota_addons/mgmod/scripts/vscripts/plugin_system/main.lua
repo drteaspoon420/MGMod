@@ -132,6 +132,12 @@ function PluginSystem:GetAllSetting(sPlugin)
                 if v.TYPE == "number" then
                     t[k] = tonumber(v.VALUE)
                 end
+                if v.TYPE == "text" then
+                    t[k] = v.VALUE
+                end
+                if v.TYPE == "dropdown" then
+                    t[k] = v.VALUE
+                end
             end
         end
     end
@@ -148,6 +154,8 @@ function PluginSystem:Sanitize(sPlugin,sSetting,sValue)
             return false
         end
         PluginSystem.LobbySettings[sPlugin][sSetting].VALUE = sValue
+    elseif PluginSystem.LobbySettings[sPlugin][sSetting].TYPE == "text" then
+        PluginSystem.LobbySettings[sPlugin][sSetting].VALUE = sValue
     elseif PluginSystem.LobbySettings[sPlugin][sSetting].TYPE == "boolean" then
         if sValue == "1" or sValue == "true" or sValue == "TRUE" or sValue == "True" or sValue == 1 or sValue == true then
             PluginSystem.LobbySettings[sPlugin][sSetting].VALUE = 1
@@ -156,6 +164,8 @@ function PluginSystem:Sanitize(sPlugin,sSetting,sValue)
         else
             return false
         end
+    elseif PluginSystem.LobbySettings[sPlugin][sSetting].TYPE == "dropdown" then
+        PluginSystem.LobbySettings[sPlugin][sSetting].VALUE = sValue
     else
         if tonumber(sValue) == nil then
             PluginSystem.LobbySettings[sPlugin][sSetting].VALUE = sValue

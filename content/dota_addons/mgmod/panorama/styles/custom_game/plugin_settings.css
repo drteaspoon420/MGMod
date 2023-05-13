@@ -105,6 +105,33 @@
 	padding-left: 5px;
 }
 
+
+.SettingTypeText {
+	flow-children: right;
+}
+#SettingTypeTextInput {
+	width: 300px;
+}
+#SettingTypeTextLabel {
+	text-align: center;
+	horizontal-align: center;
+	vertical-align: center;
+	padding-left: 5px;
+}
+
+.SettingTypeDropdown {
+	flow-children: right;
+}
+#SettingTypeDropdownInput {
+	width: 150px;
+}
+#SettingTypeDropdownLabel {
+	text-align: center;
+	horizontal-align: center;
+	vertical-align: center;
+	padding-left: 5px;
+}
+
 #SettingsSaveSlots {
 	flow-children: down;
 }

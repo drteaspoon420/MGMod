@@ -2,6 +2,7 @@
 {
 	"EnablePickRules"                 "1"
 	"maps"                            "dota"
+    "HeroGuidesSupported"				"1"
 	"dota"
 	{
 		"MaxPlayers"	"10"

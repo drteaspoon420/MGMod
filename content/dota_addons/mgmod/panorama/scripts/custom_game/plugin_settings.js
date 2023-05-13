@@ -108,6 +108,63 @@ function OpenPluginSettings(sPluginName) {
     
 }
 
+
+
+function UpdatePluginSettings(sPluginName) {
+    if (bHost)
+        return;
+    let sPluginSettings = plugin_settings[sPluginName];
+    let PluginSettings = PluginSettingsBox.FindChildInLayoutFile('PluginSettings');
+    let PluginEnabled = PluginSettings.FindChildInLayoutFile("PluginEnabled");
+    PluginEnabled.text = $.Localize("#Plugin_" +  sPluginName);
+    if (sPluginSettings.enabled.VALUE == 1) {
+        PluginEnabled.SetSelected(true);
+    }
+    PluginEnabled.enabled = bHost;
+    let PluginSettingsInternalScroll = PluginSettings.FindChildInLayoutFile("PluginSettingsInternalScroll");
+    for (const key in sPluginSettings) {
+        if (key == "Order" || key == "enabled") continue;
+        let VALUE = sPluginSettings[key].VALUE;
+        let TYPE = sPluginSettings[key].TYPE;
+        let panel = PluginSettingsInternalScroll.FindChildInLayoutFile(key);
+        if (panel != undefined) {
+            if (TYPE == "boolean") {
+                let input = panel.FindChildInLayoutFile("SettingTypeBooleanInput");
+                if (VALUE == 1) {
+                    if (!input.checked)
+                        input.SetSelected(true);
+                } else {
+                    if (input.checked)
+                        input.SetSelected(false);
+                }
+            }
+            if (TYPE == "number") {
+                let input = panel.FindChildInLayoutFile("SettingTypeNumberInput");
+                let val = Number(VALUE);
+                if (val % 1 != 0) {
+                    val = val.toFixed(2);
+                }
+                if (input.text != val)
+                    input.text = val;
+            }
+            if (TYPE == "dropdown") {
+                let input = panel.FindChildInLayoutFile("SettingTypeDropdownInput");
+                if (input.GetSelected() != VALUE)
+                    input.SetSelected(VALUE);
+            }
+            if (TYPE == "text") {
+                let input = panel.FindChildInLayoutFile("SettingTypeTextInput");
+                if (input.text != VALUE)
+                    input.text = VALUE;
+            }
+        } else {
+            $.Msg("could not find",key);
+        }
+    }
+    //add other settings
+    
+}
+
 function SettingChange(sPluginName,sPluginSetting,sValue) {
     if (!bHost) return;
     GameEvents.SendCustomGameEventToServer("setting_change",{
@@ -134,7 +191,7 @@ function CreateSetting(sPluginName,sPluginSetting,sPluginSettingData,hParent) {
 }
 
 function CreateSettingBoolean(sPluginName,sPluginSetting,sPluginSettingData,hParent) {
-    let SettingTypeBoolean = $.CreatePanel('Panel', hParent, 'SettingTypeBoolean');
+    let SettingTypeBoolean = $.CreatePanel('Panel', hParent, sPluginSetting);
     SettingTypeBoolean.BLoadLayoutSnippet("SettingTypeBoolean");
     let SettingTypeBooleanInput = SettingTypeBoolean.FindChildInLayoutFile("SettingTypeBooleanInput");
     SettingTypeBooleanInput.enabled = bHost;
@@ -172,7 +229,7 @@ function CreateSettingBoolean(sPluginName,sPluginSetting,sPluginSettingData,hPar
 }
 
 function CreateSettingNumber(sPluginName,sPluginSetting,sPluginSettingData,hParent) {
-    let SettingTypeNumber = $.CreatePanel('Panel', hParent, 'SettingTypeNumber');
+    let SettingTypeNumber = $.CreatePanel('Panel', hParent, sPluginSetting);
     SettingTypeNumber.BLoadLayoutSnippet("SettingTypeNumber");
     let SettingTypeNumberLabel = SettingTypeNumber.FindChildInLayoutFile("SettingTypeNumberLabel");
     SettingTypeNumberLabel.text = $.Localize("#Plugin_" +  sPluginName + "_Option_" + sPluginSetting);
@@ -216,18 +273,60 @@ function CreateSettingNumber(sPluginName,sPluginSetting,sPluginSettingData,hPare
 }
 
 function CreateSettingDropdown(sPluginName,sPluginSetting,sPluginSettingData,hParent) {
-    return undefined;
+
+    let SettingTypeDropdown = $.CreatePanel('Panel', hParent, sPluginSetting);
+    SettingTypeDropdown.BLoadLayoutSnippet("SettingTypeDropdown");
+    let SettingTypeDropdownLabel = SettingTypeDropdown.FindChildInLayoutFile("SettingTypeDropdownLabel");
+    SettingTypeDropdownLabel.text = $.Localize("#Plugin_" +  sPluginName + "_Option_" + sPluginSetting);
+    
+    let SettingTypeDropdownInput = SettingTypeDropdown.FindChildInLayoutFile("SettingTypeDropdownInput");
+
+    let desc_dd = "#Plugin_" +  sPluginName + "_Option_" + sPluginSetting + "_Description";
+    let desc = $.Localize(desc_dd);
+    if (desc != desc_dd) {
+        SettingTypeDropdownLabel.SetPanelEvent(
+            "onmouseover", 
+            function(){
+                $.DispatchEvent("DOTAShowTextTooltip", SettingTypeDropdownLabel, desc);
+            }
+            )
+        SettingTypeDropdownLabel.SetPanelEvent(
+            "onmouseout", 
+            function(){
+            $.DispatchEvent("DOTAHideTextTooltip", SettingTypeDropdownLabel);
+            }
+        )
+    }
+
+    SettingTypeDropdownInput.SetPanelEvent(
+        "oninputsubmit", 
+        function(){
+            SettingChange(sPluginName,sPluginSetting,SettingTypeDropdownInput.GetSelected().id);
+            $.Msg("setting changed!");
+        }
+    );
+	for (let i in sPluginSettingData.OPTIONS) {
+		let txt = i;
+		let opt = $.CreatePanel('Label', SettingTypeDropdownInput, txt);
+		opt.text = $.Localize("#Plugin_" +  sPluginName + "_Option_" + sPluginSetting + "_Drop_" + txt);
+		SettingTypeDropdownInput.AddOption(opt);
+		if (undefined!==sPluginSettingData.VALUE && sPluginSettingData.VALUE == txt) {
+			SettingTypeDropdownInput.SetSelected(txt);
+		}
+	}
+
+    return SettingTypeDropdown;
 }
 
 function CreateSettingText(sPluginName,sPluginSetting,sPluginSettingData,hParent) {
-    let SettingTypeText = $.CreatePanel('Panel', hParent, 'SettingTypeText');
+    let SettingTypeText = $.CreatePanel('Panel', hParent, sPluginSetting);
     SettingTypeText.BLoadLayoutSnippet("SettingTypeText");
     let SettingTypeTextLabel = SettingTypeText.FindChildInLayoutFile("SettingTypeTextLabel");
     SettingTypeTextLabel.text = $.Localize("#Plugin_" +  sPluginName + "_Option_" + sPluginSetting);
 
     let SettingTypeTextInput = SettingTypeText.FindChildInLayoutFile("SettingTypeTextInput");
     SettingTypeTextInput.enabled = bHost;
-    SettingTypeTextInput.text = Number(sPluginSettingData.VALUE);
+    SettingTypeTextInput.text = sPluginSettingData.VALUE;
     SettingTypeTextInput.SetPanelEvent(
         "onblur", 
         function(){
@@ -276,7 +375,7 @@ function SettingsUpdate( table_name, sPluginName, sPluginSettings) {
     }
     plugin_settings[sPluginName] = sPluginSettings;
     if (sPluginName == current_open) {
-        OpenPluginSettings(sPluginName);
+        UpdatePluginSettings(sPluginName);
     }
 }
 

@@ -45,7 +45,7 @@ function modifier_chaos_cast:OnCreated()
 end
 
 function modifier_chaos_cast:OnAbilityFullyCast( event )
-
+  if not IsServer() then return end
   local caster = event.ability:GetCaster()
   if caster~=self:GetParent() then return end
 
@@ -560,8 +560,8 @@ end
 function CreateSubcasters( hero, num )
   hero.subcasters = {}
   for i=1,num do
-    local unit = CreateUnitByName( "npc_dota_subcaster", hero:GetOrigin(), false, hero, self, hero:GetTeam() )
-    
+    local unit = CreateUnitByName( "npc_dota_subcaster", hero:GetOrigin(), false, nil, hero, hero:GetTeam() )
+    -- unit:SetControllableByPlayer(-1,true)
     -- unit:SetOwner( hero )
     unit:SetBaseDamageMin( hero:GetBaseDamageMin() )
     unit:SetBaseDamageMax( hero:GetBaseDamageMax() )

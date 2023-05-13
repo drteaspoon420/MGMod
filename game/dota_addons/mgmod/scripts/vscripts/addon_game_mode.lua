@@ -34,6 +34,7 @@ end
 
 function CBoostedGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetThink( "OnThink", self, "GlobalThink", 2 )
+	GameRules:GetGameModeEntity():SetWeatherEffectsDisabled(false)
 end
 
 function CBoostedGameMode:OnThink()
