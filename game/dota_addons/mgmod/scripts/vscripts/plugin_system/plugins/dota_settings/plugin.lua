@@ -40,8 +40,6 @@ function DotaSettingsPlugin:ApplySettings()
 		GameRules:GetGameModeEntity():SetCustomHeroMaxLevel(DotaSettingsPlugin.settings.max_level)
     end
 
-    GameRules:SetCustomGameBansPerTeam(DotaSettingsPlugin.settings.hero_banning)
-    GameRules:GetGameModeEntity():SetDraftingBanningTimeOverride(DotaSettingsPlugin.settings.hero_banning * 15)
     
     GameRules:GetGameModeEntity():SetFreeCourierModeEnabled(DotaSettingsPlugin.settings.courier_enabled)
     GameRules:GetGameModeEntity():SetUseTurboCouriers(DotaSettingsPlugin.settings.courier_turbo)
@@ -73,6 +71,116 @@ function DotaSettingsPlugin:ApplySettings()
         LinkLuaModifier( "modifier_death_percentage", "plugin_system/plugins/dota_settings/modifier_death_percentage", LUA_MODIFIER_MOTION_NONE )
         --register spawn listener to add modifier to heroes on first spawn
     end
+
+    
+	GameRules:GetGameModeEntity():SetCanSellAnywhere(DotaSettingsPlugin.settings.sell_anywhere)
+	GameRules:GetGameModeEntity():SetAllowNeutralItemDrops(DotaSettingsPlugin.settings.allow_neutral_drops)
+	GameRules:GetGameModeEntity():SetBountyRuneSpawnInterval(DotaSettingsPlugin.settings.bounty_rune_spawn_interval)
+	GameRules:GetGameModeEntity():SetPowerRuneSpawnInterval(DotaSettingsPlugin.settings.power_rune_spawn_interval)
+	GameRules:GetGameModeEntity():SetXPRuneSpawnInterval(DotaSettingsPlugin.settings.xp_rune_spawn_interval)
+	GameRules:GetGameModeEntity():SetRespawnTimeScale(DotaSettingsPlugin.settings.death_time_percent)
+    
+    local sBackDoorProtection = DotaSettingsPlugin.settings.backdoor_protection
+    if sBackDoorProtection == "none" then
+        GameRules:GetGameModeEntity():SetTowerBackdoorProtectionEnabled(false)
+    elseif sBackDoorProtection == "immunity" then
+    elseif sBackDoorProtection == "tenton" then
+    else
+        GameRules:GetGameModeEntity():SetTowerBackdoorProtectionEnabled(true)
+    end
+
+    
+	GameRules:GetGameModeEntity():SetBuybackEnabled(DotaSettingsPlugin.settings.allow_buyback)
+	GameRules:GetGameModeEntity():SetCustomBackpackCooldownPercent(DotaSettingsPlugin.settings.backback_cooldown)
+    --[[local heroId = DOTAGameManager:GetHeroIDByName(DotaSettingsPlugin.settings.force_hero)
+     print(DotaSettingsPlugin.settings.force_hero,"is",heroId)
+    if (DotaSettingsPlugin.settings.force_hero ~= "none") then
+        if DOTAGameManager:GetHeroIDByName(DotaSettingsPlugin.settings.force_hero) ~= -1 then
+            GameRules:GetGameModeEntity():SetCustomGameForceHero(DotaSettingsPlugin.settings.force_hero)
+        end
+    end ]]
+	GameRules:GetGameModeEntity():SetDaynightCycleAdvanceRate(DotaSettingsPlugin.settings.day_night_rate * 0.01)
+
+	GameRules:SetGoldPerTick(DotaSettingsPlugin.settings.gold_per_tick)
+	GameRules:SetGoldTickTime(DotaSettingsPlugin.settings.gold_tick)
+    GameRules:SetStartingGold(DotaSettingsPlugin.settings.starting_gold)
+	GameRules:SetHeroRespawnEnabled(DotaSettingsPlugin.settings.allow_respawn)
+    GameRules:SetSameHeroSelectionEnabled(DotaSettingsPlugin.settings.allow_samehero)
+    GameRules:SetTreeRegrowTime(DotaSettingsPlugin.settings.tree_grow_time)
+
+
+    --game mode pick
+    local time = 0
+    if DotaSettingsPlugin.settings.hero_banning then
+        GameRules:SetCustomGameBansPerTeam(5)
+        time = 30
+    end
+    GameRules:GetGameModeEntity():SetDraftingBanningTimeOverride(time)
+    if ("allrandom"==DotaSettingsPlugin.settings.pick_mode ) then
+        GameRules:GetGameModeEntity():SetThink( function()
+            for iPlayer = 0,DOTA_MAX_PLAYERS do
+                if PlayerResource:IsValidPlayer(iPlayer) then
+                    local hPlayer = PlayerResource:GetPlayer(iPlayer)
+                    if hPlayer then
+                        hPlayer:MakeRandomHeroSelection()
+                    end
+                end
+            end
+        end, time)
+    elseif ("singledraft"==DotaSettingsPlugin.settings.pick_mode ) then
+        GameRules:GetGameModeEntity():SetThink( function()
+            local attribute_heroes = {
+                {},		-- strength_heroes
+                {},		-- agility_heroes
+                {},		-- intelligence_heroes
+                {}		-- universal
+            }
+            local hero_definitions = LoadKeyValues('scripts/npc/npc_heroes.txt')
+            local file = {}
+            local blist = LoadKeyValues('scripts/npc/blist.txt')
+            local bmn = GameRules:GetBannedHeroes()
+            for k,_ in pairs(hero_definitions) do
+                if blist[k] == nil then
+                    if not Toolbox:table_contains(bmn, k) then
+                        file[k] = 1
+                    end
+                end
+            end
+            
+            if file == nil or not next(file) then
+                print("empty whitelist")
+            else
+                for hero_name, enabled in pairs(file) do
+                    if enabled == 1 then
+                        local hero_attribute = hero_definitions[hero_name]["AttributePrimary"]
+                        if hero_attribute == "DOTA_ATTRIBUTE_STRENGTH" then
+                            table.insert(attribute_heroes[1], hero_name)
+                        elseif hero_attribute == "DOTA_ATTRIBUTE_AGILITY" then
+                            table.insert(attribute_heroes[2], hero_name)
+                        elseif hero_attribute == "DOTA_ATTRIBUTE_INTELLECT" then
+                            table.insert(attribute_heroes[3], hero_name)
+                        else
+                            table.insert(attribute_heroes[4], hero_name)
+                        end
+                    end
+                end
+
+                GameRules:SetHideBlacklistedHeroes(true)
+                GameRules:GetGameModeEntity():SetPlayerHeroAvailabilityFiltered( true )
+                for p=0,DOTA_MAX_PLAYERS do
+                    if PlayerResource:IsValidPlayer(p) then
+                        for i=1,4 do
+                            local hero_index = Toolbox:GetRandomKey(attribute_heroes[i])
+                            local nHeroID = DOTAGameManager:GetHeroIDByName( attribute_heroes[i][hero_index] )
+                            GameRules:AddHeroToPlayerAvailability( p, nHeroID )
+                            attribute_heroes[i][hero_index] = nil
+                        end
+                    end
+                end
+            end
+        end, time)
+    end
+
 
     ListenToGameEvent("npc_spawned", function(event)
         if GameRules:State_Get() < DOTA_GAMERULES_STATE_HERO_SELECTION then return end
@@ -168,14 +276,14 @@ end
     
 function DotaSettingsPlugin:SpawnEvent(event)
     local hUnit = EntIndexToHScript(event.entindex)
-    if not hUnit.IsRealHero then return end
+--[[     if not hUnit.IsRealHero then return end
     if DotaSettingsPlugin.settings.death_time_percent ~= 100 then
         if hUnit:IsRealHero() then
             if DotaSettingsPlugin.unit_cache[event.entindex] ~= nil then return end
             DotaSettingsPlugin.unit_cache[event.entindex] = true
             local hModifier = hUnit:AddNewModifier(hUnit,nil,"modifier_death_percentage",{stack = DotaSettingsPlugin.settings.death_time_percent})
         end
-    end
+    end ]]
     
     if DotaSettingsPlugin.settings.courier_speed ~= 100 then
         if hUnit:IsCourier() then

@@ -9,7 +9,7 @@ end
 
 function DevStuffPlugin:ApplySettings()
     DevStuffPlugin.settings = PluginSystem:GetAllSetting("devstuff")
-
+    GameRules:SetRiverPaint(2,999)
     
 --[[     ListenToGameEvent("npc_spawned", function(event)
         if GameRules:State_Get() < DOTA_GAMERULES_STATE_HERO_SELECTION then return end
@@ -87,4 +87,20 @@ function DevStuffPlugin:ShortCutMods(tArgs,bTeam,iPlayer)
             end
         end
     end
+end
+
+function DevStuffPlugin:ShortCutResetDefeated()
+    local hPlayer = PlayerResource:GetPlayer(iPlayer)
+    if not GameRules:PlayerHasCustomGameHostPrivileges(hPlayer) then return end
+    GameRules:ResetDefeated()
+end
+function DevStuffPlugin:ShortCutResetToCustomGameSetup()
+    local hPlayer = PlayerResource:GetPlayer(iPlayer)
+    if not GameRules:PlayerHasCustomGameHostPrivileges(hPlayer) then return end
+    GameRules:ResetToCustomGameSetup()
+end
+function DevStuffPlugin:ShortCutResetToHeroSelection()
+    local hPlayer = PlayerResource:GetPlayer(iPlayer)
+    if not GameRules:PlayerHasCustomGameHostPrivileges(hPlayer) then return end
+    GameRules:ResetToHeroSelection()
 end

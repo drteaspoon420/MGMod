@@ -169,5 +169,14 @@ function Toolbox:FindUnit(sName,hUnit)
         e = Entities:Next(e)
     end
 end
+function Toolbox:table_contains(table, element)
+    for _, value in pairs(table) do
+        if value == element then
+        return true
+        end
+    end
+    return false
+end
+
 
 if not Toolbox.data then Toolbox:Init() end

@@ -30,7 +30,7 @@
 
 		<snippet name="SettingTypeText">
             <Panel id="SettingTypeText" class="SettingTypeText SettingGeneral">
-				<ToggleButton id="SettingTypeTextInput" text="unknown" />
+				<TextEntry id="SettingTypeTextInput" text="unknown" />
 				<Label id="SettingTypeTextLabel" text="unknown"/>
             </Panel>
 		</snippet>
@@ -44,8 +44,9 @@
 
 		<snippet name="SettingTypeDropdown">
             <Panel id="SettingTypeDropdown" class="SettingTypeDropdown SettingGeneral">
-				<DropDown id="SettingTypeDropdownInput" oninputsubmit="OnDropDownChanged()">
+				<DropDown id="SettingTypeDropdownInput">
 				</DropDown>
+				<Label id="SettingTypeDropdownLabel" text="unknown"/>
             </Panel>
 		</snippet>
 

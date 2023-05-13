@@ -26,7 +26,7 @@
     "hero_banning"
     {
         "Order" "3"
-        "TYPE" "number"
+        "TYPE" "boolean"
         "DEFAULT" "0"
     }
 
@@ -73,6 +73,17 @@
         "UNIT" "%"
         "DEFAULT" "100"
     }
+    "pick_mode"
+    {
+        "Order" "21"
+        "TYPE" "dropdown"
+        "DEFAULT" "allpick"
+        "OPTIONS" {
+            "allpick" "0"
+            "allrandom" "1"
+            "singledraft" "2"
+        }
+    }
     "courier_turbo"
     {
         "Order" "24"
@@ -98,5 +109,110 @@
         "TYPE" "number"
         "UNIT" "min"
         "DEFAULT" "15"
+    }
+
+    "sell_anywhere"
+    {
+        "Order" "700"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "allow_neutral_drops"
+    {
+        "Order" "720"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "bounty_rune_spawn_interval"
+    {
+        "Order" "701"
+        "TYPE" "number"
+        "UNIT" "s"
+        "DEFAULT" "180"
+    }
+    "power_rune_spawn_interval"
+    {
+        "Order" "702"
+        "TYPE" "number"
+        "UNIT" "s"
+        "DEFAULT" "360"
+    }
+    "xp_rune_spawn_interval"
+    {
+        "Order" "703"
+        "TYPE" "number"
+        "UNIT" "s"
+        "DEFAULT" "420"
+    }
+    "backdoor_protection"
+    {
+        "Order" "705"
+        "TYPE" "dropdown"
+        "DEFAULT" "normal"
+        "OPTIONS" {
+            "none" "0"
+            "normal" "1"
+            "immune" "2"
+            "tenton" "3"
+        }
+    }
+    "allow_buyback"
+    {
+        "Order" "706"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "backback_cooldown"
+    {
+        "Order" "707"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "100"
+    }
+    "day_night_rate"
+    {
+        "Order" "709"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "100"
+    }
+
+    "gold_per_tick"
+    {
+        "Order" "710"
+        "TYPE" "number"
+        "DEFAULT" "1"
+    }
+    "gold_tick"
+    {
+        "Order" "711"
+        "TYPE" "number"
+        "UNIT" "s"
+        "DEFAULT" "0.67"
+    }
+    "starting_gold"
+    {
+        "Order" "712"
+        "TYPE" "number"
+        "DEFAULT" "600"
+    }
+    "allow_samehero"
+    {
+        "Order" "713"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "tree_grow_time"
+    {
+        "Order" "714"
+        "TYPE" "number"
+        "UNIT" "s"
+        "DEFAULT" "180"
+    }
+    "allow_respawn"
+    {
+        "Order" "715"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
     }
 }

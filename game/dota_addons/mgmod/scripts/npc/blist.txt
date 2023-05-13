@@ -1,0 +1,6 @@
+"blist"
+{
+    "Version" "1"
+    "npc_dota_hero_base" "1"
+    "npc_dota_hero_target_dummy" "1"
+}

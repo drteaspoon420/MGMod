@@ -31,6 +31,8 @@ function modifier_weak_creature:CheckState()
 		[MODIFIER_STATE_INVULNERABLE] = true,
 		[MODIFIER_STATE_NO_HEALTH_BAR] = true,
 		[MODIFIER_STATE_UNSELECTABLE] = true,
+		[MODIFIER_STATE_IGNORING_MOVE_AND_ATTACK_ORDERS] = true,
+		[MODIFIER_STATE_IGNORING_STOP_ORDERS] = true
 	}
 	return state
 end
