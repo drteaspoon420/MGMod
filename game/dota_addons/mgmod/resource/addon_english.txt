@@ -1,0 +1,267 @@
+"lang"
+{
+	"Language"		"English"
+	"Tokens"
+	{		
+		"addon_game_name"			"MG Mod"
+		"DOTA_Tooltip_Ability_special_bonus_generic_talent"		"No Talent"
+		"DOTA_Tooltip_Ability_special_bonus_generic_talent_Description"		"You are pretty untalented."
+
+
+		// // Plugins
+		//Dota Plugin
+		"Plugin_dota_settings" "Dota"
+		"Plugin_dota_settings_Option_courier_enabled" "Courier"
+		"Plugin_dota_settings_Option_univeral_Shop" "Universal Shop"
+		"Plugin_dota_settings_Option_single_buyback" "Single Buyback"
+		"Plugin_dota_settings_Option_gold_gain_percent" "Gold Gain %"
+		"Plugin_dota_settings_Option_xp_gain_percent" "XP Gain %"
+		"Plugin_dota_settings_Option_death_time_percent" "Respawn Time %"
+		"Plugin_dota_settings_Option_hero_banning" "Hero Bans"
+		"Plugin_dota_settings_Option_courier_turbo" "Turbo Courier"
+		"Plugin_dota_settings_Option_courier_speed" "Courier Speed %"
+		"Plugin_dota_settings_Option_max_level" "Max Level"
+		"Plugin_dota_settings_Option_agh_shard_time" "Minutes to Agh's Shard"
+
+		"Plugin_dota_settings_Option_pregame_time" "Pregame Time"
+		"Plugin_dota_settings_Option_heropick_time" "Hero Pick Time"
+		"Plugin_dota_settings_Option_strategy_time" "Strategy Time"
+
+		
+		"Plugin_dota_settings_Option_sell_anywhere" "Sell Anywhere"
+		"Plugin_dota_settings_Option_allow_neutral_drops" "Neutral Drops"
+		"Plugin_dota_settings_Option_bounty_rune_spawn_interval" "Bounty Rune Spawn Interval"
+		"Plugin_dota_settings_Option_power_rune_spawn_interval" "Power Rune Spawn Interval"
+		"Plugin_dota_settings_Option_xp_rune_spawn_interval" "XP Rune Spawn Interval"
+
+		"Plugin_dota_settings_Option_backdoor_protection" "Backdoor Protection"
+		"Plugin_dota_settings_Option_backdoor_protection_Drop_normal" "Normal"
+		"Plugin_dota_settings_Option_backdoor_protection_Drop_none" "None"
+		"Plugin_dota_settings_Option_backdoor_protection_Drop_tenton" "10k"
+		"Plugin_dota_settings_Option_backdoor_protection_Drop_immune" "Immune"
+
+		"Plugin_dota_settings_Option_pick_mode" "Pick Mode"
+		"Plugin_dota_settings_Option_pick_mode_Drop_allpick" "All Pick"
+		"Plugin_dota_settings_Option_pick_mode_Drop_allrandom" "All Random"
+		"Plugin_dota_settings_Option_pick_mode_Drop_singledraft" "Single Draft"
+
+		
+
+		"Plugin_dota_settings_Option_allow_buyback" "Allow Buyback"
+		"Plugin_dota_settings_Option_backback_cooldown" "Backback Cooldown %"
+		"Plugin_dota_settings_Option_force_hero" "Forced Hero"
+		"Plugin_dota_settings_Option_day_night_rate" "Day Night Cycle"
+		"Plugin_dota_settings_Option_gold_per_tick" "Gold Per Tick"
+		"Plugin_dota_settings_Option_gold_tick" "Gold Tick Rate"
+		"Plugin_dota_settings_Option_starting_gold" "Starting Gold"
+		"Plugin_dota_settings_Option_allow_samehero" "Allow Same Hero"
+		"Plugin_dota_settings_Option_tree_grow_time" "Tree Regrow Time"
+		"Plugin_dota_settings_Option_allow_respawn" "Allow Respawn"
+
+		//Bots Plugin
+		"Plugin_bots_plugin" "Bots"
+		"Plugin_bots_plugin_Option_pre_random" "Bots Pick Early"
+		"Plugin_bots_plugin_Option_pre_random_Description" "This should prevent from bots just failing if you don't pick fast enough."
+
+		//Ability Sandbox
+		"Plugin_hero_builder" "Ability Sandbox"
+		"Plugin_hero_builder_Option_limited_mode" "Limited Mode"
+		"Plugin_hero_builder_Option_limited_mode_Description" "Allow only on allied and not controlled by another player."
+		"Plugin_hero_builder_Option_dota_abilities" "Built-in Abilities"
+		"Plugin_hero_builder_Option_custom_abilities" "Custom Abilities"
+
+		"Plugin_hero_builder_Option_host_only" "Host Only"
+		"Plugin_hero_builder_Option_host_bans" "Host Bans"
+		"Plugin_hero_builder_Option_disable_after_prematch" "Disable after Pregame"
+		"Plugin_hero_builder_Option_disable_after_prematch_Description" "After game timer hits 00:00 players can't change abilities."
+		"Plugin_hero_builder_Option_slot_id_limit" "Ability Slot Limit"
+		"Plugin_hero_builder_Option_slot_id_limit_Description" "Limit the slot id that can be changed. -1 disables. 0 = Q, 5 = R"
+
+		//Item Sandbox
+		"Plugin_item_spawner" "Item Sandbox"
+		"Plugin_item_spawner_Option_limited_mode" "Limited Mode"
+		"Plugin_item_spawner_Option_limited_mode_Description" "Allow only on allied and not controlled by another player."
+		"Plugin_item_spawner_Option_dota_items" "Built-in Items"
+		"Plugin_item_spawner_Option_custom_items" "Custom Items"
+		
+		"Plugin_item_spawner_Option_host_only" "Host Only"
+		"Plugin_item_spawner_Option_host_bans" "Host Bans"
+
+		//Unit Sandbox
+		"Plugin_unit_spawner" "Unit Sandbox"
+		"Plugin_unit_spawner_Option_limited_mode" "Limited Mode"
+		"Plugin_unit_spawner_Option_limited_mode_Description" "Allow only on allied and not controlled by another player."
+		"Plugin_unit_spawner_Option_dota_units" "Built-in Units"
+		"Plugin_unit_spawner_Option_custom_units" "Custom Units"
+		
+		"Plugin_unit_spawner_Option_host_only" "Host Only"
+		"Plugin_unit_spawner_Option_host_bans" "Host Bans"
+
+		//Modifier Sandbox
+		"Plugin_modifier_spawner" "Modifier Sandbox"
+		"Plugin_modifier_spawner_Option_limited_mode" "Limited Mode"
+		"Plugin_modifier_spawner_Option_limited_mode_Description" "Allow only on allied and not controlled by another player."
+		"Plugin_modifier_spawner_Option_dota_modifiers" "Built-in Modifiers"
+		"Plugin_modifier_spawner_Option_custom_modifiers" "Custom Modifiers"
+		
+		"Plugin_modifier_spawner_Option_host_only" "Host Only"
+		"Plugin_modifier_spawner_Option_host_bans" "Host Bans"
+
+		//Soul Collector
+		"Plugin_souls_plugin" "Soul Collector"
+		"Plugin_souls_plugin_Option_grab_distance" "Grab Distance"
+		"DOTA_Tooltip_modifier_soul_stack" "Collected Souls"
+		"DOTA_Tooltip_modifier_soul_stack_Description" "Return these to any shop!"
+
+		//Twisted Spells
+		"Plugin_twisted_spells" "Twisted Spells"
+		"Plugin_twisted_spells_Option_radius_percent" "Radius % for repeated spells"
+		"Plugin_twisted_spells_Option_damage_percent" "Damage % for repeated spells"
+		"Plugin_twisted_spells_Option_heal_percent" "Heal % for repeated spells"
+		"Plugin_twisted_spells_Option_mana_percent" "Mana % for repeated spells"
+		"DOTA_Tooltip_Ability_ability_chaos_cast"		"Twist A Spell"
+		"DOTA_Tooltip_Ability_ability_chaos_cast_Description"		"The next time you cast a spell, something strange will happen... <br><br>Only works with point-target spells, no-target spells, and area-target spells. Most auras do not stack."
+
+		//Attacks Cast Spells
+		"Plugin_attacks_cast_spells" "Attacks Cast Spells"
+		"Plugin_attacks_cast_spells_Option_ACSP_PROC" "Proc Chance"
+		"Plugin_attacks_cast_spells_Option_ACSP_PROC_ITEM" "Item Proc Chance"
+		"Plugin_attacks_cast_spells_Option_ACSP_PROC_PROBLEM" "Problem Ability Chance"
+		"Plugin_attacks_cast_spells_Option_ACSP_PROC_PROBLEM_Description" "Abilities that cause extra attacks."
+		"Plugin_attacks_cast_spells_Option_ACSP_PROC_ILL" "Illusion Proc Chance"
+		"Plugin_attacks_cast_spells_Option_ACSP_NO_ULT" "No Ultimates"
+		"Plugin_attacks_cast_spells_Option_ACSP_NO_RANDOM" "Last Ability Mode"
+		"Plugin_attacks_cast_spells_Option_ACSP_NO_RANDOM_Description" "Instead of casting random ability, cast the last ability you used."
+		"Plugin_attacks_cast_spells_Option_ACSP_STRICT" "Strict Mode"
+		"Plugin_attacks_cast_spells_Option_ACSP_STRICT_Description" "Try to restrict to valid targets. Not perfect system."
+		"Plugin_attacks_cast_spells_Option_ACSP_SILENCE" "Silence Disables"
+		"Plugin_attacks_cast_spells_Option_ACSP_BREAK" "Break Disables"
+		"Plugin_attacks_cast_spells_Option_ACSP_IMMUNE" "Not On Magic Immune"
+		"Plugin_attacks_cast_spells_Option_ACSP_IMMUNE_Description" "Don't proc on magic immune units. NOTE: Old Magic Immune."
+		"Plugin_attacks_cast_spells_Option_ACSP_TROLLS" "Ban Troll Abilities"
+		"Plugin_attacks_cast_spells_Option_ACSP_TROLLS_Description" "Global Kills, Instant Kills, List is bit old."
+		"Plugin_attacks_cast_spells_Option_ACSP_PROC_MODE" "Damage Casts Spells"
+		"Plugin_attacks_cast_spells_Option_ACSP_PROC_MODE_Description" "Instead of attacks, proc on damage instances."
+		"Plugin_attacks_cast_spells_Option_ACSP_MODERN" "Modern"
+		"Plugin_attacks_cast_spells_Option_ACSP_MODERN_Description" "An internal setting, don't worry about it."
+		"Plugin_attacks_cast_spells_Option_ACSP_CHAOS" "Chaos Reign"
+		"Plugin_attacks_cast_spells_Option_ACSP_CHAOS_Description" "Cast abilities from all you team mates instead of just your own."
+		"Plugin_attacks_cast_spells_Option_ACSP_DELAY" "Cast Delay"
+		"Plugin_attacks_cast_spells_Option_ACSP_DELAY_Description" "How long delay between proc and spell cast."
+		"Plugin_attacks_cast_spells_Option_forced_ability_leveling" "Forced Leveling"
+		"Plugin_attacks_cast_spells_Option_forced_ability_leveling_Description" "When hero gains level, force them to level up new ability if they have ability with 0 levels."
+
+		
+
+		//Alt win conditions
+		"Plugin_kill_limit_plugin"	"Kill Limit"
+		"Plugin_kill_limit_plugin_Option_kill_limit"	"Kill Limit"
+		"Plugin_time_limit_plugin"	"Time Limit"
+		"Plugin_time_limit_plugin_Option_time_limit"	"Time Limit (minutes)"
+		
+
+		//Hackerman
+		"Plugin_hackerman" "Hackerman"
+		"Plugin_hackerman_Option_host_only" "Host Only"
+
+		//Mammonite
+		"Plugin_mammonite" "Gold Shield"
+
+		//Dev stuff
+		"Plugin_devstuff" "Dev Stuff"
+
+		//Boosted
+		"Plugin_boosted" "Boosted"
+		"Plugin_boosted_Option_points_mode" "Points Mode"
+		"Plugin_boosted_Option_allow_reallocation" "Allow Reallocation"
+		"Plugin_boosted_Option_souls_integration" "Souls integration"
+		"Plugin_boosted_Option_souls_per_point" "Souls Per Point"
+
+		"Plugin_boosted_Option_points_mode_Description" "Players upgrade their abilities with points instead of free editing."
+		"Plugin_boosted_Option_allow_reallocation_Description" "In Points Mode, allow re-allocation of spent points."
+		"Plugin_boosted_Option_souls_integration_Description" "Integrate with 'Soul Collector' plugin"
+		"Plugin_boosted_Option_souls_per_point_Description" "How many souls do you need for 1 upgrade point."
+
+		//Delete Dota
+		"Plugin_delete_dota" "Delete Dota"
+		"Plugin_delete_dota_Option_delete_radiant"	"Apply To Radiant"
+		"Plugin_delete_dota_Option_delete_dire"	"Apply To Dire"
+		"Plugin_delete_dota_Option_delete_tier_1"	"Delete Tier 1 Towers"
+		"Plugin_delete_dota_Option_delete_tier_2"	"Delete Tier 2 Towers"
+		"Plugin_delete_dota_Option_delete_tier_3"	"Delete Tier 3 Towers"
+		"Plugin_delete_dota_Option_delete_tier_4"	"Delete Tier 4 Towers"
+		"Plugin_delete_dota_Option_delete_barracks"	"Delete Barracks"
+		"Plugin_delete_dota_Option_delete_fillers"	"Delete Filler Buildings"
+		"Plugin_delete_dota_Option_delete_outposts"	"Delete Outposts"
+		"Plugin_delete_dota_Option_delete_ancient"	"Delete Ancients"
+		"Plugin_delete_dota_Option_delete_creep_spawning"	"Delete Lane Creeps"
+		"Plugin_delete_dota_Option_delete_neutral_spawns"	"Delete Neutral Spawns"
+		"Plugin_delete_dota_Option_delete_roshan"	"Delete Roshan"
+		"Plugin_delete_dota_Option_delete_rune_spawns"	"Delete Runes"
+		"Plugin_delete_dota_Option_delete_shops"	"Delete Shops"
+		"Plugin_delete_dota_Option_delete_fountain"	"Delete Fountains"
+		"Plugin_delete_dota_Option_thanos_snap"	"Allow -thanos #"
+
+
+
+
+
+
+
+
+
+
+
+
+		//Zombies
+		"Plugin_zombies" "Zombies"
+		///Units
+		"npc_dota_zombies_basic_1" "Zombie"
+		"npc_dota_zombies_basic_2" "Zombie"
+		"npc_dota_zombies_basic_3" "Zombie"
+		"npc_dota_zombies_basic_4" "Zombie"
+		"npc_dota_zombies_basic_5" "Zombie"
+		"npc_dota_zombies_basic_6" "Zombie"
+		"npc_dota_zombies_basic_7" "Zombie"
+		"npc_dota_zombies_basic_8" "Zombie"
+		"npc_dota_zombies_basic_9" "Zombie"
+		"npc_dota_zombies_basic_10" "Zombie"
+		"npc_dota_zombies_basic_11" "Zombie"
+		"npc_dota_zombies_basic_12" "Zombie"
+
+
+
+
+
+		//Abilities
+
+		"DOTA_Tooltip_Ability_drteaspoon_multicast" "Multicast"
+		"DOTA_Tooltip_Ability_drteaspoon_multicast_Description"						"Enables you to cast your abilities and items multiple times with each use."
+		"DOTA_Tooltip_Ability_drteaspoon_multicast_Lore"								"Despite being largely incapacitated by his IQ, the DrTeaSpoons's success in battle is attributed to pure skill."
+		"DOTA_Tooltip_Ability_drteaspoon_multicast_Note0"							"Cannot Multicast toggled or channeled abilities. Cannot Multicast consumable items."
+		"DOTA_Tooltip_Ability_drteaspoon_multicast_Note1"							"Unit Targeted abilities and items apply to random valid target within radius equal to the cast range. Point Targeted abilities are cast to same location. Each cast has 0.6s delay from each other."
+	
+		"DOTA_Tooltip_Ability_drteaspoon_multicast_multicast_2_times"		"%2X CAST CHANCE:"
+		"DOTA_Tooltip_Ability_drteaspoon_multicast_multicast_3_times"		"%3X CAST CHANCE:"
+		"DOTA_Tooltip_Ability_drteaspoon_multicast_multicast_4_times"		"%4X CAST CHANCE:"
+
+
+		"DOTA_Tooltip_Ability_drteaspoon_black_king_bar" "Avatar of Past"
+		"DOTA_Tooltip_Ability_drteaspoon_black_king_bar_Description"					"Grants Magic Immunity for short duration."
+		"DOTA_Tooltip_Ability_drteaspoon_black_king_bar_Lore"							"A powerful staff imbued with the strength of past giants."
+		"DOTA_Tooltip_Ability_drteaspoon_black_king_bar_Note1"						"Abilities that pierce magic immunity will work even when Avatar is activated."
+		"DOTA_Tooltip_Ability_drteaspoon_black_king_bar_duration"					"DURATION:"
+		
+		"DOTA_Tooltip_modifier_drteaspoon_black_king_bar"				"Avatar"
+		"DOTA_Tooltip_modifier_drteaspoon_black_king_bar_Description"	"Magic Immune."
+
+		"DOTA_Tooltip_ability_drteaspoon_blink"											"Blink"
+		"DOTA_Tooltip_ability_drteaspoon_blink_Description"								"Short distance teleportation that allows you to move in and out of combat." 
+		"DOTA_Tooltip_ability_drteaspoon_blink_Lore"										"In his encounter with the Internet, DrTeaSpoon learned the value of being elusive."
+		"DOTA_Tooltip_ability_drteaspoon_blink_Note0"										"You can use Blink to dodge incoming projectiles."
+		"DOTA_Tooltip_ability_drteaspoon_blink_distance"								"RANGE:"
+
+
+
+	}
+}
