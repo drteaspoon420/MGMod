@@ -99,6 +99,4 @@
         "UNIT" "min"
         "DEFAULT" "15"
     }
-//BACKDOOR_PROTECTION
-//ALLOW_SAME_HERO_SELECTION
 }
