@@ -414,14 +414,14 @@ function ability_chaos_cast:ChaosCastPointSpell( ability, pos ) -- pos is an opt
 
   --SplitSubcast( caster, ability_name, spellname, origin, original_angles, cast_qty, delay, angle_increment_degrees, offset_angle_degrees, dist_from_origin, dist_from_subcaster, dist_increment, radius_fl, damage_fl, random_rotation )`
 
-  if pattern==1 then -- casts your spell four in four rows, in an 'x' pattern around you. The four prongs of this 'x' shape are usually curved 
+  if pattern==1 then -- casts your spell in 3-5 rows, 3-4 casts long. Usually curved 
     local dist_increment = RandomInt( 80, 150 ) -- distance between each cast on each row
     local angle_increment_degrees = RandomInt(-30,30) -- curve of the four rows on your spell
     local rows = RandomInt(3,5)
     local instances = RandomInt(3,4)
     for i=1,instances do
       Timers:CreateTimer( 0.4*i, function()
-        SplitSubcast( caster, ability, spellName, origin, original_angles, 4, 0, 360/rows, 0, 1, dist_increment*i, 0, 0.6*i, 1, vector_rotation + (angle_increment_degrees*i) ) -- cast on four sides
+        SplitSubcast( caster, ability, spellName, origin, original_angles, rows, 0, 360/rows, 0, 1, dist_increment*i, 0, 0.6*i, 1, vector_rotation + (angle_increment_degrees*i) ) -- cast on four sides
         self.RemoveSelf = true
         return nil
       end)
