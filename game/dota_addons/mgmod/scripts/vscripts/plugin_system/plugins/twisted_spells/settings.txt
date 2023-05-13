@@ -7,11 +7,11 @@
     }
     "damage_percent" {
         "TYPE" "number"
-        "DEFAULT" "30"
+        "DEFAULT" "50"
     }
     "radius_percent" {
         "TYPE" "number"
-        "DEFAULT" "30"
+        "DEFAULT" "50"
     }
     "heal_percent" {
         "TYPE" "number"
@@ -20,5 +20,9 @@
     "mana_percent" {
         "TYPE" "number"
         "DEFAULT" "30"
+    }
+    "force_pattern" {
+        "TYPE" "number"
+        "DEFAULT" "0"
     }
 }
