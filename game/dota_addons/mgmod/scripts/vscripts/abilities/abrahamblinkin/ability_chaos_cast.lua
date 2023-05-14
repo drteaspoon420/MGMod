@@ -9,8 +9,9 @@ function ability_chaos_cast:GetIntrinsicModifierName()
 end
 
 function ability_chaos_cast:OnSpellStart()
-  if self:GetCurrentAbilityCharges() > 0 then
-    self:SetCurrentAbilityCharges( self:GetCurrentAbilityCharges() - 1 )
+
+  if TwistedSpellsPlugin.settings.cooldown > 0 then
+    self:StartCooldown( TwistedSpellsPlugin.settings.cooldown )
   end
 end
 
@@ -63,14 +64,11 @@ function modifier_chaos_cast:OnAbilityFullyCast( event )
 
       if RandomInt( 1, 10 ) > 7 then pos = caster:GetAbsOrigin() end-- 70% chance to use target position instead of caster position
 
-      local has_charges = self:GetAbility():GetCurrentAbilityCharges() >= 1
-      local needs_charges_bstr = nil
-
       if ability_exceptions~=nil then
         needs_charges_bstr = ability_exceptions.spend -- returns a bool but it is unfortunately a string
       end
     
-      if needs_charges_bstr=="false" or has_charges then
+      if needs_charges_bstr=="false" or self:GetAbility():IsCooldownReady() then
         
         local should_chaos_cast = ability_exceptions==nil or ability_exceptions.cast=="true"
         local should_spend_charge = ability_exceptions==nil or ability_exceptions.spend=="true"
