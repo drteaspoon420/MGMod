@@ -1,5 +1,7 @@
 LinkLuaModifier( "modifier_chaos_cast", "abilities/abrahamblinkin/ability_chaos_cast", LUA_MODIFIER_MOTION_NONE )
 
+local ALL_ABILITY_EXCEPTIONS = LoadKeyValues('scripts/vscripts/plugin_system/plugins/twisted_spells/ability_exceptions.txt')
+
 ability_chaos_cast = class ({})
 
 function ability_chaos_cast:GetIntrinsicModifierName()
@@ -32,18 +34,6 @@ function modifier_chaos_cast:DeclareFunctions()
 	return funcs
 end
 
-function modifier_chaos_cast:OnCreated()
-  self["invoker_invoke"]              = { cast = false, spend = false }
-  self["elder_titan_return_spirit"]   = { cast = true, spend = false }
-  self["phoenix_launch_fire_spirit"]  = { cast = true, spend = false }
-  self["shredder_chakram"]            = { cast = true, spend = true }
-  self["shredder_chakram_2"]          = { cast = true, spend = true }
-  self["shredder_return_chakram"]     = { cast = true, spend = false }
-  self["shredder_return_chakram_2"]   = { cast = true, spend = false }
-  self["ancient_apparition_ice_blast"] = { cast = true, spend = true }
-  self["ancient_apparition_ice_blast_release"] = { cast = true, spend = false }
-end
-
 function modifier_chaos_cast:OnAbilityFullyCast( event )
   if not IsServer() then return end
   local caster = event.ability:GetCaster()
@@ -66,20 +56,24 @@ function modifier_chaos_cast:OnAbilityFullyCast( event )
   if cast_type==nil then return end
   
   if ability then
-    if self[ability:GetName()]~=nil and self[ability:GetName()].spend==false or self:GetAbility():GetCurrentAbilityCharges() >= 1 then
+    if cast_type==DOTA_UNIT_ORDER_CAST_POSITION or cast_type==DOTA_UNIT_ORDER_CAST_NO_TARGET then
+    
+      local ability_exceptions = ALL_ABILITY_EXCEPTIONS[ability:GetName()]
       local pos = ability:GetCursorPosition()
 
-      if cast_type==DOTA_UNIT_ORDER_CAST_POSITION or cast_type==DOTA_UNIT_ORDER_CAST_NO_TARGET then
-        local rand = RandomInt( 1, 10 )
+      if RandomInt( 1, 10 ) > 7 then pos = caster:GetAbsOrigin() end-- 70% chance to use target position instead of caster position
 
-        if rand > 7 then
-          pos = caster:GetAbsOrigin() -- 70% chance to use target position instead of caster position
-        end
+      local has_charges = self:GetAbility():GetCurrentAbilityCharges() >= 1
+      local needs_charges_bstr = nil
 
-        -- Logic for deciding whether to cahos cast and whether to spend charges
+      if ability_exceptions~=nil then
+        needs_charges_bstr = ability_exceptions.spend -- returns a bool but it is unfortunately a string
+      end
+    
+      if needs_charges_bstr=="false" or has_charges then
         
-        local should_chaos_cast = self[ability:GetName()]==nil or self[ability:GetName()].cast==true
-        local should_spend_charge = self[ability:GetName()]==nil or self[ability:GetName()].spend==true
+        local should_chaos_cast = ability_exceptions==nil or ability_exceptions.cast=="true"
+        local should_spend_charge = ability_exceptions==nil or ability_exceptions.spend=="true"
 
         if should_chaos_cast then
           self:GetAbility():ChaosCastPointSpell( ability, pos ) -- Chaos-cast and also check whether there is secondary ability that should re-use the same units
@@ -88,11 +82,11 @@ function modifier_chaos_cast:OnAbilityFullyCast( event )
         if should_spend_charge then
           self:GetAbility():OnSpellStart()
         end
-
-      elseif cast_type==DOTA_UNIT_ORDER_CAST_TARGET then
-        -- print("casting unit target spell")
+      -- else the ability costs charges and chaos_cast doesn't have charges, so do nothing
       end
+
     end
+
   end
 
 end
@@ -113,61 +107,57 @@ function BeginCastStormRadial( caster, chaos_ability, ability_name, origin, cast
   chaos_ability.pos = {}
 
   for i=1,cast_qty do
-
     chaos_ability.pos[i] = GetRandomPointInRadius( origin, min_dist, max_dist )
     local unit = subcasters[i]
 
-    local weak_abil = unit:FindAbilityByName( "weak_creature" )
-    if weak_abil == nil then
-      weak_abil = unit:AddAbility( "weak_creature" )
-    end
-    weak_abil.radius = RandomInt( 10*min_radius, 10*max_radius ) / 10
+    if unit~=nil then  
+      local weak_abil = unit:FindAbilityByName( "weak_creature" )
+      if weak_abil == nil then
+        weak_abil = unit:AddAbility( "weak_creature" )
+      end
+      weak_abil.radius = RandomInt( 10*min_radius, 10*max_radius ) / 10
+      local ability = unit:FindAbilityByName( ability_name )
+      if ability == nil then
+        ability = unit:AddAbility(ability_name)
+      end
 
-    -- print(unit)
-    local ability = unit:FindAbilityByName( ability_name )
-    if ability == nil then
-      ability = unit:AddAbility(ability_name)
-    end
-
-    ability:SetLevel( chaos_ability:GetLevel() )
-    ability:EndCooldown()
-    -- table.insert( chaos_ability.abilities, ability )
-
-    local abilityBehavior = GetCastTypeString( ability )
-    local cast_type = nil
-    
-    if string.match(abilityBehavior, "DOTA_ABILITY_BEHAVIOR_POINT") then
-      cast_type = DOTA_UNIT_ORDER_CAST_POSITION
-    elseif string.match(abilityBehavior, "DOTA_ABILITY_BEHAVIOR_NO_TARGET") then
-      cast_type = DOTA_UNIT_ORDER_CAST_NO_TARGET
-    elseif string.match(abilityBehavior, "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET") then
-      cast_type = DOTA_UNIT_ORDER_CAST_TARGET
-    end
-
-    ability:SetLevel( chaos_ability:GetLevel() )
-    -- local radius = ability:GetSpecialValueFor("radius")
-    -- chaos_ability:CreateIndicator( chaos_ability.pos[i], 2, radius )
-    if cast_type ~= DOTA_UNIT_ORDER_CAST_NO_TARGET then
-      local caster_new_pos = chaos_ability:GetCaster():GetAbsOrigin()
-      unit:SetAbsOrigin(caster_new_pos)
-    end
-
-    local order_params = {
-      UnitIndex = unit:GetEntityIndex(),
-      OrderType = cast_type,
-      AbilityIndex = ability:GetEntityIndex(),
-      TargetIndex = ability:GetEntityIndex(),
-      Position = chaos_ability.pos[i],
-      Queue = false
-    }
-
-    DelayCastWithOrders( unit, order_params, delay*i )
-    table.insert( chaos_ability.last_casters, unit )
-
-    Timers:CreateTimer( delay + 1, function()
+      ability:SetLevel( chaos_ability:GetLevel() )
       ability:EndCooldown()
-      return nil
-    end)
+
+      local abilityBehavior = GetCastTypeString( ability )
+      local cast_type = nil
+      
+      if string.match(abilityBehavior, "DOTA_ABILITY_BEHAVIOR_POINT") then
+        cast_type = DOTA_UNIT_ORDER_CAST_POSITION
+      elseif string.match(abilityBehavior, "DOTA_ABILITY_BEHAVIOR_NO_TARGET") then
+        cast_type = DOTA_UNIT_ORDER_CAST_NO_TARGET
+      elseif string.match(abilityBehavior, "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET") then
+        cast_type = DOTA_UNIT_ORDER_CAST_TARGET
+      end
+
+      ability:SetLevel( chaos_ability:GetLevel() )
+      if cast_type ~= DOTA_UNIT_ORDER_CAST_NO_TARGET then
+        local caster_new_pos = chaos_ability:GetCaster():GetAbsOrigin()
+        unit:SetAbsOrigin(caster_new_pos)
+      end
+
+      local order_params = {
+        UnitIndex = unit:GetEntityIndex(),
+        OrderType = cast_type,
+        AbilityIndex = ability:GetEntityIndex(),
+        TargetIndex = ability:GetEntityIndex(),
+        Position = chaos_ability.pos[i],
+        Queue = false
+      }
+
+      DelayCastWithOrders( unit, order_params, delay*i )
+      table.insert( chaos_ability.last_casters, unit )
+
+      Timers:CreateTimer( delay + 1, function()
+        ability:EndCooldown()
+        return nil
+      end)
+    end
 
   end
 end
@@ -208,23 +198,15 @@ function SplitSubcast( caster, chaos_ability, ability_name, origin, original_ang
     end
   end
 
-  if is_secondary and original_ability~=nil and original_ability.prepped_casters~=nil then
-
-    -- DeepPrint(original_ability.prepped_casters)
+  if is_secondary and original_ability~=nil and original_ability.prepped_casters~=nil then -- if the original ability is a secondary ability and has prepared casters, then use those casters
 
     local previous_casters = original_ability.prepped_casters
 
     for i=1,#previous_casters do
       subcasters[i] = original_ability.prepped_casters[i]
     end
-    cast_qty = #previous_casters
 
-    if original_ability:GetName()=="phoenix_launch_fire_spirit" and original_ability:GetCurrentAbilityCharges()>0 then
-      -- print("Launching fire spirits and NOT resetting prepped casters!")
-    else
-      original_ability.prepped_casters = {}
-    end
-    
+    cast_qty = #previous_casters
     origin = hero:GetAbsOrigin()
     -- original_ability.prepped_casters = {}
   end
@@ -414,7 +396,12 @@ function ability_chaos_cast:ChaosCastPointSpell( ability, pos ) -- pos is an opt
 
   --SplitSubcast( caster, ability_name, spellname, origin, original_angles, cast_qty, delay, angle_increment_degrees, offset_angle_degrees, dist_from_origin, dist_from_subcaster, dist_increment, radius_fl, damage_fl, random_rotation )`
 
-  if pattern==1 then -- casts your spell in 3-5 rows, 3-4 casts long. Usually curved 
+  if ALL_ABILITY_EXCEPTIONS[spellName] and ALL_ABILITY_EXCEPTIONS[spellName].should_nerf=="true" then
+
+    local rand_qty = RandomInt(4,5) -- cast op spells ins a ring
+    SplitSubcast( caster, ability, spellName, origin, original_angles, rand_qty, 0, 360/rand_qty, 0, 1, 300+(rand_qty*50), 0, 2/rand_qty, 2/rand_qty, vector_rotation ) -- cast on four sides
+
+  elseif pattern==1 then -- casts your spell in 3-5 rows, 3-4 casts long. Usually curved 
     local dist_increment = RandomInt( 80, 150 ) -- distance between each cast on each row
     local angle_increment_degrees = RandomInt(-30,30) -- curve of the four rows on your spell
     local rows = RandomInt(3,5)
@@ -487,10 +474,10 @@ function ability_chaos_cast:ChaosCastPointSpell( ability, pos ) -- pos is an opt
       end)
 
   elseif pattern==9 then
-    for i=1,3 do
-      Timers:CreateTimer( 1*i, function()
-        SplitSubcast( caster, ability, spellName, ability:GetCaster():GetOrigin(), original_angles, 1, 0, 0, 0, posNeg*i*150, 200, 0, 1, 1, vector_rotation )
-        SplitSubcast( caster, ability, spellName, ability:GetCaster():GetOrigin(), original_angles, 1, 0, 0, 0, posNeg*i*150, 200, 0, 1, 1, -vector_rotation )
+    for i=1,4 do
+      Timers:CreateTimer( 0.4*i, function()
+        SplitSubcast( caster, ability, spellName, ability:GetCaster():GetOrigin(), original_angles, 1, 0, 0, 0, i*150, 200, 0, 1.5, 1, vector_rotation )
+        SplitSubcast( caster, ability, spellName, ability:GetCaster():GetOrigin(), original_angles, 1, 0, 0, 0, i*150, 200, 0, 1.5, 1, -vector_rotation )
         self.RemoveSelf = true
         return nil
       end)
@@ -509,47 +496,32 @@ function ability_chaos_cast:ChaosCastPointSpell( ability, pos ) -- pos is an opt
 end
 
 function GetReturnReleaseOrEndAbilityName( name )
+  
+  local secondary_name = nil
 
-  if name=="elder_titan_ancestral_spirit" then
-    return "elder_titan_return_spirit"
+  if ALL_ABILITY_EXCEPTIONS[name] then
+    secondary_name = ALL_ABILITY_EXCEPTIONS[name].has_secondary
+  end
 
-  elseif name=="phoenix_fire_spirits" then
-    return "phoenix_launch_fire_spirit"
-
-  elseif name=="shredder_chakram" then
-    return "shredder_return_chakram"
-
-  elseif name=="shredder_chakram_2" then
-    return "shredder_return_chakram_2"
-
-  elseif name=="ancient_apparition_ice_blast" then
-    return "ancient_apparition_ice_blast_release"
-
+  if secondary_name~=nil then
+    return secondary_name
   end
 
   return nil
 end
 
 function IsReturnReleaseOrEndAbilityName( name )
+  
+  local primary_name = nil
 
-  if name=="elder_titan_return_spirit" then
-    return true
+  if ALL_ABILITY_EXCEPTIONS[name] then
+    primary_name = ALL_ABILITY_EXCEPTIONS[name].has_primary
+  end
 
-  elseif name=="phoenix_launch_fire_spirit" then
-    return true
-
-  elseif name=="shredder_return_chakram" then
-    return true
-
-  elseif name=="shredder_return_chakram_2" then
-    return true
-
-  elseif name=="ancient_apparition_ice_blast_release" then
-    return true
-
+  if primary_name~=nil then
+    return primary_name
   else
     return false
-
   end
 end
 
@@ -599,10 +571,8 @@ function GetIdleSubcasters( hero )
     end
 
     if not subcs[i]:IsChanneling() and not subcs[i].busy then
-      -- subcs[i]:Stop()
       subcs[i]:SetMana(600)
       table.insert( idle, subcs[i] )
-      -- return subcs[i]
     end
   end
 

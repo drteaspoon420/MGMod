@@ -24,7 +24,7 @@
 		"AbilityTextureName"			"chaos_knight_chaos_strike"
 		"MaxLevel"						"1"
 		"AbilityCooldown"				"60"
-		"AbilityChargeRestoreTime"		"30"
+		"AbilityChargeRestoreTime"		"45"
 		"AbilityCharges"				"2"
 	}
 }
