@@ -34,7 +34,7 @@
     "stonks_random_effect" {
         "Order" "6"
         "TYPE" "number"
-        "DEFAULT" "10"
+        "DEFAULT" "15"
     }
     "min_stonk_price" {
         "Order" "7"
@@ -44,21 +44,21 @@
     "min_start_left" {
         "Order" "8"
         "TYPE" "number"
-        "DEFAULT" "2000"
+        "DEFAULT" "8000"
     }
     "max_start_left" {
         "Order" "9"
         "TYPE" "number"
-        "DEFAULT" "5000"
+        "DEFAULT" "9999"
     }
     "min_start_cost" {
         "Order" "10"
         "TYPE" "number"
-        "DEFAULT" "20"
+        "DEFAULT" "50"
     }
     "max_start_cost" {
         "Order" "11"
         "TYPE" "number"
-        "DEFAULT" "80"
+        "DEFAULT" "500"
     }
 }

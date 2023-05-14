@@ -125,7 +125,6 @@ function StonksPlugin:Buy(playerID,stonk,ammount)
 	local player = PlayerResource:GetPlayer(playerID)
 	local gold = PlayerResource:GetGold(playerID)
 	local hHero = player:GetAssignedHero()
-    print("purchase did go through")
 
     if not hHero:IsAlive() then
 		CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerID), "show_center_message", { message = "Cannot buy while dead." })
@@ -149,7 +148,10 @@ function StonksPlugin:Buy(playerID,stonk,ammount)
     hHero:SpendGold(gold_spent,DOTA_ModifyGold_PurchaseItem)
     hHero:AddNewModifier(hHero,nil,stonk,{stack = will_buy})
     self:SendState(stonk)
-    GameRules:SendCustomMessageToTeam(PlayerResource:GetPlayerName(playerID) .. " <font color='#33ff33'>bought</font> " .. will_buy .. " " .. string.upper(string.sub(stonk, 8)),0,0,0)
+    local sName = PlayerResource:GetSelectedHeroName(playerID)
+    print(PlayerResource:GetPlayerName(playerID),playerID)
+    local iTeam = player:GetTeam()
+    GameRules:SendCustomMessageToTeam("" .. sName .. " <font color='#33ff33'>bought</font> " .. will_buy .. " " .. string.upper(string.sub(stonk, 8)),iTeam,playerID,playerID)
 end
 
 function StonksPlugin:Sell(playerID,stonk,ammount)
@@ -187,11 +189,13 @@ function StonksPlugin:Sell(playerID,stonk,ammount)
     hHero:ModifyGold(gold_gained,true,DOTA_ModifyGold_SellItem)
     hHero:AddNewModifier(hHero,nil,stonk,{stack = ammount * -1})
     self:SendState(stonk)
-    GameRules:SendCustomMessageToTeam(PlayerResource:GetPlayerName(playerID) .. " <font color='#ff3333'>sold</font> " .. ammount .. " " .. string.upper(string.sub(stonk, 8)),0,0,0)
+    local sName = PlayerResource:GetSelectedHeroName(playerID)
+    local iTeam = player:GetTeam()
+    GameRules:SendCustomMessageToTeam("" .. sName .. " <font color='#ff3333'>sold</font> " .. ammount .. " " .. string.upper(string.sub(stonk, 8)),iTeam,playerID,playerID)
 end
 
 function StonksPlugin:Score(stonk,ammount,severity)
-    STONKS_TABLE[stonk].price = STONKS_TABLE[stonk].price + (ammount/STONKS_TABLE[stonk].total)*severity
+    STONKS_TABLE[stonk].price = math.floor(STONKS_TABLE[stonk].price + (ammount/STONKS_TABLE[stonk].total)*severity)
     if STONKS_TABLE[stonk].price < StonksPlugin.settings.min_stonk_price then STONKS_TABLE[stonk].price = StonksPlugin.settings.min_stonk_price end
     self:SendState(stonk)
 end
@@ -214,7 +218,7 @@ function StonksPlugin:RandomAll()
 end
 
 function StonksPlugin:Random(stonk)
-    STONKS_TABLE[stonk].price = STONKS_TABLE[stonk].price + math.floor(RandomFloat(-StonksPlugin.settings.stonks_random_effect,StonksPlugin.settings.stonks_random_effect))
+    STONKS_TABLE[stonk].price = math.floor(STONKS_TABLE[stonk].price + RandomFloat(-StonksPlugin.settings.stonks_random_effect,StonksPlugin.settings.stonks_random_effect))
     if STONKS_TABLE[stonk].price < StonksPlugin.settings.min_stonk_price then STONKS_TABLE[stonk].price = StonksPlugin.settings.min_stonk_price end
     self:SendState(stonk)
 end
