@@ -78,7 +78,7 @@ function DotaSettingsPlugin:ApplySettings()
 	--GameRules:GetGameModeEntity():SetBountyRuneSpawnInterval(DotaSettingsPlugin.settings.bounty_rune_spawn_interval)
 	--GameRules:GetGameModeEntity():SetPowerRuneSpawnInterval(DotaSettingsPlugin.settings.power_rune_spawn_interval)
 	--GameRules:GetGameModeEntity():SetXPRuneSpawnInterval(DotaSettingsPlugin.settings.xp_rune_spawn_interval)
-	GameRules:GetGameModeEntity():SetRespawnTimeScale(DotaSettingsPlugin.settings.death_time_percent)
+	--GameRules:GetGameModeEntity():SetRespawnTimeScale(DotaSettingsPlugin.settings.death_time_percent * 0.01)
     
     local sBackDoorProtection = DotaSettingsPlugin.settings.backdoor_protection
     if sBackDoorProtection == "none" then
@@ -276,14 +276,14 @@ end
     
 function DotaSettingsPlugin:SpawnEvent(event)
     local hUnit = EntIndexToHScript(event.entindex)
---[[     if not hUnit.IsRealHero then return end
+    if not hUnit.IsRealHero then return end
     if DotaSettingsPlugin.settings.death_time_percent ~= 100 then
         if hUnit:IsRealHero() then
             if DotaSettingsPlugin.unit_cache[event.entindex] ~= nil then return end
             DotaSettingsPlugin.unit_cache[event.entindex] = true
             local hModifier = hUnit:AddNewModifier(hUnit,nil,"modifier_death_percentage",{stack = DotaSettingsPlugin.settings.death_time_percent})
         end
-    end ]]
+    end
     
     if DotaSettingsPlugin.settings.courier_speed ~= 100 then
         if hUnit:IsCourier() then

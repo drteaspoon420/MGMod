@@ -1,0 +1,64 @@
+"plugin_settings"
+{
+    "Order" "890"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "fountain" {
+        "Order" "1"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "timer" {
+        "Order" "2"
+        "TYPE" "number"
+        "DEFAULT" "30"
+    }
+    "tower_effect" {
+        "Order" "3"
+        "TYPE" "number"
+        "DEFAULT" "100"
+    }
+    "hero_effect" {
+        "Order" "4"
+        "TYPE" "number"
+        "DEFAULT" "50"
+    }
+    "unit_effect" {
+        "Order" "5"
+        "TYPE" "number"
+        "DEFAULT" "5"
+    }
+
+    "stonks_random_effect" {
+        "Order" "6"
+        "TYPE" "number"
+        "DEFAULT" "10"
+    }
+    "min_stonk_price" {
+        "Order" "7"
+        "TYPE" "number"
+        "DEFAULT" "5"
+    }
+    "min_start_left" {
+        "Order" "8"
+        "TYPE" "number"
+        "DEFAULT" "2000"
+    }
+    "max_start_left" {
+        "Order" "9"
+        "TYPE" "number"
+        "DEFAULT" "5000"
+    }
+    "min_start_cost" {
+        "Order" "10"
+        "TYPE" "number"
+        "DEFAULT" "20"
+    }
+    "max_start_cost" {
+        "Order" "11"
+        "TYPE" "number"
+        "DEFAULT" "80"
+    }
+}

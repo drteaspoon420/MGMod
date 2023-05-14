@@ -1,0 +1,14 @@
+
+"DOTAAbilities"
+{
+	"day_4"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"plugin_system/plugins/xmas12/abilities/day_4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"1"							// Maximum skillable level
+		"AbilityValues" {
+			"radius" "400"
+		}
+	}
+}

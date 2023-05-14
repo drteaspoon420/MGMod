@@ -6,6 +6,8 @@
 		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/modifier_spawner.xml" />
 		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/boosted.xml" />
 		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/soul_collector.xml" />
+		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/stonks.xml" />
+		
 	<!-- 	
 		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/custom_shop.xml" /> -->
 

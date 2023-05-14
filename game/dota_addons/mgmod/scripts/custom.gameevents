@@ -138,4 +138,21 @@
 		"increase" "short"
 		"total" "short"
 	}
+	
+	"stonk_buy"
+	{
+		"stonk" "string"
+		"amount" "short"
+	}
+	"stonk_sell"
+	{
+		"stonk" "string"
+		"amount" "short"
+	}
+	"stonk_status"
+	{
+		"stonk" "string"
+		"price" "short"
+		"available" "short"
+	}
 }
