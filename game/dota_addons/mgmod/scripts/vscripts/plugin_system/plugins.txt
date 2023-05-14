@@ -140,6 +140,9 @@
         "StateRegistrations" {
             "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
         }
+        "FilterRegistrations" {
+            "DamageFilter" "DamageFilter"
+        }
     }
 
     "xmas12" {

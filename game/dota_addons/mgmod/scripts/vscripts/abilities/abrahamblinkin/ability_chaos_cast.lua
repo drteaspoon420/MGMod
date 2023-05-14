@@ -532,9 +532,9 @@ end
 function CreateSubcasters( hero, num )
   hero.subcasters = {}
   for i=1,num do
-    local unit = CreateUnitByName( "npc_dota_subcaster", hero:GetOrigin(), false, nil, hero, hero:GetTeam() )
-    -- unit:SetControllableByPlayer(-1,true)
-    -- unit:SetOwner( hero )
+    local unit = CreateUnitByName( "npc_dota_subcaster", hero:GetOrigin(), false, nil, nil, hero:GetTeam() )
+    unit.hero_parent = hero
+    -- print( unit.hero_parent:GetName() )
     unit:SetBaseDamageMin( hero:GetBaseDamageMin() )
     unit:SetBaseDamageMax( hero:GetBaseDamageMax() )
 
