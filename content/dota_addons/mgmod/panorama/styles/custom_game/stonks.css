@@ -1,0 +1,112 @@
+.WindowRoot {
+	margin-top: 50px;
+	max-height: 700px;
+}
+
+
+#WindowRoot {
+	flow-children: right;
+}
+
+
+.stonks{
+    flow-children: right;
+}
+#stonks_legend{
+    flow-children: right;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #2d4881cc ), to( #486ca9cc ) );
+    border-radius: 7px;
+}
+#stonks_container{
+    flow-children: down;
+}
+#stonks_list{
+    flow-children: down;
+    overflow: clip scroll;
+    background-color: black;
+    width: 300px;
+    box-shadow: fill #ffd000 0px 0px 4px 4px;
+    border-radius: 7px;
+}
+.stonkListing{
+    flow-children: right;
+    height: 25px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #a19f18cc ), to( #816e03cc ) );
+    border-radius: 7px;
+}
+.stonkName{
+    width: 50px;
+    font-size: 15px;
+    color: #ffffff;
+    margin-top: 2px;
+    border: 2px black;
+    margin-left: 7px;
+}
+.stonkPrice{
+    width: 60px;
+    font-size: 15px;
+    color: #ebb608;
+    margin-top: 2px;
+    border-width: 2px;
+    border-color: #816e03cc;
+}
+.stonkAvailable{
+    width: 60px;
+    font-size: 15px;
+    color: #33ff00;
+    margin-top: 2px;
+    border: 2px black;
+}
+.stonkAmount{
+    width: 60px;
+    height: 22px;
+    font-size: 15px;
+    margin-top: 1px;
+}
+.stonkBuy{
+    width: 25px;
+    height: 25px;
+    border-radius: 2px;
+    background-image: url("file://{resources}/images/custom_game/stonks.png");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+}
+.stonkSell{
+    width: 25px;
+    height: 25px;
+    border-radius: 2px;
+    background-image: url("file://{resources}/images/custom_game/sell.png");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+}
+.stonkLegendBG{
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #2d4881cc ), to( #486ca9cc ) );
+    border-radius: 7px;
+}
+.stonkAmountLg{
+    margin-top: 2px;
+    font-size: 15px;
+    margin-right: 10px;
+    border: 2px black;
+}
+.NegativeFlash{
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #81412dcc ), to( #a94848cc ) );
+}
+.PositiveFlash{
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #4c812dcc ), to( #84a948cc ) );
+}
+
+#ButtonBar_Stonks {
+	height: 32px;
+	width: 32px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 100% 100%;
+    background-image: url("file://{resources}/images/custom_game/stonks_list.png");
+}
+.hidden
+{
+	visibility: collapse;
+}

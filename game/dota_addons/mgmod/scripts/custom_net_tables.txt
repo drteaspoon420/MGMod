@@ -26,5 +26,7 @@
     "boosted_upgrades_8",
     "boosted_upgrades_9",
     "save_slots",
+    
+    "stonks",
   ]
 }

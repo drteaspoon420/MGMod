@@ -1,0 +1,28 @@
+<root>
+	<styles>
+	<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/stonks.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/stonks.js" />
+    </scripts>
+	<snippets>
+		<snippet name="ButtonBar_Stonks">
+			<Button class="ButtonBar_Stonks" />
+		</snippet>
+    </snippets>
+	<Panel class="WindowRoot">
+		<Panel id="WindowRoot" class="hidden stonks">
+			<Panel id="stonks_container">
+				<Panel id="stonks_legend">
+					<Label text="NAME" class="stonkName stonkLegend" onactivate="SortStonksName()"/>
+					<Label text="PRICE" class="stonkPrice stonkLegend" onactivate="SortStonksPrice()"/>
+					<Label text="LEFT" class="stonkAvailable stonkLegend" onactivate="SortStonksLeft()"/>
+					<Label text="COUNT" class="stonkAmountLg stonkLegend" onactivate="StonksCountUniform()"/>
+				</Panel>
+				<Panel id="stonks_list">
+				</Panel>
+			</Panel>
+		</Panel>
+	</Panel>
+</root>

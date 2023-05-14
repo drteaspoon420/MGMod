@@ -142,12 +142,24 @@
         }
     }
 
- //   "freeforall" {
- //       "MainClass" "FreeForAllPlugin"
- //       "InitFunction" "Init"
- //       "StateRegistrations" {
- //           "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
- //       }
- //   }
+    "xmas12" {
+        "MainClass" "XMax12Plugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+        "FilterRegistrations" {
+            "DamageFilter" "DamageFilter"
+            "ExecuteOrderFilter" "ExecuteOrderFilter"
+        }
+    }
 
+
+    "stonks" {
+        "MainClass" "StonksPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+    }
 }

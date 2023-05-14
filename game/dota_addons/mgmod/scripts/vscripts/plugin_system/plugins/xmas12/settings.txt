@@ -1,0 +1,68 @@
+"plugin_settings"
+{
+    "Order" "1990"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "day1" {
+        "Order" "1"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "day2" {
+        "Order" "2"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "day3" {
+        "Order" "3"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "day4" {
+        "Order" "4"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "day5" {
+        "Order" "5"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "day6" {
+        "Order" "6"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "day7" {
+        "Order" "7"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "day8" {
+        "Order" "8"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "day9" {
+        "Order" "9"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "day10" {
+        "Order" "10"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "day11" {
+        "Order" "11"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "day12" {
+        "Order" "12"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+}

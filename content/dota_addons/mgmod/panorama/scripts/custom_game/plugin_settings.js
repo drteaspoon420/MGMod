@@ -400,7 +400,7 @@ function CreateSaveSlot(iSlot) {
 }
 
 function SaveSlotLoad(iSlot) {
-    for (let iSlot_n = 0; iSlot_n < 6; iSlot_n++) {
+    for (let iSlot_n = 0; iSlot_n <= 10; iSlot_n++) {
         let SettingsSaveSlot = SettingsSaveSlots.FindChildInLayoutFile('SettingsSaveSlot_' + iSlot_n);
         SettingsSaveSlot.SetHasClass("slot_selected",iSlot_n == iSlot);
     }
@@ -413,17 +413,52 @@ function SaveSlotLoad(iSlot) {
     
 }
 
-function ActivateSaveSlot(iSlot) {
-    $.Msg(iSlot,"found");
+function ActivateSaveSlot(iSlot,settings) {
     let SettingsSaveSlot = SettingsSaveSlots.FindChildInLayoutFile('SettingsSaveSlot_' + iSlot);
     SettingsSaveSlot.SetHasClass("active_slot",true);
+    let slot_data = FormatSlotData(settings.data);
+    SettingsSaveSlot.SetPanelEvent(
+        "onmouseover", 
+        function(){
+            $.DispatchEvent("DOTAShowTextTooltip", SettingsSaveSlot, slot_data);
+        }
+        )
+    SettingsSaveSlot.SetPanelEvent(
+        "onmouseout", 
+        function(){
+        $.DispatchEvent("DOTAHideTextTooltip", SettingsSaveSlot);
+        }
+    )
+}
+
+function FormatSlotData(slot_data) {
+    let result = "";
+    let tOptionTable = {};
+    let option = slot_data.split("|");
+    for (const key in option) {
+        let mordor = option[key].split("&");
+        if (!tOptionTable[mordor[0]]) {
+            tOptionTable[mordor[0]] = {};
+        }
+        tOptionTable[mordor[0]][mordor[1]] = mordor[2];
+    }
+
+    for (const key in tOptionTable) {
+        result += "" + key + " [";
+        for (const subkey in tOptionTable[key]) {
+            result += subkey + " = " + tOptionTable[key][subkey] + " ";
+        }
+        result += "] </br>";
+    }
+    
+    return result;
 }
 
 function SlotsUpdate( table_name, slot_name, settings) {
     let iSlot = slot_name.split("_").pop();
     $.Msg("update slot ",slot_name," ",iSlot)
     if (iSlot != undefined && !isNaN(Number(iSlot))) {
-        ActivateSaveSlot(Number(iSlot));
+        ActivateSaveSlot(Number(iSlot),settings);
     }
 }
 
@@ -437,7 +472,7 @@ function SlotsUpdate( table_name, slot_name, settings) {
     SortElements(children);
     CustomNetTables.SubscribeNetTableListener( "plugin_settings" , SettingsUpdate );
 
-    for (let iSlot = 0; iSlot < 6; iSlot++) {
+    for (let iSlot = 0; iSlot <= 10; iSlot++) {
         CreateSaveSlot(iSlot);
     }
     var sSaveSlots = CustomNetTables.GetAllTableValues( "save_slots" );
@@ -446,7 +481,7 @@ function SlotsUpdate( table_name, slot_name, settings) {
         $.Msg(sSaveSlots[key].key);
         $.Msg(iSlot);
         if (iSlot != undefined && !isNaN(Number(iSlot))) {
-            ActivateSaveSlot(Number(iSlot));
+            ActivateSaveSlot(Number(iSlot),sSaveSlots[key].value);
         }
     }
     CustomNetTables.SubscribeNetTableListener( "save_slots" , SlotsUpdate );

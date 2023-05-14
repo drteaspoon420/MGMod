@@ -15,7 +15,7 @@ end
 
 require("utils/timers")
 require("utils/toolbox")
-softRequire("plugin_system/main")
+require("plugin_system/main")
 
 function Precache( context )
 	
@@ -25,6 +25,7 @@ function Precache( context )
 			PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_" .. k .. ".vsndevts", context)
 		end
     end
+	PrecacheResource("soundfile", "soundevents/custom_sounds.vsndevts", context)
 	PrecacheResource( "particle", "particles/souls/ward_skull_rubick.vpcf", context )
 end
 function Activate()
@@ -35,6 +36,7 @@ end
 function CBoostedGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetThink( "OnThink", self, "GlobalThink", 2 )
 	GameRules:GetGameModeEntity():SetWeatherEffectsDisabled(false)
+	PluginSystem:Init()
 end
 
 function CBoostedGameMode:OnThink()

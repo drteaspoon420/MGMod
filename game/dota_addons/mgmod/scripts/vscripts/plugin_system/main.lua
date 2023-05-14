@@ -28,6 +28,19 @@ tStates["DOTA_GAMERULES_STATE_GAME_IN_PROGRESS"] = DOTA_GAMERULES_STATE_GAME_IN_
 tStates["DOTA_GAMERULES_STATE_POST_GAME"] = DOTA_GAMERULES_STATE_POST_GAME
 tStates["DOTA_GAMERULES_STATE_DISCONNECT"] = DOTA_GAMERULES_STATE_DISCONNECT
 
+tFilters = {}
+    
+tFilters["AbilityTuningValueFilter"] = "AbilityTuningValueFilters"
+tFilters["BountyRunePickupFilter"] = "BountyRunePickupFilters"
+tFilters["DamageFilter"] = "DamageFilters"
+tFilters["ExecuteOrderFilter"] = "ExecuteOrderFilters"
+tFilters["HealingFilter"] = "HealingFilters"
+tFilters["ItemAddedToInventoryFilter"] = "ItemAddedToInventoryFilters"
+tFilters["ModifierGainedFilter"] = "ModifierGainedFilters"
+tFilters["ModifyExperienceFilter"] = "ModifyExperienceFilters"
+tFilters["ModifyGoldFilter"] = "ModifyGoldFilters"
+tFilters["RuneSpawnFilter"] = "RuneSpawnFilters"
+tFilters["TrackingProjectileFilter"] = "TrackingProjectileFilters"
 
 --Loading all plugins
 function PluginSystem:Init()
@@ -57,6 +70,7 @@ function PluginSystem:Init()
         local main_class = tSettings.MainClass
         local state_regs = tSettings.StateRegistrations or {}
         local cmd_regs = tSettings.CmdRegistrations or {}
+        local filter_regs = tSettings.FilterRegistrations or {}
         PluginSystem.LobbySettings[sPlugin] = {}
         local settings
         if tSettings.Path then
@@ -78,6 +92,9 @@ function PluginSystem:Init()
         for cmd_regs_string,cmd_regs_function in pairs(cmd_regs) do
             PluginSystem:RegisterCmd(cmd_regs_string,_G[main_class],cmd_regs_function,sPlugin)
         end
+        for filter_regs_string,filter_regs_function in pairs(filter_regs) do
+            PluginSystem:RegisterFilter(filter_regs_string,_G[main_class],filter_regs_function,sPlugin)
+        end
     end
     for sPlugin,tSettings in pairs(PluginSystem.PluginsFile) do
         local init_function = tSettings.InitFunction or nil
@@ -86,8 +103,10 @@ function PluginSystem:Init()
             _G[main_class][init_function]()
         end
     end
-    
+    PluginSystem:SetFilters()
 end
+
+--settings
 
 function PluginSystem:setting_change(tEvent)
     local iPlayer = tEvent.PlayerID
@@ -276,52 +295,7 @@ ListenToGameEvent("player_chat", function(keys)
         PluginSystem:ProcRegisteredCommands(bTeam,iPlayer,sText)
     end
 end,nil)
-PluginSystem:Init()
 
-
-
----
---Spawn helpers
---[[ 
-ListenToGameEvent("npc_spawned", function(event)
-    if GameRules:State_Get() < DOTA_GAMERULES_STATE_HERO_SELECTION then return end
-    PluginSystem:SpawnEvent(event)
-end,nil)
-
-
-    
-function PluginSystem:SpawnEvent(event)
-    local hUnit = EntIndexToHScript(event.entindex)
-    if not hUnit.IsRealHero then return end
-    if PluginSystem.unit_cache[event.entindex] ~= nil then return end
-    PluginSystem.unit_cache[event.entindex] = true
-    Timers:CreateTimer(0,function()
-        if not hUnit:IsHero() then
-            --other units 
-            FireGameEventLocal("npc_first_spawned_unit",{entindex = event.entindex})
-            return
-        else
-            if not hUnit:IsRealHero() then
-                --heroes (illusions included)
-                FireGameEventLocal("npc_first_spawned_hero",{entindex = event.entindex})
-                return
-            else
-                local hPlayer = hUnit:GetPlayerOwner()
-                local hHero
-                if hPlayer ~= nil then
-                    hHero = hPlayer:GetAssignedHero()
-                    if hHero:entindex() == event.entindex then
-                        --hereos (absolutely real main heroes)
-                        FireGameEventLocal("npc_first_spawned_main_hero",{entindex = event.entindex, player = hPlayer:GetPlayerID()})
-                        return
-                    end
-                end
-                --heroes (clones and super illusions)
-                FireGameEventLocal("npc_first_spawned_real_hero",{entindex = event.entindex})
-            end
-        end
-    end)
-end ]]
 
 ---
 --Online save system
@@ -402,9 +376,8 @@ function PluginSystem:GetSettingSave(slot)
     end)
 end
 
-
 function PluginSystem:LoadHostSettings()
-    for i=0,6 do
+    for i=0,10 do
         PluginSystem:GetSettingSave(i)
     end
 end
@@ -466,4 +439,170 @@ function PluginSystem:LoadSettingsString(s)
         r[o[1]][o[2]] = o[3]
 	end
     return r
+end
+
+--Filters
+
+function PluginSystem:SetFilters()
+    local contxt = {}
+    GameRules:GetGameModeEntity():SetAbilityTuningValueFilter( PluginSystem.AbilityTuningValueFilter, contxt )
+    GameRules:GetGameModeEntity():SetBountyRunePickupFilter( PluginSystem.BountyRunePickupFilter, contxt )
+    GameRules:GetGameModeEntity():SetDamageFilter( PluginSystem.DamageFilter, contxt )
+    GameRules:GetGameModeEntity():SetExecuteOrderFilter( PluginSystem.ExecuteOrderFilter, contxt )
+    GameRules:GetGameModeEntity():SetHealingFilter( PluginSystem.HealingFilter, contxt )
+    GameRules:GetGameModeEntity():SetItemAddedToInventoryFilter( PluginSystem.ItemAddedToInventoryFilter, contxt )
+    GameRules:GetGameModeEntity():SetModifierGainedFilter( PluginSystem.ModifierGainedFilter, contxt )
+    GameRules:GetGameModeEntity():SetModifyExperienceFilter( PluginSystem.ModifyExperienceFilter, contxt )
+    GameRules:GetGameModeEntity():SetModifyGoldFilter( PluginSystem.ModifyGoldFilter, contxt )
+    GameRules:GetGameModeEntity():SetRuneSpawnFilter( PluginSystem.RuneSpawnFilter, contxt )
+    GameRules:GetGameModeEntity():SetTrackingProjectileFilter( PluginSystem.TrackingProjectileFilter, contxt )
+end
+
+function PluginSystem:RegisterFilter(sFilter,hPlugin,hMethod,sPlugin)
+    if tFilters[sFilter] == nil then
+        print(sPlugin,"plugin tried to register non existant filter",sFilter)
+        return
+    end
+    if PluginSystem[tFilters[sFilter]] == nil then PluginSystem[tFilters[sFilter]] = {} end
+    table.insert(PluginSystem[tFilters[sFilter]],{plugin = hPlugin, method = hMethod, plugin_name = sPlugin})
+end
+
+function PluginSystem:AbilityTuningValueFilter(event)
+    if PluginSystem.AbilityTuningValueFilters ~= nil then
+        for k,v in pairs(PluginSystem.AbilityTuningValueFilters) do
+            if PluginSystem.LobbySettings[v.plugin_name].enabled.VALUE == 1 then
+                local tResult = v.plugin[v.method](v.plugin,event)
+                if not tResult[1] then return false end
+                event = tResult[2]
+            end
+        end
+    end
+    return true
+end
+
+function PluginSystem:BountyRunePickupFilter(event)
+    if PluginSystem.BountyRunePickupFilters ~= nil then
+        for k,v in pairs(PluginSystem.BountyRunePickupFilters) do
+            if PluginSystem.LobbySettings[v.plugin_name].enabled.VALUE == 1 then
+                local tResult = v.plugin[v.method](v.plugin,event)
+                if not tResult[1] then return false end
+                event = tResult[2]
+            end
+        end
+    end
+    return true
+end
+
+function PluginSystem:DamageFilter(event)
+    if PluginSystem.DamageFilters ~= nil then
+        for k,v in pairs(PluginSystem.DamageFilters) do
+            if PluginSystem.LobbySettings[v.plugin_name].enabled.VALUE == 1 then
+                local tResult = v.plugin[v.method](v.plugin,event)
+                if not tResult[1] then return false end
+                event = tResult[2]
+            end
+        end
+    end
+    return true
+end
+
+function PluginSystem:ExecuteOrderFilter(event)
+    if PluginSystem.ExecuteOrderFilters ~= nil then
+        for k,v in pairs(PluginSystem.ExecuteOrderFilters) do
+            if PluginSystem.LobbySettings[v.plugin_name].enabled.VALUE == 1 then
+                local tResult = v.plugin[v.method](v.plugin,event)
+                if not tResult[1] then return false end
+                event = tResult[2]
+            end
+        end
+    end
+    return true
+end
+
+function PluginSystem:HealingFilter(event)
+    if PluginSystem.HealingFilters ~= nil then
+        for k,v in pairs(PluginSystem.HealingFilters) do
+            if PluginSystem.LobbySettings[v.plugin_name].enabled.VALUE == 1 then
+                local tResult = v.plugin[v.method](v.plugin,event)
+                if not tResult[1] then return false end
+                event = tResult[2]
+            end
+        end
+    end
+    return true
+end
+
+function PluginSystem:ItemAddedToInventoryFilter(event)
+    if PluginSystem.ItemAddedToInventoryFilters ~= nil then
+        for k,v in pairs(PluginSystem.ItemAddedToInventoryFilters) do
+            if PluginSystem.LobbySettings[v.plugin_name].enabled.VALUE == 1 then
+                local tResult = v.plugin[v.method](v.plugin,event)
+                if not tResult[1] then return false end
+                event = tResult[2]
+            end
+        end
+    end
+    return true
+end
+
+function PluginSystem:ModifierGainedFilter(event)
+    if PluginSystem.ModifierGainedFilters ~= nil then
+        for k,v in pairs(PluginSystem.ModifierGainedFilters) do
+            if PluginSystem.LobbySettings[v.plugin_name].enabled.VALUE == 1 then
+                local tResult = v.plugin[v.method](v.plugin,event)
+                if not tResult[1] then return false end
+                event = tResult[2]
+            end
+        end
+    end
+    return true
+end
+
+function PluginSystem:ModifyExperienceFilter(event)
+    if PluginSystem.ModifyExperienceFilters ~= nil then
+        for k,v in pairs(PluginSystem.ModifyExperienceFilters) do
+            if PluginSystem.LobbySettings[v.plugin_name].enabled.VALUE == 1 then
+                local tResult = v.plugin[v.method](v.plugin,event)
+                if not tResult[1] then return false end
+                event = tResult[2]
+            end
+        end
+    end
+    return true
+end
+function PluginSystem:ModifyGoldFilter(event)
+    if PluginSystem.ModifyGoldFilters ~= nil then
+        for k,v in pairs(PluginSystem.ModifyGoldFilters) do
+            if PluginSystem.LobbySettings[v.plugin_name].enabled.VALUE == 1 then
+                local tResult = v.plugin[v.method](v.plugin,event)
+                if not tResult[1] then return false end
+                event = tResult[2]
+            end
+        end
+    end
+    return true
+end
+function PluginSystem:RuneSpawnFilter(event)
+    if PluginSystem.RuneSpawnFilters ~= nil then
+        for k,v in pairs(PluginSystem.RuneSpawnFilters) do
+            if PluginSystem.LobbySettings[v.plugin_name].enabled.VALUE == 1 then
+                local tResult = v.plugin[v.method](v.plugin,event)
+                if not tResult[1] then return false end
+                event = tResult[2]
+            end
+        end
+    end
+    return true
+end
+function PluginSystem:TrackingProjectileFilter(event)
+    if PluginSystem.TrackingProjectileFilters ~= nil then
+        for k,v in pairs(PluginSystem.TrackingProjectileFilters) do
+            if PluginSystem.LobbySettings[v.plugin_name].enabled.VALUE == 1 then
+                local tResult = v.plugin[v.method](v.plugin,event)
+                if not tResult[1] then return false end
+                event = tResult[2]
+            end
+        end
+    end
+    return true
 end
