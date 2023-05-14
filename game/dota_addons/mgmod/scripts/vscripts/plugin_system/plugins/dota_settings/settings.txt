@@ -123,27 +123,27 @@
         "TYPE" "boolean"
         "DEFAULT" "1"
     }
-    "bounty_rune_spawn_interval"
-    {
-        "Order" "701"
-        "TYPE" "number"
-        "UNIT" "s"
-        "DEFAULT" "180"
-    }
-    "power_rune_spawn_interval"
-    {
-        "Order" "702"
-        "TYPE" "number"
-        "UNIT" "s"
-        "DEFAULT" "360"
-    }
-    "xp_rune_spawn_interval"
-    {
-        "Order" "703"
-        "TYPE" "number"
-        "UNIT" "s"
-        "DEFAULT" "420"
-    }
+//    "bounty_rune_spawn_interval"
+//    {
+//        "Order" "701"
+//        "TYPE" "number"
+//        "UNIT" "s"
+//        "DEFAULT" "180"
+//    }
+//    "power_rune_spawn_interval"
+//    {
+//        "Order" "702"
+//        "TYPE" "number"
+//        "UNIT" "s"
+//        "DEFAULT" "360"
+//    }
+//    "xp_rune_spawn_interval"
+//    {
+//        "Order" "703"
+//        "TYPE" "number"
+//        "UNIT" "s"
+//        "DEFAULT" "420"
+//    }
     "backdoor_protection"
     {
         "Order" "705"

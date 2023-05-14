@@ -119,6 +119,8 @@
 		"Plugin_twisted_spells_Option_damage_percent" "Damage % for repeated spells"
 		"Plugin_twisted_spells_Option_heal_percent" "Heal % for repeated spells"
 		"Plugin_twisted_spells_Option_mana_percent" "Mana % for repeated spells"
+		"Plugin_twisted_spells_Option_force_pattern" "Forced Spell Patern"
+		"Plugin_twisted_spells_Option_force_pattern_Description" "Instead of random patern, use a specific one. 0 = random. Patterns range from 1-10"
 		"DOTA_Tooltip_Ability_ability_chaos_cast"		"Twist A Spell"
 		"DOTA_Tooltip_Ability_ability_chaos_cast_Description"		"The next time you cast a spell, something strange will happen... <br><br>Only works with point-target spells, no-target spells, and area-target spells. Most auras do not stack."
 
