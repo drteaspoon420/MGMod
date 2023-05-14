@@ -75,9 +75,9 @@ function DotaSettingsPlugin:ApplySettings()
     
 	GameRules:GetGameModeEntity():SetCanSellAnywhere(DotaSettingsPlugin.settings.sell_anywhere)
 	GameRules:GetGameModeEntity():SetAllowNeutralItemDrops(DotaSettingsPlugin.settings.allow_neutral_drops)
-	GameRules:GetGameModeEntity():SetBountyRuneSpawnInterval(DotaSettingsPlugin.settings.bounty_rune_spawn_interval)
-	GameRules:GetGameModeEntity():SetPowerRuneSpawnInterval(DotaSettingsPlugin.settings.power_rune_spawn_interval)
-	GameRules:GetGameModeEntity():SetXPRuneSpawnInterval(DotaSettingsPlugin.settings.xp_rune_spawn_interval)
+	--GameRules:GetGameModeEntity():SetBountyRuneSpawnInterval(DotaSettingsPlugin.settings.bounty_rune_spawn_interval)
+	--GameRules:GetGameModeEntity():SetPowerRuneSpawnInterval(DotaSettingsPlugin.settings.power_rune_spawn_interval)
+	--GameRules:GetGameModeEntity():SetXPRuneSpawnInterval(DotaSettingsPlugin.settings.xp_rune_spawn_interval)
 	GameRules:GetGameModeEntity():SetRespawnTimeScale(DotaSettingsPlugin.settings.death_time_percent)
     
     local sBackDoorProtection = DotaSettingsPlugin.settings.backdoor_protection
