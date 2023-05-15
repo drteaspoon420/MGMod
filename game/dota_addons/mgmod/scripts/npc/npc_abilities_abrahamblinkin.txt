@@ -23,8 +23,6 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"chaos_knight_chaos_strike"
 		"MaxLevel"						"1"
-		"AbilityCooldown"				"60"
-		"AbilityChargeRestoreTime"		"30"
-		"AbilityCharges"				"2"
+		"AbilityCooldown"				"0"
 	}
 }

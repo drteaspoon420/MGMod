@@ -22,3 +22,25 @@ function TwistedSpellsPlugin:ApplySettings()
     end,nil)
 
 end
+
+function TwistedSpellsPlugin:DamageFilter(event)
+    local attackerUnit = event.entindex_attacker_const and EntIndexToHScript(event.entindex_attacker_const)
+    local victimUnit = event.entindex_victim_const and EntIndexToHScript(event.entindex_victim_const)
+    local ability = event.entindex_inflictor_const and EntIndexToHScript(event.entindex_inflictor_const)
+
+    if attackerUnit.hero_parent~=nil and attackerUnit.hero_parent:IsRealHero() then
+        local damage_table = {
+            victim = victimUnit,
+            attacker = attackerUnit.hero_parent,
+            damage = event.damage/100*TwistedSpellsPlugin.settings.damage_percent,
+            damage_type = event.damagetype_const,
+            ability = ability
+        }
+        ApplyDamage(damage_table)
+        attackerUnit.hero_parent:IsRealHero()
+
+        event.damage = 0
+    end
+
+    return {true,event}
+end

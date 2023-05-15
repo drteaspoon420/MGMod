@@ -1,0 +1,596 @@
+"ability_exceptions"
+{
+    "invoker_invoke" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "elder_titan_return_spirit" {
+        "cast"          = true
+        "spend"         = false
+    }
+
+    "phoenix_fire_spirits" {
+        "cast"          = true
+        "spend"         = true
+        "has_secondary"   = "phoenix_launch_fire_spirit"
+    }
+
+    "phoenix_launch_fire_spirit" {
+        "cast"          = true
+        "spend"         = false
+        "has_primary"   = "phoenix_fire_spirits"
+    }
+
+    "shredder_return_chakram" {
+        "cast"          = true
+        "spend"         = false
+    }
+
+    "shredder_return_chakram_2" {
+        "cast"          = true
+        "spend"         = false
+    }
+
+    "ancient_apparition_ice_blast" {
+        "cast"          = true
+        "spend"         = true
+        "has_secondary" = "ancient_apparition_ice_blast_release"
+    }
+
+    "ancient_apparition_ice_blast_release" {
+        "cast"          = true
+        "spend"         = false
+        "has_primary"   = "ancient_apparition_ice_blast"
+    }
+
+    "alchemist_chemical_rage" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "alchemist_unstable_concoction" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "abaddon_borrowed_time" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "abyssal_underlord_dark_rift" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "abyssal_underlord_cancel_dark_rift" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "abyssal_underlord_cancel_dark_rift" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "phoenix_supernova" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+
+
+
+
+
+
+    "antimage_blink" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "antimage_spell_shield" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "batrider_firefly" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "beastmaster_call_of_the_wild" {
+        "cast"          = true
+        "spend"         = true
+        "should_nerf"     = true
+    }
+
+    "beastmaster_call_of_the_wild_boar" {
+        "cast"          = true
+        "spend"         = true
+        "should_nerf"     = true
+    }
+
+    "beastmaster_call_of_the_wild_hawk" {
+        "cast"          = true
+        "spend"         = true
+        "should_nerf"     = true
+    }
+
+    "bounty_hunter_wind_walk" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "broodmother_insatiable_hunger" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "broodmother_spin_web" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "centaur_stampede" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "chaos_knight_phantasm" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "clinkz_wind_walk" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "dragon_knight_elder_dragon_form" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "earthshaker_enchant_totem" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "faceless_void_backtrack" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "faceless_void_time_walk" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "furion_teleportation" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "gyrocopter_flak_cannon" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "invoker_exort" {
+        "cast"          = true
+        "spend"         = false
+    }
+
+    "invoker_quas" {
+        "cast"          = true
+        "spend"         = false
+    }
+
+    "invoker_wex" {
+        "cast"          = true
+        "spend"         = false
+    }
+
+    "juggernaut_healing_ward" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "keeper_of_the_light_illuminate_end" {
+        "cast"          = true
+        "spend"         = false
+    }
+
+    "keeper_of_the_light_spirit_form_illuminate_end" {
+        "cast"          = true
+        "spend"         = false
+    }
+
+    "keeper_of_the_light_spirit_form" {
+        "cast"          = true
+        "spend"         = false
+    }
+
+    "kun_return" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "life_stealer_rage" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "lone_druid_rabid" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "lone_druid_rabid" {
+        "cast"          = true
+        "spend"         = true
+        "should_nerf"     = true
+    }
+
+    "lone_druid_spirit_bear" {
+        "cast"          = true
+        "spend"         = true
+        "has_secondary" = "lone_druid_spirit_bear_return"
+        "should_nerf"     = true
+    }
+
+    "lone_druid_spirit_bear_return" {
+        "cast"          = true
+        "spend"         = false
+        "has_primary"   = "lone_druid_spirit_bear"
+    }
+
+    "lycan_shapeshift" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "lycan_summon_wolves" {
+        "cast"          = true
+        "spend"         = true
+        "should_nerf"     = true
+    }
+
+    "mirana_invis" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "mirana_leap" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "morphling_morph_agi" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "morphling_morph_str" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "naga_siren_mirror_image" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "naga_siren_song_of_the_siren_cancel" {
+        "cast"          = true
+        "spend"         = false
+        "has_primary"   = "naga_siren_song_of_the_siren"
+    }
+
+    "night_stalker_darkness" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "nyx_assassin_spiked_carapace" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "nyx_assassin_vendetta" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "phantom_assassin_blur" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "phantom_lancer_doppelwalk" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "puck_phase_shift" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "rubick_telekinesis_land" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "shadow_demon_shadow_poison_release" {
+        "cast"          = true
+        "spend"         = false
+    }
+
+    "shadow_shaman_mass_serpent_ward" {
+        "cast"          = true
+        "spend"         = true
+        "should_nerf"     = true
+    }
+
+    "skeleton_king_vampiric_aura" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "slark_shadow_dance" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "spectre_haunt" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "spectre_reality" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "sven_gods_strength" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "sven_warcry" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "templar_assassin_meld" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "templar_assassin_psionic_trap" {
+        "cast"          = true
+        "spend"         = true
+        "has_secondary" = "templar_assassin_trap"
+    }
+
+    "tinker_rearm" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "troll_warlord_battle_trance" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "troll_warlord_berserkers_rage" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "troll_warlord_berserkers_rage_active" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "undying_flesh_golem" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "ursa_enrage" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "ursa_overpower" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "visage_summon_familiars" {
+        "cast"          = true
+        "spend"         = true
+        "should_nerf"     = true
+        "has_secondary" = "visage_summon_familiars_stone_form"
+    }
+
+    "visage_summon_familiars_stone_form" {
+        "cast"          = true
+        "spend"         = true
+        "has_primary"   = "visage_summon_familiars"
+    }
+
+    "warlock_rain_of_chaos" {
+        "cast"          = true
+        "spend"         = true
+        "should_nerf"     = true
+    }
+
+    "weaver_shukuchi" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "weaver_time_lapse" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "windrunner_windrun" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "wisp_overcharge" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "hoodwink_acorn_shot" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "hoodwink_scurry" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "drow_multishot" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "snapfire_lil_shredder" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "snapfire_spit_creep" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "abyssal_underlord_dark_rift" {
+        "cast"          = false
+        "spend"         = false
+    }    
+
+    "sniper_take_aim" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "dark_willow_shadow_realm" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "wisp_relocate" {
+        "cast"          = true
+        "spend"         = false
+    }
+
+    "wisp_spirits" {
+        "cast"          = true
+        "spend"         = true
+        "has_secondary" = "wisp_spirits_in"
+    }
+
+    "wisp_spirits_in" {
+        "cast"          = true
+        "spend"         = false
+        "has_primary"   = "wisp_spirits"
+    }
+
+    "wisp_spirits_out" {
+        "cast"          = true
+        "spend"         = false
+        "has_primary"   = "wisp_spirits"
+    }
+
+    "windrunner_windrun" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "arc_warden_tempest_double" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "queenofpain_blink" {
+        "cast"          = false
+        "spend"         = false
+    }
+
+    "enigma_black_hole" {
+        "cast"          = true
+        "spend"         = true
+        "should_nerf"   = true
+    }
+
+    "lone_druid_spirit_bear" {
+        "cast"          = true
+        "spend"         = true
+        "should_nerf"   = true
+    }
+
+    "undying_tombstone" {
+        "cast"          = true
+        "spend"         = true
+        "should_nerf"   = true
+    }
+
+    "witch_doctor_death_ward" {
+        "cast"          = true
+        "spend"         = true
+        "should_nerf"   = true
+    }
+
+    "zuus_thundergods_wrath" {
+        "cast"          = true
+        "spend"         = true
+        "should_nerf"   = true
+    }
+
+    "pugna_nether_ward" {
+        "cast"          = true
+        "spend"         = true
+        "should_nerf"   = true
+    }
+
+    "queenofpain_sonic_wave" {
+        "cast"          = true
+        "spend"         = true
+        "should_nerf"   = true
+    }
+
+    "shadow_shaman_mass_serpent_ward" {
+        "cast"          = true
+        "spend"         = true
+        "should_nerf"   = true
+    }
+
+    "elder_titan_earth_splitter" {
+        "cast"          = true
+        "spend"         = true
+        "should_nerf"   = true
+    }
+
+    "invoker_forge_spirit" {
+        "cast"          = true
+        "spend"         = true
+        "should_nerf"   = true
+    }
+
+    "monkey_king_wukongs_command" {
+        "cast"          = false
+        "spend"         = false
+    }
+}
+

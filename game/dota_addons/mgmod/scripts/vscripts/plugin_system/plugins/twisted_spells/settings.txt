@@ -25,4 +25,8 @@
         "TYPE" "number"
         "DEFAULT" "0"
     }
+    "cooldown" {
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
 }
