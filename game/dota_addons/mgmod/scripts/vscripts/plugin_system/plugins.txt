@@ -131,6 +131,8 @@
         }
         "CmdRegistrations" {
             "-mods" "ShortCutMods"
+            "-resetsetup" "ShortCutResetToCustomGameSetup"
+            "-resetheroes" "ShortCutResetToHeroSelection"
         }
     }
 

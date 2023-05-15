@@ -89,17 +89,17 @@ function DevStuffPlugin:ShortCutMods(tArgs,bTeam,iPlayer)
     end
 end
 
-function DevStuffPlugin:ShortCutResetDefeated()
+function DevStuffPlugin:ShortCutResetDefeated(tArgs,bTeam,iPlayer)
     local hPlayer = PlayerResource:GetPlayer(iPlayer)
     if not GameRules:PlayerHasCustomGameHostPrivileges(hPlayer) then return end
     GameRules:ResetDefeated()
 end
-function DevStuffPlugin:ShortCutResetToCustomGameSetup()
+function DevStuffPlugin:ShortCutResetToCustomGameSetup(tArgs,bTeam,iPlayer)
     local hPlayer = PlayerResource:GetPlayer(iPlayer)
     if not GameRules:PlayerHasCustomGameHostPrivileges(hPlayer) then return end
     GameRules:ResetToCustomGameSetup()
 end
-function DevStuffPlugin:ShortCutResetToHeroSelection()
+function DevStuffPlugin:ShortCutResetToHeroSelection(tArgs,bTeam,iPlayer)
     local hPlayer = PlayerResource:GetPlayer(iPlayer)
     if not GameRules:PlayerHasCustomGameHostPrivileges(hPlayer) then return end
     GameRules:ResetToHeroSelection()
