@@ -8,6 +8,7 @@ var isOpen = false;
 var plugin_settings = {};
 var points = 0;
 var points_mode = false;
+var boosted_mode = "uninit";
 const this_window_id = "boosted";
 
 var local_player = Game.GetLocalPlayerInfo();
@@ -51,16 +52,18 @@ function UpdatePlayerDetails(tPlayerDetails) {
 
 function OpenAbilitySettings(sAbilityName) {
     let sAbilitySettings = ability_values[sAbilityName]
-    $.Msg(sAbilityName);
-    $.Msg(sAbilitySettings);
+/*     $.Msg(sAbilityName);
+    $.Msg(sAbilitySettings); */
     BoostedBox.RemoveAndDeleteChildren();
     let AbilitySettings = $.CreatePanel('Panel', BoostedBox, 'AbilitySettings');
     AbilitySettings.BLoadLayoutSnippet("AbilitySettings");
     let AbilitySettingsInternalScroll = AbilitySettings.FindChildInLayoutFile("AbilitySettingsInternalScroll");
     for (const key in sAbilitySettings) {
-        if (points_mode) {
+        if (boosted_mode == "points") {
             let panel = CreateSettingLeveling(sAbilityName,key,sAbilitySettings[key],AbilitySettingsInternalScroll);
-        } else {
+        } else if (boosted_mode == "attributes") {
+            let panel = CreateSettingAttributes(sAbilityName,key,sAbilitySettings[key],AbilitySettingsInternalScroll);
+        } else if (boosted_mode == "free_form") {
             let panel = CreateSettingNumber(sAbilityName,key,sAbilitySettings[key],AbilitySettingsInternalScroll);
         }
     }
@@ -183,6 +186,39 @@ function CreateSettingLeveling(sAbilityName,sPluginSetting,sPluginSettingData,hP
     return AbilitySpecialPoints;
 }
 
+function CreateSettingAttributes(sAbilityName,sPluginSetting,sPluginSettingData,hParent) {
+    let AbilitySpecialAttributes = $.CreatePanel('Panel', hParent, 'AbilitySpecialAttributes');
+    AbilitySpecialAttributes.BLoadLayoutSnippet("AbilitySpecialAttributes");
+    let AbilitySpecialAttributesText = AbilitySpecialAttributes.FindChildInLayoutFile("AbilitySpecialAttributesText");
+    let ll = "#DOTA_Tooltip_Ability_" +  sAbilityName + "_" + sPluginSetting;
+    let bMouseOver = false;
+    if ($.Localize(ll) == ll) {
+        AbilitySpecialAttributesText.text = sPluginSetting;
+    } else {
+        AbilitySpecialAttributesText.text = $.Localize(ll);
+        bMouseOver = true;
+    }
+
+    let AbilitySpecialAttributesValue = AbilitySpecialAttributes.FindChildInLayoutFile("AbilitySpecialAttributesValue");
+    AbilitySpecialAttributesValue.text = Number(sPluginSettingData.value*100).toFixed(0) + "%";
+    AbilitySpecialAttributesValue.SetHasClass("attribute_"+ sPluginSettingData.attribute,true);
+
+    if (bMouseOver) {
+        AbilitySpecialAttributesText.SetPanelEvent(
+            "onmouseover", 
+            function(){
+                $.DispatchEvent("DOTAShowTextTooltip", AbilitySpecialAttributesText, sPluginSetting);
+            }
+            )
+        AbilitySpecialAttributesText.SetPanelEvent(
+            "onmouseout", 
+            function(){
+            $.DispatchEvent("DOTAHideTextTooltip", AbilitySpecialAttributesText);
+            }
+        )
+    }
+    return AbilitySpecialAttributes;
+}
 
 function SettingsUpdate( table_name, sAbilityName, sAbilitySettings) {
 /*     if (sAbilitySettings.length > 0) {
@@ -240,14 +276,15 @@ function Cleanup() {
             existing_button.DeleteAsync(0);
         } 
     } else {
-        points_mode = plugin_settings.points_mode.VALUE == 1;
+        boosted_mode = plugin_settings.boosted_mode.VALUE;
+        points_mode = boosted_mode == "points";
         let iPlayer = Players.GetLocalPlayer();
         var sSettings = CustomNetTables.GetAllTableValues( "boosted_upgrades_" + iPlayer );
         Cleanup();
         for (const key in sSettings) {
             CreateSettingsBlock(sSettings[key].key,sSettings[key].value);
         }
-        if (points_mode) {
+        if (boosted_mode !== "free_form") {
             var player_details = WindowRoot.FindChildTraverse("PlayerDetails");
             player_details.SetHasClass("hidden",false);
         }

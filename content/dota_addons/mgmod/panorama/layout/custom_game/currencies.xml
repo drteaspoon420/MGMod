@@ -1,0 +1,24 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/currencies.js" />
+	</scripts>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/currencies.css" />
+	</styles>
+	<snippets>
+		<snippet name="CurrencyBox">
+			<Button class="CurrencyBox">
+                <Panel id="CurrencyIcon"/>
+                <Label id="CurrencyAmmount" text="69"/>
+            </Button>
+		</snippet>
+		<snippet name="CurrencyAction">
+			<Button class="CurrencyAction">
+                <Label id="CurrencyCost" text="69"/>
+            </Button>
+		</snippet>
+    </snippets>
+
+	<Panel class="WindowRoot">
+    </Panel>
+</root>

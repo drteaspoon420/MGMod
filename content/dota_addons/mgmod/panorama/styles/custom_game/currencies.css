@@ -1,0 +1,31 @@
+.hidden{visibility: collapse;}
+.WindowRoot {
+	margin-top: 30px;
+    margin-right: 100px;
+    background-color: red;
+}
+
+
+.CurrencyBox {
+    height: 24px;
+    background-color: green;
+}
+#CurrencyIcon {
+    height: 24px;
+    width: 24px;
+    background-color: blue;
+}
+#CurrencyAmmount {
+    height: 24px;
+    font-size: 15px;
+    color: #ffffff;
+    background-color: black;
+}
+.CurrencyAction {
+    height: 24px;
+}
+#CurrencyCost {
+    height: 24px;
+    font-size: 15px;
+    color: #ffffff;
+}

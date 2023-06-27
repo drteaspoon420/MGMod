@@ -40,4 +40,9 @@
         "TYPE" "number"
         "DEFAULT" "-1"
     }
+    "custom_bans" {
+        "Order" "11"
+        "TYPE" "text"
+        "DEFAULT" ""
+    }
 }

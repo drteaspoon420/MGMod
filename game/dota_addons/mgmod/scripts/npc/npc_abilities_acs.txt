@@ -6,7 +6,6 @@
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"plugin_system/plugins/attacks_cast_spells/channelled_bomb"
 		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"						"1"
 	}
 }

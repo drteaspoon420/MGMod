@@ -2,9 +2,11 @@
 
 
 # Credits
-People who have directly contributed to the project in one way or another. Chornological order
+People who have directly contributed to the project in one way or another. Chornological order.
 ## DrTeaSpoon
-Main developer.
+Lead developer
+## Abraham Blink'in
+Contributor
 
 # Special Thanks
 ## Mod Dota Community

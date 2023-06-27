@@ -1,0 +1,58 @@
+"plugin_settings"
+{
+    "Order" "9001"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "clicks_death" {
+        "Order" "1"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "symbiosis" {
+        "Order" "2"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "bloodbath" {
+        "Order" "3"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "combo" {
+        "Order" "4"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "nurgle" {
+        "Order" "5"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "unseen_sanic" {
+        "Order" "6"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "health_cap" {
+        "Order" "7"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "ally_death_fear" {
+        "Order" "8"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "death_stats" {
+        "Order" "9"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "powercreep" {
+        "Order" "10"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+}

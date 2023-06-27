@@ -1,0 +1,10 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/credits.js" />
+	</scripts>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/credits.css" />
+	</styles>
+	<Panel class="__credits_root">
+    </Panel>
+</root>

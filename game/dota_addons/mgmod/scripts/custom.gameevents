@@ -83,6 +83,10 @@
 	{
 		"ability" "string"
 	}
+	"ban_list_export"
+	{
+		"list" "string"
+	}
 	"add_basic_item"
 	{
 		"target" "short"

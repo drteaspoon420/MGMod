@@ -72,8 +72,10 @@ end
 
 function XMax12Plugin:CacheUnit(entindex)
     if XMax12Plugin.unit_cache[entindex] ~= nil then return false end
-    XMax12Plugin.unit_cache[entindex] = true
-    return true
+    local hUnit = EntIndexToHScript(event.entindex)
+    if hUnit:IsRealHero() then
+        XMax12Plugin.unit_cache[entindex] = true
+    end
 end
 
 function XMax12Plugin:SpawnEvent(event)

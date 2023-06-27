@@ -1,5 +1,6 @@
 HeroBuilderPlugin = class({})
 _G.HeroBuilderPlugin = HeroBuilderPlugin
+local JSON = require("utils/dkjson")
 HeroBuilderPlugin.npc_abilities = {}
 HeroBuilderPlugin.npc_abilities_custom = {}
 HeroBuilderPlugin.no_duplication = {}
@@ -54,7 +55,14 @@ function HeroBuilderPlugin:PreGameStuff()
             if GameRules:State_Get() < DOTA_GAMERULES_STATE_HERO_SELECTION then return end
             HeroBuilderPlugin:SpawnEvent(event)
     end,nil)
+    if string.len(HeroBuilderPlugin.settings.custom_bans) > 1 and string.len(HeroBuilderPlugin.settings.custom_bans) < 20 then
+        HeroBuilderPlugin:LoadBanList(HeroBuilderPlugin.settings.custom_bans)
+    else
+        HeroBuilderPlugin:PrepStageTwo()
+    end
+end
 
+function HeroBuilderPlugin:PrepStageTwo()
     if HeroBuilderPlugin.settings.dota_abilities then
         for k,v in pairs(HeroBuilderPlugin.npc_abilities) do
             if v ~= nil and type(v) == 'table' then
@@ -76,11 +84,15 @@ function HeroBuilderPlugin:PreGameStuff()
         for k,v in pairs(HeroBuilderPlugin.npc_abilities_custom) do
             if v ~= nil and type(v) == 'table' then
                 if HeroBuilderPlugin.npc_abilities[k] == nil then
-                    if v.AbilityType ~= nil then
-                        if v.AbilityType == "DOTA_ABILITY_TYPE_ATTRIBUTES" then
-                            HeroBuilderPlugin:AddTalent(k,v)
-                        elseif v.AbilityType == "DOTA_ABILITY_TYPE_ULTIMATE" then
-                            HeroBuilderPlugin:AddUltimate(k,v)
+                    if v.CustomEnabled ~= nil then
+                        if v.AbilityType ~= nil then
+                            if v.AbilityType == "DOTA_ABILITY_TYPE_ATTRIBUTES" then
+                                HeroBuilderPlugin:AddTalent(k,v)
+                            elseif v.AbilityType == "DOTA_ABILITY_TYPE_ULTIMATE" then
+                                HeroBuilderPlugin:AddUltimate(k,v)
+                            else
+                                HeroBuilderPlugin:AddBasic(k,v)
+                            end
                         else
                             HeroBuilderPlugin:AddBasic(k,v)
                         end
@@ -591,4 +603,30 @@ function HeroBuilderPlugin:FindActualOriginalHero(hUnit)
         end
     end
     return -1
+end
+
+function HeroBuilderPlugin:ExportBanList(tArgs,bTeam,iPlayer)
+	local hPlayer = iPlayer and PlayerResource:GetPlayer(iPlayer)
+    local str = "{\"ban_list\":{\n"
+    for k,v in pairs(HeroBuilderPlugin.ban_list) do
+        str = str .. "\t\"" .. k .. "\": 1\n"
+    end
+    str = str .. "}}"
+    CustomGameEventManager:Send_ServerToPlayer(hPlayer,"ban_list_export",{list = str})
+end
+
+function HeroBuilderPlugin:LoadBanList(pastebin)
+    local url = "https://pastebin.com/raw/" .. pastebin
+    local req = CreateHTTPRequestScriptVM("GET", url)
+    req:Send(function(res)
+        if res.StatusCode ~= 200 then
+            print(res.Body)
+            print("something went wrong")
+        else
+            print(res.Body)
+			local data = JSON.decode(res.Body)
+            HeroBuilderPlugin.ban_list = data.ban_list
+        end
+        HeroBuilderPlugin:PrepStageTwo()
+    end)
 end

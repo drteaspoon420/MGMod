@@ -77,6 +77,8 @@
 		"Plugin_hero_builder_Option_slot_id_limit" "Ability Slot Limit"
 		"Plugin_hero_builder_Option_slot_id_limit_Description" "Limit the slot id that can be changed. -1 disables. 0 = Q, 5 = R"
 
+		"Plugin_hero_builder_Option_custom_bans" "Custom Banlist"
+		"Plugin_hero_builder_Option_custom_bans_Description" "Use pastebin.com to upload your banlist.\nPaste the end of the URL to use the list.\nYou can output valid ban list to your console with chat command '-ability_bans'"
 		//Item Sandbox
 		"Plugin_item_spawner" "Item Sandbox"
 		"Plugin_item_spawner_Option_limited_mode" "Limited Mode"
@@ -179,6 +181,21 @@
 		"Plugin_boosted_Option_souls_integration" "Souls integration"
 		"Plugin_boosted_Option_souls_per_point" "Souls Per Point"
 
+		"Plugin_boosted_Option_boosted_mode" "Boosted Mode"
+		"Plugin_boosted_Option_boosted_mode_Drop_free_form" "Freeform"
+		"Plugin_boosted_Option_boosted_mode_Drop_points" "RPG Points"
+		"Plugin_boosted_Option_boosted_mode_Drop_attributes" "Attribute Effects"
+
+		"Plugin_boosted_Option_currency_type" "Currency"
+		"Plugin_boosted_Option_currency_type_Drop_blue" "Blue"
+		"Plugin_boosted_Option_currency_type_Drop_green" "Green"
+		"Plugin_boosted_Option_currency_type_Drop_red" "Red"
+		"Plugin_boosted_Option_currency_type_Drop_purple" "Purple"
+
+		"Plugin_boosted_Option_currency_ammount" "Cost"
+
+		"Plugin_boosted_Option_percent_per_attributes" " % Bonus Per Attribute"
+
 		"Plugin_boosted_Option_points_mode_Description" "Players upgrade their abilities with points instead of free editing."
 		"Plugin_boosted_Option_allow_reallocation_Description" "In Points Mode, allow re-allocation of spent points."
 		"Plugin_boosted_Option_souls_integration_Description" "Integrate with 'Soul Collector' plugin"
@@ -259,6 +276,34 @@
 		"Plugin_xmas12_Option_day12" "Day 12, Flash Light"
 		"Plugin_xmas12_Option_day12_Description" "All vision is reduced to 0%. Heroes are granted short cone of vision."
 
+
+		//archive_pack_one
+		"Plugin_archive_pack_one" "Archive Pack I"
+		"Plugin_archive_pack_one_Option_clicks_death" "100 clicks"
+		"Plugin_archive_pack_one_Option_clicks_death_Description" "After 100 clicks your hero dies."
+		"Plugin_archive_pack_one_Option_symbiosis" "5 Head"
+		"Plugin_archive_pack_one_Option_symbiosis_Description" "All players are joined into amalgamation."
+		"Plugin_archive_pack_one_Option_bloodbath" "Bloodbath"
+		"Plugin_archive_pack_one_Option_bloodbath_Description" "Dealing 250 damage Increases alot of stats."
+		"Plugin_archive_pack_one_Option_combo" "Combo"
+		"Plugin_archive_pack_one_Option_combo_Description" "Every damage instance by you increases outgoing damage by 10%, resets after 5s of no damage dealt."
+		"Plugin_archive_pack_one_Option_nurgle" "Nurgle"
+		"Plugin_archive_pack_one_Option_nurgle_Description" "Random!"
+		"Plugin_archive_pack_one_Option_unseen_sanic" "Spooky Speed"
+		"Plugin_archive_pack_one_Option_unseen_sanic_Description" "When not seen by enemy team, gain +5000 movement speed."
+		"Plugin_archive_pack_one_Option_health_cap" "Health Cap"
+		"Plugin_archive_pack_one_Option_health_cap_Description" "Heroes can't have more than 500 hp."
+		"Plugin_archive_pack_one_Option_ally_death_fear" "Demoralized"
+		"Plugin_archive_pack_one_Option_ally_death_fear_Description" "Allied deaths in 600 radius, cause Fear for 3s"
+		"Plugin_archive_pack_one_Option_death_stats" "Drain Stats"
+		"Plugin_archive_pack_one_Option_death_stats_Description" "Killing hero grants you 20% of their primary stat and 5% of their other stats. Universal grant 10% to all."
+		"Plugin_archive_pack_one_Option_powercreep" "Power Creep"
+		"Plugin_archive_pack_one_Option_powercreep_Description" "ALL units get 10% of their victims max health, mana and attack damage."
+
+		"DOTA_Tooltip_bloodbath"	"Bloodbath" 
+		"DOTA_Tooltip_bloodbath_Description" "Dealing Damage Gives Bonuses" 
+		"DOTA_Tooltip_combo"					"Combo!"
+		"DOTA_Tooltip_combo_Description"		"Total Outgoing Damage %% provided by current combo."
 
 		//stonks
 
@@ -368,6 +413,13 @@
 		"DOTA_Tooltip_ability_drteaspoon_blink_distance"								"RANGE:"
 
 
+		"DOTA_Tooltip_Ability_drteaspoon_witchcraft" "Witchcraft"
+		"DOTA_Tooltip_Ability_drteaspoon_witchcraft_Description"						"Reduces mana costs and cooldowns of your abilities and provides a passive movement speed boost. "
+		"DOTA_Tooltip_Ability_drteaspoon_witchcraft_Lore"								"With each death, DrTeaSpoon adds necromantic power to his repertoire."
+
+		"DOTA_Tooltip_Ability_drteaspoon_witchcraft_cooldown_reduction"	"COOLDOWN REDUCTION:"
+		"DOTA_Tooltip_Ability_drteaspoon_witchcraft_manacost_reduction"	"MANACOST REDUCTION:"
+		"DOTA_Tooltip_Ability_drteaspoon_witchcraft_movement_speed_bonus_pct"	"%BONUS MOVEMENT SPEED:"
 
 	}
 }

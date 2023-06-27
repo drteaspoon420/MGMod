@@ -85,8 +85,9 @@ function modifier_drteaspoon_multicast:OnAbilityExecuted(event)
             end)
         end
     else --target
-        print(iBehav)
+        --print(iBehav)
         local iTeam = hUnit:GetTeam()
+        if hTarget == nil then return end
         local vRPos = hTarget:GetAbsOrigin()
         local fRadius = hAbility:GetCastRange(vRPos,nil)
         local teamFilter = hAbility:GetAbilityTargetTeam() or DOTA_UNIT_TARGET_TEAM_ENEMY

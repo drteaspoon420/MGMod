@@ -20,13 +20,15 @@ function BoostedPlugin:ApplySettings()
         BoostedPlugin.kv_lists = {}
     end
 
-    CustomGameEventManager:RegisterListener("boost_player",BoostedPlugin.boost_player)
+    if BoostedPlugin.settings.boosted_mode == "points" or BoostedPlugin.settings.boosted_mode == "free_form" then
+        CustomGameEventManager:RegisterListener("boost_player",BoostedPlugin.boost_player)
+    end
     CustomGameEventManager:RegisterListener("boost_player_recheck",BoostedPlugin.boost_player_recheck)
 
-    
-    if BoostedPlugin.settings.souls_integration then
-        PluginSystem:InternalEvent_Register("souls_collected",function(event)
-            BoostedPlugin:souls_collected(event)
+    if BoostedPlugin.settings.boosted_mode == "attributes" then
+        Timers:CreateTimer(1,function()
+            BoostedPlugin:periodic_check_all()
+            return 5
         end)
     end
     
@@ -44,35 +46,6 @@ function BoostedPlugin:ApplySettings()
     end,nil)
 end
 
-
-function BoostedPlugin:souls_collected(tEvent)
-    print(tEvent)
-    local iMax = BoostedPlugin.settings.souls_per_point
-    if tEvent.total >= iMax then
-        local x = math.floor(tEvent.total / iMax)
-        SoulsPlugin:SpendSoulsTeam(tEvent.team,iMax*x)
-        for iPlayer = 0,DOTA_MAX_PLAYERS do
-            if PlayerResource:IsValidTeamPlayer(iPlayer) then
-                if PlayerResource:GetTeam(iPlayer) == tEvent.team then
-                    if BoostedPlugin.points[iPlayer] == nil then
-                        BoostedPlugin.points[iPlayer] = 0
-                    end
-                    BoostedPlugin.points[iPlayer] = BoostedPlugin.points[iPlayer] + x
-                    local steam = PlayerResource:GetSteamID(iPlayer)
-                    if steam == nil then
-                        print("Can't find steam id for player " .. iPlayer)
-                        return
-                    end
-                    if tostring(steam) == "0" then
-                        BoostedPlugin:BotLevelup(iPlayer)
-                    else
-                        CustomNetTables:SetTableValue("boosted_upgrades_" .. iPlayer,"player_details",{points = BoostedPlugin.points[iPlayer]})
-                    end
-                end
-            end
-        end
-    end
-end
 
 function BoostedPlugin:boost_player_recheck(event)
     local iPlayer = tEvent.PlayerID
@@ -131,7 +104,10 @@ function BoostedPlugin:UpdatePlayer_NetTable(iPlayer)
                                             if tAbilities[sAbility] == nil then 
                                                 tAbilities[sAbility] = {}
                                             end
-                                            tAbilities[sAbility][j] = 1.0
+                                            tAbilities[sAbility][j] = {
+                                                value = 1.0,
+                                                attribute = RandomInt(0,2)
+                                            }
                                         end
                                     end
                                 end
@@ -146,14 +122,20 @@ function BoostedPlugin:UpdatePlayer_NetTable(iPlayer)
                                                 if tAbilities[sAbility] == nil then 
                                                     tAbilities[sAbility] = {}
                                                 end
-                                                tAbilities[sAbility][k] = 1.0
+                                                tAbilities[sAbility][k] = {
+                                                    value = 1.0,
+                                                    attribute = RandomInt(0,2)
+                                                }
                                             end
                                         end
                                     else
                                         if tAbilities[sAbility] == nil then 
                                             tAbilities[sAbility] = {}
                                         end
-                                        tAbilities[sAbility][k] = 1.0
+                                        tAbilities[sAbility][k] = {
+                                            value = 1.0,
+                                            attribute = RandomInt(0,2)
+                                        }
                                     end
                                 end
                             end
@@ -164,7 +146,10 @@ function BoostedPlugin:UpdatePlayer_NetTable(iPlayer)
                                 if tAbilities[sAbility] == nil then 
                                     tAbilities[sAbility] = {}
                                 end
-                                tAbilities[sAbility]["AbilityChannelTime"] = 1.0
+                                tAbilities[sAbility]["AbilityChannelTime"] = {
+                                    value = 1.0,
+                                    attribute = RandomInt(0,2)
+                                }
                             end
                         end
                         if vals.AbilityDuration ~= nil then
@@ -173,7 +158,10 @@ function BoostedPlugin:UpdatePlayer_NetTable(iPlayer)
                                 if tAbilities[sAbility] == nil then 
                                     tAbilities[sAbility] = {}
                                 end
-                                tAbilities[sAbility]["AbilityDuration"] = 1.0
+                                tAbilities[sAbility]["AbilityDuration"] = {
+                                    value = 1.0,
+                                    attribute = RandomInt(0,2)
+                                }
                             end
                         end
                         if vals.AbilityDamage ~= nil then
@@ -182,7 +170,10 @@ function BoostedPlugin:UpdatePlayer_NetTable(iPlayer)
                                 if tAbilities[sAbility] == nil then 
                                     tAbilities[sAbility] = {}
                                 end
-                                tAbilities[sAbility]["AbilityDamage"] = 1.0
+                                tAbilities[sAbility]["AbilityDamage"] = {
+                                    value = 1.0,
+                                    attribute = RandomInt(0,2)
+                                }
                             end
                         end
                     end
@@ -214,7 +205,7 @@ function BoostedPlugin:UpdatePlayer_NetTable(iPlayer)
         BoostedPlugin.points[iPlayer] = 0
         CustomNetTables:SetTableValue("boosted_upgrades_" .. iPlayer,"player_details",{points = BoostedPlugin.points[iPlayer]})
     end
-    DeepPrintTable(BoostedPlugin.lists[iPlayer])
+    --DeepPrintTable(BoostedPlugin.lists[iPlayer])
 end
 
 function BoostedPlugin:IsBlocked(k,v)
@@ -255,7 +246,6 @@ function BoostedPlugin:boost_player(tEvent)
     local iPlayer = tEvent.PlayerID
     local hPlayer = PlayerResource:GetPlayer(iPlayer)
     if hPlayer == nil then return end
-    DeepPrintTable(tEvent)
     local hHero = hPlayer:GetAssignedHero()
     if hHero == nil then return end
     local sAbility = tEvent.ability
@@ -353,7 +343,70 @@ function BoostedPlugin:boost_player(tEvent)
         print("could not update modifier")
     end
 end
+function BoostedPlugin:periodic_check_all()
+    for i=0, DOTA_MAX_TEAM_PLAYERS do
+        if PlayerResource:IsValidPlayer(i) then
+            local player = PlayerResource:GetPlayer(i)
+            if player ~= nil then
+                BoostedPlugin:periodic_check(i)
+            end
+        end
+    end
+end
+function BoostedPlugin:periodic_check(iPlayer)
+    local hPlayer = PlayerResource:GetPlayer(iPlayer)
+    if hPlayer == nil then return end
+    local hHero = hPlayer:GetAssignedHero()
+    if hHero == nil then return end
+    if BoostedPlugin.perdiodic_check_stats == nil then BoostedPlugin.perdiodic_check_stats = {} end
+    local str = hHero:GetStrength()
+    local int = hHero:GetIntellect()
+    local agi = hHero:GetAgility()
+    if BoostedPlugin.perdiodic_check_stats[iPlayer] == nil then
+        BoostedPlugin.perdiodic_check_stats[iPlayer] = {
+            str = str,
+            int = int,
+            agi = agi
+        }
+    else
+        if  BoostedPlugin.perdiodic_check_stats[iPlayer].str == str and
+            BoostedPlugin.perdiodic_check_stats[iPlayer].int == int and
+            BoostedPlugin.perdiodic_check_stats[iPlayer].agi == agi 
+        then
+            return
+        end
+    end
+    --DeepPrintTable(BoostedPlugin.perdiodic_check_stats[iPlayer])
 
+    if BoostedPlugin.lists[iPlayer] == nil then
+        print(iPlayer,"list nil")
+        return
+    end
+
+    if BoostedPlugin.modifier_links[iPlayer] == nil then
+        print(iPlayer,"modifier is nil")
+        return
+    end
+    local hMod = BoostedPlugin.modifier_links[iPlayer]
+    if hMod.UpdateValue == nil then
+        print("could not update modifier")
+        return
+    end
+    local fMultSetting = BoostedPlugin.settings.percent_per_attributes * 0.01
+    for k,_ in pairs(BoostedPlugin.lists[iPlayer]) do
+        for j,v in pairs(BoostedPlugin.lists[iPlayer][k]) do
+            if BoostedPlugin.lists[iPlayer][k][j].attribute == DOTA_ATTRIBUTE_STRENGTH then
+                BoostedPlugin.lists[iPlayer][k][j].value = BoostedPlugin:NerfsKV(k,j) * fMultSetting * str + 1.0
+            elseif BoostedPlugin.lists[iPlayer][k][j].attribute == DOTA_ATTRIBUTE_AGILITY then
+                BoostedPlugin.lists[iPlayer][k][j].value = BoostedPlugin:NerfsKV(k,j) * fMultSetting * agi + 1.0
+            elseif BoostedPlugin.lists[iPlayer][k][j].attribute == DOTA_ATTRIBUTE_INTELLECT then
+                BoostedPlugin.lists[iPlayer][k][j].value = BoostedPlugin:NerfsKV(k,j) * fMultSetting * int + 1.0
+            end
+            hMod:UpdateValue(k,j,BoostedPlugin.lists[iPlayer][k][j].value)
+        end
+        CustomNetTables:SetTableValue("boosted_upgrades_" .. iPlayer,k,BoostedPlugin.lists[iPlayer][k])
+    end
+end
 
 function BoostedPlugin:BlocksAbility(sAbility) -- returns false if blocked
     if BoostedPlugin.kv_lists.blocklist == nil then return true end

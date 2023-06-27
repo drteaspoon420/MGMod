@@ -56,6 +56,19 @@
 				</Panel>
             </Panel>
 		</snippet>
+
+		<snippet name="AbilitySpecialAttributes">
+            <Panel id="AbilitySpecialAttributes" class="AbilitySpecialAttributes">
+				<Panel class="AbilityValueContainer current_value">
+					<Label id="AbilitySpecialAttributesValue" text="1" />
+				</Panel>
+				<Panel class="AbilityValueContainer">
+					<Panel class="centerpls">
+						<Label id="AbilitySpecialAttributesText" html="true" text="unknown"/>
+					</Panel>
+				</Panel>
+            </Panel>
+		</snippet>
     </snippets>
 	<Panel class="WindowRoot">
 		<Panel id="WindowRoot" class="hidden">

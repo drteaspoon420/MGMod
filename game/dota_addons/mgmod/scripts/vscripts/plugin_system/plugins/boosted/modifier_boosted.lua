@@ -30,7 +30,6 @@ end
 
 function modifier_boosted:UpdateValue(a,k,v)
 	self.boost[a .. "|" .. k] = v
-	DeepPrintTable(self.boost)
 	self:SendBuffRefreshToClients()
 end
 
@@ -42,7 +41,6 @@ function modifier_boosted:HandleCustomTransmitterData( data )
 	self.boost = {}
     for k,v in pairs(data) do
 		self.boost[k] = v
-		print(k,v)
 	end
 end
 

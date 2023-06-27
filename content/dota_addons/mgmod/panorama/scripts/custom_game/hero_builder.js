@@ -189,6 +189,7 @@ function hero_builder_error(event) {
         CreateToggleButton();
         GameEvents.Subscribe( "open_window", open_window );
         GameEvents.Subscribe( "hero_builder_error", hero_builder_error );
+        GameEvents.Subscribe( "ban_list_export", ban_list_export );
     }
     load_unit_skill_slots();
 })();
@@ -311,4 +312,8 @@ function DebugTalents() {
     let upgrade2 = talent_box.FindChildTraverse("UpgradeName2");
     $.Msg(upgrade2);
      */
+}
+
+function ban_list_export(event) {
+    $.Msg(event.list);
 }
