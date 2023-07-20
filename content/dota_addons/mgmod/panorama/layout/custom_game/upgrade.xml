@@ -1,0 +1,30 @@
+<!-- xml reconstructed by ValveResourceFormat: https://vrf.steamdb.info/ -->
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/upgrade.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/upgrade.js" />
+	</scripts>
+	<snippets>
+		<snippet name="UpgradeOption">
+			<Panel class="UpgradeOption">
+				<DOTAAbilityImage id="UpgradeOptionImage" class="OptionImage" />
+				<DOTAItemImage id="UpgradeOptionImageItem" class="OptionImage" />
+				<Label id="UpgradeOptionLabel" html="true" text="key_value" />
+				<Button id="OptionButtonPlus" class="OptionButton">
+					<Label class="OptionNumText" id="OptionButtonPlusText" text="option_plus" />
+				</Button>
+				<Button id="OptionButtonMinus" class="OptionButton">
+					<Label class="OptionNumText" id="OptionButtonMinusText" text="option_minus" />
+				</Button>
+				<Button id="OptionButtonBan" class="OptionButton">
+					<Label class="OptionNumText" id="OptionButtonBanText" text="X" />
+				</Button>
+			</Panel>
+		</snippet>
+	</snippets>
+	<Panel class="PersonalUpgradeScreen" hittest="false" visible="true">
+		<Panel id="Upgrades" />
+	</Panel>
+</root>

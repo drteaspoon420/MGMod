@@ -1,0 +1,55 @@
+"presets"
+{
+    "mutator_attacks_cast_spells" // attacks cast spells with default settings
+    {
+        "ID" "1"
+        "settings"
+        {
+            "attacks_cast_spells"
+            {
+                "enabled" "1"
+            }
+        }
+        "overlap_tags" "atck"
+    }
+    "mutator_damage_cast_spells" // attacks cast spells with 'damage casts spells' enabled
+    {
+        "ID" "1"
+        "settings"
+        {
+            "attacks_cast_spells"
+            {
+                "enabled" "1"
+                "ACSP_PROC_MODE" "1"
+            }
+        }
+        "overlap_tags" "atck"
+    }
+    "mutator_stonks" // stonks with default settings
+    {
+        "ID" "1"
+        "settings"
+        {
+            "stonks"
+            {
+                "enabled" "1"
+            }
+        }
+    }
+    "mutator_legends_of_dota" // ability sandbox with limiting to 6 ability slots and pregame editing only. also increasing pregame time to 10 minutes
+    {
+        "ID" "1"
+        "settings"
+        {
+            "hero_builder"
+            {
+                "enabled" "1"
+            }
+            "dota_settings"
+            {
+                "pregame_time" "600"
+            }
+        }
+        "overlap_tags" "atck"
+    }
+}

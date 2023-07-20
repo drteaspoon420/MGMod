@@ -159,4 +159,28 @@
 		"price" "short"
 		"available" "short"
 	}
+	"upgrade_hero"
+	{
+		"plus" "int"
+		"ability" "string"
+		"key" "string"
+		"rarity" "byte"
+	}
+
+	"upgrade_option"
+	{
+		"id" "short"
+		"ability" "string"
+		"key" "string"
+		"current" "float"
+		"upgrade" "float"
+		"downgrade" "float"
+		"rarity" "byte"
+		"allow_ban" "bool"
+	}
+	"upgrade_report"
+	{
+		"ab" "string"
+		"kv" "string"
+	}
 }

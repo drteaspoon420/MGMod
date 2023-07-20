@@ -2,14 +2,14 @@
 var ability_values = {};
 var WindowRoot = $.GetContextPanel().FindChildInLayoutFile("WindowRoot");
 var AbilityListInternalScroll = $.GetContextPanel().FindChildInLayoutFile("AbilityListInternalScroll");
-var BoostedBox = $.GetContextPanel().FindChildInLayoutFile("BoostedBox");
+var BsrpgBox = $.GetContextPanel().FindChildInLayoutFile("BsrpgBox");
 var current_open = "";
 var isOpen = false;
 var plugin_settings = {};
 var points = 0;
 var points_mode = false;
-var boosted_mode = "uninit";
-const this_window_id = "boosted";
+var bsrpg_mode = "uninit";
+const this_window_id = "bsrpg";
 
 var local_player = Game.GetLocalPlayerInfo();
 //index","player_selected_hero_entity_index":-1,"possible_hero_selection":"","player_level":0,"player_respawn_seconds":0,"player_gold":0,"player_networth":0,"player_team_id":5,"player_is_local":true,"player_has_host_privileges":true}
@@ -43,7 +43,7 @@ function UpdatePlayerDetails(tPlayerDetails) {
     if (points_mode) {
         if (tPlayerDetails.points != undefined) {
             points = tPlayerDetails.points;
-            var points_counter = WindowRoot.FindChildTraverse("BoostedPoints");
+            var points_counter = WindowRoot.FindChildTraverse("BsrpgPoints");
             points_counter.text = points;
         }
     }
@@ -54,16 +54,16 @@ function OpenAbilitySettings(sAbilityName) {
     let sAbilitySettings = ability_values[sAbilityName]
 /*     $.Msg(sAbilityName);
     $.Msg(sAbilitySettings); */
-    BoostedBox.RemoveAndDeleteChildren();
-    let AbilitySettings = $.CreatePanel('Panel', BoostedBox, 'AbilitySettings');
+    BsrpgBox.RemoveAndDeleteChildren();
+    let AbilitySettings = $.CreatePanel('Panel', BsrpgBox, 'AbilitySettings');
     AbilitySettings.BLoadLayoutSnippet("AbilitySettings");
     let AbilitySettingsInternalScroll = AbilitySettings.FindChildInLayoutFile("AbilitySettingsInternalScroll");
     for (const key in sAbilitySettings) {
-        if (boosted_mode == "points") {
+        if (bsrpg_mode == "points") {
             let panel = CreateSettingLeveling(sAbilityName,key,sAbilitySettings[key],AbilitySettingsInternalScroll);
-        } else if (boosted_mode == "attributes") {
+        } else if (bsrpg_mode == "attributes") {
             let panel = CreateSettingAttributes(sAbilityName,key,sAbilitySettings[key],AbilitySettingsInternalScroll);
-        } else if (boosted_mode == "free_form") {
+        } else if (bsrpg_mode == "free_form") {
             let panel = CreateSettingNumber(sAbilityName,key,sAbilitySettings[key],AbilitySettingsInternalScroll);
         }
     }
@@ -238,7 +238,7 @@ function SettingsUpdate( table_name, sAbilityName, sAbilitySettings) {
         if (dd) {
             dd.DeleteAsync(0.1);
             if (sAbilityName == current_open) {
-                BoostedBox.RemoveAndDeleteChildren();
+                BsrpgBox.RemoveAndDeleteChildren();
             }
         }
     } */
@@ -271,26 +271,26 @@ function Cleanup() {
     if (plugin_settings.enabled.VALUE == 0) {
         Cleanup();
         var button_bar = FindDotaHudElement("ButtonBar");
-        var existing_button = button_bar.FindChildTraverse("ButtonBar_Boosted");
+        var existing_button = button_bar.FindChildTraverse("ButtonBar_Bsrpg");
         if (existing_button) {
             existing_button.DeleteAsync(0);
         } 
     } else {
-        boosted_mode = plugin_settings.boosted_mode.VALUE;
-        points_mode = boosted_mode == "points";
+        bsrpg_mode = plugin_settings.bsrpg_mode.VALUE;
+        points_mode = bsrpg_mode == "points";
         let iPlayer = Players.GetLocalPlayer();
-        var sSettings = CustomNetTables.GetAllTableValues( "boosted_upgrades_" + iPlayer );
+        var sSettings = CustomNetTables.GetAllTableValues( "bsrpg_upgrades_" + iPlayer );
         Cleanup();
         for (const key in sSettings) {
             CreateSettingsBlock(sSettings[key].key,sSettings[key].value);
         }
-        if (boosted_mode !== "free_form") {
+        if (bsrpg_mode !== "free_form") {
             var player_details = WindowRoot.FindChildTraverse("PlayerDetails");
             player_details.SetHasClass("hidden",false);
         }
         CreateToggleButton();
         GameEvents.Subscribe( "open_window", open_window );
-        CustomNetTables.SubscribeNetTableListener( "boosted_upgrades_" + iPlayer , SettingsUpdate );
+        CustomNetTables.SubscribeNetTableListener( "bsrpg_upgrades_" + iPlayer , SettingsUpdate );
     }
 })();
 
@@ -314,19 +314,19 @@ function open_window(event) {
 
 function CreateToggleButton() {
     var button_bar = FindDotaHudElement("ButtonBar");
-    var existing_button = button_bar.FindChildTraverse("ButtonBar_Boosted");
+    var existing_button = button_bar.FindChildTraverse("ButtonBar_Bsrpg");
     if (existing_button) {
         existing_button.DeleteAsync(0);
     } 
-    var panel = $.CreatePanel('Button', $.GetContextPanel(), "ButtonBar_Boosted" );
-    panel.BLoadLayoutSnippet("ButtonBar_Boosted");
+    var panel = $.CreatePanel('Button', $.GetContextPanel(), "ButtonBar_Bsrpg" );
+    panel.BLoadLayoutSnippet("ButtonBar_Bsrpg");
     panel.SetPanelEvent( 'onactivate', function () {
 		CloseBuilder();
     });
     panel.SetPanelEvent(
         "onmouseover", 
         function(){
-            $.DispatchEvent("DOTAShowTextTooltip", panel, "Boosted");
+            $.DispatchEvent("DOTAShowTextTooltip", panel, "Bsrpg");
         }
         )
     panel.SetPanelEvent(

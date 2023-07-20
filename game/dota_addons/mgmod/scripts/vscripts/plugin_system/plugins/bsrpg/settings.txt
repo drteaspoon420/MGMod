@@ -1,0 +1,61 @@
+"plugin_settings"
+{
+    "Order" "69420"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    
+    "bsrpg_mode"
+    {
+        "Order" "555"
+        "TYPE" "dropdown"
+        "DEFAULT" "free_form"
+        "OPTIONS" {
+            "free_form" "0"
+            //"points" "1"
+            "attributes" "2"
+        }
+    }
+    //"allow_reallocation" {
+    //    "TYPE" "boolean"
+    //    "REQUIRES" {
+    //        "bsrpg_mode" "points"
+    //    }
+    //    "DEFAULT" "1"
+    //}
+    //"currency_type"
+    //{
+    //    "Order" "666"
+    //    "TYPE" "dropdown"
+    //    "REQUIRES" {
+    //        "bsrpg_mode" "points"
+    //    }
+    //    "DEFAULT" "blue"
+    //    "OPTIONS" {
+    //        "blue" "0"
+    //        "green" "1"
+    //        "red" "2"
+    //        "purple" "3"
+    //    }
+    //}
+    //"currency_ammount"
+    //{
+    //    "Order" "777"
+    //    "TYPE" "number"
+    //    "REQUIRES" {
+    //        "bsrpg_mode" "points"
+    //    }
+    //    "DEFAULT" "25"
+    //}
+    "percent_per_attributes"
+    {
+        "Order" "877"
+        "TYPE" "number"
+        "UNIT" "%"
+        "REQUIRES" {
+            "bsrpg_mode" "attributes"
+        }
+        "DEFAULT" "5"
+    }
+}

@@ -8,8 +8,8 @@
 	<snippets>
 		<snippet name="CurrencyBox">
 			<Button class="CurrencyBox">
-                <Panel id="CurrencyIcon"/>
                 <Label id="CurrencyAmmount" text="69"/>
+                <Panel id="CurrencyIcon"/>
             </Button>
 		</snippet>
 		<snippet name="CurrencyAction">
@@ -19,6 +19,8 @@
 		</snippet>
     </snippets>
 
-	<Panel class="WindowRoot">
+	<Panel class="CurrencyRoot">
+	<Panel id="WindowRoot">
+    </Panel>
     </Panel>
 </root>

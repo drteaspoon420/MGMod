@@ -20,7 +20,7 @@ function SoulsUpdate( table_name, team, table) {
     if (plugin_settings.enabled.VALUE == 0) {
         WindowRoot.SetHasClass("hidden",true);
         var button_bar = FindDotaHudElement("ButtonBar");
-        var existing_button = button_bar.FindChildTraverse("ButtonBar_Boosted");
+        var existing_button = button_bar.FindChildTraverse("ButtonBar_Bsrpg");
         if (existing_button) {
             existing_button.DeleteAsync(0);
         } 

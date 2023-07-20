@@ -1,0 +1,10 @@
+"Plugins"
+{
+    "souls_plugin" {
+        "MainClass" "SoulsPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+    }
+}

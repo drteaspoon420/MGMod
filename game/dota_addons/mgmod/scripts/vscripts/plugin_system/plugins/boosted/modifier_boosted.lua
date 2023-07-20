@@ -19,17 +19,48 @@ function modifier_boosted:OnCreated(kv)
 	if not IsServer() then return end
     self:SetHasCustomTransmitterData(true)
 end
+function modifier_boosted:OnRefresh(kv)
+	if not IsServer() then return end
+end
 
 function modifier_boosted:DeclareFunctions()
+--[[ 	if not (self:GetParent():GetTeamNumber() == DOTA_TEAM_BADGUYS or self:GetParent():GetTeamNumber() == DOTA_TEAM_GOODGUYS) then
+		return {
+			MODIFIER_EVENT_ON_DOMINATED,
+		}
+	end ]]
 	local funcs = {
 		MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL,
 		MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL_VALUE,
+		MODIFIER_EVENT_ON_DOMINATED,
 	}
 	return funcs
 end
 
+function modifier_boosted:OnDominated(kv)
+	if not IsServer() then return end
+--[[ 	self:ForceRefresh() ]]
+    local playerId = self:GetParent():GetPlayerID()
+	if playerId == nil or playerId < 0 then return end
+	if kv.unit:GetMainControllingPlayer() ~= nil and kv.unit:GetMainControllingPlayer() == playerId then
+	    local hMod = kv.unit:AddNewModifier(kv.unit, nil, HeroUpgrades.main_modifier_name, {})
+		
+        Timers:CreateTimer( 1, function()
+			if hMod.RequestFull ~= nil then
+				hMod:RequestFull()
+			end
+		end)
+	end
+end
 function modifier_boosted:UpdateValue(a,k,v)
 	self.boost[a .. "|" .. k] = v
+	self:SendBuffRefreshToClients()
+end
+
+function modifier_boosted:RequestFull()
+	local hUnit = self:GetParent()
+    local t = HeroUpgrades:GetAllAbilities(hUnit)
+	self.boost = HeroUpgrades:RequestAllAbilityValues(t,hUnit:GetTeam())
 	self:SendBuffRefreshToClients()
 end
 
@@ -46,6 +77,9 @@ end
 
 function modifier_boosted:GetModifierOverrideAbilitySpecial( params )
 	if self:GetParent() == nil or params.ability == nil then
+		return 0
+	end
+	if not (self:GetParent():GetTeamNumber() == DOTA_TEAM_BADGUYS or self:GetParent():GetTeamNumber() == DOTA_TEAM_GOODGUYS) then
 		return 0
 	end
 	if self.boost == nil then return 0 end

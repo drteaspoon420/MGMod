@@ -1,31 +1,82 @@
 .hidden{visibility: collapse;}
-.WindowRoot {
-	margin-top: 30px;
-    margin-right: 100px;
-    background-color: red;
+#WindowRoot {
+	flow-children: right;
+}
+
+.CurrencyRoot {
+	margin-top: 0px;
+
+    horizontal-align: right;
 }
 
 
 .CurrencyBox {
-    height: 24px;
-    background-color: green;
+    height: 35px;
+	flow-children: right;
+    vertical-align: center;
+    margin-left: 2px;
 }
 #CurrencyIcon {
-    height: 24px;
-    width: 24px;
-    background-color: blue;
+    height: 25px;
+    width: 25px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 100% 100%;
+    vertical-align: center;
 }
 #CurrencyAmmount {
-    height: 24px;
-    font-size: 15px;
+    font-size: 20px;
     color: #ffffff;
-    background-color: black;
+
+    text-align: right;
+    padding-right: 5px;
+    padding-left: 5px;
+    vertical-align: center;
+    text-overflow: clip;
 }
 .CurrencyAction {
-    height: 24px;
+    height: 35px;
 }
 #CurrencyCost {
-    height: 24px;
+    height: 35px;
     font-size: 15px;
     color: #ffffff;
+}
+
+.currency_red {
+    background-image: url("file://{resources}/images/custom_game/currencies/red.png");
+}
+.currency_box_red {
+    background-color: rgb(138, 0, 0);
+}
+
+.currency_green {
+    background-image: url("file://{resources}/images/custom_game/currencies/green.png");
+}
+
+.currency_box_green {
+    background-color: rgb(16, 138, 0);
+}
+.currency_blue {
+    background-image: url("file://{resources}/images/custom_game/currencies/blue.png");
+}
+
+.currency_box_blue {
+    background-color: rgb(0, 48, 138);
+}
+.currency_purple {
+    background-image: url("file://{resources}/images/custom_game/currencies/purple.png");
+}
+
+.currency_box_purple {
+    background-color: rgb(84, 0, 87);
+}
+.share_0 {
+	box-shadow: inset #fdfdfd 0px 0px 0.4px 0.4px;
+}
+.share_1 {
+	box-shadow: inset #3a78ff 0px 0px 0.4px 0.4px;
+}
+.share_2 {
+	box-shadow: inset #ff7c7c 0px 0px 0.4px 0.4px;
 }

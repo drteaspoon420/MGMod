@@ -1,0 +1,15 @@
+"Plugins"
+{
+    "devstuff" {
+        "MainClass" "DevStuffPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+        "CmdRegistrations" {
+            "-mods" "ShortCutMods"
+            "-resetsetup" "ShortCutResetToCustomGameSetup"
+            "-resetheroes" "ShortCutResetToHeroSelection"
+        }
+    }
+}

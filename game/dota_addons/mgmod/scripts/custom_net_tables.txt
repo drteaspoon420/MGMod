@@ -15,18 +15,23 @@
     "lod_builds",
     "lod_bans",
 
-    "boosted_upgrades_0",
-    "boosted_upgrades_1",
-    "boosted_upgrades_2",
-    "boosted_upgrades_3",
-    "boosted_upgrades_4",
-    "boosted_upgrades_5",
-    "boosted_upgrades_6",
-    "boosted_upgrades_7",
-    "boosted_upgrades_8",
-    "boosted_upgrades_9",
+    "player_upgrades_0",
+    "player_upgrades_1",
+    "player_upgrades_2",
+    "player_upgrades_3",
+    "player_upgrades_4",
+    "player_upgrades_5",
+    "player_upgrades_6",
+    "player_upgrades_7",
+    "player_upgrades_8",
+    "player_upgrades_9",
+
     "save_slots",
     
     "stonks",
+
+    "currencies",
+
+    "player_booster"
   ]
 }

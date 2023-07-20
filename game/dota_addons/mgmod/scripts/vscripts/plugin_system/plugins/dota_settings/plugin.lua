@@ -68,8 +68,9 @@ function DotaSettingsPlugin:ApplySettings()
     if DotaSettingsPlugin.settings.death_time_percent ~= 100 then
         --link modifier
         print("[DotaSettingsPlugin] death time is not default")
-        LinkLuaModifier( "modifier_death_percentage", "plugin_system/plugins/dota_settings/modifier_death_percentage", LUA_MODIFIER_MOTION_NONE )
+        --LinkLuaModifier( "modifier_death_percentage", "plugin_system/plugins/dota_settings/modifier_death_percentage", LUA_MODIFIER_MOTION_NONE )
         --register spawn listener to add modifier to heroes on first spawn
+	    GameRules:GetGameModeEntity():SetRespawnTimeScale(DotaSettingsPlugin.settings.death_time_percent * 0.01)
     end
 
     
@@ -78,7 +79,6 @@ function DotaSettingsPlugin:ApplySettings()
 	--GameRules:GetGameModeEntity():SetBountyRuneSpawnInterval(DotaSettingsPlugin.settings.bounty_rune_spawn_interval)
 	--GameRules:GetGameModeEntity():SetPowerRuneSpawnInterval(DotaSettingsPlugin.settings.power_rune_spawn_interval)
 	--GameRules:GetGameModeEntity():SetXPRuneSpawnInterval(DotaSettingsPlugin.settings.xp_rune_spawn_interval)
-	--GameRules:GetGameModeEntity():SetRespawnTimeScale(DotaSettingsPlugin.settings.death_time_percent * 0.01)
     
     local sBackDoorProtection = DotaSettingsPlugin.settings.backdoor_protection
     if sBackDoorProtection == "none" then

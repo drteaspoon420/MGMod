@@ -174,32 +174,32 @@
 		//Dev stuff
 		"Plugin_devstuff" "Dev Stuff"
 
-		//Boosted
-		"Plugin_boosted" "Boosted"
-		"Plugin_boosted_Option_points_mode" "Points Mode"
-		"Plugin_boosted_Option_allow_reallocation" "Allow Reallocation"
-		"Plugin_boosted_Option_souls_integration" "Souls integration"
-		"Plugin_boosted_Option_souls_per_point" "Souls Per Point"
+		//Bsrpg
+		"Plugin_bsrpg" "Bsrpg"
+		"Plugin_bsrpg_Option_points_mode" "Points Mode"
+		"Plugin_bsrpg_Option_allow_reallocation" "Allow Reallocation"
+		"Plugin_bsrpg_Option_souls_integration" "Souls integration"
+		"Plugin_bsrpg_Option_souls_per_point" "Souls Per Point"
 
-		"Plugin_boosted_Option_boosted_mode" "Boosted Mode"
-		"Plugin_boosted_Option_boosted_mode_Drop_free_form" "Freeform"
-		"Plugin_boosted_Option_boosted_mode_Drop_points" "RPG Points"
-		"Plugin_boosted_Option_boosted_mode_Drop_attributes" "Attribute Effects"
+		"Plugin_bsrpg_Option_bsrpg_mode" "Bsrpg Mode"
+		"Plugin_bsrpg_Option_bsrpg_mode_Drop_free_form" "Freeform"
+		"Plugin_bsrpg_Option_bsrpg_mode_Drop_points" "RPG Points"
+		"Plugin_bsrpg_Option_bsrpg_mode_Drop_attributes" "Attribute Effects"
 
-		"Plugin_boosted_Option_currency_type" "Currency"
-		"Plugin_boosted_Option_currency_type_Drop_blue" "Blue"
-		"Plugin_boosted_Option_currency_type_Drop_green" "Green"
-		"Plugin_boosted_Option_currency_type_Drop_red" "Red"
-		"Plugin_boosted_Option_currency_type_Drop_purple" "Purple"
+		"Plugin_bsrpg_Option_currency_type" "Currency"
+		"Plugin_bsrpg_Option_currency_type_Drop_blue" "Blue"
+		"Plugin_bsrpg_Option_currency_type_Drop_green" "Green"
+		"Plugin_bsrpg_Option_currency_type_Drop_red" "Red"
+		"Plugin_bsrpg_Option_currency_type_Drop_purple" "Purple"
 
-		"Plugin_boosted_Option_currency_ammount" "Cost"
+		"Plugin_bsrpg_Option_currency_ammount" "Cost"
 
-		"Plugin_boosted_Option_percent_per_attributes" " % Bonus Per Attribute"
+		"Plugin_bsrpg_Option_percent_per_attributes" " % Bonus Per Attribute"
 
-		"Plugin_boosted_Option_points_mode_Description" "Players upgrade their abilities with points instead of free editing."
-		"Plugin_boosted_Option_allow_reallocation_Description" "In Points Mode, allow re-allocation of spent points."
-		"Plugin_boosted_Option_souls_integration_Description" "Integrate with 'Soul Collector' plugin"
-		"Plugin_boosted_Option_souls_per_point_Description" "How many souls do you need for 1 upgrade point."
+		"Plugin_bsrpg_Option_points_mode_Description" "Players upgrade their abilities with points instead of free editing."
+		"Plugin_bsrpg_Option_allow_reallocation_Description" "In Points Mode, allow re-allocation of spent points."
+		"Plugin_bsrpg_Option_souls_integration_Description" "Integrate with 'Soul Collector' plugin"
+		"Plugin_bsrpg_Option_souls_per_point_Description" "How many souls do you need for 1 upgrade point."
 
 		//Delete Dota
 		"Plugin_delete_dota" "Delete Dota"
@@ -383,6 +383,107 @@
 		"Dota_Tooltip_stonks_bdv_Description" "BDV Stock Increases owner Bonus Day Vision"
 		"Dota_Tooltip_stonks_exp_Description" "EXP Stock Increases owner Experience Rate"
 		"Dota_Tooltip_stonks_src_Description" "SRC Stock Increases owner Spell Reflect Chance"
+
+		//Currencies
+		"Plugin_currencies" "Currencies"
+		
+		"Plugin_currencies_Option_red_state" "Red Currency"
+		"Plugin_currencies_Option_red_state_Drop_none" "Disabled"
+		"Plugin_currencies_Option_red_state_Drop_solo" "Personal"
+		"Plugin_currencies_Option_red_state_Drop_team" "Team"
+		"Plugin_currencies_Option_red_state_Drop_all" "Global"
+		"Plugin_currencies_Option_red_gold_buy" "Gold Conversion"
+		"Plugin_currencies_Option_red_gold_buy_Description" "Let player convert gold into this currency at this cost. 0 or less disables the feature."
+		
+		"Plugin_currencies_Option_green_state" "Green Currency"
+		"Plugin_currencies_Option_green_state_Drop_none" "Disabled"
+		"Plugin_currencies_Option_green_state_Drop_solo" "Personal"
+		"Plugin_currencies_Option_green_state_Drop_team" "Team"
+		"Plugin_currencies_Option_green_state_Drop_all" "Global"
+		"Plugin_currencies_Option_green_gold_buy" "Gold Conversion"
+		"Plugin_currencies_Option_green_gold_buy_Description" "Let player convert gold into this currency at this cost. 0 or less disables the feature."
+		
+		"Plugin_currencies_Option_blue_state" "Blue Currency"
+		"Plugin_currencies_Option_blue_state_Drop_none" "Disabled"
+		"Plugin_currencies_Option_blue_state_Drop_solo" "Personal"
+		"Plugin_currencies_Option_blue_state_Drop_team" "Team"
+		"Plugin_currencies_Option_blue_state_Drop_all" "Global"
+		"Plugin_currencies_Option_blue_gold_buy" "Gold Conversion"
+		"Plugin_currencies_Option_blue_gold_buy_Description" "Let player convert gold into this currency at this cost. 0 or less disables the feature."
+		
+		"Plugin_currencies_Option_purple_state" "Purple Currency"
+		"Plugin_currencies_Option_purple_state_Drop_none" "Disabled"
+		"Plugin_currencies_Option_purple_state_Drop_solo" "Personal"
+		"Plugin_currencies_Option_purple_state_Drop_team" "Team"
+		"Plugin_currencies_Option_purple_state_Drop_all" "Global"
+		"Plugin_currencies_Option_purple_gold_buy" "Gold Conversion"
+		"Plugin_currencies_Option_purple_gold_buy_Description" "Let player convert gold into this currency at this cost. 0 or less disables the feature."
+		
+
+		"Plugin_currencies_Option_unit_kill_reward_currency" "Unit Kill Reward Type"
+		"Plugin_currencies_Option_unit_kill_reward_currency_Drop_red" "Red"
+		"Plugin_currencies_Option_unit_kill_reward_currency_Drop_green" "Green"
+		"Plugin_currencies_Option_unit_kill_reward_currency_Drop_blue" "Blue"
+		"Plugin_currencies_Option_unit_kill_reward_currency_Drop_purple" "Purple"
+		"Plugin_currencies_Option_unit_kill_reward_amount" "Unit Kill Reward Amount"
+		"Plugin_currencies_Option_unit_kill_reward_amount_Description" "Last hitting enemy unit grants currency. 0 or less disables the feature."
+		
+		"Plugin_currencies_Option_hero_kill_reward_currency" "Hero Kill Reward Type"
+		"Plugin_currencies_Option_hero_kill_reward_currency_Drop_red" "Red"
+		"Plugin_currencies_Option_hero_kill_reward_currency_Drop_green" "Green"
+		"Plugin_currencies_Option_hero_kill_reward_currency_Drop_blue" "Blue"
+		"Plugin_currencies_Option_hero_kill_reward_currency_Drop_purple" "Purple"
+		"Plugin_currencies_Option_hero_kill_reward_amount" "Hero Kill Reward Amount"
+		"Plugin_currencies_Option_hero_kill_reward_amount_Description" "Last hitting enemy hero grants currency. 0 or less disables the feature."
+		
+		"Plugin_currencies_Option_observer_kill_reward_currency" "Observer Kill Reward Type"
+		"Plugin_currencies_Option_observer_kill_reward_currency_Drop_red" "Red"
+		"Plugin_currencies_Option_observer_kill_reward_currency_Drop_green" "Green"
+		"Plugin_currencies_Option_observer_kill_reward_currency_Drop_blue" "Blue"
+		"Plugin_currencies_Option_observer_kill_reward_currency_Drop_purple" "Purple"
+		"Plugin_currencies_Option_observer_kill_reward_amount" "Observer Kill Reward Amount"
+		"Plugin_currencies_Option_observer_kill_reward_amount_Description" "Last hitting enemy observer ward grants currency. 0 or less disables the feature."
+		
+
+		"Plugin_currencies_Option_observer_plant_reward_currency" "Observer Plant Reward Type"
+		"Plugin_currencies_Option_observer_plant_reward_currency_Drop_red" "Red"
+		"Plugin_currencies_Option_observer_plant_reward_currency_Drop_green" "Green"
+		"Plugin_currencies_Option_observer_plant_reward_currency_Drop_blue" "Blue"
+		"Plugin_currencies_Option_observer_plant_reward_currency_Drop_purple" "Purple"
+		"Plugin_currencies_Option_observer_plant_reward_amount" "Observer Plant Reward Amount"
+		"Plugin_currencies_Option_observer_plant_reward_amount_Description" "Planting observer ward grants currency. 0 or less disables the feature."
+		
+
+
+		"Plugin_currencies_Option_timed_reward_currency" "Timed Reward Type"
+		"Plugin_currencies_Option_timed_reward_currency_Drop_red" "Red"
+		"Plugin_currencies_Option_timed_reward_currency_Drop_green" "Green"
+		"Plugin_currencies_Option_timed_reward_currency_Drop_blue" "Blue"
+		"Plugin_currencies_Option_timed_reward_currency_Drop_purple" "Purple"
+		"Plugin_currencies_Option_timed_reward_amount" "Timed Reward Amount"
+		"Plugin_currencies_Option_timed_reward_amount_Description" "Give free reward every X seconds. 0 or less disables the feature."
+		
+		"Plugin_currencies_Option_timed_reward_rate" "Timed Reward Rate"
+		"Plugin_currencies_Option_timed_reward_rate_Description" "The timing between rewards in seconds"
+		
+
+		"Plugin_currencies_Option_tower_kill_reward_currency" "Tower Kill Reward Type"
+		"Plugin_currencies_Option_tower_kill_reward_currency_Drop_red" "Red"
+		"Plugin_currencies_Option_tower_kill_reward_currency_Drop_green" "Green"
+		"Plugin_currencies_Option_tower_kill_reward_currency_Drop_blue" "Blue"
+		"Plugin_currencies_Option_tower_kill_reward_currency_Drop_purple" "Purple"
+		"Plugin_currencies_Option_tower_kill_reward_amount" "Tower Kill Reward Amount"
+		"Plugin_currencies_Option_tower_kill_reward_amount_Description" "Last hitting enemy observer ward grants currency. 0 or less disables the feature."
+		
+
+		"Plugin_currencies_Option_roshan_kill_reward_currency" "Roshan Kill Reward Type"
+		"Plugin_currencies_Option_roshan_kill_reward_currency_Drop_red" "Red"
+		"Plugin_currencies_Option_roshan_kill_reward_currency_Drop_green" "Green"
+		"Plugin_currencies_Option_roshan_kill_reward_currency_Drop_blue" "Blue"
+		"Plugin_currencies_Option_roshan_kill_reward_currency_Drop_purple" "Purple"
+		"Plugin_currencies_Option_roshan_kill_reward_amount" "Roshan Kill Reward Amount"
+		"Plugin_currencies_Option_roshan_kill_reward_amount_Description" "Last hitting enemy observer ward grants currency. 0 or less disables the feature."
+		
 
 		//Abilities
 

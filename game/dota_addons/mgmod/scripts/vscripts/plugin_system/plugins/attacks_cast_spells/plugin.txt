@@ -1,0 +1,10 @@
+"Plugins"
+{
+    "attacks_cast_spells" {
+        "MainClass" "AttacksCastSpellsPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+    }
+}
