@@ -4,7 +4,14 @@ var WindowRoot = $.GetContextPanel().FindChildInLayoutFile("WindowRoot");
 var PluginListInternalScroll = $.GetContextPanel().FindChildInLayoutFile("PluginListInternalScroll");
 var PluginSettingsBox = $.GetContextPanel().FindChildInLayoutFile("PluginSettingsBox");
 var SettingsSaveSlots = $.GetContextPanel().FindChildInLayoutFile("SettingsSaveSlots");
+var PluginListUnlockButtonText = $.GetContextPanel().FindChildInLayoutFile("PluginListUnlockButtonText");
+var PluginListUnlock = $.GetContextPanel().FindChildInLayoutFile("PluginListUnlock");
 var current_open = "";
+var mutator_presets = {};
+var forced_mode = {
+    "lock_level": -1,
+};
+
 
 var local_player = Game.GetLocalPlayerInfo();
 //index","player_selected_hero_entity_index":-1,"possible_hero_selection":"","player_level":0,"player_respawn_seconds":0,"player_gold":0,"player_networth":0,"player_team_id":5,"player_is_local":true,"player_has_host_privileges":true}
@@ -28,7 +35,13 @@ function CreateSettingsBlock(sPluginName,sPluginSettings)
             OpenPluginSettings(sPluginName);
         }
     );
-    
+    if (forced_mode != undefined && forced_mode.lock_level != undefined) {
+        if (forced_mode.lock_level > 0) {
+            if (forced_mode.unlocked[sPluginName] == undefined) {
+                PluginLabel.SetHasClass("setting_disabled",true);
+            }
+        }
+    }
 	if (undefined==sPluginSettings.Order) {
 		PluginLabel.SetAttributeInt("order",1000);
 	} else {
@@ -67,7 +80,25 @@ function OpenPluginSettings(sPluginName) {
     if (sPluginSettings.enabled.VALUE == 1) {
         PluginEnabled.SetSelected(true);
     }
-    PluginEnabled.enabled = bHost;
+    if (forced_mode != undefined && forced_mode.lock_level != undefined) {
+        if (forced_mode.lock_level > 0) {
+            if (forced_mode.unlocked[sPluginName] == undefined) {
+                PluginEnabled.SetHasClass("setting_disabled",true);
+                PluginEnabled.enabled = false;
+            } else {
+                if (forced_mode.unlocked[sPluginName].enabled == undefined) {
+                    PluginEnabled.SetHasClass("setting_disabled",true);
+                    PluginEnabled.enabled = false;
+                } else {
+                    PluginEnabled.enabled = bHost;
+                }
+            }
+        } else {
+            PluginEnabled.enabled = bHost;
+        }
+    } else {
+        PluginEnabled.enabled = bHost;
+    }
     PluginEnabled.SetPanelEvent(
         "onactivate", 
         function(){
@@ -100,6 +131,21 @@ function OpenPluginSettings(sPluginName) {
                 panel.SetAttributeInt("order",1000);
             } else {
                 panel.SetAttributeInt("order",sPluginSettings[key].Order);
+            }
+            if (forced_mode != undefined && forced_mode.lock_level != undefined) {
+                if (forced_mode.lock_level > 0) {
+                    if (forced_mode.unlocked[sPluginName] == undefined || forced_mode.unlocked[sPluginName][key] == undefined ) {
+                        panel.SetHasClass("setting_disabled",true);
+                        $.Msg(key)
+                        panel.enabled = false;
+                    } else {
+                        panel.enabled = bHost;
+                    }
+                } else {
+                    panel.enabled = bHost;
+                }
+            } else {
+                panel.enabled = bHost;
             }
         }
     }
@@ -462,7 +508,70 @@ function SlotsUpdate( table_name, slot_name, settings) {
     }
 }
 
+function fixtable(t) {
+    let nt = {};
+    for (const key in t) {
+        const element = t[key];
+        nt[element.key] = element.value;
+    }
+    return nt;
+}
+
+function forced_mode_update( table_name, key, value) {
+    forced_mode = value;
+    unlock_remote();
+}
+
+
+function unlock_local() {
+    GameEvents.SendCustomGameEventToServer("settings_vote_unlock",{});
+}
+
+function unlock_remote() {
+    let c = 0;
+    let t = "?";
+    const players_max = Players.GetMaxPlayers();
+    let d = 0;
+    for (let i = 0; i < players_max; i++) {
+        if (Players.IsValidPlayerID( i )) {
+            d++;
+        }
+    }
+    for (const key in forced_mode.votes) {
+        const element = forced_mode.votes[key];
+        c++;
+        t = t + "!";
+    }
+    if (c/d > (forced_mode.vote_treshold * 0.01)) {
+        forced_mode.lock_level = 0;
+        PluginListUnlock.SetHasClass("hidden",true);
+        let all = WindowRoot.FindChildrenWithClassTraverse("setting_disabled");
+        for (const key in all) {
+            all[key].SetHasClass("setting_disabled",false);
+            if (bHost) {
+                all[key].enabled = true;
+            }
+        }
+    } else {
+        PluginListUnlockButtonText.text = "Unlock" + t;
+        PluginListUnlockButtonText.SetHasClass("unlock_1",c == 1);
+        PluginListUnlockButtonText.SetHasClass("unlock_2",c == 2);
+        PluginListUnlockButtonText.SetHasClass("unlock_3",c == 3);
+        PluginListUnlockButtonText.SetHasClass("unlock_4",c == 4);
+        PluginListUnlockButtonText.SetHasClass("unlock_5",c == 5);
+        PluginListUnlockButtonText.SetHasClass("unlock_6",c == 6);
+        PluginListUnlockButtonText.SetHasClass("unlock_7",c == 7);
+        PluginListUnlockButtonText.SetHasClass("unlock_8",c == 8);
+        PluginListUnlockButtonText.SetHasClass("unlock_9",c == 9);
+    }
+}
+
 (function () {
+    mutator_presets = fixtable(CustomNetTables.GetAllTableValues( "mutator_presets" ));
+    forced_mode = CustomNetTables.GetTableValue( "forced_mode","initial" );
+    if (forced_mode == undefined) {
+        PluginListUnlock.SetHasClass("hidden",true);
+    }
     var sSettings = CustomNetTables.GetAllTableValues( "plugin_settings" );
     Cleanup();
     for (const key in sSettings) {
@@ -478,11 +587,14 @@ function SlotsUpdate( table_name, slot_name, settings) {
     var sSaveSlots = CustomNetTables.GetAllTableValues( "save_slots" );
     for (const key in sSaveSlots) {
         let iSlot = sSaveSlots[key].key.split("_").pop();
-        $.Msg(sSaveSlots[key].key);
-        $.Msg(iSlot);
         if (iSlot != undefined && !isNaN(Number(iSlot))) {
             ActivateSaveSlot(Number(iSlot),sSaveSlots[key].value);
         }
     }
     CustomNetTables.SubscribeNetTableListener( "save_slots" , SlotsUpdate );
+    CustomNetTables.SubscribeNetTableListener( "forced_mode" , forced_mode_update );
+
+    
+
+
 })();

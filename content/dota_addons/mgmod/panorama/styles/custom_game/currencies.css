@@ -1,12 +1,12 @@
 .hidden{visibility: collapse;}
 #WindowRoot {
 	flow-children: right;
+    horizontal-align: right;
 }
 
 .CurrencyRoot {
-	margin-top: 0px;
-
     horizontal-align: right;
+	flow-children: down;
 }
 
 
@@ -50,12 +50,19 @@
     background-color: rgb(138, 0, 0);
 }
 
+.currency_box_red:hover {
+    background-color: rgb(168, 0, 0);
+}
+
 .currency_green {
     background-image: url("file://{resources}/images/custom_game/currencies/green.png");
 }
 
 .currency_box_green {
     background-color: rgb(16, 138, 0);
+}
+.currency_box_green:hover {
+    background-color: rgb(21, 182, 0);
 }
 .currency_blue {
     background-image: url("file://{resources}/images/custom_game/currencies/blue.png");
@@ -64,12 +71,18 @@
 .currency_box_blue {
     background-color: rgb(0, 48, 138);
 }
+.currency_box_blue:hover {
+    background-color: rgb(0, 60, 172);
+}
 .currency_purple {
     background-image: url("file://{resources}/images/custom_game/currencies/purple.png");
 }
 
 .currency_box_purple {
     background-color: rgb(84, 0, 87);
+}
+.currency_box_purple:hover {
+    background-color: rgb(123, 0, 128);
 }
 .share_0 {
 	box-shadow: inset #fdfdfd 0px 0px 0.4px 0.4px;
@@ -79,4 +92,52 @@
 }
 .share_2 {
 	box-shadow: inset #ff7c7c 0px 0px 0.4px 0.4px;
+}
+
+.CurrencyActionBox {
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #7669c7 ), to( #6b4ccf ) );
+	flow-children: down;
+
+}
+.CurrencyActionBox:focus {
+	box-shadow: inset #ff7c7c 0px 0px 0.4px 0.4px;
+}
+.CurrencyAction {
+	flow-children: right;
+    margin: 0px;
+    padding: 5px 5px 0px 5px;
+}
+.CurrencyAction:hover {
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #564d8d ), to( #7353dd ) );
+}
+#CurrencyCost {
+    font-size: 15px;
+    color: white;
+
+}
+#CurrencyEarn {
+    font-size: 15px;
+    color: white;
+
+}
+#CurrencyGold {
+    height: 20px;
+    width: 20px;
+}
+.gold_cost {
+    font-size: 15px;
+    color: rgb(255, 251, 0);
+
+}
+
+#CurrencyExplain {
+    font-size: 15px;
+    color: white;
+
+}
+
+#CurrencyLabel {
+    height: 20px;
+    font-size: 15px;
+    color: white;
 }

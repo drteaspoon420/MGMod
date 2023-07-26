@@ -3,6 +3,8 @@
   custom_net_tables =
   [
     "plugin_settings",
+    "mutator_presets",
+    "forced_mode",
     
     "ability_registery",
     "item_registery",

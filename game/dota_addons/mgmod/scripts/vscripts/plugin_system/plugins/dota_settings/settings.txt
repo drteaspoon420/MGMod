@@ -152,8 +152,8 @@
         "OPTIONS" {
             "none" "0"
             "normal" "1"
-            "immune" "2"
-            "tenton" "3"
+            //"immune" "2"
+            //"tenton" "3"
         }
     }
     "allow_buyback"

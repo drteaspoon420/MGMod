@@ -1,0 +1,63 @@
+"plugin_settings"
+{
+    "Order" "878"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "interval" {
+        "Order" "1"
+        "TYPE" "number"
+        "DEFAULT" "60"
+    }
+    "hp_max" {
+        "Order" "2"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    "mp_max" {
+        "Order" "3"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    "str" {
+        "Order" "4"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    "agi" {
+        "Order" "5"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    "int" {
+        "Order" "6"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    "armor" {
+        "Order" "7"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    "magic_resist"  {
+        "Order" "8"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    "status_resist" {
+        "Order" "9"
+        "TYPE" "number"
+        "DEFAULT" "0.6"
+    }
+    "attack_speed"  {
+        "Order" "10"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    "attack_damage" {
+        "Order" "11"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+}

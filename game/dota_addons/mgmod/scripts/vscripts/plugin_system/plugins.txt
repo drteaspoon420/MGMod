@@ -7,23 +7,25 @@
 #base "plugins/time_limit_plugin/plugin.txt"
 
 #base "plugins/currencies/plugin.txt"
-#base "plugins/souls_plugin/plugin.txt"
+//#base "plugins/souls_plugin/plugin.txt"
 
 #base "plugins/hero_builder/plugin.txt"
 #base "plugins/item_spawner/plugin.txt"
 #base "plugins/unit_spawner/plugin.txt"
 #base "plugins/modifier_spawner/plugin.txt"
 #base "plugins/attacks_cast_spells/plugin.txt"
-#base "plugins/bsrpg/plugin.txt"
+//#base "plugins/bsrpg/plugin.txt"
 #base "plugins/zombies/plugin.txt"
 #base "plugins/mammonite/plugin.txt"
-#base "plugins/twisted_spells/plugin.txt"
+//#base "plugins/twisted_spells/plugin.txt"
 #base "plugins/xmas12/plugin.txt"
 #base "plugins/stonks/plugin.txt"
 #base "plugins/archive_pack_one/plugin.txt"
 
 #base "plugins/devstuff/plugin.txt"
 
+#base "plugins/boosted/plugin.txt"
+#base "plugins/time_scaling/plugin.txt"
 "Plugins"
 {
 }

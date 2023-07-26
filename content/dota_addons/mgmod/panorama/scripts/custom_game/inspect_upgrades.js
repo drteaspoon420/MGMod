@@ -113,7 +113,16 @@ function CreateToggleButton() {
         $.GetContextPanel().SetHasClass("hidden",true);
     } else {
         CreateToggleButton();
-        CustomNetTables.SubscribeNetTableListener("hero_upgrades",UpdateInspector);
+        CustomNetTables.SubscribeNetTableListener("player_upgrades_0",UpdateInspector);
+        CustomNetTables.SubscribeNetTableListener("player_upgrades_1",UpdateInspector);
+        CustomNetTables.SubscribeNetTableListener("player_upgrades_2",UpdateInspector);
+        CustomNetTables.SubscribeNetTableListener("player_upgrades_3",UpdateInspector);
+        CustomNetTables.SubscribeNetTableListener("player_upgrades_4",UpdateInspector);
+        CustomNetTables.SubscribeNetTableListener("player_upgrades_5",UpdateInspector);
+        CustomNetTables.SubscribeNetTableListener("player_upgrades_6",UpdateInspector);
+        CustomNetTables.SubscribeNetTableListener("player_upgrades_7",UpdateInspector);
+        CustomNetTables.SubscribeNetTableListener("player_upgrades_8",UpdateInspector);
+        CustomNetTables.SubscribeNetTableListener("player_upgrades_9",UpdateInspector);
     }
 })();
 

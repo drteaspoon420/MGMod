@@ -115,16 +115,16 @@ function UpgradeOptionNew(data) {
             } );
         }
         upgradePanel.FindChildTraverse( "OptionButtonPlus" ).SetPanelEvent( 'onactivate', function () {
-            pickoption( data.ability, data.key, 1, upgradePanel,data.rarity );
+            pickoption( data.id, 1, upgradePanel);
     
         } ); 
         upgradePanel.FindChildTraverse( "OptionButtonMinus" ).SetPanelEvent( 'onactivate', function () {
-            pickoption( data.ability, data.key, 0, upgradePanel,data.rarity );
+            pickoption( data.id, 0, upgradePanel);
         } );
 
         if (data.allow_ban) {
             upgradePanel.FindChildTraverse( "OptionButtonBan" ).SetPanelEvent( 'onactivate', function () {
-                pickoption( data.ability, data.key, 2, upgradePanel,data.rarity );
+                pickoption( data.id, 2, upgradePanel);
             } ); 
         } else {
             upgradePanel.FindChildTraverse( "OptionButtonBan" ).visible = false;
@@ -154,7 +154,7 @@ function UpgradeOptionsNew(table,tableKey,data) {
         } );
     }
 }
-function pickoption(ability,key,plus,panel,rarity) {
+function pickoption(id,plus,panel) {
     current_choises = current_choises - 1;
     var pls_b = plus;
     Upgrades.RemoveAndDeleteChildren();
@@ -164,9 +164,7 @@ function pickoption(ability,key,plus,panel,rarity) {
             sending = false;
             GameEvents.SendCustomGameEventToServer( "upgrade_hero", {
                 plus: pls_b,
-                ability: ability,
-                key: key,
-                rarity: rarity
+                id: id
             })});
     }
 }

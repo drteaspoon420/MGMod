@@ -5,4 +5,94 @@
         "TYPE" "boolean"
         "DEFAULT" "0"
     }
+    "UPGRADE_RATE"
+    {
+        "Order" "2"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "50"
+    }
+    "DOWNGRADE_RATE"
+    {
+        "Order" "4"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "15"
+    }
+    "RARE_MULTIPLIER"
+    {
+        "Order" "8"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "150"
+    }
+    "ULTRA_MULTIPLIER"
+    {
+        "Order" "10"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "200"
+    }
+    "custom_list" {
+        "Order" "14"
+        "TYPE" "text"
+        "DEFAULT" ""
+    }
+    "cost" {
+        "Order" "16"
+        "TYPE" "number"
+        "DEFAULT" "100"
+    }
+    "currency"
+    {
+        "Order" "18"
+        "TYPE" "dropdown"
+        "DEFAULT" "red"
+        "OPTIONS" {
+            "red" "red"
+            "green" "green"
+            "blue" "blue"
+            "purple" "purple"
+        }
+    }
+    "kv_bans" {
+        "Order" "20"
+        "TYPE" "number"
+        "DEFAULT" "5"
+    }
+    "only_slot"
+    {
+        "Order"     "22"
+        "TYPE" "dropdown"
+        "DEFAULT" "any"
+        "OPTIONS" {
+            "any" "any"
+            "q" "q"
+            "w" "w"
+            "e" "e"
+            "d" "d"
+            "f" "f"
+            "r" "r"
+        }
+    }
+    "MAX_MULTIPLIER"
+    {
+        "Order" "25"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "10000"
+    }
+    "MIN_MULTIPLIER"
+    {
+        "Order" "26"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "4"
+    }
+    
+    "no_nerf_list" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    
 }

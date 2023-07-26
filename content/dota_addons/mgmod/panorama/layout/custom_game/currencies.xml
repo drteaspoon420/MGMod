@@ -14,8 +14,21 @@
 		</snippet>
 		<snippet name="CurrencyAction">
 			<Button class="CurrencyAction">
+                <Label id="CurrencyLabel" text="69"/>
                 <Label id="CurrencyCost" text="69"/>
             </Button>
+		</snippet>
+		<snippet name="CurrencyEarnAction">
+			<Button class="CurrencyAction">
+				<Image id="CurrencyGold" src="file://{resources}/images/custom_game/currencies/gold.png" />
+                <Label id="CurrencyCost" class="gold_cost" text="69"/>
+                <Label id="CurrencyExplain" text="to"/>
+                <Label id="CurrencyEarn" text="69"/>
+            </Button>
+		</snippet>
+		<snippet name="CurrencyActionBox">
+			<Panel class="CurrencyActionBox">
+			</Panel>
 		</snippet>
     </snippets>
 

@@ -89,16 +89,21 @@ function ClientSideExtraInventory(entityIndex,inventorySlot) {
     let ability = Entities.GetItemInSlot( entityIndex, inventorySlot );
     let name = Abilities.GetAbilityName( ability );
     let team = Entities.GetTeamNumber( entityIndex );
-    let kvstuff = CustomNetTables.GetTableValue( "hero_upgrades", name );
+    let iOwner = Entities.GetPlayerOwnerID(entityIndex);
+    if (iOwner < 0) {
+        return null
+    }
+    let kvstuff = CustomNetTables.GetTableValue( "player_upgrades_" + iOwner, name );
     let boosts = [];
     if (kvstuff) {
+        $.Msg(kvstuff);
         for(var slot in kvstuff){
-            if (kvstuff[slot][team] ) {
+            if (kvstuff[slot] ) {
                 boosts.push(
                     {
                         "ability": name,
                         "key": slot,
-                        "value": kvstuff[slot][team],
+                        "value": kvstuff[slot],
                     });
             }
         }
@@ -109,16 +114,21 @@ function ClientSideExtraInventory(entityIndex,inventorySlot) {
 
 function ClientSideExtraShop(name,entityIndex) {
     let team = Entities.GetTeamNumber( entityIndex );
-    let kvstuff = CustomNetTables.GetTableValue( "hero_upgrades", name );
+    let iOwner = Entities.GetPlayerOwnerID(entityIndex);
+    let kvstuff = CustomNetTables.GetTableValue( "player_upgrades_" + iOwner, name );
     let boosts = [];
+    if (iOwner < 0) {
+        return null
+    }
     if (kvstuff) {
+        $.Msg(kvstuff);
         for(var slot in kvstuff){
-            if (kvstuff[slot][team] ) {
+            if (kvstuff[slot] ) {
                 boosts.push(
                     {
                         "ability": name,
                         "key": slot,
-                        "value": kvstuff[slot][team],
+                        "value": kvstuff[slot],
                     });
             }
         }
@@ -131,6 +141,7 @@ function CreateExtraTooltip(eventData){
 	var DOTAtooltipContent = mainHud.FindChildTraverse("Tooltips").FindChildTraverse("DOTAAbilityTooltip");
     //DebugTree(DOTAtooltipContent);
     //Explore(DOTAtooltipContent,"AbilityUpgradeProgress");
+    if (DOTAtooltipContent == undefined) return;
 	var tooltipContent = DOTAtooltipContent.FindChildTraverse("AbilityCoreDetails");
 	var descriptions = tooltipContent.FindChildTraverse("AbilityLore");
     tooltipContent.AddClass("hidden");

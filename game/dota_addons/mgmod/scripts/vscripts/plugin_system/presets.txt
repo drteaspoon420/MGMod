@@ -1,55 +1,44 @@
 "presets"
 {
-    "mutator_attacks_cast_spells" // attacks cast spells with default settings
+    "mutator_boosted" //
     {
         "ID" "1"
         "settings"
         {
-            "attacks_cast_spells"
-            {
-                "enabled" "1"
-            }
-        }
-        "overlap_tags" "atck"
-    }
-    "mutator_damage_cast_spells" // attacks cast spells with 'damage casts spells' enabled
-    {
-        "ID" "1"
-        "settings"
-        {
-            "attacks_cast_spells"
-            {
-                "enabled" "1"
-                "ACSP_PROC_MODE" "1"
-            }
-        }
-        "overlap_tags" "atck"
-    }
-    "mutator_stonks" // stonks with default settings
-    {
-        "ID" "1"
-        "settings"
-        {
-            "stonks"
-            {
-                "enabled" "1"
-            }
-        }
-    }
-    "mutator_legends_of_dota" // ability sandbox with limiting to 6 ability slots and pregame editing only. also increasing pregame time to 10 minutes
-    {
-        "ID" "1"
-        "settings"
-        {
-            "hero_builder"
-            {
-                "enabled" "1"
-            }
             "dota_settings"
             {
-                "pregame_time" "600"
+                "hero_banning" "1"
+                "pick_mode" "singledraft"
+                "univeral_Shop" "1"
+                "xp_gain_percent" "150"
+                "gold_gain_percent" "150"
+                "agh_shard_time" "10"
+            }
+            "boosted"
+            {
+                "enabled" "1"
+            }
+            "currencies"
+            {
+                "enabled" "1"
+                "observer_plant_reward_amount" "50"
+                "timed_reward_amount" "100"
+                "timed_reward_rate" "60"
+                "unit_kill_reward_amount" "1"
+                "hero_kill_reward_amount" "25"
+                "observer_kill_reward_amount" "25"
+                "tower_kill_reward_amount" "100"
+                "roshan_kill_reward_amount" "200"
+                "red_state" "team"
+                "red_gold_buy" "50"
+            }
+            "time_scaling"
+            {
+                "enabled" "1"
+                "hp_max" "75"
+                "status_resist" "0.6"
             }
         }
-        "overlap_tags" "atck"
+        "overlap_tags" "kvoverride"
     }
 }

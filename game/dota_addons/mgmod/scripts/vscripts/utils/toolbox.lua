@@ -179,4 +179,11 @@ function Toolbox:table_contains(table, element)
 end
 
 
+function Toolbox:IsEmpty(t)
+    if not next(t) then
+        return true
+    end
+    return false
+end
+
 if not Toolbox.data then Toolbox:Init() end

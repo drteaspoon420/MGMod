@@ -1,6 +1,7 @@
 .WindowRoot {
 	margin-top: 50px;
 	max-height: 700px;
+	flow-children: down;
 }
 
 #WindowRoot {
@@ -160,4 +161,71 @@
 }
 .slot_selected {
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #4a408d ), to( #482e9e ) );
+}
+
+.setting_disabled {
+	color: rgb(15, 15, 15);
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #140000 ), to( #350000 ) );
+}
+
+#PluginListUnlock {
+	margin-left: 70px;
+
+}
+#PluginListUnlockButton {
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #4a408d ), to( #482e9e ) );
+	padding: 4px;
+	border-radius: 10px 10px 0px 0px;
+}
+#PluginListUnlockButton:hover {
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #7669c7 ), to( #6b4ccf ) );
+}
+
+#PluginListUnlockButtonText {
+	color: rgb(255, 255, 255);
+	font-weight: bold;
+	font-size: 15px;
+
+}
+
+.unlock_1 {
+	color: rgb(255, 255, 255);
+	font-weight: bold;
+	font-size: 21px;
+}
+.unlock_2 {
+	font-size: 22px;
+	
+}
+.unlock_3 {
+	font-size: 23px;
+	
+}
+.unlock_4 {
+	font-size: 24px;
+	
+}
+.unlock_5 {
+	font-size: 25px;
+	
+}
+.unlock_6 {
+	font-size: 26px;
+	
+}
+.unlock_7 {
+	font-size: 27px;
+	
+}
+.unlock_8 {
+	font-size: 28px;
+	
+}
+.unlock_9 {
+	font-size: 29px;
+	
+}
+.hidden
+{
+	visibility: collapse;
 }
