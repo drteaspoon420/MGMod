@@ -1,0 +1,10 @@
+"Plugins"
+{
+    "tower_buffs" {
+        "MainClass" "TowerBuffsPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+    }
+}

@@ -52,6 +52,9 @@ function modifier_boosted:GetModifierOverrideAbilitySpecial( params )
 	local szAbilityName = params.ability:GetAbilityName()
 	local szSpecialValueName = params.ability_special_value
 	local k = szAbilityName .. "|" .. szSpecialValueName
+--[[ 	if IsInToolsMode() then
+		print(k)
+	end ]]
 	if self.boost[k] == nil then return 0 end
 	if self.boost[k] == 1 then return 0 end
 	return 1

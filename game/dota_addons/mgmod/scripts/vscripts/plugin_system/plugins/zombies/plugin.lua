@@ -8,14 +8,18 @@ function ZombiesPlugin:Init()
 end
 
 function ZombiesPlugin:ApplySettings()
+    ZombiesPlugin.settings = PluginSystem:GetAllSetting("zombies")
     LinkLuaModifier( "modifier_zombie_power", "plugin_system/plugins/zombies/modifier_zombie_power", LUA_MODIFIER_MOTION_NONE )
-    ZombiesPlugin.power = 0
-    ZombiesPlugin.units = 3
+    ZombiesPlugin.power = ZombiesPlugin.settings.initial_power
+    if (ZombiesPlugin.power < 0) then ZombiesPlugin.power = 0 end
+    ZombiesPlugin.wave_treshold = ZombiesPlugin.settings.wave_treshold
+    if (ZombiesPlugin.wave_treshold < 1) then ZombiesPlugin.wave_treshold = 1 end
+    if (ZombiesPlugin.settings.max_zombies < 1) then ZombiesPlugin.settings.max_zombies = 1 end
+    if (ZombiesPlugin.settings.zombies_per_spawn < 1) then ZombiesPlugin.settings.zombies_per_spawn = 1 end
+    if (ZombiesPlugin.settings.spawn_rate < 1) then ZombiesPlugin.settings.spawn_rate = 1 end
+    if (ZombiesPlugin.settings.boss_multiplier < 1) then ZombiesPlugin.settings.boss_multiplier = 1 end
     ZombiesPlugin.count = 0
-    ZombiesPlugin.max = 50
-    ZombiesPlugin.rate = 10
-    ZombiesPlugin.wave = 1
-    ZombiesPlugin.boss_multiplier = 2
+    ZombiesPlugin.wave = 0
     Timers:CreateTimer(0,function()
         return ZombiesPlugin:SpawnZombies()
     end)
@@ -26,7 +30,7 @@ function ZombiesPlugin:SpawnZombies()
     local vPos = self:FindRandomPosition(hTarget:GetAbsOrigin())
     local sUnitName = "npc_dota_zombies_basic_"
     local iii = (ZombiesPlugin.wave % 12) + 1
-    local iUnitCount = math.min(ZombiesPlugin.max-ZombiesPlugin.count,ZombiesPlugin.units)
+    local iUnitCount = math.min(ZombiesPlugin.settings.max_zombies-ZombiesPlugin.count,ZombiesPlugin.settings.zombies_per_spawn)
     if iUnitCount > 0 then
         for i=1,iUnitCount do
         CreateUnitByNameAsync(sUnitName .. iii,vPos, false, nil, nil, DOTA_TEAM_NEUTRALS,
@@ -62,8 +66,8 @@ function ZombiesPlugin:SpawnZombies()
     end
 
     ZombiesPlugin.wave = ZombiesPlugin.wave + 1
-    if (ZombiesPlugin.wave % 10 == 0) then ZombiesPlugin.power = ZombiesPlugin.power + 1 end
-    return ZombiesPlugin.rate
+    if (ZombiesPlugin.wave % ZombiesPlugin.wave_treshold == 0) then ZombiesPlugin.power = ZombiesPlugin.power + 1 end
+    return ZombiesPlugin.settings.spawn_rate
 end
 
 
@@ -117,7 +121,7 @@ function ZombiesPlugin:CombineZombies()
             small:Kill(nil,big)
         end
         local hModBig = big:FindModifierByName("modifier_zombie_power")
-        hModBig:SetStackCount((hModBig:GetStackCount() + c)*ZombiesPlugin.boss_multiplier)
+        hModBig:SetStackCount((hModBig:GetStackCount() + c)*ZombiesPlugin.settings.boss_multiplier)
         big:CalculateGenericBonuses()
     end
 end

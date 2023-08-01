@@ -81,13 +81,7 @@ function DotaSettingsPlugin:ApplySettings()
 	--GameRules:GetGameModeEntity():SetRespawnTimeScale(DotaSettingsPlugin.settings.death_time_percent * 0.01)
     
     local sBackDoorProtection = DotaSettingsPlugin.settings.backdoor_protection
-    if sBackDoorProtection == "none" then
-        GameRules:GetGameModeEntity():SetTowerBackdoorProtectionEnabled(false)
-    elseif sBackDoorProtection == "immunity" then
-    elseif sBackDoorProtection == "tenton" then
-    else
-        GameRules:GetGameModeEntity():SetTowerBackdoorProtectionEnabled(true)
-    end
+    GameRules:GetGameModeEntity():SetTowerBackdoorProtectionEnabled(DotaSettingsPlugin.settings.backdoor_protection)
 
     
 	GameRules:GetGameModeEntity():SetBuybackEnabled(DotaSettingsPlugin.settings.allow_buyback)

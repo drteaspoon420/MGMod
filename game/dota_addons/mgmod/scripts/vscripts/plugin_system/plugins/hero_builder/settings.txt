@@ -5,11 +5,11 @@
         "TYPE" "boolean"
         "DEFAULT" "0"
     }
-    "limited_mode" {
-        "Order" "0"
-        "TYPE" "boolean"
-        "DEFAULT" "1"
-    }
+//    "limited_mode" {
+//        "Order" "0"
+//        "TYPE" "boolean"
+//        "DEFAULT" "1"
+//    }
     "dota_abilities" {
         "Order" "1"
         "TYPE" "boolean"
@@ -20,11 +20,11 @@
         "TYPE" "boolean"
         "DEFAULT" "0"
     }
-    "host_only" {
-        "Order" "6"
-        "TYPE" "boolean"
-        "DEFAULT" "0"
-    }
+//    "host_only" {
+//        "Order" "6"
+//        "TYPE" "boolean"
+//        "DEFAULT" "0"
+//    }
     "host_bans" {
         "Order" "7"
         "TYPE" "boolean"

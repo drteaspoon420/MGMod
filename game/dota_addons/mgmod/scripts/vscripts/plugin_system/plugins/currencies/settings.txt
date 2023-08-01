@@ -1,0 +1,284 @@
+"plugin_settings"
+{
+    "Order" "50"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "red_state"
+    {
+        "Order" "10"
+        "TYPE" "dropdown"
+        "DEFAULT" "solo"
+        "OPTIONS" {
+            "none" "none"
+            "solo" "solo"
+            "team" "team"
+            "all" "all"
+        }
+    }
+    "red_gold_buy"
+    {
+        "Order" "11"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    "green_state"
+    {
+        "Order" "20"
+        "TYPE" "dropdown"
+        "DEFAULT" "none"
+        "OPTIONS" {
+            "none" "none"
+            "solo" "solo"
+            "team" "team"
+            "all" "all"
+        }
+    }
+    "green_gold_buy"
+    {
+        "Order" "21"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    "blue_state"
+    {
+        "Order" "30"
+        "TYPE" "dropdown"
+        "DEFAULT" "none"
+        "OPTIONS" {
+            "none" "none"
+            "solo" "solo"
+            "team" "team"
+            "all" "all"
+        }
+    }
+    "blue_gold_buy"
+    {
+        "Order" "31"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    "purple_state"
+    {
+        "Order" "40"
+        "TYPE" "dropdown"
+        "DEFAULT" "none"
+        "OPTIONS" {
+            "none" "none"
+            "solo" "solo"
+            "team" "team"
+            "all" "all"
+        }
+    }
+    "purple_gold_buy"
+    {
+        "Order" "41"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+
+    ///rewards
+    
+    "unit_kill_reward_currency"
+    {
+        "Order" "50"
+        "TYPE" "dropdown"
+        "DEFAULT" "red"
+        "OPTIONS" {
+            "red" "red"
+            "green" "green"
+            "blue" "blue"
+            "purple" "purple"
+        }
+    }
+    "unit_kill_reward_amount"
+    {
+        "Order" "51"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    
+    "hero_kill_reward_currency"
+    {
+        "Order" "52"
+        "TYPE" "dropdown"
+        "DEFAULT" "red"
+        "OPTIONS" {
+            "red" "red"
+            "green" "green"
+            "blue" "blue"
+            "purple" "purple"
+        }
+    }
+    "hero_kill_reward_amount"
+    {
+        "Order" "53"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    
+    "observer_kill_reward_currency"
+    {
+        "Order" "54"
+        "TYPE" "dropdown"
+        "DEFAULT" "red"
+        "OPTIONS" {
+            "red" "red"
+            "green" "green"
+            "blue" "blue"
+            "purple" "purple"
+        }
+    }
+    "observer_kill_reward_amount"
+    {
+        "Order" "55"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    
+    "observer_plant_reward_currency"
+    {
+        "Order" "56"
+        "TYPE" "dropdown"
+        "DEFAULT" "red"
+        "OPTIONS" {
+            "red" "red"
+            "green" "green"
+            "blue" "blue"
+            "purple" "purple"
+        }
+    }
+    "observer_plant_reward_amount"
+    {
+        "Order" "57"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    
+    "timed_reward_currency"
+    {
+        "Order" "58"
+        "TYPE" "dropdown"
+        "DEFAULT" "red"
+        "OPTIONS" {
+            "red" "red"
+            "green" "green"
+            "blue" "blue"
+            "purple" "purple"
+        }
+    }
+    "timed_reward_amount"
+    {
+        "Order" "59"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    "timed_reward_rate"
+    {
+        "Order" "60"
+        "TYPE" "number"
+        "DEFAULT" "60"
+    }
+    
+    "tower_kill_reward_currency"
+    {
+        "Order" "61"
+        "TYPE" "dropdown"
+        "DEFAULT" "red"
+        "OPTIONS" {
+            "red" "red"
+            "green" "green"
+            "blue" "blue"
+            "purple" "purple"
+        }
+    }
+
+    "tower_kill_reward_amount"
+    {
+        "Order" "62"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+
+    "roshan_kill_reward_currency"
+    {
+        "Order" "63"
+        "TYPE" "dropdown"
+        "DEFAULT" "red"
+        "OPTIONS" {
+            "red" "red"
+            "green" "green"
+            "blue" "blue"
+            "purple" "purple"
+        }
+    }
+
+    "roshan_kill_reward_amount"
+    {
+        "Order" "64"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    
+    "lamp_capture_reward_currency"
+    {
+        "Order" "73"
+        "TYPE" "dropdown"
+        "DEFAULT" "red"
+        "OPTIONS" {
+            "red" "red"
+            "green" "green"
+            "blue" "blue"
+            "purple" "purple"
+        }
+    }
+
+    "lamp_capture_reward_amount"
+    {
+        "Order" "74"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    
+    "outpost_capture_reward_currency"
+    {
+        "Order" "83"
+        "TYPE" "dropdown"
+        "DEFAULT" "red"
+        "OPTIONS" {
+            "red" "red"
+            "green" "green"
+            "blue" "blue"
+            "purple" "purple"
+        }
+    }
+
+    "outpost_capture_reward_amount"
+    {
+        "Order" "84"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    
+
+    "tormentor_kill_reward_currency"
+    {
+        "Order" "93"
+        "TYPE" "dropdown"
+        "DEFAULT" "red"
+        "OPTIONS" {
+            "red" "red"
+            "green" "green"
+            "blue" "blue"
+            "purple" "purple"
+        }
+    }
+
+    "tormentor_kill_reward_amount"
+    {
+        "Order" "94"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+}

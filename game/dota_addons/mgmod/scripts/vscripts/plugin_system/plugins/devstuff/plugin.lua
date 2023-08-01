@@ -76,9 +76,9 @@ end
 
 
 function DevStuffPlugin:ShortCutMods(tArgs,bTeam,iPlayer)
-	local hero = iPlayer and PlayerResource:GetSelectedHeroEntity(iPlayer)
-    if (hero) then
-        for m,mod in pairs(hero:FindAllModifiers()) do
+	local hUnit = Entities:GetLocalPlayerController() and Entities:GetLocalPlayerController():GetQueryUnit()
+    if (hUnit) then
+        for m,mod in pairs(hUnit:FindAllModifiers()) do
             local hAbility = mod:GetAbility()
             if hAbility ~= nil then
                 print("Modifier:",mod:GetName()," of ", hAbility:GetAbilityName())

@@ -7,19 +7,18 @@
 		"DOTA_Tooltip_Ability_special_bonus_generic_talent"		"No Talent"
 		"DOTA_Tooltip_Ability_special_bonus_generic_talent_Description"		"You are pretty untalented."
 
-
-		// // Plugins
+		"PluginListUnlockButtonText" "Vote to unlock options"
 		//Dota Plugin
 		"Plugin_dota_settings" "Dota"
 		"Plugin_dota_settings_Option_courier_enabled" "Courier"
 		"Plugin_dota_settings_Option_univeral_Shop" "Universal Shop"
 		"Plugin_dota_settings_Option_single_buyback" "Single Buyback"
-		"Plugin_dota_settings_Option_gold_gain_percent" "Gold Gain %"
-		"Plugin_dota_settings_Option_xp_gain_percent" "XP Gain %"
-		"Plugin_dota_settings_Option_death_time_percent" "Respawn Time %"
+		"Plugin_dota_settings_Option_gold_gain_percent" "Gold Gain"
+		"Plugin_dota_settings_Option_xp_gain_percent" "XP Gain"
+		"Plugin_dota_settings_Option_death_time_percent" "Respawn Time"
 		"Plugin_dota_settings_Option_hero_banning" "Hero Bans"
 		"Plugin_dota_settings_Option_courier_turbo" "Turbo Courier"
-		"Plugin_dota_settings_Option_courier_speed" "Courier Speed %"
+		"Plugin_dota_settings_Option_courier_speed" "Courier Speed"
 		"Plugin_dota_settings_Option_max_level" "Max Level"
 		"Plugin_dota_settings_Option_agh_shard_time" "Minutes to Agh's Shard"
 
@@ -35,11 +34,7 @@
 		"Plugin_dota_settings_Option_xp_rune_spawn_interval" "XP Rune Spawn Interval"
 
 		"Plugin_dota_settings_Option_backdoor_protection" "Backdoor Protection"
-		"Plugin_dota_settings_Option_backdoor_protection_Drop_normal" "Normal"
-		"Plugin_dota_settings_Option_backdoor_protection_Drop_none" "None"
-		"Plugin_dota_settings_Option_backdoor_protection_Drop_tenton" "10k"
-		"Plugin_dota_settings_Option_backdoor_protection_Drop_immune" "Immune"
-
+		
 		"Plugin_dota_settings_Option_pick_mode" "Pick Mode"
 		"Plugin_dota_settings_Option_pick_mode_Drop_allpick" "All Pick"
 		"Plugin_dota_settings_Option_pick_mode_Drop_allrandom" "All Random"
@@ -48,7 +43,7 @@
 		
 
 		"Plugin_dota_settings_Option_allow_buyback" "Allow Buyback"
-		"Plugin_dota_settings_Option_backback_cooldown" "Backback Cooldown %"
+		"Plugin_dota_settings_Option_backback_cooldown" "Backbag Cooldown"
 		"Plugin_dota_settings_Option_force_hero" "Forced Hero"
 		"Plugin_dota_settings_Option_day_night_rate" "Day Night Cycle"
 		"Plugin_dota_settings_Option_gold_per_tick" "Gold Per Tick"
@@ -57,7 +52,6 @@
 		"Plugin_dota_settings_Option_allow_samehero" "Allow Same Hero"
 		"Plugin_dota_settings_Option_tree_grow_time" "Tree Regrow Time"
 		"Plugin_dota_settings_Option_allow_respawn" "Allow Respawn"
-
 		//Bots Plugin
 		"Plugin_bots_plugin" "Bots"
 		"Plugin_bots_plugin_Option_pre_random" "Bots Pick Early"
@@ -161,7 +155,7 @@
 		"Plugin_kill_limit_plugin"	"Kill Limit"
 		"Plugin_kill_limit_plugin_Option_kill_limit"	"Kill Limit"
 		"Plugin_time_limit_plugin"	"Time Limit"
-		"Plugin_time_limit_plugin_Option_time_limit"	"Time Limit (minutes)"
+		"Plugin_time_limit_plugin_Option_time_limit"	"Time Limit"
 		
 
 		//Hackerman
@@ -221,6 +215,15 @@
 		"Plugin_delete_dota_Option_delete_fountain"	"Delete Fountains"
 		"Plugin_delete_dota_Option_thanos_snap"	"Allow -thanos #"
 
+		//Tower Buffs
+		"Plugin_tower_buffs" "Tower Buffs"
+		"Plugin_tower_buffs_Option_backdoor_immunity"	"Backdoor Immunity"
+		"Plugin_tower_buffs_Option_bonus_hp"	"Bonus Health"
+		"Plugin_tower_buffs_Option_bonus_hp_regen"	"Bonus Health Regen"
+		"Plugin_tower_buffs_Option_bonus_damage"	"Bonus Damage"
+		"Plugin_tower_buffs_Option_bonus_armor"	"Bonus Armor"
+		"Plugin_tower_buffs_Option_bonus_magic_resistance"	"Bonus Magic Resistance"
+		"Plugin_tower_buffs_Option_unyielding_shield"	"Unyielding Shield"
 
 
 
@@ -230,10 +233,23 @@
 
 
 
+
+		"Plugin_basic_commands" "Basic Chat Commands"
+		"Plugin_basic_commands_Option_min_diff" "Minimum kills behind for -gg"
 
 
 		//Zombies
 		"Plugin_zombies" "Zombies"
+		"Plugin_zombies_Option_initial_power" "Initial Power"
+		"Plugin_zombies_Option_wave_treshold" "Waves To Power Increase"
+		"Plugin_zombies_Option_power_increase" "Power Increase"
+		"Plugin_zombies_Option_spawn_rate" "Wave Interval"
+		"Plugin_zombies_Option_zombies_per_spawn" "Zombies Per Wave"
+		"Plugin_zombies_Option_max_zombies" "Max Zombies"
+		"Plugin_zombies_Option_max_zombies_Description" "If wave spawns while maximum number of zombies exist, they all combine to one big boss zombie."
+		"Plugin_zombies_Option_boss_multiplier" "Boss Multiplier"
+		"Plugin_zombies_Option_boss_multiplier_Description" "When zombies combine, their power stacks are added together and then multiplied by this value."
+
 		///Units
 		"npc_dota_zombies_basic_1" "Zombie"
 		"npc_dota_zombies_basic_2" "Zombie"
@@ -383,6 +399,180 @@
 		"Dota_Tooltip_stonks_bdv_Description" "BDV Stock Increases owner Bonus Day Vision"
 		"Dota_Tooltip_stonks_exp_Description" "EXP Stock Increases owner Experience Rate"
 		"Dota_Tooltip_stonks_src_Description" "SRC Stock Increases owner Spell Reflect Chance"
+
+		//Boosted
+		"Plugin_boosted" "Boosted"
+		"Plugin_boosted_Option_UPGRADE_RATE" "Upgrade Rate"
+		"Plugin_boosted_Option_DOWNGRADE_RATE" "Downgrade Rate"
+		"Plugin_boosted_Option_RARE_MULTIPLIER" "Rare"
+		"Plugin_boosted_Option_ULTRA_MULTIPLIER" "Epic"
+		"Plugin_boosted_Option_custom_list" "Custom List Url"
+		"Plugin_boosted_Option_cost" "Cost"
+		"Plugin_boosted_Option_currency" "Currency"
+		"Plugin_boosted_Option_currency_Drop_red" "Red"
+		"Plugin_boosted_Option_currency_Drop_green" "Green"
+		"Plugin_boosted_Option_currency_Drop_blue" "Blue"
+		"Plugin_boosted_Option_currency_Drop_purple" "Purple"
+		"Plugin_boosted_Option_kv_bans" "Deletions"
+		"Plugin_boosted_Option_only_slot" "Abilty Slot"
+		"Plugin_boosted_Option_only_slot_Drop_any" "Any"
+		"Plugin_boosted_Option_only_slot_Drop_q" "Q"
+		"Plugin_boosted_Option_only_slot_Drop_w" "W"
+		"Plugin_boosted_Option_only_slot_Drop_e" "E"
+		"Plugin_boosted_Option_only_slot_Drop_d" "D"
+		"Plugin_boosted_Option_only_slot_Drop_f" "F"
+		"Plugin_boosted_Option_only_slot_Drop_r" "R"
+		"Plugin_boosted_Option_no_nerf_list" "No Nerfs"
+		"Plugin_boosted_Option_MAX_MULTIPLIER" "Max Upgrade"
+		"Plugin_boosted_Option_MIN_MULTIPLIER" "Max Downgrade"
+
+		"Plugin_boosted_Option_upgrade_count" "Minimum Upgrade Options"
+		"Plugin_boosted_Option_kv_count_bonus" "Bonus Upgrade Options Per KV"
+		"Plugin_boosted_Option_rare_chance" "Rare Chance"
+		"Plugin_boosted_Option_ultra_chance" "Epic Chance"
+		"Plugin_boosted_Option_upgrade_normal_items" "Allow Normal Item Upgrades"
+		"Plugin_boosted_Option_upgrade_neutral_items" "Allow Neutral Item Upgrades"
+
+		//Time scaling
+		"Plugin_time_scaling" "Hero Auto Growth"
+		"Plugin_time_scaling_Option_interval" "Interval"
+		"Plugin_time_scaling_Option_hp_max" "Health"
+		"Plugin_time_scaling_Option_mp_max" "Mana"
+		"Plugin_time_scaling_Option_str" "Strength"
+		"Plugin_time_scaling_Option_agi" "Agility"
+		"Plugin_time_scaling_Option_int" "Inteligence"
+		"Plugin_time_scaling_Option_armor" "Armor"
+		"Plugin_time_scaling_Option_magic_resist" "Magic Resistance"
+		"Plugin_time_scaling_Option_status_resist" "Status Resistance"
+		"Plugin_time_scaling_Option_attack_speed" "Attack Speed"
+		"Plugin_time_scaling_Option_attack_damage" "Attack Damage"
+
+		//Currencies
+		"Plugin_currencies" "Currencies"
+		
+		"Plugin_currencies_Option_red_state" "Red Currency"
+		"Plugin_currencies_Option_red_state_Drop_none" "Disabled"
+		"Plugin_currencies_Option_red_state_Drop_solo" "Personal"
+		"Plugin_currencies_Option_red_state_Drop_team" "Team"
+		"Plugin_currencies_Option_red_state_Drop_all" "Global"
+		"Plugin_currencies_Option_red_gold_buy" "Gold Conversion"
+		"Plugin_currencies_Option_red_gold_buy_Description" "Let player convert gold into this currency at this cost. 0 or less disables the feature."
+		
+		"Plugin_currencies_Option_green_state" "Green Currency"
+		"Plugin_currencies_Option_green_state_Drop_none" "Disabled"
+		"Plugin_currencies_Option_green_state_Drop_solo" "Personal"
+		"Plugin_currencies_Option_green_state_Drop_team" "Team"
+		"Plugin_currencies_Option_green_state_Drop_all" "Global"
+		"Plugin_currencies_Option_green_gold_buy" "Gold Conversion"
+		"Plugin_currencies_Option_green_gold_buy_Description" "Let player convert gold into this currency at this cost. 0 or less disables the feature."
+		
+		"Plugin_currencies_Option_blue_state" "Blue Currency"
+		"Plugin_currencies_Option_blue_state_Drop_none" "Disabled"
+		"Plugin_currencies_Option_blue_state_Drop_solo" "Personal"
+		"Plugin_currencies_Option_blue_state_Drop_team" "Team"
+		"Plugin_currencies_Option_blue_state_Drop_all" "Global"
+		"Plugin_currencies_Option_blue_gold_buy" "Gold Conversion"
+		"Plugin_currencies_Option_blue_gold_buy_Description" "Let player convert gold into this currency at this cost. 0 or less disables the feature."
+		
+		"Plugin_currencies_Option_purple_state" "Purple Currency"
+		"Plugin_currencies_Option_purple_state_Drop_none" "Disabled"
+		"Plugin_currencies_Option_purple_state_Drop_solo" "Personal"
+		"Plugin_currencies_Option_purple_state_Drop_team" "Team"
+		"Plugin_currencies_Option_purple_state_Drop_all" "Global"
+		"Plugin_currencies_Option_purple_gold_buy" "Gold Conversion"
+		"Plugin_currencies_Option_purple_gold_buy_Description" "Let player convert gold into this currency at this cost. 0 or less disables the feature."
+		
+
+		"Plugin_currencies_Option_unit_kill_reward_currency" "Unit Kill Reward Type"
+		"Plugin_currencies_Option_unit_kill_reward_currency_Drop_red" "Red"
+		"Plugin_currencies_Option_unit_kill_reward_currency_Drop_green" "Green"
+		"Plugin_currencies_Option_unit_kill_reward_currency_Drop_blue" "Blue"
+		"Plugin_currencies_Option_unit_kill_reward_currency_Drop_purple" "Purple"
+		"Plugin_currencies_Option_unit_kill_reward_amount" "Unit Kill Reward Amount"
+		"Plugin_currencies_Option_unit_kill_reward_amount_Description" "Last hitting enemy unit grants currency. 0 or less disables the feature."
+		
+		"Plugin_currencies_Option_hero_kill_reward_currency" "Hero Kill Reward Type"
+		"Plugin_currencies_Option_hero_kill_reward_currency_Drop_red" "Red"
+		"Plugin_currencies_Option_hero_kill_reward_currency_Drop_green" "Green"
+		"Plugin_currencies_Option_hero_kill_reward_currency_Drop_blue" "Blue"
+		"Plugin_currencies_Option_hero_kill_reward_currency_Drop_purple" "Purple"
+		"Plugin_currencies_Option_hero_kill_reward_amount" "Hero Kill Reward Amount"
+		"Plugin_currencies_Option_hero_kill_reward_amount_Description" "Last hitting enemy hero grants currency. 0 or less disables the feature."
+		
+		"Plugin_currencies_Option_observer_kill_reward_currency" "Observer Kill Reward Type"
+		"Plugin_currencies_Option_observer_kill_reward_currency_Drop_red" "Red"
+		"Plugin_currencies_Option_observer_kill_reward_currency_Drop_green" "Green"
+		"Plugin_currencies_Option_observer_kill_reward_currency_Drop_blue" "Blue"
+		"Plugin_currencies_Option_observer_kill_reward_currency_Drop_purple" "Purple"
+		"Plugin_currencies_Option_observer_kill_reward_amount" "Observer Kill Reward Amount"
+		"Plugin_currencies_Option_observer_kill_reward_amount_Description" "Last hitting enemy observer ward grants currency. 0 or less disables the feature."
+		
+
+		"Plugin_currencies_Option_observer_plant_reward_currency" "Observer Plant Reward Type"
+		"Plugin_currencies_Option_observer_plant_reward_currency_Drop_red" "Red"
+		"Plugin_currencies_Option_observer_plant_reward_currency_Drop_green" "Green"
+		"Plugin_currencies_Option_observer_plant_reward_currency_Drop_blue" "Blue"
+		"Plugin_currencies_Option_observer_plant_reward_currency_Drop_purple" "Purple"
+		"Plugin_currencies_Option_observer_plant_reward_amount" "Observer Plant Reward Amount"
+		"Plugin_currencies_Option_observer_plant_reward_amount_Description" "Planting observer ward grants currency. 0 or less disables the feature."
+		
+
+
+		"Plugin_currencies_Option_timed_reward_currency" "Timed Reward Type"
+		"Plugin_currencies_Option_timed_reward_currency_Drop_red" "Red"
+		"Plugin_currencies_Option_timed_reward_currency_Drop_green" "Green"
+		"Plugin_currencies_Option_timed_reward_currency_Drop_blue" "Blue"
+		"Plugin_currencies_Option_timed_reward_currency_Drop_purple" "Purple"
+		"Plugin_currencies_Option_timed_reward_amount" "Timed Reward Amount"
+		"Plugin_currencies_Option_timed_reward_amount_Description" "Give free reward every X seconds. 0 or less disables the feature."
+		
+		"Plugin_currencies_Option_timed_reward_rate" "Timed Reward Rate"
+		"Plugin_currencies_Option_timed_reward_rate_Description" "The timing between rewards in seconds"
+		
+
+		"Plugin_currencies_Option_tower_kill_reward_currency" "Tower Kill Reward Type"
+		"Plugin_currencies_Option_tower_kill_reward_currency_Drop_red" "Red"
+		"Plugin_currencies_Option_tower_kill_reward_currency_Drop_green" "Green"
+		"Plugin_currencies_Option_tower_kill_reward_currency_Drop_blue" "Blue"
+		"Plugin_currencies_Option_tower_kill_reward_currency_Drop_purple" "Purple"
+		"Plugin_currencies_Option_tower_kill_reward_amount" "Tower Kill Reward Amount"
+		"Plugin_currencies_Option_tower_kill_reward_amount_Description" "0 or less disables the feature."
+		
+
+		"Plugin_currencies_Option_roshan_kill_reward_currency" "Roshan Kill Reward Type"
+		"Plugin_currencies_Option_roshan_kill_reward_currency_Drop_red" "Red"
+		"Plugin_currencies_Option_roshan_kill_reward_currency_Drop_green" "Green"
+		"Plugin_currencies_Option_roshan_kill_reward_currency_Drop_blue" "Blue"
+		"Plugin_currencies_Option_roshan_kill_reward_currency_Drop_purple" "Purple"
+		"Plugin_currencies_Option_roshan_kill_reward_amount" "Roshan Kill Reward Amount"
+		"Plugin_currencies_Option_roshan_kill_reward_amount_Description" "Last hitting Roshan grants currency. 0 or less disables the feature."
+		
+
+		"Plugin_currencies_Option_lamp_capture_reward_currency" "Watcher Capture Reward Type"
+		"Plugin_currencies_Option_lamp_capture_reward_currency_Drop_red" "Red"
+		"Plugin_currencies_Option_lamp_capture_reward_currency_Drop_green" "Green"
+		"Plugin_currencies_Option_lamp_capture_reward_currency_Drop_blue" "Blue"
+		"Plugin_currencies_Option_lamp_capture_reward_currency_Drop_purple" "Purple"
+		"Plugin_currencies_Option_lamp_capture_reward_amount" "Watcher Capture Reward Amount"
+		"Plugin_currencies_Option_lamp_capture_reward_amount_Description" "Capturing Watcher grants currency. 0 or less disables the feature."
+		
+
+		"Plugin_currencies_Option_outpost_capture_reward_currency" "Outpost Capture Reward Type"
+		"Plugin_currencies_Option_outpost_capture_reward_currency_Drop_red" "Red"
+		"Plugin_currencies_Option_outpost_capture_reward_currency_Drop_green" "Green"
+		"Plugin_currencies_Option_outpost_capture_reward_currency_Drop_blue" "Blue"
+		"Plugin_currencies_Option_outpost_capture_reward_currency_Drop_purple" "Purple"
+		"Plugin_currencies_Option_outpost_capture_reward_amount" "Outpost Capture Reward Amount"
+		"Plugin_currencies_Option_outpost_capture_reward_amount_Description" "Capturing Outpost grants currency. 0 or less disables the feature."
+		
+		"Plugin_currencies_Option_tormentor_kill_reward_currency" "Tormentor Kill Reward Type"
+		"Plugin_currencies_Option_tormentor_kill_reward_currency_Drop_red" "Red"
+		"Plugin_currencies_Option_tormentor_kill_reward_currency_Drop_green" "Green"
+		"Plugin_currencies_Option_tormentor_kill_reward_currency_Drop_blue" "Blue"
+		"Plugin_currencies_Option_tormentor_kill_reward_currency_Drop_purple" "Purple"
+		"Plugin_currencies_Option_tormentor_kill_reward_amount" "Tormentor Kill Reward Amount"
+		"Plugin_currencies_Option_tormentor_kill_reward_amount_Description" "Last hitting Tormentor grants currency. 0 or less disables the feature."
+		
 
 		//Abilities
 

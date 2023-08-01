@@ -180,6 +180,7 @@ function GetDotaHud() {
 	}
 	return panel;
 }
+
 function FindDotaHudElement(id) {
 	return GetDotaHud().FindChildTraverse(id);
 }

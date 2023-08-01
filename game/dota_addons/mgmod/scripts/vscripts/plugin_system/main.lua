@@ -55,6 +55,29 @@ function PluginSystem:Init()
     GameRules:SetCustomGameSetupRemainingTime(-1)
     GameRules:SetCustomGameSetupTimeout(-1)
 
+	local forced_file = LoadKeyValues('scripts/vscripts/plugin_system/forced.txt')
+    if not (forced_file == nil or not next(forced_file)) then
+        PluginSystem.forced = forced_file
+    end
+    if PluginSystem.forced.lock_level ~= nil then PluginSystem.locked = PluginSystem.forced.lock_level end
+	local presets_file = LoadKeyValues('scripts/vscripts/plugin_system/presets.txt')
+    if not (presets_file == nil or not next(presets_file)) then
+        PluginSystem.presets = presets_file
+        for k,v in pairs(PluginSystem.presets) do
+            CustomNetTables:SetTableValue("mutator_presets",k,v)
+        end
+    end
+
+    if PluginSystem.forced ~= nil then
+        if not (PluginSystem.forced.lock_level == nil or PluginSystem.forced.lock_level == -1) then
+--[[             if PluginSystem.forced.preset ~= nil then
+                PluginSystem:ApplyPreset(PluginSystem.forced.preset)
+            end ]]
+            PluginSystem.forced.votes = {}
+            CustomNetTables:SetTableValue("forced_mode","initial",PluginSystem.forced)
+        end
+    end
+
 	local file = LoadKeyValues('scripts/vscripts/plugin_system/plugins.txt')
     if not (file == nil or not next(file)) then
         PluginSystem.PluginsFile = file
@@ -79,7 +102,15 @@ function PluginSystem:Init()
             settings = LoadKeyValues("scripts/vscripts/plugin_system/plugins/".. sPlugin .."/settings.txt")
         end
         if not (settings == nil or not next(settings)) then
-            PluginSystem:LoadDefaultSettings(sPlugin,settings)
+            if PluginSystem.forced ~= nil
+            and PluginSystem.forced.lock_level ~= nil and PluginSystem.forced.lock_level > -1
+            and PluginSystem.forced.preset ~= nil and
+            PluginSystem.presets ~= nil and PluginSystem.presets[PluginSystem.forced.preset] ~= nil and PluginSystem.presets[PluginSystem.forced.preset].settings ~= nil
+            then
+                PluginSystem:LoadDefaultSettings(sPlugin,settings,PluginSystem.presets[PluginSystem.forced.preset].settings)
+            else
+                PluginSystem:LoadDefaultSettings(sPlugin,settings)
+            end
         else
             PluginSystem.LobbySettings[sPlugin].enabled = {}
             PluginSystem.LobbySettings[sPlugin].enabled.DEFAULT = 0
@@ -103,7 +134,9 @@ function PluginSystem:Init()
             _G[main_class][init_function]()
         end
     end
+
     PluginSystem:SetFilters()
+
 end
 
 --settings
@@ -212,7 +245,7 @@ function PluginSystem:SetSetting(sPlugin,sSetting,sValue)
     end
 end
 
-function PluginSystem:LoadDefaultSettings(sPlugin,tSettings)
+function PluginSystem:LoadDefaultSettings(sPlugin,tSettings,tPreset)
     if tSettings.enabled == nil then
         tSettings.enabled = {}
         tSettings.enabled.DEFAULT = 0
@@ -220,6 +253,9 @@ function PluginSystem:LoadDefaultSettings(sPlugin,tSettings)
     end
     for k,_ in pairs(tSettings) do
         if type(tSettings[k]) == "table" then
+            if tPreset ~= nil and tPreset[sPlugin] ~= nil and tPreset[sPlugin][k] ~= nil then
+                tSettings[k].DEFAULT = tPreset[sPlugin][k]
+            end
             tSettings[k].VALUE = tSettings[k].DEFAULT
         end
     end
@@ -445,6 +481,7 @@ end
 
 function PluginSystem:SetFilters()
     local contxt = {}
+    GameRules:GetGameModeEntity():SetUseDefaultDOTARuneSpawnLogic(true)
     GameRules:GetGameModeEntity():SetAbilityTuningValueFilter( PluginSystem.AbilityTuningValueFilter, contxt )
     GameRules:GetGameModeEntity():SetBountyRunePickupFilter( PluginSystem.BountyRunePickupFilter, contxt )
     GameRules:GetGameModeEntity():SetDamageFilter( PluginSystem.DamageFilter, contxt )

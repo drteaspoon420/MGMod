@@ -1,0 +1,14 @@
+"plugin_settings"
+{
+    "Order" "299"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "min_diff"
+    {
+        "Order" "2"
+        "TYPE" "number"
+        "DEFAULT" "10"
+    }
+}

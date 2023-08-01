@@ -9,7 +9,6 @@
     {
         "Order" "2"
         "TYPE" "number"
-        "UNIT" "min"
         "DEFAULT" "50"
     }
 }

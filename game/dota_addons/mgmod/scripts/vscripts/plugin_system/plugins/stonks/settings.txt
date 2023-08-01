@@ -14,21 +14,25 @@
         "Order" "2"
         "TYPE" "number"
         "DEFAULT" "30"
+        "UNIT" "s"
     }
     "tower_effect" {
         "Order" "3"
         "TYPE" "number"
         "DEFAULT" "100"
+        "UNIT" "%"
     }
     "hero_effect" {
         "Order" "4"
         "TYPE" "number"
         "DEFAULT" "50"
+        "UNIT" "%"
     }
     "unit_effect" {
         "Order" "5"
         "TYPE" "number"
         "DEFAULT" "5"
+        "UNIT" "%"
     }
 
     "stonks_random_effect" {

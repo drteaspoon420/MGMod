@@ -179,4 +179,50 @@ function Toolbox:table_contains(table, element)
 end
 
 
+function Toolbox:IsEmpty(t)
+    if not next(t) then
+        return true
+    end
+    return false
+end
+
+
+function Toolbox:GetTeamLeader(iTeam)
+	for p=0,DOTA_MAX_PLAYERS do
+		local player = PlayerResource:GetPlayer(p)
+		if player ~= nil then
+            if player:GetTeamNumber() == iTeam then return p end
+		end
+	end
+	return -1
+end
+
+local buildings = {
+	"npc_dota_tower",
+	"ent_dota_fountain",
+	"npc_dota_barracks",
+	"npc_dota_fort",
+	"npc_dota_filler",
+}
+
+function Toolbox:AllBuildings()
+	local buildings = {}
+	for _,towerName in ipairs(buildings) do
+		local tbuildings = Entities:FindAllByClassname(towerName)
+		for __, building in pairs(tbuildings) do
+			table.insert(buildings, building)
+		end
+	end
+
+	return buildings
+end
+
+function Toolbox:AllTowers()
+	local buildings = {}
+    local tbuildings = Entities:FindAllByClassname("npc_dota_tower")
+    for __, building in pairs(tbuildings) do
+        table.insert(buildings, building)
+    end
+	return buildings
+end
 if not Toolbox.data then Toolbox:Init() end

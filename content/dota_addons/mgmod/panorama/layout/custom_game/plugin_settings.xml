@@ -59,6 +59,13 @@
 
     </snippets>
 	<Panel class="WindowRoot">
+		<Panel id="PluginUnlockScreen">
+			<ProgressBar id="PluginUnlockBar" min="0" max="100">
+			</ProgressBar>
+			<Button id="PluginListUnlockButton" onactivate="unlock_local();">
+				<Label id="PluginListUnlockButtonText" text="#PluginListUnlockButtonText"/>
+			</Button>
+		</Panel>
 		<Panel id="WindowRoot">
 			<Panel id="SettingsSaveSlots">
 			</Panel>

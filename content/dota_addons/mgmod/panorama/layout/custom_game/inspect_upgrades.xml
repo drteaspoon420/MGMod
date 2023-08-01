@@ -1,0 +1,43 @@
+<!-- xml reconstructed by ValveResourceFormat: https://vrf.steamdb.info/ -->
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/inspect_upgrades.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/inspect_upgrades.js" />
+	</scripts>
+	<snippets>
+		<snippet name="UpgradeInspectButton">
+			<Button class="UpgradeInspectButton" />
+		</snippet>
+		<snippet name="AbilityCategory">
+			<Panel class="AbilityCategory" />
+		</snippet>
+		<snippet name="AbilityMain">
+			<Panel class="AbilityMain">
+				<DOTAAbilityImage id="AbilityMainImage" class="OptionImage" />
+				<Panel id="AbilityMainUpgrades" />
+			</Panel>
+		</snippet>
+		<snippet name="AbilityChange">
+			<Panel class="AbilityChange">
+				<Label id="AbilityChangesLabelKey" html="true" text="key" />
+				<Label id="AbilityChangesLabelValue" text="value" />
+			</Panel>
+		</snippet>
+		<snippet name="HeroMain">
+			<Panel class="HeroMain">
+				<Panel class="HeroMainOwner">
+					<DOTAHeroImage id="HeroMainImage" />
+					<DOTAAvatarImage  id="HeroMainAvatar"/>
+				</Panel>
+				<Panel id="HeroMainUpgrades" />
+			</Panel>
+		</snippet>
+	</snippets>
+	<Panel class="InspectUpgradesScreen hidden" hittest="false">
+		<Panel id="InspectUpgradesRadiant" />
+
+		<Panel id="InspectUpgradesDire" />
+	</Panel>
+</root>

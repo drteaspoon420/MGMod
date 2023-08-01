@@ -5,4 +5,40 @@
         "TYPE" "boolean"
         "DEFAULT" "0"
     }
+    "initial_power" {
+        "Order" "1"
+        "TYPE" "number"
+        "DEFAULT" "1"
+    }
+    "wave_treshold" {
+        "Order" "2"
+        "TYPE" "number"
+        "DEFAULT" "10"
+    }
+    "power_increase" {
+        "Order" "3"
+        "TYPE" "number"
+        "DEFAULT" "2"
+    }
+    "zombies_per_spawn" {
+        "Order" "4"
+        "TYPE" "number"
+        "DEFAULT" "3"
+    }
+    "spawn_rate" {
+        "Order" "5"
+        "UNIT" "s"
+        "TYPE" "number"
+        "DEFAULT" "10"
+    }
+    "max_zombies" {
+        "Order" "6"
+        "TYPE" "number"
+        "DEFAULT" "50"
+    }
+    "boss_multiplier" {
+        "Order" "7"
+        "TYPE" "number"
+        "DEFAULT" "2"
+    }
 }

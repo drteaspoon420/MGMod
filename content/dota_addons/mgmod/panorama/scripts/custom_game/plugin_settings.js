@@ -4,6 +4,8 @@ var WindowRoot = $.GetContextPanel().FindChildInLayoutFile("WindowRoot");
 var PluginListInternalScroll = $.GetContextPanel().FindChildInLayoutFile("PluginListInternalScroll");
 var PluginSettingsBox = $.GetContextPanel().FindChildInLayoutFile("PluginSettingsBox");
 var SettingsSaveSlots = $.GetContextPanel().FindChildInLayoutFile("SettingsSaveSlots");
+var PluginUnlockScreen = $.GetContextPanel().FindChildInLayoutFile("PluginUnlockScreen");
+var PluginUnlockBar = $.GetContextPanel().FindChildInLayoutFile("PluginUnlockBar");
 var current_open = "";
 
 var local_player = Game.GetLocalPlayerInfo();
@@ -101,6 +103,20 @@ function OpenPluginSettings(sPluginName) {
             } else {
                 panel.SetAttributeInt("order",sPluginSettings[key].Order);
             }
+            if (forced_mode != undefined && forced_mode.lock_level != undefined) {
+                if (forced_mode.lock_level > 0) {
+                    if (forced_mode.unlocked[sPluginName] == undefined || forced_mode.unlocked[sPluginName][key] == undefined ) {
+                        panel.SetHasClass("setting_disabled",true);
+                        panel.enabled = false;
+                    } else {
+                        panel.enabled = bHost;
+                    }
+                } else {
+                    panel.enabled = bHost;
+                }
+            } else {
+                panel.enabled = bHost;
+            }
         }
     }
     //add other settings
@@ -195,7 +211,11 @@ function CreateSettingBoolean(sPluginName,sPluginSetting,sPluginSettingData,hPar
     SettingTypeBoolean.BLoadLayoutSnippet("SettingTypeBoolean");
     let SettingTypeBooleanInput = SettingTypeBoolean.FindChildInLayoutFile("SettingTypeBooleanInput");
     SettingTypeBooleanInput.enabled = bHost;
-    SettingTypeBooleanInput.text = $.Localize("#Plugin_" +  sPluginName + "_Option_" + sPluginSetting);
+    if (sPluginSettingData.UNIT != undefined) {
+        SettingTypeBooleanInput.text = $.Localize("#Plugin_" +  sPluginName + "_Option_" + sPluginSetting) + "(" + sPluginSettingData.UNIT +")";
+    } else {
+        SettingTypeBooleanInput.text = $.Localize("#Plugin_" +  sPluginName + "_Option_" + sPluginSetting);
+    }
     if (sPluginSettingData.VALUE == 1) {
         SettingTypeBooleanInput.SetSelected(true);
     }
@@ -232,7 +252,11 @@ function CreateSettingNumber(sPluginName,sPluginSetting,sPluginSettingData,hPare
     let SettingTypeNumber = $.CreatePanel('Panel', hParent, sPluginSetting);
     SettingTypeNumber.BLoadLayoutSnippet("SettingTypeNumber");
     let SettingTypeNumberLabel = SettingTypeNumber.FindChildInLayoutFile("SettingTypeNumberLabel");
-    SettingTypeNumberLabel.text = $.Localize("#Plugin_" +  sPluginName + "_Option_" + sPluginSetting);
+    if (sPluginSettingData.UNIT != undefined) {
+        SettingTypeNumberLabel.text = $.Localize("#Plugin_" +  sPluginName + "_Option_" + sPluginSetting) + " (" + sPluginSettingData.UNIT +")";
+    } else {
+        SettingTypeNumberLabel.text = $.Localize("#Plugin_" +  sPluginName + "_Option_" + sPluginSetting);
+    }
 
     let SettingTypeNumberInput = SettingTypeNumber.FindChildInLayoutFile("SettingTypeNumberInput");
     SettingTypeNumberInput.enabled = bHost;
@@ -276,9 +300,13 @@ function CreateSettingDropdown(sPluginName,sPluginSetting,sPluginSettingData,hPa
 
     let SettingTypeDropdown = $.CreatePanel('Panel', hParent, sPluginSetting);
     SettingTypeDropdown.BLoadLayoutSnippet("SettingTypeDropdown");
+    SettingTypeDropdown.enabled = bHost;
     let SettingTypeDropdownLabel = SettingTypeDropdown.FindChildInLayoutFile("SettingTypeDropdownLabel");
-    SettingTypeDropdownLabel.text = $.Localize("#Plugin_" +  sPluginName + "_Option_" + sPluginSetting);
-    
+    if (sPluginSettingData.UNIT != undefined) {
+        SettingTypeDropdownLabel.text = $.Localize("#Plugin_" +  sPluginName + "_Option_" + sPluginSetting) + " (" + sPluginSettingData.UNIT +")";
+    } else {
+        SettingTypeDropdownLabel.text = $.Localize("#Plugin_" +  sPluginName + "_Option_" + sPluginSetting);
+    }
     let SettingTypeDropdownInput = SettingTypeDropdown.FindChildInLayoutFile("SettingTypeDropdownInput");
 
     let desc_dd = "#Plugin_" +  sPluginName + "_Option_" + sPluginSetting + "_Description";
@@ -302,7 +330,6 @@ function CreateSettingDropdown(sPluginName,sPluginSetting,sPluginSettingData,hPa
         "oninputsubmit", 
         function(){
             SettingChange(sPluginName,sPluginSetting,SettingTypeDropdownInput.GetSelected().id);
-            $.Msg("setting changed!");
         }
     );
 	for (let i in sPluginSettingData.OPTIONS) {
@@ -322,7 +349,11 @@ function CreateSettingText(sPluginName,sPluginSetting,sPluginSettingData,hParent
     let SettingTypeText = $.CreatePanel('Panel', hParent, sPluginSetting);
     SettingTypeText.BLoadLayoutSnippet("SettingTypeText");
     let SettingTypeTextLabel = SettingTypeText.FindChildInLayoutFile("SettingTypeTextLabel");
-    SettingTypeTextLabel.text = $.Localize("#Plugin_" +  sPluginName + "_Option_" + sPluginSetting);
+    if (sPluginSettingData.UNIT != undefined) {
+        SettingTypeTextLabel.text = $.Localize("#Plugin_" +  sPluginName + "_Option_" + sPluginSetting) + " (" + sPluginSettingData.UNIT +")";
+    } else {
+        SettingTypeTextLabel.text = $.Localize("#Plugin_" +  sPluginName + "_Option_" + sPluginSetting);
+    }
 
     let SettingTypeTextInput = SettingTypeText.FindChildInLayoutFile("SettingTypeTextInput");
     SettingTypeTextInput.enabled = bHost;
@@ -408,9 +439,6 @@ function SaveSlotLoad(iSlot) {
         slot: Number(iSlot)
     };
     GameEvents.SendCustomGameEventToServer("settings_save_slot",msg);
-    $.Msg("sent message");
-    $.Msg(msg);
-    
 }
 
 function ActivateSaveSlot(iSlot,settings) {
@@ -456,13 +484,71 @@ function FormatSlotData(slot_data) {
 
 function SlotsUpdate( table_name, slot_name, settings) {
     let iSlot = slot_name.split("_").pop();
-    $.Msg("update slot ",slot_name," ",iSlot)
     if (iSlot != undefined && !isNaN(Number(iSlot))) {
         ActivateSaveSlot(Number(iSlot),settings);
     }
 }
 
+function fixtable(t) {
+    let nt = {};
+    for (const key in t) {
+        const element = t[key];
+        nt[element.key] = element.value;
+    }
+    return nt;
+}
+
+function forced_mode_update( table_name, key, value) {
+    forced_mode = value;
+    unlock_remote();
+}
+
+
+function unlock_local() {
+    GameEvents.SendCustomGameEventToServer("settings_vote_unlock",{});
+}
+
+function unlock_remote() {
+    let c = 0;
+    let t = "?";
+    const players_max = Players.GetMaxPlayers();
+    let d = 0;
+    for (let i = 0; i < players_max; i++) {
+        if (Players.IsValidPlayerID( i )) {
+            d++;
+        }
+    }
+    for (const key in forced_mode.votes) {
+        const element = forced_mode.votes[key];
+        c++;
+        t = t + "!";
+    }
+    if (c/d > (forced_mode.vote_treshold * 0.01)) {
+        forced_mode.lock_level = 0;
+        let all = WindowRoot.FindChildrenWithClassTraverse("setting_disabled");
+        for (const key in all) {
+            all[key].SetHasClass("setting_disabled",false);
+            if (bHost) {
+                all[key].enabled = true;
+            }
+        }
+        WindowRoot.SetHasClass("hidden",false);
+        PluginUnlockScreen.SetHasClass("hidden",true);
+    } else {
+        PluginUnlockBar.value = 1/((c/d)*(forced_mode.vote_treshold * 0.01));
+    }
+}
+
 (function () {
+    mutator_presets = fixtable(CustomNetTables.GetAllTableValues( "mutator_presets" ));
+    forced_mode = CustomNetTables.GetTableValue( "forced_mode","initial" );
+    if (forced_mode == undefined || forced_mode.lock_level < 1) {
+        PluginUnlockScreen.SetHasClass("hidden",true);
+        WindowRoot.SetHasClass("hidden",false);
+    } else {
+        WindowRoot.SetHasClass("hidden",true);
+        PluginUnlockScreen.SetHasClass("hidden",false);
+    }
     var sSettings = CustomNetTables.GetAllTableValues( "plugin_settings" );
     Cleanup();
     for (const key in sSettings) {

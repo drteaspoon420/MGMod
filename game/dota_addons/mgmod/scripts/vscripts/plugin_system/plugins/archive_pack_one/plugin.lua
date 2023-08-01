@@ -38,7 +38,7 @@ end
 
 function ArchiveOnePlugin:CacheUnit(entindex)
     if ArchiveOnePlugin.unit_cache[entindex] ~= nil then return false end
-    local hUnit = EntIndexToHScript(event.entindex)
+    local hUnit = EntIndexToHScript(entindex)
     if hUnit:IsRealHero() then
         ArchiveOnePlugin.unit_cache[entindex] = true
     end
@@ -48,7 +48,6 @@ end
 function ArchiveOnePlugin:SpawnEvent(event)
     local hUnit = EntIndexToHScript(event.entindex)
     if not hUnit:IsDOTANPC() then return end
-    if not ArchiveOnePlugin:CacheUnit(event.entindex) then return end
 
     if hUnit:IsRealHero() then
         if ArchiveOnePlugin.settings.clicks_death then

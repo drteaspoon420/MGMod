@@ -53,9 +53,58 @@
         "Order" "877"
         "TYPE" "number"
         "UNIT" "%"
-        "REQUIRES" {
-            "boosted_mode" "attributes"
-        }
-        "DEFAULT" "5"
+        "DEFAULT" "10000"
     }
+    "MIN_MULTIPLIER"
+    {
+        "Order" "26"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "4"
+    }
+    "upgrade_count" {
+        "Order" "27"
+        "TYPE" "number"
+        "DEFAULT" "2"
+    }
+    "kv_count_bonus" {
+        "Order" "28"
+        "TYPE" "number"
+        "DEFAULT" "4"
+    }
+    
+    "rare_chance" {
+        "Order" "30"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "25"
+    }
+    "ultra_chance" {
+        "Order" "31"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "1"
+    }
+
+    "upgrade_normal_items" {
+        "Order" "400"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+
+    "upgrade_neutral_items" {
+        "Order" "401"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+
+    "no_nerf_list" {
+        "Order" "999"
+
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+
+
+    
 }

@@ -1,4 +1,22 @@
 <root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/util.js" />
+	</scripts>
+	<script><![CDATA[
+		// Credits: EarthSalamander #42
+		// Hide vanilla pick screen in loading screen
+		HidePickScreen();
+
+		function HidePickScreen() {
+			if (!Game.GameStateIsAfter(DOTA_GameState.DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP)) {
+				FindDotaHudElement("PreGame").style.opacity = "0";
+				$.Schedule(1.0, HidePickScreen)
+			}
+			else {
+				FindDotaHudElement("PreGame").style.opacity = "1";
+			}
+		}
+	]]></script>
 	<Panel>
 		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/hero_builder.xml" />
 		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/item_spawner.xml" />
@@ -10,6 +28,11 @@
 		
 	<!-- 	
 		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/custom_shop.xml" /> -->
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/upgrade.xml" />
+	 	<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/inspect_upgrades.xml" /> 
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/tooltip.xml" />
+
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/plugin_settings_review.xml" />
 
 		<CustomUIElement type="GameSetup"					layoutfile="file://{resources}/layout/custom_game/team_select.xml" />
 		<!-- <CustomUIElement type="GameSetup"					layoutfile="file://{resources}/layout/custom_game/credits.xml" /> -->

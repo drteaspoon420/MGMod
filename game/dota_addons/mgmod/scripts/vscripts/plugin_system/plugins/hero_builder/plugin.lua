@@ -33,7 +33,6 @@ end
 
 function HeroBuilderPlugin:PreGameStuff()
     HeroBuilderPlugin.settings = PluginSystem:GetAllSetting("hero_builder")
-    tonumber(PluginSystem:GetSetting("hero_builder","host_only") or 0)
 -- GameRules:SetGameTimeFrozen(true)
 	local file = LoadKeyValues('scripts/npc/npc_abilities.txt')
     if not (file == nil or not next(file)) then
@@ -203,9 +202,9 @@ end
 
 function HeroBuilderPlugin:GiveUnitAbility(tEvent)
     local iPlayer = tEvent.PlayerID
-    if HeroBuilderPlugin.settings.host_only then
+--[[     if HeroBuilderPlugin.settings.host_only then
         if not Toolbox:IsHost(iPlayer) then return false end
-    end
+    end ]]
     local hUnit = EntIndexToHScript(tEvent.target)
     local iLevel = tEvent.level
     local sAbility = tEvent.ability
@@ -216,7 +215,7 @@ function HeroBuilderPlugin:GiveUnitAbility(tEvent)
     local bForce = tEvent.force == 1
     local iSlot = tEvent.slot
 
-    local bLimited = PluginSystem:GetSetting("hero_builder","limited_mode")
+    local bLimited = 1 --PluginSystem:GetSetting("hero_builder","limited_mode")
     if bLimited and bLimited == 1 then
         local iTeam = PlayerResource:GetTeam(iPlayer)
         if hUnit:GetTeam() ~= iTeam then return false end
@@ -244,9 +243,9 @@ end
 
 function HeroBuilderPlugin:GiveUnitTalent(tEvent)
     local iPlayer = tEvent.PlayerID
-    if HeroBuilderPlugin.settings.host_only then
+--[[     if HeroBuilderPlugin.settings.host_only then
         if not Toolbox:IsHost(iPlayer) then return false end
-    end
+    end ]]
     local hUnit = EntIndexToHScript(tEvent.target)
     if hUnit.IsRealHero == nil then return false end
     if not hUnit:IsRealHero() then return false end
@@ -258,7 +257,7 @@ function HeroBuilderPlugin:GiveUnitTalent(tEvent)
     end
     local iSlot = tEvent.slot
 
-    local bLimited = PluginSystem:GetSetting("hero_builder","limited_mode")
+    local bLimited = 1 -- PluginSystem:GetSetting("hero_builder","limited_mode")
     if bLimited and bLimited == 1 then
         local iTeam = PlayerResource:GetTeam(iPlayer)
         if hUnit:GetTeam() ~= iTeam then return false end

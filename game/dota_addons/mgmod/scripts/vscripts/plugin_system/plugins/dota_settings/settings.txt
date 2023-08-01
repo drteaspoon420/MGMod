@@ -71,7 +71,7 @@
         "Order" "20"
         "TYPE" "number"
         "UNIT" "%"
-        "DEFAULT" "100"
+        "DEFAULT" "35"
     }
     "pick_mode"
     {
@@ -95,7 +95,7 @@
         "Order" "25"
         "TYPE" "number"
         "UNIT" "%"
-        "DEFAULT" "100"
+        "DEFAULT" "400"
     }
     "max_level"
     {
@@ -147,14 +147,8 @@
     "backdoor_protection"
     {
         "Order" "705"
-        "TYPE" "dropdown"
-        "DEFAULT" "normal"
-        "OPTIONS" {
-            "none" "0"
-            "normal" "1"
-            "immune" "2"
-            "tenton" "3"
-        }
+        "TYPE" "boolean"
+        "DEFAULT" "1"
     }
     "allow_buyback"
     {
