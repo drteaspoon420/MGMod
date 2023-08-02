@@ -33,6 +33,8 @@
 	"settings_save_slot" {
 		"slot" "short"
 	}
+	"settings_vote_unlock" {
+	}
 	"npc_first_spawned_hero"
 	{
 		"entindex" "short"
@@ -158,5 +160,39 @@
 		"stonk" "string"
 		"price" "short"
 		"available" "short"
+	}
+	"upgrade_hero"
+	{
+		"plus" "int"
+		"id" "int"
+	}
+
+	"upgrade_option"
+	{
+		"id" "short"
+		"ability" "string"
+		"key" "string"
+		"current" "float"
+		"upgrade" "float"
+		"downgrade" "float"
+		"rarity" "byte"
+		"allow_ban" "bool"
+	}
+	"upgrade_report"
+	{
+		"ab" "string"
+		"kv" "string"
+	}
+
+	"currency_spend"
+	{
+		"currency" "string"
+		"option" "string"
+	}
+	
+	"currency_earn"
+	{
+		"currency" "string"
+		"option" "string"
 	}
 }

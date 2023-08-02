@@ -3804,7 +3804,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_FLOAT" // used after any break in the roll (start/jump/bounce)
-				"turn_rate_boosted"		"165"
+				"turn_rate_bsrpg"		"165"
 			}
 			"05"
 			{

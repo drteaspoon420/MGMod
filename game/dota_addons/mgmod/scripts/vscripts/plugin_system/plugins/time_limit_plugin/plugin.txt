@@ -1,0 +1,10 @@
+"Plugins"
+{
+    "time_limit_plugin" {
+        "MainClass" "TimeLimitPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_GAME_IN_PROGRESS"
+        }
+    }
+}

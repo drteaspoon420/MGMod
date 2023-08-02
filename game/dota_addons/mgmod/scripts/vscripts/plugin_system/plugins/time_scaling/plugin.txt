@@ -1,0 +1,10 @@
+"Plugins"
+{
+    "time_scaling" {
+        "MainClass" "TimeScalingPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+    }
+}

@@ -1,0 +1,10 @@
+"Plugins"
+{
+    "item_spawner" {
+        "MainClass" "ItemSpawnerPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "PreGameStuff" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+    }
+}

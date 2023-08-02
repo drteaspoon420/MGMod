@@ -15,7 +15,7 @@
 	flow-children: down;
 }
 
-#BoostedBox {
+#BsrpgBox {
 	margin-left: 5px;
 }
 
@@ -106,13 +106,13 @@
 }
 
 
-#ButtonBar_Boosted {
+#ButtonBar_Bsrpg {
 	height: 32px;
 	width: 32px;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	background-size: 100% 100%;
-    background-image: url("file://{resources}/images/custom_game/boosted_list.png");
+    background-image: url("file://{resources}/images/custom_game/bsrpg_list.png");
 }
 .hidden
 {
@@ -122,7 +122,7 @@
 #PlayerDetails {
 
 }
-#BoostedPoints {
+#BsrpgPoints {
 
 }
 
@@ -237,7 +237,7 @@
 	background-size: 100% 100%;
     background-image: url("file://{resources}/images/custom_game/ui/button_03.png");
 }
-#BoostedPoints {
+#BsrpgPoints {
 	font-size: 24px;
 	text-align: center;
 	horizontal-align: center;

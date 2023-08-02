@@ -1,0 +1,14 @@
+"Plugins"
+{
+    "xmas12" {
+        "MainClass" "XMax12Plugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+        "FilterRegistrations" {
+            "DamageFilter" "DamageFilter"
+            "ExecuteOrderFilter" "ExecuteOrderFilter"
+        }
+    }
+}

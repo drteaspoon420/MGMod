@@ -1,0 +1,11 @@
+"Plugins"
+{
+    "bots_plugin" {
+        "MainClass" "BotsPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+            "ApplySettings2" "DOTA_GAMERULES_STATE_STRATEGY_TIME"
+        }
+    }
+}

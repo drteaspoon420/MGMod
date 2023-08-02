@@ -1,0 +1,11 @@
+"Plugins"
+{
+    "dota_settings" {
+        "MainClass" "DotaSettingsPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+            "ApplySettingsStartGame" "DOTA_GAMERULES_STATE_GAME_IN_PROGRESS"
+        }
+    }
+}

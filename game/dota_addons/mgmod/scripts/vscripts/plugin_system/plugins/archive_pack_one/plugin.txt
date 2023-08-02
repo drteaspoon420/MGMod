@@ -1,0 +1,12 @@
+"Plugins"
+{
+    "archive_pack_one"
+    {
+        "MainClass" "ArchiveOnePlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+            "OnPreGameEnd" "DOTA_GAMERULES_STATE_GAME_IN_PROGRESS"
+        }
+    }
+}

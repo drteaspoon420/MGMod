@@ -1,0 +1,18 @@
+<!-- xml reconstructed by ValveResourceFormat: https://vrf.steamdb.info/ -->
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/tooltip.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/tooltip.js" />
+	</scripts>
+	<snippets>
+		<snippet name="AbilityChange">
+			<Panel class="AbilityChange">
+				<Label id="AbilityChangesLabelKey" html="true" text="key" />
+				<Label id="AbilityChangesLabelValue" text="value" />
+			</Panel>
+		</snippet>
+	</snippets>
+	<Panel class="qwerty" hittest="false" />
+</root>

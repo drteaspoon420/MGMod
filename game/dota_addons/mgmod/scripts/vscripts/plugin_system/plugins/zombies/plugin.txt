@@ -1,0 +1,10 @@
+"Plugins"
+{
+    "zombies" {
+        "MainClass" "ZombiesPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_GAME_IN_PROGRESS"
+        }
+    }
+}

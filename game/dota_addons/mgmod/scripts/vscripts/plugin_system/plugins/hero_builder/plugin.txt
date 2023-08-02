@@ -1,0 +1,14 @@
+"Plugins"
+{
+    "hero_builder" {
+        "Order" "420"
+        "MainClass" "HeroBuilderPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "PreGameStuff" "DOTA_GAMERULES_STATE_HERO_SELECTION" 
+        }
+        "CmdRegistrations" {
+            "-ability_bans" "ExportBanList"
+        }
+    }
+}

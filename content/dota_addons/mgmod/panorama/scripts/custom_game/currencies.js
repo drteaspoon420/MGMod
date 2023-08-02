@@ -1,6 +1,8 @@
 "use strict";
 var plugin_settings = {};
 var WindowRoot = $.GetContextPanel().FindChildInLayoutFile("WindowRoot");
+var tCurrencies = {};
+var iPlayer = Players.GetLocalPlayer();
 const this_window_id = "currencies";
 var tCurrencyNumbers = {}
 var currency_open;
@@ -103,12 +105,16 @@ function Cleanup() {
 }
 
 (function () {
+    
+    Cleanup();
     plugin_settings = CustomNetTables.GetTableValue( "plugin_settings", this_window_id );
     if (plugin_settings.enabled.VALUE == 0) {
-        WindowRoot.SetHasClass("hidden",!isOpen);
+        WindowRoot.SetHasClass("hidden",true);
     } else {
-        var sSettings = CustomNetTables.GetAllTableValues( "currencies" );
-        GameEvents.Subscribe( "open_window", open_window );
-        CustomNetTables.SubscribeNetTableListener( "currencies" , SettingsUpdate );
+        tCurrencies = CustomNetTables.GetAllTableValues( "currencies" );
+        for (const key in tCurrencies) {
+            AddCurrency(tCurrencies[key].key,tCurrencies[key].value);
+        }
+        CustomNetTables.SubscribeNetTableListener( "currencies" , tCurrenciesUpdate );
     }
 })();

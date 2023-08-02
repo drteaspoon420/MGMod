@@ -1,14 +1,14 @@
 <root>
 	<scripts>
-		<include src="file://{resources}/scripts/custom_game/boosted.js" />
+		<include src="file://{resources}/scripts/custom_game/bsrpg.js" />
 	</scripts>
 	<styles>
 		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
-		<include src="file://{resources}/styles/custom_game/boosted.css" />
+		<include src="file://{resources}/styles/custom_game/bsrpg.css" />
 	</styles>
 	<snippets>
-		<snippet name="ButtonBar_Boosted">
-			<Button class="ButtonBar_Boosted" />
+		<snippet name="ButtonBar_Bsrpg">
+			<Button class="ButtonBar_Bsrpg" />
 		</snippet>
 
 		<snippet name="AbilityLabel">
@@ -76,10 +76,10 @@
 				<Panel id="AbilityListInternalScroll">
 				</Panel>
 			</Panel>
-			<Panel id="BoostedBox">
+			<Panel id="BsrpgBox">
 			</Panel>
 			<Panel id="PlayerDetails" class="hidden">
-				<Label id="BoostedPoints" text="0"/>
+				<Label id="BsrpgPoints" text="0"/>
 			</Panel>
 		</Panel>
     </Panel>
