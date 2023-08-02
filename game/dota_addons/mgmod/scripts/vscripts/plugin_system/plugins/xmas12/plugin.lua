@@ -72,7 +72,7 @@ end
 
 function XMax12Plugin:CacheUnit(entindex)
     if XMax12Plugin.unit_cache[entindex] ~= nil then return false end
-    local hUnit = EntIndexToHScript(event.entindex)
+    local hUnit = EntIndexToHScript(entindex)
     if hUnit:IsRealHero() then
         XMax12Plugin.unit_cache[entindex] = true
     end
@@ -81,7 +81,7 @@ end
 function XMax12Plugin:SpawnEvent(event)
     local hUnit = EntIndexToHScript(event.entindex)
     if not hUnit:IsDOTANPC() then return end
-    if not XMax12Plugin:CacheUnit(event.entindex) then return end
+    --if not XMax12Plugin:CacheUnit(event.entindex) then return end
 
     if hUnit:IsRealHero() then
         if XMax12Plugin.settings.day1 then

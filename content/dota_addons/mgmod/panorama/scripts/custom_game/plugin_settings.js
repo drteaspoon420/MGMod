@@ -426,19 +426,26 @@ function CreateSaveSlot(iSlot) {
         SettingsSaveSlot.SetPanelEvent(
             "onactivate", 
             function(){
-                SaveSlotLoad(iSlot)
+                if (GameUI.IsControlDown()) {
+                    SaveSlotLoad(iSlot,2)
+                } else if (GameUI.IsAltDown()) {
+                    SaveSlotLoad(iSlot,1)
+                } else {
+                    SaveSlotLoad(iSlot,0)
+                }
             }
         );
     }
 }
 
-function SaveSlotLoad(iSlot) {
+function SaveSlotLoad(iSlot,iFn) {
     for (let iSlot_n = 0; iSlot_n <= 10; iSlot_n++) {
         let SettingsSaveSlot = SettingsSaveSlots.FindChildInLayoutFile('SettingsSaveSlot_' + iSlot_n);
         SettingsSaveSlot.SetHasClass("slot_selected",iSlot_n == iSlot);
     }
     let msg = {
-        slot: Number(iSlot)
+        slot: Number(iSlot),
+        fn: iFn,
     };
     GameEvents.SendCustomGameEventToServer("settings_save_slot",msg);
 }
@@ -511,6 +518,7 @@ function unlock_local() {
 }
 
 function unlock_remote() {
+    $.Msg("remote unlock");
     let c = 0;
     let t = "?";
     const players_max = Players.GetMaxPlayers();
@@ -537,7 +545,10 @@ function unlock_remote() {
         WindowRoot.SetHasClass("hidden",false);
         PluginUnlockScreen.SetHasClass("hidden",true);
     } else {
-        PluginUnlockBar.value = 1/((c/d)*(forced_mode.vote_treshold * 0.01));
+        const f = c/d;
+        const tr = forced_mode.vote_treshold * 0.01;
+        const from_tr = (f/tr)*100;
+        PluginUnlockBar.value = from_tr;
     }
 }
 
@@ -573,4 +584,5 @@ function unlock_remote() {
         }
     }
     CustomNetTables.SubscribeNetTableListener( "save_slots" , SlotsUpdate );
+    CustomNetTables.SubscribeNetTableListener( "forced_mode" , forced_mode_update );
 })();

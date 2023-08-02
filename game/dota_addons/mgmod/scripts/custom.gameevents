@@ -32,6 +32,7 @@
 	}
 	"settings_save_slot" {
 		"slot" "short"
+		"fn" "short"
 	}
 	"settings_vote_unlock" {
 	}

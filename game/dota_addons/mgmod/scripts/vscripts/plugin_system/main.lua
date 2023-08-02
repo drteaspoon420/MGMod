@@ -525,16 +525,20 @@ end
 
 function PluginSystem:settings_save_slot(tEvent)
     local iPlayer = tEvent.PlayerID
-    DeepPrintTable(tEvent)
 	if not Toolbox:IsHost(iPlayer) then return end
     local iSlot = tEvent.slot
     if iSlot == nil then return end
     PluginSystem.current_save_slot = iSlot
-    PluginSystem:ApplySaveSlot(iSlot)
+    if tEvent.fn == 2 then
+        --do nothing! (user wanted to select slot without activating it)
+    elseif tEvent.fn == 1 then
+        PluginSystem:ApplySaveSlot(iSlot,true)
+    else
+        PluginSystem:ApplySaveSlot(iSlot,false)
+    end
 end
 
-function PluginSystem:ApplySaveSlot(iSlot)
-    print("loading slot",iSlot)
+function PluginSystem:ApplySaveSlot(iSlot,bAdditive)
     local sSettings = CustomNetTables:GetTableValue("save_slots", "slot_" .. iSlot)
     if not (sSettings and sSettings.data and type(sSettings.data) == "string") then return end
     local tSettings = PluginSystem:LoadSettingsString(sSettings.data)
@@ -545,7 +549,9 @@ function PluginSystem:ApplySaveSlot(iSlot)
                 if tSettings[sPlugin] == nil then
                     for key,val in pairs(tSetting) do
                         if type(val) == "table" then
-                            PluginSystem:SetSetting(sPlugin,key,val.DEFAULT)
+                            if not bAdditive then
+                                PluginSystem:SetSetting(sPlugin,key,val.DEFAULT)
+                            end
                         end
                     end
                 else
@@ -554,7 +560,9 @@ function PluginSystem:ApplySaveSlot(iSlot)
                             if tSettings[sPlugin][key] ~= nil and val.DEFAULT ~= tSettings[sPlugin][key] then
                                 PluginSystem:SetSetting(sPlugin,key,tSettings[sPlugin][key])
                             else
-                                PluginSystem:SetSetting(sPlugin,key,val.DEFAULT)
+                                if not bAdditive then
+                                    PluginSystem:SetSetting(sPlugin,key,val.DEFAULT)
+                                end
                             end
                         end
                     end

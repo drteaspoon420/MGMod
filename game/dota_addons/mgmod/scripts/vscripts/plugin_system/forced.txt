@@ -1,6 +1,6 @@
 "forced"
 {
-    "lock_level" "1" // -1 = ignore this file, 0 = no lock, 1 = allow host to ask for vote, 2 = forced lock
+    "lock_level" "-1" // -1 = ignore this file, 0 = no lock, 1 = allow host to ask for vote, 2 = forced lock
     "vote_treshold" "39"
     "preset" "mutator_boosted"
     "unlocked" {
