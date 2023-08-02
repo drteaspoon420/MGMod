@@ -7,6 +7,8 @@ var SettingsSaveSlots = $.GetContextPanel().FindChildInLayoutFile("SettingsSaveS
 var PluginUnlockScreen = $.GetContextPanel().FindChildInLayoutFile("PluginUnlockScreen");
 var PluginUnlockBar = $.GetContextPanel().FindChildInLayoutFile("PluginUnlockBar");
 var current_open = "";
+var mutator_presets;
+var forced_mode;
 
 var local_player = Game.GetLocalPlayerInfo();
 //index","player_selected_hero_entity_index":-1,"possible_hero_selection":"","player_level":0,"player_respawn_seconds":0,"player_gold":0,"player_networth":0,"player_team_id":5,"player_is_local":true,"player_has_host_privileges":true}

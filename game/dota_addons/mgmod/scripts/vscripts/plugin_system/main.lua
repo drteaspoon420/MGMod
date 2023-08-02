@@ -10,6 +10,10 @@ PluginSystem.LobbySettingsSaves = {}
 PluginSystem.InternalEvents = {}
 PluginSystem.unit_cache = {}
 PluginSystem.current_save_slot = 0
+PluginSystem.presets = {}
+PluginSystem.forced = {}
+PluginSystem.locked = 0
+
 
 local JSON = require("utils/dkjson")
 GAMEMODE_SAVE_ID = "mgmod"
@@ -48,10 +52,13 @@ function PluginSystem:Init()
 
     CustomGameEventManager:RegisterListener("settings_save_slot",function(i,tEvent) PluginSystem:settings_save_slot(tEvent) end)
     CustomGameEventManager:RegisterListener("setting_change",PluginSystem.setting_change)
+    CustomGameEventManager:RegisterListener("settings_vote_unlock",function(i,tEvent) PluginSystem:settings_vote_unlock(tEvent) end)
+    
     GameRules:SetSafeToLeave(true)
     --GameRules:SetCustomGameAccountRecordSaveFunction( Dynamic_Wrap( PluginSystem, "SaveHostSettings_PartA" ), self )
     GameRules:SetCustomGameEndDelay(15)
-    GameRules:SetCustomGameSetupAutoLaunchDelay(420)
+    GameRules:SetCustomGameSetupAutoLaunchDelay(60)
+    --GameRules:SetCustomGameSetupAutoLaunchDelay(420)
     GameRules:SetCustomGameSetupRemainingTime(-1)
     GameRules:SetCustomGameSetupTimeout(-1)
 
@@ -139,7 +146,87 @@ function PluginSystem:Init()
 
 end
 
+function PluginSystem:settings_vote_unlock(tEvent)
+    local iPlayer = tEvent.PlayerID
+    --PluginSystem.forced.votes[#PluginSystem.forced.votes + 1] = true
+    PluginSystem.forced.votes["v" .. iPlayer] = true
+    local iCount = 0
+    for iPlayer = 0,DOTA_MAX_PLAYERS do
+        if PlayerResource:IsValidPlayer(iPlayer) then
+            local hPlayer = PlayerResource:GetPlayer(iPlayer)
+            if hPlayer ~= nil then
+                iCount = iCount + 1
+            end
+        end
+    end
+    local iVotes = 0
+    for k,v in pairs(PluginSystem.forced.votes) do
+        iVotes = iVotes + 1
+    end
+    if iCount > 0 then
+        print(iCount,iVotes,PluginSystem.forced.vote_treshold)
+        if (PluginSystem.forced.vote_treshold * 0.01 < iVotes/iCount) then
+            PluginSystem.forced.lock_level = 0
+        end
+        CustomNetTables:SetTableValue("forced_mode","initial",PluginSystem.forced)
+    end
+end
 --settings
+function PluginSystem:ApplyPreset(sPreset)
+    print("loading preset",sPreset)
+    if PluginSystem.presets == nil or PluginSystem.presets[sPreset] == nil then return end
+    local tSettings = PluginSystem.presets[sPreset].settings
+    if tSettings and type(tSettings) == "table" then
+        if not next(tSettings) then return end
+        for sPlugin,tSetting in pairs(PluginSystem.LobbySettings) do
+            if type(tSetting) == "table" then
+                if tSettings[sPlugin] == nil then
+                    for key,val in pairs(tSetting) do
+                        if type(val) == "table" then
+                            PluginSystem:SetSetting(sPlugin,key,val.DEFAULT,true)
+                        end
+                    end
+                else
+                    for key,val in pairs(tSetting) do
+                        if type(val) == "table" then
+                            if tSettings[sPlugin][key] ~= nil and val.DEFAULT ~= tSettings[sPlugin][key] then
+                                PluginSystem:SetSetting(sPlugin,key,tSettings[sPlugin][key],true)
+                            else
+                                PluginSystem:SetSetting(sPlugin,key,val.DEFAULT,true)
+                            end
+                        end
+                    end
+                end
+            end
+            CustomNetTables:SetTableValue("plugin_settings",sPlugin,PluginSystem.LobbySettings[sPlugin])
+        end
+    end
+end
+
+function PluginSystem:ApplyPresetAdditive(sPreset)
+    print("loading preset",sPreset)
+    if PluginSystem.presets == nil or PluginSystem.presets[sPreset] == nil then return end
+    local tSettings = PluginSystem.presets[sPreset]
+    if tSettings and type(tSettings) == "table" then
+        if not next(tSettings) then return end
+        for sPlugin,tSetting in pairs(PluginSystem.LobbySettings) do
+            if type(tSetting) == "table" then
+                if tSettings[sPlugin] ~= nil then
+                    for key,val in pairs(tSetting) do
+                        if type(val) == "table" then
+                            if tSettings[sPlugin][key] ~= nil and val.DEFAULT ~= tSettings[sPlugin][key] then
+                                PluginSystem:SetSetting(sPlugin,key,tSettings[sPlugin][key])
+                            end
+                        end
+                    end
+                end
+            end
+            CustomNetTables:SetTableValue("plugin_settings",sPlugin,PluginSystem.LobbySettings[sPlugin])
+        end
+    end
+end
+
+
 
 function PluginSystem:setting_change(tEvent)
     local iPlayer = tEvent.PlayerID
@@ -196,10 +283,23 @@ function PluginSystem:GetAllSetting(sPlugin)
     return t
 end
 
-function PluginSystem:Sanitize(sPlugin,sSetting,sValue)
+function PluginSystem:Sanitize(sPlugin,sSetting,sValue,bOverride)
+    bOverride = bOverride or false
     if PluginSystem.LobbySettings[sPlugin] == nil then return false end
     if PluginSystem.LobbySettings[sPlugin][sSetting] == nil then return false end
     if PluginSystem.LobbySettings[sPlugin][sSetting].VALUE == nil then return false end
+    if not bOverride then
+        if PluginSystem.forced ~= nil and PluginSystem.forced.lock_level > 0 then
+            if PluginSystem.forced.unlocked ~= nil then
+                if PluginSystem.forced.unlocked[sPlugin] == nil then return false end
+                if type(PluginSystem.forced.unlocked[sPlugin]) == "table" then
+                    if PluginSystem.forced.unlocked[sPlugin][sSetting] == nil then return false end
+                elseif type(PluginSystem.forced.unlocked[sPlugin]) ~= "number" then
+                    return false
+                end 
+            end
+        end
+    end
 
     if PluginSystem.LobbySettings[sPlugin][sSetting].TYPE == "number" then
         if tonumber(sValue) == nil then
@@ -228,8 +328,9 @@ function PluginSystem:Sanitize(sPlugin,sSetting,sValue)
     return true
 end
 
-function PluginSystem:SetSetting(sPlugin,sSetting,sValue)
-    if not PluginSystem:Sanitize(sPlugin,sSetting,sValue) then return end
+function PluginSystem:SetSetting(sPlugin,sSetting,sValue,bOverride)
+    bOverride = bOverride or false
+    if not PluginSystem:Sanitize(sPlugin,sSetting,sValue,bOverride) then return end
     local tEvent = {
         plugin = sPlugin,
         setting = sSetting,

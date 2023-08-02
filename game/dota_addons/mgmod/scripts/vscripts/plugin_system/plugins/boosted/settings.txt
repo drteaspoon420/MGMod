@@ -1,56 +1,83 @@
 "plugin_settings"
 {
-    "Order" "69420"
+    "Order" "69421"
     "enabled" {
         "TYPE" "boolean"
         "DEFAULT" "0"
     }
-    
-    "boosted_mode"
+    "UPGRADE_RATE"
     {
-        "Order" "555"
+        "Order" "2"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "50"
+    }
+    "DOWNGRADE_RATE"
+    {
+        "Order" "4"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "15"
+    }
+    "RARE_MULTIPLIER"
+    {
+        "Order" "8"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "150"
+    }
+    "ULTRA_MULTIPLIER"
+    {
+        "Order" "10"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "200"
+    }
+    "custom_list" {
+        "Order" "14"
+        "TYPE" "text"
+        "DEFAULT" ""
+    }
+    "cost" {
+        "Order" "16"
+        "TYPE" "number"
+        "DEFAULT" "100"
+    }
+    "currency"
+    {
+        "Order" "18"
         "TYPE" "dropdown"
-        "DEFAULT" "free_form"
+        "DEFAULT" "red"
         "OPTIONS" {
-            "free_form" "0"
-            //"points" "1"
-            "attributes" "2"
+            "red" "red"
+            "green" "green"
+            "blue" "blue"
+            "purple" "purple"
         }
     }
-    //"allow_reallocation" {
-    //    "TYPE" "boolean"
-    //    "REQUIRES" {
-    //        "boosted_mode" "points"
-    //    }
-    //    "DEFAULT" "1"
-    //}
-    //"currency_type"
-    //{
-    //    "Order" "666"
-    //    "TYPE" "dropdown"
-    //    "REQUIRES" {
-    //        "boosted_mode" "points"
-    //    }
-    //    "DEFAULT" "blue"
-    //    "OPTIONS" {
-    //        "blue" "0"
-    //        "green" "1"
-    //        "red" "2"
-    //        "purple" "3"
-    //    }
-    //}
-    //"currency_ammount"
-    //{
-    //    "Order" "777"
-    //    "TYPE" "number"
-    //    "REQUIRES" {
-    //        "boosted_mode" "points"
-    //    }
-    //    "DEFAULT" "25"
-    //}
-    "percent_per_attributes"
+    "kv_bans" {
+        "Order" "20"
+        "TYPE" "number"
+        "DEFAULT" "5"
+    }
+    "only_slot"
     {
-        "Order" "877"
+        "Order"     "22"
+        "TYPE" "dropdown"
+        "DEFAULT" "any"
+        "OPTIONS" {
+            "any" "any"
+            "q" "q"
+            "w" "w"
+            "e" "e"
+            "d" "d"
+            "f" "f"
+            "r" "r"
+        }
+    }
+    "MAX_MULTIPLIER"
+    {
+        "Order" "25"
         "TYPE" "number"
         "UNIT" "%"
         "DEFAULT" "10000"

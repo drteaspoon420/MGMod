@@ -168,32 +168,32 @@
 		//Dev stuff
 		"Plugin_devstuff" "Dev Stuff"
 
-		//Boosted
-		"Plugin_boosted" "Boosted"
-		"Plugin_boosted_Option_points_mode" "Points Mode"
-		"Plugin_boosted_Option_allow_reallocation" "Allow Reallocation"
-		"Plugin_boosted_Option_souls_integration" "Souls integration"
-		"Plugin_boosted_Option_souls_per_point" "Souls Per Point"
+		//Bsrpg
+		"Plugin_bsrpg" "Bsrpg"
+		"Plugin_bsrpg_Option_points_mode" "Points Mode"
+		"Plugin_bsrpg_Option_allow_reallocation" "Allow Reallocation"
+		"Plugin_bsrpg_Option_souls_integration" "Souls integration"
+		"Plugin_bsrpg_Option_souls_per_point" "Souls Per Point"
 
-		"Plugin_boosted_Option_boosted_mode" "Boosted Mode"
-		"Plugin_boosted_Option_boosted_mode_Drop_free_form" "Freeform"
-		"Plugin_boosted_Option_boosted_mode_Drop_points" "RPG Points"
-		"Plugin_boosted_Option_boosted_mode_Drop_attributes" "Attribute Effects"
+		"Plugin_bsrpg_Option_bsrpg_mode" "Bsrpg Mode"
+		"Plugin_bsrpg_Option_bsrpg_mode_Drop_free_form" "Freeform"
+		"Plugin_bsrpg_Option_bsrpg_mode_Drop_points" "RPG Points"
+		"Plugin_bsrpg_Option_bsrpg_mode_Drop_attributes" "Attribute Effects"
 
-		"Plugin_boosted_Option_currency_type" "Currency"
-		"Plugin_boosted_Option_currency_type_Drop_blue" "Blue"
-		"Plugin_boosted_Option_currency_type_Drop_green" "Green"
-		"Plugin_boosted_Option_currency_type_Drop_red" "Red"
-		"Plugin_boosted_Option_currency_type_Drop_purple" "Purple"
+		"Plugin_bsrpg_Option_currency_type" "Currency"
+		"Plugin_bsrpg_Option_currency_type_Drop_blue" "Blue"
+		"Plugin_bsrpg_Option_currency_type_Drop_green" "Green"
+		"Plugin_bsrpg_Option_currency_type_Drop_red" "Red"
+		"Plugin_bsrpg_Option_currency_type_Drop_purple" "Purple"
 
-		"Plugin_boosted_Option_currency_ammount" "Cost"
+		"Plugin_bsrpg_Option_currency_ammount" "Cost"
 
-		"Plugin_boosted_Option_percent_per_attributes" " % Bonus Per Attribute"
+		"Plugin_bsrpg_Option_percent_per_attributes" " % Bonus Per Attribute"
 
-		"Plugin_boosted_Option_points_mode_Description" "Players upgrade their abilities with points instead of free editing."
-		"Plugin_boosted_Option_allow_reallocation_Description" "In Points Mode, allow re-allocation of spent points."
-		"Plugin_boosted_Option_souls_integration_Description" "Integrate with 'Soul Collector' plugin"
-		"Plugin_boosted_Option_souls_per_point_Description" "How many souls do you need for 1 upgrade point."
+		"Plugin_bsrpg_Option_points_mode_Description" "Players upgrade their abilities with points instead of free editing."
+		"Plugin_bsrpg_Option_allow_reallocation_Description" "In Points Mode, allow re-allocation of spent points."
+		"Plugin_bsrpg_Option_souls_integration_Description" "Integrate with 'Soul Collector' plugin"
+		"Plugin_bsrpg_Option_souls_per_point_Description" "How many souls do you need for 1 upgrade point."
 
 		//Delete Dota
 		"Plugin_delete_dota" "Delete Dota"

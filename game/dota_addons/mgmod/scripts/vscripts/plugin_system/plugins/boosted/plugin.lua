@@ -1,10 +1,26 @@
+
 BoostedPlugin = class({})
 _G.BoostedPlugin = BoostedPlugin
 BoostedPlugin.settings = {}
 BoostedPlugin.unit_cache = {}
 BoostedPlugin.lists = {}
-BoostedPlugin.modifier_links = {}
 BoostedPlugin.points = {}
+BoostedPlugin.main_modifier_name = "modifier_boosted"
+BoostedPlugin.official_url = "http://drteaspoon.fi:3000/list"
+BoostedPlugin.kv_bans = {}
+
+BoostedPlugin.player_boosters = {}
+
+local JSON = require("utils/dkjson")
+local only_slot_map = {
+    any = -1,
+    q = 0,
+    w = 1,
+    e = 2,
+    d = 3,
+    f = 4,
+    r = 5
+}
 
 
 function BoostedPlugin:Init()
@@ -20,20 +36,27 @@ function BoostedPlugin:ApplySettings()
         BoostedPlugin.kv_lists = {}
     end
 
-    if BoostedPlugin.settings.boosted_mode == "points" or BoostedPlugin.settings.boosted_mode == "free_form" then
-        CustomGameEventManager:RegisterListener("boost_player",BoostedPlugin.boost_player)
+    local url = BoostedPlugin.settings.custom_list
+    if url ~= "" then
+        BoostedPlugin:GetOnlineList("https://pastebin.com/raw/" .. url)
+    else
+        BoostedPlugin:GetOnlineList(BoostedPlugin.official_url)
     end
-    CustomGameEventManager:RegisterListener("boost_player_recheck",BoostedPlugin.boost_player_recheck)
 
-    if BoostedPlugin.settings.boosted_mode == "attributes" then
-        Timers:CreateTimer(1,function()
-            BoostedPlugin:periodic_check_all()
-            return 5
-        end)
-    end
-    
+	local req_blocks = LoadKeyValues('scripts/vscripts/plugin_system/plugins/boosted/req_blocks.txt')
+	if req_blocks == nil or not next(req_blocks) then
+		print("empty req_blocks :/")
+		return
+	end
+	BoostedPlugin.req_blocks = req_blocks
+    --CustomGameEventManager:RegisterListener("boost_player",BoostedPlugin.boost_player)
+    CustomGameEventManager:RegisterListener("boost_player_recheck",BoostedPlugin.boost_player_recheck)
+    CustomGameEventManager:RegisterListener("upgrade_hero",BoostedPlugin.upgrade_hero)
+    --CustomGameEventManager:RegisterListener("upgrade_report",Dynamic_Wrap(self,'upgrade_report'))
+    --CustomGameEventManager:RegisterListener('ability_tooltip_extra_request', Dynamic_Wrap( self, 'ability_tooltip_extra_request'))
+
     PluginSystem:InternalEvent_Register("hero_build_change",function(event)
-        BoostedPlugin:UpdatePlayer_NetTable(event.iPlayer)
+        BoostedPlugin:UpdatePlayer_NetTable(event.iPlayer,nil)
     end)
     ListenToGameEvent("dota_ability_changed", function(event)
         if GameRules:State_Get() < DOTA_GAMERULES_STATE_HERO_SELECTION then return end
@@ -44,13 +67,84 @@ function BoostedPlugin:ApplySettings()
             if GameRules:State_Get() < DOTA_GAMERULES_STATE_HERO_SELECTION then return end
             BoostedPlugin:SpawnEvent(event)
     end,nil)
+
+    --Currency thing
+    local tOption = {
+        plugin = BoostedPlugin,
+        plugin_name = "boosted",
+        cost = BoostedPlugin.settings.cost or 100,
+        call_fn = "currencies_buy",
+        option_name = "buy_upgrade",
+    }
+    CurrenciesPlugin:RegisterSpendOption(BoostedPlugin.settings.currency,tOption)
 end
 
+function BoostedPlugin:GetOnlineList(url)
+    local req = CreateHTTPRequestScriptVM("GET", url)
+    req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", GetDedicatedServerKey("v1"))
+    req:Send(function(res)
+        if res.StatusCode ~= 200 then
+            if url ~= BoostedPlugin.official_url then
+                print("custom url was not valid")
+                BoostedPlugin:GetOnlineList(BoostedPlugin.official_url)
+            end
+            return
+        end
+        if not BoostedPlugin:ApplyOnlineList(res.Body) then
+            if url ~= BoostedPlugin.official_url then
+                print("custom list was not valid")
+                BoostedPlugin:GetOnlineList(BoostedPlugin.official_url)
+            end
+        else
+            print("valid list at " .. url)
+        end
+    end)
+end
+
+function BoostedPlugin:ApplyOnlineList(json)
+    local data = JSON.decode(json)
+    if data == nil then return false end
+    print(type(data.blocklist))
+    if data.blocklist == nil or type(data.blocklist) ~= "table" or (next(data.blocklist) == nil) then
+        print("block list empty")
+    else
+        BoostedPlugin.kv_lists.blocklist = data.blocklist
+    end
+    if data.nerflist == nil or type(data.nerflist) ~= "table" or (next(data.nerflist) == nil) then
+        print("nerf list empty")
+    else
+        BoostedPlugin.kv_lists.nerflist = data.nerflist
+    end
+    if data.limitlist == nil or type(data.limitlist) ~= "table" or (next(data.limitlist) == nil) then
+        print("limit list empty")
+    else
+        BoostedPlugin.kv_lists.limitlist = data.limitlist
+    end
+    if type(BoostedPlugin.kv_lists.blocklist) ~= "table" then 
+        BoostedPlugin.kv_lists.blocklist = {
+            all = {},
+            wildcard = {}
+        }
+    end
+    if type(BoostedPlugin.kv_lists.nerflist) ~= "table" then
+        BoostedPlugin.kv_lists.nerflist = {
+            all = {},
+            wildcard = {}
+        }
+    end
+    if type(BoostedPlugin.kv_lists.limitlist) ~= "table" then
+        BoostedPlugin.kv_lists.limitlist = {
+            all = {},
+            wildcard = {}
+        }
+    end
+    return true
+end
 
 function BoostedPlugin:boost_player_recheck(event)
     local iPlayer = tEvent.PlayerID
     if iPlayer < 0 then return end
-    BoostedPlugin:UpdatePlayer_NetTable(iPlayer)
+    BoostedPlugin:UpdatePlayer_NetTable(iPlayer,nil)
 end
 
 function BoostedPlugin:UpdateEvent(event)
@@ -59,7 +153,7 @@ function BoostedPlugin:UpdateEvent(event)
     if hUnit:IsRealHero() then
         local iPlayer = hUnit:GetPlayerOwnerID()
         if iPlayer < 0 then return end
-        BoostedPlugin:UpdatePlayer_NetTable(iPlayer)
+        BoostedPlugin:UpdatePlayer_NetTable(iPlayer,hUnit)
     end
 end
 
@@ -194,15 +288,14 @@ function BoostedPlugin:UpdatePlayer_NetTable(iPlayer,hUnit)
         local hAbility = tAbilityHandles[i]
         BoostedPlugin:UpdatePlayer_NetTable_Ability(iPlayer,hUnit,hAbility)
     end
-    
 
-    BoostedPlugin.lists[iPlayer] = tOldAbilities
+    
     for k,v in pairs(BoostedPlugin.lists[iPlayer]) do
-        CustomNetTables:SetTableValue("boosted_upgrades_" .. iPlayer,k,v)
+        CustomNetTables:SetTableValue("player_upgrades_" .. iPlayer,k,v)
     end
 --[[     for k,v in pairs(deleted) do
         if v then
-            CustomNetTables:SetTableValue("boosted_upgrades_" .. iPlayer,k,{})
+            CustomNetTables:SetTableValue("player_upgrades_" .. iPlayer,k,{})
         end
     end ]]
 --[[     if BoostedPlugin.points[iPlayer] == nil then
@@ -219,10 +312,10 @@ end
 function BoostedPlugin:SpawnEvent(event)
     local hUnit = EntIndexToHScript(event.entindex)
     if not hUnit.IsRealHero then return end
-    if hUnit:IsRealHero() then
-        Timers:CreateTimer(0,function()
-            if BoostedPlugin.unit_cache[event.entindex] ~= nil then return end
-            BoostedPlugin.unit_cache[event.entindex] = true
+    Timers:CreateTimer(0,function()
+        if hUnit:IsRealHero() then
+            --if BoostedPlugin.unit_cache[event.entindex] ~= nil then return end
+            --BoostedPlugin.unit_cache[event.entindex] = true
             local iPlayer = hUnit:GetPlayerOwnerID()
             if iPlayer < 0 then return end
             local hPlayer = PlayerResource:GetPlayer(iPlayer)
@@ -236,12 +329,17 @@ function BoostedPlugin:SpawnEvent(event)
                 print("hero was not unit")
                 return
             end
-            BoostedPlugin:UpdatePlayer_NetTable(iPlayer)
+            BoostedPlugin:UpdatePlayer_NetTable(iPlayer,hUnit)
             local hModifier = hUnit:AddNewModifier(hUnit,nil,"modifier_boosted",{})
             print("all should be good")
-            BoostedPlugin.modifier_links[iPlayer] = hModifier
-        end)
-    end
+        else
+            local iPlayer = hUnit:GetMainControllingPlayer()
+            if iPlayer < 0 then return end
+            if hUnit:IsCourier() then return end
+            BoostedPlugin:UpdatePlayer_NetTable(iPlayer,hUnit)
+            local hModifier = hUnit:AddNewModifier(hUnit,nil,"modifier_boosted",{})
+        end
+    end)
 end
 
 
@@ -253,7 +351,10 @@ function BoostedPlugin:boost_player(tEvent)
         return
     end
     local hHero = hPlayer:GetAssignedHero()
-    if hHero == nil then return end
+    if hHero == nil then
+        print("not a real hero",iPlayer)
+        return
+    end
     local sAbility = tEvent.ability
     local sKey = tEvent.key
     local fValue = tonumber(tEvent.value)
@@ -270,73 +371,24 @@ function BoostedPlugin:boost_player(tEvent)
         return
     end
     
-    if BoostedPlugin.settings.points_mode then
-        if BoostedPlugin.points[iPlayer] == nil then
-            BoostedPlugin.points[iPlayer] = 0
-        end
-        local fOld = BoostedPlugin.lists[iPlayer][sAbility][sKey]
-        local fMult = BoostedPlugin:NerfsKV(sAbility,sKey)
-        local fUp = 0.2 * fMult
-        local fDown = 0.05 * fMult
-
-
-        if BoostedPlugin.settings.allow_reallocation then
-            if fOld > 1.001 then
-                if fValue > 0 then
-                    if BoostedPlugin.points[iPlayer] == 0 then return end
-                    BoostedPlugin.lists[iPlayer][sAbility][sKey] = fOld + fUp
-                    BoostedPlugin.points[iPlayer] = BoostedPlugin.points[iPlayer] - 1
-                else
-                    BoostedPlugin.lists[iPlayer][sAbility][sKey] = fOld - fUp
-                    BoostedPlugin.points[iPlayer] = BoostedPlugin.points[iPlayer] + 1
-                end
-            elseif fOld < 0.999 then
-                if fValue > 0 then
-                    BoostedPlugin.lists[iPlayer][sAbility][sKey] = fOld + fDown
-                    BoostedPlugin.points[iPlayer] = BoostedPlugin.points[iPlayer] + 1
-                else
-                    if BoostedPlugin.points[iPlayer] == 0 then return end
-                    BoostedPlugin.lists[iPlayer][sAbility][sKey] = fOld - fDown
-                    BoostedPlugin.points[iPlayer] = BoostedPlugin.points[iPlayer] - 1
-                end
-            else
-                if BoostedPlugin.points[iPlayer] == 0 then return end
-                if fValue > 0 then
-                    BoostedPlugin.lists[iPlayer][sAbility][sKey] = fOld + fUp
-                    BoostedPlugin.points[iPlayer] = BoostedPlugin.points[iPlayer] - 1
-                else
-                    BoostedPlugin.lists[iPlayer][sAbility][sKey] = fOld - fDown
-                    BoostedPlugin.points[iPlayer] = BoostedPlugin.points[iPlayer] - 1
-                end
-            end
-        else
-            if BoostedPlugin.points[iPlayer] == 0 then return end
-            if fOld > 1.001 then
-                if fValue > 0 then
-                    BoostedPlugin.lists[iPlayer][sAbility][sKey] = fOld + fUp
-                else
-                    BoostedPlugin.lists[iPlayer][sAbility][sKey] = fOld - fUp
-                end
-            elseif fOld < 0.999 then
-                if fValue > 0 then
-                    BoostedPlugin.lists[iPlayer][sAbility][sKey] = fOld + fDown
-                else
-                    BoostedPlugin.lists[iPlayer][sAbility][sKey] = fOld - fDown
-                end
-            else
-                if fValue > 0 then
-                    BoostedPlugin.lists[iPlayer][sAbility][sKey] = fOld + fUp
-                else
-                    BoostedPlugin.lists[iPlayer][sAbility][sKey] = fOld - fDown
-                end
-            end
-            BoostedPlugin.points[iPlayer] = BoostedPlugin.points[iPlayer] - 1
-        end
-        CustomNetTables:SetTableValue("boosted_upgrades_" .. iPlayer,"player_details",{points = BoostedPlugin.points[iPlayer]})
-    else
-        BoostedPlugin.lists[iPlayer][sAbility][sKey] = fValue
+    local fOld = BoostedPlugin.lists[iPlayer][sAbility][sKey]
+    local fMult = BoostedPlugin:NerfsKV(sAbility,sKey)
+    local fUp = BoostedPlugin.settings.UPGRADE_RATE * 0.01 * fMult
+    local fDown = BoostedPlugin.settings.DOWNGRADE_RATE * 0.01 * fMult 
+    if tEvent.rarity == 3 then
+        fUp = fUp * BoostedPlugin.settings.ULTRA_MULTIPLIER * 0.01
+        fDown = fDown * BoostedPlugin.settings.ULTRA_MULTIPLIER * 0.01
+    elseif tEvent.rarity == 2 then
+        fUp = fUp * BoostedPlugin.settings.RARE_MULTIPLIER * 0.01
+        fDown = fDown * BoostedPlugin.settings.RARE_MULTIPLIER * 0.01
     end
-    CustomNetTables:SetTableValue("boosted_upgrades_" .. iPlayer,sAbility,BoostedPlugin.lists[iPlayer][sAbility])
+    
+
+    if fValue < 0 then
+        BoostedPlugin.lists[iPlayer][sAbility][sKey] = BoostedPlugin:ModifiedUpgrade(sAbility,sKey,fOld - fDown)
+    else
+        BoostedPlugin.lists[iPlayer][sAbility][sKey] = BoostedPlugin:ModifiedUpgrade(sAbility,sKey,fOld + fUp)
+    end
 
     CustomNetTables:SetTableValue("player_upgrades_" .. iPlayer,sAbility,BoostedPlugin.lists[iPlayer][sAbility])
 
@@ -355,6 +407,7 @@ function BoostedPlugin:boost_player(tEvent)
                 end
             end
         end
+        hUnit = Entities:Next(hUnit)
     end
     
 end
@@ -382,38 +435,38 @@ function BoostedPlugin:RefreshItems(sAbility,hUnit)
     end
 end
 
-    if BoostedPlugin.modifier_links[iPlayer] == nil then
-        print(iPlayer,"modifier is nil")
-        return
-    end
-    local hMod = BoostedPlugin.modifier_links[iPlayer]
-    if hMod.UpdateValue == nil then
-        print("could not update modifier")
-        return
-    end
-    local fMultSetting = BoostedPlugin.settings.percent_per_attributes * 0.01
-    for k,_ in pairs(BoostedPlugin.lists[iPlayer]) do
-        for j,v in pairs(BoostedPlugin.lists[iPlayer][k]) do
-            if BoostedPlugin.lists[iPlayer][k][j].attribute == DOTA_ATTRIBUTE_STRENGTH then
-                BoostedPlugin.lists[iPlayer][k][j].value = BoostedPlugin:NerfsKV(k,j) * fMultSetting * str + 1.0
-            elseif BoostedPlugin.lists[iPlayer][k][j].attribute == DOTA_ATTRIBUTE_AGILITY then
-                BoostedPlugin.lists[iPlayer][k][j].value = BoostedPlugin:NerfsKV(k,j) * fMultSetting * agi + 1.0
-            elseif BoostedPlugin.lists[iPlayer][k][j].attribute == DOTA_ATTRIBUTE_INTELLECT then
-                BoostedPlugin.lists[iPlayer][k][j].value = BoostedPlugin:NerfsKV(k,j) * fMultSetting * int + 1.0
-            end
-            hMod:UpdateValue(k,j,BoostedPlugin.lists[iPlayer][k][j].value)
-        end
-        CustomNetTables:SetTableValue("boosted_upgrades_" .. iPlayer,k,BoostedPlugin.lists[iPlayer][k])
-    end
-end
-
 function BoostedPlugin:BlocksAbility(sAbility) -- returns false if blocked
+    if BoostedPlugin.req_blocks ~= nil then
+        if BoostedPlugin.req_blocks.all ~= nil then
+            if BoostedPlugin.req_blocks.all[sAbility] ~= nil then
+                return false
+            end
+        end
+    end
+    if BoostedPlugin.req_blocks ~= nil then
+        if BoostedPlugin.req_blocks.all ~= nil then
+            if BoostedPlugin.req_blocks.all[sAbility] ~= nil then
+                return false
+            end
+        end
+    end
     if BoostedPlugin.kv_lists.blocklist == nil then return true end
     if BoostedPlugin.kv_lists.blocklist.all == nil then return true end
     if BoostedPlugin.kv_lists.blocklist.all[sAbility] == nil then return true end
     return false
 end
+
 function BoostedPlugin:BlocksKV(sAbility,sKey) -- returns false if blocked
+    if BoostedPlugin.req_blocks ~= nil then
+        if BoostedPlugin.req_blocks.all ~= nil then
+            if BoostedPlugin.req_blocks.all[sAbility] ~= nil then
+                return false
+            end
+            if BoostedPlugin.req_blocks.all[sKey] ~= nil then
+                return false
+            end
+        end
+    end
     --no block list
     if BoostedPlugin.kv_lists.blocklist == nil then return true end
     --check specific ability + kv
@@ -434,6 +487,7 @@ end
 
 function BoostedPlugin:NerfsKV(sAbility,sKey) -- returns 1.0 if normal.
     --no block list
+    if BoostedPlugin.settings.no_nerf_list then return 1.0 end
     if BoostedPlugin.kv_lists.nerflist == nil then return 1.0 end
     --check specific ability + kv
     if BoostedPlugin.kv_lists.nerflist[sAbility] ~= nil and BoostedPlugin.kv_lists.nerflist[sAbility][sKey] ~= nil then
@@ -471,7 +525,8 @@ function BoostedPlugin:BotLevelup(iPlayer)
         PlayerID = iPlayer,
         ability = sAbility,
         key = sKey,
-        value = 1.0
+        value = 1.0,
+        rarity = 2
     }
     for i=1,iCount do
         BoostedPlugin:boost_player(tEvent)
