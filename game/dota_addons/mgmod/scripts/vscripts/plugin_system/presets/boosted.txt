@@ -1,8 +1,9 @@
+
 "presets"
 {
-    "mutator_boosted" //
+    "boosted_gamemode"
     {
-        "ID" "1"
+        "mutator" "0"
         "settings"
         {
             "dota_settings"
@@ -47,10 +48,6 @@
                 "backdoor_immunity" "1"
                 "unyielding_shield" "1"
                 "bonus_hp" "4000"
-            }
-            "basic_commands"
-            {
-                "enabled" "1"
             }
         }
         "overlap_tags" "kvoverride"

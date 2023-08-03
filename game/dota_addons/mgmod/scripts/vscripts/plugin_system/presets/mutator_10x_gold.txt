@@ -1,0 +1,16 @@
+
+"presets"
+{
+    "mutator_10x_gold"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "dota_settings"
+            {
+                "gold_gain_percent" "1000"
+            }
+        }
+        "overlap_tags" "gold_gain"
+    }
+}

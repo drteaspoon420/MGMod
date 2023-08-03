@@ -1,0 +1,16 @@
+
+"presets"
+{
+    "mutator_combo"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "archive_pack_one"
+            {
+                "enabled" "1"
+                "combo" "1"
+            }
+        }
+    }
+}

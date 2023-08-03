@@ -1,0 +1,17 @@
+
+"presets"
+{
+    "mutator_nurgle"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "archive_pack_one"
+            {
+                "enabled" "1"
+                "nurgle" "1"
+            }
+        }
+        "overlap_tags" "kvoverride"
+    }
+}

@@ -1,0 +1,20 @@
+
+"presets"
+{
+    "mutator_delete_towers"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "delete_dota"
+            {
+                "enabled" "1"
+                "delete_tier_1" "1"
+                "delete_tier_2" "1"
+                "delete_tier_3" "1"
+                "delete_tier_4" "1"
+            }
+        }
+        "remove_tags" "towers" // if any other mutator already has "towers" in "exists_tags", this mutator won't be valid
+    }
+}

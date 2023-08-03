@@ -1,0 +1,33 @@
+
+"presets"
+{
+    "mutator_boosted"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "boosted"
+            {
+                "enabled" "1"
+            }
+            "currencies"
+            {
+                "enabled" "1"
+                "observer_plant_reward_amount" "50"
+                "timed_reward_amount" "100"
+                "timed_reward_rate" "60"
+                "unit_kill_reward_amount" "1"
+                "hero_kill_reward_amount" "25"
+                "observer_kill_reward_amount" "25"
+                "tower_kill_reward_amount" "100"
+                "roshan_kill_reward_amount" "200"
+                "red_state" "team"
+                "red_gold_buy" "50"
+                "lamp_capture_reward_amount" "25"
+                "outpost_capture_reward_amount" "10"
+                "tormentor_kill_reward_amount" "500"
+            }
+        }
+        "overlap_tags" "kvoverride"
+    }
+}

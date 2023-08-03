@@ -1,0 +1,17 @@
+
+"presets"
+{
+    "mutator_three_shot"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "xmas12"
+            {
+                "enabled" "1"
+                "day3" "1"
+            }
+        }
+        "overlap_tags" "healthlimit"
+    }
+}

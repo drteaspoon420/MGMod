@@ -1,0 +1,16 @@
+
+"presets"
+{
+    "mutator_bloodbath"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "archive_pack_one"
+            {
+                "enabled" "1"
+                "bloodbath" "1"
+            }
+        }
+    }
+}

@@ -1,12 +1,20 @@
 "forced"
 {
-    "lock_level" "-1" // -1 = ignore this file, 0 = no lock, 1 = allow host to ask for vote, 2 = forced lock
+    "lock_level" "1" // -1 = ignore this file, 0 = no lock, 1 = allow host to ask for vote, 2 = forced lock
     "vote_treshold" "39"
-    "preset" "mutator_boosted"
+    "preset" "boosted_gamemode"
     "unlocked" {
         "dota_settings" {
             "pick_mode" "1"
             "hero_banning" "1"
+            "allow_samehero" "1"
+        }
+        "boosted" {
+            "upgrade_normal_items" "1"
+            "upgrade_neutral_items" "1"
+        }
+        "tower_buffs" {
+            "unyielding_shield" "1"
         }
     }
 }

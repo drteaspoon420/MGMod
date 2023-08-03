@@ -1,0 +1,15 @@
+
+"presets"
+{
+    "mutator_attacks_cast_spells"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "attacks_cast_spells"
+            {
+                "enabled" "1"
+            }
+        }
+    }
+}

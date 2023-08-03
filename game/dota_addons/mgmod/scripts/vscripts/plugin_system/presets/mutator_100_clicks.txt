@@ -1,0 +1,16 @@
+
+"presets"
+{
+    "mutator_100_clicks"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "archive_pack_one"
+            {
+                "enabled" "1"
+                "clicks_death" "1"
+            }
+        }
+    }
+}

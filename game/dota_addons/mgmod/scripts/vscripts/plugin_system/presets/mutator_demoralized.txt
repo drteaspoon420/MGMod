@@ -1,0 +1,16 @@
+
+"presets"
+{
+    "mutator_demoralized"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "archive_pack_one"
+            {
+                "enabled" "1"
+                "ally_death_fear" "1"
+            }
+        }
+    }
+}

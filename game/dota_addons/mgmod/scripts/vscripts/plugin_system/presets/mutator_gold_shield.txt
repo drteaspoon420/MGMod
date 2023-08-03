@@ -1,0 +1,15 @@
+
+"presets"
+{
+    "mutator_gold_shield"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "mammonite"
+            {
+                "enabled" "1"
+            }
+        }
+    }
+}

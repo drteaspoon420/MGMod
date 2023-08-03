@@ -1,0 +1,16 @@
+
+"presets"
+{
+    "mutator_ghost_of_heroes"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "xmas12"
+            {
+                "enabled" "1"
+                "day11" "1"
+            }
+        }
+    }
+}

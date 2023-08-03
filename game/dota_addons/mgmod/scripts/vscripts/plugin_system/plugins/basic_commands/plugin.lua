@@ -17,24 +17,11 @@ end
 
 function BasicCommandsPlugin:CallGG(tArgs,bTeam,iPlayer)
     local hPlayer = PlayerResource:GetPlayer(iPlayer)
-    
-    local iConnectionState = PlayerResource:GetConnectionState(iPlayer)
     local iTeam = PlayerResource:GetCustomTeamAssignment(iPlayer)
-    local iScoreDire = PlayerResource:GetTeamKills(DOTA_TEAM_BADGUYS)
-    local iScoreRadiant = PlayerResource:GetTeamKills(DOTA_TEAM_GOODGUYS)
-    local iDiff = 0
-    if iTeam == DOTA_TEAM_GOODGUYS then
-        iDiff = iScoreDire - iScoreRadiant
-    elseif iTeam == DOTA_TEAM_BADGUYS then
-        iDiff = iScoreRadiant - iScoreDire
-    else
-        return
+
+    if PlayerResource:GetConnectionState(iPlayer) == DOTA_CONNECTION_STATE_CONNECTED then
+        BasicCommandsPlugin.gg_called[iTeam][iPlayer] = true
     end
-    if iDiff < BasicCommandsPlugin.settings.min_diff then
-        GameRules:SendCustomMessageToTeam("You need to be at least ".. BasicCommandsPlugin.settings.min_diff .." kills behind to use -gg , current kill difference is " .. iDiff, iTeam, 0, 0)
-        return
-    end
-    BasicCommandsPlugin.gg_called[iTeam][iPlayer] = true
 
     local iCount = 0
     local iYes = 0
@@ -54,13 +41,14 @@ function BasicCommandsPlugin:CallGG(tArgs,bTeam,iPlayer)
             end
 		end
 	end
+    
     if DOTA_TEAM_GOODGUYS == iTeam then
         GameRules:SendCustomMessageToTeam("Radiant GG votes: " .. iYes .. "/" .. iCount, iTeam, 0, 0)
     else
         GameRules:SendCustomMessageToTeam("Dire GG votes: " .. iYes .. "/" .. iCount, iTeam, 0, 0)
     end
     if iCount == iYes then
-        local iOtherTeam = DOTA_TEAM_GOODGUYS + (DOTA_TEAM_BADGUYS - iTeam)
+        local iOtherTeam = ((iTeam+1) % 2)+2
         GameRules:SetGameWinner(iOtherTeam)
     end
 end

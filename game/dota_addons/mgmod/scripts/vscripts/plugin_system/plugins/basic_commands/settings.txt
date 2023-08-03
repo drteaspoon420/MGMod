@@ -5,10 +5,10 @@
         "TYPE" "boolean"
         "DEFAULT" "0"
     }
-    "min_diff"
-    {
-        "Order" "2"
-        "TYPE" "number"
-        "DEFAULT" "10"
-    }
+//    "min_diff"
+//    {
+//        "Order" "2"
+//        "TYPE" "number"
+//        "DEFAULT" "10"
+//    }
 }

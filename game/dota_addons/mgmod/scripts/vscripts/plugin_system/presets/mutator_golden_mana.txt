@@ -1,0 +1,16 @@
+
+"presets"
+{
+    "mutator_golden_mana"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "xmas12"
+            {
+                "enabled" "1"
+                "day2" "1"
+            }
+        }
+    }
+}

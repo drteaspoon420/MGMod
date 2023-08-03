@@ -164,8 +164,9 @@
 }
 
 .setting_disabled {
-	color: rgb(15, 15, 15);
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #140000 ), to( #350000 ) );
+	visibility: collapse;
+	width: 0px;
+	height: 0px;
 }
 
 #PluginListUnlock {
@@ -173,9 +174,6 @@
 
 }
 #PluginListUnlockButton {
-    horizontal-align: center;
-    margin-bottom: 20px;
-    margin-top: 20px;
     width: 270px;
     
     min-width: 192px;
@@ -267,25 +265,16 @@
 }
 
 #PluginUnlockScreen {
-	margin-top: 50px;
-	height: 700px;
 	width: 900px;
-	flow-children: down;
-	horizontal-align: center;
+	flow-children: right;
 }
 
 #PluginUnlockBar {
-	horizontal-align: center;
-	width: 900px;
+	width: 600px;
     min-height: 36px;
     box-shadow: #F78F9015 -2px -2px 4px 4px;
     background-color: black;
     border: 1px solid #aaaaaa;
-    horizontal-align: center;
-    margin-bottom: 20px;
-    margin-top: 8px;
-    margin-left: 32px;
-    margin-right: 32px;
     padding: 0px;
     flow-children: down;
     border-radius: 6px;

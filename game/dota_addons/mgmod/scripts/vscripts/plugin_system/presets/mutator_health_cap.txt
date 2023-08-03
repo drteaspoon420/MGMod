@@ -1,0 +1,17 @@
+
+"presets"
+{
+    "mutator_health_cap"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "archive_pack_one"
+            {
+                "enabled" "1"
+                "health_cap" "1"
+            }
+        }
+        "overlap_tags" "healthlimit"
+    }
+}

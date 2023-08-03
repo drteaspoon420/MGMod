@@ -1,0 +1,23 @@
+
+"presets"
+{
+    "mutator_sudden_end"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "dota_settings"
+            {
+                "allow_buyback" "0"
+                "allow_respawn" "0"
+            }
+            "kill_limit_plugin"
+            {
+                "enabled" "1"
+                "kill_limit" "1"
+            }
+        }
+        "overlap_tags" "kill_limit"
+        "remove_tags" "respawn"
+    }
+}

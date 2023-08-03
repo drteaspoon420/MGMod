@@ -1,0 +1,17 @@
+
+"presets"
+{
+    "mutator_delete_shops"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "delete_dota"
+            {
+                "enabled" "1"
+                "delete_shops" "1"
+            }
+        }
+    }
+        "remove_tags" "shops"
+}

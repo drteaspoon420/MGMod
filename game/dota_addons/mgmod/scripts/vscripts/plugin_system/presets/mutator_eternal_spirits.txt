@@ -1,0 +1,16 @@
+
+"presets"
+{
+    "mutator_eternal_spirits"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "xmas12"
+            {
+                "enabled" "1"
+                "day8" "1"
+            }
+        }
+    }
+}

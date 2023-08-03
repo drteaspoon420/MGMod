@@ -32,12 +32,30 @@ function CreateSettingsBlock(sPluginName,sPluginSettings)
             OpenPluginSettings(sPluginName);
         }
     );
+
+    if (forced_mode != undefined && forced_mode.lock_level != undefined) {
+        if (forced_mode.lock_level > 0) {
+            if (!CheckForUnlockedOptions(sPluginName)) {
+                PluginLabel.SetHasClass("setting_disabled",true);
+            }
+        }
+    }
     
 	if (undefined==sPluginSettings.Order) {
 		PluginLabel.SetAttributeInt("order",1000);
 	} else {
 		PluginLabel.SetAttributeInt("order",sPluginSettings.Order);
 	}
+}
+
+function CheckForUnlockedOptions(sPluginName) {
+    let sPluginSettings = plugin_settings[sPluginName]
+    for (const key in sPluginSettings) {
+        if (!(forced_mode.unlocked[sPluginName] == undefined || forced_mode.unlocked[sPluginName][key] == undefined )) {
+            return true
+        }
+    }
+    return false;
 }
 
 
@@ -71,6 +89,22 @@ function OpenPluginSettings(sPluginName) {
     if (sPluginSettings.enabled.VALUE == 1) {
         PluginEnabled.SetSelected(true);
     }
+    
+    if (forced_mode != undefined && forced_mode.lock_level != undefined) {
+        if (forced_mode.lock_level > 0) {
+            if (forced_mode.unlocked[sPluginName] == undefined || forced_mode.unlocked[sPluginName].enabled == undefined ) {
+                PluginEnabled.SetHasClass("setting_disabled",true);
+                PluginEnabled.enabled = false;
+            } else {
+                PluginEnabled.enabled = bHost;
+            }
+        } else {
+            PluginEnabled.enabled = bHost;
+        }
+    } else {
+        PluginEnabled.enabled = bHost;
+    }
+
     PluginEnabled.enabled = bHost;
     PluginEnabled.SetPanelEvent(
         "onactivate", 
@@ -542,7 +576,7 @@ function unlock_remote() {
                 all[key].enabled = true;
             }
         }
-        WindowRoot.SetHasClass("hidden",false);
+        /* WindowRoot.SetHasClass("hidden",false); */
         PluginUnlockScreen.SetHasClass("hidden",true);
     } else {
         const f = c/d;
@@ -557,9 +591,9 @@ function unlock_remote() {
     forced_mode = CustomNetTables.GetTableValue( "forced_mode","initial" );
     if (forced_mode == undefined || forced_mode.lock_level < 1) {
         PluginUnlockScreen.SetHasClass("hidden",true);
-        WindowRoot.SetHasClass("hidden",false);
+        //WindowRoot.SetHasClass("hidden",false);
     } else {
-        WindowRoot.SetHasClass("hidden",true);
+        //WindowRoot.SetHasClass("hidden",true);
         PluginUnlockScreen.SetHasClass("hidden",false);
     }
     var sSettings = CustomNetTables.GetAllTableValues( "plugin_settings" );

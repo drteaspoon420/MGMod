@@ -2,11 +2,14 @@
 #WindowRoot {
 	flow-children: right;
     horizontal-align: right;
+    vertical-align: bottom;
 }
 
 .CurrencyRoot {
     horizontal-align: right;
-	flow-children: down;
+    vertical-align: bottom;
+    margin-bottom: 100px;
+	flow-children: up;
 }
 
 
@@ -140,4 +143,8 @@
     height: 20px;
     font-size: 15px;
     color: white;
+}
+
+.flipped {
+    horizontal-align: left;
 }

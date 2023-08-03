@@ -1,0 +1,16 @@
+
+"presets"
+{
+    "mutator_unique_couriers"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "xmas12"
+            {
+                "enabled" "1"
+                "day9" "1"
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+
+"presets"
+{
+    "mutator_zombies"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "zombies"
+            {
+                "enabled" "1"
+            }
+        }
+    }
+}

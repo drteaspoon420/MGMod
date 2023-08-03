@@ -1,0 +1,16 @@
+
+"presets"
+{
+    "mutator_damage_cast_spells"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "attacks_cast_spells"
+            {10
+                "enabled" "1"
+                "ACSP_PROC_MODE" "1"
+            }
+        }
+    }
+}

@@ -67,7 +67,7 @@ function PluginSystem:Init()
         PluginSystem.forced = forced_file
     end
     if PluginSystem.forced.lock_level ~= nil then PluginSystem.locked = PluginSystem.forced.lock_level end
-	local presets_file = LoadKeyValues('scripts/vscripts/plugin_system/presets.txt')
+	local presets_file = LoadKeyValues('scripts/vscripts/plugin_system/presets/main.txt')
     if not (presets_file == nil or not next(presets_file)) then
         PluginSystem.presets = presets_file
         for k,v in pairs(PluginSystem.presets) do

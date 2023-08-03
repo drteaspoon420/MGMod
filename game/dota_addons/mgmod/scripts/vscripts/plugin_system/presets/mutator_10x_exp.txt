@@ -1,0 +1,15 @@
+
+"presets"
+{
+    "mutator_10x_exp"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "dota_settings"
+            {
+                "xp_gain_percent" "1000"
+            }
+        }
+    }
+}

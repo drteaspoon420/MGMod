@@ -1,0 +1,18 @@
+
+"presets"
+{
+    "mutator_10x_gold"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "dota_settings"
+            {
+                "gold_tick" "10"
+                "gold_per_tick" "99999"
+                "starting_gold" "99999"
+            }
+        }
+        "overlap_tags" "gold_gain"
+    }
+}

@@ -1,0 +1,17 @@
+
+"presets"
+{
+    "mutator_tower_huggers"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "xmas12"
+            {
+                "enabled" "1"
+                "day1" "1"
+            }
+        }
+        "exists_tags" "towers" // if any other mutator already adds "towers" to "remove_tags", this mutator won't be valid
+    }
+}

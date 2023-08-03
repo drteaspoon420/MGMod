@@ -1,0 +1,15 @@
+
+"presets"
+{
+    "mutator_stonks"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "stonks"
+            {
+                "enabled" "1"
+            }
+        }
+    }
+}

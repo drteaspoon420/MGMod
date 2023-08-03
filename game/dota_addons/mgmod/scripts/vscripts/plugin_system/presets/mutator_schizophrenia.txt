@@ -1,0 +1,16 @@
+
+"presets"
+{
+    "mutator_schizophrenia"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "xmas12"
+            {
+                "enabled" "1"
+                "day7" "1"
+            }
+        }
+    }
+}
