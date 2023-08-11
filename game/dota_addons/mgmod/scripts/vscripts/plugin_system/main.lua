@@ -53,6 +53,7 @@ function PluginSystem:Init()
     CustomGameEventManager:RegisterListener("settings_save_slot",function(i,tEvent) PluginSystem:settings_save_slot(tEvent) end)
     CustomGameEventManager:RegisterListener("setting_change",PluginSystem.setting_change)
     CustomGameEventManager:RegisterListener("settings_vote_unlock",function(i,tEvent) PluginSystem:settings_vote_unlock(tEvent) end)
+    CustomGameEventManager:RegisterListener("mutator_mode",PluginSystem.mutator_mode)
     
     GameRules:SetSafeToLeave(true)
     --GameRules:SetCustomGameAccountRecordSaveFunction( Dynamic_Wrap( PluginSystem, "SaveHostSettings_PartA" ), self )
@@ -67,7 +68,7 @@ function PluginSystem:Init()
         PluginSystem.forced = forced_file
     end
     if PluginSystem.forced.lock_level ~= nil then PluginSystem.locked = PluginSystem.forced.lock_level end
-	local presets_file = LoadKeyValues('scripts/vscripts/plugin_system/presets/main.txt')
+	local presets_file = LoadKeyValues('scripts/vscripts/plugin_system/mutators/main.txt')
     if not (presets_file == nil or not next(presets_file)) then
         PluginSystem.presets = presets_file
         for k,v in pairs(PluginSystem.presets) do
@@ -111,10 +112,9 @@ function PluginSystem:Init()
         if not (settings == nil or not next(settings)) then
             if PluginSystem.forced ~= nil
             and PluginSystem.forced.lock_level ~= nil and PluginSystem.forced.lock_level > -1
-            and PluginSystem.forced.preset ~= nil and
-            PluginSystem.presets ~= nil and PluginSystem.presets[PluginSystem.forced.preset] ~= nil and PluginSystem.presets[PluginSystem.forced.preset].settings ~= nil
+            and PluginSystem.forced.settings ~= nil
             then
-                PluginSystem:LoadDefaultSettings(sPlugin,settings,PluginSystem.presets[PluginSystem.forced.preset].settings)
+                PluginSystem:LoadDefaultSettings(sPlugin,settings,PluginSystem.forced.settings)
             else
                 PluginSystem:LoadDefaultSettings(sPlugin,settings)
             end
@@ -206,7 +206,7 @@ end
 function PluginSystem:ApplyPresetAdditive(sPreset)
     print("loading preset",sPreset)
     if PluginSystem.presets == nil or PluginSystem.presets[sPreset] == nil then return end
-    local tSettings = PluginSystem.presets[sPreset]
+    local tSettings = PluginSystem.presets[sPreset].settings
     if tSettings and type(tSettings) == "table" then
         if not next(tSettings) then return end
         for sPlugin,tSetting in pairs(PluginSystem.LobbySettings) do
@@ -751,4 +751,65 @@ function PluginSystem:TrackingProjectileFilter(event)
         end
     end
     return true
+end
+
+
+function PluginSystem:mutator_mode(tEvent)
+    local iPlayer = tEvent.PlayerID
+	if not Toolbox:IsHost(iPlayer) then return end
+
+    PluginSystem:MutatorModeSelect(tEvent.count or 1)
+    CustomGameEventManager:Send_ServerToAllClients("mutator_mode",{})
+end
+
+function PluginSystem:MutatorModeSelect(iCount)
+    local tAvailable = {}
+    for k,v in pairs(PluginSystem.presets) do
+        print(k)
+        table.insert(tAvailable,k)
+    end
+    local tPicks = {}
+    local tTags = {}
+    local iTries = 0
+    while iTries < 100 do
+        local p = PluginSystem:PickRng(tAvailable)
+        print(p[1])
+        if not (PluginSystem.presets[p[1]].overlap_tags ~= nil and Toolbox:table_contains(tTags,PluginSystem.presets[p[1]].overlap_tags)) then
+            if not (PluginSystem.presets[p[1]].no_tags ~= nil and Toolbox:table_contains(tTags,PluginSystem.presets[p[1]].no_tags)) then
+                if (PluginSystem.presets[p[1]].overlap_tags ~= nil) then
+                    local tOverlap = Toolbox:split(PluginSystem.presets[p[1]].overlap_tags, " ")
+                    for k,v in pairs(tOverlap) do
+                        if not Toolbox:table_contains(tTags,v) then
+                            table.insert(tTags,v)
+                        end
+                    end
+                end
+                if (PluginSystem.presets[p[1]].add_tags ~= nil) then
+                    local tAdd = Toolbox:split(PluginSystem.presets[p[1]].add_tags, " ")
+                    for k,v in pairs(tAdd) do
+                        if not Toolbox:table_contains(tTags,v) then
+                            table.insert(tTags,v)
+                        end
+                    end
+                end
+                table.insert(tPicks,p[1])
+                tAvailable = p[2]
+            end
+        end
+        if #tPicks > (iCount-1) then
+            iTries = 200
+        else
+            iTries = iTries + 1
+        end
+    end
+    for k,v in pairs(tPicks) do
+        PluginSystem:ApplyPresetAdditive(v)
+    end
+end
+
+function PluginSystem:PickRng(t)
+    local p = RandomInt(1, #t)
+    local r = t[p]
+    table.remove(t,p)
+    return {r,t}
 end

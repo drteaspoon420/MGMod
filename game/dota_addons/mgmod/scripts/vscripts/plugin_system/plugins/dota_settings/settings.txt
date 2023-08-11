@@ -156,13 +156,13 @@
         "TYPE" "boolean"
         "DEFAULT" "1"
     }
-    "backback_cooldown"
-    {
-        "Order" "707"
-        "TYPE" "number"
-        "UNIT" "%"
-        "DEFAULT" "100"
-    }
+//    "backback_cooldown"
+//    {
+//        "Order" "707"
+//        "TYPE" "number"
+//        "UNIT" "%"
+//        "DEFAULT" "100"
+//    }
     "day_night_rate"
     {
         "Order" "709"

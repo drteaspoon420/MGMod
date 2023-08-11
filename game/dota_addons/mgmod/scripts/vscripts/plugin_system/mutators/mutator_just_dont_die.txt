@@ -18,6 +18,6 @@
             }
         }
         "overlap_tags" "kill_limit"
-        "remove_tags" "respawn"
+        "add_tags" "no_respawn"
     }
 }

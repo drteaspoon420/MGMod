@@ -117,4 +117,13 @@ function Cleanup() {
         }
         CustomNetTables.SubscribeNetTableListener( "currencies" , tCurrenciesUpdate );
     }
+    if (Game.IsHUDFlipped()) {
+        $.GetContextPanel().SetHasClass("flipped",true);
+        WindowRoot.SetHasClass("map_left_window_root",true);
+        WindowRoot.SetHasClass("map_right_window_root",false);
+    } else {
+        $.GetContextPanel().SetHasClass("flipped",false);
+        WindowRoot.SetHasClass("map_left_window_root",false);
+        WindowRoot.SetHasClass("map_right_window_root",true);
+    }
 })();

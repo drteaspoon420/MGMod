@@ -1,8 +1,7 @@
 "forced"
 {
-    "lock_level" "1" // -1 = ignore this file, 0 = no lock, 1 = allow host to ask for vote, 2 = forced lock
+    "lock_level" "-1" // -1 = ignore this file, 0 = no lock, 1 = allow host to ask for vote, 2 = forced lock
     "vote_treshold" "39"
-    "preset" "boosted_gamemode"
     "unlocked" {
         "dota_settings" {
             "pick_mode" "1"
@@ -15,6 +14,52 @@
         }
         "tower_buffs" {
             "unyielding_shield" "1"
+        }
+    }
+    "settings"
+    {
+        "dota_settings"
+        {
+            "hero_banning" "1"
+            "pick_mode" "singledraft"
+            "univeral_Shop" "1"
+            "xp_gain_percent" "170"
+            "gold_gain_percent" "200"
+            "agh_shard_time" "3"
+        }
+        "boosted"
+        {
+            "enabled" "1"
+        }
+        "currencies"
+        {
+            "enabled" "1"
+            "observer_plant_reward_amount" "50"
+            "timed_reward_amount" "100"
+            "timed_reward_rate" "60"
+            "unit_kill_reward_amount" "1"
+            "hero_kill_reward_amount" "25"
+            "observer_kill_reward_amount" "25"
+            "tower_kill_reward_amount" "100"
+            "roshan_kill_reward_amount" "200"
+            "red_state" "team"
+            "red_gold_buy" "50"
+            "lamp_capture_reward_amount" "25"
+            "outpost_capture_reward_amount" "10"
+            "tormentor_kill_reward_amount" "500"
+        }
+        "time_scaling"
+        {
+            "enabled" "1"
+            "hp_max" "75"
+            "status_resist" "0.6"
+        }
+        "tower_buffs"
+        {
+            "enabled" "1"
+            "backdoor_immunity" "1"
+            "unyielding_shield" "1"
+            "bonus_hp" "4000"
         }
     }
 }

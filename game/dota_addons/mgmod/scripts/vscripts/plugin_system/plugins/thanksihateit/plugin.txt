@@ -1,0 +1,11 @@
+"Plugins"
+{
+    "mutation_mode"
+    {
+        "MainClass" "ThanksIHateItPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+    }
+}

@@ -85,7 +85,7 @@ function DotaSettingsPlugin:ApplySettings()
 
     
 	GameRules:GetGameModeEntity():SetBuybackEnabled(DotaSettingsPlugin.settings.allow_buyback)
-	GameRules:GetGameModeEntity():SetCustomBackpackCooldownPercent(DotaSettingsPlugin.settings.backback_cooldown)
+	--GameRules:GetGameModeEntity():SetCustomBackpackCooldownPercent(DotaSettingsPlugin.settings.backback_cooldown)
     --[[local heroId = DOTAGameManager:GetHeroIDByName(DotaSettingsPlugin.settings.force_hero)
      print(DotaSettingsPlugin.settings.force_hero,"is",heroId)
     if (DotaSettingsPlugin.settings.force_hero ~= "none") then

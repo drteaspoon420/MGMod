@@ -51,7 +51,7 @@
         "Order" "9"
         "TYPE" "number"
         "UNIT" "%"
-        "DEFAULT" "0.6"
+        "DEFAULT" "0"
     }
     "attack_speed"  {
         "Order" "10"

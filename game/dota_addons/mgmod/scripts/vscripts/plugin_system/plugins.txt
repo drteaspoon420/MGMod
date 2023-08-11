@@ -28,6 +28,7 @@
 #base "plugins/boosted/plugin.txt"
 #base "plugins/time_scaling/plugin.txt"
 #base "plugins/tower_buffs/plugin.txt"
+//#base "plugins/thanksihateit/plugin.txt"
 "Plugins"
 {
 }

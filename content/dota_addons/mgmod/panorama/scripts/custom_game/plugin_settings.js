@@ -6,6 +6,7 @@ var PluginSettingsBox = $.GetContextPanel().FindChildInLayoutFile("PluginSetting
 var SettingsSaveSlots = $.GetContextPanel().FindChildInLayoutFile("SettingsSaveSlots");
 var PluginUnlockScreen = $.GetContextPanel().FindChildInLayoutFile("PluginUnlockScreen");
 var PluginUnlockBar = $.GetContextPanel().FindChildInLayoutFile("PluginUnlockBar");
+var PluginMutator = $.GetContextPanel().FindChildInLayoutFile("PluginMutator");
 var current_open = "";
 var mutator_presets;
 var forced_mode;
@@ -159,7 +160,6 @@ function OpenPluginSettings(sPluginName) {
     current_open = sPluginName;
     
 }
-
 
 
 function UpdatePluginSettings(sPluginName) {
@@ -591,9 +591,12 @@ function unlock_remote() {
     forced_mode = CustomNetTables.GetTableValue( "forced_mode","initial" );
     if (forced_mode == undefined || forced_mode.lock_level < 1) {
         PluginUnlockScreen.SetHasClass("hidden",true);
+        PluginMutator.SetHasClass("hidden",!bHost);
+        GameEvents.Subscribe( "mutator_mode", mutator_mode_go );
         //WindowRoot.SetHasClass("hidden",false);
     } else {
         //WindowRoot.SetHasClass("hidden",true);
+        PluginMutator.SetHasClass("hidden",true);
         PluginUnlockScreen.SetHasClass("hidden",false);
     }
     var sSettings = CustomNetTables.GetAllTableValues( "plugin_settings" );
@@ -611,12 +614,28 @@ function unlock_remote() {
     var sSaveSlots = CustomNetTables.GetAllTableValues( "save_slots" );
     for (const key in sSaveSlots) {
         let iSlot = sSaveSlots[key].key.split("_").pop();
-        $.Msg(sSaveSlots[key].key);
-        $.Msg(iSlot);
         if (iSlot != undefined && !isNaN(Number(iSlot))) {
             ActivateSaveSlot(Number(iSlot),sSaveSlots[key].value);
         }
     }
     CustomNetTables.SubscribeNetTableListener( "save_slots" , SlotsUpdate );
     CustomNetTables.SubscribeNetTableListener( "forced_mode" , forced_mode_update );
+
 })();
+
+
+function mutator_mode(i) {
+    if (bHost) GameEvents.SendCustomGameEventToServer("mutator_mode",{"count": i});
+}
+
+function mutator_mode_go() {
+    if (bHost) {
+        Game.AutoAssignPlayersToTeams();
+        Game.ShufflePlayerTeamAssignments();
+        Game.SetTeamSelectionLocked( true );
+        Game.SetRemainingSetupTime( 0.1 );
+        Game.SetAutoLaunchDelay( 0.1 );
+        Game.SetAutoLaunchEnabled( true );
+    }
+    $.GetContextPanel().SetHasClass("hidden",true);
+}

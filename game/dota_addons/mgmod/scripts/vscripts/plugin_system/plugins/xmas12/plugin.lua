@@ -99,9 +99,9 @@ function XMax12Plugin:SpawnEvent(event)
         if XMax12Plugin.settings.day7 then
             local hModifier = hUnit:AddNewModifier(hUnit,nil,"day_7",{})
         end
-        if XMax12Plugin.settings.day8 then
-            local hModifier = hUnit:AddNewModifier(hUnit,nil,"day_8",{})
-        end
+    end
+    if XMax12Plugin.settings.day8 then
+        local hModifier = hUnit:AddNewModifier(hUnit,nil,"day_8",{})
     end
     if XMax12Plugin.settings.day9 then
         if hUnit:GetUnitName() == "npc_dota_courier" then
@@ -149,8 +149,10 @@ function XMax12Plugin:DamageFilter(event)
 	local damage = event.damage
  ]]
 	local victimUnit = event.entindex_victim_const and EntIndexToHScript(event.entindex_victim_const)
-	if XMax12Plugin.settings.day3 then
-		event.damage = victimUnit:GetMaxHealth() * 0.4
+    if XMax12Plugin.settings ~= nil then
+        if XMax12Plugin.settings.day3 then
+            event.damage = victimUnit:GetMaxHealth() * 0.4
+        end
     end
     return {true,event}
 end

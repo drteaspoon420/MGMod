@@ -1,17 +1,18 @@
 
 "presets"
 {
-    "mutator_delete_fountain"
+    "mutator_time_scale_attributes"
     {
         "mutator" "1"
         "settings"
         {
-            "delete_dota"
+            "time_scaling"
             {
                 "enabled" "1"
-                "delete_fountain" "1"
+                "str" "10"
+                "agi" "10"
+                "int" "10"
             }
         }
     }
-        "remove_tags" "fountain"
 }

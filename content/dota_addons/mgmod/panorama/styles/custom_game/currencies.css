@@ -1,7 +1,5 @@
 .hidden{visibility: collapse;}
 #WindowRoot {
-	flow-children: right;
-    horizontal-align: right;
     vertical-align: bottom;
 }
 
@@ -146,5 +144,13 @@
 }
 
 .flipped {
+    horizontal-align: left;
+}
+.map_right_window_root {
+	flow-children: right;
+    horizontal-align: right;
+}
+.map_left_window_root {
+	flow-children: left;
     horizontal-align: left;
 }

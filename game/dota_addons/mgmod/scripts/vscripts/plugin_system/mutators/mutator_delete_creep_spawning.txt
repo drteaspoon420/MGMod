@@ -1,7 +1,7 @@
 
 "presets"
 {
-    "mutator_delete_shops"
+    "mutator_delete_creep_spawning"
     {
         "mutator" "1"
         "settings"
@@ -9,9 +9,9 @@
             "delete_dota"
             {
                 "enabled" "1"
-                "delete_shops" "1"
+                "delete_creep_spawning" "1"
             }
         }
+        "add_tags" "no_creeps"
     }
-        "remove_tags" "shops"
 }

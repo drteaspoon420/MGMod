@@ -46,7 +46,7 @@ function day_8:OnDestroy(kv)
                 vPos,
                 nil,
                 FIND_UNITS_EVERYWHERE,
-                DOTA_UNIT_TARGET_TEAM_FRIENDLY,
+                DOTA_UNIT_TARGET_TEAM_BOTH,
                 DOTA_UNIT_TARGET_ALL,
                 0,
                 FIND_CLOSEST,

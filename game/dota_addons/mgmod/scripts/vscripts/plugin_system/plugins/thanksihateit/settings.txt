@@ -1,0 +1,13 @@
+"plugin_settings"
+{
+    "Order" "9701"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "death_item_loss" {
+        "Order" "1"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+}

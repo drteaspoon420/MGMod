@@ -611,5 +611,11 @@
 		"DOTA_Tooltip_Ability_drteaspoon_witchcraft_manacost_reduction"	"MANACOST REDUCTION:"
 		"DOTA_Tooltip_Ability_drteaspoon_witchcraft_movement_speed_bonus_pct"	"%BONUS MOVEMENT SPEED:"
 
+
+
+///MUTATOR MODE STUFF
+
+		"PluginMutatorButtonText" "Surprise Us!"
+		
 	}
 }

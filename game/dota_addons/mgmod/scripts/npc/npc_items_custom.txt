@@ -1,4 +1,5 @@
 #base "npc_items_fix.txt" //contains the fixes to allow using these builtin items
+//#base "npc_items_unlock.txt" //contains the kv for unreleased items in attempt to unlock them
 
 //#base "valvemodes\npc_items_new_bloom_2017.txt"
 //#base "valvemodes\npc_items_winter_2018.txt"

@@ -66,6 +66,17 @@
 			<ProgressBar id="PluginUnlockBar" min="0" max="100">
 			</ProgressBar>
 		</Panel>
+		<Panel id="PluginMutator">
+			<Button class="PluginMutatorButton" onactivate="mutator_mode(1);">
+				<Label class="PluginMutatorButtonText" text="#PluginMutatorButtonText"/>
+			</Button>
+			<Button class="PluginMutatorButtonX" onactivate="mutator_mode(2);">
+				<Label class="PluginMutatorButtonText" text="x2"/>
+			</Button>
+			<Button class="PluginMutatorButtonX" onactivate="mutator_mode(3);">
+				<Label class="PluginMutatorButtonText" text="x3"/>
+			</Button>
+		</Panel>
 		<Panel id="WindowRoot">
 			<Panel id="SettingsSaveSlots">
 			</Panel>

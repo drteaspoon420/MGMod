@@ -11,5 +11,6 @@
                 "xp_gain_percent" "1000"
             }
         }
+        "overlap_tags" "exp_gain"
     }
 }
