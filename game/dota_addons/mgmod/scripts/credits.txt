@@ -1,5 +1,8 @@
 "credits"
 {
+
+    //this file contains kv if eventually I add some panorama thing to show contributors in-game
+
     "76561197975484185" //steamid
     {
         "name"  "DrTeaSpoon"
@@ -9,7 +12,7 @@
     "76561198072015344" //steamid
     {
         "name"  "Abraham Blink'in"
-        "description"   "Contributor"
+        "description"   "Plugin Contributor"
         "css"   "contributor" //css style to be used in lobby screen. needs to be implemented
     }
 }

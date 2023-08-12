@@ -23,7 +23,7 @@ function ThanksIHateItPlugin:SpawnEvent(event)
 
     if hUnit:IsRealHero() then
         if ThanksIHateItPlugin.settings.killstreak_power then
-            local hModifier = hUnit:AddNewModifier(hUnit,nil,"modifier_mutation_killstreak_power",{})
+            local hModifier = hUnit:AddNewModifier(hUnit,nil,"modifier_death_item_loss",{})
         end
     end
     

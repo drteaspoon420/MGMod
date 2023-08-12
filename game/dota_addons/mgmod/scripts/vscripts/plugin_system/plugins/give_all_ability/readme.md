@@ -1,5 +1,6 @@
 # Give All Ability
 Simple plugin that gives X ability to Y units when they spawn.
+not done yet.
 
 ## Options
 Target:

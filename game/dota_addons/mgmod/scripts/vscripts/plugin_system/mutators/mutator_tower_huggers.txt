@@ -12,6 +12,6 @@
                 "day1" "1"
             }
         }
-        "no_tags" "no_towers" // if any other mutator already adds "towers" to "remove_tags", this mutator won't be valid
+        "no_tags" "no_towers"
     }
 }

@@ -770,30 +770,41 @@ function PluginSystem:MutatorModeSelect(iCount)
     end
     local tPicks = {}
     local tTags = {}
+    local tNoTags = {}
     local iTries = 0
     while iTries < 100 do
         local p = PluginSystem:PickRng(tAvailable)
         print(p[1])
         if not (PluginSystem.presets[p[1]].overlap_tags ~= nil and Toolbox:table_contains(tTags,PluginSystem.presets[p[1]].overlap_tags)) then
             if not (PluginSystem.presets[p[1]].no_tags ~= nil and Toolbox:table_contains(tTags,PluginSystem.presets[p[1]].no_tags)) then
-                if (PluginSystem.presets[p[1]].overlap_tags ~= nil) then
-                    local tOverlap = Toolbox:split(PluginSystem.presets[p[1]].overlap_tags, " ")
-                    for k,v in pairs(tOverlap) do
-                        if not Toolbox:table_contains(tTags,v) then
-                            table.insert(tTags,v)
+                if not (PluginSystem.presets[p[1]].add_tags ~= nil and Toolbox:table_contains(tNoTags,PluginSystem.presets[p[1]].add_tags)) then
+                    if (PluginSystem.presets[p[1]].overlap_tags ~= nil) then
+                        local tOverlap = Toolbox:split(PluginSystem.presets[p[1]].overlap_tags, " ")
+                        for k,v in pairs(tOverlap) do
+                            if not Toolbox:table_contains(tTags,v) then
+                                table.insert(tTags,v)
+                            end
                         end
                     end
-                end
-                if (PluginSystem.presets[p[1]].add_tags ~= nil) then
-                    local tAdd = Toolbox:split(PluginSystem.presets[p[1]].add_tags, " ")
-                    for k,v in pairs(tAdd) do
-                        if not Toolbox:table_contains(tTags,v) then
-                            table.insert(tTags,v)
+                    if (PluginSystem.presets[p[1]].no_tags ~= nil) then
+                        local tNopes = Toolbox:split(PluginSystem.presets[p[1]].no_tags, " ")
+                        for k,v in pairs(tNopes) do
+                            if not Toolbox:table_contains(tNoTags,v) then
+                                table.insert(tNoTags,v)
+                            end
                         end
                     end
+                    if (PluginSystem.presets[p[1]].add_tags ~= nil) then
+                        local tAdd = Toolbox:split(PluginSystem.presets[p[1]].add_tags, " ")
+                        for k,v in pairs(tAdd) do
+                            if not Toolbox:table_contains(tTags,v) then
+                                table.insert(tTags,v)
+                            end
+                        end
+                    end
+                    table.insert(tPicks,p[1])
+                    tAvailable = p[2]
                 end
-                table.insert(tPicks,p[1])
-                tAvailable = p[2]
             end
         end
         if #tPicks > (iCount-1) then

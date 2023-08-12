@@ -1,2 +1,2 @@
-# Mammonite
-Weird gold to power things.
+# Time Scaling Heroes
+improve heroes over time.
