@@ -7,10 +7,11 @@
         "settings"
         {
             "attacks_cast_spells"
-            {10
+            {
                 "enabled" "1"
                 "ACSP_PROC_MODE" "1"
             }
         }
+        "overlap_tags" "acs"
     }
 }
