@@ -372,6 +372,11 @@ function PluginSystem:ProcRegisteredGameStates(iState)
     end
     if DOTA_GAMERULES_STATE_HERO_SELECTION  == iState then
         PluginSystem:SaveHostSettings()
+        if PluginSystem.mutator_picks ~= nil then
+            for k,v in pairs(PluginSystem.mutator_picks) do
+                PluginSystem:ApplyPresetAdditive(v)
+            end
+        end
     end
     if PluginSystem.StateRegistry[iState] ~= nil then
         for k,v in pairs(PluginSystem.StateRegistry[iState]) do
@@ -813,9 +818,7 @@ function PluginSystem:MutatorModeSelect(iCount)
             iTries = iTries + 1
         end
     end
-    for k,v in pairs(tPicks) do
-        PluginSystem:ApplyPresetAdditive(v)
-    end
+    PluginSystem.mutator_picks = tPicks
 end
 
 function PluginSystem:PickRng(t)
