@@ -33,6 +33,7 @@ function modifier_attacks_cast_spells:OnCreated(keys)
     end
     self.problematic = AttacksCastSpellsPlugin.lists.problematic
     self.channelSpecial = AttacksCastSpellsPlugin.lists.channelspecial
+    self.ACSP_CHAOS = AttacksCastSpellsPlugin.settings.ACSP_CHAOS
 end
 
 
@@ -55,7 +56,55 @@ function modifier_attacks_cast_spells:OnAbilityExecuted(keys)
     end
 end
 
+function modifier_attacks_cast_spells:GetRandomSpellChaos()
+    local tPossible = {}
+    local iTeam = self:GetParent():GetTeam()
+    for i=0, DOTA_MAX_TEAM_PLAYERS do
+            if PlayerResource:IsValidPlayer(i) then
+                local player = PlayerResource:GetPlayer(i)
+                local hHero = player:GetAssignedHero()
+                if hHero ~= nil and hHero:GetTeam() == iTeam then
+                for i = 0, hHero:GetAbilityCount()-1 do 
+                    local hAbility = hHero:GetAbilityByIndex(i)
+                    if (hAbility) then
+                        local ultimateSkip = (self:CheckOption(self.args.noultimate) and hAbility:GetAbilityType() == 1 )
+                        if not ultimateSkip then
+                            if not hAbility:IsHidden() and not hAbility:IsToggle() and hAbility:IsTrained() and not hAbility:IsPassive() and not self:InList(self.trolls,hAbility)then
+                                if not self:CheckProblematic(hAbility) then
+                                    if not (hHero:IsIllusion() or hHero:IsTempestDouble()) or not self:InList(self.ill_trolls,hAbility) then
+                                        tPossible[#tPossible+1] = hAbility
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+
+
+                if self.args.itemProcChance > 0 then
+                    for i = 0, 5 do 
+                        local hAbility = hHero:GetItemInSlot(i)
+                            if (hAbility ~= nil) then
+                            if (self:CheckItem(hAbility))then
+                                if not (hHero:IsIllusion() or hHero:IsTempestDouble()) or not self:InList(self.ill_trolls,hAbility) then
+                                    tPossible[#tPossible+1] = hAbility
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+    if #tPossible > 0 then
+        return  tPossible[RandomInt(1,#tPossible)]
+    end
+    return nil
+end
 function modifier_attacks_cast_spells:GetRandomSpell()
+    if self.ACSP_CHAOS then
+        return self:GetRandomSpellChaos()
+    end
     local tPossible = {}
     local hHero = self:GetParent()
     for i = 0, hHero:GetAbilityCount()-1 do 
@@ -73,6 +122,7 @@ function modifier_attacks_cast_spells:GetRandomSpell()
             end
         end
     end
+
 
     if self.args.itemProcChance > 0 then
         for i = 0, 5 do 

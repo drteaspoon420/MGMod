@@ -87,7 +87,7 @@
         "Order" "26"
         "TYPE" "number"
         "UNIT" "%"
-        "DEFAULT" "4"
+        "DEFAULT" "-10000"
     }
     "upgrade_count" {
         "Order" "27"

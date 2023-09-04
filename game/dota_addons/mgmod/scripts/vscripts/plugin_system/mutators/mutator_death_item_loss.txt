@@ -1,0 +1,16 @@
+
+"presets"
+{
+    "mutator_death_item_loss"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "thanksihateit"
+            {
+                "enabled" "1"
+                "death_item_loss" "1"
+            }
+        }
+    }
+}

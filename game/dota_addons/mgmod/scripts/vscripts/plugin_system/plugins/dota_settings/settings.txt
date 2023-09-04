@@ -42,7 +42,7 @@
         "Order" "7"
         "TYPE" "number"
         "UNIT" "s"
-        "DEFAULT" "60"
+        "DEFAULT" "6000"
     }
     "strategy_time"
     {

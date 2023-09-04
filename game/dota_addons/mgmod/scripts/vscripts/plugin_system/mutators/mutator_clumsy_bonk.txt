@@ -1,0 +1,16 @@
+
+"presets"
+{
+    "mutator_clumsy_bonk"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "thanksihateit"
+            {
+                "enabled" "1"
+                "clumsy_bonk" "1"
+            }
+        }
+    }
+}

@@ -93,7 +93,7 @@
 	"add_basic_item"
 	{
 		"target" "short"
-		"item" "string"
+		"itwem" "string"
 	}
 	"add_basic_unit"
 	{
@@ -123,6 +123,10 @@
 		"ability" "string"
 	}
 
+	"debug_unit"
+	{
+		"target" "short"
+	}
 	
 	"hackerman"
 	{

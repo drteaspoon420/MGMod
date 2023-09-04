@@ -50,7 +50,6 @@ function BoostedPlugin:ApplySettings()
 	end
 	BoostedPlugin.req_blocks = req_blocks
     --CustomGameEventManager:RegisterListener("boost_player",BoostedPlugin.boost_player)
-    CustomGameEventManager:RegisterListener("boost_player_recheck",BoostedPlugin.boost_player_recheck)
     CustomGameEventManager:RegisterListener("upgrade_hero",BoostedPlugin.upgrade_hero)
     --CustomGameEventManager:RegisterListener("upgrade_report",Dynamic_Wrap(self,'upgrade_report'))
     --CustomGameEventManager:RegisterListener('ability_tooltip_extra_request', Dynamic_Wrap( self, 'ability_tooltip_extra_request'))
@@ -141,11 +140,6 @@ function BoostedPlugin:ApplyOnlineList(json)
     return true
 end
 
-function BoostedPlugin:boost_player_recheck(event)
-    local iPlayer = tEvent.PlayerID
-    if iPlayer < 0 then return end
-    BoostedPlugin:UpdatePlayer_NetTable(iPlayer,nil)
-end
 
 function BoostedPlugin:UpdateEvent(event)
     local hUnit = EntIndexToHScript(event.entindex)
@@ -320,7 +314,7 @@ function BoostedPlugin:SpawnEvent(event)
             if iPlayer < 0 then return end
             local hPlayer = PlayerResource:GetPlayer(iPlayer)
             if hPlayer == nil then return end
-            local hHero = hPlayer:GetAssignedHero()
+--[[             local hHero = hPlayer:GetAssignedHero()
             if hHero == nil then
                 print("hero was nill")
                 return
@@ -328,14 +322,20 @@ function BoostedPlugin:SpawnEvent(event)
             if hHero ~= hUnit then 
                 print("hero was not unit")
                 return
-            end
+            end ]]
             BoostedPlugin:UpdatePlayer_NetTable(iPlayer,hUnit)
             local hModifier = hUnit:AddNewModifier(hUnit,nil,"modifier_boosted",{})
             print("all should be good")
         else
-            local iPlayer = hUnit:GetMainControllingPlayer()
-            if iPlayer < 0 then return end
             if hUnit:IsCourier() then return end
+            local iPlayer = hUnit:GetMainControllingPlayer()
+            if iPlayer < 0 then
+                iPlayer = hUnit:GetPlayerOwnerID()
+            end
+            if iPlayer < 0 then
+                return
+            end
+            
             BoostedPlugin:UpdatePlayer_NetTable(iPlayer,hUnit)
             local hModifier = hUnit:AddNewModifier(hUnit,nil,"modifier_boosted",{})
         end
@@ -383,11 +383,18 @@ function BoostedPlugin:boost_player(tEvent)
         fDown = fDown * BoostedPlugin.settings.RARE_MULTIPLIER * 0.01
     end
     
-
     if fValue < 0 then
-        BoostedPlugin.lists[iPlayer][sAbility][sKey] = BoostedPlugin:ModifiedUpgrade(sAbility,sKey,fOld - fDown)
+        if fOld > 1.0000001 then
+            BoostedPlugin.lists[iPlayer][sAbility][sKey] = BoostedPlugin:ModifiedUpgrade(sAbility,sKey,1.0)
+        else
+            BoostedPlugin.lists[iPlayer][sAbility][sKey] = BoostedPlugin:ModifiedUpgrade(sAbility,sKey,fOld - fDown)
+        end
     else
-        BoostedPlugin.lists[iPlayer][sAbility][sKey] = BoostedPlugin:ModifiedUpgrade(sAbility,sKey,fOld + fUp)
+        if fOld < 0.9999999 then
+            BoostedPlugin.lists[iPlayer][sAbility][sKey] = BoostedPlugin:ModifiedUpgrade(sAbility,sKey,1.0)
+        else
+            BoostedPlugin.lists[iPlayer][sAbility][sKey] = BoostedPlugin:ModifiedUpgrade(sAbility,sKey,fOld + fUp)
+        end
     end
 
     CustomNetTables:SetTableValue("player_upgrades_" .. iPlayer,sAbility,BoostedPlugin.lists[iPlayer][sAbility])
@@ -540,17 +547,12 @@ end ]]
 BoostedPlugin.player_offers = {}
 BoostedPlugin.player_boosters = {}
 function BoostedPlugin:GenerateOffer(iPlayer)
-    local bTryOfferNew = false
-    if BoostedPlugin.player_offers[iPlayer] == {} then
-        BoostedPlugin.player_boosters[iPlayer] = BoostedPlugin.player_boosters[iPlayer] - 1
-        bTryOfferNew = true
+    if BoostedPlugin.player_offers[iPlayer] ~= nil and BoostedPlugin.player_offers[iPlayer] ~= {} then
+        CustomNetTables:SetTableValue("player_booster", iPlayer .. "d", BoostedPlugin.player_offers[iPlayer])
+        return
     end
-    if BoostedPlugin.player_offers[iPlayer] == nil then
-        BoostedPlugin.player_offers[iPlayer] = {}
-        BoostedPlugin.player_boosters[iPlayer] = BoostedPlugin.player_boosters[iPlayer] - 1
-        bTryOfferNew = true
-    end
-    if not bTryOfferNew then return end
+    BoostedPlugin.player_boosters[iPlayer] = BoostedPlugin.player_boosters[iPlayer] - 1
+    BoostedPlugin.player_offers[iPlayer]  = {}
 
     local hPlayer = PlayerResource:GetPlayer(iPlayer)
     if hPlayer == nil then return end
@@ -593,7 +595,7 @@ end
 
 
 function BoostedPlugin:GetKvCount(hHero,iPlayer)
-    local t = BoostedPlugin:LimitViable(BoostedPlugin:GetCompleteAbilityList(hHero),iPlayer)
+    local t = BoostedPlugin:LimitViable(BoostedPlugin:GetCompleteAbilityList(hHero,iPlayer),iPlayer)
     local c = 0
     for k,v in pairs(t) do
         if BoostedPlugin.lists[iPlayer] ~= nil then
@@ -742,6 +744,7 @@ function BoostedPlugin:ProcessOffer(iPlayer,normal,rare,ultra)
     end
     local allow_ban = BoostedPlugin.kv_bans[iPlayer].bans < BoostedPlugin.settings.kv_bans
     local tt = BoostedPlugin:GetCompleteOfferList(hero,iPlayer)
+    
     while i < ultra+1 do
         if Toolbox:IsEmpty(tt) then break end
         local oo = BoostedPlugin:CreateOffer(hero,tt)
@@ -756,8 +759,17 @@ function BoostedPlugin:ProcessOffer(iPlayer,normal,rare,ultra)
             local mult = BoostedPlugin:NerfsKV(offer.ability,offer.key)
             local upgrade = BoostedPlugin.settings.UPGRADE_RATE * 0.01 * BoostedPlugin.settings.ULTRA_MULTIPLIER * 0.01 * mult
             local downgrade = BoostedPlugin.settings.DOWNGRADE_RATE * 0.01 * BoostedPlugin.settings.ULTRA_MULTIPLIER * 0.01 * mult
-            upgrade = BoostedPlugin:ModifiedUpgrade(offer.ability,offer.key,current + upgrade)*100
-            downgrade = BoostedPlugin:ModifiedUpgrade(offer.ability,offer.key,current - downgrade)*100
+            if (current < 0.9999999) then
+                upgrade = 100
+            else
+                upgrade = BoostedPlugin:ModifiedUpgrade(offer.ability,offer.key,current + upgrade)*100
+            end
+
+            if (current > 1.0000001) then
+                downgrade = 100
+            else
+                downgrade = BoostedPlugin:ModifiedUpgrade(offer.ability,offer.key,current - downgrade)*100
+            end
 --TODO:
 --[[
     local fMult = BoostedPlugin:NerfsKV(sAbility,sKey)
@@ -812,8 +824,17 @@ end
             local upgrade = BoostedPlugin.settings.UPGRADE_RATE *0.01* BoostedPlugin.settings.RARE_MULTIPLIER *0.01*mult
             local downgrade = BoostedPlugin.settings.DOWNGRADE_RATE *0.01* BoostedPlugin.settings.RARE_MULTIPLIER *0.01*mult
 
-            upgrade = BoostedPlugin:ModifiedUpgrade(offer.ability,offer.key,current + upgrade)*100
-            downgrade = BoostedPlugin:ModifiedUpgrade(offer.ability,offer.key,current - downgrade)*100
+            if (current < 0.9999999) then
+                upgrade = 100
+            else
+                upgrade = BoostedPlugin:ModifiedUpgrade(offer.ability,offer.key,current + upgrade)*100
+            end
+
+            if (current > 1.0000001) then
+                downgrade = 100
+            else
+                downgrade = BoostedPlugin:ModifiedUpgrade(offer.ability,offer.key,current - downgrade)*100
+            end
 
 
             table.insert(offer_table,{
@@ -850,8 +871,17 @@ end
             local upgrade = BoostedPlugin.settings.UPGRADE_RATE *0.01*mult
             local downgrade = BoostedPlugin.settings.DOWNGRADE_RATE *0.01*mult
 
-            upgrade = BoostedPlugin:ModifiedUpgrade(offer.ability,offer.key,current + upgrade)*100
-            downgrade = BoostedPlugin:ModifiedUpgrade(offer.ability,offer.key,current - downgrade)*100
+            if (current < 0.9999999) then
+                upgrade = 100
+            else
+                upgrade = BoostedPlugin:ModifiedUpgrade(offer.ability,offer.key,current + upgrade)*100
+            end
+
+            if (current > 1.0000001) then
+                downgrade = 100
+            else
+                downgrade = BoostedPlugin:ModifiedUpgrade(offer.ability,offer.key,current - downgrade)*100
+            end
             table.insert(offer_table,{
                 id = i,
                 ability = offer.ability,    
@@ -903,7 +933,7 @@ function BoostedPlugin:PickRng(t)
 end
 
 function BoostedPlugin:GetCompleteOfferList(hero,iPlayer)
-    local tAbilities = BoostedPlugin:LimitViable(BoostedPlugin:GetCompleteAbilityList(hero),iPlayer)
+    local tAbilities = BoostedPlugin:LimitViable(BoostedPlugin:GetCompleteAbilityList(hero,iPlayer),iPlayer)
     local tOffers = {}
     for i=1,#tAbilities do
         local ability = tAbilities[i]
@@ -925,12 +955,12 @@ function BoostedPlugin:LimitViable(t,iPlayer)
     return ti
 end
 
-function BoostedPlugin:GetCompleteAbilityList(hero)
-    local controlled = BoostedPlugin:GetControlledUnits(hero)
-    table.insert(controlled,hero)
+function BoostedPlugin:GetCompleteAbilityList(hHero,iPlayer)
+    local controlled = BoostedPlugin:GetControlledUnits(hHero)
+    table.insert(controlled,hHero)
     local all_abs = {}
     for _,v in pairs(controlled) do
-        local u_abs = BoostedPlugin:GetAllAbilities(v)
+        local u_abs = BoostedPlugin:GetAllAbilities(v,iPlayer)
         for _,j in pairs(u_abs) do
             table.insert(all_abs,j)
         end
@@ -950,15 +980,16 @@ function remove_duplicates(t)
     return res
 end
 
-function BoostedPlugin:GetAllAbilities(unit)
-    local c = unit:GetAbilityCount()
+function BoostedPlugin:GetAllAbilities(hUnit,iPlayer)
+    local c = hUnit:GetAbilityCount()
     local t = {}
     local only_slot = only_slot_map[BoostedPlugin.settings.only_slot]
     if only_slot == -1 then
         for i=1,c do
-            local hAbility = unit:GetAbilityByIndex(i-1)
+            local hAbility = hUnit:GetAbilityByIndex(i-1)
             if hAbility ~= nil then
                 --if not hAbility:IsStolen() then
+                    --BoostedPlugin:UpdatePlayer_NetTable_Ability(iPlayer,hUnit,hAbility)
                     sAbility = hAbility:GetName()
                     table.insert(t,sAbility)
                 --end
@@ -966,18 +997,19 @@ function BoostedPlugin:GetAllAbilities(unit)
         end
     else
         local i = only_slot
-        local hAbility = unit:GetAbilityByIndex(i)
+        local hAbility = hUnit:GetAbilityByIndex(i)
         if hAbility ~= nil then
             --if not hAbility:IsStolen() then
+                --BoostedPlugin:UpdatePlayer_NetTable_Ability(iPlayer,hUnit,hAbility)
                 sAbility = hAbility:GetName()
                 table.insert(t,sAbility)
             --end
         end
     end
-    if unit:HasInventory() then
+    if hUnit:HasInventory() then
         if BoostedPlugin.settings.upgrade_normal_items then
             for i=DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_6 do
-                local item = unit:GetItemInSlot(i);
+                local item = hUnit:GetItemInSlot(i);
                 if item ~= nil then
                     sAbility = item:GetName()
                     table.insert(t,sAbility)
@@ -985,7 +1017,7 @@ function BoostedPlugin:GetAllAbilities(unit)
             end
         end
         if BoostedPlugin.settings.upgrade_neutral_items then
-            local item = unit:GetItemInSlot(DOTA_ITEM_NEUTRAL_SLOT );
+            local item = hUnit:GetItemInSlot(DOTA_ITEM_NEUTRAL_SLOT );
             if item ~= nil then
                 sAbility = item:GetName()
                 table.insert(t,sAbility)
@@ -1001,7 +1033,7 @@ function BoostedPlugin:GetControlledUnits(unit)
     local hUnit = Entities:First()
     while hUnit ~= nil do
         if hUnit.IsBaseNPC ~= nil and hUnit:IsBaseNPC() then
-            if hUnit:GetMainControllingPlayer() == playerId then
+            if hUnit:GetMainControllingPlayer() == playerId or hUnit:GetPlayerOwnerID() == playerId then
                 if hUnit:HasModifier(BoostedPlugin.main_modifier_name) then
                     if not hUnit:IsIllusion() then
                         table.insert(units,hUnit)

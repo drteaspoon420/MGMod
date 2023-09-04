@@ -1,7 +1,7 @@
 "Plugins"
 {
-    "give_all_ability" {
-        "MainClass" "DevStuffPlugin"
+    "heroscreen_rework" {
+        "MainClass" "HeroScreenReworkPlugin"
         "InitFunction" "Init"
         "StateRegistrations" {
             "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"

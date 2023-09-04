@@ -1,0 +1,16 @@
+
+"presets"
+{
+    "mutator_underworld_strength"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "thanksihateit"
+            {
+                "enabled" "1"
+                "underworld_strength" "1"
+            }
+        }
+    }
+}

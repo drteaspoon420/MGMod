@@ -1,0 +1,26 @@
+"plugin_settings"
+{
+    "Order" "0"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "extra_ability_heroes"
+    {
+        "Order" "0"
+        "TYPE" "text"
+        "DEFAULT" ""
+    }
+    "extra_ability_towers"
+    {
+        "Order" "1"
+        "TYPE" "text"
+        "DEFAULT" ""
+    }
+    "extra_ability_creeps"
+    {
+        "Order" "2"
+        "TYPE" "text"
+        "DEFAULT" ""
+    }
+}

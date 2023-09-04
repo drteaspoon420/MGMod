@@ -35,7 +35,10 @@
 #base "mutator_unseen_sanic.txt"
 #base "mutator_zombies.txt"
 #base "mutator_time_scale_attributes.txt"
-
+#base "mutator_clumsy_bonk.txt"
+#base "mutator_death_item_loss.txt"
+#base "mutator_dumb_bonk.txt"
+#base "mutator_underworld_strength.txt"
 "presets"
 {
 }

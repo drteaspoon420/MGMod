@@ -18,6 +18,7 @@
 		}
 	]]></script>
 	<Panel>
+		<CustomUIElement type="HeroSelection" layoutfile="file://{resources}/layout/custom_game/hero_selection.xml" />
 		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/hero_builder.xml" />
 		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/item_spawner.xml" />
 		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/unit_spawner.xml" />
@@ -25,6 +26,7 @@
 		<!-- <CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/bsrpg.xml" /> -->
 		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/stonks.xml" />
 		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/currencies.xml" />
+		<!-- <CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/unit_debugger.xml" /> -->
 		
 	<!-- 	
 		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/custom_shop.xml" /> -->
@@ -37,6 +39,8 @@
 		<CustomUIElement type="GameSetup"					layoutfile="file://{resources}/layout/custom_game/team_select.xml" />
 		<!-- <CustomUIElement type="GameSetup"					layoutfile="file://{resources}/layout/custom_game/credits.xml" /> -->
 		<CustomUIElement type="GameSetup"					layoutfile="file://{resources}/layout/custom_game/plugin_settings.xml" />
+
+
 	</Panel>
 </root>
 

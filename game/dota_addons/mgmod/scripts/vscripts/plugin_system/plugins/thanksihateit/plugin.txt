@@ -1,6 +1,6 @@
 "Plugins"
 {
-    "mutation_mode"
+    "thanksihateit"
     {
         "MainClass" "ThanksIHateItPlugin"
         "InitFunction" "Init"

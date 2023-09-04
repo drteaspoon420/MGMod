@@ -574,6 +574,22 @@
 		"Plugin_currencies_Option_tormentor_kill_reward_amount_Description" "Last hitting Tormentor grants currency. 0 or less disables the feature."
 		
 
+		//thanksihateit
+
+		"Plugin_thanksihateit" "Horrid Pack"
+		"Plugin_thanksihateit_Option_death_item_loss" "Random item drops on death."
+		"Plugin_thanksihateit_Option_death_item_loss_Description" "Don't die, you may lose some expensive item and enemy can just pick it up."
+		"Plugin_thanksihateit_Option_clumsy_bonk" "Recieving attacks reduces Agility."
+		"Plugin_thanksihateit_Option_clumsy_bonk_Description" "For 10 seconds. Refreshes and increases on every attack."
+		"Plugin_thanksihateit_Option_dumb_bonk" "Recieving attacks reduces Inteligence."
+		"Plugin_thanksihateit_Option_dumb_bonk_Description" "For 10 seconds. Refreshes and increases on every attack."
+		"Plugin_thanksihateit_Option_underworld_strength" "Staying dead increases Strength."
+		
+		
+		
+		"Dota_Tooltip_modifier_clumsy_bonk" "Arrows to the knee"
+		"Dota_Tooltip_modifier_dumb_bonk" "Dumb"
+		"Dota_Tooltip_modifier_underworld_strength" "Training while dead"
 		//Abilities
 
 		"DOTA_Tooltip_Ability_drteaspoon_multicast" "Multicast"

@@ -1,0 +1,25 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/unit_debugger.js" />
+	</scripts>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/unit_debugger.css" />
+	</styles>
+	<snippets>
+		<snippet name="UnitDebuggerData">
+			<Panel class="UnitDebuggerData" hittest="false">
+				<Label id="UnitDebuggerDataLabelKey" html="true" text="key" />
+				<Label id="UnitDebuggerDataLabelValue" text="value" />
+			</Panel>
+		</snippet>
+		<snippet name="UnitDebuggerDataDrop">
+			<Panel class="UnitDebuggerDataDrop" hittest="false">
+			</Panel>
+		</snippet>
+	</snippets>
+	<Panel class="UnitDebugger">
+    <Button id="debug_unit" onactivate="Debug();"/>
+    <Panel id="debug_content" hittest="false"/>
+    </Panel>
+</root>

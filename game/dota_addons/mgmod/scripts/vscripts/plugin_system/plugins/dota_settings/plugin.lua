@@ -16,10 +16,10 @@ function DotaSettingsPlugin:ApplySettings()
 	local contxt = {}
 
     DotaSettingsPlugin.settings = PluginSystem:GetAllSetting("dota_settings")
-    GameRules:SetHeroSelectionTime(DotaSettingsPlugin.settings.heropick_time)
-    GameRules:SetStrategyTime(DotaSettingsPlugin.settings.strategy_time)
+    --GameRules:SetHeroSelectionTime(DotaSettingsPlugin.settings.heropick_time)
+    --GameRules:SetStrategyTime(DotaSettingsPlugin.settings.strategy_time)
     --GameRules:SetShowcaseTime(DotaSettingsPlugin.settings.showcase_time)
-    GameRules:SetPreGameTime(DotaSettingsPlugin.settings.pregame_time)
+    --GameRules:SetPreGameTime(DotaSettingsPlugin.settings.pregame_time)
     GameRules:SetPostGameTime(15)
 
 --[[     if DotaSettingsPlugin.settings.global_shop then
@@ -93,7 +93,7 @@ function DotaSettingsPlugin:ApplySettings()
             GameRules:GetGameModeEntity():SetCustomGameForceHero(DotaSettingsPlugin.settings.force_hero)
         end
     end ]]
-	GameRules:GetGameModeEntity():SetDaynightCycleAdvanceRate(DotaSettingsPlugin.settings.day_night_rate * 0.01)
+	--GameRules:GetGameModeEntity():SetDaynightCycleAdvanceRate(DotaSettingsPlugin.settings.day_night_rate * 0.01)
 
 	GameRules:SetGoldPerTick(DotaSettingsPlugin.settings.gold_per_tick)
 	GameRules:SetGoldTickTime(DotaSettingsPlugin.settings.gold_tick)

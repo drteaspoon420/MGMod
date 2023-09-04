@@ -63,6 +63,11 @@ function PluginSystem:Init()
     GameRules:SetCustomGameSetupRemainingTime(-1)
     GameRules:SetCustomGameSetupTimeout(-1)
 
+    GameRules:SetHeroSelectionTime(600)
+    --GameRules:SetStrategyTime(DotaSettingsPlugin.settings.strategy_time)
+    --GameRules:SetShowcaseTime(DotaSettingsPlugin.settings.showcase_time)
+    --GameRules:SetPreGameTime(DotaSettingsPlugin.settings.pregame_time)
+
 	local forced_file = LoadKeyValues('scripts/vscripts/plugin_system/forced.txt')
     if not (forced_file == nil or not next(forced_file)) then
         PluginSystem.forced = forced_file

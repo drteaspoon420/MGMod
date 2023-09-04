@@ -1,0 +1,36 @@
+.HeroPickScreenCustom {
+    width: 1980px;
+    height: 100%;
+    horizontal-align: center;
+}
+
+#MainChoiseArea {
+    width: 1980px;
+    height: 700px;
+    margin-top: 10%;
+    z-index: 1001;
+    background-color: black;
+    vertical-align: top;
+}
+#ExtraChoiseArea {
+    vertical-align: bottom;
+    width: 1200px;
+    height: 250px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    z-index: 1001;
+    background-color: rgb(85, 6, 6);
+}
+
+.HeroCategory {
+    background-color: rgb(85, 6, 6);
+}
+
+#category_name {
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.HeroCategoryContent {
+    background-color: rgb(85, 6, 6);
+}

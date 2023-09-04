@@ -34,6 +34,9 @@
 
     "currencies",
 
-    "player_booster"
+    "player_booster",
+    "debug_data",
+
+    "heroselection_rework"
   ]
 }

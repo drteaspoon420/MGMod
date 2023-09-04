@@ -1,13 +1,11 @@
 
 var Upgrades = $.GetContextPanel().FindChildInLayoutFile("Upgrades");
-var current_choises = 0;
 var sending = false;
+var bWaiting = true;
+var tCurrent;
 const this_plugin_id = "boosted";
 
 function UpgradeOptionNew(data) {
-    if (data.id == 1) {
-        current_choises = current_choises + 1;
-    }
     var upgradePanel = $.CreatePanel('Panel', Upgrades, '');
     upgradePanel.BLoadLayoutSnippet("UpgradeOption");
     if (data.rarity == 2) {
@@ -146,9 +144,14 @@ function UpgradeOptionsNew(table,tableKey,data) {
             Upgrades.RemoveAndDeleteChildren();
             if (typeof(data) == "object") {
                 if (Object.keys(data).length > 0) {
+                    bWaiting = false;
+                    tCurrent = data;
                     for (let key in data) {
                         UpgradeOptionNew(data[key]);
                     }
+                } else {
+                    bWaiting = true;
+                    tCurrent = undefined;
                 }
             }
         } );
@@ -156,24 +159,39 @@ function UpgradeOptionsNew(table,tableKey,data) {
 }
 
 function pickoption(id,plus,panel) {
-    current_choises = current_choises - 1;
     var pls_b = plus;
     Upgrades.RemoveAndDeleteChildren();
     if (!sending) {
         sending = true;
         $.Schedule( 0.2, function() {
             sending = false;
+            bWaiting = true;
+            tCurrent = undefined;
             GameEvents.SendCustomGameEventToServer( "upgrade_hero", {
                 plus: pls_b,
                 id: id
             })});
     }
+
 }
+
 function KeepitReal() {
-    if (Upgrades.GetChildCount() == 0) {
+    if (bWaiting) {
         let kvstuff = CustomNetTables.GetTableValue( "player_booster", Players.GetLocalPlayer() + "d" );
         UpgradeOptionsNew("player_booster",Players.GetLocalPlayer() + "d",kvstuff);
     }
+}
+
+function boost_player_recheck() {
+    if (bWaiting) {
+        $.Msg("checking for upgrades");
+        GameEvents.SendCustomGameEventToServer( "boost_player_recheck", {} );
+    } else {
+        $.Msg("everything is fine",tCurrent);
+    }
+    $.Schedule( 10, function() {
+        boost_player_recheck();
+    });
 }
 
 
@@ -186,5 +204,7 @@ function KeepitReal() {
         CustomNetTables.SubscribeNetTableListener("player_booster",UpgradeOptionsNew);
         let kvstuff = CustomNetTables.GetTableValue( "player_booster", Players.GetLocalPlayer() + "d" );
         UpgradeOptionsNew("player_booster",Players.GetLocalPlayer() + "d",kvstuff);
+        GameEvents.Subscribe( "boost_player_recheck", KeepitReal );
+        boost_player_recheck();
     }
 })();

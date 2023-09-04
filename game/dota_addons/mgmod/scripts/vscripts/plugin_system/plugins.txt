@@ -16,8 +16,9 @@
 #base "plugins/attacks_cast_spells/plugin.txt"
 //#base "plugins/bsrpg/plugin.txt"
 #base "plugins/zombies/plugin.txt"
+//#base "plugins/heroscreen_rework/plugin.txt"
 #base "plugins/mammonite/plugin.txt"
-//#base "plugins/twisted_spells/plugin.txt"
+#base "plugins/twisted_spells/plugin.txt"
 #base "plugins/xmas12/plugin.txt"
 #base "plugins/stonks/plugin.txt"
 #base "plugins/archive_pack_one/plugin.txt"
@@ -28,7 +29,7 @@
 #base "plugins/boosted/plugin.txt"
 #base "plugins/time_scaling/plugin.txt"
 #base "plugins/tower_buffs/plugin.txt"
-//#base "plugins/thanksihateit/plugin.txt"
+#base "plugins/thanksihateit/plugin.txt"
 "Plugins"
 {
 }

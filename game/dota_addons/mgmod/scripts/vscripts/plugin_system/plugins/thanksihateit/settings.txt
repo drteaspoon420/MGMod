@@ -1,6 +1,6 @@
 "plugin_settings"
 {
-    "Order" "9701"
+    "Order" "98801"
     "enabled" {
         "TYPE" "boolean"
         "DEFAULT" "0"
@@ -10,4 +10,34 @@
         "TYPE" "boolean"
         "DEFAULT" "0"
     }
+    "clumsy_bonk" {
+        "Order" "2"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "dumb_bonk" {
+        "Order" "3"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "underworld_strength" {
+        "Order" "4"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+//    "tree_nomer" {
+//        "Order" "5"
+//        "TYPE" "boolean"
+//        "DEFAULT" "0"
+//    }
+//    "secret_war" {
+//        "Order" "6"
+//        "TYPE" "boolean"
+//        "DEFAULT" "0"
+//    }
+//    "shop_closed_at_night" {
+//        "Order" "7"
+//        "TYPE" "boolean"
+//        "DEFAULT" "0"
+//    }
 }

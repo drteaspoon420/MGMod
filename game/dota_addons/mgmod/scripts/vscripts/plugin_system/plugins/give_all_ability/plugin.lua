@@ -1,26 +1,38 @@
-AttacksCastSpellsPlugin = class({})
-_G.AttacksCastSpellsPlugin = AttacksCastSpellsPlugin
-AttacksCastSpellsPlugin.unit_cache = {}
+ExtraAbilityPlugin = class({})
+_G.ExtraAbilityPlugin = ExtraAbilityPlugin
+ExtraAbilityPlugin.unit_cache = {}
 
-function AttacksCastSpellsPlugin:Init()
-    print("[AttacksCastSpellsPlugin] found")
+function ExtraAbilityPlugin:Init()
+    print("[ExtraAbilityPlugin] found")
 end
 
-function AttacksCastSpellsPlugin:ApplySettings()
-
+function ExtraAbilityPlugin:ApplySettings()
+    
+    ExtraAbilityPlugin.settings = PluginSystem:GetAllSetting("give_all_ability")
     ListenToGameEvent("npc_spawned", function(event)
         if GameRules:State_Get() < DOTA_GAMERULES_STATE_HERO_SELECTION then return end
-        AttacksCastSpellsPlugin:SpawnEvent(event)
+        ExtraAbilityPlugin:SpawnEvent(event)
 end,nil)
 end
  
     
-function AttacksCastSpellsPlugin:SpawnEvent(event)
+function ExtraAbilityPlugin:SpawnEvent(event)
     local hUnit = EntIndexToHScript(event.entindex)
-    if not hUnit.IsRealHero then return end
+    if not hUnit:IsDOTANPC() then return end
     if hUnit:IsRealHero() then
-        if AttacksCastSpellsPlugin.unit_cache[event.entindex] ~= nil then return end
-        AttacksCastSpellsPlugin.unit_cache[event.entindex] = true
-        local hModifier = hUnit:AddNewModifier(hUnit,nil,"modifier_attacks_cast_spells",{})
+        if hUnit:HasAbility(ExtraAbilityPlugin.settings.extra_ability_heroes) then return end
+        if ExtraAbilityPlugin.unit_cache[event.entindex] ~= nil then return end
+        ExtraAbilityPlugin.unit_cache[event.entindex] = true
+        local hAbility = hUnit:AddAbility(ExtraAbilityPlugin.settings.extra_ability_heroes)
+        if hAbility ~= nil then
+            hAbility:SetLevel(hAbility:GetMaxLevel())
+        end
+    end
+    if hUnit:IsCreep() then
+        if hUnit:HasAbility(ExtraAbilityPlugin.settings.extra_ability_creeps) then return end
+        local hAbility = hUnit:AddAbility(ExtraAbilityPlugin.settings.extra_ability_creeps)
+        if hAbility ~= nil then
+            hAbility:SetLevel(hAbility:GetMaxLevel())
+        end
     end
 end

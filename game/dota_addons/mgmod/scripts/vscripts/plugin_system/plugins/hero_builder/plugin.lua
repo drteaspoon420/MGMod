@@ -605,13 +605,13 @@ function HeroBuilderPlugin:FindActualOriginalHero(hUnit)
 end
 
 function HeroBuilderPlugin:ExportBanList(tArgs,bTeam,iPlayer)
-	local hPlayer = iPlayer and PlayerResource:GetPlayer(iPlayer)
     local str = "{\"ban_list\":{\n"
     for k,v in pairs(HeroBuilderPlugin.ban_list) do
         str = str .. "\t\"" .. k .. "\": 1\n"
     end
     str = str .. "}}"
-    CustomGameEventManager:Send_ServerToPlayer(hPlayer,"ban_list_export",{list = str})
+    CustomGameEventManager:Send_ServerToAllClients("ban_list_export",{list = str})
+    print(str)
 end
 
 function HeroBuilderPlugin:LoadBanList(pastebin)
