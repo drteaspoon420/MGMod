@@ -9,8 +9,9 @@
     height: 700px;
     margin-top: 10%;
     z-index: 1001;
-    background-color: black;
     vertical-align: top;
+	flow-children: right-wrap;
+    overflow: clip scroll;
 }
 #ExtraChoiseArea {
     vertical-align: bottom;
@@ -19,11 +20,12 @@
     margin-bottom: 10px;
     margin-left: 10px;
     z-index: 1001;
-    background-color: rgb(85, 6, 6);
+    background-color: rgb(41, 8, 8);
 }
 
 .HeroCategory {
-    background-color: rgb(85, 6, 6);
+    max-width: 990px;
+	flow-children: down;
 }
 
 #category_name {
@@ -31,6 +33,165 @@
     color: #ffffff;
 }
 
-.HeroCategoryContent {
-    background-color: rgb(85, 6, 6);
+#HeroCategoryContent {
+	flow-children: right-wrap;
+    padding: 1px;
+    margin: 1px;
+}
+.HeroOption {
+    width: 71px;
+    height: 94px;
+    overflow: noclip;
+    padding: 1px;
+    margin: 1px;
+}
+.HeroOption:hover {
+    
+}
+#avatar {
+    width: 71px;
+    height: 94px;
+}
+#avatar:hover {
+    transform: translate3d( 0px, 0px, -100px );
+	box-shadow: inset #5eff00 1px 1px 1px 1px;
+    
+}
+
+
+.AbilityCategory {
+	flow-children: down-wrap;
+    background-color: aqua;
+}
+
+
+#AbilityCategoryContent {
+	flow-children: down-wrap;
+    padding: 1px;
+    margin: 1px;
+    background-color: rgb(35, 95, 95);
+    max-height: 120px;
+}
+.AbilityOption {
+    width: 32px;
+    height: 32px;
+    overflow: noclip;
+    padding: 1px;
+    margin: 1px;
+    background-color: rgb(32, 48, 48);
+}
+.AbilityOption:hover {
+    
+}
+#icon {
+    width: 32px;
+    height: 32px;
+    horizontal-align: center;
+    vertical-align: center;
+}
+#icon:hover {
+    width: 40px;
+    height: 40px;
+}
+
+
+#ExtraChoiseArea {
+	flow-children: right;
+}
+
+#AbilityBox {
+	flow-children: down;
+    max-width: 950px;
+    horizontal-align: center;
+}
+.local_ability {
+    width: 48px;
+    height: 48px;
+    margin: 2px;
+    border: 1px solid #748366;
+}
+
+.talent {
+    border: 1px solid #555555;
+}
+
+.extra {
+    border: 1px solid #201c1c;
+}
+
+#FinalActions {
+    width: 150px;
+    height: 250px;
+    horizontal-align: right;
+}
+
+
+#Ready {
+    width: 330px;
+    min-height: 36px;
+    background-color: black;
+    margin-bottom: 20px;
+    margin-top: 8px;
+    margin-left: 4px;
+    margin-right: 4px;
+    padding: 0px;
+    flow-children: down;
+    background-image: url("s2r://panorama/images/textures/glassbutton_darkmoon_psd.vtex");
+    border: 1px solid #555555;
+    background-size: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    transition-property: background-image, background-color;
+    transition-duration: .16s;
+    transition-timing-function: ease-in-out;
+    border-radius: 6px;
+}
+#Ready:hover {
+    border: 1px solid #aaaaaa;
+    background-image: url("s2r://panorama/images/textures/glassbutton_darkmoon_hover_psd.vtex");
+}
+
+#Ready Label {
+    width: 100%;
+    text-align: center;
+    margin-top: 3px;
+    font-size: 20px;
+    font-weight: thin;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 22px;
+    color: grey;
+}
+
+#AbilityBoxBasic {
+	flow-children: right-wrap;
+}
+#AbilityBoxTalent {
+	flow-children: right-wrap;
+    
+}
+#AbilityBoxExtra {
+	flow-children: right-wrap;
+}
+#AbilityBoxExtra DOTAAbilityImage {
+    wash-color: #202020a8;
+}
+
+.link_active {
+    wash-color: #52912ea8;
+    border: 1px solid #bbff00;
+}
+
+.active_slot {
+    border: 2px solid #43b17a;
+}
+
+#LocalPortrait {
+    width: 71px;
+    height: 94px;
+    margin: 5px;
+}
+
+#LocalPortrait:hover {
+    border: 1px solid #aaaaaa;
 }

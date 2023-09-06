@@ -37,6 +37,7 @@
     "player_booster",
     "debug_data",
 
-    "heroselection_rework"
+    "heroselection_rework",
+    "heroselection_rework_abilities"
   ]
 }

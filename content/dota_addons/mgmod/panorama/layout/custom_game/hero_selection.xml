@@ -11,24 +11,69 @@
 		<snippet name="HeroCategory">
 			<Panel class="HeroCategory">
 				<Label id="category_name" text="category_name"/>
-				<Panel class="HeroCategoryContent" />
+				<Panel id="HeroCategoryContent" />
 			</Panel>
 		</snippet>
 		<snippet name="HeroOption">
-			<Panel class="HeroOption">
+			<Button class="HeroOption">
+				<DOTAHeroImage id="avatar" heroimagestyle="portrait" />
+			</Button>
+		</snippet>
+
+		
+		<snippet name="AbilityCategory">
+			<Panel class="AbilityCategory">
+				<Panel id="AbilityCategoryContent" />
 			</Panel>
 		</snippet>
-		<snippet name="TeamSelection">
-			<Panel class="TeamSelection">
-			</Panel>
-		</snippet>
-		<snippet name="PlayerSelection">
-			<Panel class="PlayerSelection">
-			</Panel>
+		<snippet name="AbilityOption">
+			<Button class="AbilityOption linkable">
+				<DOTAAbilityImage id="icon" />
+			</Button>
 		</snippet>
 	</snippets>
 	<Panel class="HeroPickScreenCustom">
 		<Panel id="MainChoiseArea" />
-		<Panel id="ExtraChoiseArea" />
+		<Panel id="ExtraChoiseArea">
+			<Panel id="HeroBox">
+				<DOTAHeroImage onactivate="ReselectHero()" id="LocalPortrait" heroimagestyle="portrait" />
+			</Panel>
+			<Panel id="AbilityBox">
+				<Panel id="AbilityBoxBasic">
+					<DOTAAbilityImage onactivate="MoveCursor(1)" id="LocalAbility_1" class="local_ability linkable"/>
+					<DOTAAbilityImage onactivate="MoveCursor(2)" id="LocalAbility_2" class="local_ability linkable"/>
+					<DOTAAbilityImage onactivate="MoveCursor(3)" id="LocalAbility_3" class="local_ability linkable"/>
+					<DOTAAbilityImage onactivate="MoveCursor(4)" id="LocalAbility_4" class="local_ability linkable"/>
+					<DOTAAbilityImage onactivate="MoveCursor(5)" id="LocalAbility_5" class="local_ability linkable"/>
+					<DOTAAbilityImage onactivate="MoveCursor(6)" id="LocalAbility_6" class="local_ability linkable"/>
+				</Panel>
+				<Panel id="AbilityBoxTalent">
+					<DOTAAbilityImage onactivate="MoveCursor(7)" id="LocalAbility_7" class="local_ability talent linkable" />
+					<DOTAAbilityImage onactivate="MoveCursor(8)" id="LocalAbility_8" class="local_ability talent linkable" />
+					<DOTAAbilityImage onactivate="MoveCursor(9)" id="LocalAbility_9" class="local_ability talent linkable" />
+					<DOTAAbilityImage onactivate="MoveCursor(10)" id="LocalAbility_10" class="local_ability talent linkable" />
+					<DOTAAbilityImage onactivate="MoveCursor(11)" id="LocalAbility_11" class="local_ability talent linkable" />
+					<DOTAAbilityImage onactivate="MoveCursor(12)" id="LocalAbility_12" class="local_ability talent linkable" />
+					<DOTAAbilityImage onactivate="MoveCursor(13)" id="LocalAbility_13" class="local_ability talent linkable" />
+					<DOTAAbilityImage onactivate="MoveCursor(14)" id="LocalAbility_14" class="local_ability talent linkable" />
+				</Panel>
+				<Panel id="AbilityBoxExtra">
+					<DOTAAbilityImage onactivate="MoveCursor(15)" id="LocalAbility_15" class="local_ability extra linkable" />
+					<DOTAAbilityImage onactivate="MoveCursor(16)" id="LocalAbility_16" class="local_ability extra linkable" />
+					<DOTAAbilityImage onactivate="MoveCursor(17)" id="LocalAbility_17" class="local_ability extra linkable" />
+					<DOTAAbilityImage onactivate="MoveCursor(18)" id="LocalAbility_18" class="local_ability extra linkable" />
+					<DOTAAbilityImage onactivate="MoveCursor(19)" id="LocalAbility_19" class="local_ability extra linkable" />
+					<DOTAAbilityImage onactivate="MoveCursor(20)" id="LocalAbility_20" class="local_ability extra linkable" />
+					<DOTAAbilityImage onactivate="MoveCursor(21)" id="LocalAbility_21" class="local_ability extra linkable" />
+					<DOTAAbilityImage onactivate="MoveCursor(22)" id="LocalAbility_22" class="local_ability extra linkable" />
+					<DOTAAbilityImage onactivate="MoveCursor(23)" id="LocalAbility_23" class="local_ability extra linkable" />
+					<DOTAAbilityImage onactivate="MoveCursor(24)" id="LocalAbility_24" class="local_ability extra linkable" />
+					<DOTAAbilityImage onactivate="MoveCursor(25)" id="LocalAbility_25" class="local_ability extra linkable" />
+				</Panel>
+			</Panel>
+			<Panel id="FinalActions">
+			<Button id="Ready" onactivate="Ready()"> <Label text="#hero_rework_ready" /></Button>
+			</Panel>
+		</Panel>
 	</Panel>
 </root>

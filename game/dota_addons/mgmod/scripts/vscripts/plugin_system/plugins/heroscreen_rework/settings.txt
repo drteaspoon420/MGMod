@@ -3,6 +3,6 @@
     "Order" "1"
     "enabled" {
         "TYPE" "boolean"
-        "DEFAULT" "1"
+        "DEFAULT" "0"
     }
 }

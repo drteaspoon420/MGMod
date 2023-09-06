@@ -34,8 +34,9 @@ function Activate()
 end
 
 function CBsrpgGameMode:InitGameMode()
-	GameRules:GetGameModeEntity():SetThink( "OnThink", self, "GlobalThink", 2 )
-	GameRules:GetGameModeEntity():SetWeatherEffectsDisabled(false)
+	local gm = GameRules:GetGameModeEntity()
+	gm:SetThink( "OnThink", self, "GlobalThink", 2 )
+	gm:SetWeatherEffectsDisabled(false)
 	PluginSystem:Init()
 end
 

@@ -63,7 +63,6 @@ function PluginSystem:Init()
     GameRules:SetCustomGameSetupRemainingTime(-1)
     GameRules:SetCustomGameSetupTimeout(-1)
 
-    GameRules:SetHeroSelectionTime(600)
     --GameRules:SetStrategyTime(DotaSettingsPlugin.settings.strategy_time)
     --GameRules:SetShowcaseTime(DotaSettingsPlugin.settings.showcase_time)
     --GameRules:SetPreGameTime(DotaSettingsPlugin.settings.pregame_time)
@@ -372,6 +371,7 @@ end
 --Plugin Registration and Calling
 ---
 function PluginSystem:ProcRegisteredGameStates(iState)
+    
     if DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP == iState then
         PluginSystem:LoadHostSettings()
     end

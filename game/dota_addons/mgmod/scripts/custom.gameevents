@@ -205,4 +205,20 @@
 	{
 		"count" "short"
 	}
+
+	"ability_pick"
+	{
+		"name" "string"
+		"category" "string"
+		"slot" "short"
+	}
+	"hero_pick"
+	{
+		"hero" "short"
+	}
+
+	"player_ready"
+	{
+		
+	}
 }

@@ -447,6 +447,11 @@
 		"Plugin_time_scaling_Option_attack_speed" "Attack Speed"
 		"Plugin_time_scaling_Option_attack_damage" "Attack Damage"
 
+
+		//LoD
+		"Plugin_heroscreen_rework" "Legends Of Dota (Test)"
+		"hero_rework_ready" "Ready!"
+
 		//Currencies
 		"Plugin_currencies" "Currencies"
 		

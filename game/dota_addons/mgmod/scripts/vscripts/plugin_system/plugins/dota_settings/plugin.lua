@@ -20,7 +20,7 @@ function DotaSettingsPlugin:ApplySettings()
     --GameRules:SetStrategyTime(DotaSettingsPlugin.settings.strategy_time)
     --GameRules:SetShowcaseTime(DotaSettingsPlugin.settings.showcase_time)
     --GameRules:SetPreGameTime(DotaSettingsPlugin.settings.pregame_time)
-    GameRules:SetPostGameTime(15)
+    --GameRules:SetPostGameTime(15)
 
 --[[     if DotaSettingsPlugin.settings.global_shop then
         local global_shop = SpawnDOTAShopTriggerRadiusApproximate(Vector(0,0,0), 400)
