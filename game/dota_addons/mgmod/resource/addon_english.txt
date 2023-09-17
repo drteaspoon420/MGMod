@@ -72,7 +72,7 @@
 		"Plugin_hero_builder_Option_slot_id_limit_Description" "Limit the slot id that can be changed. -1 disables. 0 = Q, 5 = R"
 
 		"Plugin_hero_builder_Option_custom_bans" "Custom Banlist"
-		"Plugin_hero_builder_Option_custom_bans_Description" "Use pastebin.com to upload your banlist.\nPaste the end of the URL to use the list.\nYou can output valid ban list to your console with chat command '-ability_bans'"
+		"Plugin_hero_builder_Option_custom_bans_Description" "Use pastebin.com to upload your banlist.<br/>Paste the end of the URL to use the list.<br/>You can output valid ban list to your console with chat command:<br/>-ability_bans"
 		//Item Sandbox
 		"Plugin_item_spawner" "Item Sandbox"
 		"Plugin_item_spawner_Option_limited_mode" "Limited Mode"
@@ -449,8 +449,80 @@
 
 
 		//LoD
-		"Plugin_heroscreen_rework" "Legends Of Dota (Test)"
+		"Plugin_legends_of_dota" "Legends Of Dota (Test)"
+		"Plugin_legends_of_dota_Option_extra_abilities" "12 Abilities"
+		"Plugin_legends_of_dota_Option_extra_abilities_Description" "Allow players to have 12 abilities instead of just 6"
+		"Plugin_legends_of_dota_Option_allow_extended" "Allow Non-Hero Abilities"
+		"Plugin_legends_of_dota_Option_allow_extended_Description" "Allows abilities that are not currently assigned to a hero to be available."
+		"Plugin_legends_of_dota_Option_allow_talents" "Allow Talents"
+		"Plugin_legends_of_dota_Option_custom_abilities_fixes" "Allow Custom Reworked Abilities"
+		"Plugin_legends_of_dota_Option_custom_abilities_fixes_Description" "Things like 'multicast' or 'witchcraft'. Abilities by valve that either don't work for most heroes or recreations of old defunked abilities."
+		"Plugin_legends_of_dota_Option_custom_abilities_drteaspoon" "Allow Custom Abilities By DrTeaSpoon"
+		"Plugin_legends_of_dota_Option_custom_abilities_drteaspoon_Description" "They say unspeakable eldrich horrors are created and put here. They are lying. Don't listen to their propaganda."
+		"Plugin_legends_of_dota_Option_custom_bans" "Custom Banlist"
+		"Plugin_legends_of_dota_Option_custom_bans_Description" "Use pastebin.com to upload your banlist.<br/>Paste the end of the URL to use the list.<br/>You can output valid ban list to your console with chat command:<br/>-lodbans"
+		
 		"hero_rework_ready" "Ready!"
+		"hero_rework_talent_toggle" "Talent View"
+
+
+
+		//Tremulous
+		"Plugin_tremulous"			"Tremulous"
+		"Plugin_tremulous_Option_currency" "Building Currency"
+		"Plugin_tremulous_Option_currency_Drop_red" "Red"
+		"Plugin_tremulous_Option_currency_Drop_green" "Green"
+		"Plugin_tremulous_Option_currency_Drop_blue" "Blue"
+		"Plugin_tremulous_Option_currency_Drop_purple" "Purple"
+		"Plugin_tremulous_Option_currency_Drop_gold" "Gold"
+		"Plugin_tremulous_Option_start_gold" "Starting Gold"
+		"npc_tremulous_base"		"Building"
+		"npc_tremulous_ancient"		"Ancient"
+		"npc_tremulous_spawn"		"Spawn Node"
+		"npc_tremulous_tower"		"Tower"
+		"npc_tremulous_shop"		"Shop"
+		"npc_tremulous_shrine"		"Shrine"
+		"npc_tremulous_barracks"	"Barracks"
+
+
+		"BuildingPicker_Title" "Build Menu"
+		"BuildingPicker_Subtitle" "Pick a building to construct close to you."
+		"DOTA_Tooltip_Ability_item_tremulous_builder" "Build"
+		"DOTA_Tooltip_Ability_item_tremulous_builder_Description" "Open Build Menu"
+		
+		
+		"DOTA_Tooltip_Ability_tremulous_spawn" "Spawn"
+		"DOTA_Tooltip_Ability_tremulous_spawn_Description" "Spawn Node's cooldown. Heroes respawn in order they died here. If all heroes die and none of spawn buildings are powered or they all are destroyed, You lose."
+		
+		"DOTA_Tooltip_Ability_tremulous_power" "Power"
+		"DOTA_Tooltip_Ability_tremulous_power_Description" "Provides power in %radius% radius. Buildings that are not powered do not function."
+		"DOTA_Tooltip_modifier_tremulous_power_aura"	"Has Power"
+
+		"DOTA_Tooltip_Ability_tremulous_shrine" "Shrine"
+		"DOTA_Tooltip_Ability_tremulous_shrine_Description" "Provides +%heal% healing and +%mana% mana in %radius% radius every 1s."
+
+		"DOTA_Tooltip_Ability_tremulous_shop" "Shop"
+		"DOTA_Tooltip_Ability_tremulous_shop_Description" "Buy stuff!"
+
+		"DOTA_Tooltip_Ability_tremulous_tower" "Tower"
+		"DOTA_Tooltip_Ability_tremulous_tower_Description" "Attacks enemy units."
+
+		"DOTA_Tooltip_Ability_tremulous_barracks" "Barracks"
+		"DOTA_Tooltip_Ability_tremulous_barracks_Description" "Spawns and orders minions."
+		
+
+		"DOTA_Tooltip_Ability_tremulous_build_ancient" "Ancient"
+		"DOTA_Tooltip_Ability_tremulous_build_ancient_Description" "Ancient provides power to all nearby buildings. Without it none of them work. Powers all allied buildings in 2000 radius."
+		"DOTA_Tooltip_Ability_tremulous_build_spawn" "Spawn Node"
+		"DOTA_Tooltip_Ability_tremulous_build_spawn_Description" "Spawn Node is essencial for respawning. You cannot respawn without spawn node. Make sure they recieve power from ancient.<br/>NOTE: Game ends in your defeat if there are no powered Spawn Nodes for your team and all of your team is dead."
+		"DOTA_Tooltip_Ability_tremulous_build_shrine" "Shrine"
+		"DOTA_Tooltip_Ability_tremulous_build_shrine_Description" "Shrine provides healing and mana to nearby allied units. Provides vision (300 at day, 800 at night)"
+		"DOTA_Tooltip_Ability_tremulous_build_barracks" "Barracks"
+		"DOTA_Tooltip_Ability_tremulous_build_barracks_Description" "Barracks spawns creeps and orders them to attack last known enemy location."
+		"DOTA_Tooltip_Ability_tremulous_build_tower" "Tower"
+		"DOTA_Tooltip_Ability_tremulous_build_tower_Description" "Tower provides defences to your base. Provides vision (800 at day, 300 at night)"
+		"DOTA_Tooltip_Ability_tremulous_build_shop" "Shop"
+		"DOTA_Tooltip_Ability_tremulous_build_shop_Description" "Shop is a shop. While they require power, anyone can use them."
 
 		//Currencies
 		"Plugin_currencies" "Currencies"

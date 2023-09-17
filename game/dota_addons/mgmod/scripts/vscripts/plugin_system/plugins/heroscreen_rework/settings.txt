@@ -1,8 +1,0 @@
-"plugin_settings"
-{
-    "Order" "1"
-    "enabled" {
-        "TYPE" "boolean"
-        "DEFAULT" "0"
-    }
-}

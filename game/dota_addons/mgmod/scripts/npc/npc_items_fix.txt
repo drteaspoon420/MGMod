@@ -28,4 +28,90 @@
 		"AssociatedConsumable"		"0"
 		"PlayerSpecificCooldown"		"0"
 	}
+
+	"item_book_of_strength"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"Model"							"models/gameplay/attrib_tome_str.vmdl"
+		"skin" "1"
+		"AbilityCooldown"				"0.0"
+		"ItemCost"						"500"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPurchasable"				"0"
+		"ItemStackable"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"					"0"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"1"
+		"ItemDisplayCharges"			"1"
+
+		"CustomShop"					"1"
+		"RequiresCustomShop"			"1"
+		"RequiredCustomShopName"		"boss_shop"
+		"ItemStockInitial"				"4"
+		"ItemStockMax"					"4"
+		"ItemStockTime"					"999999.0"
+		"AbilityValues"
+		{
+			"bonus_stat"			"3"
+		}
+	}
+	"item_book_of_agility"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"Model"							"models/gameplay/attrib_tome_agi.vmdl"
+		"skin" "2"
+		"AbilityCooldown"				"0.0"
+		"ItemCost"						"500"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPurchasable"				"0"
+		"ItemStackable"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"					"0"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"1"
+		"ItemDisplayCharges"			"1"
+
+		"CustomShop"					"1"
+		"RequiresCustomShop"			"1"
+		"RequiredCustomShopName"		"boss_shop"
+		"ItemStockInitial"				"4"
+		"ItemStockMax"					"4"
+		"ItemStockTime"					"999999.0"
+		"AbilityValues"
+		{
+			"bonus_stat"			"3"
+		}
+	}
+	"item_book_of_intelligence"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"Model"							"models/gameplay/attrib_tome_int.vmdl"
+		"skin" "3"
+		"AbilityCooldown"				"0.0"
+		"ItemCost"						"500"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPurchasable"				"0"
+		"ItemStackable"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"					"0"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"1"
+		"ItemDisplayCharges"			"1"
+
+		"CustomShop"					"1"
+		"RequiresCustomShop"			"1"
+		"RequiredCustomShopName"		"boss_shop"
+		"ItemStockInitial"				"4"
+		"ItemStockMax"					"4"
+		"ItemStockTime"					"999999.0"
+		"AbilityValues"
+		{
+			"bonus_stat"			"3"
+		}
+	}
+	
 }

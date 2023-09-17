@@ -1,0 +1,14 @@
+"Plugins"
+{
+    "legends_of_dota" {
+        "MainClass" "LegendsOfDotaPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+            "ForceHeroes" "DOTA_GAMERULES_STATE_STRATEGY_TIME"
+        }
+        "CmdRegistrations" {
+            "-lodbans" "ExportBanList"
+        }
+    }
+}

@@ -7,7 +7,8 @@
 		<Panel id="seq" >
 			<!-- <Image id="seq_bg" class="SeqBg" src="file://{images}/custom_game/loading_screen.png" /> -->
 			<Image id="seq_bg" class="SeqBg" src="file://{images}/custom_game/mgmod_logo.png" />
-			<Image id="seq_bg_2" class="SeqBgBoosted" src="file://{images}/custom_game/boosted_logo.png" />
+			<Image id="seq_bg_2" class="SeqBgSecondary_trem" src="file://{images}/custom_game/tremulous_logo.png" />
+			<!-- <Image id="seq_bg_2" class="SeqBgSecondary_boost" src="file://{images}/custom_game/boosted_logo.png" /> -->
 		</Panel>
 	</Panel>
 </root>

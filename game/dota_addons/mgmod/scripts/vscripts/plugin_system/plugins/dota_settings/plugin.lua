@@ -74,8 +74,12 @@ function DotaSettingsPlugin:ApplySettings()
     end
 
     
-	GameRules:GetGameModeEntity():SetCanSellAnywhere(DotaSettingsPlugin.settings.sell_anywhere)
-	GameRules:GetGameModeEntity():SetAllowNeutralItemDrops(DotaSettingsPlugin.settings.allow_neutral_drops)
+    if (DotaSettingsPlugin.settings.sell_anywhere == true) then
+        GameRules:GetGameModeEntity():SetCanSellAnywhere(DotaSettingsPlugin.settings.sell_anywhere)
+    end
+    if (DotaSettingsPlugin.settings.allow_neutral_drops == false) then
+        GameRules:GetGameModeEntity():SetAllowNeutralItemDrops(DotaSettingsPlugin.settings.allow_neutral_drops)
+    end
 	--GameRules:GetGameModeEntity():SetBountyRuneSpawnInterval(DotaSettingsPlugin.settings.bounty_rune_spawn_interval)
 	--GameRules:GetGameModeEntity():SetPowerRuneSpawnInterval(DotaSettingsPlugin.settings.power_rune_spawn_interval)
 	--GameRules:GetGameModeEntity():SetXPRuneSpawnInterval(DotaSettingsPlugin.settings.xp_rune_spawn_interval)
@@ -84,7 +88,9 @@ function DotaSettingsPlugin:ApplySettings()
     GameRules:GetGameModeEntity():SetTowerBackdoorProtectionEnabled(DotaSettingsPlugin.settings.backdoor_protection)
 
     
-	GameRules:GetGameModeEntity():SetBuybackEnabled(DotaSettingsPlugin.settings.allow_buyback)
+    if (DotaSettingsPlugin.settings.allow_buyback == false) then
+        GameRules:GetGameModeEntity():SetBuybackEnabled(DotaSettingsPlugin.settings.allow_buyback)
+    end
 	--GameRules:GetGameModeEntity():SetCustomBackpackCooldownPercent(DotaSettingsPlugin.settings.backback_cooldown)
     --[[local heroId = DOTAGameManager:GetHeroIDByName(DotaSettingsPlugin.settings.force_hero)
      print(DotaSettingsPlugin.settings.force_hero,"is",heroId)
@@ -98,8 +104,12 @@ function DotaSettingsPlugin:ApplySettings()
 	GameRules:SetGoldPerTick(DotaSettingsPlugin.settings.gold_per_tick)
 	GameRules:SetGoldTickTime(DotaSettingsPlugin.settings.gold_tick)
     GameRules:SetStartingGold(DotaSettingsPlugin.settings.starting_gold)
-	GameRules:SetHeroRespawnEnabled(DotaSettingsPlugin.settings.allow_respawn)
-    GameRules:SetSameHeroSelectionEnabled(DotaSettingsPlugin.settings.allow_samehero)
+    if (DotaSettingsPlugin.settings.allow_respawn == false) then
+	    GameRules:SetHeroRespawnEnabled(DotaSettingsPlugin.settings.allow_respawn)
+    end
+    if (DotaSettingsPlugin.settings.allow_respawn == true) then
+	    GameRules:SetHeroRespawnEnabled(DotaSettingsPlugin.settings.allow_samehero)
+    end
     GameRules:SetTreeRegrowTime(DotaSettingsPlugin.settings.tree_grow_time)
 
 

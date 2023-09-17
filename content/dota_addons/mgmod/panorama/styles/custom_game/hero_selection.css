@@ -21,6 +21,8 @@
     margin-left: 10px;
     z-index: 1001;
     background-color: rgb(41, 8, 8);
+	flow-children: right;
+
 }
 
 .HeroCategory {
@@ -61,24 +63,21 @@
 
 .AbilityCategory {
 	flow-children: down-wrap;
-    background-color: aqua;
 }
 
 
 #AbilityCategoryContent {
 	flow-children: down-wrap;
-    padding: 1px;
-    margin: 1px;
-    background-color: rgb(35, 95, 95);
     max-height: 120px;
 }
 .AbilityOption {
     width: 32px;
     height: 32px;
     overflow: noclip;
-    padding: 1px;
-    margin: 1px;
-    background-color: rgb(32, 48, 48);
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 100% 100%;
+    background-image: url("file://{resources}/images/custom_game/no_ability_icon.png");
 }
 .AbilityOption:hover {
     
@@ -123,6 +122,7 @@
     width: 150px;
     height: 250px;
     horizontal-align: right;
+	flow-children: down;
 }
 
 
@@ -130,8 +130,8 @@
     width: 330px;
     min-height: 36px;
     background-color: black;
-    margin-bottom: 20px;
-    margin-top: 8px;
+    margin-bottom: 4px;
+    margin-top: 4px;
     margin-left: 4px;
     margin-right: 4px;
     padding: 0px;
@@ -194,4 +194,91 @@
 
 #LocalPortrait:hover {
     border: 1px solid #aaaaaa;
+}
+
+.hidden
+{
+	visibility: collapse;
+}
+
+#TalentToggle {
+    width: 330px;
+    min-height: 36px;
+    background-color: black;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+    padding: 0px;
+    flow-children: down;
+    background-image: url("s2r://panorama/images/textures/glassbutton_darkmoon_psd.vtex");
+    border: 1px solid #555555;
+    background-size: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    transition-property: background-image, background-color;
+    transition-duration: .16s;
+    transition-timing-function: ease-in-out;
+    border-radius: 6px;
+}
+#TalentToggle:hover {
+    border: 1px solid #aaaaaa;
+    background-image: url("s2r://panorama/images/textures/glassbutton_darkmoon_hover_psd.vtex");
+}
+
+#TalentToggle Label {
+    width: 100%;
+    text-align: center;
+    margin-top: 3px;
+    font-size: 20px;
+    font-weight: thin;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 22px;
+    color: grey;
+}
+
+#HeroBox {
+	flow-children: down;
+}
+
+#TalentTree {
+	flow-children: right;
+    horizontal-align: right;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.TalentColumn {
+	flow-children: down;
+}
+.TalentDivider {
+	flow-children: down;
+}
+
+.TalentBox {
+	flow-children: right;
+    border: 3px solid #aaaaaa;
+    background-color: #201c1c;
+    width: 95px;
+}
+.tleft {
+    border-radius: 10px 0px 0px 10px;
+}
+.tright {
+    border-radius: 0px 10px 10px 0px;
+}
+.TalentBox Label {
+    text-align: center;
+    font-size: 20px;
+    font-weight: thin;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 22px;
+    color: rgb(255, 255, 255);
+    vertical-align: center;
+}
+
+.recommend_talent {
+    box-shadow: fill rgba(240, 219, 100, 0.527) 0px 0px 5px 0.2px;
+    brightness: 2.5;
 }

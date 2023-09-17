@@ -3,7 +3,7 @@
 	"drteaspoon_multicast"
 	{
 		"BaseClass"						"ability_lua"
-		"CustomEnabled"					"1"
+		"CustomList"					"fixes"
 		"AbilityTextureName"        "drteaspoon/drteaspoon_multicast"
 		"ScriptFile"					"abilities/drteaspoon/multicast/ability"
 		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -19,7 +19,7 @@
 	"drteaspoon_black_king_bar"
 	{
 		"BaseClass"						"ability_lua"
-		"CustomEnabled"					"1"
+		"CustomList"					"drteaspoon"
 		"AbilityTextureName"        "drteaspoon/drteaspoon_black_king_bar"
 		"ScriptFile"					"abilities/drteaspoon/black_king_bar/ability"
 		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
@@ -36,7 +36,7 @@
 	"drteaspoon_blink"
 	{
 		"BaseClass"						"ability_lua"
-		"CustomEnabled"					"1"
+		"CustomList"					"drteaspoon"
 		"AbilityTextureName"        "drteaspoon/drteaspoon_blink"
 		"ScriptFile"					"abilities/drteaspoon/blink/ability"
 		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_OVERSHOOT"
@@ -55,7 +55,7 @@
 	"drteaspoon_witchcraft"
 	{
 		"BaseClass"						"ability_lua"
-		"CustomEnabled"					"1"
+		"CustomList"					"fixes"
 		"AbilityTextureName"        "drteaspoon/drteaspoon_witchcraft"
 		"ScriptFile"					"abilities/drteaspoon/witchcraft/ability"
 		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"

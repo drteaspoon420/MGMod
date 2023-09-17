@@ -83,7 +83,7 @@ function HeroBuilderPlugin:PrepStageTwo()
         for k,v in pairs(HeroBuilderPlugin.npc_abilities_custom) do
             if v ~= nil and type(v) == 'table' then
                 if HeroBuilderPlugin.npc_abilities[k] == nil then
-                    if v.CustomEnabled ~= nil then
+                    if v.CustomList ~= nil then
                         if v.AbilityType ~= nil then
                             if v.AbilityType == "DOTA_ABILITY_TYPE_ATTRIBUTES" then
                                 HeroBuilderPlugin:AddTalent(k,v)

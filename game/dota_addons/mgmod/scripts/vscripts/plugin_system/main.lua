@@ -386,6 +386,7 @@ function PluginSystem:ProcRegisteredGameStates(iState)
     if PluginSystem.StateRegistry[iState] ~= nil then
         for k,v in pairs(PluginSystem.StateRegistry[iState]) do
             if PluginSystem.LobbySettings[v.plugin_name].enabled.VALUE == 1 then
+                print(v.plugin_name,v.method)
                 v.plugin[v.method](v.plugin)
             end
         end

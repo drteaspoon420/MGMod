@@ -1,0 +1,147 @@
+
+"DOTAAbilities"
+{
+	"tremulous_spawn"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"plugin_system/plugins/tremulous/abilities/tremulous_spawn"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"tremulous_build_spawn"
+		"MaxLevel"						"1"
+		"AbilityCooldown"				"60"
+	}
+	
+	"tremulous_power"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"plugin_system/plugins/tremulous/abilities/tremulous_power"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"tremulous_build_ancient"
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"2000"
+        "AbilityValues"
+        {
+            "radius"		"2000"
+        }
+	}
+
+	"tremulous_shrine"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"plugin_system/plugins/tremulous/abilities/tremulous_shrine"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"tremulous_build_shrine"
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"600"
+        "AbilityValues"
+        {
+            "radius"		"600"
+            "heal"		"25"
+            "mana"		"25"
+        }
+	}
+
+	"tremulous_shop"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"plugin_system/plugins/tremulous/abilities/tremulous_shop"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"tremulous_build_shop"
+		"MaxLevel"						"1"
+		"AbilityCastRange"				"600"
+        "AbilityValues"
+        {
+            "radius"		"600"
+        }
+	}
+
+	"tremulous_tower"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"plugin_system/plugins/tremulous/abilities/tremulous_tower"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"tremulous_build_tower"
+		"MaxLevel"						"1"
+	}
+
+	"tremulous_barracks"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"plugin_system/plugins/tremulous/abilities/tremulous_barracks"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"tremulous_build_barracks"
+		"MaxLevel"						"1"
+		"AbilityCooldown"				"60"
+        "AbilityValues"
+        {
+            "max"		"30"
+        }
+	}
+
+
+	"tremulous_build_ancient"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"plugin_system/plugins/tremulous/abilities/tremulous_build"
+		"AbilityTextureName"			"tremulous_build_ancient"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityChannelTime"			"3.0"
+		"MaxLevel"						"1"
+		"AbilityGoldCost"						"8000"
+	}
+
+	"tremulous_build_spawn"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"plugin_system/plugins/tremulous/abilities/tremulous_build"
+		"AbilityTextureName"			"tremulous_build_spawn"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityChannelTime"			"3.0"
+		"MaxLevel"						"1"
+		"AbilityGoldCost"						"4000"
+	}
+
+	"tremulous_build_tower"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"plugin_system/plugins/tremulous/abilities/tremulous_build"
+		"AbilityTextureName"			"tremulous_build_tower"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityChannelTime"			"3.0"
+		"MaxLevel"						"1"
+		"AbilityGoldCost"						"3000"
+	}
+
+	"tremulous_build_shrine"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"plugin_system/plugins/tremulous/abilities/tremulous_build"
+		"AbilityTextureName"			"tremulous_build_shrine"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityChannelTime"			"3.0"
+		"MaxLevel"						"1"
+		"AbilityGoldCost"						"3000"
+	}
+
+	"tremulous_build_shop"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"plugin_system/plugins/tremulous/abilities/tremulous_build"
+		"AbilityTextureName"			"tremulous_build_shop"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityChannelTime"			"3.0"
+		"MaxLevel"						"1"
+		"AbilityGoldCost"						"4000"
+	}
+
+	"tremulous_build_barracks"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"plugin_system/plugins/tremulous/abilities/tremulous_build"
+		"AbilityTextureName"			"tremulous_build_barracks"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityChannelTime"			"3.0"
+		"MaxLevel"						"1"
+		"AbilityGoldCost"						"5000"
+	}
+}

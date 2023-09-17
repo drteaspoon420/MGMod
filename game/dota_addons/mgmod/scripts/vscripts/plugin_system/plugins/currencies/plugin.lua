@@ -97,6 +97,35 @@ function CurrenciesPlugin:AlterCurrency(sName,iPlayer,iCount)
 end
 
 
+function CurrenciesPlugin:CheckCurrency(sName,iPlayer,iCount)
+    if CurrenciesPlugin.currency_data[sName] == nil then return false end
+    local t = CurrenciesPlugin.currency_data[sName]
+    if t.share == 0 then
+        if t.amount[iPlayer] < iCount then
+            return false
+        else
+            --CurrenciesPlugin:AlterCurrency(sName,iPlayer,-iCount)
+            return true
+        end
+    elseif t.share == 1 then
+        local iTeam = PlayerResource:GetTeam(iPlayer)
+        if t.amount[iTeam] < iCount then
+            return false
+        else
+            --CurrenciesPlugin:AlterCurrency(sName,iPlayer,-iCount)
+            return true
+        end
+    elseif t.share == 2 then
+        if t.amount[0] < iCount then
+            return false
+        else
+            --CurrenciesPlugin:AlterCurrency(sName,iPlayer,-iCount)
+            return true
+        end
+    end
+    return false
+end
+
 function CurrenciesPlugin:SpendCurrency(sName,iPlayer,iCount)
     if CurrenciesPlugin.currency_data[sName] == nil then return false end
     local t = CurrenciesPlugin.currency_data[sName]

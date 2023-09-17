@@ -1,10 +1,11 @@
 "use strict";
-const this_window_id = "heroscreen_rework";
+const this_window_id = "legends_of_dota";
 var plugin_settings = {};
 var hero_pools = {};
 var ability_pools = {};
 var player_data = {};
 var current_view = 0;
+var talent_toggle = 0;
 var local_ability_cursor = 1;
 const MainChoiseArea = $.GetContextPanel().FindChildTraverse("MainChoiseArea");
 const ExtraChoiseArea = $.GetContextPanel().FindChildTraverse("ExtraChoiseArea");
@@ -99,6 +100,7 @@ function PickHero(id) {
         hero: id,
     });
     SetLocalHero(id);
+    
     ShowAbilitySelection();
 }
 
@@ -106,6 +108,56 @@ function SetLocalHero(id) {
     ExtraChoiseArea.FindChildInLayoutFile("LocalPortrait").heroid = id;
 }
 
+function ToggleTalents() {
+    if (talent_toggle == 0) {
+        talent_toggle = 1;
+        const linkable = MainChoiseArea.FindChildrenWithClassTraverse("AbilityOption");
+        for (const key in linkable) {
+            const thing = linkable[key]
+            if (thing.data != undefined && thing.data.category != undefined) {
+                thing.SetHasClass("hidden", (thing.data.category != "talent"));
+                thing.SetHasClass("recommend_talent",false);
+            }
+        }
+
+        
+        if (player_data[pId] != undefined && player_data[pId].abilities != undefined) {
+            for (let i = 1; i < 7; i++) {
+                if (player_data[pId].abilities["s"+i] != undefined) {
+                    const o_data = FindAbilityData(player_data[pId].abilities["s"+i].name);
+                    RecommendLinked(o_data.name,o_data.linked)
+                }
+            }
+            for (let i = 15; i < 26; i++) {
+                if (player_data[pId].abilities["s"+i] != undefined) {
+                    const o_data = FindAbilityData(player_data[pId].abilities["s"+i].name);
+                    RecommendLinked(o_data.name,o_data.linked)
+                }
+            }
+        }
+    } else if (talent_toggle == 1) {
+        talent_toggle = 0;
+        const linkable = MainChoiseArea.FindChildrenWithClassTraverse("AbilityOption");
+        for (const key in linkable) {
+            const thing = linkable[key]
+            if (thing.data != undefined && thing.data.category != undefined) {
+                thing.SetHasClass("hidden", (thing.data.category == "talent"));
+            }
+        }
+    }
+}
+
+function is_linked(a,b) {
+    for (const i in b.linked) {
+        const ll = b.linked[i];
+        if (ll == a.name) return true;
+    }
+    for (const i in a.linked) {
+        const ll = a.linked[i];
+        if (ll == b.name) return true;
+    }
+    return false;
+}
 
 
 function ShowHeroSelection() {
@@ -121,6 +173,9 @@ function ShowAbilitySelection() {
     current_view = 1;
     MainChoiseArea.RemoveAndDeleteChildren();
     UpdateAbilitySelection();
+    talent_toggle = 1;
+    ToggleTalents();
+    MoveCursor(1);
 }
 function UpdateAbilitySelection() {
     PopulateAbilityChoises();
@@ -129,6 +184,7 @@ function UpdateAbilitySelection() {
 
 function PopulateAbilityChoises() {
     const content_box = MainChoiseArea;
+    $.Msg(ability_pools);
     for (const hero in ability_pools) {
         const hero_category = ability_pools[hero];
         let category_panel = content_box.FindChildTraverse("category_panel_"+hero_category.key);
@@ -226,11 +282,46 @@ function PickAbility(ability_data) {
 
 function MoveCursor(i) {
     if (i == local_ability_cursor) return;
-    ExtraChoiseArea.FindChildTraverse("LocalAbility_" + local_ability_cursor).SetHasClass("active_slot",false);
+    const oSlot = ExtraChoiseArea.FindChildTraverse("LocalAbility_" + local_ability_cursor);
+    if (oSlot != undefined) {
+        oSlot.SetHasClass("active_slot",false);
+    }
+
     local_ability_cursor = i;
-    ExtraChoiseArea.FindChildTraverse("LocalAbility_" + local_ability_cursor).SetHasClass("active_slot",true);
+    if (i > 6 && i < 15 && talent_toggle == 0) {
+        ToggleTalents();
+    } else if ((i < 7 || i > 14) && talent_toggle == 1) {
+        ToggleTalents();
+    }
+
+    const nSlot = ExtraChoiseArea.FindChildTraverse("LocalAbility_" + local_ability_cursor);
+    if (nSlot != undefined) {
+        nSlot.SetHasClass("active_slot",true);
+    }
 }
 
+function RecommendLinked(name,olink) {
+    const linkable = MainChoiseArea.FindChildrenWithClassTraverse("linkable");
+    for (const key in linkable) {
+        const thing = linkable[key]
+        if (thing.data != undefined && thing.data.linked != undefined) {
+
+            let bFound = false;
+            for (const i in olink) {
+                const ll = olink[i];
+                if (ll == thing.data.name) bFound = true;
+            }
+            for (const i in thing.data.linked) {
+                const ll = thing.data.linked[i];
+                if (ll == name) bFound = true;
+            }
+            if (bFound) {
+                thing.SetHasClass("recommend_talent", true);
+                $.Msg("recommending " + thing.data.name);
+            }
+        }
+    }
+}
 
 function HighlightLinked(name,olink) {
     const linkable = MainChoiseArea.FindChildrenWithClassTraverse("linkable");
@@ -285,6 +376,7 @@ function UpdatePlayerStatus() {
                         function(){
                             $.DispatchEvent("DOTAHideAbilityTooltip", ablity_select);
                             $.DispatchEvent("DOTAHideTextTooltip", ablity_select);
+                            HighlightLinked("none",{});
                         }
                     );
                 }
@@ -304,7 +396,15 @@ function ReselectHero() {
 
 function ability_pick_response(tEvent) {
     if (tEvent.name != "failure") {
-        MoveCursor(local_ability_cursor+1);
+        if (local_ability_cursor == 14) {
+            MoveCursor(7);
+        } else if(local_ability_cursor == 6) {
+            MoveCursor(1);
+        } else if(local_ability_cursor == 25){
+            MoveCursor(15);
+        } else {
+            MoveCursor(local_ability_cursor+1);
+        }
         Game.EmitSound("General.Buy");
     } else {
         Game.EmitSound("General.Dead");
@@ -326,12 +426,19 @@ function FindAbilityData(sname) {
 function Init() {
     DeleteDotaDefaults();
     $.Msg("init!");
+    if (plugin_settings.extra_abilities != undefined && plugin_settings.extra_abilities.VALUE != true) {
+        const AbilityBoxExtra = ExtraChoiseArea.FindChildTraverse("AbilityBoxExtra");
+        AbilityBoxExtra.DeleteAsync(0);
+    }
+    if (plugin_settings.allow_talents != undefined && plugin_settings.allow_talents.VALUE != true) {
+        const TalentTree = ExtraChoiseArea.FindChildTraverse("TalentTree");
+        TalentTree.DeleteAsync(0);
+    }
     hero_pools = CustomNetTables.GetTableValue( "heroselection_rework", "hero_pools" );
     ability_pools = CustomNetTables.GetAllTableValues( "heroselection_rework_abilities");
     player_data = CustomNetTables.GetTableValue( "heroselection_rework", "player_data" );
     CustomNetTables.SubscribeNetTableListener("heroselection_rework",HeroNetTableUpdate);
     GameEvents.Subscribe( "ability_pick", ability_pick_response );
-    
     if (player_data != undefined && player_data[pId] != undefined && player_data[pId].hero != undefined && player_data[pId].hero > 0) {
         SetLocalHero(player_data[pId].hero);
         if (player_data[pId].ready != undefined && player_data[pId].ready == true) {
@@ -349,6 +456,23 @@ function ShowReadyScreen() {
     MainChoiseArea.RemoveAndDeleteChildren();
 }
 
+function UpdateReady() {
+    let c = 0;
+    let b = 0;
+    for (const key in player_data) {
+        const dd = player_data[key];
+        c++;
+        if (dd.ready != undefined && dd.ready == true) {
+            b++;
+        }
+    }
+    const ready_count = ExtraChoiseArea.FindChildTraverse("ready_count");
+    if (ready_count != undefined) {
+        ready_count.text = b+"/"+c;
+    }
+    
+}
+
 function HeroNetTableUpdate(table,tableKey,data) {
     if (tableKey == "hero_pools") {
         hero_pools = data;
@@ -359,6 +483,7 @@ function HeroNetTableUpdate(table,tableKey,data) {
     if (tableKey == "player_data") {
         player_data = data;
         UpdatePlayerStatus();
+        UpdateReady();
     }
 }
 

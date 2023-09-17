@@ -1,0 +1,466 @@
+"DOTAUnits"
+{
+	"npc_tremulous_base"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/buildings/building_plain_reference.vmdl"
+		"ModelScale" 				"1.0"
+		"SoundSet"					"Creep_Good_Melee"
+		"MinimapIcon"				"minimap_miscbuilding"
+		"Level"						"1"
+        //Fluff
+		"ArmorPhysical"				"10"
+		"MagicalResistance"			"0"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"0"
+		"AttackAnimationPoint"		"0"
+		"AttackAcquisitionRange"	"0"
+		"AttackRange"				"0"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			"0"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"0"
+		"AttributeStrengthGain"		"0"
+		"AttributeBaseIntelligence"	"0"
+		"AttributeIntelligenceGain"	"0"
+		"AttributeBaseAgility"		"0"
+		"AttributeAgilityGain"		"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+		"RingRadius"				"100"
+		"HealthBarOffset"			"260"
+		"MinimapIconSize"			"200"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0"
+		"StatusHealth"				"1000"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"VisionDaytimeRange"		"0"
+		"VisionNighttimeRange"		"0"
+    }
+    
+	"npc_tremulous_ancient"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/props_structures/radiant_ancient001.vmdl"	// Model.
+		"ModelScale" 				"0.3"
+		"SoundSet"					"Creep_Good_Melee"
+		"MinimapIcon"				"minimap_ancient"
+		"Level"						"1"
+        //Fluff
+		"ArmorPhysical"				"10"
+		"MagicalResistance"			"0"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"0"
+		"AttackAnimationPoint"		"0"
+		"AttackAcquisitionRange"	"0"
+		"AttackRange"				"0"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			"0"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"0"
+		"AttributeStrengthGain"		"0"
+		"AttributeBaseIntelligence"	"0"
+		"AttributeIntelligenceGain"	"0"
+		"AttributeBaseAgility"		"0"
+		"AttributeAgilityGain"		"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+		"RingRadius"				"100"
+		"HealthBarOffset"			"260"
+		"MinimapIconSize"			"200"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0"
+		"StatusHealth"				"1000"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"VisionDaytimeRange"		"0"
+		"VisionNighttimeRange"		"0"
+		"Ability1"                          "tremulous_power"
+    }
+
+	"npc_tremulous_spawn"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/props_structures/dire_fountain002.vmdl"	// Model.
+		"ModelScale" 				"0.25"
+		"SoundSet"					"Creep_Good_Melee"
+		"MinimapIcon"				"minimap_ward_obs"
+		"Level"						"1"
+        //Fluff
+		"ArmorPhysical"				"10"
+		"MagicalResistance"			"0"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"0"
+		"AttackAnimationPoint"		"0"
+		"AttackAcquisitionRange"	"0"
+		"AttackRange"				"0"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			"0"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"0"
+		"AttributeStrengthGain"		"0"
+		"AttributeBaseIntelligence"	"0"
+		"AttributeIntelligenceGain"	"0"
+		"AttributeBaseAgility"		"0"
+		"AttributeAgilityGain"		"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+		"RingRadius"				"100"
+		"HealthBarOffset"			"260"
+		"MinimapIconSize"			"200"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0"
+		"StatusHealth"				"1000"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"VisionDaytimeRange"		"0"
+		"VisionNighttimeRange"		"0"
+		"Ability1"                          "tremulous_spawn"
+    }
+	"npc_tremulous_tower"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/props_structures/tower_good.vmdl"// Model.
+		"ModelScale" 				"0.7"
+		"SoundSet"					"Tower.Fire"					// Name of sound set.
+		"MinimapIcon"				"minimap_tower45"
+		"Level"						"1"
+        //Fluff
+		"ArmorPhysical"				"10"
+		"MagicalResistance"			"0"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"88"		// Damage range min.
+		"AttackDamageMax"			"92"		// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"BaseAttackSpeed"			"110"
+		"AttackRate"				"0.9"		// Speed of attack.
+		"AttackAnimationPoint"		"0.6"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+		"AttackRange"				"700"		// Range within a target can be attacked.
+		"ProjectileModel"			"particles/base_attacks/ranged_tower_good.vpcf"		// Particle system model for projectile.
+		"ProjectileSpeed"			"750"		// Speed of projectile.
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"0"
+		"AttributeStrengthGain"		"0"
+		"AttributeBaseIntelligence"	"0"
+		"AttributeIntelligenceGain"	"0"
+		"AttributeBaseAgility"		"0"
+		"AttributeAgilityGain"		"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+		"RingRadius"				"100"
+		"HealthBarOffset"			"260"
+		"MinimapIconSize"			"200"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"1.0"			// Turning rate.
+		"StatusHealth"				"1000"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"VisionDaytimeRange"		"800"
+		"VisionNighttimeRange"		"300"
+		"Ability1"                          "tremulous_tower"
+    }
+	"npc_tremulous_shop"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/props_structures/outpost.vmdl"	// Model.
+		"ModelScale" 				"0.5"
+		"SoundSet"					"Creep_Good_Melee"
+		"MinimapIcon"				"minimap_miscbuilding"
+		"Level"						"1"
+        //Fluff
+		"ArmorPhysical"				"10"
+		"MagicalResistance"			"0"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"0"
+		"AttackAnimationPoint"		"0"
+		"AttackAcquisitionRange"	"0"
+		"AttackRange"				"0"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			"0"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"0"
+		"AttributeStrengthGain"		"0"
+		"AttributeBaseIntelligence"	"0"
+		"AttributeIntelligenceGain"	"0"
+		"AttributeBaseAgility"		"0"
+		"AttributeAgilityGain"		"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+		"RingRadius"				"100"
+		"HealthBarOffset"			"260"
+		"MinimapIconSize"			"200"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0"
+		"StatusHealth"				"1000"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"VisionDaytimeRange"		"0"
+		"VisionNighttimeRange"		"0"
+		"Ability1"							"tremulous_shop"
+    }
+	"npc_tremulous_shrine"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl"	// Model.
+		"SoundSet"					"Creep_Good_Melee"					// Name of sound set.
+		"ModelScale" 					"0.93"
+		"Level"						"1"
+        //Fluff
+		"ArmorPhysical"				"10"
+		"MagicalResistance"			"0"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"0"
+		"AttackAnimationPoint"		"0"
+		"AttackAcquisitionRange"	"0"
+		"AttackRange"				"0"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			"0"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"0"
+		"AttributeStrengthGain"		"0"
+		"AttributeBaseIntelligence"	"0"
+		"AttributeIntelligenceGain"	"0"
+		"AttributeBaseAgility"		"0"
+		"AttributeAgilityGain"		"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+		"RingRadius"				"100"
+		"HealthBarOffset"			"260"
+		"MinimapIconSize"			"200"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0"
+		"StatusHealth"				"1000"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"VisionDaytimeRange"		"300"
+		"VisionNighttimeRange"		"800"
+		"Ability1"							"tremulous_shrine"
+    }
+	"npc_tremulous_barracks"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/props_structures/radiant_melee_barracks001.vmdl"	// Model.
+		"ModelScale" 				"0.6"
+		"SoundSet"					"Creep_Good_Melee"
+		"MinimapIcon"				"minimap_miscbuilding"
+		"Level"						"1"
+        //Fluff
+		"ArmorPhysical"				"10"
+		"MagicalResistance"			"0"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"0"
+		"AttackAnimationPoint"		"0"
+		"AttackAcquisitionRange"	"0"
+		"AttackRange"				"0"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			"0"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"0"
+		"AttributeStrengthGain"		"0"
+		"AttributeBaseIntelligence"	"0"
+		"AttributeIntelligenceGain"	"0"
+		"AttributeBaseAgility"		"0"
+		"AttributeAgilityGain"		"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+		"RingRadius"				"100"
+		"HealthBarOffset"			"260"
+		"MinimapIconSize"			"200"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0"
+		"StatusHealth"				"1000"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"VisionDaytimeRange"		"0"
+		"VisionNighttimeRange"		"0"
+		"Ability1"                          "tremulous_barracks"
+    }
+	"npc_tremulous_construction"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/buildings/building_plain_reference.vmdl"
+		"ModelScale" 				"1.0"
+		"SoundSet"					"Creep_Good_Melee"
+		"MinimapIcon"				"minimap_miscbuilding"
+		"Level"						"1"
+        //Fluff
+		"ArmorPhysical"				"10"
+		"MagicalResistance"			"0"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"0"
+		"AttackAnimationPoint"		"0"
+		"AttackAcquisitionRange"	"0"
+		"AttackRange"				"0"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			"0"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"0"
+		"AttributeStrengthGain"		"0"
+		"AttributeBaseIntelligence"	"0"
+		"AttributeIntelligenceGain"	"0"
+		"AttributeBaseAgility"		"0"
+		"AttributeAgilityGain"		"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+		"RingRadius"				"100"
+		"HealthBarOffset"			"260"
+		"MinimapIconSize"			"200"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0"
+		"StatusHealth"				"1000"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"VisionDaytimeRange"		"0"
+		"VisionNighttimeRange"		"0"
+		"Ability1"                          "tremulous_morph_ancient"
+		"Ability2"                          "tremulous_morph_spawn"
+		"Ability3"                          "tremulous_morph_tower"
+		"Ability4"                          "tremulous_morph_shrine"
+		"Ability5"                          "tremulous_morph_shop"
+		"Ability6"                          "tremulous_morph_barracks"
+    }
+
+	
+	"npc_tremulous_creep"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/items/undying/flesh_golem/corrupted_scourge_corpse_hive/corrupted_scourge_corpse_hive.vmdl"	// Model.
+		"SoundSet"					"n_creep_Melee"
+		"ModelScale" 				"0.6"
+		"Level"						"1"
+		"CanBeDominated"			"0"
+		"IsSummoned"				"0"
+		"MinimapDisableTint"		"0"
+		"UnitLabel"			"zombie"
+		"Ability1"					""
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					""
+		"Ability5"					""
+		"Ability6"					""
+		"Ability7"					""
+
+
+		"ArmorPhysical"				"2"			// Physical protection.
+		"MagicalResistance"				"0"			// Magical protection.
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"19"		// Damage range min.
+		"AttackDamageMax"			"23"		// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"1"			// Speed of attack.
+		"AttackAnimationPoint"		"0.467"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackRange"				"100"		// Range within a target can be attacked.
+		"ProjectileModel"			""			// Particle system model for projectile.
+		"ProjectileSpeed"			""			// Speed of projectile.
+
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"62"		// Experience earn.
+		"BountyGoldMin"				"38"		// Gold earned min.
+		"BountyGoldMax"				"48"		// Gold earned max.
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"			// Hull type used for navigation/locomotion.
+		"HealthBarOffset"			"140"
+
+		// Movement
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
+		"MovementSpeed"				"325"		// Speed
+		"MovementTurnRate"			"0.5"		// Turning rate.
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"550"		// Base health.
+		"StatusHealthRegen"			"0.5"		// Health regeneration rate.
+		"StatusMana"				"0"			// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_GOODGUYS"			// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"800"		// Range of vision during day light.
+		"VisionNighttimeRange"		"600"		// Range of vision at night time.
+	}
+}

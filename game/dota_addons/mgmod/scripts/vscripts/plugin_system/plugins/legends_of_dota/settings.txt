@@ -1,0 +1,51 @@
+"plugin_settings"
+{
+    "Order" "1"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+//    "custom_bans" {
+//        "Order" "1"
+//        "TYPE" "text"
+//        "DEFAULT" ""
+//    }
+    "extra_abilities" {
+        "Order" "2"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "allow_talents" {
+        "Order" "3"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "allow_extended" {
+        "Order" "4"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "custom_abilities_fixes" {
+        "Order" "5"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "custom_abilities_drteaspoon" {
+        "Order" "6"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "pick_mode"
+    {
+        "Order" "21"
+        "TYPE" "dropdown"
+        "DEFAULT" "lod"
+        "OPTIONS" {
+            "lod" "0"
+            "random" "1"
+            "steamid" "2"
+            "steamid_daily" "3"
+            "steamid_monthly" "4"
+        }
+    }
+}

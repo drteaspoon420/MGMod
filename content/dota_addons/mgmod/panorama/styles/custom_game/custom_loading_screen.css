@@ -13,7 +13,6 @@
 	background-size: 100% 100%;
     horizontal-align: center;
     vertical-align: center;
-    
 }
 
 #seq {
@@ -23,10 +22,22 @@
 }
 
 
-.SeqBgBoosted
+.SeqBgSecondary_boost
 {
     margin-top: 300px;
     margin-left: 237px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 100% 100%;
+    horizontal-align: center;
+    vertical-align: center;
+    
+}
+
+.SeqBgSecondary_trem
+{
+    margin-top: 300px;
+    margin-left: -61px;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	background-size: 100% 100%;

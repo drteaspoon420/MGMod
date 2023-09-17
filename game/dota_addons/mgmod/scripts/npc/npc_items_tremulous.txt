@@ -1,0 +1,36 @@
+"DOTAAbilities"
+{
+    "item_tremulous_builder"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "BaseClass"                     "item_lua"
+        "AbilityTextureName"            "item_repair_kit"
+		"ScriptFile"					"plugin_system/plugins/tremulous/items/item_tremulous_builder"
+        
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"AbilityCooldown"				"0.0"
+		"AbilityCastPoint"				"0"
+
+        "Model"                         "models/props_gameplay/bottle_rejuvenation.vmdl"
+        "ItemKillable"                  "0"
+        
+        // Stats
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCastRange"              "0"
+        "AbilityCastPoint"              "0.0"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+		"ItemIsNeutralDrop"				"1"
+        "ItemCost"                      "0"
+        "ItemPurchasable"               "0"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemSellable"					"0"
+		"ItemContributesToNetWorthWhenDropped"	"0"
+		"AllowedInBackpack"				"0"
+		"IsTempestDoubleClonable"		"0"
+		"ItemDisassembleRule"				"DOTA_ITEM_DISASSEMBLE_NEVER"
+        "ItemPermanent"                 "1"
+    }
+}
