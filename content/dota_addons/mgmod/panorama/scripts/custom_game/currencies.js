@@ -8,6 +8,8 @@ var tCurrencyNumbers = {}
 var currency_open;
 
 function AddCurrency(sName,tData) {
+    if (tData.share == 3)
+        return;
     tCurrencies[sName] = tData;
     let CurrencyBox = $.CreatePanel('Panel', WindowRoot, 'CurrencyBox');
     CurrencyBox.BLoadLayoutSnippet("CurrencyBox");

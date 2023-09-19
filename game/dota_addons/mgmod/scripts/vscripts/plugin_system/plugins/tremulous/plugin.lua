@@ -21,6 +21,7 @@ function TremulousPlugin:ApplySettings()
     end,nil)
     CustomGameEventManager:RegisterListener("building_pick",TremulousPlugin.building_pick)
     GameRules:SetUseUniversalShopMode(true)
+    GameRules:GetGameModeEntity():SetStashPurchasingDisabled(true)
 end
 
 function TremulousPlugin:SpawnPointTryRespawn(hSpawn)
@@ -58,39 +59,31 @@ function TremulousPlugin:KilledEvent(event)
                 local fTime = GameRules:GetGameTime()
                 local iPlayer = hPlayer:GetPlayerID()
                 TremulousPlugin.death_times[iPlayer] = fTime
-                if not TremulousPlugin:HasSpawns(iTeam) then
-                    GameRules:SetGameWinner(((iTeam+1)%2)+DOTA_TEAM_GOODGUYS)
-                end
+                TremulousPlugin:TeamLoseCheck(iTeam)
             end
         end
     elseif hUnit:HasAbility("tremulous_spawn") or hUnit:HasAbility("tremulous_power")  then --if the last spawn is killed (or power supply)
         Timers:CreateTimer(5,function()
-            if TremulousPlugin:HasSpawns(iTeam) then
-                return
-            end
-            local hSearchUnit = Entities:Next(nil)
-            while hSearchUnit do
-                if hSearchUnit:IsDOTANPC() and hSearchUnit:IsRealHero() and hSearchUnit:GetTeam() == iTeam and (hSearchUnit:IsAlive() or hSearchUnit:IsReincarnating()) then
-                    local hPlayer = hSearchUnit:GetPlayerOwner()
-                    if hPlayer ~= nil then
-                        local hMainHero = hPlayer:GetAssignedHero()
-                        if hSearchUnit == hMainHero then
-                            return
-                        end
-                    end
-                end
-                hSearchUnit = Entities:Next(hSearchUnit)
-            end
-            GameRules:SetGameWinner(((iTeam+1)%2)+DOTA_TEAM_GOODGUYS)
+            TremulousPlugin:TeamLoseCheck(iTeam)
         end)
     end
 end
 
-function TremulousPlugin:HasSpawns(iTeam)
+function TremulousPlugin:TeamLoseCheck(iTeam)
+    if TremulousPlugin:IsInGame(iTeam) then
+        return
+    end
+    GameRules:SetGameWinner(((iTeam+1)%2)+DOTA_TEAM_GOODGUYS)
+end
+
+function TremulousPlugin:IsInGame(iTeam)
     local hUnit = Entities:Next(nil)
     while hUnit do
         if hUnit:IsDOTANPC() and hUnit:IsAlive() and hUnit:GetTeam() == iTeam then
-            if hUnit:HasAbility("tremulous_spawn") and hUnit:HasModifier("modifier_tremulous_power_aura") then
+            if hUnit:HasAbility("tremulous_spawn") and hUnit:HasModifier("modifier_tremulous_power_aura") and not hUnit:HasModifier("modifier_building_inprogress") then
+                return true
+            end
+            if hUnit:IsRealHero() and not hUnit:IsClone() and hUnit:GetReplicatingOtherHero() == nil then
                 return true
             end
         end
@@ -99,42 +92,44 @@ function TremulousPlugin:HasSpawns(iTeam)
     return false
 end
 
+
 function TremulousPlugin:SpawnEvent(event)
     local hUnit = EntIndexToHScript(event.entindex)
     if not hUnit.IsRealHero then return end
     if hUnit:IsRealHero() and not hUnit:IsClone() and hUnit:GetReplicatingOtherHero() == nil then
         if TremulousPlugin.unit_cache[event.entindex] ~= nil then return end
         TremulousPlugin.unit_cache[event.entindex] = true
-        hUnit:AddItemByName("item_tremulous_builder")
+        local hItem = hUnit:AddItemByName("item_tremulous_builder")
+        hItem:SetPurchaseTime(0)
+        hUnit:SetGold(800,true)
         hUnit:SetGold(0,false)
-        hUnit:SetGold(TremulousPlugin.settings.start_gold,true)
     end
 end
 
 TremulousPlugin.buildings = {
     
     tremulous_build_ancient = {
-        iCost = 8000,
+        iCost = 8,
         sUnit = "npc_tremulous_ancient"
     },
     tremulous_build_spawn = {
-        iCost = 4000,
+        iCost = 4,
         sUnit = "npc_tremulous_spawn"
     },
     tremulous_build_tower = {
-        iCost = 3000,
+        iCost = 3,
         sUnit = "npc_tremulous_tower"
     },
     tremulous_build_shrine = {
-        iCost = 3000,
+        iCost = 3,
         sUnit = "npc_tremulous_shrine"
     },
     tremulous_build_shop = {
-        iCost = 4000,
+        iCost = 4,
         sUnit = "npc_tremulous_shop"
     },
     tremulous_build_barracks = {
-        iCost = 5000,
+        iCost = 5,
         sUnit = "npc_tremulous_barracks"
     },
 }
@@ -154,3 +149,16 @@ function TremulousPlugin:building_pick(tEvent)
         end
     end
 end
+
+
+function TremulousPlugin:ItemAddedToInventoryFilter(event)
+	local inventory = event.inventory_parent_entindex_const and EntIndexToHScript(event.inventory_parent_entindex_const)
+	local item = event.item_entindex_const and EntIndexToHScript(event.item_entindex_const)
+	local itemParent = event.item_parent_entindex_const and EntIndexToHScript(event.item_parent_entindex_const)
+	local sugg = event.suggested_slot
+    if item:GetName() == "item_tpscroll" then
+        return {false,event}
+    end
+    return {true,event}
+end
+

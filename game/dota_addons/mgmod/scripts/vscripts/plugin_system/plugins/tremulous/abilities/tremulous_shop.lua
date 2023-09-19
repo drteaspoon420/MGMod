@@ -17,6 +17,7 @@ function modifier_tremulous_shop:OnIntervalThink()
 
     if not self:GetParent():IsAlive() then return end
 
+    if self:GetParent():HasModifier("modifier_building_inprogress") then return end
     --requires 'power aura' from ancient
     if not self:GetParent():HasModifier("modifier_tremulous_power_aura") and self.shop ~= nil then
         self.shop:Destroy()
@@ -26,4 +27,11 @@ function modifier_tremulous_shop:OnIntervalThink()
         self.shop:SetShopType(DOTA_SHOP_HOME)
     end
 
+end
+function modifier_tremulous_shop:OnDestroy(event)
+	if not IsServer() then return end
+    if self.shop ~= nil then
+        self.shop:Destroy()
+        self.shop = nil
+    end
 end

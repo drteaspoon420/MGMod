@@ -65,6 +65,10 @@ function DeleteDotaPlugin:ApplySettings()
             DeleteDotaPlugin:FindAndDeleteUnit("dota_fountain")
         end
     end
+    if DeleteDotaPlugin.settings.delete_misc then
+        DeleteDotaPlugin:FindAndDeleteClass("ent_dota_neutral_item_stash")
+        DeleteDotaPlugin:FindAndDeleteClass("ent_dota_halloffame")
+    end
 end
 
 function DeleteDotaPlugin:DeleteTowers(iTier)
@@ -173,3 +177,4 @@ function DeleteDotaPlugin:ThanosSnap(tArgs,bTeam,iPlayer)
         end
     end
 end
+

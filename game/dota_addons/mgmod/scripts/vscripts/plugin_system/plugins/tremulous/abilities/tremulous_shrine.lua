@@ -22,6 +22,7 @@ function modifier_tremulous_shrine:OnIntervalThink()
         return
     end
 
+    if self:GetParent():HasModifier("modifier_building_inprogress") then return end
     
 	local tUnits = FindUnitsInRadius(
         self:GetParent():GetTeam(),

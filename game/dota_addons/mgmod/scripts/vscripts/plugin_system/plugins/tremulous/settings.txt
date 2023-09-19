@@ -9,17 +9,12 @@
     {
         "Order" "18"
         "TYPE" "dropdown"
-        "DEFAULT" "gold"
+        "DEFAULT" "purple"
         "OPTIONS" {
             "red" "red"
             "green" "green"
             "blue" "blue"
             "purple" "purple"
-            "gold" "gold"
         }
-    }
-    "start_gold" {
-        "TYPE" "number"
-        "DEFAULT" "8000"
     }
 }

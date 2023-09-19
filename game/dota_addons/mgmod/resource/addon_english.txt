@@ -213,6 +213,7 @@
 		"Plugin_delete_dota_Option_delete_rune_spawns"	"Delete Runes"
 		"Plugin_delete_dota_Option_delete_shops"	"Delete Shops"
 		"Plugin_delete_dota_Option_delete_fountain"	"Delete Fountains"
+		"Plugin_delete_dota_Option_delete_misc"	"Delete Misc"
 		"Plugin_delete_dota_Option_thanos_snap"	"Allow -thanos #"
 
 		//Tower Buffs
@@ -486,9 +487,9 @@
 
 
 		"BuildingPicker_Title" "Build Menu"
-		"BuildingPicker_Subtitle" "Pick a building to construct close to you."
+		"BuildingPicker_Subtitle" "Pick a building to contruct."
 		"DOTA_Tooltip_Ability_item_tremulous_builder" "Build"
-		"DOTA_Tooltip_Ability_item_tremulous_builder_Description" "Open Build Menu"
+		"DOTA_Tooltip_Ability_item_tremulous_builder_Description" "Build at target"
 		
 		
 		"DOTA_Tooltip_Ability_tremulous_spawn" "Spawn"
@@ -523,6 +524,9 @@
 		"DOTA_Tooltip_Ability_tremulous_build_tower_Description" "Tower provides defences to your base. Provides vision (800 at day, 300 at night)"
 		"DOTA_Tooltip_Ability_tremulous_build_shop" "Shop"
 		"DOTA_Tooltip_Ability_tremulous_build_shop_Description" "Shop is a shop. While they require power, anyone can use them."
+
+		"npc_tremulous_creep" "Creep"
+		"DOTA_Tooltip_modifier_building_inprogress"	"In progress!"
 
 		//Currencies
 		"Plugin_currencies" "Currencies"
@@ -649,6 +653,11 @@
 		"Plugin_currencies_Option_tormentor_kill_reward_currency_Drop_purple" "Purple"
 		"Plugin_currencies_Option_tormentor_kill_reward_amount" "Tormentor Kill Reward Amount"
 		"Plugin_currencies_Option_tormentor_kill_reward_amount_Description" "Last hitting Tormentor grants currency. 0 or less disables the feature."
+
+		"Plugin_currencies_Option_red_start" "Starting Red Currency"
+		"Plugin_currencies_Option_green_start" "Starting Green Currency"
+		"Plugin_currencies_Option_blue_start" "Starting Blue Currency"
+		"Plugin_currencies_Option_purple_start" "Starting Purple Currency"
 		
 
 		//thanksihateit

@@ -9,7 +9,7 @@
     {
         "Order" "10"
         "TYPE" "dropdown"
-        "DEFAULT" "solo"
+        "DEFAULT" "none"
         "OPTIONS" {
             "none" "none"
             "solo" "solo"
@@ -278,6 +278,32 @@
     "tormentor_kill_reward_amount"
     {
         "Order" "94"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+
+    //Starting amounts
+    "red_start"
+    {
+        "Order" "101"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    "green_start"
+    {
+        "Order" "102"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    "blue_start"
+    {
+        "Order" "103"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    "purple_start"
+    {
+        "Order" "104"
         "TYPE" "number"
         "DEFAULT" "0"
     }

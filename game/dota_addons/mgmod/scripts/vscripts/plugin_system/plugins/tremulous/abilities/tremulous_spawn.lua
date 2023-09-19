@@ -11,7 +11,7 @@ end
 
 function modifier_tremulous_spawn:CheckState()
     return {
-        [MODIFIER_STATE_NO_UNIT_COLLISION] = true
+        [MODIFIER_STATE_NO_UNIT_COLLISION] = (not self:GetParent():HasModifier("modifier_building_inprogress"))
     }
 end
 
@@ -29,6 +29,7 @@ function modifier_tremulous_spawn:OnIntervalThink()
     --dead node should not spawn
     if not self:GetParent():IsAlive() then return end
 
+    if self:GetParent():HasModifier("modifier_building_inprogress") then return end
     --requires 'power aura' from ancient
     if not self:GetParent():HasModifier("modifier_tremulous_power_aura") then
         return

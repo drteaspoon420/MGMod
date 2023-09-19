@@ -85,6 +85,11 @@
         "TYPE" "boolean"
         "DEFAULT" "0"
     }
+    "delete_misc" {
+        "Order" "35"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
     "thanos_snap" {
         "Order" "999"
         "TYPE" "boolean"

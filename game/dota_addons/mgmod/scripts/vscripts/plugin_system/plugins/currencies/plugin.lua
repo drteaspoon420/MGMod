@@ -11,7 +11,8 @@ local names = {
 local c_states = {
     solo = 0,
     team = 1,
-    all = 2
+    all = 2,
+    none = 3,
 }
 local c_colors = {
     red = Vector(255,30,30),
@@ -58,13 +59,14 @@ function CurrenciesPlugin:ApplySettings()
             end
             if c_states[sts] == 0 then --solo
                 for iPlayer = 0,DOTA_MAX_PLAYERS do
-                    CurrenciesPlugin.currency_data[c].amount[iPlayer] = 0
+                    CurrenciesPlugin.currency_data[c].amount[iPlayer] = CurrenciesPlugin.settings[c .. "_start"]
                 end
             elseif c_states[sts] == 1 then --team shared
-                CurrenciesPlugin.currency_data[c].amount[DOTA_TEAM_GOODGUYS] = 0
-                CurrenciesPlugin.currency_data[c].amount[DOTA_TEAM_BADGUYS] = 0
+                print(CurrenciesPlugin.settings[c .. "_start"])
+                CurrenciesPlugin.currency_data[c].amount[DOTA_TEAM_GOODGUYS] = CurrenciesPlugin.settings[c .. "_start"]
+                CurrenciesPlugin.currency_data[c].amount[DOTA_TEAM_BADGUYS] = CurrenciesPlugin.settings[c .. "_start"]
             elseif c_states[sts] == 2 then --global shared
-                CurrenciesPlugin.currency_data[c].amount[0] = 0
+                CurrenciesPlugin.currency_data[c].amount[0] = CurrenciesPlugin.settings[c .. "_start"]
             end
             CustomNetTables:SetTableValue("currencies",c,CurrenciesPlugin.currency_data[c])
         end
@@ -109,6 +111,8 @@ function CurrenciesPlugin:CheckCurrency(sName,iPlayer,iCount)
         end
     elseif t.share == 1 then
         local iTeam = PlayerResource:GetTeam(iPlayer)
+        print(iCount,t.amount[iTeam])
+        print(type(iCount),type(t.amount[iTeam]))
         if t.amount[iTeam] < iCount then
             return false
         else
@@ -127,6 +131,7 @@ function CurrenciesPlugin:CheckCurrency(sName,iPlayer,iCount)
 end
 
 function CurrenciesPlugin:SpendCurrency(sName,iPlayer,iCount)
+    print(sName,iPlayer,iCount)
     if CurrenciesPlugin.currency_data[sName] == nil then return false end
     local t = CurrenciesPlugin.currency_data[sName]
     if t.share == 0 then
@@ -138,6 +143,7 @@ function CurrenciesPlugin:SpendCurrency(sName,iPlayer,iCount)
         end
     elseif t.share == 1 then
         local iTeam = PlayerResource:GetTeam(iPlayer)
+        print(iTeam)
         if t.amount[iTeam] < iCount then
             return false
         else

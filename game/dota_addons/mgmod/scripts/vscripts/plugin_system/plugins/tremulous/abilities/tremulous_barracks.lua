@@ -16,9 +16,11 @@ function modifier_tremulous_barracks:OnIntervalThink()
     if hAbility == nil then return end
 
     if not self:GetParent():IsAlive() then return end
+    if self:GetParent():HasModifier("modifier_building_inprogress") then return end
 
     --requires 'power aura' from ancient
     if not self:GetParent():HasModifier("modifier_tremulous_power_aura") then return end
+    self:FindEnemyBase()
     if not hAbility:IsCooldownReady() then return end
     hAbility:StartCooldown(hAbility:GetCooldown(1))
 
@@ -28,44 +30,28 @@ function modifier_tremulous_barracks:OnIntervalThink()
 
     local vcPos = self:GetParent():GetAbsOrigin()
     local icTeam = self:GetParent():GetTeam()
+    local hMod = self
 
     for i=1,4 do
         CreateUnitByNameAsync(sUnit,vcPos,true,nil,nil,icTeam,
             function(hNpc)
-            Timers:CreateTimer(3,function()
+            hNpc.owner = hMod
+            Timers:CreateTimer(5,function()
                 if hNpc ~= nil then
                     if hNpc:IsAlive() then
                         if hNpc:IsIdle() then
-                            local vPos = hNpc:GetAbsOrigin()
-                            local iTeam = hNpc:GetTeam()
-                            local tUnits = FindUnitsInRadius(
-                                iTeam,
-                                vPos,
-                                nil,
-                                FIND_UNITS_EVERYWHERE,
-                                DOTA_UNIT_TARGET_TEAM_ENEMY,
-                                DOTA_UNIT_TARGET_ALL,
-                                DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE,
-                                FIND_CLOSEST,
-                                false
-                            )
-                            if #tUnits > 0 then
-                                local vTarget = hNpc:GetAbsOrigin()
-                                for i=1,#tUnits do
-                                    if tUnits[i]:HasModifier("modifier_tremulous_power_aura") then
-                                        vTarget = tUnits[i]:GetAbsOrigin()
-                                        break
-                                    end
+                            if hNpc.owner ~= nil then
+                                if hNpc.owner.enemy_base ~= nil then
+                                    local tOrder = {
+                                        UnitIndex = hNpc:entindex(),
+                                        OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
+                                        Position = hNpc.owner.enemy_base
+                                    }
+                                    ExecuteOrderFromTable(tOrder)
                                 end
-                                local tOrder = {
-                                    UnitIndex = hNpc:entindex(),
-                                    OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
-                                    Position = vTarget
-                                }
-                                ExecuteOrderFromTable(tOrder)
                             end
                         end
-                        return 3
+                        return 5
                     else
                         return
                     end
@@ -78,4 +64,29 @@ function modifier_tremulous_barracks:OnIntervalThink()
     end
 
 
+end
+
+function modifier_tremulous_barracks:FindEnemyBase()
+    local hUnit = self:GetParent()
+    local vPos = hUnit:GetAbsOrigin()
+    local iTeam = hUnit:GetTeam()
+    local tUnits = FindUnitsInRadius(
+        iTeam,
+        vPos,
+        nil,
+        FIND_UNITS_EVERYWHERE,
+        DOTA_UNIT_TARGET_TEAM_ENEMY,
+        DOTA_UNIT_TARGET_ALL,
+        DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE,
+        FIND_CLOSEST,
+        false
+    )
+    if #tUnits > 0 then
+        for i=1,#tUnits do
+            if tUnits[i]:HasModifier("modifier_tremulous_power_aura") then
+                self.enemy_base = tUnits[i]:GetAbsOrigin()
+                break
+            end
+        end
+    end
 end

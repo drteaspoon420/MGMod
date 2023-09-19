@@ -15,11 +15,17 @@
             "allow_respawn" "0"
             "allow_buyback" "0"
             "starting_gold" "0"
-            "allow_neutral_drops" "0"
         }
         "tremulous"
         {
             "enabled" "1"
+        }
+        "currencies"
+        {
+            "enabled" "1"
+            "purple_state" "team"
+            "purple_start" "40"
+            "purple_gold_buy" "2500"
         }
         "delete_dota"
         {
@@ -35,6 +41,7 @@
             "delete_creep_spawning" "1"
             "delete_shops" "1"
             "delete_fountain" "1"
+            "delete_misc" "1"
         }
     }
 }

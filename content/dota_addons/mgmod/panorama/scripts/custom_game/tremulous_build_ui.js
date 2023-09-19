@@ -41,12 +41,12 @@ function PickBuilding(name) {
 (function () {
     container.RemoveAndDeleteChildren();
 
-    BuildingOption("tremulous_build_ancient",8000);
-    BuildingOption("tremulous_build_spawn",4000);
-    BuildingOption("tremulous_build_tower",3000);
-    BuildingOption("tremulous_build_shrine",3000);
-    BuildingOption("tremulous_build_shop",4000);
-    BuildingOption("tremulous_build_barracks",5000);
+    BuildingOption("tremulous_build_ancient",8);
+    BuildingOption("tremulous_build_spawn",4);
+    BuildingOption("tremulous_build_tower",3);
+    BuildingOption("tremulous_build_shrine",3);
+    BuildingOption("tremulous_build_shop",4);
+    BuildingOption("tremulous_build_barracks",5);
 
     $.GetContextPanel().SetHasClass("ShowPicker",true);
 })();

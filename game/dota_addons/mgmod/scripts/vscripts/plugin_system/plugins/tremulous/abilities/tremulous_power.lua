@@ -4,6 +4,7 @@ tremulous_power = class({})
 function tremulous_power:GetIntrinsicModifierName() return "modifier_tremulous_power" end
 modifier_tremulous_power = class({})
 function modifier_tremulous_power:IsAura()
+    if self:GetParent():HasModifier("modifier_building_inprogress") then return false end
 	return true
 end
 
