@@ -107,8 +107,8 @@ function DotaSettingsPlugin:ApplySettings()
     if (DotaSettingsPlugin.settings.allow_respawn == false) then
 	    GameRules:SetHeroRespawnEnabled(DotaSettingsPlugin.settings.allow_respawn)
     end
-    if (DotaSettingsPlugin.settings.allow_respawn == true) then
-	    GameRules:SetHeroRespawnEnabled(DotaSettingsPlugin.settings.allow_samehero)
+    if (DotaSettingsPlugin.settings.allow_samehero == true) then
+	    GameRules:SetSameHeroSelectionEnabled(DotaSettingsPlugin.settings.allow_samehero)
     end
     GameRules:SetTreeRegrowTime(DotaSettingsPlugin.settings.tree_grow_time)
 

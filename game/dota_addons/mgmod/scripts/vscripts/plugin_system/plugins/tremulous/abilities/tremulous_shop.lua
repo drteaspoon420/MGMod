@@ -24,7 +24,8 @@ function modifier_tremulous_shop:OnIntervalThink()
         self.shop = nil
     elseif self:GetParent():HasModifier("modifier_tremulous_power_aura") and self.shop == nil then
         self.shop = SpawnDOTAShopTriggerRadiusApproximate(self:GetParent():GetAbsOrigin(),self:GetAbility():GetSpecialValueFor("radius"))
-        self.shop:SetShopType(DOTA_SHOP_HOME)
+        self.shop:SetEntityName("cool_shop")
+        self.shop:SetShopType(DOTA_SHOP_CUSTOM)
     end
 
 end

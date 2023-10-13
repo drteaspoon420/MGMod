@@ -50,6 +50,12 @@ function item_tremulous_builder:TryBuild(sUnit,iCost)
             function(hNpc)
             hNpc:AddNewModifier(self:GetCaster(), nil, "modifier_sunk_cost", {cost = iCost})
             hNpc:AddNewModifier(self:GetCaster(),nil,"modifier_building_inprogress", {duration = 20})
+            for i=0,hNpc:GetAbilityCount() do
+                local hAbility = hNpc:GetAbilityByIndex(i)
+                if hAbility ~= nil then
+                    hAbility:SetLevel(1)
+                end
+            end
             FindClearSpaceForUnit(hNpc,vPos,true)
         end)
         EmitSoundOnClient("General.Buy",self:GetCaster():GetPlayerOwner())

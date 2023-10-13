@@ -54,6 +54,7 @@ function DeleteDotaPlugin:ApplySettings()
     end
     if DeleteDotaPlugin.settings.delete_shops then
         DeleteDotaPlugin:FindAndDeleteClass("trigger_shop")
+        DeleteDotaPlugin:FindAndDeleteClass("ent_dota_shop")
         GameRules:GetGameModeEntity():SetStashPurchasingDisabled(true)
     end
     if DeleteDotaPlugin.settings.delete_fountain then

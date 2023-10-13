@@ -145,6 +145,25 @@ function Toolbox:ReplaceAbility(hUnit,sAbility,iLevel,iSlot,bForce,bRequirePoint
     return true
 end
 
+function Toolbox:SRandomInt(min,max)
+    return math.floor((math.random()*(max-min))+min+0.5)
+end
+
+function Toolbox:SRandomFloat(min,max)
+    return (math.random()*(max-min))+min
+end
+
+function Toolbox:GetSRandomKey(t)
+    local ti = {}
+    for k,v in pairs(t) do
+		if v ~= nil then
+            table.insert(ti,k)
+        end
+    end
+    if #ti == 0 then return nil end
+    return ti[Toolbox:SRandomInt(1, #ti)]
+end
+
 function Toolbox:GetRandomKey(t)
     local ti = {}
     for k,v in pairs(t) do
@@ -225,4 +244,49 @@ function Toolbox:AllTowers()
     end
 	return buildings
 end
+
+function Toolbox:ContainsValue(t,val)
+    for k,v in pairs(t) do
+		if v ~= nil and v == val then
+            return true
+        end
+    end
+    return false
+end
+
+function Toolbox:ContainsKey(t,key)
+    for k,v in pairs(t) do
+		if k ~= nil and k == key then
+            return true
+        end
+    end
+    return false
+end
+
+
+function Toolbox:ContainsSubValue(t,val,subkey)
+    for k,v in pairs(t) do
+		if v ~= nil and v[subkey] ~= nil and v[subkey] == val then
+            return true
+        end
+    end
+    return false
+end
+function Toolbox:GetSteamID(iPlayer)
+    local steamid = tostring(PlayerResource:GetSteamID(iPlayer))
+    if steamid == "0" then
+        return iPlayer .. "_1234bot"
+    end
+    return steamid .. ""
+end
+
+function Toolbox:SeedToNumber(seed)
+    local total = 0
+    for i = 1, #seed do
+        total = total + string.byte(string.sub(seed,i,i))
+    end
+    return total
+    
+end
+
 if not Toolbox.data then Toolbox:Init() end

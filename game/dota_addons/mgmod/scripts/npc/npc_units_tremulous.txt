@@ -1,57 +1,9 @@
 "DOTAUnits"
 {
-	"npc_tremulous_base"
-	{
-		"BaseClass"					"npc_dota_creature"
-		"Model"						"models/buildings/building_plain_reference.vmdl"
-		"ModelScale" 				"1.0"
-		"SoundSet"					"Creep_Good_Melee"
-		"MinimapIcon"				"minimap_miscbuilding"
-		"Level"						"1"
-        //Fluff
-		"ArmorPhysical"				"10"
-		"MagicalResistance"			"0"
-		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
-		"AttackDamageMin"			"0"
-		"AttackDamageMax"			"0"
-		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-		"AttackRate"				"0"
-		"AttackAnimationPoint"		"0"
-		"AttackAcquisitionRange"	"0"
-		"AttackRange"				"0"
-		"ProjectileModel"			""
-		"ProjectileSpeed"			"0"
-		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"		"0"
-		"AttributeStrengthGain"		"0"
-		"AttributeBaseIntelligence"	"0"
-		"AttributeIntelligenceGain"	"0"
-		"AttributeBaseAgility"		"0"
-		"AttributeAgilityGain"		"0"
-		"BountyGoldMin"				"0"
-		"BountyGoldMax"				"0"
-		"BoundsHullName"		"DOTA_HULL_SIZE_HERO"
-		
-		"RingRadius"		"90"
-		"HealthBarOffset"			"260"
-		"MinimapIconSize"			"200"
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
-		"MovementSpeed"				"0"
-		"MovementTurnRate"			"0"
-		"StatusHealth"				"1000"
-		"StatusHealthRegen"			"0"
-		"StatusMana"				"0"
-		"StatusManaRegen"			"0"
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
-		"VisionDaytimeRange"		"0"
-		"VisionNighttimeRange"		"0"
-    }
     
 	"npc_tremulous_ancient"
 	{
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_base_additive"
 		"Model"						"models/props_structures/radiant_ancient001.vmdl"	// Model.
 		"ModelScale" 				"0.3"
 		"SoundSet"					"Creep_Good_Melee"
@@ -101,7 +53,7 @@
 
 	"npc_tremulous_spawn"
 	{
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_base_additive"
 		"Model"						"models/props_structures/dire_fountain002.vmdl"	// Model.
 		"ModelScale" 				"0.25"
 		"SoundSet"					"Creep_Good_Melee"
@@ -150,7 +102,7 @@
     }
 	"npc_tremulous_tower"
 	{
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_base_additive"
 		"Model"						"models/props_structures/tower_good.vmdl"// Model.
 		"ModelScale" 				"0.7"
 		"SoundSet"					"Tower.Fire"					// Name of sound set.
@@ -200,7 +152,7 @@
     }
 	"npc_tremulous_shop"
 	{
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_base_additive"
 		"Model"						"models/props_structures/outpost.vmdl"	// Model.
 		"ModelScale" 				"0.5"
 		"SoundSet"					"Creep_Good_Melee"
@@ -249,7 +201,7 @@
     }
 	"npc_tremulous_shrine"
 	{
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_base_additive"
 		"Model"						"models/props_structures/radiant_statue001.vmdl"	// Model.
 		"SoundSet"					"Creep_Good_Melee"					// Name of sound set.
 		"ModelScale" 					"0.93"
@@ -297,7 +249,7 @@
     }
 	"npc_tremulous_barracks"
 	{
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_base_additive"
 		"Model"						"models/props_structures/radiant_melee_barracks001.vmdl"	// Model.
 		"ModelScale" 				"0.6"
 		"SoundSet"					"Creep_Good_Melee"
@@ -346,7 +298,7 @@
     }
 	"npc_tremulous_construction"
 	{
-		"BaseClass"					"npc_dota_creature"
+		"BaseClass"					"npc_dota_base_additive"
 		"Model"						"models/buildings/building_plain_reference.vmdl"
 		"ModelScale" 				"1.0"
 		"SoundSet"					"Creep_Good_Melee"

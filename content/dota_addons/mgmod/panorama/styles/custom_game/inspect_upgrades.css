@@ -31,7 +31,6 @@
      width: 450px;
      margin: 4px;
      border-radius: 10px;
-  opacity-mask-scroll-down: url( "file://{resources}/images/custom_game/upper_row_mask_up_down.png") 0.2;
  }
  #InspectUpgradesDire{
   flow-children: down;
@@ -41,7 +40,6 @@
      width: 450px;
      margin: 4px;
      border-radius: 10px;
-  opacity-mask-scroll-down: url( "file://{resources}/images/custom_game/upper_row_mask_up_down.png") 0.2;
  }
  #HeroMainUpgrades{
   flow-children: right;

@@ -10,7 +10,8 @@ end
 function TremulousPlugin:ApplySettings()
     TremulousPlugin.settings = PluginSystem:GetAllSetting("tremulous")
     GameRules:SetHeroRespawnEnabled(false)
-    GameRules:GetGameModeEntity():SetBuybackEnabled(false)
+    local GameMode = GameRules:GetGameModeEntity()
+    GameMode:SetBuybackEnabled(false)
     ListenToGameEvent("entity_killed", function(event)
         if GameRules:State_Get() < DOTA_GAMERULES_STATE_HERO_SELECTION then return end
         TremulousPlugin:KilledEvent(event)
@@ -21,7 +22,7 @@ function TremulousPlugin:ApplySettings()
     end,nil)
     CustomGameEventManager:RegisterListener("building_pick",TremulousPlugin.building_pick)
     GameRules:SetUseUniversalShopMode(true)
-    GameRules:GetGameModeEntity():SetStashPurchasingDisabled(true)
+    GameMode:SetStashPurchasingDisabled(true)
 end
 
 function TremulousPlugin:SpawnPointTryRespawn(hSpawn)

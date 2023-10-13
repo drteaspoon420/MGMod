@@ -10,7 +10,6 @@
   flow-children: down;
   overflow: noclip scroll;
   max-height: 100%;
-  opacity-mask-scroll-down: url( "file://{resources}/images/custom_game/upper_row_mask_up_down.png") 0.2;
  }
 
  #AlwaysOn{
