@@ -466,9 +466,9 @@
 		"Plugin_legends_of_dota_Option_pick_mode" "Pick Mode"
 		"Plugin_legends_of_dota_Option_pick_mode_Drop_lod" "All Pick"
 		"Plugin_legends_of_dota_Option_pick_mode_Drop_random" "Random"
-		"Plugin_legends_of_dota_Option_pick_mode_Drop_steamid" "Random Personal"
-		"Plugin_legends_of_dota_Option_pick_mode_Drop_steamid_daily" "Random Personal Daily"
-		"Plugin_legends_of_dota_Option_pick_mode_Drop_steamid_monthly" "Random Personal Monthly"
+		"Plugin_legends_of_dota_Option_pick_mode_Drop_steamid" "Personal"
+		"Plugin_legends_of_dota_Option_pick_mode_Drop_steamid_daily" "Personal Daily"
+		"Plugin_legends_of_dota_Option_pick_mode_Drop_steamid_monthly" "Personal Monthly"
 
 		"hero_rework_ready" "Ready!"
 		"hero_rework_talent_toggle" "Talent View"

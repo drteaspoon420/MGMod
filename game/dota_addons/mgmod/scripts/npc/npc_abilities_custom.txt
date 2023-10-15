@@ -4,6 +4,7 @@
 #base "npc_abilities_drteaspoon.txt"
 #base "npc_abilities_abrahamblinkin.txt"
 #base "npc_abilities_tremulous.txt"
+#base "npc_abilities_halloween.txt"
 
 //#base "valvemodes\npc_abilities_new_bloom_2017.txt"
 //#base "valvemodes\npc_abilities_winter_2018.txt"

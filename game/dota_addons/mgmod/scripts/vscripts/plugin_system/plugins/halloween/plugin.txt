@@ -1,0 +1,10 @@
+"Plugins"
+{
+    "halloween" {
+        "MainClass" "HalloweenPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_GAME_IN_PROGRESS"
+        }
+    }
+}

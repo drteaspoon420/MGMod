@@ -15,6 +15,7 @@
 #base "plugins/modifier_spawner/plugin.txt"
 #base "plugins/attacks_cast_spells/plugin.txt"
 //#base "plugins/bsrpg/plugin.txt"
+//#base "plugins/halloween/plugin.txt"
 #base "plugins/zombies/plugin.txt"
 #base "plugins/legends_of_dota/plugin.txt"
 #base "plugins/mammonite/plugin.txt"

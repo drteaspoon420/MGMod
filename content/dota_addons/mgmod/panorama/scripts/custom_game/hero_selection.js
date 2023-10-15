@@ -161,6 +161,7 @@ function is_linked(a,b) {
 
 
 function ShowHeroSelection() {
+    if (current_view == 2) return;
     current_view = 0;
     MainChoiseArea.RemoveAndDeleteChildren();
     UpdateHeroSelection();
@@ -170,6 +171,7 @@ function UpdateHeroSelection() {
 
 }
 function ShowAbilitySelection() {
+    if (current_view == 2) return;
     current_view = 1;
     MainChoiseArea.RemoveAndDeleteChildren();
     UpdateAbilitySelection();
@@ -390,12 +392,17 @@ function UpdatePlayerStatus() {
 }
 
 function ReselectHero() {
+    if (current_view == 2) return;
     current_view = 0;
     ShowHeroSelection();
 }
 
 function ability_pick_response(tEvent) {
-    if (tEvent.name != "failure") {
+    if (tEvent.name == "failure") {
+    } else if (tEvent.name == "random") {
+        Game.EmitSound("General.Buy");
+ } else {
+        Game.EmitSound("General.Dead");
         if (local_ability_cursor == 14) {
             MoveCursor(7);
         } else if(local_ability_cursor == 6) {
@@ -406,8 +413,6 @@ function ability_pick_response(tEvent) {
             MoveCursor(local_ability_cursor+1);
         }
         Game.EmitSound("General.Buy");
-    } else {
-        Game.EmitSound("General.Dead");
     }
 }
 

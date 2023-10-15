@@ -145,15 +145,15 @@ function Toolbox:ReplaceAbility(hUnit,sAbility,iLevel,iSlot,bForce,bRequirePoint
     return true
 end
 
-function Toolbox:SRandomInt(min,max)
-    return math.floor((math.random()*(max-min))+min+0.5)
+function Toolbox:SRandomInt(seed,min,max)
+    return math.floor((Toolbox:Rng(seed)*(max-min))+min+0.5)
 end
 
-function Toolbox:SRandomFloat(min,max)
-    return (math.random()*(max-min))+min
+function Toolbox:SRandomFloat(seed,min,max)
+    return (Toolbox:Rng(seed)*(max-min))+min
 end
 
-function Toolbox:GetSRandomKey(t)
+function Toolbox:GetSRandomKey(seed,t)
     local ti = {}
     for k,v in pairs(t) do
 		if v ~= nil then
@@ -161,7 +161,7 @@ function Toolbox:GetSRandomKey(t)
         end
     end
     if #ti == 0 then return nil end
-    return ti[Toolbox:SRandomInt(1, #ti)]
+    return ti[Toolbox:SRandomInt(seed,1, #ti)]
 end
 
 function Toolbox:GetRandomKey(t)
@@ -173,6 +173,10 @@ function Toolbox:GetRandomKey(t)
     end
     if #ti == 0 then return nil end
     return ti[RandomInt(1, #ti)]
+end
+
+function Toolbox:GetRandomValue(t)
+    return t[Toolbox:GetRandomKey(t)]
 end
 
 
@@ -286,7 +290,37 @@ function Toolbox:SeedToNumber(seed)
         total = total + string.byte(string.sub(seed,i,i))
     end
     return total
-    
+end
+
+local A1, A2 = 727595, 798405  -- 5^17=D20*A1+A2
+local D20, D40 = 1048576, 1099511627776  -- 2^20, 2^40
+function rand(X1,X2)
+    local U = X2*A2
+    local V = (X1*A2 + X2*A1) % D20
+    V = (V*D20 + U) % D40
+    X1 = math.floor(V/D20)
+    X2 = V - X1*D20
+    return {X1,X2,V/D40}
+end
+
+--not for use with every frame, use sparingly
+function Toolbox:Rng(seed)
+    if Toolbox.rng_generators == nil then Toolbox.rng_generators = {} end
+    if Toolbox.rng_generators[seed] == nil then
+        local seed_i = Toolbox:SeedToNumber(seed)
+        local _X1 = seed_i%D20
+        if _X1 % 2 == 1 then _X1 = _X1 + 1 end
+        local _X2 = seed_i%D40
+        if _X2 % 2 == 0 then _X2 = _X2 + 1 end
+        Toolbox.rng_generators[seed] = {
+            X1 = _X1,
+            X2 = _X2
+        }
+    end
+    local m = rand(Toolbox.rng_generators[seed].X1,Toolbox.rng_generators[seed].X2)
+    Toolbox.rng_generators[seed].X1 = m[1]
+    Toolbox.rng_generators[seed].X2 = m[2]
+    return m[3]
 end
 
 if not Toolbox.data then Toolbox:Init() end

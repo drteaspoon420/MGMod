@@ -12,6 +12,7 @@ LegendsOfDotaPlugin.ban_list = {}
 LegendsOfDotaPlugin.player_build = {}
 
 LegendsOfDotaPlugin.ability_pools = {}
+LegendsOfDotaPlugin.ability_pools_sorted = {}
 LegendsOfDotaPlugin.hero_definitions = {}
 LegendsOfDotaPlugin.test_dummy_attempts = 0
 LegendsOfDotaPlugin.cache = {}
@@ -103,7 +104,10 @@ function LegendsOfDotaPlugin:LoadAbilities()
     end
 end
 
+
 function LegendsOfDotaPlugin:AllDonePreping()
+    table.sort(LegendsOfDotaPlugin.ability_pools_sorted, function (k1, k2) return k1.name < k2.name end )
+    
     for k,v in pairs(LegendsOfDotaPlugin.ability_pools) do
         CustomNetTables:SetTableValue("heroselection_rework_abilities", k, v)
     end
@@ -193,6 +197,10 @@ function LegendsOfDotaPlugin:AddTalent(sAbility,data,bStrict,sOwner)
             category = "talent",
             linked = LegendsOfDotaPlugin:FindLinkedAbilities(sAbility),
         }
+        table.insert(LegendsOfDotaPlugin.ability_pools_sorted,{
+            name = sAbility,
+            category = "talent",
+        })
         table.insert(LegendsOfDotaPlugin.ability_pools[sOwner],t)
     end
 end
@@ -211,6 +219,10 @@ function LegendsOfDotaPlugin:AddBasic(sAbility,data,bStrict,sOwner)
             category = "basic",
             linked = LegendsOfDotaPlugin:FindLinkedAbilities(sAbility),
         }
+        table.insert(LegendsOfDotaPlugin.ability_pools_sorted,{
+            name = sAbility,
+            category = "basic",
+        })
         table.insert(LegendsOfDotaPlugin.ability_pools[sOwner],t)
     end
 end
@@ -229,6 +241,10 @@ function LegendsOfDotaPlugin:AddUltimate(sAbility,data,bStrict,sOwner)
             category = "ultimate",
             linked = LegendsOfDotaPlugin:FindLinkedAbilities(sAbility),
         }
+        table.insert(LegendsOfDotaPlugin.ability_pools_sorted,{
+            name = sAbility,
+            category = "ultimate",
+        })
         table.insert(LegendsOfDotaPlugin.ability_pools[sOwner],t)
     end
 end
@@ -265,9 +281,23 @@ function string.starts(String,Start)
     return string.sub(String,1,string.len(Start))==Start
 end
  
+function LegendsOfDotaPlugin:FindLinkedTalents(sAbility)
+    local t = {}
+    if LegendsOfDotaPlugin.npc_abilities[sAbility] == nil then
+        return t
+    end
+    if LegendsOfDotaPlugin.npc_abilities[sAbility].AbilityValues ~= nil then
+        t = LegendsOfDotaPlugin:SeekPrefixKeys(LegendsOfDotaPlugin.npc_abilities[sAbility].AbilityValues,"special_bonus_unique_")
+        t = LegendsOfDotaPlugin:SeekPrefixValues(LegendsOfDotaPlugin.npc_abilities[sAbility].AbilityValues,"special_bonus_unique_",t)
+    elseif LegendsOfDotaPlugin.npc_abilities[sAbility].AbilitySpecial ~= nil then
+        t = LegendsOfDotaPlugin:SeekPrefixValues(LegendsOfDotaPlugin.npc_abilities[sAbility].AbilitySpecial,"special_bonus_unique_")
+        t = LegendsOfDotaPlugin:SeekPrefixKeys(LegendsOfDotaPlugin.npc_abilities[sAbility].AbilitySpecial,"special_bonus_unique_",t)
+    end
+    return t
+end
 function LegendsOfDotaPlugin:FindLinkedAbilities(sAbility,sPrefix)
     local t = {}
-    if LegendsOfDotaPlugin.npc_abilities[sAbility] == nil then return "none" end
+    if LegendsOfDotaPlugin.npc_abilities[sAbility] == nil then return {} end
     if LegendsOfDotaPlugin.npc_abilities[sAbility].ad_linked_abilities ~= nil then
         table.insert(t,LegendsOfDotaPlugin.npc_abilities[sAbility].ad_linked_abilities)
     end
@@ -344,6 +374,36 @@ function LegendsOfDotaPlugin:SeekKey(t,str)
     return nil
 end
 
+function LegendsOfDotaPlugin:SeekPrefixKeys(t,str,_t)
+    if _t == nil then _t = {} end
+    if t == nil then return _t end
+    for k,v in pairs(t) do
+        if string.starts(k,str) then
+            table.insert(_t,k)
+        elseif v ~= nil and type(v) == 'table' then
+            _t = LegendsOfDotaPlugin:SeekPrefixKeys(v,str,_t)
+        end
+    end
+    return _t
+end
+
+function LegendsOfDotaPlugin:SeekPrefixValues(t,str,_t)
+    if _t == nil then _t = {} end
+    if t == nil then return _t end
+    for k,v in pairs(t) do
+        if v ~= nil and type(v) == 'table' then
+            _t = LegendsOfDotaPlugin:SeekPrefixValues(v,str,_t)
+        else
+            if type(v) == 'string' then
+                if string.starts(v,str) then
+                    table.insert(_t,v)
+                end
+            end
+        end
+    end
+    return _t
+end
+
 
 
 
@@ -358,6 +418,7 @@ function LegendsOfDotaPlugin:ability_pick(tEvent)
     if LegendsOfDotaPlugin.player_data[iPlayer] == nil then
         LegendsOfDotaPlugin.player_data[iPlayer] = {}
     end
+    if LegendsOfDotaPlugin.player_data[iPlayer].ready then return end
     if LegendsOfDotaPlugin.player_data[iPlayer].abilities == nil then
         LegendsOfDotaPlugin.player_data[iPlayer].abilities = {}
     end
@@ -404,6 +465,7 @@ function LegendsOfDotaPlugin:hero_pick(tEvent)
     if LegendsOfDotaPlugin.player_data[iPlayer] == nil then
         LegendsOfDotaPlugin.player_data[iPlayer] = {}
     end
+    if LegendsOfDotaPlugin.player_data[iPlayer].ready then return end
     LegendsOfDotaPlugin.player_data[iPlayer].hero = tEvent.hero
 
     if LegendsOfDotaPlugin.settings.pick_mode == "lod" then
@@ -411,12 +473,13 @@ function LegendsOfDotaPlugin:hero_pick(tEvent)
     elseif LegendsOfDotaPlugin.settings.pick_mode == "random" then
         LegendsOfDotaPlugin:RandomBuild(GetSystemTimeMS() .. iPlayer .. iPlayer,iPlayer)
     elseif LegendsOfDotaPlugin.settings.pick_mode == "steamid" then
-        LegendsOfDotaPlugin:RandomBuild(Toolbox:GetSteamID(iPlayer),iPlayer)
+        LegendsOfDotaPlugin:RandomBuild(Toolbox:GetSteamID(iPlayer) .. tEvent.hero,iPlayer)
     elseif LegendsOfDotaPlugin.settings.pick_mode == "steamid_daily" then
-        LegendsOfDotaPlugin:RandomBuild(Toolbox:GetSteamID(iPlayer) .. GetSystemDate() ,iPlayer)
+        LegendsOfDotaPlugin:RandomBuild(Toolbox:GetSteamID(iPlayer) .. GetSystemDate() .. tEvent.hero,iPlayer)
     elseif LegendsOfDotaPlugin.settings.pick_mode == "steamid_monthly" then
-        print(GetSystemDate())
-        LegendsOfDotaPlugin:RandomBuild(Toolbox:GetSteamID(iPlayer) .. GetSystemDate() ,iPlayer)
+        local moth = string.gsub(GetSystemDate(), "/(.*)/", "XX")
+        print(moth)
+        LegendsOfDotaPlugin:RandomBuild(Toolbox:GetSteamID(iPlayer) .. moth .. tEvent.hero,iPlayer)
     end
     CustomNetTables:SetTableValue("heroselection_rework", "player_data", LegendsOfDotaPlugin.player_data)
 end
@@ -657,6 +720,7 @@ function LegendsOfDotaPlugin:DestroyTestDummy()
     LegendsOfDotaPlugin.test_dummy:Destroy()
 end
 function LegendsOfDotaPlugin:TestDummy(sAbility)
+    print(sAbility)
     LegendsOfDotaPlugin.test_dummy_attempts = LegendsOfDotaPlugin.test_dummy_attempts + 1
     if LegendsOfDotaPlugin.test_dummy == nil then
         print("no test dummy found")
@@ -704,88 +768,106 @@ end
 
 
 function LegendsOfDotaPlugin:RandomBuild(sSeed,iPlayer)
-    math.randomseed(Toolbox:SeedToNumber(sSeed))
     if LegendsOfDotaPlugin.player_data[iPlayer].abilities == nil then
         LegendsOfDotaPlugin.player_data[iPlayer].abilities = {}
     end
     local tMainBuild = {}
     local tTalentBuild = {}
     local bFound = false
-    for i=1,5 do
+    Timers:CreateTimer(0.1,function()
+        for i=1,5 do
+            bFound = false
+            local tAbility
+            while(not bFound) do
+                tAbility = LegendsOfDotaPlugin:RandomAbility(sSeed,iPlayer,"basic")
+                if not Toolbox:ContainsSubValue(tMainBuild,name,tAbility.name) then
+                    if LegendsOfDotaPlugin:TestDummy(tAbility.name) then
+                        bFound = true
+                    end
+                end
+            end
+            table.insert(tMainBuild,tAbility)
+            LegendsOfDotaPlugin:BuildAddAbility(iPlayer,{
+                category = "basic",
+                name = tAbility.name,
+                slot = (i)
+            })
+        end
+    end)
+    --add ult
+    Timers:CreateTimer(0.2,function()
         bFound = false
         local tAbility
         while(not bFound) do
-            tAbility = LegendsOfDotaPlugin:RandomAbility(iPlayer,"basic")
+            tAbility = LegendsOfDotaPlugin:RandomAbility(sSeed,iPlayer,"ultimate")
             if not Toolbox:ContainsSubValue(tMainBuild,name,tAbility.name) then
-                bFound = true
+                if LegendsOfDotaPlugin:TestDummy(tAbility.name) then
+                    bFound = true
+                end
             end
         end
         table.insert(tMainBuild,tAbility)
         LegendsOfDotaPlugin:BuildAddAbility(iPlayer,{
-            category = "basic",
+            category = "ultimate",
             name = tAbility.name,
-            slot = (i)
+            slot = (6)
         })
-    end
-    --add ult
-    bFound = false
-    local tAbility
-    while(not bFound) do
-        tAbility = LegendsOfDotaPlugin:RandomAbility(iPlayer,"ultimate")
-        if not Toolbox:ContainsSubValue(tMainBuild,name,tAbility.name) then
-            bFound = true
-        end
-    end
-    table.insert(tMainBuild,tAbility)
-    LegendsOfDotaPlugin:BuildAddAbility(iPlayer,{
-        category = "ultimate",
-        name = tAbility.name,
-        slot = (6)
-    })
+    end)
+    
     --find all linked
-    local tLinked = {}
-    for k,v in pairs(tMainBuild) do
-        local tLinked = LegendsOfDotaPlugin:FindLinkedAbilities(sAbility,'special_')
-    end
-    for i=1,8 do
-        if #tLinked >= i then
-            if not Toolbox:ContainsSubValue(tMainBuild,name,tLinked[i]) then
+    Timers:CreateTimer(0.3,function()
+        local tLinked = {}
+        for k,v in pairs(tMainBuild) do
+            local sAbility = v.name
+            local _t = LegendsOfDotaPlugin:FindLinkedTalents(sAbility)
+            for _k,_v in pairs(_t) do
+                table.insert(tLinked,_v)
+            end
+        end
+        for i=1,8 do
+            if #tLinked >= i then
                 table.insert(tTalentBuild,tLinked[i])
+                LegendsOfDotaPlugin:BuildAddAbility(iPlayer,{
+                    category = "talent",
+                    name = tLinked[i],
+                    slot = (6+i)
+                })
+            else
+                bFound = false
+                while(not bFound) do
+                    tAbility = LegendsOfDotaPlugin:RandomAbility(sSeed,iPlayer,"talent")
+                    if (tAbility.name ~= nil and type(tAbility.name) == "string") then
+                        if not Toolbox:ContainsValue(tTalentBuild,tAbility.name) then
+                            if not string.starts(tAbility.name,"special_bonus_unique_") then
+                                if string.starts(tAbility.name,"special_bonus_") then
+                                    bFound = true
+                                end
+                            end
+                        end
+                    end
+                end
+                table.insert(tTalentBuild,tAbility.name)
                 LegendsOfDotaPlugin:BuildAddAbility(iPlayer,{
                     category = "talent",
                     name = tAbility.name,
                     slot = (6+i)
                 })
             end
-        else
-            bFound = false
-            while(not bFound) do
-                tAbility = LegendsOfDotaPlugin:RandomAbility(iPlayer,"talent")
-                if not Toolbox:ContainsValue(tTalentBuild,tAbility.name) then
-                    if not string.starts(tAbility.name,"special_bonus_unique_") then
-                        bFound = true
-                    end
-                end
-            end
-            table.insert(tTalentBuild,tAbility.name)
-            LegendsOfDotaPlugin:BuildAddAbility(iPlayer,{
-                category = "talent",
-                name = tAbility.name,
-                slot = (6+i)
-            })
         end
-    end
+    end)
     
+    Timers:CreateTimer(0.5,function()
+    LegendsOfDotaPlugin:player_ready({PlayerID = iPlayer})
+end)
 end
 
-function LegendsOfDotaPlugin:RandomAbility(iPlayer,sCategory)
+function LegendsOfDotaPlugin:RandomAbility(sSeed,iPlayer,sCategory)
     local tAbility
     local iTries = 0
     while(tAbility == nil and iTries < 5000) do
-        local sOwner = Toolbox:GetSRandomKey(LegendsOfDotaPlugin.ability_pools)
-        local keyAbility = Toolbox:GetSRandomKey(LegendsOfDotaPlugin.ability_pools[sOwner])
-        if keyAbility ~= nil and LegendsOfDotaPlugin.ability_pools[sOwner][keyAbility].category == sCategory then
-            tAbility = LegendsOfDotaPlugin.ability_pools[sOwner][keyAbility]
+        local keyAbility = Toolbox:GetSRandomKey(sSeed,LegendsOfDotaPlugin.ability_pools_sorted)
+        if keyAbility ~= nil and LegendsOfDotaPlugin.ability_pools_sorted[keyAbility].category == sCategory then
+            tAbility = LegendsOfDotaPlugin.ability_pools_sorted[keyAbility]
         end
         iTries = iTries + 1
     end

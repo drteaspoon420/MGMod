@@ -1,0 +1,30 @@
+// Dota Heroes File
+"DOTAAbilities"
+{
+	//"Ability1"					"fish_master_curse"
+	//"Ability2"					"fish_master_beg"
+	//"Ability3"					"fish_master_protection"
+	"fish_master_curse"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"plugin_system/plugins/halloween/abilities/fish_master_curse"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"MaxLevel"						"1"
+	}
+	"fish_master_beg"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"plugin_system/plugins/halloween/abilities/fish_master_beg"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"MaxLevel"						"1"
+	}
+	"fish_master_protection"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"plugin_system/plugins/halloween/abilities/fish_master_protection"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"1"
+	}
+}
