@@ -11,5 +11,6 @@
             "-resetsetup" "ShortCutResetToCustomGameSetup"
             "-resetheroes" "ShortCutResetToHeroSelection"
         }
+        "ToolsModeOnly" "1"
     }
 }

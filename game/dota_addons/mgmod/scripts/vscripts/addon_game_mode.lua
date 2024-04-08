@@ -9,8 +9,8 @@ function _G.softRequire(file)
 	end
 end
 
-if CBsrpgGameMode == nil then
-	CBsrpgGameMode = class({})
+if CMGModGameMode == nil then
+	CMGModGameMode = class({})
 end
 
 require("utils/timers")
@@ -29,18 +29,18 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/souls/ward_skull_rubick.vpcf", context )
 end
 function Activate()
-	GameRules.AddonTemplate = CBsrpgGameMode()
+	GameRules.AddonTemplate = CMGModGameMode()
 	GameRules.AddonTemplate:InitGameMode()
 end
 
-function CBsrpgGameMode:InitGameMode()
+function CMGModGameMode:InitGameMode()
 	local gm = GameRules:GetGameModeEntity()
 	gm:SetThink( "OnThink", self, "GlobalThink", 2 )
 	gm:SetWeatherEffectsDisabled(false)
 	PluginSystem:Init()
 end
 
-function CBsrpgGameMode:OnThink()
+function CMGModGameMode:OnThink()
 	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
 	elseif GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
 		return nil

@@ -548,6 +548,7 @@ BoostedPlugin.player_offers = {}
 BoostedPlugin.player_boosters = {}
 function BoostedPlugin:GenerateOffer(iPlayer)
     if BoostedPlugin.player_offers[iPlayer] ~= nil and BoostedPlugin.player_offers[iPlayer] ~= {} then
+        BoostedPlugin.player_offers[iPlayer].boosters = BoostedPlugin.player_boosters[iPlayer]
         CustomNetTables:SetTableValue("player_booster", iPlayer .. "d", BoostedPlugin.player_offers[iPlayer])
         return
     end
@@ -581,6 +582,7 @@ function BoostedPlugin:GenerateOffer(iPlayer)
 
     local tAvailable = BoostedPlugin:ProcessOffer(iPlayer,normal,rare,ultra)
     BoostedPlugin.player_offers[iPlayer] = tAvailable
+    BoostedPlugin.player_offers[iPlayer].boosters = BoostedPlugin.player_boosters[iPlayer]
     CustomNetTables:SetTableValue("player_booster", iPlayer .. "d", BoostedPlugin.player_offers[iPlayer])
 end
 
@@ -622,9 +624,12 @@ function BoostedPlugin:SelectOffer(tEvent)
     end
     local id = tEvent.id
     local tSelect
+    
     for k,v in pairs(BoostedPlugin.player_offers[iPlayer]) do
-        if v.id == id then
-            tSelect = v
+        if k ~= "boosters" then
+            if v.id == id then
+                tSelect = v
+            end
         end
     end
     if tSelect == nil then
@@ -649,6 +654,8 @@ function BoostedPlugin:SelectOffer(tEvent)
     BoostedPlugin.player_offers[iPlayer] = nil
     if BoostedPlugin.player_boosters[iPlayer] > 0 then
         BoostedPlugin:GenerateOffer(iPlayer)
+    else
+        CustomNetTables:SetTableValue("player_booster", iPlayer .. "d", {boosters = BoostedPlugin.player_boosters[iPlayer]})
     end
 end
 
@@ -1101,9 +1108,7 @@ function BoostedPlugin:currencies_buy(tEvent)
         BoostedPlugin:GrantPlayerUpgrade(tEvent.iPlayer)
     elseif tEvent.iShare == 1 then
         local iTeam = PlayerResource:GetTeam(tEvent.iPlayer)
-        if (iTeam == DOTA_TEAM_BADGUYS) or (iTeam == DOTA_TEAM_GOODGUYS) then
-            BoostedPlugin:GrantTeamUpgrade(iTeam)
-        end
+        BoostedPlugin:GrantTeamUpgrade(iTeam)
     elseif tEvent.iShare == 2 then
         BoostedPlugin:GrantAllUpgrade()
     end

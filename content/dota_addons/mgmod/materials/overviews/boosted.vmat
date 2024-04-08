@@ -1,0 +1,10 @@
+"Layer0"
+{
+	"shader"	"ui.vfx"
+	"F_TRANSLUCENT"	"1"
+	"Texture"	"materials/overviews/boosted.png"
+	"VRF Original Textures"
+	{
+		"g_tColor"	"materials/overviews/boosted_png_f42164b6.vtex"
+	}
+}

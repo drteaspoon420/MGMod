@@ -1,0 +1,8 @@
+"plugin_settings"
+{
+    "Order" "99992"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+}

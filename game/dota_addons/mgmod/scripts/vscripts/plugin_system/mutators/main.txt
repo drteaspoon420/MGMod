@@ -20,7 +20,7 @@
 #base "mutator_golden_mana.txt"
 #base "mutator_health_cap.txt"
 #base "mutator_infinite_gold.txt"
-#base "mutator_just_dont_die.txt"
+#base "mutator_sudden_end.txt"
 #base "mutator_keep_moving.txt"
 #base "mutator_nurgle.txt"
 #base "mutator_powercreep.txt"

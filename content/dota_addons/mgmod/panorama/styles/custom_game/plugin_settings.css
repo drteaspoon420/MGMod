@@ -1,383 +1,480 @@
-.WindowRoot {
-	margin-top: 50px;
-	max-height: 700px;
-	flow-children: down;
+.WindowRoot{
+  margin-top: 50px;
+  max-height: 700px;
+  flow-children: down;
 }
 
-#WindowRoot {
-	flow-children: right;
-}
+ #WindowRoot{
+  flow-children: right;
+ }
 
-#PluginList {
-	height: 700px;
-	width: 300px;
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #444a7c ), to( #353261 ) );
-	border-radius: 5px;
-}
+ #PluginList{
+  height: 700px;
+  width: 300px;
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #444a7c ), to( #353261 ) );
+  border-radius: 5px;
+  flow-children: down;
+ }
 
-#PluginSettingsBox {
-	margin-left: 5px;
-}
+ #PluginSettingsBox{
+  margin-left: 5px;
+ }
 
-#PluginListInternalScroll {
-	flow-children: down;
-	height: 100%;
-	width: 100%;
-	background-color: black;
-	margin: 10px;
-	border-radius: 5px;
-	overflow: clip scroll;
-}
+ #PluginListInternalScroll{
+  flow-children: down;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  margin: 10px;
+  border-radius: 5px;
+  overflow: clip scroll;
+ }
 
-.PluginSettings {
-	flow-children: down;
-	height: 700px;
-	width: 600px;
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #444a7c ), to( #353261 ) );
-	border-radius: 5px;
-}
+ .PluginSettings{
+  flow-children: down;
+  height: 700px;
+  width: 600px;
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #444a7c ), to( #353261 ) );
+  border-radius: 5px;
+ }
 
-.PluginSettingsHeader {
-	flow-children: right;
-	margin: 5px;
-	border-radius: 5px;
-}
+ .PluginSettingsHeader{
+  flow-children: right;
+  margin: 5px;
+  border-radius: 5px;
+ }
 
-.PluginLabel {
-	height: 24px;
-	width: 100%;
-	border-bottom: 2px solid #111111FF;
-}
-.PluginLabel:hover {
-	background-color: rgb(182, 182, 182);
-}
+ .PluginLabel{
+  height: 24px;
+  width: 100%;
+  border-bottom: 2px solid #111111FF;
+ }
+ .PluginLabel:hover{
+  background-color: rgb(182, 182, 182);
+ }
 
-#PluginLabelText {
-	font-size: 18px;
-	text-align: center;
-	horizontal-align: center;
-}
+ #PluginLabelText{
+  font-size: 18px;
+  text-align: center;
+  horizontal-align: center;
+ }
 
-.plugin_enabled_label {
-	background-color: rgb(133, 133, 133);
-}
-.plugin_enabled_text {
-	color: rgb(72, 255, 0);
-	font-weight: bold;
-}
-
-
-#PluginSettingsInternalScroll {
-	padding: 5px;
-	flow-children: down;
-	height: 100%;
-	width: 100%;
-	margin: 10px;
-	border-radius: 5px;
-	overflow: clip scroll;
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #16161a ), to( #0b0b0e ) );
-
-}
+ .plugin_enabled_label{
+  background-color: rgb(133, 133, 133);
+ }
+ .plugin_enabled_text{
+  color: rgb(72, 255, 0);
+  font-weight: bold;
+ }
 
 
-.SettingChanged {
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #14251b ), to( #335a30 ) );
-}
-
-.SettingGeneral {
-	margin-top: 2px;
-	margin-bottom: 2px;
-}
-
-.SettingTypeBoolean {
-	flow-children: right;
-}
-
-.SettingTypeNumber {
-	flow-children: right;
-}
-#SettingTypeNumberInput {
-	width: 100px;
-}
-#SettingTypeNumberLabel {
-	text-align: center;
-	horizontal-align: center;
-	vertical-align: center;
-	padding-left: 5px;
-}
+ #PluginSettingsInternalScroll{
+  padding: 5px;
+  flow-children: down;
+  height: 100%;
+  width: 100%;
+  margin: 10px;
+  border-radius: 5px;
+  overflow: clip scroll;
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #16161a ), to( #0b0b0e ) );
+ }
 
 
-.SettingTypeText {
-	flow-children: right;
-}
-#SettingTypeTextInput {
-	width: 300px;
-}
-#SettingTypeTextLabel {
-	text-align: center;
-	horizontal-align: center;
-	vertical-align: center;
-	padding-left: 5px;
-}
 
-.SettingTypeDropdown {
-	flow-children: right;
-}
-#SettingTypeDropdownInput {
-	width: 150px;
-}
-#SettingTypeDropdownLabel {
-	text-align: center;
-	horizontal-align: center;
-	vertical-align: center;
-	padding-left: 5px;
-}
+ .SettingChanged{
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #14251b ), to( #335a30 ) );
+ }
 
-#SettingsSaveSlots {
-	flow-children: down;
-}
-.SettingsSaveSlot {
-	height: 30px;
-	width: 30px;
-	margin-top: 4px;
-	border-radius: 10px 0px 0px 10px;
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #16161a ), to( #0b0b0e ) );
-}
-#SettingsSaveSlotText {
-	text-align: center;
-	horizontal-align: center;
-	vertical-align: center;
-	color: rgb(255, 255, 255);
-	font-weight: bold;
-	font-size: 20px;
-}
+ .SettingGeneral{
+  margin-top: 2px;
+  margin-bottom: 2px;
+ }
 
-.SettingsSaveSlot:hover {
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #4c775b ), to( #33af2f ) );
-}
+ .SettingTypeBoolean{
+  flow-children: right;
+ }
 
-.active_slot {
-	box-shadow: inset #5eff00 0px 0px 0px 4px;
-}
-.slot_selected {
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #4a408d ), to( #482e9e ) );
-}
-
-.setting_disabled {
-	visibility: collapse;
-	width: 0px;
-	height: 0px;
-}
-
-#PluginListUnlock {
-	margin-left: 70px;
-
-}
-#PluginListUnlockButton {
-    width: 270px;
-    
-    min-width: 192px;
-    min-height: 36px;
-    
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #22681d ), to( #3e8b21 ) );
-    border-style: solid;
-    border-width: 1px;
-    
-    padding: 4px 10px;
-    
-    border-top-color: #555555;
-    border-left-color: #494949;
-    border-bottom-color: #333333;
-    border-right-color: #404040;
-    
-    transition-property: background-color;
-    transition-duration: 0.05s;
-    transition-timing-function: linear;
-}
-#PluginListUnlockButton:hover {
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #59e419 ), to( #7bcc1f ) );
-    border-top-color: #aaaaaa77;
-    border-left-color: #aaaaaa33;
-    border-bottom-color: #333333;
-    border-right-color: #404040;
-}
-
-#PluginListUnlockButtonText {
-    margin-top: 2px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #FFFFFF;
-    text-align: center;
-    horizontal-align: center;
-    vertical-align: middle;
-    text-shadow: 2px 2px 0px 1.0 #000000;
-    
-    transition-property: color;
-    transition-duration: 0.35s;
-    transition-timing-function: ease-in-out;
-    
-    font-size: 18px;
-    font-family: defaultFont;
-}
-
-.unlock_1 {
-	color: rgb(255, 255, 255);
-	font-weight: bold;
-	font-size: 21px;
-}
-.unlock_2 {
-	font-size: 22px;
-	
-}
-.unlock_3 {
-	font-size: 23px;
-	
-}
-.unlock_4 {
-	font-size: 24px;
-	
-}
-.unlock_5 {
-	font-size: 25px;
-	
-}
-.unlock_6 {
-	font-size: 26px;
-	
-}
-.unlock_7 {
-	font-size: 27px;
-	
-}
-.unlock_8 {
-	font-size: 28px;
-	
-}
-.unlock_9 {
-	font-size: 29px;
-	
-}
-.hidden
-{
-	visibility: collapse;
-	width: 0px;
-	height: 0px;
-}
-
-#PluginUnlockScreen {
-	width: 900px;
-	flow-children: right;
-}
-
-#PluginUnlockBar {
-	width: 600px;
-    min-height: 36px;
-    box-shadow: #F78F9015 -2px -2px 4px 4px;
-    background-color: black;
-    border: 1px solid #aaaaaa;
-    padding: 0px;
-    flow-children: down;
-    border-radius: 6px;
-}
-
-#PluginUnlockBar .ProgressBarLeft {
-    background-image: url("s2r://panorama/images/textures/glassbutton_darkmoon_hover_psd.vtex");
-    background-size: 100%;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-}
-
-.PluginSettingsReviewButton{
-	background-image: url("file://{resources}/images/custom_game/settings_review.png");
-	   background-size: 26px;
-  }
-
-.has_changed {
-    background-color: purple;
-}
+ .SettingTypeNumber{
+  flow-children: right;
+ }
+ #SettingTypeNumberInput{
+  width: 100px;
+ }
+ #SettingTypeNumberLabel{
+  text-align: center;
+  horizontal-align: center;
+  vertical-align: center;
+  padding-left: 5px;
+ }
 
 
-#PluginMutator {
-	margin-left: 35px;
-	flow-children: right;
+ .SettingTypeText{
+  flow-children: right;
+ }
+ #SettingTypeTextInput{
+  width: 300px;
+ }
+ #SettingTypeTextLabel{
+  text-align: center;
+  horizontal-align: center;
+  vertical-align: center;
+  padding-left: 5px;
+ }
+
+ .SettingTypeDropdown{
+  flow-children: right;
+ }
+ #SettingTypeDropdownInput{
+  width: 150px;
+ }
+ #SettingTypeDropdownLabel{
+  text-align: center;
+  horizontal-align: center;
+  vertical-align: center;
+  padding-left: 5px;
+ }
+
+ #SettingsSaveSlots{
+  flow-children: down;
+ }
+ .SettingsSaveSlot{
+  height: 30px;
+  width: 30px;
+  margin-top: 4px;
+  border-radius: 10px 0px 0px 10px;
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #16161a ), to( #0b0b0e ) );
+ }
+ #SettingsSaveSlotText{
+  text-align: center;
+  horizontal-align: center;
+  vertical-align: center;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: 20px;
+ }
+
+ .SettingsSaveSlot:hover{
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #4c775b ), to( #33af2f ) );
+ }
+
+ .active_slot{
+  box-shadow: inset #5eff00 0px 0px 0px 4px;
+ }
+ .slot_selected{
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #4a408d ), to( #482e9e ) );
+ }
+
+ .setting_disabled{
+  visibility: collapse;
+  width: 0px;
+  height: 0px;
+ }
+
+ #PluginListUnlock{
+  margin-left: 70px;
+ }
+
+ #PluginListUnlockButton{
+     width: 270px;
+
+     min-width: 192px;
+     min-height: 36px;
+
+     background-color: gradient( linear, 0% 0%, 0% 100%, from( #22681d ), to( #3e8b21 ) );
+     border-style: solid;
+     border-width: 1px;
+
+     padding: 4px 10px;
+
+     border-top-color: #555555;
+     border-left-color: #494949;
+     border-bottom-color: #333333;
+     border-right-color: #404040;
+
+     transition-property: background-color;
+     transition-duration: 0.05s;
+     transition-timing-function: linear;
+ }
+ #PluginListUnlockButton:hover{
+     background-color: gradient( linear, 0% 0%, 0% 100%, from( #59e419 ), to( #7bcc1f ) );
+     border-top-color: #aaaaaa77;
+     border-left-color: #aaaaaa33;
+     border-bottom-color: #333333;
+     border-right-color: #404040;
+ }
+
+ #PluginListUnlockButtonText{
+     margin-top: 2px;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+     color: #FFFFFF;
+     text-align: center;
+     horizontal-align: center;
+     vertical-align: middle;
+     text-shadow: 2px 2px 0px 1.0 #000000;
+
+     transition-property: color;
+     transition-duration: 0.35s;
+     transition-timing-function: ease-in-out;
+
+     font-size: 18px;
+     font-family: defaultFont;
+ }
+
+ .unlock_1{
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: 21px;
+ }
+ .unlock_2{
+  font-size: 22px;
+ }
+
+ .unlock_3{
+  font-size: 23px;
+ }
+
+ .unlock_4{
+  font-size: 24px;
+ }
+
+ .unlock_5{
+  font-size: 25px;
+ }
+
+ .unlock_6{
+  font-size: 26px;
+ }
+
+ .unlock_7{
+  font-size: 27px;
+ }
+
+ .unlock_8{
+  font-size: 28px;
+ }
+
+ .unlock_9{
+  font-size: 29px;
+ }
+
+ .hidden{
+
+  visibility: collapse;
+  width: 0px;
+  height: 0px;
+ }
+
+ #PluginUnlockScreen{
+  width: 900px;
+  flow-children: right;
+ }
+
+ #PluginUnlockBar{
+  width: 600px;
+     min-height: 36px;
+     box-shadow: #F78F9015 -2px -2px 4px 4px;
+     background-color: black;
+     border: 1px solid #aaaaaa;
+     padding: 0px;
+     flow-children: down;
+     border-radius: 6px;
+ }
+
+ #PluginUnlockBar .ProgressBarLeft{
+     background-image: url("s2r://panorama/images/textures/glassbutton_darkmoon_hover_psd.vtex");
+     background-size: 100%;
+     background-position: 50% 50%;
+     background-repeat: no-repeat;
+ }
+
+ .PluginSettingsReviewButton{
+  background-image: url("file://{images}/custom_game/settings_review_png.png");
+     background-size: 26px;
+ }
+
+ .has_changed{
+     background-color: purple;
+ }
 
 
-}
-.PluginMutatorButton {
-    width: 190px;
-    
-    min-width: 180px;
-    min-height: 36px;
-    
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #22681d ), to( #3e8b21 ) );
-    border-style: solid;
-    border-width: 1px;
-    
-    padding: 4px 10px;
-	border-radius: 10px 10px 0px 0px;
-    
-    border-top-color: #555555;
-    border-left-color: #494949;
-    border-bottom-color: #333333;
-    border-right-color: #404040;
-    
-    transition-property: background-color;
-    transition-duration: 0.05s;
-    transition-timing-function: linear;
-}
-.PluginMutatorButton:hover {
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #59e419 ), to( #7bcc1f ) );
-    border-top-color: #aaaaaa77;
-    border-left-color: #aaaaaa33;
-    border-bottom-color: #333333;
-    border-right-color: #404040;
-}
-
-.PluginMutatorButtonText {
-    margin-top: 2px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #FFFFFF;
-    text-align: center;
-    horizontal-align: center;
-    vertical-align: middle;
-    text-shadow: 2px 2px 0px 1.0 #000000;
-    
-    transition-property: color;
-    transition-duration: 0.35s;
-    transition-timing-function: ease-in-out;
-    
-    font-size: 18px;
-    font-family: defaultFont;
-}
+ #PluginMutator{
+  margin-left: 35px;
+  flow-children: right;
+ }
 
 
-.PluginMutatorButtonX {
-    width: 50px;
-    
-    min-width: 50px;
-    min-height: 36px;
-    
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #22681d ), to( #3e8b21 ) );
-    border-style: solid;
-    border-width: 1px;
-    
-    padding: 4px 10px;
-	border-radius: 10px 10px 0px 0px;
-    
-    border-top-color: #555555;
-    border-left-color: #494949;
-    border-bottom-color: #333333;
-    border-right-color: #404040;
-    
-    transition-property: background-color;
-    transition-duration: 0.05s;
-    transition-timing-function: linear;
-}
-.PluginMutatorButtonX:hover {
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #59e419 ), to( #7bcc1f ) );
-    border-top-color: #aaaaaa77;
-    border-left-color: #aaaaaa33;
-    border-bottom-color: #333333;
-    border-right-color: #404040;
+ .PluginMutatorButton{
+     width: 190px;
+
+     min-width: 180px;
+     min-height: 36px;
+
+     background-color: gradient( linear, 0% 0%, 0% 100%, from( #22681d ), to( #3e8b21 ) );
+     border-style: solid;
+     border-width: 1px;
+
+     padding: 4px 10px;
+  border-radius: 10px 10px 0px 0px;
+
+     border-top-color: #555555;
+     border-left-color: #494949;
+     border-bottom-color: #333333;
+     border-right-color: #404040;
+
+     transition-property: background-color;
+     transition-duration: 0.05s;
+     transition-timing-function: linear;
+ }
+ .PluginMutatorButton:hover{
+     background-color: gradient( linear, 0% 0%, 0% 100%, from( #59e419 ), to( #7bcc1f ) );
+     border-top-color: #aaaaaa77;
+     border-left-color: #aaaaaa33;
+     border-bottom-color: #333333;
+     border-right-color: #404040;
+ }
+
+ .PluginMutatorButtonText{
+     margin-top: 2px;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+     color: #FFFFFF;
+     text-align: center;
+     horizontal-align: center;
+     vertical-align: middle;
+     text-shadow: 2px 2px 0px 1.0 #000000;
+
+     transition-property: color;
+     transition-duration: 0.35s;
+     transition-timing-function: ease-in-out;
+
+     font-size: 18px;
+     font-family: defaultFont;
+ }
+
+
+ .PluginMutatorButtonX{
+     width: 50px;
+
+     min-width: 50px;
+     min-height: 36px;
+
+     background-color: gradient( linear, 0% 0%, 0% 100%, from( #22681d ), to( #3e8b21 ) );
+     border-style: solid;
+     border-width: 1px;
+
+     padding: 4px 10px;
+  border-radius: 10px 10px 0px 0px;
+
+     border-top-color: #555555;
+     border-left-color: #494949;
+     border-bottom-color: #333333;
+     border-right-color: #404040;
+
+     transition-property: background-color;
+     transition-duration: 0.05s;
+     transition-timing-function: linear;
+ }
+ .PluginMutatorButtonX:hover{
+     background-color: gradient( linear, 0% 0%, 0% 100%, from( #59e419 ), to( #7bcc1f ) );
+     border-top-color: #aaaaaa77;
+     border-left-color: #aaaaaa33;
+     border-bottom-color: #333333;
+     border-right-color: #404040;
+ }
+
+
+ .PresetsShowButton{
+
+  margin: 10px 10px 0px 10px;
+  width: 280px;
+     min-width: 180px;
+     min-height: 36px;
+
+     background-color: gradient( linear, 0% 0%, 0% 100%, from( #22681d ), to( #3e8b21 ) );
+     border-style: solid;
+     border-width: 1px;
+
+     padding: 4px 10px;
+  border-radius: 10px;
+
+     border-top-color: #555555;
+     border-left-color: #494949;
+     border-bottom-color: #333333;
+     border-right-color: #404040;
+
+     transition-property: background-color;
+     transition-duration: 0.05s;
+     transition-timing-function: linear;
+ }
+ .PresetsShowButton:hover{
+     background-color: gradient( linear, 0% 0%, 0% 100%, from( #59e419 ), to( #7bcc1f ) );
+     border-top-color: #aaaaaa77;
+     border-left-color: #aaaaaa33;
+     border-bottom-color: #333333;
+     border-right-color: #404040;
+ }
+
+ .PresetsShowButtonText{
+     margin-top: 2px;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+     color: #FFFFFF;
+     text-align: center;
+     horizontal-align: center;
+     vertical-align: middle;
+     text-shadow: 2px 2px 0px 1.0 #000000;
+
+     transition-property: color;
+     transition-duration: 0.35s;
+     transition-timing-function: ease-in-out;
+
+     font-size: 18px;
+     font-family: defaultFont;
+ }
+
+
+ #PresetSelectInternalScroll{
+  padding: 5px;
+  flow-children: right-wrap;
+  height: 100%;
+  width: 100%;
+  margin: 10px;
+  border-radius: 5px;
+  overflow: clip scroll;
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #16161a ), to( #0b0b0e ) );
+ }
+
+
+
+ #PresetSelect{
+  flow-children: down;
+  height: 700px;
+  width: 600px;
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #444a7c ), to( #353261 ) );
+  border-radius: 5px;
+ }
+
+ #PresetQuickSelect{
+  width: 128px;
+  height: 64px;
+  border-radius: 5px;
+  margin: 3px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+ }
+
+ #PresetQuickSelect:hover{
+  border-width: 2px;
+  border-color: rgb(84, 179, 60);
+ }
+ #PresetQuickSelectText{
+  text-align: center;
+  vertical-align: bottom;
+  horizontal-align: center;
+  text-shadow: 0px 0px 5px 4.0 #000000b0;
 }

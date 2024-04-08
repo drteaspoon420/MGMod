@@ -1,21 +1,21 @@
 "plugin_settings"
 {
-    "Order" "0"
+    "Order" "9999990"
     "enabled" {
         "TYPE" "boolean"
-        "DEFAULT" "1"
+        "DEFAULT" "0"
     }
     "extra_ability_heroes"
     {
         "Order" "0"
         "TYPE" "text"
-        "DEFAULT" ""
+        "DEFAULT" "ogre_bruiser_ogre_smash"
     }
     "extra_ability_towers"
     {
         "Order" "1"
         "TYPE" "text"
-        "DEFAULT" ""
+        "DEFAULT" "miniboss_radiance"
     }
     "extra_ability_creeps"
     {

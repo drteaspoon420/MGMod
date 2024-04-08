@@ -77,7 +77,7 @@ function CreateKeyPanel(parent,ability,key,value) {
             value_panel.text = (Math.floor(value*100)) + "%";
         }
     //});
-    panel.SetHasClass("hidden",(Math.floor(value*100)) == 100);
+    panel.SetHasClass("extra_only",(Math.floor(value*100)) == 100);
 }
 
 function Explore(panel,s) {
@@ -96,7 +96,7 @@ function ClientSideExtraInventory(entityIndex,inventorySlot) {
     let kvstuff = CustomNetTables.GetTableValue( "player_upgrades_" + iOwner, name );
     let boosts = [];
     if (kvstuff) {
-        $.Msg(kvstuff);
+        //$.Msg(kvstuff);
         for(var slot in kvstuff){
             if (kvstuff[slot] ) {
                 boosts.push(
@@ -121,7 +121,7 @@ function ClientSideExtraShop(name,entityIndex) {
         return null
     }
     if (kvstuff) {
-        $.Msg(kvstuff);
+        //$.Msg(kvstuff);
         for(var slot in kvstuff){
             if (kvstuff[slot] ) {
                 boosts.push(

@@ -1,0 +1,10 @@
+"Plugins"
+{
+    "freeforall" {
+        "MainClass" "FreeForAllPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+    }
+}

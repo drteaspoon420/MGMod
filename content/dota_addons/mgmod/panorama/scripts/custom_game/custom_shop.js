@@ -40,6 +40,7 @@ function Cleanup() {
 
 
 function GetDotaHud() {
+    $.Msg("lol!");
     var panel = $.GetContextPanel();
     while (panel && panel.id !== 'Hud') {
         panel = panel.GetParent();

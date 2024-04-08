@@ -1,47 +1,54 @@
-.LoadingRoot
-{
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    overflow: clip;
+.LoadingRoot{
+
+     width: 100%;
+     height: 100%;
+     background-color: black;
+     overflow: clip;
 }
 
-.SeqBg
-{
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
-	background-size: 100% 100%;
-    horizontal-align: center;
-    vertical-align: center;
-}
+ .SeqBg{
 
-#seq {
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), to( #000000 ) );
-    width: 100%;
-    height: 100%;
-}
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+     horizontal-align: center;
+     vertical-align: center;
+ }
+
+ #seq{
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), to( #000000 ) );
+     width: 100%;
+     height: 100%;
+ }
 
 
-.SeqBgSecondary_boost
-{
-    margin-top: 300px;
-    margin-left: 237px;
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
-	background-size: 100% 100%;
-    horizontal-align: center;
-    vertical-align: center;
-    
-}
+ .SeqBgSecondary_boost{
 
-.SeqBgSecondary_trem
-{
-    margin-top: 300px;
-    margin-left: -61px;
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
-	background-size: 100% 100%;
-    horizontal-align: center;
-    vertical-align: center;
-    
+     margin-top: 300px;
+     margin-left: 237px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+     horizontal-align: center;
+     vertical-align: center;
+ }
+
+
+ .SeqBgSecondary_trem{
+
+     margin-top: 300px;
+     margin-left: -61px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+     horizontal-align: center;
+     vertical-align: center;
+ }
+
+
+
+ .hidden{
+ visibility: collapse;
+     width: 0px;
+     height: 0px;
 }

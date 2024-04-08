@@ -25,6 +25,19 @@ function CurrenciesPlugin:Init()
     print("[CurrenciesPlugin] found")
 end
 
+CurrenciesPlugin.teams = {
+    DOTA_TEAM_GOODGUYS,
+    DOTA_TEAM_BADGUYS,
+    DOTA_TEAM_CUSTOM_1,
+    DOTA_TEAM_CUSTOM_2,
+    DOTA_TEAM_CUSTOM_3,
+    DOTA_TEAM_CUSTOM_4,
+    DOTA_TEAM_CUSTOM_5,
+    DOTA_TEAM_CUSTOM_6,
+    DOTA_TEAM_CUSTOM_7,
+    DOTA_TEAM_CUSTOM_8
+}
+
 function CurrenciesPlugin:ApplySettings()
     CurrenciesPlugin.settings = PluginSystem:GetAllSetting("currencies")
 
@@ -62,9 +75,10 @@ function CurrenciesPlugin:ApplySettings()
                     CurrenciesPlugin.currency_data[c].amount[iPlayer] = CurrenciesPlugin.settings[c .. "_start"]
                 end
             elseif c_states[sts] == 1 then --team shared
-                print(CurrenciesPlugin.settings[c .. "_start"])
-                CurrenciesPlugin.currency_data[c].amount[DOTA_TEAM_GOODGUYS] = CurrenciesPlugin.settings[c .. "_start"]
-                CurrenciesPlugin.currency_data[c].amount[DOTA_TEAM_BADGUYS] = CurrenciesPlugin.settings[c .. "_start"]
+                for i=1,#CurrenciesPlugin.teams do
+                    local iTeam = CurrenciesPlugin.teams[i]
+                    CurrenciesPlugin.currency_data[c].amount[iTeam] = CurrenciesPlugin.settings[c .. "_start"]
+                end
             elseif c_states[sts] == 2 then --global shared
                 CurrenciesPlugin.currency_data[c].amount[0] = CurrenciesPlugin.settings[c .. "_start"]
             end
@@ -84,11 +98,42 @@ function CurrenciesPlugin:AlterCurrency(sName,iPlayer,iCount)
         t.amount[iPlayer] = t.amount[iPlayer] + iCount
     elseif t.share == 1 then
         local iTeam = PlayerResource:GetTeam(iPlayer)
-        if iTeam == nil or iTeam < 2 then return end
+        if iTeam == nil then return end
         if  t.amount[iTeam] == nil then
             t.amount[iTeam] = {}
         end
         t.amount[iTeam] = t.amount[iTeam] + iCount
+    elseif t.share == 2 then
+        t.amount[0] = t.amount[0] + iCount
+    end
+    CurrenciesPlugin.currency_data[sName] = t
+    if not CurrenciesPlugin:CheckForSingleSpendOption(sName,iPlayer) then
+        CustomNetTables:SetTableValue("currencies",sName,CurrenciesPlugin.currency_data[sName])
+    end
+end
+
+function CurrenciesPlugin:AlterCurrencyTeam(sName,iTeam,iCount)
+    if CurrenciesPlugin.currency_data[sName] == nil then return end
+    local t = CurrenciesPlugin.currency_data[sName]
+    local iPlayer = Toolbox:GetTeamLeader(iTeam)
+    if t.share == 0 then
+        for iPlayer=0, DOTA_MAX_TEAM_PLAYERS do
+            if PlayerResource:IsValidPlayer(iPlayer) then
+                if t.amount[iPlayer] == nil then return end
+                local ciTeam = PlayerResource:GetTeam(iPlayer)
+                if ciTeam == nil then return end
+                if ciTeam == iTeam then
+                    t.amount[iPlayer] = t.amount[iPlayer] + iCount
+                end
+            end
+        end
+    elseif t.share == 1 then
+        if iTeam == nil then return end
+        if  t.amount[iTeam] == nil then
+            t.amount[iTeam] = {}
+        end
+        t.amount[iTeam] = t.amount[iTeam] + iCount
+        
     elseif t.share == 2 then
         t.amount[0] = t.amount[0] + iCount
     end
@@ -111,8 +156,6 @@ function CurrenciesPlugin:CheckCurrency(sName,iPlayer,iCount)
         end
     elseif t.share == 1 then
         local iTeam = PlayerResource:GetTeam(iPlayer)
-        print(iCount,t.amount[iTeam])
-        print(type(iCount),type(t.amount[iTeam]))
         if t.amount[iTeam] < iCount then
             return false
         else
@@ -143,7 +186,6 @@ function CurrenciesPlugin:SpendCurrency(sName,iPlayer,iCount)
         end
     elseif t.share == 1 then
         local iTeam = PlayerResource:GetTeam(iPlayer)
-        print(iTeam)
         if t.amount[iTeam] < iCount then
             return false
         else
@@ -302,6 +344,7 @@ function CurrenciesPlugin:UserEarningOption(iPlayer,sName,fn)
 end
 
 function CurrenciesPlugin:CheckForSingleSpendOption(sName,iPlayer)
+    if iPlayer == nil then return false end
     local c = 0
     local fn
     for k,_ in pairs(CurrenciesPlugin.spend_options[sName]) do
@@ -345,7 +388,12 @@ end
 
 function CurrenciesPlugin:ShowEarnParticle(iCount,hUnit,iTeam,sCurrency)
     if iCount < 1 then return end
-    local iParticle = ParticleManager:CreateParticleForTeam("particles/tickets_gain.vpcf",PATTACH_OVERHEAD_FOLLOW ,hUnit,iTeam)
+    local iParticle
+    if iTeam == 0 then
+        iParticle = ParticleManager:CreateParticle("particles/tickets_gain.vpcf",PATTACH_OVERHEAD_FOLLOW ,hUnit)
+    else
+        iParticle = ParticleManager:CreateParticleForTeam("particles/tickets_gain.vpcf",PATTACH_OVERHEAD_FOLLOW ,hUnit,iTeam)
+    end
     local s = string.len(tostring(iCount))
     ParticleManager:SetParticleControl(iParticle,1,Vector(8,iCount,0))
     ParticleManager:SetParticleControl(iParticle,2,Vector(1,s+1,0))

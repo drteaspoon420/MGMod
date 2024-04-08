@@ -1,0 +1,215 @@
+.hidden{ visibility: collapse;}
+.team_setting_disabled { visibility: collapse;}
+.team_setting_hidden { visibility: collapse;}
+.CustomTeamSelect {
+    horizontal-align: right;
+    vertical-align: top;
+	flow-children: down;
+    width: 800px;
+}
+#ReadyBox{
+    margin-top: 20px;
+	flow-children: right;
+}
+#TeamBox{
+	flow-children: right-wrap;
+    overflow: clip scroll;
+}
+.TeamTray {
+	flow-children: down;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #000000 ), to( #333333 ) );
+    margin-top: 5px;
+    margin-right: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    width: 390px;
+}
+#TeamTrayContent {
+    width: 100%;
+	flow-children: right-wrap;
+}
+.PlayerSlot {
+	flow-children: right;
+}
+.TeamTrayHeader {
+    width: 100%;
+	flow-children: right;
+}
+#TeamName {
+    margin: 10px 20px 0px 10px;
+}
+#PlayerAvatar {
+    width: 24px;
+    height: 24px;
+}
+#PlayerName {
+    height: 24px;
+}
+.PlayerSlot {
+    height: 24px;
+    margin: 3px;
+    width: 384px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #000000 ), to( #333333 ) );
+}
+.SpectatorTray {
+    width: 790px;
+}
+
+Slider.HorizontalSlider
+{
+    horizontal-align: right;
+    margin: 5px;
+	width: 150px;
+	height: 30px;
+}
+
+#ReadyTimer {
+	width: 64px;
+	height: 64px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #000000 ), to( #333333 ) );
+    border-radius: 7px;
+    margin-left: 5px;
+}
+#ReadyButton {
+	width: 64px;
+	height: 64px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #000000 ), to( #333333 ) );
+    border-radius: 7px;
+    margin-left: 5px;
+}
+
+#ReadyButtonID
+{
+    horizontal-align: center;
+    vertical-align: bottom;
+    margin-bottom: 22px;
+}
+#ReadyButtonID2
+{
+    horizontal-align: center;
+    vertical-align: bottom;
+    margin-bottom: 22px;
+}
+
+.ReadyButtonClass
+{
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #2f6b1c ), to( #308e19 ) );
+    border: 1px solid #39bc3f;
+    
+    transition-property: border, brightness;
+    transition-duration: 0.1s;
+    transition-timing-function: linear;
+    overflow: noclip;
+    min-width: 45px;
+    min-height: 45px;
+    margin-right: 1px;
+}
+
+#ReadyButtonID2 {
+    border-radius: 0px 6px 6px 0px;
+
+}
+.CancelReady {
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #6b4f1c ), to( #8e7319 ) );
+    border: 1px solid #a4bc39;
+}
+
+.Contents
+{
+    horizontal-align: center;
+    vertical-align: middle;
+    flow-children: right;
+}
+.CustomIcon 
+{
+    background-size: contain;
+    horizontal-align: left; 
+}
+.ReadyButtonClass:hover
+{
+    brightness: 2;
+}
+.ReadyButtonClass:hover Label
+{
+    color: white;   
+}
+.ReadyButtonClass:active
+{
+    brightness: 3;
+    border: 1px solid #501F18;
+    
+    sound: "ui_generic_button_click";
+}
+.ReadyButtonClass Label
+{
+    margin-top: 2px;
+    text-transform: uppercase;
+    color: white;
+    horizontal-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    letter-spacing: 2px;
+    text-align: center;
+    vertical-align: middle;
+    text-shadow: 0px 0px 6px 1.0 #000000;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 2px;
+    
+    
+    transition-property: color;
+    transition-duration: 0.1s;
+    transition-timing-function: linear;
+}
+.ReadyButtonClass:active Label 
+{
+    transform: translateY(1px);
+}
+
+#HorizontalPips {
+    horizontal-align: right;
+	flow-children: right;
+}
+.HorizontalPip {
+    width: 10px;
+    border-radius: 0px;
+}
+
+.ReadyTimerClass {
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #696969 ), to( #808080 ) );
+    border: 1px solid #c2c2c2;
+    
+    transition-property: border, brightness;
+    transition-duration: 0.1s;
+    transition-timing-function: linear;
+    overflow: noclip;
+    min-width: 60px;
+    min-height: 45px;
+    margin-right: 1px;
+    border-radius: 6px 0px 0px 6px;
+}
+.ReadyTimerClass Label
+{
+    margin-top: 2px;
+    text-transform: uppercase;
+    color: white;
+    horizontal-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    letter-spacing: 2px;
+    text-align: center;
+    vertical-align: middle;
+    text-shadow: 0px 0px 6px 1.0 #000000;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 2px;
+    
+    
+    transition-property: color;
+    transition-duration: 0.1s;
+    transition-timing-function: linear;
+}
+
+#AutoAssignButton {
+    padding: 6px;
+}

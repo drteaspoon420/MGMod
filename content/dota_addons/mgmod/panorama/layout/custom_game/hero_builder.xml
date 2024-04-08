@@ -1,3 +1,4 @@
+<!-- xml reconstructed by Source 2 Viewer 5.0.0.0 - https://valveresourceformat.github.io -->
 <root>
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/hero_builder.js" />
@@ -11,36 +12,30 @@
 			<Button class="ButtonBar_HeroBuilder" />
 		</snippet>
 		<snippet name="WindowButton">
-            <Panel id="WindowButton" hittest="false">
-            </Panel>
+			<Panel id="WindowButton" hittest="false" />
 		</snippet>
 		<snippet name="WindowPanel">
-            <Panel id="WindowPanel" hittest="false">
-            </Panel>
+			<Panel id="WindowPanel" hittest="false" />
 		</snippet>
 		<snippet name="Row">
-            <Panel id="Row" class="Row" hittest="false">
-            </Panel>
+			<Panel id="Row" class="Row" hittest="false" />
 		</snippet>
 		<snippet name="AbilityChoise">
-            <Button id="AbilityChoise">
-				<DOTAAbilityImage id="AbilityImage"/>
-            </Button>
+			<Button id="AbilityChoise">
+				<DOTAAbilityImage id="AbilityImage" />
+			</Button>
 		</snippet>
 		<snippet name="TalentChoise">
-            <Panel id="TalentChoise" hittest="false">
-            </Panel>
+			<Panel id="TalentChoise" hittest="false" />
 		</snippet>
-    </snippets>
+	</snippets>
 	<Panel class="HeroBuilderRoot">
 		<Panel id="WindowRoot" class="hidden">
 			<Panel id="SearchBox">
 				<TextEntry id="SearchBoxInput" maxchars="100" placeholder="Search" oninputsubmit="OnSubmitSearch()" />
-				<Panel id="UnitSkillList"></Panel>
-	<!-- 			<TextEntry id="SlotInput" maxchars="100" placeholder="data" text="0" /> -->
+				<Panel id="UnitSkillList" />
 			</Panel>
-			<Panel id="HeroBuilderMain">
-			</Panel>
+			<Panel id="HeroBuilderMain" />
 		</Panel>
-    </Panel>
+	</Panel>
 </root>

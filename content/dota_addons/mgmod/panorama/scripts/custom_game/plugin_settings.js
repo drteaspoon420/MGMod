@@ -6,17 +6,18 @@ var PluginSettingsBox = $.GetContextPanel().FindChildInLayoutFile("PluginSetting
 var SettingsSaveSlots = $.GetContextPanel().FindChildInLayoutFile("SettingsSaveSlots");
 var PluginUnlockScreen = $.GetContextPanel().FindChildInLayoutFile("PluginUnlockScreen");
 var PluginUnlockBar = $.GetContextPanel().FindChildInLayoutFile("PluginUnlockBar");
-var PluginMutator = $.GetContextPanel().FindChildInLayoutFile("PluginMutator");
+var PluginMutator = $.GetContextPanel().FindChildInLayoutFile("ExtraButtons");
 var current_open = "";
 var mutator_presets;
 var forced_mode;
-
+$.Msg("plugin_settings!!!!!!!!")
 var local_player = Game.GetLocalPlayerInfo();
-//index","player_selected_hero_entity_index":-1,"possible_hero_selection":"","player_level":0,"player_respawn_seconds":0,"player_gold":0,"player_networth":0,"player_team_id":5,"player_is_local":true,"player_has_host_privileges":true}
 const bHost = local_player.player_has_host_privileges;
+//index","player_selected_hero_entity_index":-1,"possible_hero_selection":"","player_level":0,"player_respawn_seconds":0,"player_gold":0,"player_networth":0,"player_team_id":5,"player_is_local":true,"player_has_host_privileges":true}
 
 function CreateSettingsBlock(sPluginName,sPluginSettings)
 {
+    if (sPluginName == "core_teams") return;
     plugin_settings[sPluginName] = sPluginSettings;
     let PluginLabel = $.CreatePanel('Button', PluginListInternalScroll, 'PluginLabel');
     PluginLabel.BLoadLayoutSnippet("PluginLabel");
@@ -427,6 +428,7 @@ function CreateSettingText(sPluginName,sPluginSetting,sPluginSettingData,hParent
 
 
 function SettingsUpdate( table_name, sPluginName, sPluginSettings) {
+    if (sPluginName == "core_teams") return;
     if (plugin_settings[sPluginName].enabled.VALUE != sPluginSettings.enabled.VALUE) {
         let children = PluginListInternalScroll.Children();
         for (const key in children) {
@@ -554,7 +556,6 @@ function unlock_local() {
 function unlock_remote() {
     $.Msg("remote unlock");
     let c = 0;
-    let t = "?";
     const players_max = Players.GetMaxPlayers();
     let d = 0;
     for (let i = 0; i < players_max; i++) {
@@ -565,7 +566,6 @@ function unlock_remote() {
     for (const key in forced_mode.votes) {
         const element = forced_mode.votes[key];
         c++;
-        t = t + "!";
     }
     if (c/d > (forced_mode.vote_treshold * 0.01)) {
         forced_mode.lock_level = 0;
@@ -638,4 +638,61 @@ function mutator_mode_go() {
         Game.SetAutoLaunchEnabled( true );
     }
     $.GetContextPanel().SetHasClass("hidden",true);
+}
+
+
+function OpenPresetSelect() {
+    PluginSettingsBox.RemoveAndDeleteChildren();
+    let PresetSelect = $.CreatePanel('Panel', PluginSettingsBox, 'PresetSelect');
+    PresetSelect.BLoadLayoutSnippet("PresetSelect");
+    let PresetSelectInternalScroll = PresetSelect.FindChildInLayoutFile("PresetSelectInternalScroll");
+    let tmp = [];
+    for (const dkey in mutator_presets) {
+        tmp.push(dkey);
+    }
+    tmp.sort(
+        function(a, b){
+            if (a < b) {
+                return -1;
+            }
+            if (a > b) {
+                return 1;
+            }
+            return 0;
+        });
+        $.Msg(tmp);
+    for (const dkey in tmp) {
+        CreatePresetOption(tmp[dkey],PresetSelectInternalScroll);
+    }
+    current_open = "preset_select";
+}
+
+function CreatePresetOption(sMutator,hParent) {
+    let PresetOption = $.CreatePanel('Panel', hParent, 'PresetQuickSelect');
+    PresetOption.BLoadLayoutSnippet("PresetQuickSelect");
+    let PresetQuickSelectText = PresetOption.FindChildInLayoutFile("PresetQuickSelectText");
+    PresetQuickSelectText.text = $.Localize("#" + sMutator);
+    PresetOption.SetHasClass(sMutator,true);
+    
+    PresetOption.SetPanelEvent(
+        "onmouseover", 
+        function(){
+            $.DispatchEvent("DOTAShowTextTooltip", PresetOption, $.Localize("#" + sMutator + "_Description"));
+        }
+        )
+    PresetOption.SetPanelEvent(
+        "onmouseout", 
+        function(){
+        $.DispatchEvent("DOTAHideTextTooltip", PresetOption);
+        }
+    )
+    if (!bHost) return;
+    PresetOption.SetPanelEvent(
+        "onactivate", 
+        function(){
+            GameEvents.SendCustomGameEventToServer("setting_activate_mutator",{
+                mutator: sMutator,
+            });
+        }
+    );
 }

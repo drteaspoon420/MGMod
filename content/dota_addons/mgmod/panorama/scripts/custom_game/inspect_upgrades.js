@@ -4,7 +4,15 @@ var path_links = {};
 
 var team_panels = {
     "2": $.GetContextPanel().FindChildInLayoutFile("InspectUpgradesRadiant"),
-    "3": $.GetContextPanel().FindChildInLayoutFile("InspectUpgradesDire")
+    "3": $.GetContextPanel().FindChildInLayoutFile("InspectUpgradesDire"),
+    "6": $.GetContextPanel().FindChildInLayoutFile("InspectUpgradesCustom1"),
+    "7": $.GetContextPanel().FindChildInLayoutFile("InspectUpgradesCustom2"),
+    "8": $.GetContextPanel().FindChildInLayoutFile("InspectUpgradesCustom3"),
+    "9": $.GetContextPanel().FindChildInLayoutFile("InspectUpgradesCustom4"),
+    "10": $.GetContextPanel().FindChildInLayoutFile("InspectUpgradesCustom5"),
+    "11": $.GetContextPanel().FindChildInLayoutFile("InspectUpgradesCustom6"),
+    "12": $.GetContextPanel().FindChildInLayoutFile("InspectUpgradesCustom7"),
+    "13": $.GetContextPanel().FindChildInLayoutFile("InspectUpgradesCustom8"),
 };
 
 function print() {

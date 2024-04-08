@@ -1,0 +1,7 @@
+"dota_shops"
+{
+    "artifacts"
+    {       
+        "item"      "item_cr_blink"
+    }
+}

@@ -1,0 +1,14 @@
+"forced"
+{
+    "lock_level" "-1" // -1 = ignore this file, 0 = no lock, 1 = allow host to ask for vote, 2 = forced lock
+    "vote_treshold" "0"
+    "teams" {
+        "2" "12"
+        "3" "12"
+    }
+    "unlocked" {
+    }
+    "settings"
+    {
+    }
+}

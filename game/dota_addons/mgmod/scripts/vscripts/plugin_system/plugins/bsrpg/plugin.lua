@@ -20,6 +20,7 @@ function BsrpgPlugin:ApplySettings()
         BsrpgPlugin.kv_lists = {}
     end
 
+    print("[BsrpgPlugin] doing shit")
     if BsrpgPlugin.settings.bsrpg_mode == "points" or BsrpgPlugin.settings.bsrpg_mode == "free_form" then
         CustomGameEventManager:RegisterListener("boost_player",BsrpgPlugin.boost_player)
     end
@@ -44,6 +45,8 @@ function BsrpgPlugin:ApplySettings()
             if GameRules:State_Get() < DOTA_GAMERULES_STATE_HERO_SELECTION then return end
             BsrpgPlugin:SpawnEvent(event)
     end,nil)
+    
+    print("[BsrpgPlugin] doing shit")
 end
 
 
@@ -194,16 +197,16 @@ function BsrpgPlugin:UpdatePlayer_NetTable(iPlayer)
 
     BsrpgPlugin.lists[iPlayer] = tOldAbilities
     for k,v in pairs(BsrpgPlugin.lists[iPlayer]) do
-        CustomNetTables:SetTableValue("player_upgrades_" .. iPlayer,k,v)
+        CustomNetTables:SetTableValue("bsrpg_upgrades_" .. iPlayer,k,v)
     end
 --[[     for k,v in pairs(deleted) do
         if v then
-            CustomNetTables:SetTableValue("player_upgrades_" .. iPlayer,k,{})
+            CustomNetTables:SetTableValue("bsrpg_upgrades_" .. iPlayer,k,{})
         end
     end ]]
     if BsrpgPlugin.points[iPlayer] == nil then
         BsrpgPlugin.points[iPlayer] = 0
-        CustomNetTables:SetTableValue("player_upgrades_" .. iPlayer,"player_details",{points = BsrpgPlugin.points[iPlayer]})
+        CustomNetTables:SetTableValue("bsrpg_upgrades_" .. iPlayer,"player_details",{points = BsrpgPlugin.points[iPlayer]})
     end
     --DeepPrintTable(BsrpgPlugin.lists[iPlayer])
 end
@@ -326,11 +329,11 @@ function BsrpgPlugin:boost_player(tEvent)
             end
             BsrpgPlugin.points[iPlayer] = BsrpgPlugin.points[iPlayer] - 1
         end
-        CustomNetTables:SetTableValue("player_upgrades_" .. iPlayer,"player_details",{points = BsrpgPlugin.points[iPlayer]})
+        CustomNetTables:SetTableValue("bsrpg_upgrades_" .. iPlayer,"player_details",{points = BsrpgPlugin.points[iPlayer]})
     else
         BsrpgPlugin.lists[iPlayer][sAbility][sKey] = fValue
     end
-    CustomNetTables:SetTableValue("player_upgrades_" .. iPlayer,sAbility,BsrpgPlugin.lists[iPlayer][sAbility])
+    CustomNetTables:SetTableValue("bsrpg_upgrades_" .. iPlayer,sAbility,BsrpgPlugin.lists[iPlayer][sAbility])
 
     if BsrpgPlugin.modifier_links[iPlayer] == nil then
         print(iPlayer,"modifier is nil")
@@ -404,7 +407,7 @@ function BsrpgPlugin:periodic_check(iPlayer)
             end
             hMod:UpdateValue(k,j,BsrpgPlugin.lists[iPlayer][k][j].value)
         end
-        CustomNetTables:SetTableValue("player_upgrades_" .. iPlayer,k,BsrpgPlugin.lists[iPlayer][k])
+        CustomNetTables:SetTableValue("bsrpg_upgrades_" .. iPlayer,k,BsrpgPlugin.lists[iPlayer][k])
     end
 end
 

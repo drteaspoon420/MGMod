@@ -1,0 +1,18 @@
+"plugin_settings"
+{
+    "Order" "5"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "level" {
+        "Order" "2"
+        "TYPE" "number"
+        "DEFAULT" "25"
+    }
+    "ability_points" {
+        "Order" "3"
+        "TYPE" "number"
+        "DEFAULT" "10"
+    }
+}

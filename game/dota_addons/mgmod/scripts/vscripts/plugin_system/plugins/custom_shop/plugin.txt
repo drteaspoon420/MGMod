@@ -1,0 +1,10 @@
+"Plugins"
+{
+    "custom_shop" {
+        "MainClass" "CustomShopsPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+    }
+}

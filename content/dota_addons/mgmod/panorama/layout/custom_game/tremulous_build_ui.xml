@@ -1,27 +1,28 @@
+<!-- xml reconstructed by Source 2 Viewer 5.0.0.0 - https://valveresourceformat.github.io -->
 <root>
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/tremulous_build_ui.js" />
 	</scripts>
 	<styles>
 		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
-		<include src="s2r://panorama/styles/hudstyles.vcss_c" />
-		<include src="s2r://panorama/styles/hud/dota_hud_neutral_item_picker.vcss_c" />
+		<include src="file://{resources}/styles/hudstyles.css" />
+		<include src="file://{resources}/styles/hud/dota_hud_neutral_item_picker.css" />
 		<include src="file://{resources}/styles/custom_game/tremulous_build_ui.css" />
 	</styles>
 	<snippets>
 		<snippet name="BuildingOption">
 			<Panel class="BuildingOption">
 				<DOTAAbilityImage id="BuildingImage">
-						<Panel hittest="false" id="CostContainer">
-							<Panel hittest="false" id="CostChildren">
-								<Label hittest="false" id="GoldCost" text="0" />
-							</Panel>
+					<Panel hittest="false" id="CostContainer">
+						<Panel hittest="false" id="CostChildren">
+							<Label hittest="false" id="GoldCost" text="0" />
 						</Panel>
-                </DOTAAbilityImage>
+					</Panel>
+				</DOTAAbilityImage>
 				<Label class="BuildingName" />
 			</Panel>
 		</snippet>
-    </snippets>
+	</snippets>
 	<Panel class="TremulousBuildUI">
 		<Panel class="Header">
 			<Panel class="HeaderText">
@@ -31,5 +32,5 @@
 			<Button class="CloseButton" onactivate="DOTABuildingPickerClosed()" />
 		</Panel>
 		<Panel id="BuildingOptions" />
-    </Panel>
+	</Panel>
 </root>

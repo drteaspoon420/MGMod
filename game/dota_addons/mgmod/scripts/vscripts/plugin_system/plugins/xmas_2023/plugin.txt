@@ -1,0 +1,11 @@
+"Plugins"
+{
+    "xmas_2023" {
+        "MainClass" "XMax23Plugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+            "GameInProgressEvent" "DOTA_GAMERULES_STATE_GAME_IN_PROGRESS"
+        }
+    }
+}

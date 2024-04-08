@@ -1,4 +1,4 @@
-<!-- xml reconstructed by ValveResourceFormat: https://vrf.steamdb.info/ -->
+<!-- xml reconstructed by Source 2 Viewer 5.0.0.0 - https://valveresourceformat.github.io -->
 <root>
 	<styles>
 		<include src="file://{resources}/styles/custom_game/upgrade.css" />
@@ -25,6 +25,11 @@
 		</snippet>
 	</snippets>
 	<Panel class="PersonalUpgradeScreen" hittest="false" visible="true">
+		<Panel id="QueuedUpgrades">
+			<Label id="QueuedUpgradesText" text="0"/>
+		</Panel>
+
 		<Panel id="Upgrades" />
+		
 	</Panel>
 </root>

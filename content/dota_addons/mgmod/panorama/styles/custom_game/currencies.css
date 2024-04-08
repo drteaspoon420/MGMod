@@ -1,156 +1,156 @@
-.hidden{visibility: collapse;}
-#WindowRoot {
-    vertical-align: bottom;
-}
+.hidden{ visibility: collapse;}
+ #WindowRoot{
+     vertical-align: bottom;
+ }
 
-.CurrencyRoot {
-    horizontal-align: right;
-    vertical-align: bottom;
-    margin-bottom: 100px;
-	flow-children: up;
-}
+ .CurrencyRoot{
+     horizontal-align: right;
+     vertical-align: bottom;
+     margin-bottom: 100px;
+  flow-children: up;
+ }
 
 
-.CurrencyBox {
-    height: 35px;
-	flow-children: right;
-    vertical-align: center;
-    margin-left: 2px;
-}
-#CurrencyIcon {
-    height: 25px;
-    width: 25px;
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
-	background-size: 100% 100%;
-    vertical-align: center;
-}
-#CurrencyAmmount {
-    font-size: 20px;
-    color: #ffffff;
+ .CurrencyBox{
+     height: 35px;
+  flow-children: right;
+     vertical-align: center;
+     margin-left: 2px;
+ }
+ #CurrencyIcon{
+     height: 25px;
+     width: 25px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+     vertical-align: center;
+ }
+ #CurrencyAmmount{
+     font-size: 20px;
+     color: #ffffff;
 
-    text-align: right;
-    padding-right: 5px;
-    padding-left: 5px;
-    vertical-align: center;
-    text-overflow: clip;
-}
-.CurrencyAction {
-    height: 35px;
-}
-#CurrencyCost {
-    height: 35px;
-    font-size: 15px;
-    color: #ffffff;
-}
+     text-align: right;
+     padding-right: 5px;
+     padding-left: 5px;
+     vertical-align: center;
+     text-overflow: clip;
+ }
+ .CurrencyAction{
+     height: 35px;
+ }
+ #CurrencyCost{
+     height: 35px;
+     font-size: 15px;
+     color: #ffffff;
+ }
 
-.currency_red {
-    background-image: url("file://{resources}/images/custom_game/currencies/red.png");
-}
-.currency_box_red {
-    background-color: rgb(138, 0, 0);
-}
+ .currency_red{
+     background-image: url("file://{images}/custom_game/currencies/red_png.png");
+ }
+ .currency_box_red{
+     background-color: rgb(138, 0, 0);
+ }
 
-.currency_box_red:hover {
-    background-color: rgb(168, 0, 0);
-}
+ .currency_box_red:hover{
+     background-color: rgb(168, 0, 0);
+ }
 
-.currency_green {
-    background-image: url("file://{resources}/images/custom_game/currencies/green.png");
-}
+ .currency_green{
+     background-image: url("file://{images}/custom_game/currencies/green_png.png");
+ }
 
-.currency_box_green {
-    background-color: rgb(16, 138, 0);
-}
-.currency_box_green:hover {
-    background-color: rgb(21, 182, 0);
-}
-.currency_blue {
-    background-image: url("file://{resources}/images/custom_game/currencies/blue.png");
-}
+ .currency_box_green{
+     background-color: rgb(16, 138, 0);
+ }
+ .currency_box_green:hover{
+     background-color: rgb(21, 182, 0);
+ }
+ .currency_blue{
+     background-image: url("file://{images}/custom_game/currencies/blue_png.png");
+ }
 
-.currency_box_blue {
-    background-color: rgb(0, 48, 138);
-}
-.currency_box_blue:hover {
-    background-color: rgb(0, 60, 172);
-}
-.currency_purple {
-    background-image: url("file://{resources}/images/custom_game/currencies/purple.png");
-}
+ .currency_box_blue{
+     background-color: rgb(0, 48, 138);
+ }
+ .currency_box_blue:hover{
+     background-color: rgb(0, 60, 172);
+ }
+ .currency_purple{
+     background-image: url("file://{images}/custom_game/currencies/purple_png.png");
+ }
 
-.currency_box_purple {
-    background-color: rgb(84, 0, 87);
-}
-.currency_box_purple:hover {
-    background-color: rgb(123, 0, 128);
-}
-.share_0 {
-	box-shadow: inset #fdfdfd 0px 0px 0.4px 0.4px;
-}
-.share_1 {
-	box-shadow: inset #3a78ff 0px 0px 0.4px 0.4px;
-}
-.share_2 {
-	box-shadow: inset #ff7c7c 0px 0px 0.4px 0.4px;
-}
+ .currency_box_purple{
+     background-color: rgb(84, 0, 87);
+ }
+ .currency_box_purple:hover{
+     background-color: rgb(123, 0, 128);
+ }
+ .share_0{
+  box-shadow: inset #fdfdfd 0px 0px 0.4px 0.4px;
+ }
+ .share_1{
+  box-shadow: inset #3a78ff 0px 0px 0.4px 0.4px;
+ }
+ .share_2{
+  box-shadow: inset #ff7c7c 0px 0px 0.4px 0.4px;
+ }
 
-.CurrencyActionBox {
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #7669c7 ), to( #6b4ccf ) );
-	flow-children: down;
+ .CurrencyActionBox{
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #7669c7 ), to( #6b4ccf ) );
+  flow-children: down;
+ }
 
-}
-.CurrencyActionBox:focus {
-	box-shadow: inset #ff7c7c 0px 0px 0.4px 0.4px;
-}
-.CurrencyAction {
-	flow-children: right;
-    margin: 0px;
-    padding: 5px 5px 0px 5px;
-}
-.CurrencyAction:hover {
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #564d8d ), to( #7353dd ) );
-}
-#CurrencyCost {
-    font-size: 15px;
-    color: white;
+ .CurrencyActionBox:focus{
+  box-shadow: inset #ff7c7c 0px 0px 0.4px 0.4px;
+ }
+ .CurrencyAction{
+  flow-children: right;
+     margin: 0px;
+     padding: 5px 5px 0px 5px;
+ }
+ .CurrencyAction:hover{
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #564d8d ), to( #7353dd ) );
+ }
+ #CurrencyCost{
+     font-size: 15px;
+     color: white;
+ }
 
-}
-#CurrencyEarn {
-    font-size: 15px;
-    color: white;
+ #CurrencyEarn{
+     font-size: 15px;
+     color: white;
+ }
 
-}
-#CurrencyGold {
-    height: 20px;
-    width: 20px;
-}
-.gold_cost {
-    font-size: 15px;
-    color: rgb(255, 251, 0);
+ #CurrencyGold{
+     height: 20px;
+     width: 20px;
+ }
+ .gold_cost{
+     font-size: 15px;
+     color: rgb(255, 251, 0);
+ }
 
-}
 
-#CurrencyExplain {
-    font-size: 15px;
-    color: white;
+ #CurrencyExplain{
+     font-size: 15px;
+     color: white;
+ }
 
-}
 
-#CurrencyLabel {
-    height: 20px;
-    font-size: 15px;
-    color: white;
-}
+ #CurrencyLabel{
+     height: 20px;
+     font-size: 15px;
+     color: white;
+ }
 
-.flipped {
-    horizontal-align: left;
-}
-.map_right_window_root {
-	flow-children: right;
-    horizontal-align: right;
-}
-.map_left_window_root {
-	flow-children: left;
-    horizontal-align: left;
+ .flipped{
+     horizontal-align: left;
+ }
+ .map_right_window_root{
+  flow-children: right;
+     horizontal-align: right;
+ }
+ .map_left_window_root{
+  flow-children: left;
+     horizontal-align: left;
 }

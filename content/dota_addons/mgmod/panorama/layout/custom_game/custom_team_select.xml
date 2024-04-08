@@ -1,0 +1,49 @@
+<!-- xml reconstructed by Source 2 Viewer 5.0.0.0 - https://valveresourceformat.github.io -->
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/custom_team_select.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/custom_team_select.js" />
+	</scripts>
+	<snippets>
+		<snippet name="TeamTray">
+			<Panel class="TeamTray">
+                <Panel class="TeamTrayHeader">
+                    <Label id="TeamName" text="Radiant"/>
+					<TextEntry id="TeamCountInput" text="0" />
+                </Panel>
+                <Panel id="TeamTrayContent">
+                </Panel>
+            </Panel>
+		</snippet>
+		<snippet name="PlayerSlot">
+			<Panel class="PlayerSlot">
+                <DOTAAvatarImage id="PlayerAvatar" steamid="" />
+                <Label id="PlayerName" text="" />
+            </Panel>
+		</snippet>
+    </snippets>
+	<Panel class="CustomTeamSelect">
+        <Panel id="ReadyBox">
+			<Panel id="ReadyButtonID" class="ReadyTimerClass" >
+				<Panel class="Contents">
+					<Panel class="CustomIcon">
+						<Label id="ReadyButtonTimer" text="60"/>
+					</Panel>
+				</Panel>
+			</Panel>
+			<Button id="AutoAssignButton" class="ReadyButtonClass" onactivate="OnAutoAssignPressed()">
+				<Image src="s2r://panorama/images/control_icons/shuffle_psd.vtex" />
+			</Button>
+			<Button id="ReadyButtonID2" class="ReadyButtonClass" onactivate="ToggleTimer()">
+				<Panel class="Contents">
+					<Label id="ReadyButtonLabel" text="#ReadyButton"/>
+				</Panel>
+			</Button>
+	    </Panel>
+        <Panel id="TeamBox">
+	    </Panel>
+	</Panel>
+</root>

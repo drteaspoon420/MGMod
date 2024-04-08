@@ -1,0 +1,10 @@
+"Plugins"
+{
+    "universal_upgrades" {
+        "MainClass" "UniversalUpgradesPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "PreGameStuff" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+    }
+}

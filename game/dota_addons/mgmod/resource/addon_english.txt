@@ -4,9 +4,29 @@
 	"Tokens"
 	{		
 		"addon_game_name"			"MG Mod"
+
+		"DOTA_TEAM_CUSTOM_1"												"The Chaos"
+		"DOTA_TEAM_CUSTOM_2"												"The Order"
+		"DOTA_TEAM_CUSTOM_3"												"The Bold"
+		"DOTA_TEAM_CUSTOM_4"												"The Cunning"
+		"DOTA_TEAM_CUSTOM_5"												"The Vigilant"
+		"DOTA_TEAM_CUSTOM_6"												"The Nurgle"
+		"DOTA_TEAM_CUSTOM_7"												"The Burgle"
+		"DOTA_TEAM_CUSTOM_8"												"The Funk"
+		"DOTA_Custom1"												"The Chaos"
+		"DOTA_Custom2"												"The Order"
+		"DOTA_Custom3"												"The Bold"
+		"DOTA_Custom4"												"The Cunning"
+		"DOTA_Custom5"												"The Vigilant"
+		"DOTA_Custom6"												"The Nurgle"
+		"DOTA_Custom7"												"The Burgle"
+		"DOTA_Custom8"												"The Funk"
+		"Spectator"												"Spectators"
+
 		"DOTA_Tooltip_Ability_special_bonus_generic_talent"		"No Talent"
 		"DOTA_Tooltip_Ability_special_bonus_generic_talent_Description"		"You are pretty untalented."
 
+		"ReadyButton" "Start Game"
 		"PluginListUnlockButtonText" "Vote to unlock options"
 		//Dota Plugin
 		"Plugin_dota_settings" "Dota"
@@ -57,6 +77,15 @@
 		"Plugin_bots_plugin_Option_pre_random" "Bots Pick Early"
 		"Plugin_bots_plugin_Option_pre_random_Description" "This should prevent from bots just failing if you don't pick fast enough."
 
+
+		"Plugin_freeforall" "10 Team Spawns"
+		"Plugin_freeforall_Option_distance" "Distance"
+		"Plugin_freeforall_Option_placement" "Placement"
+        "Plugin_freeforall_Option_placement_Drop_ordered_ring" "Orderly Ring"
+        "Plugin_freeforall_Option_placement_Drop_offset_ring" "Offset Ring"
+        "Plugin_freeforall_Option_placement_Drop_within_circle" "Rng Circle"
+        "Plugin_freeforall_Option_placement_Drop_within_box" "Rng In Box"
+
 		//Ability Sandbox
 		"Plugin_hero_builder" "Ability Sandbox"
 		"Plugin_hero_builder_Option_limited_mode" "Limited Mode"
@@ -102,6 +131,12 @@
 		
 		"Plugin_modifier_spawner_Option_host_only" "Host Only"
 		"Plugin_modifier_spawner_Option_host_bans" "Host Bans"
+
+		//GIVE ABILITY
+		"Plugin_give_all_ability" "Bonus Ability"
+		"Plugin_give_all_ability_Option_extra_ability_heroes" "Heroes"
+		"Plugin_give_all_ability_Option_extra_ability_towers" "Towers"
+		"Plugin_give_all_ability_Option_extra_ability_creeps" "Creeps"
 
 		//Soul Collector
 		"Plugin_souls_plugin" "Soul Collector"
@@ -434,6 +469,8 @@
 		"Plugin_boosted_Option_upgrade_normal_items" "Allow Normal Item Upgrades"
 		"Plugin_boosted_Option_upgrade_neutral_items" "Allow Neutral Item Upgrades"
 
+		"Boosted_queue" "Numbers of upgrades in queue."
+
 		//Time scaling
 		"Plugin_time_scaling" "Hero Auto Growth"
 		"Plugin_time_scaling_Option_interval" "Interval"
@@ -449,6 +486,10 @@
 		"Plugin_time_scaling_Option_attack_damage" "Attack Damage"
 
 
+		//Level Stuff
+		"Plugin_level_timings" "Level Timing"
+		"Plugin_level_timings_Option_level" "Level"
+		"Plugin_level_timings_Option_ability_points" "Ability Points"
 		//LoD
 		"Plugin_legends_of_dota" "Legends Of Dota (Test)"
 		"Plugin_legends_of_dota_Option_extra_abilities" "12 Abilities"
@@ -473,7 +514,91 @@
 		"hero_rework_ready" "Ready!"
 		"hero_rework_talent_toggle" "Talent View"
 
-
+		//
+		"PresetsShowButtonText" "Quick Select"
+		"mutator_10x_exp" "10x EXP"
+		"mutator_10x_gold" "10x Gold"
+		"mutator_100_clicks" "100 Clicks"
+		"mutator_attacks_cast_spells" "ACS"
+		"mutator_barrels_of_fun" "Doom Barrel"
+		"mutator_bloodbath" "Bloodbath"
+		"mutator_boosted" "Boosted"
+		"mutator_combo" "Combo"
+		"mutator_damage_cast_spells" "DCS"
+		"mutator_death_stats" "Death Stats"
+		"mutator_delete_creep_spawning" "No Creep Spawns"
+		"mutator_delete_fountain" "No Fountain"
+		"mutator_delete_shops" "No Shops"
+		"mutator_delete_towers" "No Towers"
+		"mutator_demoralized" "Demoralized"
+		"mutator_eternal_spirits" "Eternal Spirit"
+		"mutator_flashlight" "Flashlight"
+		"mutator_ghost_of_heroes" "Hero Ghosts"
+		"mutator_gold_shield" "Gold Shield"
+		"mutator_golden_mana" "Gold Mana"
+		"mutator_health_cap" "Health Cap"
+		"mutator_infinite_gold" "Infinite Gold"
+		"mutator_sudden_end" "Sudden Death"
+		"mutator_keep_moving" "Keep Moving"
+		"mutator_nurgle" "Nurgle"
+		"mutator_powercreep" "Powercreep"
+		"mutator_scary_alone" "Scary Alone"
+		"mutator_schizophrenia" "Schizophrenia"
+		"mutator_stonks" "Stonks"
+		"mutator_symbiosis" "5Head"
+		"mutator_three_shot" "Three Shot"
+		"mutator_time_to_bounce" "Bouncy"
+		"mutator_tower_huggers" "Tower Hugging"
+		"mutator_unique_couriers" "Unique Couriers"
+		"mutator_unseen_sanic" "Super Slarks"
+		"mutator_zombies" "Zombies"
+		"mutator_time_scale_attributes" "Time Scaled"
+		"mutator_clumsy_bonk" "Clumsy Bonk"
+		"mutator_death_item_loss" "Dead Drops"
+		"mutator_dumb_bonk" "Dumb Bonk"
+		"mutator_underworld_strength" "Underworld Strength"
+		
+		"mutator_10x_exp_Description" "Gain 10 times more Experience."
+		"mutator_10x_gold_Description" "Gain 10 times more Gold."
+		"mutator_100_clicks_Description" "Every 100 'commands' from player, their hero dies."
+		"mutator_attacks_cast_spells_Description" "Attacks Cast Spells."
+		"mutator_barrels_of_fun_Description" "Explosive Barrels spawn randomly around the map."
+		"mutator_bloodbath_Description" "Dealing 250 damage increases bunch of your stats."
+		"mutator_boosted_Description" "Earn currency with various actions and improve your abilities."
+		"mutator_combo_Description" "Every instance of damage increases your outgoing damage for short duration. Refreshes on every instance."
+		"mutator_damage_cast_spells_Description" "Damage Casts Spells."
+		"mutator_death_stats_Description" "Killing hero grants you some of their attributes. 20% of primary, 5% of secondary. Universals grant 10% of each."
+		"mutator_delete_creep_spawning_Description" "Lane creeps stop spawning."
+		"mutator_delete_fountain_Description" "Teams don't have fountains."
+		"mutator_delete_shops_Description" "Shop cannot be accessed."
+		"mutator_delete_towers_Description" "Towers are destroyed from the start."
+		"mutator_demoralized_Description" "Nearby allied deaths cause everyone to flee in fear."
+		"mutator_eternal_spirits_Description" "Any unit dying gives 10% of its health, mana and attack damage to nearest living unit."
+		"mutator_flashlight_Description" "All units and buildings lose their normal vision and heroes are granted small cone of vision."
+		"mutator_ghost_of_heroes_Description" "Killing a hero grants you illusion of them under your control."
+		"mutator_gold_shield_Description" "Heroes have shield equal to their current gold. Any damage to this shield reduces gold equal amount."
+		"mutator_golden_mana_Description" "You spend gold instead of mana to cast spells. If you are out of mana you deal damage to yourself equal to missing amount."
+		"mutator_health_cap_Description" "Heroes can only have maximum of 500 health"
+		"mutator_infinite_gold_Description" "Heroes gain maximum gold every 10 seconds."
+		"mutator_sudden_end_Description" "Game ends as soon as one hero dies."
+		"mutator_keep_moving_Description" "Every 5s a warning zone is spawned at every hero's location. After another 5s explosion occurs."
+		"mutator_nurgle_Description" "Nurgle, The God of Chaos, has chosen to interviene. Every time game asks for key value of an ability or an item, it is randomized between 50% or 300% of its original value. NOTE: Server and Client might have different values. Don't trust what your UI is telling you."
+		"mutator_powercreep_Description" "When any unit kills another, killer gains 10% of the victims health, mana and attack damage."
+		"mutator_scary_alone_Description" "If a hero is not within 600 units of an ally, they get afraid and run back to their base."
+		"mutator_schizophrenia_Description" "You have become mad. What is real? what is not? who knows."
+		"mutator_stonks_Description" "Introducing Stockmarket to Dota 2"
+		"mutator_symbiosis_Description" "Heroes become one multi headed hero. (Starts at 0:00)"
+		"mutator_three_shot_Description" "Every instance of a damage deals 40% of max health."
+		"mutator_time_to_bounce_Description" "Move orders cause you to jump."
+		"mutator_tower_huggers_Description" "Towers regenerate mana, without towers your mana regen is reduced to almost nothing. (may even cause you to lose mana, dota 2 is weird.)"
+		"mutator_unique_couriers_Description" "Couriers are granted random abilities based on their cosmetic."
+		"mutator_unseen_sanic_Description" "Heroes gain extreme speeds when not seen by enemy team."
+		"mutator_zombies_Description" "Zombies invade dota 2."
+		"mutator_time_scale_attributes_Description" "You are granted +10 to all stats every 60s."
+		"mutator_clumsy_bonk_Description" "Attacks from all units reduce hero Agility."
+		"mutator_death_item_loss_Description" "Dying causes you to lose random item in your inventory. Any hero can pickup and take ownership of these items."
+		"mutator_dumb_bonk_Description" "Attacks from all units reduce hero Inteligence."
+		"mutator_underworld_strength_Description" "Staying dead increases your Strength."
 
 		//Tremulous
 		"Plugin_tremulous"			"Tremulous"
@@ -722,9 +847,59 @@
 
 
 
+		//items_x
+		"Plugin_items_x" "Items * X"
+		"Plugin_items_x_Option_multiplier" "Multiplier"
+		"Plugin_items_x_Option_mod_duration" "Duration Multiplier"
+		"Plugin_items_x_Option_mod_chance" "Chance Multiplier"
+		"Plugin_items_x_Option_mod_radius" "Radius Multiplier"
+
+		//items_x
+		"Plugin_xmas_2023" "Xmas 2023"
+		"Plugin_xmas_2023_Option_day1" "Epic Inventory"
+		"Plugin_xmas_2023_Option_day1_Description" "Forcefully equips all items in backbag and stash every 3s. Allowing you to use passive items in those slots."
+		"Plugin_xmas_2023_Option_day2" "Stable Nurgle"
+		"Plugin_xmas_2023_Option_day2_Description" "All KV is personally and permanently randomed with between 0.1x and 10x multipliers.<br/>NOTE: May not work with other KV related plugins/options."
+		"Plugin_xmas_2023_Option_day3" "Item Upgrades"
+		"Plugin_xmas_2023_Option_day3_Description" "When you have six same items in all your inventory slots, delete 5 of them and multiply all the KV of it and other items for your hero by 3. Every recurrance of this increases the multiplier by 3.<br/>NOTE: May not work with other KV related plugins/options."
+		"Plugin_xmas_2023_Option_day4" "All Universal"
+		"Plugin_xmas_2023_Option_day4_Description" "All heroes become universal."
+		"Plugin_xmas_2023_Option_day5" "Glyph of Runestorm"
+		"Plugin_xmas_2023_Option_day5_Description" "All units in your team are granted random power rune when you use glyph."
+		"Plugin_xmas_2023_Option_day6" "0 == 10"
+		"Plugin_xmas_2023_Option_day6_Description" "All of special KV with value 0 is set to 10. This may enable talent or other hidden ability features. Did you know dagon was at some point intended to deal damage based on your int? Well now it does that with multiplier of 10!<br/>NOTE: May not work with other KV related plugins/options.<br/>NOTE2: This is for nerds."
+
+		"Plugin_xmas_2023_Option_day7" "Not Done"
+		"Plugin_xmas_2023_Option_day7_Description" "Something something?"
+		"Plugin_xmas_2023_Option_day8" "Not Done"
+		"Plugin_xmas_2023_Option_day8_Description" "Something something?"
+		"Plugin_xmas_2023_Option_day9" "Not Done"
+		"Plugin_xmas_2023_Option_day9_Description" "Something something?"
+		"Plugin_xmas_2023_Option_day10" "Not Done"
+		"Plugin_xmas_2023_Option_day10_Description" "Something something?"
+		"Plugin_xmas_2023_Option_day11" "Not Done"
+		"Plugin_xmas_2023_Option_day11_Description" "Something something?"
+		"Plugin_xmas_2023_Option_day12" "Not Done"
+		"Plugin_xmas_2023_Option_day12_Description" "Something something?"
+		"Plugin_xmas_2023_Option_day13" "Not Done"
+		"Plugin_xmas_2023_Option_day13_Description" "Something something?"
+		"Plugin_xmas_2023_Option_day14" "Not Done"
+		"Plugin_xmas_2023_Option_day14_Description" "Something something?"
+		"Plugin_xmas_2023_Option_day15" "Not Done"
+		"Plugin_xmas_2023_Option_day15_Description" "Something something?"
+
+		"Plugin_xmas_2023_Option_day16" "Assasination Contract"
+		"Plugin_xmas_2023_Option_day16_Description" "All players get random opponent as their assasination target. Killing blow grants special bonus and a new target."
+
 ///MUTATOR MODE STUFF
 
 		"PluginMutatorButtonText" "Surprise Us!"
 		
+
+		//corrupted items
+		"DOTA_Tooltip_Ability_item_cr_blink" "Corrupted Blink Dagger"
+		"DOTA_Tooltip_ability_item_cr_blink_Description"							"<h1>Active: Blink</h1> Teleport to a target point up to %blink_range% units away. <br><br>Blink Dagger cannot be used for <font color='#ff7d7d'>%blink_damage_cooldown%</font> seconds after taking damage from an enemy hero or Roshan.<br/><font color='#ff7d7d'>If you used Blink to teleport to a distance over the maximum range, you'll be teleported %blink_range_clamp% unit distance instead and cooldown will be 20x longer.</font>"
+		"DOTA_Tooltip_ability_item_cr_blink_Lore"									"The fabled dagger used by the fastest assassin ever to walk the lands. Now corrupted by use of altar of absolute epicness."
+
 	}
 }

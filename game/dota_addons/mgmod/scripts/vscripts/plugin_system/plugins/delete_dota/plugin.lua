@@ -136,7 +136,7 @@ function DeleteDotaPlugin:FindAndKillUnit(sName,iTeam)
             if sUnitName == sName then
                 if iTeam == -1 or (e.GetTeam and e:GetTeam() == iTeam) then
                     if e.Kill then
-                        e:Kill(nil,e)
+                        e:ForceKill(false)
                     end
                 end
             end

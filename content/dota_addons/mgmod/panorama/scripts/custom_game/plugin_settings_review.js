@@ -7,6 +7,7 @@ var current_open = "";
 
 function CreateSettingsBlock(sPluginName,sPluginSettings)
 {
+    if (sPluginName == "core_teams") return;
     plugin_settings[sPluginName] = sPluginSettings;
     let PluginLabel = $.CreatePanel('Button', PluginListInternalScroll, 'PluginLabel');
     PluginLabel.BLoadLayoutSnippet("PluginLabel");

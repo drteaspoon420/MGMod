@@ -217,7 +217,7 @@ function Toolbox:GetTeamLeader(iTeam)
             if player:GetTeamNumber() == iTeam then return p end
 		end
 	end
-	return -1
+	return nil
 end
 
 local buildings = {

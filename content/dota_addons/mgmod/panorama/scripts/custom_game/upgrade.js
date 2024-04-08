@@ -4,6 +4,8 @@ var sending = false;
 var bWaiting = true;
 var tCurrent;
 const this_plugin_id = "boosted";
+var QueuedUpgradesText = $.GetContextPanel().FindChildInLayoutFile("QueuedUpgradesText");
+var QueuedUpgrades = $.GetContextPanel().FindChildInLayoutFile("QueuedUpgrades");
 
 function UpgradeOptionNew(data) {
     var upgradePanel = $.CreatePanel('Panel', Upgrades, '');
@@ -141,17 +143,27 @@ function GetSpecial(ability,key) {
 function UpgradeOptionsNew(table,tableKey,data) {
     if (tableKey == Players.GetLocalPlayer() + "d") {
 		$.Schedule( 0.2, function() {
-            Upgrades.RemoveAndDeleteChildren();
-            if (typeof(data) == "object") {
-                if (Object.keys(data).length > 0) {
-                    bWaiting = false;
-                    tCurrent = data;
-                    for (let key in data) {
-                        UpgradeOptionNew(data[key]);
+            if (sending) {
+                UpgradeOptionsNew(table,tableKey,data);
+            } else {
+                Upgrades.RemoveAndDeleteChildren();
+                if (typeof(data) == "object") {
+                    
+                    if (Object.keys(data).length > 1) {
+                        bWaiting = false;
+                        tCurrent = data;
+                        for (let key in data) {
+                            if (key != "boosters") {
+                                UpgradeOptionNew(data[key]);
+                            } else {
+                                QueuedUpgradesText.text = data[key];
+                                
+                            }
+                        }
+                    } else {
+                        bWaiting = true;
+                        tCurrent = undefined;
                     }
-                } else {
-                    bWaiting = true;
-                    tCurrent = undefined;
                 }
             }
         } );
@@ -175,25 +187,23 @@ function pickoption(id,plus,panel) {
 
 }
 
-function KeepitReal() {
-    if (bWaiting) {
-        let kvstuff = CustomNetTables.GetTableValue( "player_booster", Players.GetLocalPlayer() + "d" );
-        UpgradeOptionsNew("player_booster",Players.GetLocalPlayer() + "d",kvstuff);
-    }
-}
 
 function boost_player_recheck() {
-    if (bWaiting) {
-        $.Msg("checking for upgrades");
-        GameEvents.SendCustomGameEventToServer( "boost_player_recheck", {} );
-    } else {
-        $.Msg("everything is fine",tCurrent);
-    }
     $.Schedule( 10, function() {
         boost_player_recheck();
     });
+    let children = Upgrades.Children();
+    if (!bWaiting) {
+        if (children < 1) {
+            ForceRecreate();
+        }
+    }
 }
 
+function ForceRecreate() {
+    let kvstuff = CustomNetTables.GetTableValue( "player_booster", Players.GetLocalPlayer() + "d" );
+    UpgradeOptionsNew("player_booster",Players.GetLocalPlayer() + "d",kvstuff);
+}
 
 (function init() {
     plugin_settings = CustomNetTables.GetTableValue( "plugin_settings", this_plugin_id );
@@ -204,7 +214,15 @@ function boost_player_recheck() {
         CustomNetTables.SubscribeNetTableListener("player_booster",UpgradeOptionsNew);
         let kvstuff = CustomNetTables.GetTableValue( "player_booster", Players.GetLocalPlayer() + "d" );
         UpgradeOptionsNew("player_booster",Players.GetLocalPlayer() + "d",kvstuff);
-        GameEvents.Subscribe( "boost_player_recheck", KeepitReal );
+        //GameEvents.Subscribe( "boost_player_recheck", KeepitReal );
         boost_player_recheck();
+
+        
+        QueuedUpgrades.SetPanelEvent( 'onmouseover', function () {
+            $.DispatchEvent("DOTAShowTextTooltip", QueuedUpgrades, $.Localize("#Boosted_queue"));
+        } ); 
+        QueuedUpgrades.SetPanelEvent( 'onmouseout', function () {
+            $.DispatchEvent("DOTAHideTextTooltip", QueuedUpgrades);
+        } );
     }
 })();

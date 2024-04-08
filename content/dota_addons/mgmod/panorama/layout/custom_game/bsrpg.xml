@@ -1,3 +1,4 @@
+<!-- xml reconstructed by Source 2 Viewer 5.0.0.0 - https://valveresourceformat.github.io -->
 <root>
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/bsrpg.js" />
@@ -10,77 +11,66 @@
 		<snippet name="ButtonBar_Bsrpg">
 			<Button class="ButtonBar_Bsrpg" />
 		</snippet>
-
 		<snippet name="AbilityLabel">
-            <Panel id="AbilityLabel" class="AbilityLabel">
-			<Label id="AbilityLabelText" text="unknown"/>
-            </Panel>
+			<Panel id="AbilityLabel" class="AbilityLabel">
+				<Label id="AbilityLabelText" text="unknown" />
+			</Panel>
 		</snippet>
 		<snippet name="AbilitySettings">
 			<Panel id="AbilitySettings" class="AbilitySettings">
-				<Panel id="AbilitySettingsInternalScroll">
-				</Panel>
+				<Panel id="AbilitySettingsInternalScroll" />
 			</Panel>
 		</snippet>
-
-
 		<snippet name="AbilitySpecial">
-            <Panel id="AbilitySpecial" class="AbilitySpecial">
+			<Panel id="AbilitySpecial" class="AbilitySpecial">
 				<TextEntry id="AbilitySpecialInput" text="1" />
-				<Label id="AbilitySpecialText" text="unknown"/>
-            </Panel>
+				<Label id="AbilitySpecialText" text="unknown" />
+			</Panel>
 		</snippet>
-
 		<snippet name="AbilitySpecialPoints">
-            <Panel id="AbilitySpecialPoints" class="AbilitySpecialPoints">
+			<Panel id="AbilitySpecialPoints" class="AbilitySpecialPoints">
 				<Panel class="BasicButtonBG">
 					<Panel class="BasicButtonBG_Minus">
-						<Button id="LevelupSpecial_Minus" class="BasicButton_Minus">
-						</Button>
+						<Button id="LevelupSpecial_Minus" class="BasicButton_Minus" />
 					</Panel>
 				</Panel>
 				<Panel class="AbilityValueContainer current_value">
 					<Label id="AbilitySpecialPointsValue" text="1" />
-					
 				</Panel>
 				<Panel class="BasicButtonBG">
 					<Panel class="BasicButtonBG_Plus">
-						<Button id="LevelupSpecial_Plus" class="BasicButton_Plus">
-						</Button>
+						<Button id="LevelupSpecial_Plus" class="BasicButton_Plus" />
 					</Panel>
 				</Panel>
 				<Panel class="AbilityValueContainer">
 					<Panel class="centerpls">
-						<Label id="AbilitySpecialPointsText" html="true" text="unknown"/>
+						<Label id="AbilitySpecialPointsText" html="true" text="unknown" />
 					</Panel>
 				</Panel>
-            </Panel>
+			</Panel>
 		</snippet>
-
 		<snippet name="AbilitySpecialAttributes">
-            <Panel id="AbilitySpecialAttributes" class="AbilitySpecialAttributes">
+			<Panel id="AbilitySpecialAttributes" class="AbilitySpecialAttributes">
 				<Panel class="AbilityValueContainer current_value">
 					<Label id="AbilitySpecialAttributesValue" text="1" />
 				</Panel>
 				<Panel class="AbilityValueContainer">
 					<Panel class="centerpls">
-						<Label id="AbilitySpecialAttributesText" html="true" text="unknown"/>
+						<Label id="AbilitySpecialAttributesText" html="true" text="unknown" />
 					</Panel>
 				</Panel>
-            </Panel>
+			</Panel>
 		</snippet>
-    </snippets>
+	</snippets>
 	<Panel class="WindowRoot">
 		<Panel id="WindowRoot" class="hidden">
 			<Panel id="AbilityList">
-				<Panel id="AbilityListInternalScroll">
-				</Panel>
+				<Panel id="AbilityListInternalScroll" />
 			</Panel>
-			<Panel id="BsrpgBox">
-			</Panel>
+			<Panel id="BsrpgBox" />
 			<Panel id="PlayerDetails" class="hidden">
-				<Label id="BsrpgPoints" text="0"/>
+				<Label id="BsrpgPoints" text="0" />
 			</Panel>
 		</Panel>
-    </Panel>
+	</Panel>
 </root>

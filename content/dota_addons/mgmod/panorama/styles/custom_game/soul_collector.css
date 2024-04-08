@@ -1,53 +1,47 @@
 
-.hidden
-{
-	visibility: collapse;
-}
-#ButtonBar_SoulCollector {
-	height: 32px;
-	width: 32px;
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
-	background-size: 100% 100%;
-    background-image: url("file://{resources}/images/custom_game/soul_collector_list.png");
-}
+ .hidden{
 
-#WindowRoot {
-	flow-children: right;
-}
-.SoulCollector {
-    margin-top: 42px;
-    horizontal-align: center;
-	flow-children: right;
-    z-index: -10;
-}
+  visibility: collapse;
+ }
+ #ButtonBar_SoulCollector{
+  height: 32px;
+  width: 32px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+     background-image: url("file://{images}/custom_game/soul_collector_list_png.png");
+ }
 
-.spacer {
-    width: 150px;
-}
+ #WindowRoot{
+  flow-children: right;
+ }
+ .SoulCollector{
+     margin-top: 42px;
+     horizontal-align: center;
+  flow-children: right;
+     z-index: -10;
+ }
 
-.sous_bg {
-	width: 123px;
-	height: 48px;
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
-	background-size: 100% 100%;
-    background-image: url("file://{resources}/images/custom_game/ui/button_m_01.png");
-}
-#RadiantSouls {
-}
-#RadiantSoulsCount {
+ .spacer{
+     width: 150px;
+ }
 
-}
-.souls_count {
-	font-size: 24px;
-	text-align: center;
-	horizontal-align: center;
-	vertical-align: center;
-}
-#DireSouls {
+ .sous_bg{
+  width: 123px;
+  height: 48px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+     background-image: url("file://{images}/custom_game/ui/button_m_01_png.png");
+ }
 
-}
-#DireSoulsCount {
 
+
+
+
+ .souls_count{
+  font-size: 24px;
+  text-align: center;
+  horizontal-align: center;
+  vertical-align: center;
 }

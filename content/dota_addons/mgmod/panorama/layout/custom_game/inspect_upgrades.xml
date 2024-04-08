@@ -1,4 +1,4 @@
-<!-- xml reconstructed by ValveResourceFormat: https://vrf.steamdb.info/ -->
+<!-- xml reconstructed by Source 2 Viewer 5.0.0.0 - https://valveresourceformat.github.io -->
 <root>
 	<styles>
 		<include src="file://{resources}/styles/custom_game/inspect_upgrades.css" />
@@ -29,15 +29,22 @@
 			<Panel class="HeroMain">
 				<Panel class="HeroMainOwner">
 					<DOTAHeroImage id="HeroMainImage" />
-					<DOTAAvatarImage  id="HeroMainAvatar"/>
+					<DOTAAvatarImage id="HeroMainAvatar" />
 				</Panel>
 				<Panel id="HeroMainUpgrades" />
 			</Panel>
 		</snippet>
 	</snippets>
 	<Panel class="InspectUpgradesScreen hidden" hittest="false">
-		<Panel id="InspectUpgradesRadiant" />
-
-		<Panel id="InspectUpgradesDire" />
+		<Panel id="InspectUpgradesRadiant" class="InspectUpgrades BGColor_2" />
+		<Panel id="InspectUpgradesDire" class="InspectUpgrades BGColor_3" />
+		<Panel id="InspectUpgradesCustom1" class="InspectUpgrades BGColor_6" />
+		<Panel id="InspectUpgradesCustom2" class="InspectUpgrades BGColor_7" />
+		<Panel id="InspectUpgradesCustom3" class="InspectUpgrades BGColor_8" />
+		<Panel id="InspectUpgradesCustom4" class="InspectUpgrades BGColor_9" />
+		<Panel id="InspectUpgradesCustom5" class="InspectUpgrades BGColor_10" />
+		<Panel id="InspectUpgradesCustom6" class="InspectUpgrades BGColor_11" />
+		<Panel id="InspectUpgradesCustom7" class="InspectUpgrades BGColor_12" />
+		<Panel id="InspectUpgradesCustom8" class="InspectUpgrades BGColor_13" />
 	</Panel>
 </root>

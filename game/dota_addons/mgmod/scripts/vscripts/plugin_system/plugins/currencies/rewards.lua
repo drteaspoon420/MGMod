@@ -50,22 +50,9 @@ function CurrenciesPlugin:TimedReward()
             end
         end
     elseif t.share == 1 then
-        local iRadiant = -1
-        local iDire = -1
-        for i=0, DOTA_MAX_TEAM_PLAYERS do
-            if PlayerResource:IsValidPlayer(i) then
-                local hPlayer = PlayerResource:GetPlayer(i)
-                if hPlayer ~= nil then
-                    local iTeam = PlayerResource:GetTeam(i)
-                    if iTeam == DOTA_TEAM_BADGUYS and iDire == -1 then
-                        iDire = i
-                        CurrenciesPlugin:AlterCurrency(CurrenciesPlugin.settings.timed_reward_currency,i,CurrenciesPlugin.settings.timed_reward_amount) 
-                    elseif iTeam == DOTA_TEAM_GOODGUYS and iRadiant == -1  then
-                        iRadiant = i
-                        CurrenciesPlugin:AlterCurrency(CurrenciesPlugin.settings.timed_reward_currency,i,CurrenciesPlugin.settings.timed_reward_amount) 
-                    end
-                end
-            end
+        for i=1,#CurrenciesPlugin.teams do
+            local iTeam = CurrenciesPlugin.teams[i]
+            CurrenciesPlugin:AlterCurrencyTeam(CurrenciesPlugin.settings.timed_reward_currency,iTeam,CurrenciesPlugin.settings.timed_reward_amount) 
         end
     elseif t.share == 2 then
         CurrenciesPlugin:AlterCurrency(CurrenciesPlugin.settings.timed_reward_currency,0,CurrenciesPlugin.settings.timed_reward_amount) 
@@ -77,23 +64,22 @@ function CurrenciesPlugin:KillRewards(tEvent)
 	local attackerUnit = tEvent.entindex_attacker and EntIndexToHScript(tEvent.entindex_attacker)
 	local killedUnit = tEvent.entindex_killed and EntIndexToHScript(tEvent.entindex_killed)
     if not (killedUnit and attackerUnit) then return end
+    if killedUnit:GetTeam() == attackerUnit:GetTeam() then return end
     if killedUnit.IsRealHero == nil then return end
     local iPlayer = attackerUnit:GetMainControllingPlayer()
     if CurrenciesPlugin.currency_data[CurrenciesPlugin.settings.tower_kill_reward_currency].share == 1 then
         if CurrenciesPlugin.settings.tower_kill_reward_amount > 0 and killedUnit:IsTower() then
-            local iLeader = Toolbox:GetTeamLeader(((killedUnit:GetTeam()+1)%2)+2)
+            local iLeader = attackerUnit:GetTeam()
             CurrenciesPlugin:AlterCurrency(CurrenciesPlugin.settings.tower_kill_reward_currency,iLeader,CurrenciesPlugin.settings.tower_kill_reward_amount)
-            CurrenciesPlugin:ShowEarnParticle(CurrenciesPlugin.settings.tower_kill_reward_amount,killedUnit,((killedUnit:GetTeam()+1)%2)+2,CurrenciesPlugin.settings.tower_kill_reward_currency)
+            CurrenciesPlugin:ShowEarnParticle(CurrenciesPlugin.settings.tower_kill_reward_amount,killedUnit,iLeader,CurrenciesPlugin.settings.tower_kill_reward_currency)
         end
     elseif (CurrenciesPlugin.currency_data[CurrenciesPlugin.settings.tower_kill_reward_currency].share == 2) then
         CurrenciesPlugin:AlterCurrency(CurrenciesPlugin.settings.tower_kill_reward_currency,0,CurrenciesPlugin.settings.tower_kill_reward_amount)
-        CurrenciesPlugin:ShowEarnParticle(CurrenciesPlugin.settings.tower_kill_reward_amount,killedUnit,DOTA_TEAM_GOODGUYS,CurrenciesPlugin.settings.tower_kill_reward_currency)
-        CurrenciesPlugin:ShowEarnParticle(CurrenciesPlugin.settings.tower_kill_reward_amount,killedUnit,DOTA_TEAM_BADGUYS,CurrenciesPlugin.settings.tower_kill_reward_currency)
+        CurrenciesPlugin:ShowEarnParticle(CurrenciesPlugin.settings.tower_kill_reward_amount,killedUnit,0,CurrenciesPlugin.settings.tower_kill_reward_currency)
     end
 
     if iPlayer < 0 then return end
 
-    if killedUnit:GetTeam() == attackerUnit:GetTeam() then return end
     if CurrenciesPlugin.currency_data[CurrenciesPlugin.settings.tower_kill_reward_currency].share == 0 then
         if CurrenciesPlugin.settings.tower_kill_reward_amount > 0 and killedUnit:IsTower() then
             CurrenciesPlugin:AlterCurrency(CurrenciesPlugin.settings.tower_kill_reward_currency,iPlayer,CurrenciesPlugin.settings.tower_kill_reward_amount)
@@ -111,10 +97,6 @@ function CurrenciesPlugin:KillRewards(tEvent)
     if CurrenciesPlugin.settings.observer_kill_reward_amount > 0 and killedUnit:GetUnitName() == "npc_dota_observer_wards" then
         CurrenciesPlugin:AlterCurrency(CurrenciesPlugin.settings.observer_kill_reward_currency,iPlayer,CurrenciesPlugin.settings.observer_kill_reward_amount)
         CurrenciesPlugin:ShowEarnParticle(CurrenciesPlugin.settings.observer_kill_reward_amount,killedUnit,attackerUnit:GetTeam(),CurrenciesPlugin.settings.observer_kill_reward_currency)
-    end
-    if CurrenciesPlugin.settings.tower_kill_reward_amount > 0 and killedUnit:IsTower() then
-        CurrenciesPlugin:AlterCurrency(CurrenciesPlugin.settings.tower_kill_reward_currency,iPlayer,CurrenciesPlugin.settings.tower_kill_reward_amount)
-        CurrenciesPlugin:ShowEarnParticle(CurrenciesPlugin.settings.tower_kill_reward_amount,killedUnit,attackerUnit:GetTeam(),CurrenciesPlugin.settings.tower_kill_reward_currency)
     end
     if CurrenciesPlugin.settings.roshan_kill_reward_amount > 0 and killedUnit:GetUnitName() == "npc_dota_roshan" then
         CurrenciesPlugin:AlterCurrency(CurrenciesPlugin.settings.roshan_kill_reward_currency,iPlayer,CurrenciesPlugin.settings.roshan_kill_reward_amount)

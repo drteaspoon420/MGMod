@@ -1,62 +1,62 @@
-.ItemSpawnerRoot {
-    horizontal-align: center;
-	margin-top: 64px;
+.ItemSpawnerRoot{
+     horizontal-align: center;
+  margin-top: 64px;
 }
 
-#WindowRoot {
-	flow-children: down;
-    max-width: 1361px;
-    max-height: 700px;
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #000000 ), to( #333333 ) );
-}
-#SearchBox {
-	flow-children: right;
-    width: 1361px;
-    height: 34px;
-    overflow: clip clip;
-}
-#SearchBoxInput {
-    width: 1361px;
-    height: 34px;
-}
+ #WindowRoot{
+  flow-children: down;
+     max-width: 1361px;
+     max-height: 700px;
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #000000 ), to( #333333 ) );
+ }
+ #SearchBox{
+  flow-children: right;
+     width: 1361px;
+     height: 34px;
+     overflow: clip clip;
+ }
+ #SearchBoxInput{
+     width: 1361px;
+     height: 34px;
+ }
 
-#ItemSpawnerRoot {
-	flow-children: down;
-    width: 100%;
-    overflow: clip scroll;
-}
+ #ItemSpawnerRoot{
+  flow-children: down;
+     width: 100%;
+     overflow: clip scroll;
+ }
 
-.hidden
-{
-	visibility: collapse;
-}
+ .hidden{
 
-#WindowPanel{
-	flow-children: right-wrap;
-    margin: 1px;
-}
-#Row{
-	flow-children: right;
-	height: 46px;
-}
-#ItemChoise{
-	height: 46px;
-	width: 64px;
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
-	background-size: 100% 100%;
-    background-image: url("file://{resources}/images/custom_game/no_ability_icon.png");
-}
-#ItemImage{
-	height: 46px;
-	width: 64px;
-}
+  visibility: collapse;
+ }
 
-#ButtonBar_ItemSpawner {
-	height: 32px;
-	width: 32px;
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
-	background-size: 100% 100%;
-    background-image: url("file://{resources}/images/custom_game/item_list.png");
+ #WindowPanel{
+  flow-children: right-wrap;
+     margin: 1px;
+ }
+ #Row{
+  flow-children: right;
+  height: 46px;
+ }
+ #ItemChoise{
+  height: 46px;
+  width: 64px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+     background-image: url("file://{images}/custom_game/no_ability_icon_png.png");
+ }
+ #ItemImage{
+  height: 46px;
+  width: 64px;
+ }
+
+ #ButtonBar_ItemSpawner{
+  height: 32px;
+  width: 32px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+     background-image: url("file://{images}/custom_game/item_list_png.png");
 }

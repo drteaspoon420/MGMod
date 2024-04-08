@@ -1,14 +1,16 @@
+<!-- xml reconstructed by Source 2 Viewer 5.0.0.0 - https://valveresourceformat.github.io -->
 <root>
 	<styles>
 		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
 		<include src="file://{resources}/styles/custom_game/custom_loading_screen.css" />
 	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/custom_loading_screen.js" />
+	</scripts>
 	<Panel class="LoadingRoot">
-		<Panel id="seq" >
-			<!-- <Image id="seq_bg" class="SeqBg" src="file://{images}/custom_game/loading_screen.png" /> -->
-			<Image id="seq_bg" class="SeqBg" src="file://{images}/custom_game/mgmod_logo.png" />
-			<!-- <Image id="seq_bg_2" class="SeqBgSecondary_trem" src="file://{images}/custom_game/tremulous_logo.png" /> -->
-			<Image id="seq_bg_2" class="SeqBgSecondary_boost" src="file://{images}/custom_game/boosted_logo.png" />
+		<Panel id="seq">
+			<Image id="seq_bg" class="SeqBg" src="file://{images}/custom_game/mgmod_logo_png.png" />
+			<Image id="seq_bg_boosted" class="SeqBgSecondary_boost hidden" src="file://{images}/custom_game/boosted_logo_png.png" />
 		</Panel>
 	</Panel>
 </root>

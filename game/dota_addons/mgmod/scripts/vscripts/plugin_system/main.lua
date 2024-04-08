@@ -53,7 +53,8 @@ function PluginSystem:Init()
     CustomGameEventManager:RegisterListener("settings_save_slot",function(i,tEvent) PluginSystem:settings_save_slot(tEvent) end)
     CustomGameEventManager:RegisterListener("setting_change",PluginSystem.setting_change)
     CustomGameEventManager:RegisterListener("settings_vote_unlock",function(i,tEvent) PluginSystem:settings_vote_unlock(tEvent) end)
-    CustomGameEventManager:RegisterListener("mutator_mode",PluginSystem.mutator_mode)
+    CustomGameEventManager:RegisterListener("setting_activate_mutator",PluginSystem.setting_activate_mutator)
+    CustomGameEventManager:RegisterListener("setting_team_rescale",PluginSystem.setting_team_rescale)
     
     GameRules:SetSafeToLeave(true)
     --GameRules:SetCustomGameAccountRecordSaveFunction( Dynamic_Wrap( PluginSystem, "SaveHostSettings_PartA" ), self )
@@ -62,14 +63,21 @@ function PluginSystem:Init()
     --GameRules:SetCustomGameSetupAutoLaunchDelay(420)
     GameRules:SetCustomGameSetupRemainingTime(-1)
     GameRules:SetCustomGameSetupTimeout(-1)
+    GameRules:SetCustomGameTeamMaxPlayers(1,10)
 
     --GameRules:SetStrategyTime(DotaSettingsPlugin.settings.strategy_time)
     --GameRules:SetShowcaseTime(DotaSettingsPlugin.settings.showcase_time)
     --GameRules:SetPreGameTime(DotaSettingsPlugin.settings.pregame_time)
 
-	local forced_file = LoadKeyValues('scripts/vscripts/plugin_system/forced.txt')
+	local forced_file = LoadKeyValues('scripts/vscripts/plugin_system/map_presets/' .. GetMapName() .. '.txt')
     if not (forced_file == nil or not next(forced_file)) then
         PluginSystem.forced = forced_file
+        print("Preset file found, " .. GetMapName())
+        if PluginSystem.forced.teams ~= nil then
+            for k,v in pairs(PluginSystem.forced.teams) do
+                GameRules:SetCustomGameTeamMaxPlayers(tonumber(k),tonumber(v))
+            end
+        end
     end
     if PluginSystem.forced.lock_level ~= nil then PluginSystem.locked = PluginSystem.forced.lock_level end
 	local presets_file = LoadKeyValues('scripts/vscripts/plugin_system/mutators/main.txt')
@@ -86,6 +94,7 @@ function PluginSystem:Init()
                 PluginSystem:ApplyPreset(PluginSystem.forced.preset)
             end ]]
             PluginSystem.forced.votes = {}
+            print("[PluginSystem] Forced mode table set")
             CustomNetTables:SetTableValue("forced_mode","initial",PluginSystem.forced)
         end
     end
@@ -106,6 +115,14 @@ function PluginSystem:Init()
         local state_regs = tSettings.StateRegistrations or {}
         local cmd_regs = tSettings.CmdRegistrations or {}
         local filter_regs = tSettings.FilterRegistrations or {}
+        if tSettings.ToolsModeOnly ~= nil and tSettings.ToolsModeOnly == 1 then
+            if not IsInToolsMode() then
+                goto continue_1
+                --did you know, this is the only way to 'skip' iteration of loop to the end of it.
+                --how dumb is this?! Like, in what scope is the 'continue' and 'goto'?
+                --Thats why for safety reasons I have _1 and _2. Who ever came up with this really must hate any code analyzers.
+            end
+        end
         PluginSystem.LobbySettings[sPlugin] = {}
         local settings
         if tSettings.Path then
@@ -128,6 +145,7 @@ function PluginSystem:Init()
             PluginSystem.LobbySettings[sPlugin].enabled.TYPE = "boolean"
             PluginSystem.LobbySettings[sPlugin].enabled.VALUE = 0
         end
+        PluginSystem.LobbySettings["core_teams"] = {}
         for state_function,state_string in pairs(state_regs) do
             PluginSystem:RegisterState(tStates[state_string],_G[main_class],state_function,sPlugin)
         end
@@ -137,13 +155,30 @@ function PluginSystem:Init()
         for filter_regs_string,filter_regs_function in pairs(filter_regs) do
             PluginSystem:RegisterFilter(filter_regs_string,_G[main_class],filter_regs_function,sPlugin)
         end
+        ::continue_1::
     end
     for sPlugin,tSettings in pairs(PluginSystem.PluginsFile) do
+        if tSettings.ToolsModeOnly ~= nil and tSettings.ToolsModeOnly == 1 then
+            --if not IsInToolsMode() then
+            if false then
+                goto continue_2
+            end
+        end
         local init_function = tSettings.InitFunction or nil
         if init_function ~= nil then
             local main_class = tSettings.MainClass
             _G[main_class][init_function]()
         end
+        ::continue_2::
+    end
+        
+    for i=1,#PluginSystem.teams do
+        local iTeam = PluginSystem.teams[i]
+        PluginSystem.LobbySettings["core_teams"][tostring(iTeam)] = {
+            TYPE = "number",
+            DEFAULT = GameRules:GetCustomGameTeamMaxPlayers(tonumber(iTeam)),
+            VALUE = GameRules:GetCustomGameTeamMaxPlayers(tonumber(iTeam))
+        }
     end
 
     PluginSystem:SetFilters()
@@ -335,16 +370,25 @@ end
 function PluginSystem:SetSetting(sPlugin,sSetting,sValue,bOverride)
     bOverride = bOverride or false
     if not PluginSystem:Sanitize(sPlugin,sSetting,sValue,bOverride) then return end
-    local tEvent = {
-        plugin = sPlugin,
-        setting = sSetting,
-        value = tostring(sValue),
-    }
-    for iPlayer = 0,DOTA_MAX_PLAYERS do
-        if PlayerResource:IsValidPlayer(iPlayer) then
-            local hPlayer = PlayerResource:GetPlayer(iPlayer)
-            if hPlayer ~= nil then
-                CustomGameEventManager:Send_ServerToPlayer(hPlayer,"setting_change",tEvent)
+    if sPlugin == "core_teams" then
+        local tEvent = {
+            PlayerID = Toolbox:GetHostId(),
+            team = tonumber(sSetting),
+            number = tonumber(sValue),
+        }
+        PluginSystem:setting_team_rescale(tEvent)
+    else
+        local tEvent = {
+            plugin = sPlugin,
+            setting = sSetting,
+            value = tostring(sValue),
+        }
+        for iPlayer = 0,DOTA_MAX_PLAYERS do
+            if PlayerResource:IsValidPlayer(iPlayer) then
+                local hPlayer = PlayerResource:GetPlayer(iPlayer)
+                if hPlayer ~= nil then
+                    CustomGameEventManager:Send_ServerToPlayer(hPlayer,"setting_change",tEvent)
+                end
             end
         end
     end
@@ -441,6 +485,9 @@ ListenToGameEvent("player_chat", function(keys)
         local bTeam = keys.teamonly
         local iPlayer = keys.userid
         PluginSystem:ProcRegisteredCommands(bTeam,iPlayer,sText)
+        if GameRules:IsCheatMode() then
+            PluginSystem:TestCommands(bTeam,iPlayer,sText)
+        end
     end
 end,nil)
 
@@ -765,12 +812,10 @@ function PluginSystem:TrackingProjectileFilter(event)
 end
 
 
-function PluginSystem:mutator_mode(tEvent)
+function PluginSystem:setting_activate_mutator(tEvent)
     local iPlayer = tEvent.PlayerID
 	if not Toolbox:IsHost(iPlayer) then return end
-
-    PluginSystem:MutatorModeSelect(tEvent.count or 1)
-    CustomGameEventManager:Send_ServerToAllClients("mutator_mode",{})
+    PluginSystem:ApplyPresetAdditive(tEvent.mutator)
 end
 
 function PluginSystem:MutatorModeSelect(iCount)
@@ -832,4 +877,69 @@ function PluginSystem:PickRng(t)
     local r = t[p]
     table.remove(t,p)
     return {r,t}
+end
+
+PluginSystem.teams = {
+    DOTA_TEAM_GOODGUYS,
+    DOTA_TEAM_BADGUYS,
+    DOTA_TEAM_CUSTOM_1,
+    DOTA_TEAM_CUSTOM_2,
+    DOTA_TEAM_CUSTOM_3,
+    DOTA_TEAM_CUSTOM_4,
+    DOTA_TEAM_CUSTOM_5,
+    DOTA_TEAM_CUSTOM_6,
+    DOTA_TEAM_CUSTOM_7,
+    DOTA_TEAM_CUSTOM_8
+}
+
+function PluginSystem:TestCommands(bTeam,iPlayer,sText)
+    local tCmdParts = Toolbox:split(sText," ")
+    local sMain = tCmdParts[1]
+    if sMain == "-teams" then
+        local iTeam = tonumber(tCmdParts[2])
+        local iNum = tonumber(tCmdParts[3])
+        tEvent = {
+            PlayerID = iPlayer,
+            team = iTeam,
+            number = iNum
+        }
+        PluginSystem:setting_team_rescale(tEvent)
+    end
+end
+
+function PluginSystem:setting_team_rescale(tEvent)
+    local iPlayer = tEvent.PlayerID
+	if not Toolbox:IsHost(iPlayer) then return end
+    local iTeam = tEvent.team
+    local iNum = tEvent.number
+    GameRules:SetCustomGameTeamMaxPlayers(iTeam,iNum)
+    PluginSystem.LobbySettings["core_teams"][tostring(iTeam)].VALUE = iNum
+    
+    local iCount = 0
+    for iPlayer = 0,DOTA_MAX_PLAYERS do
+        if PlayerResource:IsValidPlayer(iPlayer) then
+            local hPlayer = PlayerResource:GetPlayer(iPlayer)
+            if hPlayer ~= nil then
+                local iTeamPlayer = PlayerResource:GetCustomTeamAssignment(iPlayer)
+                if iTeamPlayer == iTeam then
+                    if iCount <= iNum then
+                        PluginSystem:MoveToValidTeam(iPlayer)
+                    end
+                    iCount = iCount + 1
+                end
+            end
+        end
+    end
+    CustomGameEventManager:Send_ServerToAllClients("setting_team_rescale",{team = tEvent.team, number = tEvent.number})
+end
+
+function PluginSystem:MoveToValidTeam(iPlayer)
+    for i=1,#PluginSystem.teams do
+        local iTeam = PluginSystem.teams[i]
+        if GameRules:GetCustomGameTeamMaxPlayers(iTeam) > PlayerResource:GetPlayerCountForTeam(iTeam) then
+            PlayerResource:SetCustomTeamAssignment(iPlayer,iTeam)
+            return
+        end
+    end
+    PlayerResource:SetCustomTeamAssignment(iPlayer,1)
 end

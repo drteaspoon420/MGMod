@@ -1,0 +1,19 @@
+"upgrades"
+{
+    "0"
+    {
+        "modifier" "modifier_uu_all_stats"
+        "special"
+        {
+            "bonus" "10 20 30 40 50"
+        }
+    }
+    "1"
+    {
+        "modifier" "modifier_uu_all_stats"
+        "special"
+        {
+            "bonus" "5"
+        }
+    }
+}

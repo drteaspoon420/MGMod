@@ -9,12 +9,13 @@ var talent_toggle = 0;
 var local_ability_cursor = 1;
 const MainChoiseArea = $.GetContextPanel().FindChildTraverse("MainChoiseArea");
 const ExtraChoiseArea = $.GetContextPanel().FindChildTraverse("ExtraChoiseArea");
+const FinalActions = $.GetContextPanel().FindChildTraverse("FinalActions");
 const pId = Players.GetLocalPlayer();
 
 function DeleteDotaDefaults() {
     FindDotaHudElement("HeroPickScreen").style.opacity = "0";
     FindDotaHudElement("PreMinimapContainer").style.opacity = "0";
-    FindDotaHudElement("AvailableItemsContainer").style.opacity = "0";
+    //FindDotaHudElement("AvailableItemsContainer").style.opacity = "0";
     FindDotaHudElement("FriendsAndFoes").style.opacity = "0";
     //FindDotaHudElement("HeroPickingTeamComposition").style.opacity = "0";
     FindDotaHudElement("BattlePassContainer").style.opacity = "0";
@@ -165,6 +166,7 @@ function ShowHeroSelection() {
     current_view = 0;
     MainChoiseArea.RemoveAndDeleteChildren();
     UpdateHeroSelection();
+    FinalActions.SetHasClass("hidden",true);
 }
 function UpdateHeroSelection() {
     PopulateHeroChoises();
@@ -172,6 +174,7 @@ function UpdateHeroSelection() {
 }
 function ShowAbilitySelection() {
     if (current_view == 2) return;
+    FinalActions.SetHasClass("hidden",false);
     current_view = 1;
     MainChoiseArea.RemoveAndDeleteChildren();
     UpdateAbilitySelection();
@@ -459,6 +462,7 @@ function Init() {
 function ShowReadyScreen() {
     current_view = 2;
     MainChoiseArea.RemoveAndDeleteChildren();
+    FinalActions.SetHasClass("hidden",false);
 }
 
 function UpdateReady() {
@@ -497,6 +501,7 @@ function HeroNetTableUpdate(table,tableKey,data) {
     if (plugin_settings == undefined || plugin_settings.enabled == undefined || plugin_settings.enabled.VALUE == undefined  || plugin_settings.enabled.VALUE == 0) {
         $.GetContextPanel().DeleteAsync(0);
     } else {
+        FinalActions.SetHasClass("hidden",true);
         Init();
     }
 })();

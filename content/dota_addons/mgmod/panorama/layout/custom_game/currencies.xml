@@ -1,3 +1,4 @@
+<!-- xml reconstructed by Source 2 Viewer 5.0.0.0 - https://valveresourceformat.github.io -->
 <root>
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/currencies.js" />
@@ -8,32 +9,29 @@
 	<snippets>
 		<snippet name="CurrencyBox">
 			<Button class="CurrencyBox">
-                <Label id="CurrencyAmmount" text="69"/>
-                <Panel id="CurrencyIcon"/>
-            </Button>
+				<Label id="CurrencyAmmount" text="69" />
+				<Panel id="CurrencyIcon" />
+			</Button>
 		</snippet>
 		<snippet name="CurrencyAction">
 			<Button class="CurrencyAction">
-                <Label id="CurrencyLabel" text="69"/>
-                <Label id="CurrencyCost" text="69"/>
-            </Button>
+				<Label id="CurrencyLabel" text="69" />
+				<Label id="CurrencyCost" text="69" />
+			</Button>
 		</snippet>
 		<snippet name="CurrencyEarnAction">
 			<Button class="CurrencyAction">
-				<Image id="CurrencyGold" src="file://{resources}/images/custom_game/currencies/gold.png" />
-                <Label id="CurrencyCost" class="gold_cost" text="69"/>
-                <Label id="CurrencyExplain" text="to"/>
-                <Label id="CurrencyEarn" text="69"/>
-            </Button>
+				<Image id="CurrencyGold" src="file://{images}/custom_game/currencies/gold_png.png" />
+				<Label id="CurrencyCost" class="gold_cost" text="69" />
+				<Label id="CurrencyExplain" text="to" />
+				<Label id="CurrencyEarn" text="69" />
+			</Button>
 		</snippet>
 		<snippet name="CurrencyActionBox">
-			<Panel class="CurrencyActionBox">
-			</Panel>
+			<Panel class="CurrencyActionBox" />
 		</snippet>
-    </snippets>
-
+	</snippets>
 	<Panel class="CurrencyRoot">
-	<Panel id="WindowRoot">
-    </Panel>
-    </Panel>
+		<Panel id="WindowRoot" />
+	</Panel>
 </root>

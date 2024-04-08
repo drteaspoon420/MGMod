@@ -206,6 +206,12 @@
 		"count" "short"
 	}
 
+	"setting_activate_mutator"
+	{
+		"mutator" "string"
+	}
+	
+
 	"ability_pick"
 	{
 		"name" "string"
@@ -224,5 +230,10 @@
 	"building_pick"
 	{
 		"name" "string"
+	}
+	"setting_team_rescale"
+	{
+		"team" "short"
+		"number" "short"
 	}
 }

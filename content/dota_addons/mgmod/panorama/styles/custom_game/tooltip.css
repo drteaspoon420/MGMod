@@ -1,111 +1,120 @@
 
- .hidden{
+  .hidden{
+   visibility: collapse;
+      width: 0px;
+      height: 0px;
+  }
+
+  .AbilityExtraTooltip{
+      flow-children: down;
+      margin: 6px;
+  }
+
+  .InspectUpgradesScreen{
+   horizontal-align: center;
+      margin-top: 50px;
+   vertical-align: top;
+   flow-children: right;
+  }
+
+  .AbilityCategory{
+   flow-children: down;
+   background-color: gradient( linear, 0% 0%, 0% 100%, from( #292929cc ), to( #74747427 ) );
+      width: 100%;
+      border-radius: 10px;
+  }
+
+  #InspectUpgrades{
+   flow-children: down;
+      overflow: squish scroll;
+  }
+  #InspectUpgradesRadiant{
+   flow-children: down;
+      overflow: squish scroll;
+   background-color: gradient( linear, 0% 0%, 0% 100%, from( #24381ecc ), to( #194117cc ) );
+      height: 700px;
+      width: 450px;
+      margin: 4px;
+      border-radius: 10px;
+  }
+  #InspectUpgradesDire{
+   flow-children: down;
+      overflow: squish scroll;
+   background-color: gradient( linear, 0% 0%, 0% 100%, from( #351717cc ), to( #411313cc ) );
+      height: 700px;
+      width: 450px;
+      margin: 4px;
+      border-radius: 10px;
+  }
+  #HeroMainUpgrades{
+   flow-children: right;
+  }
+  .AbilityMain{
+   flow-children: down;
+      margin-left: 2px;
+  }
+  #AbilityMainUpgrades{
+   flow-children: down;
+  }
+  .HeroMain{
+   flow-children: right;
+  }
+  .AbilityChange{
+   flow-children: right;
+   overflow: noclip;
+   margin-bottom: 3px;
+   flow-children: right;
+   background-color: gradient( linear, 0% 0%, 0% 100%, from( #868686cc ), to( #575757cc ) );
+   vertical-align: center;
+      height: 20px;
+  }
+  #HeroMainImage{
+      width: 40px;
+      height: 60px;
+   border-radius: 10px;
+  }
+  #AbilityMainImage{
+      width: 40px;
+      height: 40px;
+      margin-bottom: -12px;
+      margin-left: 4px;
+      z-index: 3;
+  }
+  #AbilityChangesLabelKey{
+      margin-left: 5px;
+      font-weight: normal;
+      letter-spacing: 2px;
+      margin-right: 4px;
+      color: rgb(255, 255, 255);
+      font-size: 13px;
+      text-shadow: 2px 2px 1px rgb(0, 0, 0);
+      vertical-align: center;
+      text-align: center;
+  }
+  #AbilityChangesLabelValue{
+      margin-left: 5px;
+      font-weight: normal;
+      letter-spacing: 2px;
+      margin-right: 4px;
+      color: rgb(255, 255, 255);
+      font-size: 13px;
+      text-shadow: 2px 2px 1px rgb(0, 0, 0);
+      vertical-align: center;
+      text-align: center;
+      text-transform: uppercase;
+  }
+
+  .UpgradeInspectButton{
+   background-image: url("file://{images}/custom_game/upgrade_list_png.png");
+      background-size: 26px;
+}
+.extra_only {
   visibility: collapse;
-     width: 0px;
-     height: 0px;
- }
+}
 
- .AbilityExtraTooltip{
-     flow-children: down;
-     margin-left: 2px;
- }
-
- .InspectUpgradesScreen{
-  horizontal-align: center;
-     margin-top: 50px;
-  vertical-align: top;
-  flow-children: right;
- }
-
- .AbilityCategory{
-  flow-children: down;
-  background-color: gradient( linear, 0% 0%, 0% 100%, from( #292929cc ), to( #74747427 ) );
-     width: 100%;
-     border-radius: 10px;
- }
-
- #InspectUpgrades{
-  flow-children: down;
-     overflow: squish scroll;
- }
- #InspectUpgradesRadiant{
-  flow-children: down;
-     overflow: squish scroll;
-  background-color: gradient( linear, 0% 0%, 0% 100%, from( #24381ecc ), to( #194117cc ) );
-     height: 700px;
-     width: 450px;
-     margin: 4px;
-     border-radius: 10px;
- }
- #InspectUpgradesDire{
-  flow-children: down;
-     overflow: squish scroll;
-  background-color: gradient( linear, 0% 0%, 0% 100%, from( #351717cc ), to( #411313cc ) );
-     height: 700px;
-     width: 450px;
-     margin: 4px;
-     border-radius: 10px;
- }
- #HeroMainUpgrades{
-  flow-children: right;
- }
- .AbilityMain{
-  flow-children: down;
-     margin-left: 2px;
- }
- #AbilityMainUpgrades{
-  flow-children: down;
- }
- .HeroMain{
-  flow-children: right;
- }
- .AbilityChange{
-  flow-children: right;
-  overflow: noclip;
-  margin-bottom: 3px;
-  flow-children: right;
-  background-color: gradient( linear, 0% 0%, 0% 100%, from( #868686cc ), to( #575757cc ) );
-  vertical-align: center;
-     height: 20px;
- }
- #HeroMainImage{
-     width: 40px;
-     height: 60px;
-  border-radius: 10px;
- }
- #AbilityMainImage{
-     width: 40px;
-     height: 40px;
-     margin-bottom: -12px;
-     margin-left: 4px;
-     z-index: 3;
- }
- #AbilityChangesLabelKey{
-     margin-left: 5px;
-     font-weight: normal;
-     letter-spacing: 2px;
-     margin-right: 4px;
-     color: rgb(255, 255, 255);
-     font-size: 15px;
-     text-shadow: 2px 2px 1px rgb(0, 0, 0);
-     vertical-align: center;
-     text-align: center;
-     text-transform: uppercase;
- }
- #AbilityChangesLabelValue{
-     margin-left: 5px;
-     font-weight: normal;
-     letter-spacing: 2px;
-     margin-right: 4px;
-     color: rgb(255, 255, 255);
-     font-size: 15px;
-     text-shadow: 2px 2px 1px rgb(0, 0, 0);
-     vertical-align: center;
-     text-align: center;
-     text-transform: uppercase;
- }
-
- .UpgradeInspectButton{
-  background-image: url("file://{resources}/images/custom_game/upgrade_list.png");
-     background-size: 26px;
+.ShowExtraDescription .extra_only:not(.Hidden) {
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #291818cc ), to( #693d3d27 ) );
+    color: rgb(141, 141, 141);
+    font-size: 13px;
+    visibility: visible;
 }

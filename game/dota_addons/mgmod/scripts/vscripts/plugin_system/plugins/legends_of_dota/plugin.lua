@@ -14,7 +14,7 @@ LegendsOfDotaPlugin.player_build = {}
 LegendsOfDotaPlugin.ability_pools = {}
 LegendsOfDotaPlugin.ability_pools_sorted = {}
 LegendsOfDotaPlugin.hero_definitions = {}
-LegendsOfDotaPlugin.test_dummy_attempts = 0
+LegendsOfDotaPlugin.test_dummy = {}
 LegendsOfDotaPlugin.cache = {}
 
 LegendsOfDotaPlugin.player_data = {}
@@ -41,7 +41,9 @@ function LegendsOfDotaPlugin:ApplySettings()
             if GameRules:State_Get() < DOTA_GAMERULES_STATE_HERO_SELECTION then return end
             LegendsOfDotaPlugin:SpawnEvent(event)
     end,nil)
-    LegendsOfDotaPlugin:SpawnTestDummy()
+    for i=0,10 do
+    LegendsOfDotaPlugin:SpawnTestDummy(i)
+    end
 end
 
 function LegendsOfDotaPlugin:LoadHeroes()
@@ -79,7 +81,16 @@ end
 function LegendsOfDotaPlugin:LoadAbilities()
 	local file = LoadKeyValues('scripts/npc/npc_abilities.txt')
     if not (file == nil or not next(file)) then
-        LegendsOfDotaPlugin.npc_abilities = file
+        HeroBuilderPlugin.npc_abilities['zzzz'] = file
+    end
+	local heroes_enabled = LoadKeyValues('scripts/npc/activelist.txt')
+    if not (heroes_enabled == nil or not next(heroes_enabled)) then
+        for k,v in pairs(heroes_enabled) do
+            local file = LoadKeyValues('scripts/npc/heroes/' .. k .. '.txt')
+            if not (file == nil or not next(file)) then
+                HeroBuilderPlugin.npc_abilities[k] = file
+            end
+        end
     end
 	local file_custom = LoadKeyValues('scripts/npc/npc_abilities_custom.txt')
     if not (file_custom == nil or not next(file_custom)) then
@@ -138,20 +149,22 @@ end
 
 function LegendsOfDotaPlugin:PrepStageTwo()
     local bStrict = (not LegendsOfDotaPlugin.settings.allow_extended)
-    for k,v in pairs(LegendsOfDotaPlugin.npc_abilities) do
-        if v ~= nil and type(v) == 'table' then
-            if v.AbilityType ~= nil then
-                if v.AbilityType == "DOTA_ABILITY_TYPE_ATTRIBUTES" then
-                    LegendsOfDotaPlugin:AddTalent(k,v,bStrict,nil)
-                elseif v.AbilityType == "DOTA_ABILITY_TYPE_ULTIMATE" then
-                    LegendsOfDotaPlugin:AddUltimate(k,v,bStrict,nil)
+    for _,o in pairs(HeroBuilderPlugin.npc_abilities) do
+        for k,v in pairs(o) do
+            if v ~= nil and type(v) == 'table' then
+                if v.AbilityType ~= nil then
+                    if v.AbilityType == "DOTA_ABILITY_TYPE_ATTRIBUTES" then
+                        LegendsOfDotaPlugin:AddTalent(k,v,bStrict,nil)
+                    elseif v.AbilityType == "DOTA_ABILITY_TYPE_ULTIMATE" then
+                        LegendsOfDotaPlugin:AddUltimate(k,v,bStrict,nil)
+                    else
+                        LegendsOfDotaPlugin:AddBasic(k,v,bStrict,nil)
+                    end
                 else
                     LegendsOfDotaPlugin:AddBasic(k,v,bStrict,nil)
                 end
-            else
-                LegendsOfDotaPlugin:AddBasic(k,v,bStrict,nil)
             end
-        end 
+        end
     end
     for k,v in pairs(LegendsOfDotaPlugin.npc_abilities_custom) do
         if v ~= nil and type(v) == 'table' then
@@ -439,7 +452,7 @@ function LegendsOfDotaPlugin:ability_pick(tEvent)
         end
     end
 
-    if not LegendsOfDotaPlugin:TestDummy(tEvent.name) then
+    if not LegendsOfDotaPlugin:TestDummy(tEvent.name,iPlayer) then
         tReturn.name = "failure"
     else
         LegendsOfDotaPlugin.player_data[iPlayer].abilities["s"..tEvent.slot] = {
@@ -524,7 +537,9 @@ function LegendsOfDotaPlugin:CheckAllReady()
         GameRules:SetStrategyTime(30)
         gm:SetDraftingBanningTimeOverride(0)
         gm:SetDraftingHeroPickSelectTimeOverride(0)
-        LegendsOfDotaPlugin:DestroyTestDummy()
+        for i=0,10 do
+        LegendsOfDotaPlugin:DestroyTestDummy(i)
+        end
         return true
     else
         return false
@@ -708,37 +723,37 @@ function LegendsOfDotaPlugin:ReplaceAbility(hUnit,sAbility,iLevel,iSlot,bForce)
 end
 
 
-function LegendsOfDotaPlugin:SpawnTestDummy()
-    LegendsOfDotaPlugin.test_dummy_attempts = 0
-    CreateUnitByNameAsync( "npc_dota_hero_target_dummy", Vector(0,0,0), false, nil, nil, DOTA_TEAM_NEUTRALS,function(hDummy)
-        LegendsOfDotaPlugin.test_dummy = hDummy
-        print("dummy spawned!")
-    end)
+function LegendsOfDotaPlugin:SpawnTestDummy(iPlayer)
+        CreateUnitByNameAsync( "npc_dota_hero_target_dummy", Vector(0,0,0), false, nil, nil, DOTA_TEAM_NEUTRALS,function(hDummy)
+            LegendsOfDotaPlugin.test_dummy[iPlayer] = {
+                hNpc = hDummy,
+                iAttempts = 0
+            }
+        end)
 end
-function LegendsOfDotaPlugin:DestroyTestDummy()
+function LegendsOfDotaPlugin:DestroyTestDummy(iPlayer)
     if LegendsOfDotaPlugin.test_dummy == nil then return end
-    LegendsOfDotaPlugin.test_dummy:Destroy()
+    if LegendsOfDotaPlugin.test_dummy[iPlayer] == nil then return end
+    if LegendsOfDotaPlugin.test_dummy[iPlayer].hNpc == nil then return end
+    if LegendsOfDotaPlugin.test_dummy[iPlayer].hNpc:IsNull() then return end
+    LegendsOfDotaPlugin.test_dummy[iPlayer].hNpc:Destroy()
 end
-function LegendsOfDotaPlugin:TestDummy(sAbility)
-    print(sAbility)
-    LegendsOfDotaPlugin.test_dummy_attempts = LegendsOfDotaPlugin.test_dummy_attempts + 1
-    if LegendsOfDotaPlugin.test_dummy == nil then
-        print("no test dummy found")
-        return true
-    end
-    local hAbility = LegendsOfDotaPlugin.test_dummy:AddAbility(sAbility)
-    print("adding ablity to " .. LegendsOfDotaPlugin.test_dummy:GetUnitName())
+function LegendsOfDotaPlugin:TestDummy(sAbility,iPlayer)
+    if LegendsOfDotaPlugin.test_dummy == nil then print("game has no test dummy table") return true end
+    if LegendsOfDotaPlugin.test_dummy[iPlayer] == nil then print(iPlayer .. " has no test dummy table") return true end
+    LegendsOfDotaPlugin.test_dummy[iPlayer].iAttempts = LegendsOfDotaPlugin.test_dummy[iPlayer].iAttempts + 1
+    if LegendsOfDotaPlugin.test_dummy[iPlayer].hNpc == nil then print(iPlayer .. " has no test dummy npc") return true end
+    local hAbility = LegendsOfDotaPlugin.test_dummy[iPlayer].hNpc:AddAbility(sAbility)
     if hAbility ~= nil then
-        print("it was success!")
-        LegendsOfDotaPlugin.test_dummy:RemoveAbilityByHandle(hAbility)
-        print("removing...")
-        if (LegendsOfDotaPlugin.test_dummy_attempts > 10) then
-            LegendsOfDotaPlugin:DestroyTestDummy()
-            LegendsOfDotaPlugin:SpawnTestDummy()
+        LegendsOfDotaPlugin.test_dummy[iPlayer].hNpc:RemoveAbilityByHandle(hAbility)
+        if (LegendsOfDotaPlugin.test_dummy[iPlayer].iAttempts > 100) then
+            print(iPlayer .. " max attempts reached, respawning dummy")
+            LegendsOfDotaPlugin:DestroyTestDummy(iPlayer)
+            LegendsOfDotaPlugin:SpawnTestDummy(iPlayer)
         end
         return true
     end
-    print("it was failure!")
+    print(sAbility .. " was invalid ability!")
     return false
 end
 
@@ -751,7 +766,9 @@ function LegendsOfDotaPlugin:ForceHeroes()
     GameRules:SetStrategyTime(30)
     gm:SetDraftingBanningTimeOverride(0)
     gm:SetDraftingHeroPickSelectTimeOverride(0)
-    LegendsOfDotaPlugin:DestroyTestDummy()
+    for i=0,10 do
+    LegendsOfDotaPlugin:DestroyTestDummy(i)
+    end
 end
 
 
@@ -781,7 +798,7 @@ function LegendsOfDotaPlugin:RandomBuild(sSeed,iPlayer)
             while(not bFound) do
                 tAbility = LegendsOfDotaPlugin:RandomAbility(sSeed,iPlayer,"basic")
                 if not Toolbox:ContainsSubValue(tMainBuild,name,tAbility.name) then
-                    if LegendsOfDotaPlugin:TestDummy(tAbility.name) then
+                    if LegendsOfDotaPlugin:TestDummy(tAbility.name,iPlayer) then
                         bFound = true
                     end
                 end
@@ -801,7 +818,7 @@ function LegendsOfDotaPlugin:RandomBuild(sSeed,iPlayer)
         while(not bFound) do
             tAbility = LegendsOfDotaPlugin:RandomAbility(sSeed,iPlayer,"ultimate")
             if not Toolbox:ContainsSubValue(tMainBuild,name,tAbility.name) then
-                if LegendsOfDotaPlugin:TestDummy(tAbility.name) then
+                if LegendsOfDotaPlugin:TestDummy(tAbility.name,iPlayer) then
                     bFound = true
                 end
             end

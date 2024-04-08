@@ -1,3 +1,4 @@
+<!-- xml reconstructed by Source 2 Viewer 5.0.0.0 - https://valveresourceformat.github.io -->
 <root>
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/modifier_spawner.js" />
@@ -11,30 +12,27 @@
 			<Button class="ButtonBar_ModifierSpawner" />
 		</snippet>
 		<snippet name="WindowButton">
-            <Panel id="WindowButton" hittest="false">
-            </Panel>
+			<Panel id="WindowButton" hittest="false" />
 		</snippet>
 		<snippet name="WindowPanel">
-            <Panel id="WindowPanel" hittest="false">
-            </Panel>
+			<Panel id="WindowPanel" hittest="false" />
 		</snippet>
 		<snippet name="Row">
-            <Panel id="Row" class="Row" hittest="false">
-            </Panel>
+			<Panel id="Row" class="Row" hittest="false" />
 		</snippet>
 		<snippet name="ModifierChoise">
-            <Button id="ModifierChoise">
-				<DOTAAbilityImage id="ModifierImage"/>
-            </Button>
+			<Button id="ModifierChoise">
+				<DOTAAbilityImage id="ModifierImage" />
+			</Button>
 		</snippet>
-    </snippets>
+	</snippets>
 	<Panel class="ModifierSpawnerRoot">
 		<Panel id="WindowRoot" class="hidden">
 			<Panel id="SearchBox">
 				<TextEntry id="SearchBoxInput" maxchars="100" placeholder="Search" oninputsubmit="OnSubmitSearch()" />
-				<TextEntry id="ModifierDataInput" maxchars="100" placeholder="data" text="duration=5,stack=1,distance=1000" /></Panel>
-			<Panel id="ModifierSpawnerRoot">
+				<TextEntry id="ModifierDataInput" maxchars="100" placeholder="data" text="duration=5,stack=1,distance=1000" />
 			</Panel>
+			<Panel id="ModifierSpawnerRoot" />
 		</Panel>
-    </Panel>
+	</Panel>
 </root>

@@ -36,8 +36,20 @@ function HeroBuilderPlugin:PreGameStuff()
 -- GameRules:SetGameTimeFrozen(true)
 	local file = LoadKeyValues('scripts/npc/npc_abilities.txt')
     if not (file == nil or not next(file)) then
-        HeroBuilderPlugin.npc_abilities = file
+        HeroBuilderPlugin.npc_abilities['zzzz'] = file
     end
+	local heroes_enabled = LoadKeyValues('scripts/npc/activelist.txt')
+    if not (heroes_enabled == nil or not next(heroes_enabled)) then
+        for k,v in pairs(heroes_enabled) do
+            local file = LoadKeyValues('scripts/npc/heroes/' .. k .. '.txt')
+            if not (file == nil or not next(file)) then
+                HeroBuilderPlugin.npc_abilities[k] = file
+            end
+        end
+    end
+    
+
+
 	local file_custom = LoadKeyValues('scripts/npc/npc_abilities_custom.txt')
     if not (file_custom == nil or not next(file_custom)) then
         HeroBuilderPlugin.npc_abilities_custom = file_custom
@@ -63,20 +75,22 @@ end
 
 function HeroBuilderPlugin:PrepStageTwo()
     if HeroBuilderPlugin.settings.dota_abilities then
-        for k,v in pairs(HeroBuilderPlugin.npc_abilities) do
-            if v ~= nil and type(v) == 'table' then
-                if v.AbilityType ~= nil then
-                    if v.AbilityType == "DOTA_ABILITY_TYPE_ATTRIBUTES" then
-                        HeroBuilderPlugin:AddTalent(k,v)
-                    elseif v.AbilityType == "DOTA_ABILITY_TYPE_ULTIMATE" then
-                        HeroBuilderPlugin:AddUltimate(k,v)
+        for _,o in pairs(HeroBuilderPlugin.npc_abilities) do
+            for k,v in pairs(o) do
+                if v ~= nil and type(v) == 'table' then
+                    if v.AbilityType ~= nil then
+                        if v.AbilityType == "DOTA_ABILITY_TYPE_ATTRIBUTES" then
+                            HeroBuilderPlugin:AddTalent(k,v)
+                        elseif v.AbilityType == "DOTA_ABILITY_TYPE_ULTIMATE" then
+                            HeroBuilderPlugin:AddUltimate(k,v)
+                        else
+                            HeroBuilderPlugin:AddBasic(k,v)
+                        end
                     else
                         HeroBuilderPlugin:AddBasic(k,v)
                     end
-                else
-                    HeroBuilderPlugin:AddBasic(k,v)
-                end
-            end 
+                end 
+            end
         end
     end
     if HeroBuilderPlugin.settings.custom_abilities then
@@ -110,12 +124,14 @@ function HeroBuilderPlugin:AddTalent(sAbility,data)
 end
 
 function HeroBuilderPlugin:AddBasic(sAbility,data)
+    print(sAbility)
     if HeroBuilderPlugin.ban_list[sAbility] == nil then
         table.insert(HeroBuilderPlugin.available_abilities.basic,sAbility)
     end
 end
 
 function HeroBuilderPlugin:AddUltimate(sAbility,data)
+    print(sAbility)
     if HeroBuilderPlugin.ban_list[sAbility] == nil then
         table.insert(HeroBuilderPlugin.available_abilities.basic,sAbility)
     end

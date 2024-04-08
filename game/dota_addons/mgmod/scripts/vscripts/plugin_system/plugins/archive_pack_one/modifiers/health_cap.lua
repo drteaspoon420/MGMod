@@ -14,16 +14,14 @@ function health_cap:GetAttributes()
 end
 
 
-function health_cap:OnCreated(event)
-    if not IsServer() then return end
-    self:StartIntervalThink(0.3)
+function health_cap:DeclareFunctions()
+	local funcs = {
+		MODIFIER_PROPERTY_FORCE_MAX_HEALTH,
+	}
+	return funcs
 end
 
-
-function health_cap:OnIntervalThink()
-    if not IsServer() then return end
-    local health = self:GetParent():GetHealth()
-    if (health > 500) then
-        self:GetParent():SetHealth(500)
-    end
+function health_cap:GetModifierForceMaxHealth()
+	return 500
 end
+

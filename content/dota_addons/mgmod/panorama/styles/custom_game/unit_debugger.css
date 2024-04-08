@@ -1,55 +1,55 @@
-.UnitDebugger {
-  flow-children: down;
+.UnitDebugger{
+   flow-children: down;
 }
 
-#debug_unit {
-    background-color: red;
-    width: 32px;
-    height: 32px;
-}
+ #debug_unit{
+     background-color: red;
+     width: 32px;
+     height: 32px;
+ }
 
-#debug_content {
-  flow-children: down;
-  overflow: noclip scroll;
-  max-height: 90%;
-}
-.UnitDebuggerDataDrop {
-    flow-children: down;
-    margin-left: 10px;
-}
+ #debug_content{
+   flow-children: down;
+   overflow: noclip scroll;
+   max-height: 90%;
+ }
+ .UnitDebuggerDataDrop{
+     flow-children: down;
+     margin-left: 10px;
+ }
 
-.UnitDebuggerData{
-    flow-children: right;
-    overflow: noclip;
-    margin-bottom: 3px;
-    flow-children: right;
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #868686cc ), to( #575757cc ) );
-    vertical-align: center;
-    height: 20px;
-}
-#UnitDebuggerDataLabelKey{
-    margin-left: 5px;
-    font-weight: normal;
-    letter-spacing: 2px;
-    margin-right: 4px;
-    color: rgb(255, 255, 255);
-    font-size: 15px;
-    text-shadow: 2px 2px 1px rgb(0, 0, 0);
-    vertical-align: center;
-    text-align: center;
-    text-transform: uppercase;
-}
+ .UnitDebuggerData{
+     flow-children: right;
+     overflow: noclip;
+     margin-bottom: 3px;
+     flow-children: right;
+     background-color: gradient( linear, 0% 0%, 0% 100%, from( #868686cc ), to( #575757cc ) );
+     vertical-align: center;
+     height: 20px;
+ }
+ #UnitDebuggerDataLabelKey{
+     margin-left: 5px;
+     font-weight: normal;
+     letter-spacing: 2px;
+     margin-right: 4px;
+     color: rgb(255, 255, 255);
+     font-size: 15px;
+     text-shadow: 2px 2px 1px rgb(0, 0, 0);
+     vertical-align: center;
+     text-align: center;
+     text-transform: uppercase;
+ }
 
-#UnitDebuggerDataLabelValue{
-    margin-left: 5px;
-    font-weight: normal;
-    letter-spacing: 2px;
-    margin-right: 4px;
-    color: rgb(255, 255, 255);
-    font-size: 15px;
-    text-shadow: 2px 2px 1px rgb(0, 0, 0);
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #6e5151cc ), to( #6d2f2fcc ) );
-    vertical-align: center;
-    text-align: center;
-    text-transform: uppercase;
+ #UnitDebuggerDataLabelValue{
+     margin-left: 5px;
+     font-weight: normal;
+     letter-spacing: 2px;
+     margin-right: 4px;
+     color: rgb(255, 255, 255);
+     font-size: 15px;
+     text-shadow: 2px 2px 1px rgb(0, 0, 0);
+     background-color: gradient( linear, 0% 0%, 0% 100%, from( #6e5151cc ), to( #6d2f2fcc ) );
+     vertical-align: center;
+     text-align: center;
+     text-transform: uppercase;
 }

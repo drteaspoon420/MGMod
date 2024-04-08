@@ -1,3 +1,4 @@
+<!-- xml reconstructed by Source 2 Viewer 5.0.0.0 - https://valveresourceformat.github.io -->
 <root>
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/unit_debugger.js" />
@@ -14,12 +15,11 @@
 			</Panel>
 		</snippet>
 		<snippet name="UnitDebuggerDataDrop">
-			<Panel class="UnitDebuggerDataDrop" hittest="false">
-			</Panel>
+			<Panel class="UnitDebuggerDataDrop" hittest="false" />
 		</snippet>
 	</snippets>
 	<Panel class="UnitDebugger">
-    <Button id="debug_unit" onactivate="Debug();"/>
-    <Panel id="debug_content" hittest="false"/>
-    </Panel>
+		<Button id="debug_unit" onactivate="Debug();" />
+		<Panel id="debug_content" hittest="false" />
+	</Panel>
 </root>

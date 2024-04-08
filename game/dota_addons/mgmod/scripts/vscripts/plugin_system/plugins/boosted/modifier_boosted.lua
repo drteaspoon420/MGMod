@@ -79,7 +79,7 @@ function modifier_boosted:GetModifierOverrideAbilitySpecial( params )
 	if self:GetParent() == nil or params.ability == nil then
 		return 0
 	end
-	if not (self:GetParent():GetTeamNumber() == DOTA_TEAM_BADGUYS or self:GetParent():GetTeamNumber() == DOTA_TEAM_GOODGUYS) then
+	if (self:GetParent():GetTeamNumber() == DOTA_TEAM_NEUTRALS) then
 		return 0
 	end
 	if self.boost == nil then return 0 end

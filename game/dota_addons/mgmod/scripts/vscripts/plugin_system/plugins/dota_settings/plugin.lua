@@ -16,11 +16,12 @@ function DotaSettingsPlugin:ApplySettings()
 	local contxt = {}
 
     DotaSettingsPlugin.settings = PluginSystem:GetAllSetting("dota_settings")
+	gm:SetDraftingHeroPickSelectTimeOverride(DotaSettingsPlugin.settings.heropick_time)
     --GameRules:SetHeroSelectionTime(DotaSettingsPlugin.settings.heropick_time)
-    --GameRules:SetStrategyTime(DotaSettingsPlugin.settings.strategy_time)
+    GameRules:SetStrategyTime(DotaSettingsPlugin.settings.strategy_time)
     --GameRules:SetShowcaseTime(DotaSettingsPlugin.settings.showcase_time)
-    --GameRules:SetPreGameTime(DotaSettingsPlugin.settings.pregame_time)
-    --GameRules:SetPostGameTime(15)
+    GameRules:SetPreGameTime(DotaSettingsPlugin.settings.pregame_time)
+    GameRules:SetPostGameTime(15)
 
 --[[     if DotaSettingsPlugin.settings.global_shop then
         local global_shop = SpawnDOTAShopTriggerRadiusApproximate(Vector(0,0,0), 400)
@@ -29,7 +30,7 @@ function DotaSettingsPlugin:ApplySettings()
    -- if DotaSettingsPlugin.settings.global_shop then
    -- end
 
-    --GameRules:SetTreeRegrowTime(DotaSettingsPlugin.settings.tree_grow_time)
+    GameRules:SetTreeRegrowTime(DotaSettingsPlugin.settings.tree_grow_time)
     
     --GameRules:SetUseCustomHeroXPValues(true)
 

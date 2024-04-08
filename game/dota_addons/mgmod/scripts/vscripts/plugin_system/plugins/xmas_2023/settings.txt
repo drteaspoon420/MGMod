@@ -1,0 +1,38 @@
+"plugin_settings"
+{
+    "Order" "1991"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "day1" {
+        "Order" "1"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "day2" {
+        "Order" "2"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "day3" {
+        "Order" "3"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "day4" {
+        "Order" "4"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "day5" {
+        "Order" "5"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "day6" {
+        "Order" "6"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+}

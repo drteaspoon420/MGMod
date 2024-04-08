@@ -1,0 +1,28 @@
+"plugin_settings"
+{
+    "Order" "8898"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "multiplier" {
+        "Order" "2"
+        "TYPE" "number"
+        "DEFAULT" "10"
+    }
+    "mod_duration" {
+        "Order" "6"
+        "TYPE" "number"
+        "DEFAULT" "0.25"
+    }
+    "mod_chance" {
+        "Order" "7"
+        "TYPE" "number"
+        "DEFAULT" "0.25"
+    }
+    "mod_radius" {
+        "Order" "8"
+        "TYPE" "number"
+        "DEFAULT" "0.15"
+    }
+}
