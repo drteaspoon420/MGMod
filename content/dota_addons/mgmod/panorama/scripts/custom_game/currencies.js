@@ -4,6 +4,7 @@ var WindowRoot = $.GetContextPanel().FindChildInLayoutFile("WindowRoot");
 var tCurrencies = {};
 var iPlayer = Players.GetLocalPlayer();
 const this_window_id = "currencies";
+const local_team = Players.GetTeam(Players.GetLocalPlayer());
 var tCurrencyNumbers = {}
 var currency_open;
 
@@ -50,7 +51,10 @@ function ShowOptionMenu(sName) {
     );
     let spend_count = 0;
     for (const key in tCurrencies[sName].spend_options) {
-        spend_count++;
+        const option = tCurrencies[sName].spend_options[key];
+        if (option.team == 1 || local_team == option.team) {
+            spend_count++;
+        }
     }
     if (spend_count > 1) {
         for (const key in tCurrencies[sName].spend_options) {

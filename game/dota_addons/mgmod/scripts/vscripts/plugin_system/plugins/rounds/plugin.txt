@@ -1,0 +1,12 @@
+"Plugins"
+{
+    "rounds" {
+        "MainClass" "RoundsPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+            "PreGame" "DOTA_GAMERULES_STATE_PRE_GAME"
+        }
+        "IsCheatMode" "1"
+    }
+}

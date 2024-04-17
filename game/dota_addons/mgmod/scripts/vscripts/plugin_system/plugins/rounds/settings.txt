@@ -1,0 +1,63 @@
+"plugin_settings"
+{
+    "Order" "2124"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "max_rounds" {
+        "Order" "1"
+        "TYPE" "number"
+        "DEFAULT" "15"
+    }
+    "pre_round_time" {
+        "Order" "2"
+        "TYPE" "number"
+        "DEFAULT" "20"
+    }
+    "round_time" {
+        "Order" "3"
+        "TYPE" "number"
+        "DEFAULT" "150"
+    }
+    "alternate_mode" {
+        "Order" "4"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "levels_per_round" {
+        "Order" "10"
+        "TYPE" "number"
+        "DEFAULT" "2"
+    }
+    "gold_per_round" {
+        "Order" "11"
+        "TYPE" "number"
+        "DEFAULT" "1000"
+    }
+    "gold_per_victory" {
+        "Order" "12"
+        "TYPE" "number"
+        "DEFAULT" "250"
+    }
+    "neutral_tokens_every_x" {
+        "Order" "12"
+        "TYPE" "number"
+        "DEFAULT" "3"
+    }
+    "extra_objective_towers" {
+        "Order" "20"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "extra_objective_towers_swap" {
+        "Order" "21"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "extra_objective_towers_require" {
+        "Order" "22"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+}

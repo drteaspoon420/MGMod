@@ -118,11 +118,48 @@ function OpenPluginSettings(sPluginName) {
             }
         }
     );
+
+    //Team apply selection
+    let PluginTeamSelect = PluginSettings.FindChildInLayoutFile("PluginTeamSelect");
+    if (sPluginSettings.core_apply_team != undefined) {
+        let v = sPluginSettings.core_apply_team.VALUE
+        PluginTeamSelect.SetSelected(v);
+        PluginTeamSelect.SetPanelEvent(
+            "oninputsubmit", 
+            function(){
+                SettingChange(sPluginName,"core_apply_team",PluginTeamSelect.GetSelected().id);
+            }
+        );
+        PluginTeamSelect.SetHasClass("hidden",false);
+    } else {
+        PluginTeamSelect.SetHasClass("hidden",true);
+    }
+
+    let PluginSettingsAuthorBox = PluginSettings.FindChildInLayoutFile("PluginSettingsAuthorBox");
+    if (sPluginSettings.author != undefined) {
+        PluginSettingsAuthorBox.SetHasClass("hidden",false);
+        let AuthorAvatar = PluginSettings.FindChildInLayoutFile("AuthorAvatar");
+        AuthorAvatar.steamid = sPluginSettings.author;
+    } else {
+        PluginSettingsAuthorBox.SetHasClass("hidden",true);
+    }
+
+    let desc_dd = "#Plugin_" +  sPluginName + "_Description";
+    let desc = $.Localize(desc_dd);
+    let PluginSettingsDescriptionText = PluginSettings.FindChildInLayoutFile("PluginSettingsDescriptionText");
+    if (desc != desc_dd) {
+        PluginSettingsDescriptionText.SetHasClass("hidden",false);
+        PluginSettingsDescriptionText.text = desc;
+    } else {
+        PluginSettingsDescriptionText.SetHasClass("hidden",true);
+
+    }
+
     let PluginSettingsInternalScroll = PluginSettings.FindChildInLayoutFile("PluginSettingsInternalScroll");
     let tmp = {}
     let io = 0;
     for (const key in sPluginSettings) {
-        if (key != "enabled" && key != "Order") {
+        if (key != "enabled" && key != "Order" && key != "core_apply_team" && key != "author") {
             if (undefined==sPluginSettings[key].Order) {
                 tmp[1000+io] = key;
                 io = io + 1;
@@ -162,7 +199,6 @@ function OpenPluginSettings(sPluginName) {
     
 }
 
-
 function UpdatePluginSettings(sPluginName) {
     if (bHost)
         return;
@@ -176,7 +212,7 @@ function UpdatePluginSettings(sPluginName) {
     PluginEnabled.enabled = bHost;
     let PluginSettingsInternalScroll = PluginSettings.FindChildInLayoutFile("PluginSettingsInternalScroll");
     for (const key in sPluginSettings) {
-        if (key == "Order" || key == "enabled") continue;
+        if (key == "Order" || key == "enabled" || key == "core_apply_team" || key == "author") continue;
         let VALUE = sPluginSettings[key].VALUE;
         let TYPE = sPluginSettings[key].TYPE;
         let panel = PluginSettingsInternalScroll.FindChildInLayoutFile(key);

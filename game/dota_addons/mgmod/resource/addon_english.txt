@@ -5,6 +5,7 @@
 	{		
 		"addon_game_name"			"MG Mod"
 
+		"DOTA_TEAM_ALL"														"All"
 		"DOTA_TEAM_CUSTOM_1"												"The Chaos"
 		"DOTA_TEAM_CUSTOM_2"												"The Order"
 		"DOTA_TEAM_CUSTOM_3"												"The Bold"
@@ -30,6 +31,7 @@
 		"PluginListUnlockButtonText" "Vote to unlock options"
 		//Dota Plugin
 		"Plugin_dota_settings" "Dota"
+		"Plugin_dota_settings_Description" "Basic Dota 2 settings."
 		"Plugin_dota_settings_Option_courier_enabled" "Courier"
 		"Plugin_dota_settings_Option_univeral_Shop" "Universal Shop"
 		"Plugin_dota_settings_Option_single_buyback" "Single Buyback"
@@ -74,11 +76,13 @@
 		"Plugin_dota_settings_Option_allow_respawn" "Allow Respawn"
 		//Bots Plugin
 		"Plugin_bots_plugin" "Bots"
+		"Plugin_bots_plugin_Description" "Add bots to the game. NOTE: Bots may lag in many scenarios."
 		"Plugin_bots_plugin_Option_pre_random" "Bots Pick Early"
 		"Plugin_bots_plugin_Option_pre_random_Description" "This should prevent from bots just failing if you don't pick fast enough."
 
 
 		"Plugin_freeforall" "10 Team Spawns"
+		"Plugin_freeforall_plugin_Description" "Removes default spawns from radiant and dire teams. Creates 10 extra spawns for each team."
 		"Plugin_freeforall_Option_distance" "Distance"
 		"Plugin_freeforall_Option_placement" "Placement"
         "Plugin_freeforall_Option_placement_Drop_ordered_ring" "Orderly Ring"
@@ -88,6 +92,7 @@
 
 		//Ability Sandbox
 		"Plugin_hero_builder" "Ability Sandbox"
+		"Plugin_hero_builder_Description" "Modify Abilities of your hero or inspect abilities of other units. Lists ALL abilities and talents in the Dota 2 KV files."
 		"Plugin_hero_builder_Option_limited_mode" "Limited Mode"
 		"Plugin_hero_builder_Option_limited_mode_Description" "Allow only on allied and not controlled by another player."
 		"Plugin_hero_builder_Option_dota_abilities" "Built-in Abilities"
@@ -104,6 +109,7 @@
 		"Plugin_hero_builder_Option_custom_bans_Description" "Use pastebin.com to upload your banlist.<br/>Paste the end of the URL to use the list.<br/>You can output valid ban list to your console with chat command:<br/>-ability_bans"
 		//Item Sandbox
 		"Plugin_item_spawner" "Item Sandbox"
+		"Plugin_item_spawner_Description" "Add items to an inventory. Lists ALL items in the Dota 2 KV files."
 		"Plugin_item_spawner_Option_limited_mode" "Limited Mode"
 		"Plugin_item_spawner_Option_limited_mode_Description" "Allow only on allied and not controlled by another player."
 		"Plugin_item_spawner_Option_dota_items" "Built-in Items"
@@ -114,6 +120,7 @@
 
 		//Unit Sandbox
 		"Plugin_unit_spawner" "Unit Sandbox"
+		"Plugin_unit_spawner_Description" "Spawn units under control of selected unit. Lists ALL units in the Dota 2 KV files."
 		"Plugin_unit_spawner_Option_limited_mode" "Limited Mode"
 		"Plugin_unit_spawner_Option_limited_mode_Description" "Allow only on allied and not controlled by another player."
 		"Plugin_unit_spawner_Option_dota_units" "Built-in Units"
@@ -124,6 +131,7 @@
 
 		//Modifier Sandbox
 		"Plugin_modifier_spawner" "Modifier Sandbox"
+		"Plugin_modifier_spawner_Description" "Apply modifier to selected unit with parameters. Source ability is always the ability in slot 0 (Q). List is dumpped by hand. Not exhaustive or testest list."
 		"Plugin_modifier_spawner_Option_limited_mode" "Limited Mode"
 		"Plugin_modifier_spawner_Option_limited_mode_Description" "Allow only on allied and not controlled by another player."
 		"Plugin_modifier_spawner_Option_dota_modifiers" "Built-in Modifiers"
@@ -134,6 +142,7 @@
 
 		//GIVE ABILITY
 		"Plugin_give_all_ability" "Bonus Ability"
+		"Plugin_give_all_ability_Description" "Grant bonus ability to heroes, towers and/or creeps."
 		"Plugin_give_all_ability_Option_extra_ability_heroes" "Heroes"
 		"Plugin_give_all_ability_Option_extra_ability_towers" "Towers"
 		"Plugin_give_all_ability_Option_extra_ability_creeps" "Creeps"
@@ -157,6 +166,7 @@
 
 		//Attacks Cast Spells
 		"Plugin_attacks_cast_spells" "Attacks Cast Spells"
+		"Plugin_attacks_cast_spells_Description" "Whenever hero lands an attack there is a chance to cast any spell they have leveled up."
 		"Plugin_attacks_cast_spells_Option_ACSP_PROC" "Proc Chance"
 		"Plugin_attacks_cast_spells_Option_ACSP_PROC_ITEM" "Item Proc Chance"
 		"Plugin_attacks_cast_spells_Option_ACSP_PROC_PROBLEM" "Problem Ability Chance"
@@ -199,6 +209,7 @@
 
 		//Mammonite
 		"Plugin_mammonite" "Gold Shield"
+		"Plugin_mammonite_Description" "Gold acts as extra HP."
 
 		//Dev stuff
 		"Plugin_devstuff" "Dev Stuff"
@@ -232,6 +243,7 @@
 
 		//Delete Dota
 		"Plugin_delete_dota" "Delete Dota"
+		"Plugin_delete_dota_Description" "Remove some of the default elements from the map."
 		"Plugin_delete_dota_Option_delete_radiant"	"Apply To Radiant"
 		"Plugin_delete_dota_Option_delete_dire"	"Apply To Dire"
 		"Plugin_delete_dota_Option_delete_tier_1"	"Delete Tier 1 Towers"
@@ -276,6 +288,7 @@
 
 		//Zombies
 		"Plugin_zombies" "Zombies"
+		"Plugin_zombies_Description" "Periodically zombies are spawned. Spawn location tries to be close to a random hero but out of sight."
 		"Plugin_zombies_Option_initial_power" "Initial Power"
 		"Plugin_zombies_Option_wave_treshold" "Waves To Power Increase"
 		"Plugin_zombies_Option_power_increase" "Power Increase"
@@ -303,6 +316,7 @@
 
 		//xmas12
 		"Plugin_xmas12" "12 Days of XMas"
+		"Plugin_xmas12_Description" "Collection of modifications released on December 2022."
 		"Plugin_xmas12_Option_day1" "Day 1, Tower Huggers"
 		"Plugin_xmas12_Option_day1_Description" "Heroes have no mana regen. Heroes gain mana by standing near a friendly tower."
 		"Plugin_xmas12_Option_day2" "Day 2, Golden Mana"
@@ -331,6 +345,7 @@
 
 		//archive_pack_one
 		"Plugin_archive_pack_one" "Archive Pack I"
+		"Plugin_archive_pack_one_Description" "Collection of modifications released before MG Mod."
 		"Plugin_archive_pack_one_Option_clicks_death" "100 clicks"
 		"Plugin_archive_pack_one_Option_clicks_death_Description" "After 100 clicks your hero dies."
 		"Plugin_archive_pack_one_Option_symbiosis" "5 Head"
@@ -360,6 +375,7 @@
 		//stonks
 
 		"Plugin_stonks" "Stonks"
+		"Plugin_stonks_Description" "Invest gold into modifier effect stocks. Stocks increase/decrease in value depending on how well the holder of the stock performs."
 		"Plugin_stonks_Option_fountain" "Fountain Shop"
 		"Plugin_stonks_Option_timer" "Radomization Interval"
 		"Plugin_stonks_Option_tower_effect" "Tower Kill Stock Impact"
@@ -438,6 +454,7 @@
 
 		//Boosted
 		"Plugin_boosted" "Boosted"
+		"Plugin_boosted_Description" "Earn upgrades to increase/decrease the parameters of your abilities."
 		"Plugin_boosted_Option_UPGRADE_RATE" "Upgrade Rate"
 		"Plugin_boosted_Option_DOWNGRADE_RATE" "Downgrade Rate"
 		"Plugin_boosted_Option_RARE_MULTIPLIER" "Rare"
@@ -473,6 +490,7 @@
 
 		//Time scaling
 		"Plugin_time_scaling" "Hero Auto Growth"
+		"Plugin_time_scaling_Description" "Periodically increase heroes' power."
 		"Plugin_time_scaling_Option_interval" "Interval"
 		"Plugin_time_scaling_Option_hp_max" "Health"
 		"Plugin_time_scaling_Option_mp_max" "Mana"
@@ -488,10 +506,12 @@
 
 		//Level Stuff
 		"Plugin_level_timings" "Level Timing"
+		"Plugin_level_timings_Description" "Grant extra ability points at specific level."
 		"Plugin_level_timings_Option_level" "Level"
 		"Plugin_level_timings_Option_ability_points" "Ability Points"
 		//LoD
 		"Plugin_legends_of_dota" "Legends Of Dota (Test)"
+		"Plugin_legends_of_dota_Description" "Create custom hero."
 		"Plugin_legends_of_dota_Option_extra_abilities" "12 Abilities"
 		"Plugin_legends_of_dota_Option_extra_abilities_Description" "Allow players to have 12 abilities instead of just 6"
 		"Plugin_legends_of_dota_Option_allow_extended" "Allow Non-Hero Abilities"
@@ -602,6 +622,7 @@
 
 		//Tremulous
 		"Plugin_tremulous"			"Tremulous"
+		"Plugin_tremulous_Description" "Attempt to partially re-create experience of cult game: Tremulous"
 		"Plugin_tremulous_Option_currency" "Building Currency"
 		"Plugin_tremulous_Option_currency_Drop_red" "Red"
 		"Plugin_tremulous_Option_currency_Drop_green" "Green"
@@ -662,6 +683,7 @@
 
 		//Currencies
 		"Plugin_currencies" "Currencies"
+		"Plugin_currencies_Description" "Support plugin that grants extra currency types for other plugins to use."
 		
 		"Plugin_currencies_Option_red_state" "Red Currency"
 		"Plugin_currencies_Option_red_state_Drop_none" "Disabled"
@@ -795,6 +817,7 @@
 		//thanksihateit
 
 		"Plugin_thanksihateit" "Horrid Pack"
+		"Plugin_thanksihateit_Description" "Collection of mods that try to cause players to say 'Thanks, I hate it.'"
 		"Plugin_thanksihateit_Option_death_item_loss" "Random item drops on death."
 		"Plugin_thanksihateit_Option_death_item_loss_Description" "Don't die, you may lose some expensive item and enemy can just pick it up."
 		"Plugin_thanksihateit_Option_clumsy_bonk" "Recieving attacks reduces Agility."
@@ -849,6 +872,7 @@
 
 		//items_x
 		"Plugin_items_x" "Items * X"
+		"Plugin_items_x_Description" "Multiply item's parameters by X"
 		"Plugin_items_x_Option_multiplier" "Multiplier"
 		"Plugin_items_x_Option_mod_duration" "Duration Multiplier"
 		"Plugin_items_x_Option_mod_chance" "Chance Multiplier"
@@ -856,6 +880,7 @@
 
 		//items_x
 		"Plugin_xmas_2023" "Xmas 2023"
+		"Plugin_xmas_2023_Description" "Collection of modifications released on December 2023."
 		"Plugin_xmas_2023_Option_day1" "Epic Inventory"
 		"Plugin_xmas_2023_Option_day1_Description" "Forcefully equips all items in backbag and stash every 3s. Allowing you to use passive items in those slots."
 		"Plugin_xmas_2023_Option_day2" "Stable Nurgle"
@@ -868,28 +893,6 @@
 		"Plugin_xmas_2023_Option_day5_Description" "All units in your team are granted random power rune when you use glyph."
 		"Plugin_xmas_2023_Option_day6" "0 == 10"
 		"Plugin_xmas_2023_Option_day6_Description" "All of special KV with value 0 is set to 10. This may enable talent or other hidden ability features. Did you know dagon was at some point intended to deal damage based on your int? Well now it does that with multiplier of 10!<br/>NOTE: May not work with other KV related plugins/options.<br/>NOTE2: This is for nerds."
-
-		"Plugin_xmas_2023_Option_day7" "Not Done"
-		"Plugin_xmas_2023_Option_day7_Description" "Something something?"
-		"Plugin_xmas_2023_Option_day8" "Not Done"
-		"Plugin_xmas_2023_Option_day8_Description" "Something something?"
-		"Plugin_xmas_2023_Option_day9" "Not Done"
-		"Plugin_xmas_2023_Option_day9_Description" "Something something?"
-		"Plugin_xmas_2023_Option_day10" "Not Done"
-		"Plugin_xmas_2023_Option_day10_Description" "Something something?"
-		"Plugin_xmas_2023_Option_day11" "Not Done"
-		"Plugin_xmas_2023_Option_day11_Description" "Something something?"
-		"Plugin_xmas_2023_Option_day12" "Not Done"
-		"Plugin_xmas_2023_Option_day12_Description" "Something something?"
-		"Plugin_xmas_2023_Option_day13" "Not Done"
-		"Plugin_xmas_2023_Option_day13_Description" "Something something?"
-		"Plugin_xmas_2023_Option_day14" "Not Done"
-		"Plugin_xmas_2023_Option_day14_Description" "Something something?"
-		"Plugin_xmas_2023_Option_day15" "Not Done"
-		"Plugin_xmas_2023_Option_day15_Description" "Something something?"
-
-		"Plugin_xmas_2023_Option_day16" "Assasination Contract"
-		"Plugin_xmas_2023_Option_day16_Description" "All players get random opponent as their assasination target. Killing blow grants special bonus and a new target."
 
 ///MUTATOR MODE STUFF
 

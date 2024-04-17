@@ -1,0 +1,12 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/links.js" />
+	</scripts>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/links.css" />
+	</styles>
+	<Panel class="links_root">
+		<Button class="link_button" id="discord" onactivate="ToUrl('https://discord.gg/6trEyanHh9');"/>
+		<Button class="link_button" id="github" onactivate="ToUrl('https://github.com/drteaspoon420/MGMod');"/>
+    </Panel>
+</root>

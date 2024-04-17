@@ -10,7 +10,8 @@
             "-mods" "ShortCutMods"
             "-resetsetup" "ShortCutResetToCustomGameSetup"
             "-resetheroes" "ShortCutResetToHeroSelection"
+            "-deeznuts" "GetLobbyEventGameDetails"
         }
-        "ToolsModeOnly" "1"
+        "IsCheatMode" "1"
     }
-}
+}   

@@ -1,6 +1,7 @@
 "plugin_settings"
 {
     "Order" "69400"
+    "author" "76561198072015344"
     "enabled" {
         "TYPE" "boolean"
         "DEFAULT" "0"

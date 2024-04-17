@@ -152,6 +152,7 @@ end
 
 function HeroBuilderPlugin:BanAbility(tEvent)
     local iPlayer = tEvent.PlayerID
+    if not (HeroBuilderPlugin.settings.core_apply_team == 1 or PlayerResource:GetTeam(tEvent.PlayerID) == HeroBuilderPlugin.settings.core_apply_team) then return end
     if not HeroBuilderPlugin.settings.host_bans then return end
     if Toolbox:IsHost(iPlayer) then
         local sAbility = tEvent.ability
@@ -196,6 +197,8 @@ function HeroBuilderPlugin:PaginateSend(t,event_name)
 end
 
 function HeroBuilderPlugin:GiveUnitAbility_listen(tEvent)
+    
+    if not (HeroBuilderPlugin.settings.core_apply_team == 1 or PlayerResource:GetTeam(tEvent.PlayerID) == HeroBuilderPlugin.settings.core_apply_team) then return end
     if HeroBuilderPlugin.settings.disable_after_prematch and GameRules:State_Get() > DOTA_GAMERULES_STATE_PRE_GAME then return end
     if tonumber(tEvent.slot) < 0 then tEvent.slot = "0" end
     if HeroBuilderPlugin.settings.slot_id_limit > -1 and tonumber(tEvent.slot) > HeroBuilderPlugin.settings.slot_id_limit then return end
@@ -211,6 +214,7 @@ function HeroBuilderPlugin:GiveUnitAbility_listen(tEvent)
     end
 end
 function HeroBuilderPlugin:GiveUnitTalent_listen(tEvent)
+    if not (HeroBuilderPlugin.settings.core_apply_team == 1 or PlayerResource:GetTeam(tEvent.PlayerID) == HeroBuilderPlugin.settings.core_apply_team) then return end
     if HeroBuilderPlugin.settings.disable_after_prematch and GameRules:State_Get() > DOTA_GAMERULES_STATE_PRE_GAME then return end
 
     HeroBuilderPlugin:GiveUnitTalent(tEvent)

@@ -20,5 +20,6 @@
 		<!-- <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/universal_upgrade_options.xml" /> -->
 		<CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/custom_team_select.xml" />
 		<CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/plugin_settings.xml" />
+		<CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/links.xml" />
 	</Panel>
 </root>

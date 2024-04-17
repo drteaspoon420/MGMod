@@ -5,6 +5,7 @@ var current_open = "";
 var isOpen = false;
 var plugin_settings = {};
 const this_window_id = "stonks";
+const local_team = Players.GetTeam(Players.GetLocalPlayer());
 
 var stonks = [];
 var last_sort = 0;
@@ -218,7 +219,13 @@ function UpdateStonk( table_name, stonk, event) {
 
 (function () {
     plugin_settings = CustomNetTables.GetTableValue( "plugin_settings", this_window_id );
-    if (plugin_settings.enabled.VALUE == 0) {
+    let local_disable = plugin_settings.enabled.VALUE == 0;
+
+    if (!local_disable && plugin_settings.core_apply_team.VALUE != 1 && plugin_settings.core_apply_team.VALUE != local_team) {
+        local_disable = true;
+    }
+
+    if (local_disable) {
         var button_bar = FindDotaHudElement("ButtonBar");
         var existing_button = button_bar.FindChildTraverse("ButtonBar_Stonks");
         if (existing_button) {

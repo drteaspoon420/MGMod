@@ -115,8 +115,8 @@ function PluginSystem:Init()
         local state_regs = tSettings.StateRegistrations or {}
         local cmd_regs = tSettings.CmdRegistrations or {}
         local filter_regs = tSettings.FilterRegistrations or {}
-        if tSettings.ToolsModeOnly ~= nil and tSettings.ToolsModeOnly == 1 then
-            if not IsInToolsMode() then
+        if tSettings.IsCheatMode ~= nil and tSettings.IsCheatMode == 1 then
+            if not GameRules:IsCheatMode() then
                 goto continue_1
                 --did you know, this is the only way to 'skip' iteration of loop to the end of it.
                 --how dumb is this?! Like, in what scope is the 'continue' and 'goto'?
@@ -158,9 +158,8 @@ function PluginSystem:Init()
         ::continue_1::
     end
     for sPlugin,tSettings in pairs(PluginSystem.PluginsFile) do
-        if tSettings.ToolsModeOnly ~= nil and tSettings.ToolsModeOnly == 1 then
-            --if not IsInToolsMode() then
-            if false then
+        if tSettings.IsCheatMode ~= nil and tSettings.IsCheatMode == 1 then
+            if not GameRules:IsCheatMode() then
                 goto continue_2
             end
         end
@@ -314,7 +313,11 @@ function PluginSystem:GetAllSetting(sPlugin)
                     t[k] = v.VALUE
                 end
                 if v.TYPE == "dropdown" then
-                    t[k] = v.VALUE
+                    if tonumber(v.VALUE) then
+                        t[k] = tonumber(v.VALUE)
+                    else
+                        t[k] = v.VALUE
+                    end
                 end
             end
         end

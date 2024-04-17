@@ -28,7 +28,7 @@
 #base "plugins/archive_pack_one/plugin.txt"
 
 #base "plugins/devstuff/plugin.txt"
-#base "plugins/tremulous/plugin.txt"
+//#base "plugins/tremulous/plugin.txt"
 #base "plugins/basic_commands/plugin.txt"
 
 #base "plugins/boosted/plugin.txt"
@@ -38,6 +38,7 @@
 #base "plugins/items_x/plugin.txt"
 #base "plugins/xmas_2023/plugin.txt"
 
+//#base "plugins/rounds/plugin.txt"
 
 #base "plugins/freeforall/plugin.txt"
 "Plugins"

@@ -1,0 +1,26 @@
+.links_root {
+    flow-children: right;
+    margin-top: 4px;
+}
+
+.link_button {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 80% 80%;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #444a7c ), to( #353261 ) );
+}
+.link_button:hover {
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #63657a ), to( #2b2949 ) );
+}
+
+#github {
+    background-image: url("file://{images}/custom_game/github.png");
+}
+
+#discord {
+    background-image: url("file://{images}/custom_game/discord.png");
+}

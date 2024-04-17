@@ -4,6 +4,7 @@
 #base "npc_units_xmas12.txt" //xmas12
 #base "npc_units_tremulous.txt" //xmas12
 #base "npc_units_halloween.txt"
+#base "npc_units_rounds.txt"
 "DOTAUnits"
 {
 }

@@ -1,6 +1,7 @@
 
 const this_plugin_id = "boosted";
 var path_links = {};
+const local_team = Players.GetTeam(Players.GetLocalPlayer());
 
 var team_panels = {
     "2": $.GetContextPanel().FindChildInLayoutFile("InspectUpgradesRadiant"),
@@ -125,7 +126,15 @@ function CreateKeyPanel(parent,ability,key,value) {
 
 (function () {
     plugin_settings = CustomNetTables.GetTableValue( "plugin_settings", this_plugin_id );
-    if (plugin_settings.enabled.VALUE == 0) {
+
+    
+    let local_disable = plugin_settings.enabled.VALUE == 0;
+
+    if (!local_disable && plugin_settings.core_apply_team.VALUE != 1 && plugin_settings.core_apply_team.VALUE != local_team) {
+        local_disable = true;
+    }
+
+    if (local_disable) {
         $.GetContextPanel().SetHasClass("hidden",true);
     } else {
         CreateToggleButton();

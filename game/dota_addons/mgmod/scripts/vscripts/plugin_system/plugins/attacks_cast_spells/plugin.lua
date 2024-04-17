@@ -74,6 +74,7 @@ function AttacksCastSpellsPlugin:SpawnEvent(event)
     if not hUnit.IsRealHero then return end
     if hUnit:IsRealHero() then
         if AttacksCastSpellsPlugin.unit_cache[event.entindex] ~= nil then return end
+        if not (AttacksCastSpellsPlugin.settings.core_apply_team == 1 or hUnit:GetTeam() == AttacksCastSpellsPlugin.settings.core_apply_team) then return end
         AttacksCastSpellsPlugin.unit_cache[event.entindex] = true
         local hModifier = hUnit:AddNewModifier(hUnit,nil,"modifier_attacks_cast_spells",{})
     end
@@ -83,6 +84,7 @@ function AttacksCastSpellsPlugin:LevelUpEvent(event)
     local hUnit = EntIndexToHScript(event.hero_entindex)
     if not hUnit.IsRealHero then return end
     if hUnit:IsRealHero() then
+        if not (AttacksCastSpellsPlugin.settings.core_apply_team == 1 or hUnit:GetTeam() == AttacksCastSpellsPlugin.settings.core_apply_team) then return end
         if hUnit:GetAbilityPoints() < 1 then
             return
         end

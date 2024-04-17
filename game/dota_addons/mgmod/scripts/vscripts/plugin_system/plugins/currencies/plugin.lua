@@ -236,11 +236,13 @@ function CurrenciesPlugin:RegisterSpendOption(sName,tOption)
     if tOption.cost == nil then return end
     if tOption.call_fn == nil then return end
     if tOption.option_name == nil then return end
+    if tOption.team == nil then tOption.team = 1 end
     local t = {
         plugin_name = tOption.plugin_name,
         cost = tOption.cost,
         option_name = tOption.option_name,
-        fn = tOption.plugin_name .. '|' .. tOption.option_name
+        fn = tOption.plugin_name .. '|' .. tOption.option_name,
+        team = tOption.team
     }
     CurrenciesPlugin:SecureOptions(sName)
     CurrenciesPlugin.spend_options[sName][t.fn] = tOption
@@ -275,12 +277,14 @@ function CurrenciesPlugin:RegisterEarnOption(sName,tOption)
         print("option_name not found")
         return
     end
+    if tOption.team == nil then tOption.team = 1 end
     local t = {
         plugin_name = tOption.plugin_name,
         cost = tOption.cost,
         earn = tOption.earn,
         option_name = tOption.option_name,
-        fn = tOption.plugin_name .. '|' .. tOption.option_name
+        fn = tOption.plugin_name .. '|' .. tOption.option_name,
+        team = tOption.team
     }
     CurrenciesPlugin:SecureOptions(sName)
     CurrenciesPlugin.earn_options[sName][t.fn] = tOption
@@ -313,6 +317,11 @@ function CurrenciesPlugin:UserSpendingOption(iPlayer,sName,fn)
         print("invalid plugin function",t.call_fn)
         return false
     end
+    local iTeam = PlayerResource:GetTeam(iPlayer)
+    if not (t.team == 1 or iTeam == t.team) then
+        print("invalid team")
+        return false
+    end
     if CurrenciesPlugin:SpendCurrency(sName,iPlayer,t.cost) then
         local tEvent = {
             iPlayer = iPlayer,
@@ -335,6 +344,11 @@ function CurrenciesPlugin:UserEarningOption(iPlayer,sName,fn)
         print("invalid plugin function",t.call_fn)
          return false
     end
+    local iTeam = PlayerResource:GetTeam(iPlayer)
+    if not (t.team == 1 or iTeam == t.team) then
+        print("invalid team")
+        return false
+    end
     local extra = t.extra or {}
     if t.plugin[t.call_fn](t.plugin,iPlayer,extra) then
         CurrenciesPlugin:AlterCurrency(sName,iPlayer,t.earn) 
@@ -345,11 +359,14 @@ end
 
 function CurrenciesPlugin:CheckForSingleSpendOption(sName,iPlayer)
     if iPlayer == nil then return false end
+    local iTeam = PlayerResource:GetTeam(iPlayer)
     local c = 0
     local fn
-    for k,_ in pairs(CurrenciesPlugin.spend_options[sName]) do
-        fn = k
-        c = c + 1
+    for k,v in pairs(CurrenciesPlugin.spend_options[sName]) do
+        if v.team == 1 or iTeam == v.team then
+            fn = k
+            c = c + 1
+        end
     end
     if c == 1 then
         if CurrenciesPlugin:UserSpendingOption(iPlayer,sName,fn) then

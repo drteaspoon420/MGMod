@@ -21,10 +21,13 @@ end
 
 
 function DevStuffPlugin:debug_unit(tEvent)
-    print("someone wants to debug unit")
     local hUnit = EntIndexToHScript(tEvent.target)
-    print(tEvent.target)
     if not hUnit:IsDOTANPC() then return end
+    local iPlayer = tEvent.PlayerID
+    if DevStuffPlugin.unit_debug_ui == nil then
+        DevStuffPlugin.unit_debug_ui = true
+        CustomUI:DynamicHud_Create(iPlayer,"unit_debugger","file://{resources}/layout/custom_game/unit_debugger.xml",nil)
+    end
     local data = {}
     data.AttackReady = hUnit:AttackReady()
     data.BoundingRadius2D = hUnit:BoundingRadius2D()
@@ -294,7 +297,17 @@ end
 
 
 function DevStuffPlugin:ShortCutMods(tArgs,bTeam,iPlayer)
-	local hUnit = Entities:GetLocalPlayerController() and Entities:GetLocalPlayerController():GetQueryUnit()
+    print("looking for mods")
+    local hPlayer = PlayerResource:GetPlayer(iPlayer)
+    if hPlayer == nil then
+        print("no Player?")
+        return
+    end
+	local hUnit = hPlayer:GetQueryUnit()
+    if hUnit == nil then
+        print("no GetQueryUnit?")
+        return
+    end
     if (hUnit) then
         for m,mod in pairs(hUnit:FindAllModifiers()) do
             local hAbility = mod:GetAbility()
@@ -305,6 +318,11 @@ function DevStuffPlugin:ShortCutMods(tArgs,bTeam,iPlayer)
             end
         end
     end
+end
+
+function DevStuffPlugin:GetLobbyEventGameDetails(tArgs,bTeam,iPlayer)
+    local data = GetLobbyEventGameDetails()
+    DeepPrintTable(data)
 end
 
 function DevStuffPlugin:ShortCutResetDefeated(tArgs,bTeam,iPlayer)

@@ -8,7 +8,10 @@ var SearchBox = $.GetContextPanel().FindChildInLayoutFile("SearchBox");
 var WindowPanel;
 var iCurrentSlot = 0;
 var isOpen = false;
-const this_window_id = "hero_window";
+
+const this_window_id = "hero_builder";
+var plugin_settings = {};
+const local_team = Players.GetTeam(Players.GetLocalPlayer());
 
 function CreateWindow(sWindow,tPurpose) {
     //Create button to open
@@ -166,19 +169,15 @@ function hero_builder_error(event) {
 }
 
 (function () {
-    DebugTalents();
-    ability_registery = CustomNetTables.GetAllTableValues( "ability_registery" );
-    Cleanup();
-    WindowPanel = $.CreatePanel('Panel', HeroBuilderMain, 'WindowPanel');
-    WindowPanel.BLoadLayoutSnippet("WindowPanel");
+    plugin_settings = CustomNetTables.GetTableValue( "plugin_settings", this_window_id );
 
-    let bAny = false;
-    for (const key in ability_registery) {
-        bAny = true;
-        CreateWindow(ability_registery[key].key,ability_registery[key].value);
+    let local_disable = plugin_settings.enabled.VALUE == 0;
+
+    if (!local_disable && plugin_settings.core_apply_team.VALUE != 1 && plugin_settings.core_apply_team.VALUE != local_team) {
+        local_disable = true;
     }
 
-    if (!bAny) {
+    if (local_disable) {
         Cleanup();
         var button_bar = FindDotaHudElement("ButtonBar");
         var existing_button = button_bar.FindChildTraverse("ButtonBar_HeroBuilder");
@@ -186,12 +185,25 @@ function hero_builder_error(event) {
             existing_button.DeleteAsync(0);
         }
     } else {
-        CreateToggleButton();
-        GameEvents.Subscribe( "open_window", open_window );
-        GameEvents.Subscribe( "hero_builder_error", hero_builder_error );
-        GameEvents.Subscribe( "ban_list_export", ban_list_export );
+        DebugTalents();
+        ability_registery = CustomNetTables.GetAllTableValues( "ability_registery" );
+        Cleanup();
+        WindowPanel = $.CreatePanel('Panel', HeroBuilderMain, 'WindowPanel');
+        WindowPanel.BLoadLayoutSnippet("WindowPanel");
+    
+        let bAny = false;
+        for (const key in ability_registery) {
+            bAny = true;
+            CreateWindow(ability_registery[key].key,ability_registery[key].value);
+        }
+        if (bAny) {
+            CreateToggleButton();
+            GameEvents.Subscribe( "open_window", open_window );
+            GameEvents.Subscribe( "hero_builder_error", hero_builder_error );
+            GameEvents.Subscribe( "ban_list_export", ban_list_export );
+            load_unit_skill_slots();
+        }
     }
-    load_unit_skill_slots();
 })();
 
 function CloseBuilder() {

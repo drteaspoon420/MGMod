@@ -80,5 +80,7 @@
     "bsrpg_upgrades_21",
     "bsrpg_upgrades_22",
     "bsrpg_upgrades_23",
+
+    "rounds",
   ]
 }

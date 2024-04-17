@@ -74,6 +74,7 @@ function BoostedPlugin:ApplySettings()
         cost = BoostedPlugin.settings.cost or 100,
         call_fn = "currencies_buy",
         option_name = "buy_upgrade",
+        team = BoostedPlugin.settings.core_apply_team
     }
     CurrenciesPlugin:RegisterSpendOption(BoostedPlugin.settings.currency,tOption)
 end
@@ -307,6 +308,7 @@ function BoostedPlugin:SpawnEvent(event)
     local hUnit = EntIndexToHScript(event.entindex)
     if not hUnit.IsRealHero then return end
     Timers:CreateTimer(0,function()
+        if not (BoostedPlugin.settings.core_apply_team == 1 or hUnit:GetTeam() == BoostedPlugin.settings.core_apply_team) then return end
         if hUnit:IsRealHero() then
             --if BoostedPlugin.unit_cache[event.entindex] ~= nil then return end
             --BoostedPlugin.unit_cache[event.entindex] = true
@@ -610,6 +612,7 @@ function BoostedPlugin:GetKvCount(hHero,iPlayer)
 end
 
 function BoostedPlugin:upgrade_hero(tEvent)
+    if not (BoostedPlugin.settings.core_apply_team == 1 or PlayerResource:GetTeam(tEvent.PlayerID) == BoostedPlugin.settings.core_apply_team) then return end
 	BoostedPlugin:SelectOffer(tEvent)
 end
 function BoostedPlugin:SelectOffer(tEvent)
@@ -1073,13 +1076,17 @@ function BoostedPlugin:GrantAllUpgrade()
         if PlayerResource:IsValidPlayer(i) then
             local player = PlayerResource:GetPlayer(i)
             if player ~= nil then
-                BoostedPlugin:GrantPlayerUpgrade(i)
+                local iTeam = PlayerResource:GetTeam(i)
+                if (BoostedPlugin.settings.core_apply_team == 1 or iTeam == BoostedPlugin.settings.core_apply_team) then
+                    BoostedPlugin:GrantPlayerUpgrade(i)
+                end
             end
         end
     end
 end
 
 function BoostedPlugin:GrantTeamUpgrade(iTeam)
+    if not (BoostedPlugin.settings.core_apply_team == 1 or iTeam == BoostedPlugin.settings.core_apply_team) then return end
     for i=0, DOTA_MAX_TEAM_PLAYERS do
         if PlayerResource:IsValidPlayer(i) then
             local player = PlayerResource:GetPlayer(i)
@@ -1093,6 +1100,8 @@ function BoostedPlugin:GrantTeamUpgrade(iTeam)
 end
 
 function BoostedPlugin:GrantPlayerUpgrade(iPlayer)
+    local iTeam = PlayerResource:GetTeam(iPlayer)
+    if not (BoostedPlugin.settings.core_apply_team == 1 or iTeam == BoostedPlugin.settings.core_apply_team) then return end
     if BoostedPlugin.player_boosters[iPlayer] == nil then
         BoostedPlugin.player_boosters[iPlayer] = 1
     else

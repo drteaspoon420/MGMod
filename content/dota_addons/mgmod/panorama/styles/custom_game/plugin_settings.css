@@ -42,6 +42,47 @@
   flow-children: right;
   margin: 5px;
   border-radius: 5px;
+  width: 100%;
+ }
+
+ #PluginSettingsDescription {
+    flow-children: down;
+    horizontal-align: right;
+    width: 100%;
+ }
+
+ #PluginSettingsDescriptionText {
+    margin: 0px 10px 0px 10px;
+    text-align: left;
+    horizontal-align: left;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 20px;
+ }
+
+ #PluginSettingsAuthorBox {
+    horizontal-align: right;
+    margin-right: 10px;
+    flow-children: right;
+ }
+
+ #PluginSettingsAuthorLable {
+    text-align: right;
+    horizontal-align: right;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 20px;
+ }
+ #PluginTeamSelect {
+    horizontal-align: right;
+    width: 200px;
+    height: 35px;
+ }
+
+ #AuthorAvatar {
+    horizontal-align: right;
+    width: 24px;
+    height: 24px;
  }
 
  .PluginLabel{

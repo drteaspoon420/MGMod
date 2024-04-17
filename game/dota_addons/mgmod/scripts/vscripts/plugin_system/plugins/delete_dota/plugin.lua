@@ -22,23 +22,23 @@ function DeleteDotaPlugin:ApplySettings()
 
     if DeleteDotaPlugin.settings.delete_ancient then 
         if DeleteDotaPlugin.settings.delete_radiant then
-            DeleteDotaPlugin:FindAndDeleteUnit("npc_dota_goodguys_fort")
+            DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_goodguys_fort")
         end
         if DeleteDotaPlugin.settings.delete_dire then
-            DeleteDotaPlugin:FindAndDeleteUnit("npc_dota_badguys_fort")
+            DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_badguys_fort")
         end
     end
 
     if DeleteDotaPlugin.settings.delete_fillers then
         if DeleteDotaPlugin.settings.delete_radiant then
-            DeleteDotaPlugin:FindAndKillUnit("npc_dota_goodguys_fillers")
+            DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_goodguys_fillers")
         end
         if DeleteDotaPlugin.settings.delete_dire then
-            DeleteDotaPlugin:FindAndKillUnit("npc_dota_badguys_fillers")
+            DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_badguys_fillers")
         end
     end
     if DeleteDotaPlugin.settings.delete_outposts then --doesnt work?
-        DeleteDotaPlugin:FindAndDeleteUnit("npc_dota_watch_tower")
+        DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_watch_tower")
         DeleteDotaPlugin:FindAndDeleteClass("npc_dota_watch_tower")
     end
     if DeleteDotaPlugin.settings.delete_neutral_spawns then
@@ -59,11 +59,11 @@ function DeleteDotaPlugin:ApplySettings()
     end
     if DeleteDotaPlugin.settings.delete_fountain then
         if DeleteDotaPlugin.settings.delete_radiant and not DeleteDotaPlugin.settings.delete_dire then
-            DeleteDotaPlugin:FindAndDeleteUnit("dota_fountain",DOTA_TEAM_GOODGUYS)
+            DeleteDotaPlugin:FindAndRemoveUnit("dota_fountain",DOTA_TEAM_GOODGUYS)
         elseif not DeleteDotaPlugin.settings.delete_radiant and DeleteDotaPlugin.settings.delete_dire then
-            DeleteDotaPlugin:FindAndDeleteUnit("dota_fountain",DOTA_TEAM_BADGUYS)
+            DeleteDotaPlugin:FindAndRemoveUnit("dota_fountain",DOTA_TEAM_BADGUYS)
         else
-            DeleteDotaPlugin:FindAndDeleteUnit("dota_fountain")
+            DeleteDotaPlugin:FindAndRemoveUnit("dota_fountain")
         end
     end
     if DeleteDotaPlugin.settings.delete_misc then
@@ -75,39 +75,39 @@ end
 function DeleteDotaPlugin:DeleteTowers(iTier)
     if DeleteDotaPlugin.settings.delete_radiant then
         if iTier < 4 then
-            DeleteDotaPlugin:FindAndKillUnit("npc_dota_goodguys_tower".. iTier .."_top")
-            DeleteDotaPlugin:FindAndKillUnit("npc_dota_goodguys_tower".. iTier .."_mid")
-            DeleteDotaPlugin:FindAndKillUnit("npc_dota_goodguys_tower".. iTier .."_bot")
+            DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_goodguys_tower".. iTier .."_top")
+            DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_goodguys_tower".. iTier .."_mid")
+            DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_goodguys_tower".. iTier .."_bot")
         else
-            DeleteDotaPlugin:FindAndKillUnit("npc_dota_goodguys_tower".. iTier)
+            DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_goodguys_tower".. iTier)
         end
     end
     if DeleteDotaPlugin.settings.delete_dire then
         if iTier < 4 then
-            DeleteDotaPlugin:FindAndKillUnit("npc_dota_badguys_tower".. iTier .."_top")
-            DeleteDotaPlugin:FindAndKillUnit("npc_dota_badguys_tower".. iTier .."_mid")
-            DeleteDotaPlugin:FindAndKillUnit("npc_dota_badguys_tower".. iTier .."_bot")
+            DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_badguys_tower".. iTier .."_top")
+            DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_badguys_tower".. iTier .."_mid")
+            DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_badguys_tower".. iTier .."_bot")
         else
-            DeleteDotaPlugin:FindAndKillUnit("npc_dota_badguys_tower".. iTier)
+            DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_badguys_tower".. iTier)
         end
     end
 end
 function DeleteDotaPlugin:DeleteRax()
     if DeleteDotaPlugin.settings.delete_radiant then
-        DeleteDotaPlugin:FindAndKillUnit("npc_dota_goodguys_melee_rax_top")
-        DeleteDotaPlugin:FindAndKillUnit("npc_dota_goodguys_melee_rax_mid")
-        DeleteDotaPlugin:FindAndKillUnit("npc_dota_goodguys_melee_rax_bot")
-        DeleteDotaPlugin:FindAndKillUnit("npc_dota_goodguys_range_rax_top")
-        DeleteDotaPlugin:FindAndKillUnit("npc_dota_goodguys_range_rax_mid")
-        DeleteDotaPlugin:FindAndKillUnit("npc_dota_goodguys_range_rax_bot")
+        DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_goodguys_melee_rax_top")
+        DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_goodguys_melee_rax_mid")
+        DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_goodguys_melee_rax_bot")
+        DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_goodguys_range_rax_top")
+        DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_goodguys_range_rax_mid")
+        DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_goodguys_range_rax_bot")
     end
     if DeleteDotaPlugin.settings.delete_dire then
-        DeleteDotaPlugin:FindAndKillUnit("npc_dota_badguys_melee_rax_top")
-        DeleteDotaPlugin:FindAndKillUnit("npc_dota_badguys_melee_rax_mid")
-        DeleteDotaPlugin:FindAndKillUnit("npc_dota_badguys_melee_rax_bot")
-        DeleteDotaPlugin:FindAndKillUnit("npc_dota_badguys_range_rax_top")
-        DeleteDotaPlugin:FindAndKillUnit("npc_dota_badguys_range_rax_mid")
-        DeleteDotaPlugin:FindAndKillUnit("npc_dota_badguys_range_rax_bot")
+        DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_badguys_melee_rax_top")
+        DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_badguys_melee_rax_mid")
+        DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_badguys_melee_rax_bot")
+        DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_badguys_range_rax_top")
+        DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_badguys_range_rax_mid")
+        DeleteDotaPlugin:FindAndRemoveUnit("npc_dota_badguys_range_rax_bot")
     end
 end
 
@@ -120,6 +120,22 @@ function DeleteDotaPlugin:FindAndDeleteUnit(sName,iTeam)
             if sUnitName == sName then
                 if iTeam == -1 or (e.GetTeam and e:GetTeam() == iTeam) then
                     e:Destroy()
+                end
+            end
+        end
+        e = Entities:Next(e)
+    end
+end
+
+function DeleteDotaPlugin:FindAndRemoveUnit(sName,iTeam)
+    local iTeam = iTeam or -1
+    local e = Entities:Next(nil)
+    while e do
+        if e.GetUnitName then
+            local sUnitName = e:GetUnitName()
+            if sUnitName == sName then
+                if iTeam == -1 or (e.GetTeam and e:GetTeam() == iTeam) then
+                    e:RemoveSelf()
                 end
             end
         end
@@ -151,7 +167,7 @@ function DeleteDotaPlugin:FindAndDeleteClass(sName)
         if e.GetClassname then
             local sUnitName = e:GetClassname()
             if sUnitName == sName then
-                e:Destroy()
+                e:RemoveSelf()
             end
         end
         e = Entities:Next(e)

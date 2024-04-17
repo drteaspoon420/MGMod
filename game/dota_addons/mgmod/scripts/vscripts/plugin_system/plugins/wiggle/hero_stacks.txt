@@ -1,0 +1,81 @@
+"hero_stacks"
+{
+    "npc_dota_hero_pudge"
+    {
+        "modifier_pudge_flesh_heap_custom"  {
+            "custom" "modifiers/modifier_pudge_flesh_heap_custom.lua"
+            "stack" "52"
+            "ability" "pudge_flesh_heap"
+        }
+    }
+    "npc_dota_hero_silencer"
+    {
+        "modifier_silencer_glaives_of_wisdom" {
+            "stack" "216"
+            "ability" "silencer_glaives_of_wisdom"
+        }
+        "int" "216"
+    }
+    "npc_dota_hero_legion_commander"
+    {
+        "modifier_legion_commander_duel_damage_boost"  {
+            "stack" "1210"
+            "ability" "legion_commander_duel"
+        }
+    }
+    "npc_dota_hero_lion"
+    {
+        "modifier_lion_finger_of_death_kill_counter"  {
+            "stack" "21"
+            "ability" "lion_finger_of_death"
+        }
+    }
+    "npc_dota_hero_slark"
+    {
+        "modifier_slark_essence_shift_permanent_buff"  {
+            "stack" "46"
+            "ability" "slark_essence_shift"
+        }
+    }
+    "npc_dota_hero_skeleton_king"
+    {
+        "modifier_skeleton_king_vampiric_aura"  {
+            "stack" "14"
+            "ability" "skeleton_king_vampiric_aura"
+            "respawn" "1"
+        }
+    }
+    "npc_dota_hero_nevermore"
+    {
+        "modifier_nevermore_necromastery"  {
+            "stack" "25"
+            "ability" "nevermore_necromastery"
+            "respawn" "1"
+        }
+    }
+    "npc_dota_hero_alchemist"
+    {
+        "modifier_alchemist_scepter_bonus_damage"  {
+            "stack" "4"
+            "ability" "alchemist_chemical_rage"
+        }
+        "item" {
+            "item_ultimate_scepter_2" "1"
+        }
+    }
+    "npc_dota_hero_necrolyte"
+    {
+        "modifier_necrolyte_custom_kills"  {
+            "custom" "modifiers/modifier_necrolyte_custom_kills.lua"
+            "stack" "76"
+            "ability" "necrolyte_reapers_scythe"
+        }
+    }
+    "npc_dota_hero_axe"
+    {
+        "modifier_axe_culling_blade_permanent"  {
+            "stack" "29"
+            "ability" "axe_culling_blade"
+        }
+    }
+}

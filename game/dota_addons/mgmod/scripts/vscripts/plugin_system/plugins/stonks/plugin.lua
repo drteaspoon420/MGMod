@@ -126,6 +126,8 @@ function StonksPlugin:Buy(playerID,stonk,ammount)
 	local gold = PlayerResource:GetGold(playerID)
 	local hHero = player:GetAssignedHero()
 
+    if not (StonksPlugin.settings.core_apply_team == 1 or hHero:GetTeam() == StonksPlugin.settings.core_apply_team) then return end
+
     if not hHero:IsAlive() then
 		CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerID), "show_center_message", { message = "Cannot buy while dead." })
         return
@@ -159,6 +161,7 @@ function StonksPlugin:Sell(playerID,stonk,ammount)
 	local gold = PlayerResource:GetGold(playerID)
 	local hHero = player:GetAssignedHero()
     
+    if not (StonksPlugin.settings.core_apply_team == 1 or hHero:GetTeam() == StonksPlugin.settings.core_apply_team) then return end
 
     if not hHero:IsAlive() then
 		CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerID), "show_center_message", { message = "Cannot sell while dead." })

@@ -1,0 +1,13 @@
+"plugin_settings"
+{
+    "Order" "2024"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "shared_runes" {
+        "Order" "1"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+}
