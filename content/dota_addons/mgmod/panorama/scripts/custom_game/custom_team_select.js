@@ -192,10 +192,7 @@ function CreateSlotPlayer(iTeam,iSlot,hParent,iPlayer) {
     return PlayerSlot;
 }
 
-function dota_player_selected_custom_team(tEvent) {
-    PreWork2();
-}
-function setting_team_rescale(tEvent) {
+function teams_changed(tEvent) {
     PreWork2();
 }
 
@@ -254,6 +251,7 @@ function unlock_remote() {
 
 function OnAutoAssignPressed()
 {
+    if (!bHost) return;
     Game.ShufflePlayerTeamAssignments();
     $.Schedule(0.1,PreWork2);
 }
@@ -300,8 +298,10 @@ function ToggleTimer() {
             lock_level: -1,
         };
     }
-    GameEvents.Subscribe( "dota_player_selected_custom_team", dota_player_selected_custom_team );
-    GameEvents.Subscribe( "setting_team_rescale", setting_team_rescale );
+    GameEvents.Subscribe( "dota_player_team_changed", teams_changed );
+    GameEvents.Subscribe( "dota_team_player_list_changed", teams_changed );
+    GameEvents.Subscribe( "dota_player_selected_custom_team", teams_changed );
+    GameEvents.Subscribe( "setting_team_rescale", teams_changed );
     CustomNetTables.SubscribeNetTableListener( "forced_mode" , forced_mode_update );
     const PlayerInfo = Game.GetPlayerInfo( Players.GetLocalPlayer() );
     if (PlayerInfo.player_team_id == 0) {

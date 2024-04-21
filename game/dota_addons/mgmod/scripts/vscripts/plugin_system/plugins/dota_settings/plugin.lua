@@ -132,6 +132,47 @@ function DotaSettingsPlugin:ApplySettings()
                 end
             end
         end, time)
+    elseif ("hostpick"==DotaSettingsPlugin.settings.pick_mode ) then
+        GameRules:SetHideBlacklistedHeroes(true)
+        GameRules:GetGameModeEntity():SetPlayerHeroAvailabilityFiltered( true )
+        local iHost = Toolbox:GetHostId()
+        local hero_definitions = LoadKeyValues('scripts/npc/npc_heroes.txt')
+        for k,_ in pairs(hero_definitions) do
+            local nHeroID = DOTAGameManager:GetHeroIDByName( k )
+            GameRules:AddHeroToPlayerAvailability(iHost, nHeroID )
+        end
+        Timers:CreateTimer(time,function()
+            if PlayerResource:HasSelectedHero(iHost) then
+                local sHero = PlayerResource:GetSelectedHeroName(iHost)
+                DotaSettingsPlugin:CloneAll(sHero)
+                return
+            end
+            return 1
+        end)
+    elseif ("captainspick"==DotaSettingsPlugin.settings.pick_mode ) then
+        GameRules:SetHideBlacklistedHeroes(true)
+        GameRules:GetGameModeEntity():SetPlayerHeroAvailabilityFiltered( true )
+        local tLeaders = Toolbox:GetTeamLeaders()
+        
+        local hero_definitions = LoadKeyValues('scripts/npc/npc_heroes.txt')
+        for k,_ in pairs(hero_definitions) do
+            local nHeroID = DOTAGameManager:GetHeroIDByName( k )
+            for i=1,#tLeaders do
+                GameRules:AddHeroToPlayerAvailability(tLeaders[i], nHeroID )
+            end
+        end
+        
+        for i=1,#tLeaders do
+            Timers:CreateTimer(time,function()
+                if PlayerResource:HasSelectedHero(tLeaders[i]) then
+                    local sHero = PlayerResource:GetSelectedHeroName(tLeaders[i])
+                    DotaSettingsPlugin:CloneTeam(PlayerResource:GetTeam(tLeaders[i]),sHero)
+                    return
+                end
+                return 1
+            end)
+        end
+
     elseif ("singledraft"==DotaSettingsPlugin.settings.pick_mode ) then
         GameRules:GetGameModeEntity():SetThink( function()
             local attribute_heroes = {
@@ -194,7 +235,40 @@ end,nil)
 end
 
 
+function DotaSettingsPlugin:CloneAll(sHero)
+    for p=0,DOTA_MAX_PLAYERS do
+        if PlayerResource:IsValidPlayer(p) then
+            local hPlayer = PlayerResource:GetPlayer(p)
+            if hPlayer then
+                hPlayer:SetSelectedHero(sHero)
+            end
+        end
+    end
+end
+
+function DotaSettingsPlugin:CloneTeam(iTeam,sHero)
+    for p=0,DOTA_MAX_PLAYERS do
+        if PlayerResource:IsValidPlayer(p) then
+            if PlayerResource:GetTeam(p) == iTeam then
+                local hPlayer = PlayerResource:GetPlayer(p)
+                if hPlayer then
+                    hPlayer:SetSelectedHero(sHero)
+                end
+            end
+        end
+    end
+end
+
+function DotaSettingsPlugin:StopListening()
+    if DotaSettingsPlugin.temp_listen then
+        StopListeningToGameEvent(DotaSettingsPlugin.temp_listen)
+        DotaSettingsPlugin.temp_listen = nil
+    end
+end
+
+
 function DotaSettingsPlugin:ApplySettingsStartGame()
+    DotaSettingsPlugin:StopListening()
     if DotaSettingsPlugin.settings.agh_shard_time == 15 then return end
     local deltime = GameRules:GetItemStockTime(DOTA_TEAM_GOODGUYS,"item_aghanims_shard",-1)
     if DotaSettingsPlugin.settings.agh_shard_time < deltime then

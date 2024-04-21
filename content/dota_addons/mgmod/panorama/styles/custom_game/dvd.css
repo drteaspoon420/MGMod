@@ -1,0 +1,59 @@
+.DvdRoot {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes 'hor-movement' {
+	0%
+	{
+		transform: translateX(0%);
+	}
+
+	100%
+	{
+		transform: translateX(90%);
+	}
+}
+
+@keyframes 'ver-movement' {
+	0%
+	{
+		transform: translateY(0%);
+	}
+
+	100%
+	{
+		transform: translateY(83%);
+	}
+}
+
+#DvdVertical {
+    animation-name: hor-movement;
+    animation-duration: 5.141s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    height: 100%;
+    width: 1px;
+    overflow: noclip noclip;
+}
+#DvdHorizontal {
+    animation-name: ver-movement;
+    animation-duration: 3.641s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    height: 1px;
+    width: 1px;
+    overflow: noclip noclip;
+}
+            
+#DvdImage {
+    opacity: 0.7;
+    width: 212px;
+    height: 206px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 100% 100%;
+    background-image: url("file://{images}/custom_game/mgmod_logo_outline.png");
+}

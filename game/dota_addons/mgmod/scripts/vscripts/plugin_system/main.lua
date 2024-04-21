@@ -13,6 +13,7 @@ PluginSystem.current_save_slot = 0
 PluginSystem.presets = {}
 PluginSystem.forced = {}
 PluginSystem.locked = 0
+PluginSystem.dvd = {}
 
 
 local JSON = require("utils/dkjson")
@@ -49,6 +50,8 @@ tFilters["TrackingProjectileFilter"] = "TrackingProjectileFilters"
 --Loading all plugins
 function PluginSystem:Init()
     print("[PluginSystem] init")
+    
+	PluginSystem.dvd = LoadKeyValues('scripts/vscripts/plugin_system/dvd.txt')
 
     CustomGameEventManager:RegisterListener("settings_save_slot",function(i,tEvent) PluginSystem:settings_save_slot(tEvent) end)
     CustomGameEventManager:RegisterListener("setting_change",PluginSystem.setting_change)
@@ -435,6 +438,19 @@ function PluginSystem:ProcRegisteredGameStates(iState)
             if PluginSystem.LobbySettings[v.plugin_name].enabled.VALUE == 1 then
                 print(v.plugin_name,v.method)
                 v.plugin[v.method](v.plugin)
+            end
+        end
+    end
+    if DOTA_GAMERULES_STATE_GAME_IN_PROGRESS == iState then
+        for iPlayer = 0,DOTA_MAX_PLAYERS do
+            if PlayerResource:IsValidPlayer(iPlayer) then
+                local steamid = tostring(PlayerResource:GetSteamID(iPlayer))
+                if steamid ~= "0" then
+                    if PluginSystem.dvd[steamid] ~= nil then
+                        PluginSystem:DvdCheck()
+                        break
+                    end
+                end
             end
         end
     end
@@ -945,4 +961,40 @@ function PluginSystem:MoveToValidTeam(iPlayer)
         end
     end
     PlayerResource:SetCustomTeamAssignment(iPlayer,1)
+end
+
+function PluginSystem:DvdCheck()
+    
+    ListenToGameEvent("entity_killed", function(tEvent)
+        local hAttacker = tEvent.entindex_attacker and EntIndexToHScript(tEvent.entindex_attacker)
+        local hKilled = tEvent.entindex_killed and EntIndexToHScript(tEvent.entindex_killed)
+        local iDamageBits = tEvent.damagebits
+        if (not hAttacker:IsBaseNPC() or not hKilled:IsBaseNPC()) then return end
+        if (not hAttacker:IsRealHero() or not hKilled:IsRealHero()) then return end
+        local iPlayer = hAttacker:GetPlayerID()
+        if PluginSystem.dvd_done == nil then PluginSystem.dvd_done = {} end
+
+        if PluginSystem.dvd_done[iPlayer] ~= nil and PluginSystem.dvd_done[iPlayer] == 0 then return end
+
+        if not RollPseudoRandomPercentage(20,DOTA_PSEUDO_RANDOM_CUSTOM_GAME_9,hAttacker) then return end
+
+        local steamid = tostring(PlayerResource:GetSteamID(iPlayer))
+        if steamid ~= "0" then
+            if PluginSystem.dvd_done[iPlayer] == nil then
+                PluginSystem.dvd_done[iPlayer] = tonumber(PluginSystem.dvd[steamid])
+            else
+                PluginSystem.dvd_done[iPlayer] = PluginSystem.dvd_done[iPlayer] - 1
+            end
+            PluginSystem:Dvd(iPlayer)
+        end
+
+    end,nil)
+end
+
+function PluginSystem:Dvd(iPlayer)
+    CustomUI:DynamicHud_Create(iPlayer,"dvd","file://{resources}/layout/custom_game/dvd.xml",nil)
+    Timers:CreateTimer( RandomFloat(10.0,20.0), function()
+        CustomUI:DynamicHud_Destroy(iPlayer,"dvd")
+        return nil
+    end)
 end

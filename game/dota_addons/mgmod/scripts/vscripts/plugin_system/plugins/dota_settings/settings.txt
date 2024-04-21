@@ -82,6 +82,8 @@
             "allpick" "0"
             "allrandom" "1"
             "singledraft" "2"
+            "captainspick" "3"
+            "hostpick" "4"
         }
     }
     "courier_turbo"

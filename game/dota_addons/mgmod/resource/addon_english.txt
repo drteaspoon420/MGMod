@@ -61,6 +61,8 @@
 		"Plugin_dota_settings_Option_pick_mode_Drop_allpick" "All Pick"
 		"Plugin_dota_settings_Option_pick_mode_Drop_allrandom" "All Random"
 		"Plugin_dota_settings_Option_pick_mode_Drop_singledraft" "Single Draft"
+		"Plugin_dota_settings_Option_pick_mode_Drop_captainspick" "Clone Team"
+		"Plugin_dota_settings_Option_pick_mode_Drop_hostpick" "Clone World"
 
 		
 
@@ -272,14 +274,6 @@
 		"Plugin_tower_buffs_Option_bonus_armor"	"Bonus Armor"
 		"Plugin_tower_buffs_Option_bonus_magic_resistance"	"Bonus Magic Resistance"
 		"Plugin_tower_buffs_Option_unyielding_shield"	"Unyielding Shield"
-
-
-
-
-
-
-
-
 
 
 		"Plugin_basic_commands" "Basic Chat Commands"

@@ -219,6 +219,21 @@ function Toolbox:GetTeamLeader(iTeam)
 	end
 	return nil
 end
+function Toolbox:GetTeamLeaders()
+    local t = {}
+    local teams = {}
+	for p=0,DOTA_MAX_PLAYERS do
+		local player = PlayerResource:GetPlayer(p)
+		if player ~= nil then
+            local iTeam = player:GetTeamNumber()
+            if teams[iTeam] == nil then
+                teams[iTeam] = p
+                table.insert(t,p)
+            end
+		end
+	end
+	return t
+end
 
 local buildings = {
 	"npc_dota_tower",

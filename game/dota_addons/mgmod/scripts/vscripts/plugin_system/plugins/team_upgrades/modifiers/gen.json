@@ -1,0 +1,1598 @@
+{
+    "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE": {
+        "name": "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE",
+        "fn": "GetModifierPreAttack_BonusDamage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE_TARGET": {
+        "name": "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE_TARGET",
+        "fn": "GetModifierPreAttack_BonusDamage_Target",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE_PROC": {
+        "name": "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE_PROC",
+        "fn": "GetModifierPreAttack_BonusDamage_Proc",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE_POST_CRIT": {
+        "name": "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE_POST_CRIT",
+        "fn": "GetModifierPreAttack_BonusDamagePostCrit",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE": {
+        "name": "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE",
+        "fn": "GetModifierBaseAttack_BonusDamage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PHYSICAL": {
+        "name": "MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PHYSICAL",
+        "fn": "GetModifierProcAttack_BonusDamage_Physical",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PROCATTACK_CONVERT_PHYSICAL_TO_MAGICAL": {
+        "name": "MODIFIER_PROPERTY_PROCATTACK_CONVERT_PHYSICAL_TO_MAGICAL",
+        "fn": "GetModifierProcAttack_ConvertPhysicalToMagical",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_MAGICAL": {
+        "name": "MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_MAGICAL",
+        "fn": "GetModifierProcAttack_BonusDamage_Magical",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PURE": {
+        "name": "MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PURE",
+        "fn": "GetModifierProcAttack_BonusDamage_Pure",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_MAGICAL_TARGET": {
+        "name": "MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_MAGICAL_TARGET",
+        "fn": "GetModifierProcAttack_BonusDamage_Magical_Target",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PROCATTACK_FEEDBACK": {
+        "name": "MODIFIER_PROPERTY_PROCATTACK_FEEDBACK",
+        "fn": "GetModifierProcAttack_Feedback",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_OVERRIDE_ATTACK_DAMAGE": {
+        "name": "MODIFIER_PROPERTY_OVERRIDE_ATTACK_DAMAGE",
+        "fn": "GetModifierOverrideAttackDamage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PRE_ATTACK": {
+        "name": "MODIFIER_PROPERTY_PRE_ATTACK",
+        "fn": "GetModifierPreAttack",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_INVISIBILITY_LEVEL": {
+        "name": "MODIFIER_PROPERTY_INVISIBILITY_LEVEL",
+        "fn": "GetModifierInvisibilityLevel",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_INVISIBILITY_ATTACK_BEHAVIOR_EXCEPTION": {
+        "name": "MODIFIER_PROPERTY_INVISIBILITY_ATTACK_BEHAVIOR_EXCEPTION",
+        "fn": "GetModifierInvisibilityAttackBehaviorException",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PERSISTENT_INVISIBILITY": {
+        "name": "MODIFIER_PROPERTY_PERSISTENT_INVISIBILITY",
+        "fn": "GetModifierPersistentInvisibility",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT": {
+        "name": "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT",
+        "fn": "GetModifierMoveSpeedBonus_Constant",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE": {
+        "name": "MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE",
+        "fn": "GetModifierMoveSpeedOverride",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE",
+        "fn": "GetModifierMoveSpeedBonus_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE": {
+        "name": "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE",
+        "fn": "GetModifierMoveSpeedBonus_Percentage_Unique",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE": {
+        "name": "MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE",
+        "fn": "GetModifierMoveSpeedBonus_Special_Boots",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE_2": {
+        "name": "MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE_2",
+        "fn": "GetModifierMoveSpeedBonus_Special_Boots_2",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT_UNIQUE": {
+        "name": "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT_UNIQUE",
+        "fn": "GetModifierMoveSpeedBonus_Constant_Unique",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT_UNIQUE_2": {
+        "name": "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT_UNIQUE_2",
+        "fn": "GetModifierMoveSpeedBonus_Constant_Unique_2",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE": {
+        "name": "MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE",
+        "fn": "GetModifierMoveSpeed_Absolute",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE_MIN": {
+        "name": "MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE_MIN",
+        "fn": "GetModifierMoveSpeed_AbsoluteMin",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE_MAX": {
+        "name": "MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE_MAX",
+        "fn": "GetModifierMoveSpeed_AbsoluteMax",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_IGNORE_MOVESPEED_LIMIT": {
+        "name": "MODIFIER_PROPERTY_IGNORE_MOVESPEED_LIMIT",
+        "fn": "GetModifierIgnoreMovespeedLimit",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MOVESPEED_LIMIT": {
+        "name": "MODIFIER_PROPERTY_MOVESPEED_LIMIT",
+        "fn": "GetModifierMoveSpeed_Limit",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_ATTACKSPEED_BASE_OVERRIDE": {
+        "name": "MODIFIER_PROPERTY_ATTACKSPEED_BASE_OVERRIDE",
+        "fn": "GetModifierAttackSpeedBaseOverride",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_FIXED_ATTACK_RATE": {
+        "name": "MODIFIER_PROPERTY_FIXED_ATTACK_RATE",
+        "fn": "GetModifierFixedAttackRate",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT": {
+        "name": "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT",
+        "fn": "GetModifierAttackSpeedBonus_Constant",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_IGNORE_ATTACKSPEED_LIMIT": {
+        "name": "MODIFIER_PROPERTY_IGNORE_ATTACKSPEED_LIMIT",
+        "fn": "GetModifierAttackSpeed_Limit",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_COOLDOWN_REDUCTION_CONSTANT": {
+        "name": "MODIFIER_PROPERTY_COOLDOWN_REDUCTION_CONSTANT",
+        "fn": "GetModifierCooldownReduction_Constant",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MANACOST_REDUCTION_CONSTANT": {
+        "name": "MODIFIER_PROPERTY_MANACOST_REDUCTION_CONSTANT",
+        "fn": "GetModifierManacostReduction_Constant",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_HEALTHCOST_REDUCTION_CONSTANT": {
+        "name": "MODIFIER_PROPERTY_HEALTHCOST_REDUCTION_CONSTANT",
+        "fn": "GetModifierHealthcostReduction_Constant",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT": {
+        "name": "MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT",
+        "fn": "GetModifierBaseAttackTimeConstant",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT_ADJUST": {
+        "name": "MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT_ADJUST",
+        "fn": "GetModifierBaseAttackTimeConstant_Adjust",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_BASE_ATTACK_TIME_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_BASE_ATTACK_TIME_PERCENTAGE",
+        "fn": "GetModifierBaseAttackTimePercentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_ATTACK_POINT_CONSTANT": {
+        "name": "MODIFIER_PROPERTY_ATTACK_POINT_CONSTANT",
+        "fn": "GetModifierAttackPointConstant",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_BONUSDAMAGEOUTGOING_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_BONUSDAMAGEOUTGOING_PERCENTAGE",
+        "fn": "GetModifierBonusDamageOutgoing_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE",
+        "fn": "GetModifierDamageOutgoing_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION": {
+        "name": "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION",
+        "fn": "GetModifierDamageOutgoing_Percentage_Illusion",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION_AMPLIFY": {
+        "name": "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION_AMPLIFY",
+        "fn": "GetModifierDamageOutgoing_Percentage_Illusion_Amplify",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE",
+        "fn": "GetModifierTotalDamageOutgoing_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE_CREEP": {
+        "name": "MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE_CREEP",
+        "fn": "GetModifierSpellAmplify_PercentageCreep",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE",
+        "fn": "GetModifierSpellAmplify_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE_UNIQUE": {
+        "name": "MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE_UNIQUE",
+        "fn": "GetModifierSpellAmplify_PercentageUnique",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_SOURCE": {
+        "name": "MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_SOURCE",
+        "fn": "GetModifierHealAmplify_PercentageSource",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_TARGET": {
+        "name": "MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_TARGET",
+        "fn": "GetModifierHealAmplify_PercentageTarget",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_HP_REGEN_CAN_BE_NEGATIVE": {
+        "name": "MODIFIER_PROPERTY_HP_REGEN_CAN_BE_NEGATIVE",
+        "fn": "GetModifierHPRegen_CanBeNegative",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE",
+        "fn": "GetModifierHPRegenAmplify_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_LIFESTEAL_AMPLIFY_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_LIFESTEAL_AMPLIFY_PERCENTAGE",
+        "fn": "GetModifierLifestealRegenAmplify_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE",
+        "fn": "GetModifierSpellLifestealRegenAmplify_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MP_REGEN_AMPLIFY_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_MP_REGEN_AMPLIFY_PERCENTAGE",
+        "fn": "GetModifierMPRegenAmplify_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MANA_DRAIN_AMPLIFY_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_MANA_DRAIN_AMPLIFY_PERCENTAGE",
+        "fn": "GetModifierManaDrainAmplify_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE",
+        "fn": "GetModifierBaseDamageOutgoing_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE_UNIQUE": {
+        "name": "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE_UNIQUE",
+        "fn": "GetModifierBaseDamageOutgoing_PercentageUnique",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE",
+        "fn": "GetModifierIncomingDamage_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE",
+        "fn": "GetModifierIncomingPhysicalDamage_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_EVASION_CONSTANT": {
+        "name": "MODIFIER_PROPERTY_EVASION_CONSTANT",
+        "fn": "GetModifierEvasion_Constant",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_NEGATIVE_EVASION_CONSTANT": {
+        "name": "MODIFIER_PROPERTY_NEGATIVE_EVASION_CONSTANT",
+        "fn": "GetModifierNegativeEvasion_Constant",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_STATUS_RESISTANCE": {
+        "name": "MODIFIER_PROPERTY_STATUS_RESISTANCE",
+        "fn": "GetModifierStatusResistance",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_STATUS_RESISTANCE_STACKING": {
+        "name": "MODIFIER_PROPERTY_STATUS_RESISTANCE_STACKING",
+        "fn": "GetModifierStatusResistanceStacking",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_STATUS_RESISTANCE_CASTER": {
+        "name": "MODIFIER_PROPERTY_STATUS_RESISTANCE_CASTER",
+        "fn": "GetModifierStatusResistanceCaster",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_AVOID_DAMAGE": {
+        "name": "MODIFIER_PROPERTY_AVOID_DAMAGE",
+        "fn": "GetModifierAvoidDamage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_AVOID_SPELL": {
+        "name": "MODIFIER_PROPERTY_AVOID_SPELL",
+        "fn": "GetModifierAvoidSpell",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MISS_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_MISS_PERCENTAGE",
+        "fn": "GetModifierMiss_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PHYSICAL_ARMOR_TOTAL_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_PHYSICAL_ARMOR_TOTAL_PERCENTAGE",
+        "fn": "GetModifierPhysicalArmorTotal_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS": {
+        "name": "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS",
+        "fn": "GetModifierPhysicalArmorBonus",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE": {
+        "name": "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE",
+        "fn": "GetModifierPhysicalArmorBonusUnique",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE_ACTIVE": {
+        "name": "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE_ACTIVE",
+        "fn": "GetModifierPhysicalArmorBonusUniqueActive",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_POST": {
+        "name": "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_POST",
+        "fn": "GetModifierPhysicalArmorBonusPost",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MIN_PHYSICAL_ARMOR": {
+        "name": "MODIFIER_PROPERTY_MIN_PHYSICAL_ARMOR",
+        "fn": "GetModifierMinPhysicalArmor",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_IGNORE_PHYSICAL_ARMOR": {
+        "name": "MODIFIER_PROPERTY_IGNORE_PHYSICAL_ARMOR",
+        "fn": "GetModifierIgnorePhysicalArmor",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BASE_REDUCTION": {
+        "name": "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BASE_REDUCTION",
+        "fn": "GetModifierMagicalResistanceBaseReduction",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DIRECT_MODIFICATION": {
+        "name": "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DIRECT_MODIFICATION",
+        "fn": "GetModifierMagicalResistanceDirectModification",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS": {
+        "name": "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS",
+        "fn": "GetModifierMagicalResistanceBonus",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS_ILLUSIONS": {
+        "name": "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS_ILLUSIONS",
+        "fn": "GetModifierMagicalResistanceBonusIllusions",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS_UNIQUE": {
+        "name": "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS_UNIQUE",
+        "fn": "GetModifierMagicalResistanceBonusUnique",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE": {
+        "name": "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE",
+        "fn": "GetModifierMagicalResistanceDecrepifyUnique",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_BASE_MANA_REGEN": {
+        "name": "MODIFIER_PROPERTY_BASE_MANA_REGEN",
+        "fn": "GetModifierBaseRegen",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MANA_REGEN_CONSTANT": {
+        "name": "MODIFIER_PROPERTY_MANA_REGEN_CONSTANT",
+        "fn": "GetModifierConstantManaRegen",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MANA_REGEN_CONSTANT_UNIQUE": {
+        "name": "MODIFIER_PROPERTY_MANA_REGEN_CONSTANT_UNIQUE",
+        "fn": "GetModifierConstantManaRegenUnique",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE",
+        "fn": "GetModifierTotalPercentageManaRegen",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT": {
+        "name": "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT",
+        "fn": "GetModifierConstantHealthRegen",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE",
+        "fn": "GetModifierHealthRegenPercentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE_UNIQUE": {
+        "name": "MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE_UNIQUE",
+        "fn": "GetModifierHealthRegenPercentageUnique",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_HEALTH_BONUS": {
+        "name": "MODIFIER_PROPERTY_HEALTH_BONUS",
+        "fn": "GetModifierHealthBonus",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MANA_BONUS": {
+        "name": "MODIFIER_PROPERTY_MANA_BONUS",
+        "fn": "GetModifierManaBonus",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_EXTRA_STRENGTH_BONUS": {
+        "name": "MODIFIER_PROPERTY_EXTRA_STRENGTH_BONUS",
+        "fn": "GetModifierExtraStrengthBonus",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS": {
+        "name": "MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS",
+        "fn": "GetModifierExtraHealthBonus",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_EXTRA_MANA_BONUS": {
+        "name": "MODIFIER_PROPERTY_EXTRA_MANA_BONUS",
+        "fn": "GetModifierExtraManaBonus",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_EXTRA_MANA_BONUS_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_EXTRA_MANA_BONUS_PERCENTAGE",
+        "fn": "GetModifierExtraManaBonusPercentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_EXTRA_HEALTH_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_EXTRA_HEALTH_PERCENTAGE",
+        "fn": "GetModifierExtraHealthPercentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_EXTRA_MANA_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_EXTRA_MANA_PERCENTAGE",
+        "fn": "GetModifierExtraManaPercentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS": {
+        "name": "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS",
+        "fn": "GetModifierBonusStats_Strength",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_STATS_AGILITY_BONUS": {
+        "name": "MODIFIER_PROPERTY_STATS_AGILITY_BONUS",
+        "fn": "GetModifierBonusStats_Agility",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS": {
+        "name": "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS",
+        "fn": "GetModifierBonusStats_Intellect",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS_PERCENTAGE",
+        "fn": "GetModifierBonusStats_Strength_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_STATS_AGILITY_BONUS_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_STATS_AGILITY_BONUS_PERCENTAGE",
+        "fn": "GetModifierBonusStats_Agility_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS_PERCENTAGE",
+        "fn": "GetModifierBonusStats_Intellect_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_CAST_RANGE_BONUS": {
+        "name": "MODIFIER_PROPERTY_CAST_RANGE_BONUS",
+        "fn": "GetModifierCastRangeBonus",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_CAST_RANGE_BONUS_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_CAST_RANGE_BONUS_PERCENTAGE",
+        "fn": "GetModifierCastRangeBonusPercentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_CAST_RANGE_BONUS_TARGET": {
+        "name": "MODIFIER_PROPERTY_CAST_RANGE_BONUS_TARGET",
+        "fn": "GetModifierCastRangeBonusTarget",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_CAST_RANGE_BONUS_STACKING": {
+        "name": "MODIFIER_PROPERTY_CAST_RANGE_BONUS_STACKING",
+        "fn": "GetModifierCastRangeBonusStacking",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_ATTACK_RANGE_BASE_OVERRIDE": {
+        "name": "MODIFIER_PROPERTY_ATTACK_RANGE_BASE_OVERRIDE",
+        "fn": "GetModifierAttackRangeOverride",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS": {
+        "name": "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS",
+        "fn": "GetModifierAttackRangeBonus",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_UNIQUE": {
+        "name": "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_UNIQUE",
+        "fn": "GetModifierAttackRangeBonusUnique",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_PERCENTAGE",
+        "fn": "GetModifierAttackRangeBonusPercentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MAX_ATTACK_RANGE": {
+        "name": "MODIFIER_PROPERTY_MAX_ATTACK_RANGE",
+        "fn": "GetModifierMaxAttackRange",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS": {
+        "name": "MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS",
+        "fn": "GetModifierProjectileSpeedBonus",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS_PERCENTAGE",
+        "fn": "GetModifierProjectileSpeedBonusPercentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PROJECTILE_NAME": {
+        "name": "MODIFIER_PROPERTY_PROJECTILE_NAME",
+        "fn": "GetModifierProjectileName",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_REINCARNATION": {
+        "name": "MODIFIER_PROPERTY_REINCARNATION",
+        "fn": "ReincarnateTime",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_REINCARNATION_SUPPRESS_FX": {
+        "name": "MODIFIER_PROPERTY_REINCARNATION_SUPPRESS_FX",
+        "fn": "ReincarnateSuppressFX",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_RESPAWNTIME": {
+        "name": "MODIFIER_PROPERTY_RESPAWNTIME",
+        "fn": "GetModifierConstantRespawnTime",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_RESPAWNTIME_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_RESPAWNTIME_PERCENTAGE",
+        "fn": "GetModifierPercentageRespawnTime",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_RESPAWNTIME_STACKING": {
+        "name": "MODIFIER_PROPERTY_RESPAWNTIME_STACKING",
+        "fn": "GetModifierStackingRespawnTime",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE",
+        "fn": "GetModifierPercentageCooldown",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_ONGOING": {
+        "name": "MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_ONGOING",
+        "fn": "GetModifierPercentageCooldownOngoing",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_CASTTIME_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_CASTTIME_PERCENTAGE",
+        "fn": "GetModifierPercentageCasttime",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_ATTACK_ANIM_TIME_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_ATTACK_ANIM_TIME_PERCENTAGE",
+        "fn": "GetModifierPercentageAttackAnimTime",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MANACOST_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_MANACOST_PERCENTAGE",
+        "fn": "GetModifierPercentageManacost",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MANACOST_PERCENTAGE_STACKING": {
+        "name": "MODIFIER_PROPERTY_MANACOST_PERCENTAGE_STACKING",
+        "fn": "GetModifierPercentageManacostStacking",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_HEALTHCOST_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_HEALTHCOST_PERCENTAGE",
+        "fn": "GetModifierPercentageHealthcost",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_HEALTHCOST_PERCENTAGE_STACKING": {
+        "name": "MODIFIER_PROPERTY_HEALTHCOST_PERCENTAGE_STACKING",
+        "fn": "GetModifierPercentageHealthcostStacking",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_DEATHGOLDCOST": {
+        "name": "MODIFIER_PROPERTY_DEATHGOLDCOST",
+        "fn": "GetModifierConstantDeathGoldCost",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_EXP_RATE_BOOST": {
+        "name": "MODIFIER_PROPERTY_EXP_RATE_BOOST",
+        "fn": "GetModifierPercentageExpRateBoost",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_GOLD_RATE_BOOST": {
+        "name": "MODIFIER_PROPERTY_GOLD_RATE_BOOST",
+        "fn": "GetModifierPercentageGoldRateBoost",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE": {
+        "name": "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE",
+        "fn": "GetModifierPreAttack_CriticalStrike",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PREATTACK_TARGET_CRITICALSTRIKE": {
+        "name": "MODIFIER_PROPERTY_PREATTACK_TARGET_CRITICALSTRIKE",
+        "fn": "GetModifierPreAttack_Target_CriticalStrike",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MAGICAL_CONSTANT_BLOCK": {
+        "name": "MODIFIER_PROPERTY_MAGICAL_CONSTANT_BLOCK",
+        "fn": "GetModifierMagical_ConstantBlock",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK": {
+        "name": "MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK",
+        "fn": "GetModifierPhysical_ConstantBlock",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK_SPECIAL": {
+        "name": "MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK_SPECIAL",
+        "fn": "GetModifierPhysical_ConstantBlockSpecial",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR": {
+        "name": "MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR",
+        "fn": "GetModifierPhysical_ConstantBlockUnavoidablePreArmor",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK": {
+        "name": "MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK",
+        "fn": "GetModifierTotal_ConstantBlock",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_OVERRIDE_ANIMATION": {
+        "name": "MODIFIER_PROPERTY_OVERRIDE_ANIMATION",
+        "fn": "GetOverrideAnimation",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_OVERRIDE_ANIMATION_WEIGHT": {
+        "name": "MODIFIER_PROPERTY_OVERRIDE_ANIMATION_WEIGHT",
+        "fn": "GetOverrideAnimationWeight",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_OVERRIDE_ANIMATION_RATE": {
+        "name": "MODIFIER_PROPERTY_OVERRIDE_ANIMATION_RATE",
+        "fn": "GetOverrideAnimationRate",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_ABSORB_SPELL": {
+        "name": "MODIFIER_PROPERTY_ABSORB_SPELL",
+        "fn": "GetAbsorbSpell",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_REFLECT_SPELL": {
+        "name": "MODIFIER_PROPERTY_REFLECT_SPELL",
+        "fn": "GetReflectSpell",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_DISABLE_AUTOATTACK": {
+        "name": "MODIFIER_PROPERTY_DISABLE_AUTOATTACK",
+        "fn": "GetDisableAutoAttack",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_BONUS_DAY_VISION": {
+        "name": "MODIFIER_PROPERTY_BONUS_DAY_VISION",
+        "fn": "GetBonusDayVision",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_BONUS_DAY_VISION_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_BONUS_DAY_VISION_PERCENTAGE",
+        "fn": "GetBonusDayVisionPercentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_BONUS_NIGHT_VISION": {
+        "name": "MODIFIER_PROPERTY_BONUS_NIGHT_VISION",
+        "fn": "GetBonusNightVision",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_BONUS_NIGHT_VISION_UNIQUE": {
+        "name": "MODIFIER_PROPERTY_BONUS_NIGHT_VISION_UNIQUE",
+        "fn": "GetBonusNightVisionUnique",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_BONUS_VISION_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_BONUS_VISION_PERCENTAGE",
+        "fn": "GetBonusVisionPercentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_FIXED_DAY_VISION": {
+        "name": "MODIFIER_PROPERTY_FIXED_DAY_VISION",
+        "fn": "GetFixedDayVision",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_FIXED_NIGHT_VISION": {
+        "name": "MODIFIER_PROPERTY_FIXED_NIGHT_VISION",
+        "fn": "GetFixedNightVision",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MIN_HEALTH": {
+        "name": "MODIFIER_PROPERTY_MIN_HEALTH",
+        "fn": "GetMinHealth",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL": {
+        "name": "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL",
+        "fn": "GetAbsoluteNoDamagePhysical",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL": {
+        "name": "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL",
+        "fn": "GetAbsoluteNoDamageMagical",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE": {
+        "name": "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE",
+        "fn": "GetAbsoluteNoDamagePure",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_IS_ILLUSION": {
+        "name": "MODIFIER_PROPERTY_IS_ILLUSION",
+        "fn": "GetIsIllusion",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_ILLUSION_LABEL": {
+        "name": "MODIFIER_PROPERTY_ILLUSION_LABEL",
+        "fn": "GetModifierIllusionLabel",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_STRONG_ILLUSION": {
+        "name": "MODIFIER_PROPERTY_STRONG_ILLUSION",
+        "fn": "GetModifierStrongIllusion",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_SUPER_ILLUSION": {
+        "name": "MODIFIER_PROPERTY_SUPER_ILLUSION",
+        "fn": "GetModifierSuperIllusion",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_SUPER_ILLUSION_WITH_ULTIMATE": {
+        "name": "MODIFIER_PROPERTY_SUPER_ILLUSION_WITH_ULTIMATE",
+        "fn": "GetModifierSuperIllusionWithUltimate",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_XP_DURING_DEATH": {
+        "name": "MODIFIER_PROPERTY_XP_DURING_DEATH",
+        "fn": "GetModifierXPDuringDeath",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_TURN_RATE_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_TURN_RATE_PERCENTAGE",
+        "fn": "GetModifierTurnRate_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_TURN_RATE_OVERRIDE": {
+        "name": "MODIFIER_PROPERTY_TURN_RATE_OVERRIDE",
+        "fn": "GetModifierTurnRate_Override",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_DISABLE_HEALING": {
+        "name": "MODIFIER_PROPERTY_DISABLE_HEALING",
+        "fn": "GetDisableHealing",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_ALWAYS_ALLOW_ATTACK": {
+        "name": "MODIFIER_PROPERTY_ALWAYS_ALLOW_ATTACK",
+        "fn": "GetAlwaysAllowAttack",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_ALWAYS_ETHEREAL_ATTACK": {
+        "name": "MODIFIER_PROPERTY_ALWAYS_ETHEREAL_ATTACK",
+        "fn": "GetAllowEtherealAttack",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_OVERRIDE_ATTACK_MAGICAL": {
+        "name": "MODIFIER_PROPERTY_OVERRIDE_ATTACK_MAGICAL",
+        "fn": "GetOverrideAttackMagical",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_UNIT_STATS_NEEDS_REFRESH": {
+        "name": "MODIFIER_PROPERTY_UNIT_STATS_NEEDS_REFRESH",
+        "fn": "GetModifierUnitStatsNeedsRefresh",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_UNIT_DISALLOW_UPGRADING": {
+        "name": "MODIFIER_PROPERTY_UNIT_DISALLOW_UPGRADING",
+        "fn": "GetModifierUnitDisllowUpgrading",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_DODGE_PROJECTILE": {
+        "name": "MODIFIER_PROPERTY_DODGE_PROJECTILE",
+        "fn": "GetModifierDodgeProjectile",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_TRIGGER_COSMETIC_AND_END_ATTACK": {
+        "name": "MODIFIER_PROPERTY_TRIGGER_COSMETIC_AND_END_ATTACK",
+        "fn": "GetTriggerCosmeticAndEndAttack",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MAX_DEBUFF_DURATION": {
+        "name": "MODIFIER_PROPERTY_MAX_DEBUFF_DURATION",
+        "fn": "GetModifierMaxDebuffDuration",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PRIMARY_STAT_DAMAGE_MULTIPLIER": {
+        "name": "MODIFIER_PROPERTY_PRIMARY_STAT_DAMAGE_MULTIPLIER",
+        "fn": "GetPrimaryStatDamageMultiplier",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PREATTACK_DEADLY_BLOW": {
+        "name": "MODIFIER_PROPERTY_PREATTACK_DEADLY_BLOW",
+        "fn": "GetModifierPreAttack_DeadlyBlow",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_ALWAYS_AUTOATTACK_WHILE_HOLD_POSITION": {
+        "name": "MODIFIER_PROPERTY_ALWAYS_AUTOATTACK_WHILE_HOLD_POSITION",
+        "fn": "GetAlwaysAutoAttackWhileHoldPosition",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MODEL_CHANGE": {
+        "name": "MODIFIER_PROPERTY_MODEL_CHANGE",
+        "fn": "GetModifierModelChange",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MODEL_SCALE": {
+        "name": "MODIFIER_PROPERTY_MODEL_SCALE",
+        "fn": "GetModifierModelScale",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MODEL_SCALE_ANIMATE_TIME": {
+        "name": "MODIFIER_PROPERTY_MODEL_SCALE_ANIMATE_TIME",
+        "fn": "GetModifierModelScaleAnimateTime",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MODEL_SCALE_USE_IN_OUT_EASE": {
+        "name": "MODIFIER_PROPERTY_MODEL_SCALE_USE_IN_OUT_EASE",
+        "fn": "GetModifierModelScaleUseInOutEase",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MODEL_SCALE_CONSTANT": {
+        "name": "MODIFIER_PROPERTY_MODEL_SCALE_CONSTANT",
+        "fn": "GetModifierModelScaleConstant",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_RADAR_COOLDOWN_REDUCTION": {
+        "name": "MODIFIER_PROPERTY_RADAR_COOLDOWN_REDUCTION",
+        "fn": "GetModifierRadarCooldownReduction",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS": {
+        "name": "MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS",
+        "fn": "GetActivityTranslationModifiers",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_TRANSLATE_ATTACK_SOUND": {
+        "name": "MODIFIER_PROPERTY_TRANSLATE_ATTACK_SOUND",
+        "fn": "GetAttackSound",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_LIFETIME_FRACTION": {
+        "name": "MODIFIER_PROPERTY_LIFETIME_FRACTION",
+        "fn": "GetUnitLifetimeFraction",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PROVIDES_FOW_POSITION": {
+        "name": "MODIFIER_PROPERTY_PROVIDES_FOW_POSITION",
+        "fn": "GetModifierProvidesFOWVision",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_SPELLS_REQUIRE_HP": {
+        "name": "MODIFIER_PROPERTY_SPELLS_REQUIRE_HP",
+        "fn": "GetModifierSpellsRequireHP",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_FORCE_DRAW_MINIMAP": {
+        "name": "MODIFIER_PROPERTY_FORCE_DRAW_MINIMAP",
+        "fn": "GetForceDrawOnMinimap",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_DISABLE_TURNING": {
+        "name": "MODIFIER_PROPERTY_DISABLE_TURNING",
+        "fn": "GetModifierDisableTurning",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_IGNORE_CAST_ANGLE": {
+        "name": "MODIFIER_PROPERTY_IGNORE_CAST_ANGLE",
+        "fn": "GetModifierIgnoreCastAngle",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_CHANGE_ABILITY_VALUE": {
+        "name": "MODIFIER_PROPERTY_CHANGE_ABILITY_VALUE",
+        "fn": "GetModifierChangeAbilityValue",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL": {
+        "name": "MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL",
+        "fn": "GetModifierOverrideAbilitySpecial",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL_VALUE": {
+        "name": "MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL_VALUE",
+        "fn": "GetModifierOverrideAbilitySpecialValue",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_ABILITY_LAYOUT": {
+        "name": "MODIFIER_PROPERTY_ABILITY_LAYOUT",
+        "fn": "GetModifierAbilityLayout",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_TEMPEST_DOUBLE": {
+        "name": "MODIFIER_PROPERTY_TEMPEST_DOUBLE",
+        "fn": "GetModifierTempestDouble",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PRESERVE_PARTICLES_ON_MODEL_CHANGE": {
+        "name": "MODIFIER_PROPERTY_PRESERVE_PARTICLES_ON_MODEL_CHANGE",
+        "fn": "PreserveParticlesOnModelChanged",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_IGNORE_COOLDOWN": {
+        "name": "MODIFIER_PROPERTY_IGNORE_COOLDOWN",
+        "fn": "GetModifierIgnoreCooldown",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_CAN_ATTACK_TREES": {
+        "name": "MODIFIER_PROPERTY_CAN_ATTACK_TREES",
+        "fn": "GetModifierCanAttackTrees",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_VISUAL_Z_DELTA": {
+        "name": "MODIFIER_PROPERTY_VISUAL_Z_DELTA",
+        "fn": "GetVisualZDelta",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_VISUAL_Z_SPEED_BASE_OVERRIDE": {
+        "name": "MODIFIER_PROPERTY_VISUAL_Z_SPEED_BASE_OVERRIDE",
+        "fn": "GetVisualZSpeedBaseOverride",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_DONT_GIVE_VISION_OF_ATTACKER": {
+        "name": "MODIFIER_PROPERTY_DONT_GIVE_VISION_OF_ATTACKER",
+        "fn": "GetModifierNoVisionOfAttacker",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_TOOLTIP2": {
+        "name": "MODIFIER_PROPERTY_TOOLTIP2",
+        "fn": "OnTooltip2",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_SUPPRESS_TELEPORT": {
+        "name": "MODIFIER_PROPERTY_SUPPRESS_TELEPORT",
+        "fn": "GetSuppressTeleport",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_SUPPRESS_CLEAVE": {
+        "name": "MODIFIER_PROPERTY_SUPPRESS_CLEAVE",
+        "fn": "GetSuppressCleave",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_BOT_ATTACK_SCORE_BONUS": {
+        "name": "MODIFIER_PROPERTY_BOT_ATTACK_SCORE_BONUS",
+        "fn": "BotAttackScoreBonus",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_ATTACKSPEED_REDUCTION_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_ATTACKSPEED_REDUCTION_PERCENTAGE",
+        "fn": "GetModifierAttackSpeedReductionPercentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_MOVESPEED_REDUCTION_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_MOVESPEED_REDUCTION_PERCENTAGE",
+        "fn": "GetModifierMoveSpeedReductionPercentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_ATTACKSPEED_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_ATTACKSPEED_PERCENTAGE",
+        "fn": "GetModifierAttackSpeedPercentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_STACKING": {
+        "name": "MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_STACKING",
+        "fn": "GetModifierPercentageCooldownStacking",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_SPELL_REDIRECT_TARGET": {
+        "name": "MODIFIER_PROPERTY_SPELL_REDIRECT_TARGET",
+        "fn": "GetModifierSpellRedirectTarget",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_TURN_RATE_CONSTANT": {
+        "name": "MODIFIER_PROPERTY_TURN_RATE_CONSTANT",
+        "fn": "GetModifierTurnRateConstant",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_RAT_PACK": {
+        "name": "MODIFIER_PROPERTY_RAT_PACK",
+        "fn": "GetModifierIsRatPack",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PHYSICALDAMAGEOUTGOING_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_PHYSICALDAMAGEOUTGOING_PERCENTAGE",
+        "fn": "GetModifierPhysicalDamageOutgoing_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_KNOCKBACK_AMPLIFICATION_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_KNOCKBACK_AMPLIFICATION_PERCENTAGE",
+        "fn": "GetModifierKnockbackAmplification_Percentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_HEALTHBAR_PIPS": {
+        "name": "MODIFIER_PROPERTY_HEALTHBAR_PIPS",
+        "fn": "GetModifierHealthBarPips",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT": {
+        "name": "MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT",
+        "fn": "GetModifierIncomingDamageConstant",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_AVOID_DAMAGE_AFTER_REDUCTIONS": {
+        "name": "MODIFIER_PROPERTY_AVOID_DAMAGE_AFTER_REDUCTIONS",
+        "fn": "GetModifierAvoidDamageAfterReductions",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_FAIL_ATTACK": {
+        "name": "MODIFIER_PROPERTY_FAIL_ATTACK",
+        "fn": "GetModifierPropetyFailAttack",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PREREDUCE_INCOMING_DAMAGE_MULT": {
+        "name": "MODIFIER_PROPERTY_PREREDUCE_INCOMING_DAMAGE_MULT",
+        "fn": "GetModifierPrereduceIncomingDamage_Mult",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_SUPPRESS_FULLSCREEN_DEATH_FX": {
+        "name": "MODIFIER_PROPERTY_SUPPRESS_FULLSCREEN_DEATH_FX",
+        "fn": "GetModifierSuppressFullscreenDeathFX",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST": {
+        "name": "MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST",
+        "fn": "MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_MULTIPLICATIVE": {
+        "name": "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_MULTIPLICATIVE",
+        "fn": "GetModifierDamageOutgoing_PercentageMultiplicative",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_TICK_GOLD_MULTIPLIER": {
+        "name": "MODIFIER_PROPERTY_TICK_GOLD_MULTIPLIER",
+        "fn": "GetModifierTickGold_Multiplier",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_SLOW_RESISTANCE": {
+        "name": "MODIFIER_PROPERTY_SLOW_RESISTANCE",
+        "fn": "GetModifierSlowResistance",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_AOE_BONUS_PERCENTAGE": {
+        "name": "MODIFIER_PROPERTY_AOE_BONUS_PERCENTAGE",
+        "fn": "GetModifierAoEBonusPercentage",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_PROJECTILE_SPEED": {
+        "name": "MODIFIER_PROPERTY_PROJECTILE_SPEED",
+        "fn": "GetModifierProjectileSpeed",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_BECOME_UNIVERSAL": {
+        "name": "MODIFIER_PROPERTY_BECOME_UNIVERSAL",
+        "fn": "GetModifierBecomeUniversal",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_DO_NOT_SINK_AFTER_DEATH": {
+        "name": "MODIFIER_PROPERTY_DO_NOT_SINK_AFTER_DEATH",
+        "fn": "GetModifierDoNotSinkAfterDeath",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_FORCE_MAX_HEALTH": {
+        "name": "MODIFIER_PROPERTY_FORCE_MAX_HEALTH",
+        "fn": "GetModifierForceMaxHealth",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    },
+    "MODIFIER_PROPERTY_AOE_BONUS_CONSTANT": {
+        "name": "MODIFIER_PROPERTY_AOE_BONUS_CONSTANT",
+        "fn": "GetModifierAoEBonusConstant",
+        "start": 1.0,
+        "step": 1.0,
+        "max": 100000.0
+    }
+}

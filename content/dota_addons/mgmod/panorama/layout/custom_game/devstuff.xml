@@ -1,0 +1,14 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/devstuff.js" />
+	</scripts>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/devstuff.css" />
+        <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		
+		<include src="s2r://panorama/styles/battle_pass/crownfall/bp_crownfall_shared.vcss_c" />
+		<include src="s2r://panorama/styles/battle_pass/crownfall/ui_crownfall_token.vcss_c" />
+	</styles>
+	<Panel class="__devstuff">
+    </Panel>
+</root>

@@ -1,0 +1,16 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/dvd.js" />
+	</scripts>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/dvd.css" />
+	</styles>
+	<Panel class="DvdRoot" hittest="false">
+	    <Panel id="DvdVertical" hittest="false">
+            <Panel id="DvdHorizontal" hittest="false">
+                <Panel id="DvdImage" hittest="false">
+                </Panel>
+            </Panel>
+        </Panel>
+    </Panel>
+</root>

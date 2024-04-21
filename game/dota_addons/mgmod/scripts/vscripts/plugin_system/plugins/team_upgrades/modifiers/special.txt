@@ -1,0 +1,4 @@
+MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_CONSTANT = 61
+This property controls 'physical' shield, if defined both on client and server. Return value on client should be current shield health, as a positive integer, on server - amount of damage blocked. Method Name: `GetModifierIncomingPhysicalDamageConstant`.
+MODIFIER_PROPERTY_INCOMING_SPELL_DAMAGE_CONSTANT = 62
+This property controls 'spell' shield, if defined both on client and server. Return value on client should be current shield health, as a positive integer, on server - amount of damage blocked. Method Name: `GetModifierIncomingSpellDamageConstant`.
