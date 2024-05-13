@@ -41,6 +41,13 @@
 //#base "plugins/rounds/plugin.txt"
 
 #base "plugins/freeforall/plugin.txt"
+
+#base "plugins/smithing/plugin.txt"
+//#base "plugins/boxoffun_2024/plugin.txt"
+
+//sword bacon
+#base "plugins/sb_mango_party/plugin.txt"
+
 "Plugins"
 {
 }

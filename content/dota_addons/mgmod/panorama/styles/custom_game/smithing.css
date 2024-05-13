@@ -1,0 +1,19 @@
+.Bonus {
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #9cf1f0;
+    text-align: center;
+    horizontal-align: center;
+    vertical-align: middle;
+    text-shadow: 0px 1px 3px 5.0 #000000;
+
+    transition-property: color;
+    transition-duration: 0.35s;
+    transition-timing-function: ease-in-out;
+
+    font-size: 15px;
+    font-weight: bold;
+    font-family: defaultFont;
+    z-index: 100;
+}

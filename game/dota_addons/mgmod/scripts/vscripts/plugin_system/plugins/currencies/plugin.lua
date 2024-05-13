@@ -231,23 +231,28 @@ function CurrenciesPlugin:SecureOptions(sName)
 end
 
 function CurrenciesPlugin:RegisterSpendOption(sName,tOption)
+    print("[CurrenciesPlugin] adding option")
+    print(sName)
     if tOption.plugin == nil then return end
     if tOption.plugin_name == nil then return end
     if tOption.cost == nil then return end
     if tOption.call_fn == nil then return end
     if tOption.option_name == nil then return end
     if tOption.team == nil then tOption.team = 1 end
+    if tOption.autobuy == nil then tOption.autobuy = true end
+    print("all ok")
+    DeepPrintTable(tOption)
     local t = {
         plugin_name = tOption.plugin_name,
         cost = tOption.cost,
         option_name = tOption.option_name,
         fn = tOption.plugin_name .. '|' .. tOption.option_name,
-        team = tOption.team
+        team = tOption.team,
+        autobuy = tOption.autobuy
     }
     CurrenciesPlugin:SecureOptions(sName)
     CurrenciesPlugin.spend_options[sName][t.fn] = tOption
     table.insert(CurrenciesPlugin.currency_data[sName].spend_options,t)
-    DeepPrintTable(CurrenciesPlugin.currency_data[sName])
     CustomNetTables:SetTableValue("currencies",sName,CurrenciesPlugin.currency_data[sName])
 end
 
@@ -363,6 +368,7 @@ function CurrenciesPlugin:CheckForSingleSpendOption(sName,iPlayer)
     local c = 0
     local fn
     for k,v in pairs(CurrenciesPlugin.spend_options[sName]) do
+        if v.autobuy == false then c = 99 end
         if v.team == 1 or iTeam == v.team then
             fn = k
             c = c + 1

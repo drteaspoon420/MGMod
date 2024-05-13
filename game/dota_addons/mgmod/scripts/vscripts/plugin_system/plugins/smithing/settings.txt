@@ -1,0 +1,38 @@
+"plugin_settings"
+{
+    "Order" "69400"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "cost"
+    {
+        "Order" "10"
+        "TYPE" "number"
+        "DEFAULT" "50"
+    }
+    "currency"
+    {
+        "Order" "11"
+        "TYPE" "dropdown"
+        "DEFAULT" "red"
+        "OPTIONS" {
+            "red" "red"
+            "green" "green"
+            "blue" "blue"
+            "purple" "purple"
+        }
+    }
+    "base_chance" {
+        "Order" "12"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "95"
+    }
+    "chance_reduction" {
+        "Order" "13"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "10"
+    }
+}

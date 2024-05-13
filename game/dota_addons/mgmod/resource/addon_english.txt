@@ -454,6 +454,9 @@
 		"Plugin_boosted_Option_RARE_MULTIPLIER" "Rare"
 		"Plugin_boosted_Option_ULTRA_MULTIPLIER" "Epic"
 		"Plugin_boosted_Option_custom_list" "Custom List Url"
+		"Plugin_boosted_Option_custom_list_patch" "Custom List Patch Mode"
+		"Plugin_boosted_Option_custom_list_patch_Description" "Instead of overriding the whole list, only use custom list as 'patch' for the original list, updating only things nessesary."
+		
 		"Plugin_boosted_Option_cost" "Cost"
 		"Plugin_boosted_Option_currency" "Currency"
 		"Plugin_boosted_Option_currency_Drop_red" "Red"
@@ -898,5 +901,46 @@
 		"DOTA_Tooltip_ability_item_cr_blink_Description"							"<h1>Active: Blink</h1> Teleport to a target point up to %blink_range% units away. <br><br>Blink Dagger cannot be used for <font color='#ff7d7d'>%blink_damage_cooldown%</font> seconds after taking damage from an enemy hero or Roshan.<br/><font color='#ff7d7d'>If you used Blink to teleport to a distance over the maximum range, you'll be teleported %blink_range_clamp% unit distance instead and cooldown will be 20x longer.</font>"
 		"DOTA_Tooltip_ability_item_cr_blink_Lore"									"The fabled dagger used by the fastest assassin ever to walk the lands. Now corrupted by use of altar of absolute epicness."
 
+
+
+		"Plugin_boxoffun_2024" "Box of Fun 2024"
+		"Plugin_boxoffun_2024_Description" "The small things for 2024"
+		"Plugin_boxoffun_2024_Option_shared_runes" "Shared Runes"
+		"Plugin_boxoffun_2024_Option_shared_runes_Description" "When hero picks up rune, all their team mates gain the benefit. (the arcane rune might be bugged. no clue why.)"
+
+		"Plugin_smithing" "Smithing"
+		"Plugin_smithing_Description" "Spend currency to attempt upgrading all of the items in your active inventory slots. Failure will destroy the item. Higher level items have smaller chance to succeed. Every upgrade increases most KV by +50%."
+		"Plugin_smithing_Option_currency" "Currency"
+		"Plugin_smithing_Option_currency_Drop_blue" "Blue"
+		"Plugin_smithing_Option_currency_Drop_green" "Green"
+		"Plugin_smithing_Option_currency_Drop_red" "Red"
+		"Plugin_smithing_Option_currency_Drop_purple" "Purple"
+
+		"Plugin_smithing_Option_cost" "Cost"
+
+		"Plugin_smithing_Option_base_chance" "Base Chance"
+		"Plugin_smithing_Option_chance_reduction" "Reduction Per Level"
+		"Plugin_smithing_Option_base_chance_Description" "Base Chance of successfully upgrading items."
+		"Plugin_smithing_Option_chance_reduction_Description" "How much the upgrade level of an item reduces it's chance of upgrading again."
+
+		"SpendOption_smithing_smith" "Smith: "
+		"SpendOption_boosted_buy_upgrade" "Boost: "
+//Sword bacon
+
+		"Plugin_sb_mango_party" "Mango Party"
+		"Plugin_sb_mango_party_Description" "Damage is delayed until someone consumes a Mango. Source of the damage is the consumer of the mango."
+		"Plugin_sb_mango_party_Option_lotus" "Enable Lotus"
+		"Plugin_sb_mango_party_Option_lotus_Description" "Lotuses also delivers the damage."
+
+		"Plugin_sb_mango_party_Option_heroes_only" "Heroes Only"
+		"Plugin_sb_mango_party_Option_heroes_only_Description" "Only heroes have delayed damage."
+
+		"DOTA_Tooltip_modifier_mango_damage_stacks"					"Damage Stacks"
+		"DOTA_Tooltip_modifier_mango_damage_stacks_description"		"Damage is applied when someone consumes a mango."
+
+		"UpgradeReportReason_DoesntWork" "Doesn't Work"
+		"UpgradeReportReason_CrashesDota" "Crashes Dota"
+		"UpgradeReportReason_Overpowered" "Over Powered"
+		"UpgradeReport_Send" "Send Report"
 	}
 }

@@ -108,7 +108,7 @@ function OpenPluginSettings(sPluginName) {
     let tmp = {}
     let io = 0;
     for (const key in sPluginSettings) {
-        if (key != "enabled" && key != "Order") {
+        if (key != "enabled" && key != "Order" && key != "core_apply_team" && key != "author") {
             if (undefined==sPluginSettings[key].Order) {
                 tmp[1000+io] = key;
                 io = io + 1;

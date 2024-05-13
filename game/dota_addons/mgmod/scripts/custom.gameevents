@@ -36,6 +36,8 @@
 	}
 	"settings_vote_unlock" {
 	}
+	"dynamic_hud_callback" {
+	}
 	"npc_first_spawned_hero"
 	{
 		"entindex" "short"
@@ -188,6 +190,12 @@
 		"ab" "string"
 		"kv" "string"
 	}
+	"upgrade_report_done"
+	{
+		"ab" "string"
+		"kv" "string"
+		"reason" "short"
+	}
 
 	"currency_spend"
 	{
@@ -235,5 +243,8 @@
 	{
 		"team" "short"
 		"number" "short"
+	}
+	"smithing_update"
+	{
 	}
 }

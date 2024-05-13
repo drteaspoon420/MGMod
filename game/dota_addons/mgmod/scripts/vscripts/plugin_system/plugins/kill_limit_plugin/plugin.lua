@@ -16,17 +16,13 @@ function KillLimitPlugin:ApplySettings()
 end
 
 function KillLimitPlugin:GameEnd()
-    local iKills = KillLimitPlugin.settings.kills
-    local iRadiant = PlayerResource:GetTeamKills(DOTA_TEAM_GOODGUYS)
-    local iDire = PlayerResource:GetTeamKills(DOTA_TEAM_BADGUYS)
-    if iRadiant >= iKills then
-        GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
-        KillLimitPlugin.settings.kills = 999999
-        return
-    end
-    if iDire >= iKills then
-        GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
-        KillLimitPlugin.settings.kills = 999999
-        return
+    local iLimit = KillLimitPlugin.settings.kills
+    for k,v in pairs(PluginSystem.teams) do
+        local iKills = PlayerResource:GetTeamKills(v)
+        if iKills >= iLimit then
+            GameRules:SetGameWinner(v)
+            KillLimitPlugin.settings.kills = 999999
+            return
+        end
     end
 end

@@ -26,6 +26,7 @@ function Precache( context )
 		end
     end
 	PrecacheResource("soundfile", "soundevents/custom_sounds.vsndevts", context)
+	PrecacheResource( "particle", "particles/tickets_gain.vpcf", context )
 	PrecacheResource( "particle", "particles/souls/ward_skull_rubick.vpcf", context )
 end
 function Activate()

@@ -9,7 +9,7 @@
     {
         "Order" "10"
         "TYPE" "dropdown"
-        "DEFAULT" "none"
+        "DEFAULT" "team"
         "OPTIONS" {
             "none" "none"
             "solo" "solo"
@@ -21,7 +21,7 @@
     {
         "Order" "11"
         "TYPE" "number"
-        "DEFAULT" "0"
+        "DEFAULT" "50"
     }
     "green_state"
     {
@@ -96,7 +96,7 @@
     {
         "Order" "51"
         "TYPE" "number"
-        "DEFAULT" "0"
+        "DEFAULT" "1"
     }
     
     "hero_kill_reward_currency"
@@ -115,7 +115,7 @@
     {
         "Order" "53"
         "TYPE" "number"
-        "DEFAULT" "0"
+        "DEFAULT" "25"
     }
     
     "observer_kill_reward_currency"
@@ -134,7 +134,7 @@
     {
         "Order" "55"
         "TYPE" "number"
-        "DEFAULT" "0"
+        "DEFAULT" "25"
     }
     
     "observer_plant_reward_currency"
@@ -153,7 +153,7 @@
     {
         "Order" "57"
         "TYPE" "number"
-        "DEFAULT" "0"
+        "DEFAULT" "50"
     }
     
     "timed_reward_currency"
@@ -172,7 +172,7 @@
     {
         "Order" "59"
         "TYPE" "number"
-        "DEFAULT" "0"
+        "DEFAULT" "100"
     }
     "timed_reward_rate"
     {
@@ -198,7 +198,7 @@
     {
         "Order" "62"
         "TYPE" "number"
-        "DEFAULT" "0"
+        "DEFAULT" "100"
     }
 
     "roshan_kill_reward_currency"
@@ -218,7 +218,7 @@
     {
         "Order" "64"
         "TYPE" "number"
-        "DEFAULT" "0"
+        "DEFAULT" "200"
     }
     
     "lamp_capture_reward_currency"
@@ -258,7 +258,7 @@
     {
         "Order" "84"
         "TYPE" "number"
-        "DEFAULT" "0"
+        "DEFAULT" "10"
     }
     
 
@@ -279,7 +279,7 @@
     {
         "Order" "94"
         "TYPE" "number"
-        "DEFAULT" "0"
+        "DEFAULT" "500"
     }
 
     //Starting amounts

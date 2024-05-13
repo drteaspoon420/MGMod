@@ -1,0 +1,15 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/smithing.js" />
+	</scripts>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/smithing.css" />
+	</styles>
+	<snippets>
+		<snippet name="Bonus">
+			<Label class="Bonus" text="" hittest="false"/>
+		</snippet>
+	</snippets>
+	<Panel class="__smithing">
+    </Panel>
+</root>

@@ -1,0 +1,10 @@
+"Plugins"
+{
+    "smithing" {
+        "MainClass" "SmithingPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_PRE_GAME"
+        }
+    }
+}

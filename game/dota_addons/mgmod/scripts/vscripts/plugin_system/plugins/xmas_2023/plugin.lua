@@ -27,7 +27,7 @@ function XMax23Plugin:ApplySettings()
                 modifier_rune_extradamage = 45,
                 modifier_rune_flying_haste = 22,
                 modifier_rune_haste = 22,
-                modifier_rune_illusion = 45,
+                modifier_rune_illusion = 0.1,
                 modifier_rune_invis = 45,
                 modifier_rune_regen = 30,
                 modifier_rune_shield = 75,

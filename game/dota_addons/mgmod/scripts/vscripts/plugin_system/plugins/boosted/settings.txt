@@ -51,9 +51,14 @@
         "DEFAULT" "200"
     }
     "custom_list" {
-        "Order" "14"
+        "Order" "12"
         "TYPE" "text"
         "DEFAULT" ""
+    }
+    "custom_list_patch" {
+        "Order" "13"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
     }
     "cost" {
         "Order" "16"

@@ -1,0 +1,13 @@
+"Plugins"
+{
+    "sb_mango_party" {
+        "MainClass" "MangoPartyPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+        "FilterRegistrations" {
+            "DamageFilter" "DamageFilter"
+        }
+    }
+}

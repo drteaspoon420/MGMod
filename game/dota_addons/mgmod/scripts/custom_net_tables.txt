@@ -2,6 +2,11 @@
 {
   custom_net_tables =
   [
+
+    "core_data_abilities",
+    "core_data_items",
+    "core_data_modifiers",
+
     "dvd",
     "plugin_settings",
     "mutator_presets",
@@ -81,7 +86,6 @@
     "bsrpg_upgrades_21",
     "bsrpg_upgrades_22",
     "bsrpg_upgrades_23",
-
     "rounds",
   ]
 }

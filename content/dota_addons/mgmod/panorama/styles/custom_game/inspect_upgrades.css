@@ -96,6 +96,19 @@
       text-transform: uppercase;
   }
 
+  #AbilityChangeReport{
+   background-image: url("file://{images}/custom_game/report.png");
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-size: 95% 95%;
+      height: 26px;
+      width: 26px;
+  }
+  #AbilityChangeReport:hover{
+   background-color: gradient( linear, 0% 0%, 0% 100%, from( #e92929 ), to( #b80000 ) );
+   box-shadow: fill #ff0000a2 0px 0px 16px -5px;
+  }
+
   .UpgradeInspectButton{
    background-image: url("file://{images}/custom_game/upgrade_list_png.png");
       background-size: 26px;

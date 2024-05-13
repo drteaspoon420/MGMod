@@ -39,6 +39,7 @@ function AddCurrency(sName,tData) {
 }
 
 function ShowOptionMenu(sName) {
+    
     let CurrencyActionBox = $.CreatePanel('Panel', $.GetContextPanel(), sName + "_options");
     CurrencyActionBox.BLoadLayoutSnippet("CurrencyActionBox");
     CurrencyActionBox.SetAcceptsFocus(true)
@@ -52,6 +53,10 @@ function ShowOptionMenu(sName) {
     let spend_count = 0;
     for (const key in tCurrencies[sName].spend_options) {
         const option = tCurrencies[sName].spend_options[key];
+        $.Msg(option);
+        if (option.autobuy == false) {
+            spend_count = 99;
+        }
         if (option.team == 1 || local_team == option.team) {
             spend_count++;
         }
@@ -61,7 +66,7 @@ function ShowOptionMenu(sName) {
             const option = tCurrencies[sName].spend_options[key];
             let CurrencyAction = $.CreatePanel('Panel', CurrencyActionBox, sName + "_options");
             CurrencyAction.BLoadLayoutSnippet("CurrencyAction");
-            CurrencyAction.FindChildInLayoutFile("CurrencyLabel").text = option.option_name;
+            CurrencyAction.FindChildInLayoutFile("CurrencyLabel").text = $.Localize("#SpendOption_" + option.plugin_name + "_" + option.option_name);
             CurrencyAction.FindChildInLayoutFile("CurrencyCost").text = option.cost;
             CurrencyAction.SetPanelEvent(
                 "onactivate", 
@@ -104,6 +109,7 @@ function tCurrenciesUpdate( table_name, currency, table) {
     } else if (tCurrencies[currency].share == 2) {
         tCurrencyNumbers[currency].text = tCurrencies[currency].amount[0];
     }
+    $.Msg(tCurrencies);
 }
 
 function Cleanup() {

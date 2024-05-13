@@ -441,7 +441,7 @@ function PluginSystem:ProcRegisteredGameStates(iState)
             end
         end
     end
-    if DOTA_GAMERULES_STATE_GAME_IN_PROGRESS == iState then
+--[[     if DOTA_GAMERULES_STATE_GAME_IN_PROGRESS == iState then
         for iPlayer = 0,DOTA_MAX_PLAYERS do
             if PlayerResource:IsValidPlayer(iPlayer) then
                 local steamid = tostring(PlayerResource:GetSteamID(iPlayer))
@@ -453,7 +453,7 @@ function PluginSystem:ProcRegisteredGameStates(iState)
                 end
             end
         end
-    end
+    end ]]
 end
 
 function PluginSystem:RegisterState(iState,hPlugin,hMethod,sPlugin)

@@ -63,13 +63,6 @@ Slider.HorizontalSlider
 	height: 30px;
 }
 
-#ReadyTimer {
-	width: 64px;
-	height: 64px;
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #000000 ), to( #333333 ) );
-    border-radius: 7px;
-    margin-left: 5px;
-}
 #ReadyButton {
 	width: 64px;
 	height: 64px;
@@ -212,4 +205,20 @@ Slider.HorizontalSlider
 
 #AutoAssignButton {
     padding: 6px;
+}
+
+#ReadyTimer {
+	width: 64px;
+	height: 64px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #000000 ), to( #333333 ) );
+    border-radius: 7px;
+    margin-left: 5px;
+}
+#ReadyTimer:hover {
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #212121 ), to( #505050 ) );
+    box-shadow: fill #fac97fa2 0px 0px 16px -5px;
+}
+.timer_paused {
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #5f6752 ), to( #6c7956 ) );
+
 }

@@ -112,11 +112,8 @@ function CreateKeyPanel(parent,ability,key,value) {
         } else {
             panel.FindChildTraverse("AbilityChangesLabelKey").text = $.Localize("#DOTA_Dev_Tooltip_Ability_" + ability + "_" + key)
         }
-        panel.FindChildTraverse("AbilityChangesLabelKey").SetPanelEvent( 'onactivate', function () {
-            if (GameUI.IsAltDown()) {
-                GameEvents.SendCustomGameEventToServer( "upgrade_report", {ab: ability,kv: key});
-                panel.SetHasClass("reported",true);
-            }
+        panel.FindChildTraverse("AbilityChangeReport").SetPanelEvent( 'onactivate', function () {
+            GameEvents.SendCustomGameEventToServer( "upgrade_report", {ab: ability,kv: key});
         } );
     }
     panel.FindChildTraverse( "AbilityChangesLabelValue" ).text = (Math.floor(value*100)) + "%";

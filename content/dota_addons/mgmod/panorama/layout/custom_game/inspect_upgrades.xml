@@ -21,6 +21,7 @@
 		</snippet>
 		<snippet name="AbilityChange">
 			<Panel class="AbilityChange">
+				<Button id="AbilityChangeReport"/>
 				<Label id="AbilityChangesLabelKey" html="true" text="key" />
 				<Label id="AbilityChangesLabelValue" text="value" />
 			</Panel>

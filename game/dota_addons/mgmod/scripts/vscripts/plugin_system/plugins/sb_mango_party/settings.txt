@@ -1,0 +1,17 @@
+"plugin_settings"
+{
+    "Order" "69400"
+    "author" "76561198069396606"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "lotus" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "heroes_only" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+}

@@ -797,6 +797,18 @@
         "Plugin_xmas_2023_Option_day5_Description" "Все юниты вашей команды получают случайную силу руны при использовании глифа."
         "Plugin_xmas_2023_Option_day6" "0 == 10"
         "Plugin_xmas_2023_Option_day6_Description" "Все особые параметры KV со значением 0 устанавливаются на 10. Это может активировать таланты или другие скрытые возможности способностей. Знали ли вы, что в некоторый момент dagon предполагался наносить урон в зависимости от вашего интеллекта? Теперь он делает это с множителем 10!<br/>ПРИМЕЧАНИЕ: Может не работать с другими плагинами/опциями KV.<br/>ПРИМЕЧАНИЕ2: Это для фанатов."
-        
+
+        //Sword bacon
+        "Plugin_sb_mango_party" "Манго-вечеринка"
+        "Plugin_sb_mango_party_Description" "Урон задерживается до тех пор, пока кто-то не съест манго. Источником урона является тот, кто съел манго."
+        "Plugin_sb_mango_party_Option_lotus" "Включить Лотос"
+        "Plugin_sb_mango_party_Option_lotus_Description" "Лотос также наносит урон."
+
+        "Plugin_sb_mango_party_Option_heroes_only" "Только герои"
+        "Plugin_sb_mango_party_Option_heroes_only_Description" "Только герои получают задержанный урон."
+
+        "DOTA_Tooltip_modifier_mango_damage_stacks" "Накопление урона"
+        "DOTA_Tooltip_modifier_mango_damage_stacks_description" "Урон наносится, когда кто-то съедает манго."
+
     }
 }

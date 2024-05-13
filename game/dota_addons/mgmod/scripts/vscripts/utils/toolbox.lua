@@ -33,6 +33,7 @@ end
 function Toolbox:Init()
     Toolbox = self
     self.data = {}
+    CustomGameEventManager:RegisterListener("dynamic_hud_callback",Toolbox.dynamic_hud_callback)
 end
 
 function Toolbox:split (inputstr, sep)
@@ -337,5 +338,34 @@ function Toolbox:Rng(seed)
     Toolbox.rng_generators[seed].X2 = m[2]
     return m[3]
 end
+
+function Toolbox:PatchTable(tOriginal,tPatch)
+    for k,v in pairs(tPatch) do
+        if tOriginal[k] ~= nil then
+            if type(tOriginal[k]) == "table" and type(v) == "table" then
+                tOriginal[k] = BoostedPlugin:Merge(tOriginal[k],v)
+            else
+                tOriginal[k] = v
+            end
+        else
+            tOriginal[k] = v
+        end
+    end
+    return tOriginal
+end
+
+
+Toolbox.dynamic_hud_queue = {}
+function Toolbox:DynamicHud_Create(iPlayer,sName,sPath,fCallback)
+    Toolbox.dynamic_hud_queue[iPlayer] = fCallback
+    CustomUI:DynamicHud_Create(iPlayer,sName,sPath,nil)
+end
+function Toolbox:dynamic_hud_callback(tEvent)
+    local iPlayer = tEvent.PlayerID
+    Toolbox.dynamic_hud_queue[iPlayer]()
+    Toolbox.dynamic_hud_queue[iPlayer] = nil
+end
+
+
 
 if not Toolbox.data then Toolbox:Init() end

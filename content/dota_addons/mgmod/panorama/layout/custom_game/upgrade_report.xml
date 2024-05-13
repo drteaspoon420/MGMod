@@ -1,0 +1,21 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/upgrade_report.js" />
+	</scripts>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/upgrade_report.css" />
+	</styles>
+	<Panel class="UpgradeReport">
+        <Button id="UpgradeReportCancel" onactivate="UpgradeReportCancel()">
+        <Label text="X"/></Button>
+        <Label id="UpgradeReportAbility" text="#AbilityName"/>
+        <Label id="UpgradeReportKey" text="#KeyName"/>
+        <DropDown id="UpgradeReportReason">
+            <Label text="#UpgradeReportReason_DoesntWork" id="0"/>
+            <Label text="#UpgradeReportReason_CrashesDota" id="1"/>
+            <Label text="#UpgradeReportReason_Overpowered" id="2"/>
+        </DropDown>
+        <Button id="UpgradeReportSend" onactivate="UpgradeReportSend()"><Label text="#UpgradeReport_Send"/></Button>
+	</Panel>
+</root>

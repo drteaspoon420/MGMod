@@ -73,7 +73,7 @@ function UpgradeOptionNew(data) {
         let upgrade_real = data.current * data.upgrade * 0.01;
         let downgrade_real = data.current * data.downgrade * 0.01;
         UpgradeOptionLabel.SetPanelEvent( 'onmouseover', function () {
-            $.DispatchEvent("DOTAShowTextTooltip", UpgradeOptionLabel, data.key + ": " + current_real.toFixed(2) + "<br/>Alt+Click to report non-functioning KV");
+            $.DispatchEvent("DOTAShowTextTooltip", UpgradeOptionLabel, data.key + ": " + current_real.toFixed(2));
         } ); 
         UpgradeOptionLabel.SetPanelEvent( 'onmouseout', function () {
             $.DispatchEvent("DOTAHideTextTooltip", UpgradeOptionLabel);
@@ -238,3 +238,4 @@ function ForceRecreate() {
         } );
     }
 })();
+

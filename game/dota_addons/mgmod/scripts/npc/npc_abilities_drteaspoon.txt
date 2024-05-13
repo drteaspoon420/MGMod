@@ -67,4 +67,17 @@
             "movement_speed_bonus_pct"		"5 10 15 20"
         }
 	}
+
+	"kvscanner"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityTextureName"        "drteaspoon/kvscanner"
+		"ScriptFile"					"plugin_system/plugins/devstuff/abilities/kvscanner"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+        "AbilityValues"
+        {
+			"none" "1"
+        }
+	}
 }

@@ -38,7 +38,12 @@ function BoostedPlugin:ApplySettings()
 
     local url = BoostedPlugin.settings.custom_list
     if url ~= "" then
-        BoostedPlugin:GetOnlineList("https://pastebin.com/raw/" .. url)
+        if BoostedPlugin.settings.custom_list_patch then
+            BoostedPlugin:GetOnlineList(BoostedPlugin.official_url)
+            BoostedPlugin:GetOnlineList("https://pastebin.com/raw/" .. url,true)
+        else
+            BoostedPlugin:GetOnlineList("https://pastebin.com/raw/" .. url)
+        end
     else
         BoostedPlugin:GetOnlineList(BoostedPlugin.official_url)
     end
@@ -51,7 +56,8 @@ function BoostedPlugin:ApplySettings()
 	BoostedPlugin.req_blocks = req_blocks
     --CustomGameEventManager:RegisterListener("boost_player",BoostedPlugin.boost_player)
     CustomGameEventManager:RegisterListener("upgrade_hero",BoostedPlugin.upgrade_hero)
-    --CustomGameEventManager:RegisterListener("upgrade_report",Dynamic_Wrap(self,'upgrade_report'))
+    CustomGameEventManager:RegisterListener("upgrade_report",BoostedPlugin.upgrade_report)
+    CustomGameEventManager:RegisterListener("upgrade_report_done",BoostedPlugin.upgrade_report_done)
     --CustomGameEventManager:RegisterListener('ability_tooltip_extra_request', Dynamic_Wrap( self, 'ability_tooltip_extra_request'))
 
     PluginSystem:InternalEvent_Register("hero_build_change",function(event)
@@ -79,21 +85,22 @@ function BoostedPlugin:ApplySettings()
     CurrenciesPlugin:RegisterSpendOption(BoostedPlugin.settings.currency,tOption)
 end
 
-function BoostedPlugin:GetOnlineList(url)
+function BoostedPlugin:GetOnlineList(url,patch)
+    local patch = patch or false
     local req = CreateHTTPRequestScriptVM("GET", url)
     req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", GetDedicatedServerKey("v1"))
     req:Send(function(res)
         if res.StatusCode ~= 200 then
             if url ~= BoostedPlugin.official_url then
                 print("custom url was not valid")
-                BoostedPlugin:GetOnlineList(BoostedPlugin.official_url)
+                BoostedPlugin:GetOnlineList(BoostedPlugin.official_url,false)
             end
             return
         end
-        if not BoostedPlugin:ApplyOnlineList(res.Body) then
+        if not BoostedPlugin:ApplyOnlineList(res.Body,patch) then
             if url ~= BoostedPlugin.official_url then
                 print("custom list was not valid")
-                BoostedPlugin:GetOnlineList(BoostedPlugin.official_url)
+                BoostedPlugin:GetOnlineList(BoostedPlugin.official_url,false)
             end
         else
             print("valid list at " .. url)
@@ -101,24 +108,37 @@ function BoostedPlugin:GetOnlineList(url)
     end)
 end
 
-function BoostedPlugin:ApplyOnlineList(json)
+function BoostedPlugin:ApplyOnlineList(json,patch)
+    local patch = patch or false
     local data = JSON.decode(json)
     if data == nil then return false end
     print(type(data.blocklist))
     if data.blocklist == nil or type(data.blocklist) ~= "table" or (next(data.blocklist) == nil) then
         print("block list empty")
     else
-        BoostedPlugin.kv_lists.blocklist = data.blocklist
+        if not patch or BoostedPlugin.kv_lists.blocklist == nil or next(BoostedPlugin.kv_lists.blocklist) == nil then
+            BoostedPlugin.kv_lists.blocklist = data.blocklist
+        else
+            BoostedPlugin.kv_lists.blocklist = Toolbox:PatchTable(BoostedPlugin.kv_lists.blocklist,data.blocklist)
+        end
     end
     if data.nerflist == nil or type(data.nerflist) ~= "table" or (next(data.nerflist) == nil) then
         print("nerf list empty")
     else
-        BoostedPlugin.kv_lists.nerflist = data.nerflist
+        if not patch or BoostedPlugin.kv_lists.nerflist == nil or next(BoostedPlugin.kv_lists.nerflist) == nil then
+            BoostedPlugin.kv_lists.nerflist = data.nerflist
+        else
+            BoostedPlugin.kv_lists.nerflist = Toolbox:PatchTable(BoostedPlugin.kv_lists.nerflist,data.nerflist)
+        end
     end
     if data.limitlist == nil or type(data.limitlist) ~= "table" or (next(data.limitlist) == nil) then
         print("limit list empty")
     else
-        BoostedPlugin.kv_lists.limitlist = data.limitlist
+        if not patch or BoostedPlugin.kv_lists.limitlist == nil or next(BoostedPlugin.kv_lists.limitlist) == nil then
+            BoostedPlugin.kv_lists.limitlist = data.limitlist
+        else
+            BoostedPlugin.kv_lists.limitlist = Toolbox:PatchTable(BoostedPlugin.kv_lists.limitlist,data.limitlist)
+        end
     end
     if type(BoostedPlugin.kv_lists.blocklist) ~= "table" then 
         BoostedPlugin.kv_lists.blocklist = {
@@ -1218,3 +1238,39 @@ function BoostedPlugin:ItemAddedToInventoryFilter(event)
 	return {true,event}
 end
 
+
+function BoostedPlugin:upgrade_report(tEvent)
+    local iPlayer = tEvent.PlayerID
+    local hPlayer = PlayerResource:GetPlayer(iPlayer)
+    Toolbox:DynamicHud_Create(iPlayer,"upgrade_report","file://{resources}/layout/custom_game/upgrade_report.xml",function()
+        CustomGameEventManager:Send_ServerToPlayer(hPlayer,"upgrade_report",{ab = tEvent.ab, kv = tEvent.kv})
+    end)
+end
+
+function BoostedPlugin:upgrade_report_done(tEvent)
+    local iPlayer = tEvent.PlayerID
+    local sAbility = tEvent.ab
+    local sKV = tEvent.kv
+    local iReason = tEvent.reason
+
+    local url = "http://drteaspoon.fi:3000/list/report"
+    local req = CreateHTTPRequestScriptVM("POST", url)
+	local save = PluginSystem:GenerateSave()
+	
+    local hParams = {
+        ability_name = sAbility,
+        kv_name = sKV,
+		reason = tonumber(iReason)
+    }
+    req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", GetDedicatedServerKeyV3(GAMEMODE_SAVE_ID))
+	req:SetHTTPRequestHeaderValue("Content-Type", "application/json;charset=UTF-8")
+	req:SetHTTPRequestRawPostBody("application/json", json.encode(hParams))
+
+    req:Send(function(res)
+        if res.StatusCode ~= 200 then
+            print("something went wrong")
+        else
+            print("all ok")
+        end
+    end)
+end
