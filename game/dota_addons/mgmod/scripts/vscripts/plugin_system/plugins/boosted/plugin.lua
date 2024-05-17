@@ -7,6 +7,7 @@ BoostedPlugin.lists = {}
 BoostedPlugin.points = {}
 BoostedPlugin.main_modifier_name = "modifier_boosted"
 BoostedPlugin.official_url = "http://drteaspoon.fi:3000/list"
+BoostedPlugin.competitive_url = "http://drteaspoon.fi:3000/list/competitive"
 BoostedPlugin.kv_bans = {}
 
 BoostedPlugin.player_boosters = {}
@@ -34,6 +35,9 @@ function BoostedPlugin:ApplySettings()
         BoostedPlugin.kv_lists = kv_lists
     else
         BoostedPlugin.kv_lists = {}
+    end
+    if BoostedPlugin.settings.competitive then
+        BoostedPlugin.official_url = BoostedPlugin.competitive_url
     end
 
     local url = BoostedPlugin.settings.custom_list

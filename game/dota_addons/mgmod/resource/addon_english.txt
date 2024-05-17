@@ -453,6 +453,10 @@
 		"Plugin_boosted_Option_DOWNGRADE_RATE" "Downgrade Rate"
 		"Plugin_boosted_Option_RARE_MULTIPLIER" "Rare"
 		"Plugin_boosted_Option_ULTRA_MULTIPLIER" "Epic"
+
+		"Plugin_boosted_Option_competitive" "Fairness Tweaks (Beta)"
+		"Plugin_boosted_Option_competitive_Description" "Game balance modifications preventing players from winning via ignoring their opponents and simply pushing waves/ratting. Maintained by the PwR Discord Community."
+	
 		"Plugin_boosted_Option_custom_list" "Custom List Url"
 		"Plugin_boosted_Option_custom_list_patch" "Custom List Patch Mode"
 		"Plugin_boosted_Option_custom_list_patch_Description" "Instead of overriding the whole list, only use custom list as 'patch' for the original list, updating only things nessesary."
