@@ -103,9 +103,9 @@ function FreeForAllPlugin:CreateSpawns(iTeam,kTeam)
         local fStep = math.pi*2
         
         for i = 1,10 do
-            local p = fStep*RandomFloat(0.0,1.0)
-            local x = math.sin(p) * RandomFloat(0.0,fRad)
-            local y = math.cos(p) * RandomFloat(0.0,fRad)
+            local p = fStep*Script_RandomFloat(0.0,1.0)
+            local x = math.sin(p) * Script_RandomFloat(0.0,fRad)
+            local y = math.cos(p) * Script_RandomFloat(0.0,fRad)
             FindClearSpaceForUnit(FreeForAllPlugin.dummyunit,Vector(x,y,0),false)
             local vPos = FreeForAllPlugin.dummyunit:GetAbsOrigin()
             FreeForAllPlugin:CreateSpawn(iTeam,vPos,true,kTeam)
@@ -113,8 +113,8 @@ function FreeForAllPlugin:CreateSpawns(iTeam,kTeam)
     elseif FreeForAllPlugin.settings.placement == "within_box" then
         local fRad = FreeForAllPlugin.settings.distance
         for i = 1,10 do
-            local x = RandomFloat(-fRad,fRad)
-            local y = RandomFloat(-fRad,fRad)
+            local x = Script_RandomFloat(-fRad,fRad)
+            local y = Script_RandomFloat(-fRad,fRad)
             FindClearSpaceForUnit(FreeForAllPlugin.dummyunit,Vector(x,y,0),false)
             local vPos = FreeForAllPlugin.dummyunit:GetAbsOrigin()
             FreeForAllPlugin:CreateSpawn(iTeam,vPos,true,kTeam)

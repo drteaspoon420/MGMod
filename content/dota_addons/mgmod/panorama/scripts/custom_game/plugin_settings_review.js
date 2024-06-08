@@ -184,6 +184,11 @@ function UpdatePluginSettings(sPluginName) {
                 if (input.text != VALUE)
                     input.text = VALUE;
             }
+            if (TYPE == "core_picker") {
+                let input = panel.FindChildInLayoutFile("SettingTypeTextInput");
+                if (input.text != VALUE)
+                    input.text = VALUE;
+            }
         } else {
             $.Msg("could not find",key);
         }
@@ -203,6 +208,9 @@ function CreateSetting(sPluginName,sPluginSetting,sPluginSettingData,hParent) {
         return CreateSettingDropdown(sPluginName,sPluginSetting,sPluginSettingData,hParent);
     }
     if (sPluginSettingData.TYPE == "text") {
+        return CreateSettingText(sPluginName,sPluginSetting,sPluginSettingData,hParent);
+    }
+    if (sPluginSettingData.TYPE == "core_picker") {
         return CreateSettingText(sPluginName,sPluginSetting,sPluginSettingData,hParent);
     }
     return undefined;

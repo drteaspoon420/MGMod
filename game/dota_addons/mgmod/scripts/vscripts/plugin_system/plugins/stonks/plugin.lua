@@ -221,7 +221,7 @@ function StonksPlugin:RandomAll()
 end
 
 function StonksPlugin:Random(stonk)
-    STONKS_TABLE[stonk].price = math.floor(STONKS_TABLE[stonk].price + RandomFloat(-StonksPlugin.settings.stonks_random_effect,StonksPlugin.settings.stonks_random_effect))
+    STONKS_TABLE[stonk].price = math.floor(STONKS_TABLE[stonk].price + Script_RandomFloat(-StonksPlugin.settings.stonks_random_effect,StonksPlugin.settings.stonks_random_effect))
     if STONKS_TABLE[stonk].price < StonksPlugin.settings.min_stonk_price then STONKS_TABLE[stonk].price = StonksPlugin.settings.min_stonk_price end
     self:SendState(stonk)
 end

@@ -41,7 +41,7 @@
         "DEFAULT" "250"
     }
     "neutral_tokens_every_x" {
-        "Order" "12"
+        "Order" "13"
         "TYPE" "number"
         "DEFAULT" "3"
     }
@@ -50,14 +50,20 @@
         "TYPE" "boolean"
         "DEFAULT" "1"
     }
-    "extra_objective_towers_swap" {
-        "Order" "21"
-        "TYPE" "boolean"
-        "DEFAULT" "1"
-    }
     "extra_objective_towers_require" {
         "Order" "22"
         "TYPE" "boolean"
         "DEFAULT" "1"
+    }
+
+    "extra_objective_towers_hp_per_round" {
+        "Order" "25"
+        "TYPE" "number"
+        "DEFAULT" "150"
+    }
+    "extra_objective_towers_damage_per_round" {
+        "Order" "26"
+        "TYPE" "number"
+        "DEFAULT" "15"
     }
 }

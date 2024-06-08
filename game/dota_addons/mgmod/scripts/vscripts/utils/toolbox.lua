@@ -343,7 +343,7 @@ function Toolbox:PatchTable(tOriginal,tPatch)
     for k,v in pairs(tPatch) do
         if tOriginal[k] ~= nil then
             if type(tOriginal[k]) == "table" and type(v) == "table" then
-                tOriginal[k] = BoostedPlugin:Merge(tOriginal[k],v)
+                tOriginal[k] = Toolbox:PatchTable(tOriginal[k],v)
             else
                 tOriginal[k] = v
             end

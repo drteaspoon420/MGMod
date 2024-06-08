@@ -38,5 +38,5 @@
  .mutator_underworld_strength{ background-image: url("file://{images}/custom_game/mutators/mutator_underworld_strength_png.png");}
  .mutator_unique_couriers{ background-image: url("file://{images}/custom_game/mutators/mutator_unique_couriers_png.png");}
  .mutator_unseen_sanic{ background-image: url("file://{images}/custom_game/mutators/mutator_unseen_sanic_png.png");}
- .mutator_zombies{ background-image: url("file://{images}/custom_game/mutators/mutator_zombies_png.png");
-}
+ .mutator_zombies{ background-image: url("file://{images}/custom_game/mutators/mutator_zombies_png.png");}
+ .mutator_rounds{ background-image: url("file://{images}/custom_game/mutators/mutator_rounds.png");}

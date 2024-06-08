@@ -1,0 +1,20 @@
+<!-- xml reconstructed by Source 2 Viewer 5.0.0.0 - https://valveresourceformat.github.io -->
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/rounds.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/rounds.js" />
+	</scripts>
+	<Panel class="WindowRoot">
+		<Panel id="WindowRoot" class="hidden">
+			<Panel id="Round">
+			<Label id="RoundText" text="99/99"/>
+			</Panel>
+			<Panel id="Timer">
+			<Label id="TimerText" text="99:99"/>
+			</Panel>
+		</Panel>
+	</Panel>
+</root>

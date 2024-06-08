@@ -5,7 +5,7 @@ function modifier_soul_stack:GetTexture() return "soul_stack" end
 function modifier_soul_stack:IsHidden() return false end
 function modifier_soul_stack:IsDebuff() return false end
 function modifier_soul_stack:IsPurgeException() return false end
-function modifier_soul_stack:AllowIllusionDuplicate() return true end
+function modifier_soul_stack:AllowIllusionDuplicate() return false end
 function modifier_soul_stack:GetAttributes()
 	return MODIFIER_ATTRIBUTE_PERMANENT + MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE
 end

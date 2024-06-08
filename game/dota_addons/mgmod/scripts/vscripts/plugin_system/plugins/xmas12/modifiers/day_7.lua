@@ -39,7 +39,7 @@ function day_7:OnIntervalThink()
         bounty_growth =  0.0,
         outgoing_damage_structure = 0.0,
         outgoing_damage_roshan = 0.0,
-        duration = RandomFloat(20.0,40.0),
+        duration = Script_RandomFloat(20.0,40.0),
     }
    -- print("creating illusion of", hEnemy:GetUnitName(), "at", hParent:GetUnitName())
     local hIllusion = CreateIllusions(hNeutral, hEnemy, illusion_keys, 1, 0, false, false)
@@ -54,7 +54,7 @@ function day_7:OnIntervalThink()
         }
         ExecuteOrderFromTable(tOrder)
     end
-    self:StartIntervalThink(RandomFloat(20.0,40.0))
+    self:StartIntervalThink(Script_RandomFloat(20.0,40.0))
 end
 
 function day_7:FindRandomPosition(vPos)

@@ -16,7 +16,7 @@ function ModifierSpawnerPlugin:PreGameStuff()
     local bBuiltin = PluginSystem:GetSetting("modifier_spawner","dota_modifiers") or 0
     local bCustom = PluginSystem:GetSetting("modifier_spawner","custom_modifiers") or 0
     
-	local file = LoadKeyValues('scripts/vscripts/plugin_system/plugins/modifier_spawner/modifiers.txt')
+	local file = LoadKeyValues('scripts/vscripts/plugin_system/plugins/modifier_spawner/modifiers_22052024  .txt')
     if not (file == nil or not next(file)) then
         ModifierSpawnerPlugin.npc_modifiers = file
     end

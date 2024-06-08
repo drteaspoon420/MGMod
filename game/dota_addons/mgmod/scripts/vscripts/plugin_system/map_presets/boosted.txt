@@ -13,6 +13,7 @@
             "allow_samehero" "1"
         }
         "boosted" {
+            "base_list" "1"
             "upgrade_normal_items" "1"
             "upgrade_neutral_items" "1"
         }

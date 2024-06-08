@@ -19,6 +19,7 @@ RoundsPlugin.round_end_time = -1
 
 RoundsPlugin.round_data = {}
 
+
 function RoundsPlugin:Init()
     print("[RoundsPlugin] found")
 end
@@ -29,6 +30,7 @@ function RoundsPlugin:ApplySettings()
     LinkLuaModifier( "modifier_rounds_wait", "plugin_system/plugins/rounds/modifiers/modifier_rounds_wait", LUA_MODIFIER_MOTION_NONE )
     LinkLuaModifier( "modifier_rounds_tower_protect", "plugin_system/plugins/rounds/modifiers/modifier_rounds_tower_protect", LUA_MODIFIER_MOTION_NONE )
     
+
 
     ListenToGameEvent("npc_spawned", function(event)
         if GameRules:State_Get() < DOTA_GAMERULES_STATE_HERO_SELECTION then return end
@@ -55,6 +57,10 @@ function RoundsPlugin:PreGame()
     RoundsPlugin.round_end_time = -1
     RoundsPlugin.score_radiant = 0
     RoundsPlugin.score_dire = 0
+    RoundsPlugin.last_win = -1
+    GameRules:GetGameModeEntity():SetCustomRadiantScore(RoundsPlugin.score_radiant)
+    GameRules:GetGameModeEntity():SetCustomDireScore(RoundsPlugin.score_dire)
+
     RoundsPlugin:UpdateRoundData()
 
     local tTeams = {}
@@ -78,7 +84,7 @@ function RoundsPlugin:PreGame_StageTwo()
     end
     RoundsPlugin.playing_teams = tTeams
     local k = Toolbox:GetRandomKey(RoundsPlugin.playing_teams)
-    RoundsPlugin.defence_team = DOTA_TEAM_BADGUYS -- RoundsPlugin.playing_teams[k]
+    RoundsPlugin.defence_team = RoundsPlugin.playing_teams[k]
     RoundsPlugin:PrepRoundStart()
 end
 
@@ -169,6 +175,15 @@ end
 
 function RoundsPlugin:CleanupHeroes()
     local iTargetLevel = 2 + (RoundsPlugin.current_round*2)
+    local sToken = ""
+    if (RoundsPlugin.settings.neutral_tokens_every_x > 0) then
+        if (RoundsPlugin.current_round%RoundsPlugin.settings.neutral_tokens_every_x == 0) then
+            local n = RoundsPlugin.current_round/RoundsPlugin.settings.neutral_tokens_every_x
+            if (n < 5 and n > 0) then
+                sToken = "item_tier" .. n .. "_token"
+            end
+        end
+    end
     for k,v in pairs(RoundsPlugin.heroes) do
         local hHero = v[2]
         hHero:RespawnHero(false,false)
@@ -197,7 +212,14 @@ function RoundsPlugin:CleanupHeroes()
             hHero:HeroLevelUp(false)
             iLevel = iLevel + 1
         end
-        hHero:ModifyGold(RoundsPlugin.settings.gold_per_round,true,DOTA_ModifyGold_GameTick)
+        if hHero:GetTeam() == RoundsPlugin.last_win then
+            hHero:ModifyGold(RoundsPlugin.settings.gold_per_round + RoundsPlugin.settings.gold_per_victory,true,DOTA_ModifyGold_GameTick)
+        else
+            hHero:ModifyGold(RoundsPlugin.settings.gold_per_round,true,DOTA_ModifyGold_GameTick)
+        end
+        if sToken ~= "" then
+            hHero:AddItemByName(sToken)
+        end
     end
 end
 
@@ -213,15 +235,33 @@ function RoundsPlugin:SpawnTowers()
         vPos1 = Vector(2914,-195,264)
         vPos2 = Vector(-1661,2985,264)
     end
-    print("tower spawning")
     hTower1 = CreateUnitByName(sUnit,vPos1,false,nil,nil,RoundsPlugin.defence_team)
-    local hModifier = hTower1:AddNewModifier(hTower1,nil,"modifier_rounds_tower_protect",{health = 666})
     RoundsPlugin.towers[1] = hTower1
+    RoundsPlugin:PrepTower(RoundsPlugin.towers[1])
 
-    
     hTower2 = CreateUnitByName(sUnit,vPos2,false,nil,nil,RoundsPlugin.defence_team)
-    local hModifier = hTower2:AddNewModifier(hTower2,nil,"modifier_rounds_tower_protect",{health = 666})
     RoundsPlugin.towers[2] = hTower2
+    RoundsPlugin:PrepTower(RoundsPlugin.towers[2])
+
+end
+
+function RoundsPlugin:PrepTower(hTower)
+
+    Timers:CreateTimer(0.1, function()
+        if (hTower:IsNull()) then return end
+        if not (hTower ~= nil and hTower.IsBaseNPC and hTower:IsBaseNPC()) then
+            return
+        end
+        for _,hMod in pairs(hTower:FindAllModifiers()) do
+            if hMod:GetName() == "modifier_invulnerable" then
+                hTower:RemoveModifierByName(hMod:GetName())
+            end
+        end
+        local hModifier = hTower:AddNewModifier(hTower,nil,"modifier_rounds_tower_protect",{
+            health = RoundsPlugin.settings.extra_objective_towers_hp_per_round * (RoundsPlugin.current_round),
+            damage = RoundsPlugin.settings.extra_objective_towers_damage_per_round * (RoundsPlugin.current_round),
+        })
+    end)
 end
 
 function RoundsPlugin:CleanupMap()
@@ -277,46 +317,49 @@ function RoundsPlugin:CleanupMap()
 end
 
 function RoundsPlugin:StartRound()
+    if (RoundsPlugin.current_state == ROUNDS_STATE_MATCH_END) then return end
     RoundsPlugin.current_state = ROUNDS_STATE_ROUND_ACTIVE
     RoundsPlugin.round_end_time = GameRules:GetGameTime()+RoundsPlugin.settings.round_time
     RoundsPlugin:UpdateRoundData()
-    Timers:CreateTimer(1,function() RoundsPlugin:RoundTick() end)
+    Timers:CreateTimer(1,function() return RoundsPlugin:RoundTick() end)
 end
 
 function RoundsPlugin:RoundTick()
     if RoundsPlugin.current_state ~= ROUNDS_STATE_ROUND_ACTIVE then return end
     if RoundsPlugin.round_end_time > GameRules:GetGameTime() then return 1 end
-    RoundsPlugin:RoundEnd(RoundsPlugin.defence_team)
+    if (RoundsPlugin.settings.extra_objective_towers) then
+        RoundsPlugin:EndRound(RoundsPlugin.defence_team)
+    else
+        RoundsPlugin:EndRound(-1)
+    end
 end
 
 function RoundsPlugin:DeathEvent(tEvent)
-	local attackerUnit = tEvent.entindex_attacker and EntIndexToHScript(tEvent.entindex_attacker)
-	local killedUnit = tEvent.entindex_killed and EntIndexToHScript(tEvent.entindex_killed)
-    if killedUnit.IsBaseNPC and killedUnit:IsBaseNPC() then
-        if killedUnit:IsRealHero() then
-            local tData = RoundsPlugin:GetDataFromHero(killedUnit)
-            if tData == nil then
-                print("no data for hero? was it a bear?")
-                return
+    Timers:CreateTimer(0,function()
+        local attackerUnit = tEvent.entindex_attacker and EntIndexToHScript(tEvent.entindex_attacker)
+        local killedUnit = tEvent.entindex_killed and EntIndexToHScript(tEvent.entindex_killed)
+        if killedUnit.IsBaseNPC and killedUnit:IsBaseNPC() then
+            if killedUnit:IsRealHero() then
+                local tData = RoundsPlugin:GetDataFromHero(killedUnit)
+                if tData == nil then
+                    return
+                end
+                if killedUnit:IsReincarnating() then return end
+                if killedUnit:HasModifier("modifier_undying_ceaseless_dirge_buff") then return end
+                RoundsPlugin:CheckLastManStanding()
             end
-            if killedUnit:IsReincarnating() then return end
-            RoundsPlugin:CheckLastManStanding()
-        end
-        if killedUnit:IsTower() then
             if killedUnit:HasModifier("modifier_rounds_tower_protect") then
-                RoundsPlugin:RoundEnd(attackerUnit:GetTeam())
+                RoundsPlugin:EndRound(attackerUnit:GetTeam())
             end
         end
-    end
+    end)
 end
 
 function RoundsPlugin:CheckLastManStanding()
     local iTeamVictor = -1
-    print("checking last man standing")
     for k,v in pairs(RoundsPlugin.heroes) do
         local hHero = v[2]
         if hHero:IsAlive() or hHero:IsReincarnating() then
-            print("we found live one on team ", hHero:GetTeam())
             if iTeamVictor == -1 or iTeamVictor == hHero:GetTeam() then
                 iTeamVictor = hHero:GetTeam() --we have one surviving team at least
             else
@@ -325,7 +368,6 @@ function RoundsPlugin:CheckLastManStanding()
         end
     end
     if iTeamVictor == -1 then --we have no surviving team ???
-        print("draw?!")
         RoundsPlugin:EndRound(iTeamVictor)
         return
     end
@@ -333,40 +375,79 @@ function RoundsPlugin:CheckLastManStanding()
     if RoundsPlugin.settings.extra_objective_towers and RoundsPlugin.settings.extra_objective_towers_require then
         --check for offending team in case they need to destroy tower.
         if iTeamVictor ~= RoundsPlugin.defence_team then
-            print("offfence needs to kill the tower still ", iTeamVictor)
+            --TODO
+            
+            for k,v in pairs(RoundsPlugin.heroes) do
+                local hHero = v[2]
+                local iPlayer = hHero:GetPlayerOwnerID()
+                CustomUI:DynamicHud_Create(iPlayer,"rounds_reminder","file://{resources}/layout/custom_game/rounds_reminder.xml",nil)
+                Timers:CreateTimer(3,function()
+                    CustomUI:DynamicHud_Destroy(iPlayer,"rounds_reminder")
+                end)
+            end
             return
         end
     end
-    print("we found winning team ", iTeamVictor)
     RoundsPlugin:EndRound(iTeamVictor)
 end
 
 function RoundsPlugin:EndRound(iTeamVictor)
+    
+    if (RoundsPlugin.current_state == ROUNDS_STATE_ROUND_END) then return end
+    RoundsPlugin.current_state = ROUNDS_STATE_ROUND_END
+
     if iTeamVictor == DOTA_TEAM_BADGUYS then
         RoundsPlugin.score_dire = RoundsPlugin.score_dire + 1
     elseif iTeamVictor == DOTA_TEAM_GOODGUYS then
         RoundsPlugin.score_radiant = RoundsPlugin.score_radiant + 1
     end
-    RoundsPlugin.current_state = ROUNDS_STATE_ROUND_END
+    RoundsPlugin.last_win = iTeamVictor
+
+    
+    
     RoundsPlugin:UpdateRoundData()
-    Timers:CreateTimer(5,function() RoundsPlugin:EndRound_Stage2() end)
+
+    
+    for k,v in pairs(RoundsPlugin.heroes) do
+        local hHero = v[2]
+        local hModifier = hHero:AddNewModifier(hHero,nil,"modifier_rounds_wait",{
+            duration=5
+        })
+
+        
+        local iPlayer = hHero:GetPlayerOwnerID()
+        local iTeam = hHero:GetTeam()
+        if iTeam == iTeamVictor then
+            CustomUI:DynamicHud_Create(iPlayer,"rounds_end_game","file://{resources}/layout/custom_game/rounds_win.xml",nil)
+        elseif iTeamVictor == -1 then
+            CustomUI:DynamicHud_Create(iPlayer,"rounds_end_game","file://{resources}/layout/custom_game/rounds_draw.xml",nil)
+        else
+            CustomUI:DynamicHud_Create(iPlayer,"rounds_end_game","file://{resources}/layout/custom_game/rounds_loss.xml",nil)
+        end
+        Timers:CreateTimer(3,function()
+            CustomUI:DynamicHud_Destroy(iPlayer,"rounds_end_game")
+        end)
+
+    end
+    Timers:CreateTimer(2.5,function() RoundsPlugin:EndRound_Stage2() end)
 end
 
 function RoundsPlugin:EndRound_Stage2()
+    RoundsPlugin.current_round = RoundsPlugin.current_round + 1
     local midpoint = math.floor(RoundsPlugin.settings.max_rounds / 2)
     local remaining = RoundsPlugin.settings.max_rounds - RoundsPlugin.current_round
     local score_dif = math.abs(RoundsPlugin.score_dire-RoundsPlugin.score_radiant)
+    print(midpoint," mid ", remaining, " remaining ", score_dif, " dif")
     if score_dif > remaining then
         if RoundsPlugin.score_dire > RoundsPlugin.score_radiant then
             RoundsPlugin:EndMatch(DOTA_TEAM_BADGUYS)
-        elseif RoundsPlugin.score_dire > RoundsPlugin.score_radiant then
+        elseif RoundsPlugin.score_radiant > RoundsPlugin.score_dire then
             RoundsPlugin:EndMatch(DOTA_TEAM_GOODGUYS)
         else
             RoundsPlugin.settings.max_rounds = RoundsPlugin.settings.max_rounds + 1
         end
     end
 
-    RoundsPlugin.current_round = RoundsPlugin.current_round + 1
     if RoundsPlugin.settings.alternate_mode then
         if RoundsPlugin.defence_team == DOTA_TEAM_BADGUYS then
             RoundsPlugin.defence_team = DOTA_TEAM_GOODGUYS
@@ -384,10 +465,12 @@ function RoundsPlugin:EndRound_Stage2()
     end
 
 
-    Timers:CreateTimer(5,function() RoundsPlugin:PrepRoundStart() end)
+    Timers:CreateTimer(2.5,function() RoundsPlugin:PrepRoundStart() end)
 end
 
 function RoundsPlugin:EndMatch(iTeamVictor)
+    if (RoundsPlugin.current_state == ROUNDS_STATE_MATCH_END) then return end
+    RoundsPlugin.current_state = ROUNDS_STATE_MATCH_END
     GameRules:SetCustomGameEndDelay(30.0)
     GameRules:SetGameWinner(iTeamVictor)
 end
@@ -416,5 +499,7 @@ function RoundsPlugin:UpdateRoundData()
         score_dire = RoundsPlugin.score_dire,
     }
 
+    GameRules:GetGameModeEntity():SetCustomRadiantScore(RoundsPlugin.score_radiant)
+    GameRules:GetGameModeEntity():SetCustomDireScore(RoundsPlugin.score_dire)
     CustomNetTables:SetTableValue("rounds","round_data",RoundsPlugin.round_data)
 end

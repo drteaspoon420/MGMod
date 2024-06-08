@@ -5,6 +5,7 @@
 
     "core_data_abilities",
     "core_data_items",
+    "core_data_units",
     "core_data_modifiers",
 
     "dvd",

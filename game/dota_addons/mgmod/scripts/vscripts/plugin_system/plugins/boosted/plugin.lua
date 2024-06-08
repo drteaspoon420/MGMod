@@ -8,6 +8,10 @@ BoostedPlugin.points = {}
 BoostedPlugin.main_modifier_name = "modifier_boosted"
 BoostedPlugin.official_url = "http://drteaspoon.fi:3000/list"
 BoostedPlugin.competitive_url = "http://drteaspoon.fi:3000/list/competitive"
+BoostedPlugin.newdawn_url = "http://drteaspoon.fi:3000/list/newdawn"
+BoostedPlugin.newdawn_comp_url = "http://drteaspoon.fi:3000/list/newdawn_comp"
+BoostedPlugin.all_url = "http://drteaspoon.fi:3000/list/all"
+BoostedPlugin.none_url = "https://pastebin.com/raw/JQQQeQCR"
 BoostedPlugin.kv_bans = {}
 
 BoostedPlugin.player_boosters = {}
@@ -30,14 +34,26 @@ end
 
 function BoostedPlugin:ApplySettings()
     BoostedPlugin.settings = PluginSystem:GetAllSetting("boosted")
-    local kv_lists = LoadKeyValues('scripts/vscripts/plugin_system/plugins/boosted/lists.txt')
-    if not (kv_lists == nil or not next(kv_lists)) then
-        BoostedPlugin.kv_lists = kv_lists
+    if BoostedPlugin.settings.base_list ~= "none" then
+        local kv_lists = LoadKeyValues('scripts/vscripts/plugin_system/plugins/boosted/lists.txt')
+        if not (kv_lists == nil or not next(kv_lists)) then
+            BoostedPlugin.kv_lists = kv_lists
+        else
+            BoostedPlugin.kv_lists = {}
+        end
     else
         BoostedPlugin.kv_lists = {}
     end
-    if BoostedPlugin.settings.competitive then
+    if BoostedPlugin.settings.base_list == "post_crownfall" then
+        BoostedPlugin.official_url = BoostedPlugin.newdawn_url
+    elseif BoostedPlugin.settings.base_list == "post_crownfall_comp" then
+        BoostedPlugin.official_url = BoostedPlugin.newdawn_comp_url
+    elseif BoostedPlugin.settings.base_list == "all" then
+        BoostedPlugin.official_url = BoostedPlugin.all_url
+    elseif BoostedPlugin.settings.base_list == "competitive" then
         BoostedPlugin.official_url = BoostedPlugin.competitive_url
+    elseif BoostedPlugin.settings.base_list == "none" then
+        BoostedPlugin.official_url = BoostedPlugin.none_url
     end
 
     local url = BoostedPlugin.settings.custom_list
@@ -176,6 +192,48 @@ function BoostedPlugin:UpdateEvent(event)
     end
 end
 
+function BoostedPlugin:RefreshIntrinsicModifiers(hUnit,hAbility)
+    local sMod = hAbility:GetIntrinsicModifierName()
+    if sMod ~= nil and sMod ~= "" then
+        local hMod = hUnit:FindModifierByName(sMod)
+        if hMod ~= nil then
+            if hMod:GetDuration() == -1 then
+                BoostedPlugin:RecreateAbility(hUnit,hAbility)
+--[[                 hMod:Destroy()
+                Timers:CreateTimer(0.1,function()
+                    hUnit:AddNewModifier(hUnit,hAbility,sMod,{})
+                end) ]]
+            end
+        end
+    end
+end
+
+--[[ function BoostedPlugin:RefreshIntrinsicModifiers(hUnit)
+    local c = hUnit:GetAbilityCount()
+    local only_slot = only_slot_map[BoostedPlugin.settings.only_slot]
+    if only_slot == -1 then
+        for i=1,c do
+            local hAbility = hUnit:GetAbilityByIndex(i-1)
+            if hAbility ~= nil then
+                hAbility:RefreshIntrinsicModifier()
+            end
+        end
+        if hUnit:HasInventory() then
+            for i=DOTA_ITEM_SLOT_1, DOTA_ITEM_NEUTRAL_SLOT do
+                local item = hUnit:GetItemInSlot(i);
+                if item ~= nil then
+                    item:RefreshIntrinsicModifier()
+                end
+            end
+        end
+    else
+        local i = only_slot
+        local hAbility = hUnit:GetAbilityByIndex(i)
+        if hAbility ~= nil then
+            hAbility:RefreshIntrinsicModifier()
+        end
+    end
+end ]]
 function BoostedPlugin:GetAbilitiesOfUnit(hUnit)
     local c = hUnit:GetAbilityCount()
     local t = {}
@@ -350,8 +408,7 @@ function BoostedPlugin:SpawnEvent(event)
                 return
             end ]]
             BoostedPlugin:UpdatePlayer_NetTable(iPlayer,hUnit)
-            local hModifier = hUnit:AddNewModifier(hUnit,nil,"modifier_boosted",{})
-            print("all should be good")
+            local hModifier = hUnit:AddNewModifier(hUnit,nil,"modifier_boosted",{negative_one_block = BoostedPlugin.settings.negative_one_block})
         else
             if hUnit:IsCourier() then return end
             local iPlayer = hUnit:GetMainControllingPlayer()
@@ -363,7 +420,9 @@ function BoostedPlugin:SpawnEvent(event)
             end
             
             BoostedPlugin:UpdatePlayer_NetTable(iPlayer,hUnit)
-            local hModifier = hUnit:AddNewModifier(hUnit,nil,"modifier_boosted",{})
+            local hModifier = hUnit:AddNewModifier(hUnit,nil,"modifier_boosted",{negative_one_block = BoostedPlugin.settings.negative_one_block})
+
+            hModifier:RequestFull()
         end
     end)
 end
@@ -436,14 +495,26 @@ function BoostedPlugin:boost_player(tEvent)
                         if hUnit:HasInventory() then
                             BoostedPlugin:RefreshItems(sAbility,hUnit)
                         end
+                        if hUnit:HasAbility(sAbility) then
+                            BoostedPlugin:UpdateIntrin(hUnit,sAbility)
+                        end
                     end
                 end
             end
         end
         hUnit = Entities:Next(hUnit)
     end
-    
 end
+
+function BoostedPlugin:UpdateIntrin(hUnit,sAbility)
+    if hUnit == nil then
+        return
+    end
+    if (hUnit) then
+        BoostedPlugin:RefreshIntrinsicModifiers(hUnit,hUnit:FindAbilityByName(sAbility))
+    end
+end
+
 
 function BoostedPlugin:RefreshItems(sAbility,hUnit)
     for i=DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_6 do
@@ -627,8 +698,11 @@ function BoostedPlugin:GetKvCount(hHero,iPlayer)
     local c = 0
     for k,v in pairs(t) do
         if BoostedPlugin.lists[iPlayer] ~= nil then
-            if BoostedPlugin.lists[iPlayer][v] ~= nil then
-                c = c + tlen(BoostedPlugin.lists[iPlayer][v])
+            if v.GetName ~= nil then
+                local sAbility = v:GetName()
+                if BoostedPlugin.lists[iPlayer][sAbility] ~= nil then
+                    c = c + tlen(BoostedPlugin.lists[iPlayer][sAbility])
+                end
             end
         end
     end
@@ -966,14 +1040,18 @@ function BoostedPlugin:PickRng(t)
     return {r,t}
 end
 
+
 function BoostedPlugin:GetCompleteOfferList(hero,iPlayer)
     local tAbilities = BoostedPlugin:LimitViable(BoostedPlugin:GetCompleteAbilityList(hero,iPlayer),iPlayer)
     local tOffers = {}
     for i=1,#tAbilities do
-        local ability = tAbilities[i]
-        local tt = BoostedPlugin:IntoRng(ability,BoostedPlugin.lists[iPlayer][ability],iPlayer)
-        if next(tt) ~= nil then
-            tOffers[ability] = tt
+        local hAbility = tAbilities[i]
+        if hAbility.GetName ~= nil then
+            local sAbility = hAbility:GetName()
+            local tt = BoostedPlugin:IntoRng(sAbility,BoostedPlugin.lists[iPlayer][sAbility],iPlayer,hAbility)
+            if next(tt) ~= nil then
+                tOffers[sAbility] = tt
+            end
         end
     end
     return tOffers
@@ -982,8 +1060,12 @@ end
 function BoostedPlugin:LimitViable(t,iPlayer)
     local ti = {}
     for k,v in pairs(t) do
-        if BoostedPlugin.lists[iPlayer][v] ~= nil then
-            table.insert(ti,v)
+        if v.GetName ~= nil then
+            local sAbility = v:GetName()
+            
+            if BoostedPlugin.lists[iPlayer][sAbility] ~= nil then
+                table.insert(ti,v)
+            end
         end
     end
     return ti
@@ -1006,10 +1088,13 @@ function remove_duplicates(t)
     local hash = {}
     local res = {}
     for _,v in ipairs(t) do
-       if (not hash[v]) then
-           res[#res+1] = v
-           hash[v] = true
-       end
+        if v.GetName ~= nil then
+            local sName = v:GetName()
+            if (not hash[sName]) then
+                res[#res+1] = v
+                hash[sName] = true
+            end
+        end
     end
     return res
 end
@@ -1024,8 +1109,8 @@ function BoostedPlugin:GetAllAbilities(hUnit,iPlayer)
             if hAbility ~= nil then
                 --if not hAbility:IsStolen() then
                     --BoostedPlugin:UpdatePlayer_NetTable_Ability(iPlayer,hUnit,hAbility)
-                    sAbility = hAbility:GetName()
-                    table.insert(t,sAbility)
+                    --sAbility = hAbility:GetName()
+                    table.insert(t,hAbility)
                 --end
             end
         end
@@ -1035,26 +1120,26 @@ function BoostedPlugin:GetAllAbilities(hUnit,iPlayer)
         if hAbility ~= nil then
             --if not hAbility:IsStolen() then
                 --BoostedPlugin:UpdatePlayer_NetTable_Ability(iPlayer,hUnit,hAbility)
-                sAbility = hAbility:GetName()
-                table.insert(t,sAbility)
+                --sAbility = hAbility:GetName()
+                table.insert(t,hAbility)
             --end
         end
     end
     if hUnit:HasInventory() then
         if BoostedPlugin.settings.upgrade_normal_items then
             for i=DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_6 do
-                local item = hUnit:GetItemInSlot(i);
-                if item ~= nil then
-                    sAbility = item:GetName()
-                    table.insert(t,sAbility)
+                local hItem = hUnit:GetItemInSlot(i);
+                if hItem ~= nil then
+                    --sAbility = hItem:GetName()
+                    table.insert(t,hItem)
                 end
             end
         end
         if BoostedPlugin.settings.upgrade_neutral_items then
-            local item = hUnit:GetItemInSlot(DOTA_ITEM_NEUTRAL_SLOT );
-            if item ~= nil then
-                sAbility = item:GetName()
-                table.insert(t,sAbility)
+            local hItem = hUnit:GetItemInSlot(DOTA_ITEM_NEUTRAL_SLOT );
+            if hItem ~= nil then
+                --sAbility = hItem:GetName()
+                table.insert(t,hItem)
             end
         end
     end
@@ -1080,7 +1165,9 @@ function BoostedPlugin:GetControlledUnits(unit)
     return units
 end
 
-function BoostedPlugin:IntoRng(ability,t,iPlayer)
+function BoostedPlugin:IntoRng(ability,t,iPlayer,hAbility)
+    local nSpecialLevel = hAbility:GetLevel() - 1
+    if nSpecialLevel == -1 then nSpecialLevel = 0 end
     local ti = {}
     if BoostedPlugin.kv_bans[iPlayer] == nil then
         BoostedPlugin.kv_bans[iPlayer] = {}
@@ -1088,7 +1175,10 @@ function BoostedPlugin:IntoRng(ability,t,iPlayer)
     for k,v in pairs(t) do
 		if v ~= nil then
             if BoostedPlugin.kv_bans[iPlayer][ability .. "&" .. k] == nil then
-                table.insert(ti,k)
+                local flBaseValue = hAbility:GetLevelSpecialValueNoOverride( k, nSpecialLevel )
+                if not (flBaseValue < 0.001 and flBaseValue > -0.001) then
+                    table.insert(ti,k)
+                end
             end
         end
     end
@@ -1275,6 +1365,119 @@ function BoostedPlugin:upgrade_report_done(tEvent)
             print("something went wrong")
         else
             print("all ok")
+        end
+    end)
+end
+
+function BoostedPlugin:RequestAllAbilityValues(tAbilities,iPlayer)
+    local t = {}
+    for _,hAbility in pairs(tAbilities) do
+        local sAbility = hAbility:GetName()
+        if BoostedPlugin.lists[iPlayer] ~= nil then
+            if BoostedPlugin.lists[iPlayer][sAbility] ~= nil then
+                for key,v in pairs(BoostedPlugin.lists[iPlayer][sAbility]) do
+                    t[sAbility .. "|" .. key] = v
+                end
+            end
+        end
+    end
+    return t
+end
+
+
+    
+function BoostedPlugin:FixMe(tArgs,bTeam,iPlayer)
+    local hPlayer = PlayerResource:GetPlayer(iPlayer)
+    if hPlayer == nil then
+        return
+    end
+	local hUnit = hPlayer:GetAssignedHero()
+    if hUnit == nil then
+        return
+    end
+    if (hUnit) then
+        local c = hUnit:GetAbilityCount()
+        for i=1,c do
+            local hAbility = hUnit:GetAbilityByIndex(i-1)
+            if hAbility ~= nil then
+                local sMod = hAbility:GetIntrinsicModifierName()
+                if sMod ~= nil and sMod ~= "" then
+                    local hMod = hUnit:FindModifierByName(sMod)
+                    if hMod ~= nil then
+                        print("fixing: ",hAbility:GetAbilityName(), " ", sMod)
+                        BoostedPlugin:RecreateAbility(hUnit,hAbility)
+                    end
+                end
+            end
+        end
+    end
+end
+
+function BoostedPlugin:FixThis(hUnit)
+    if hUnit == nil then
+        return
+    end
+    if (hUnit) then
+        local c = hUnit:GetAbilityCount()
+        for i=1,c do
+            local hAbility = hUnit:GetAbilityByIndex(i-1)
+            if hAbility ~= nil then
+                local sMod = hAbility:GetIntrinsicModifierName()
+                if sMod ~= nil and sMod ~= "" then
+                    local hMod = hUnit:FindModifierByName(sMod)
+                    if hMod ~= nil then
+                        hMod:Destroy()
+                        Timers:CreateTimer(0.1,function()
+                            hUnit:AddNewModifier(hUnit,hAbility,sMod,{})
+                        end)
+                    end
+                end
+            end
+        end
+    end
+end
+
+BoostedPlugin.don_recreate = {
+    meepo_divided_we_stand = 1,
+    pudge_innate_graft_flesh = 1,
+}
+
+function BoostedPlugin:RecreateAbility(hUnit,hAbility)
+    local iLevel = hAbility:GetLevel()
+    if iLevel < 1 then return end
+    local sMod = hAbility:GetIntrinsicModifierName()
+    local hMod = hUnit:FindModifierByName(sMod)
+    if hMod == nil then return end
+    if BoostedPlugin.don_recreate[sName] ~= nil then
+        hMod:ForceRefresh()
+        return
+    end
+    local iIndex = hAbility:GetAbilityIndex()
+    local sName = hAbility:GetAbilityName()
+    local fCooldown = hAbility:GetCooldownTimeRemaining()
+    local iCharges = hAbility:GetCurrentAbilityCharges()
+    local iStack = 0
+    iStack = hMod:GetStackCount()
+    hUnit:RemoveAbilityByHandle(hAbility)
+    Timers:CreateTimer(0,function()
+        local hNewAbility = hUnit:AddAbility(sName)
+        hNewAbility:SetAbilityIndex(iIndex)
+        if (iLevel > 0) then
+            hNewAbility:SetLevel(iLevel)
+        end
+        if (fCooldown > 0) then
+            hNewAbility:StartCooldown(fCooldown)
+        end
+        if (iCharges > 0) then
+            hNewAbility:SetCurrentAbilityCharges(iCharges)
+        end
+        if iStack > 0 then
+            Timers:CreateTimer(0,function()
+                local hMod = hUnit:FindModifierByName(sMod)
+                if hMod ~= nil then
+                    hMod:SetStackCount(iStack)
+                end
+            end)
         end
     end)
 end

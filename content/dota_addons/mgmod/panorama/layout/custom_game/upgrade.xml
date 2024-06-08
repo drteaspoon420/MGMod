@@ -11,6 +11,7 @@
 			<Panel class="UpgradeOption">
 				<DOTAAbilityImage id="UpgradeOptionImage" class="OptionImage" />
 				<DOTAItemImage id="UpgradeOptionImageItem" class="OptionImage" />
+				<Button id="AbilityChangeReport"/>
 				<Label id="UpgradeOptionLabel" html="true" text="key_value" />
 				<Button id="OptionButtonPlus" class="OptionButton">
 					<Label class="OptionNumText" id="OptionButtonPlusText" text="option_plus" />

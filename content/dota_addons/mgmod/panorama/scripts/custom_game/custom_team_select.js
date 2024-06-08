@@ -14,6 +14,8 @@ var all_teams = [
     DOTATeam_t.DOTA_TEAM_CUSTOM_8,
     1
 ];
+
+var team_trays_all = {};
 GameUI.CustomUIConfig().team_colors = {}
 GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_GOODGUYS] = "#00ff00;"; // { 243, 201, 9 }		--		Yellow
 GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_BADGUYS] = "#ff0000;"; // { 243, 201, 9 }		--		Yellow
@@ -33,6 +35,7 @@ var forced_mode = {
 var local_player = Game.GetLocalPlayerInfo();
 const bHost = local_player.player_has_host_privileges;
 var ReadyButtonTimer = $.GetContextPanel().FindChildInLayoutFile("ReadyButtonTimer");
+var ReadyButtonID = $.GetContextPanel().FindChildInLayoutFile("ReadyButtonID");
 var ReadyButtonID2 = $.GetContextPanel().FindChildInLayoutFile("ReadyButtonID2");
 var ReadyButtonLabel = $.GetContextPanel().FindChildInLayoutFile("ReadyButtonLabel");
 
@@ -83,7 +86,23 @@ function hookSliderChange(panel, callback, onComplete) {
             onComplete(panel, currentValue);
 		}
 	});
-} 
+}
+
+function UpdateTrayContents(iTeam,tTeam) {
+    let TeamTrayContent = team_trays_all[iTeam];
+    if (tTeam.team_max_players > 0) {
+        let tPlayers = Game.GetPlayerIDsOnTeam( iTeam );
+        let occupied = 0;
+        for (let i = 0; i < tPlayers.length; i++) {
+            CreateSlotPlayer(iTeam,i,TeamTrayContent,tPlayers[i]);
+            occupied += 1;
+        }
+        for (let i = occupied; i < tTeam.team_max_players; i++) {
+            CreateSlotEmpty(iTeam,i,TeamTrayContent);
+        }
+    }
+    
+}
 
 function CreateTeam(iTeam,tTeam,hParent) {
     let TeamTray = $.CreatePanel('Panel', hParent, "team_tray_" + iTeam);
@@ -95,21 +114,16 @@ function CreateTeam(iTeam,tTeam,hParent) {
     if (iTeam == 1) {
         TeamTrayContent.SetHasClass("SpectatorTrayContent",true);
     }
+    team_trays_all[iTeam] = TeamTrayContent;
+
     if (tTeam.team_max_players > 0) {
-        let tPlayers = Game.GetPlayerIDsOnTeam( iTeam );
-        let occupied = 0;
-        for (let i = 0; i < tPlayers.length; i++) {
-            CreateSlotPlayer(iTeam,i,TeamTrayContent,tPlayers[i]);
-            occupied += 1;
-        }
-        for (let i = occupied; i < tTeam.team_max_players; i++) {
-            CreateSlotEmpty(iTeam,i,TeamTrayContent);
-        }
+        UpdateTrayContents(iTeam,tTeam);
     } else {
         if (!bHost || forced_mode.lock_level > 0) {
             TeamTray.SetHasClass("hidden",true);
         }
     }
+
     let TeamCountInput = TeamTray.FindChildInLayoutFile("TeamCountInput");
     if (!bHost || forced_mode.lock_level > 0) {
         TeamCountInput.SetHasClass("team_setting_hidden",true)
@@ -193,7 +207,7 @@ function CreateSlotPlayer(iTeam,iSlot,hParent,iPlayer) {
 }
 
 function teams_changed(tEvent) {
-    PreWork2();
+    RefreshUI();
 }
 
 function BuildUI() {
@@ -201,6 +215,17 @@ function BuildUI() {
     for (let i = 0; i < all_teams.length; i++) {
         const team_info = Game.GetTeamDetails(all_teams[i]);
         CreateTeam(all_teams[i],team_info,WindowRoot);
+    }
+}
+
+function RefreshUI() {
+    
+    for (let i = 0; i < all_teams.length; i++) {
+        const team_info = Game.GetTeamDetails(all_teams[i]);
+        if (team_trays_all[all_teams[i]]) {
+            team_trays_all[all_teams[i]].RemoveAndDeleteChildren();
+            UpdateTrayContents(all_teams[i],team_info)
+        }
     }
 }
 
@@ -270,23 +295,45 @@ function UpdateTimer()
     $.Schedule( 0.1, UpdateTimer );
 }
 
+let super_timer_paused = false;
 function ToggleTimer() {
     if (!bHost) return;
     let launching = Game.GetAutoLaunchEnabled();
     
     if (launching) {
+        super_timer_paused = false;
         Game.SetTeamSelectionLocked( true );
         Game.SetAutoLaunchEnabled( false );
         Game.SetRemainingSetupTime( 4 ); 
         ReadyButtonID2.SetHasClass("CancelReady",launching);
         ReadyButtonLabel.text = "CANCEL START";
     } else {
+        super_timer_paused = false;
         Game.SetTeamSelectionLocked( false );
         Game.SetRemainingSetupTime( 60 ); 
         Game.SetAutoLaunchDelay( 60 );
         Game.SetAutoLaunchEnabled( true );
         ReadyButtonID2.SetHasClass("CancelReady",launching);
         ReadyButtonLabel.text = "START GAME";
+    }
+}
+
+function ToggleTimerPause() {
+    if (!bHost) return;
+    super_timer_paused = !super_timer_paused;
+    
+    if (super_timer_paused) {
+        Game.SetTeamSelectionLocked( false );
+        Game.SetRemainingSetupTime( 9999 ); 
+        Game.SetAutoLaunchDelay( 9999 );
+        Game.SetAutoLaunchEnabled( false );
+        ReadyButtonID.SetHasClass("timer_paused",super_timer_paused);
+    } else {
+        Game.SetTeamSelectionLocked( false );
+        Game.SetRemainingSetupTime( 60 ); 
+        Game.SetAutoLaunchDelay( 60 );
+        Game.SetAutoLaunchEnabled( true );
+        ReadyButtonID.SetHasClass("timer_paused",super_timer_paused);
     }
 }
 

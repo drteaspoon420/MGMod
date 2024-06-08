@@ -182,7 +182,7 @@ function DeleteDotaPlugin:ThanosSnap(tArgs,bTeam,iPlayer)
                 local e = Entities:Next(nil)
                 while e do
                     if e.IsBaseNPC and e:IsBaseNPC() and e.IsRealHero and not e:IsRealHero() then
-                        local dice = RandomFloat(0,100)
+                        local dice = Script_RandomFloat(0,100)
                         print(chance,"/",dice)
                         if chance > dice then
                             e:Destroy()

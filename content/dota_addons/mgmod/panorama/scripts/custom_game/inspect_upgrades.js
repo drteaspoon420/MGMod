@@ -113,6 +113,7 @@ function CreateKeyPanel(parent,ability,key,value) {
             panel.FindChildTraverse("AbilityChangesLabelKey").text = $.Localize("#DOTA_Dev_Tooltip_Ability_" + ability + "_" + key)
         }
         panel.FindChildTraverse("AbilityChangeReport").SetPanelEvent( 'onactivate', function () {
+            $.GetContextPanel().SetHasClass("hidden",true);
             GameEvents.SendCustomGameEventToServer( "upgrade_report", {ab: ability,kv: key});
         } );
     }

@@ -14,15 +14,30 @@ end
 function modifier_rounds_tower_protect:DeclareFunctions()
 	local funcs = {
 		MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
-		MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS
+		MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
+		MODIFIER_PROPERTY_PROVIDES_FOW_POSITION,
+		MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE,
+		MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS,
 		
 	}
 	return funcs
 end
+
+
+
+function modifier_rounds_tower_protect:CheckState()
+	local state = {
+		[MODIFIER_STATE_SPECIALLY_UNDENIABLE] = true,
+	}
+
+	return state
+end
+
 function modifier_rounds_tower_protect:OnCreated(kv)
     if not IsServer() then return end
     self.team = self:GetParent():GetTeam()
     self.health = kv.health
+    self.damage = kv.damage
 	self:SetStackCount(100)
 	self:StartIntervalThink(0.25)
     self:SetHasCustomTransmitterData(true)
@@ -37,19 +52,34 @@ function modifier_rounds_tower_protect:OnCreated(kv)
 	end
 end
 
+function modifier_rounds_tower_protect:OnDestroy()
+    if not IsServer() then return end
+end
+
 function modifier_rounds_tower_protect:AddCustomTransmitterData()
     return {
 		health = self.health,
+		damage = self.damage,
 	}
 end
 
 function modifier_rounds_tower_protect:HandleCustomTransmitterData( data )
 	self.health = data.health
+	self.damage = data.damage
 end
 
-function modifier_rounds_tower_protect:GetModifierForceMaxHealth()
-	return self.health or 1
+function modifier_rounds_tower_protect:GetModifierExtraHealthBonus()
+	return self.health or 0
 end
+
+function modifier_rounds_tower_protect:GetModifierBaseAttack_BonusDamage()
+	return self.damage or 0
+end
+
+function modifier_rounds_tower_protect:GetModifierProvidesFOWVision()
+	return 1
+end
+
 
 
 function modifier_rounds_tower_protect:OnIntervalThink()

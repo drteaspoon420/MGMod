@@ -15,11 +15,12 @@ function modifier_boosted:GetAttributes()
 end
 
 function modifier_boosted:OnCreated(kv)
+	self.negative_one_block = kv.negative_one_block
 	self.boost = {}
 	if not IsServer() then return end
     self:SetHasCustomTransmitterData(true)
 end
-function modifier_boosted:OnRefresh(kv)
+function modifier_boosted:OnRefresh(kv) 
 	if not IsServer() then return end
 end
 
@@ -39,29 +40,52 @@ end
 
 function modifier_boosted:OnDominated(kv)
 	if not IsServer() then return end
---[[ 	self:ForceRefresh() ]]
-    local playerId = self:GetParent():GetPlayerID()
-	if playerId == nil or playerId < 0 then return end
-	if kv.unit:GetMainControllingPlayer() ~= nil and kv.unit:GetMainControllingPlayer() == playerId then
-	    local hMod = kv.unit:AddNewModifier(kv.unit, nil, HeroUpgrades.main_modifier_name, {})
-		
-        Timers:CreateTimer( 1, function()
-			if hMod.RequestFull ~= nil then
-				hMod:RequestFull()
-			end
-		end)
-	end
+	if not self:GetParent():IsRealHero() then return end
+	Timers:CreateTimer( 0, function()
+		print("DOMINATION!")
+		local playerId = self:GetParent():GetPlayerID()
+		if playerId == nil or playerId < 0 then return end
+		local iPlayer = kv.unit:GetMainControllingPlayer()
+		if iPlayer < 0 then
+			iPlayer = kv.unit:GetPlayerOwnerID()
+		end
+		if iPlayer < 0 then
+			return
+		end
+		print("VALID DOMINATION!")
+		if iPlayer ~= nil and iPlayer == playerId then
+			print("SUPER VALID DOMINATION!")
+			local hMod = kv.unit:AddNewModifier(kv.unit, nil, BoostedPlugin.main_modifier_name, {})
+			
+			Timers:CreateTimer( 0, function()
+				if hMod.RequestFull ~= nil then
+					print("SUPER VALID DOMINATION BOOSTED!")
+					BoostedPlugin:UpdatePlayer_NetTable(iPlayer,kv.unit)
+					hMod:RequestFull()
+				end
+			end)
+		end
+	end)
 end
 function modifier_boosted:UpdateValue(a,k,v)
 	self.boost[a .. "|" .. k] = v
 	self:SendBuffRefreshToClients()
 end
 
+
 function modifier_boosted:RequestFull()
 	local hUnit = self:GetParent()
-    local t = HeroUpgrades:GetAllAbilities(hUnit)
-	self.boost = HeroUpgrades:RequestAllAbilityValues(t,hUnit:GetTeam())
+    local t = BoostedPlugin:GetAllAbilities(hUnit)
+	local iPlayer = hUnit:GetMainControllingPlayer()
+	if iPlayer < 0 then
+		iPlayer = hUnit:GetPlayerOwnerID()
+	end
+	if iPlayer < 0 then
+		return
+	end
+	self.boost = BoostedPlugin:RequestAllAbilityValues(t,iPlayer)
 	self:SendBuffRefreshToClients()
+	BoostedPlugin:FixThis(hUnit)
 end
 
 function modifier_boosted:AddCustomTransmitterData()
@@ -101,5 +125,12 @@ function modifier_boosted:GetModifierOverrideAbilitySpecialValue( params )
 	local nSpecialLevel = params.ability_special_level
 	local flBaseValue = params.ability:GetLevelSpecialValueNoOverride( szSpecialValueName, nSpecialLevel )
 	local fBoost = self.boost[k]
-	return flBaseValue * fBoost
+	local fRet = flBaseValue * fBoost
+	if IsServer() then
+		if self.negative_one_block == 1 and fRet < -0.99 and fRet > -1.01 then
+			print("self.negative_one_block", fRet)
+			return -1.1
+		end
+	end
+	return fRet
 end

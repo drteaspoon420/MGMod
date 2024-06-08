@@ -303,7 +303,7 @@ function DevStuffPlugin:ShortCutMods(tArgs,bTeam,iPlayer)
         print("no Player?")
         return
     end
-	local hUnit = hPlayer:GetQueryUnit()
+	local hUnit = hPlayer:GetAssignedHero()
     if hUnit == nil then
         print("no GetQueryUnit?")
         return

@@ -1,0 +1,37 @@
+<!-- xml reconstructed by Source 2 Viewer 5.0.0.0 - https://valveresourceformat.github.io -->
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/core_ability_index.js" />
+	</scripts>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/core_ability_index.css" />
+	</styles>
+	<snippets>
+		<snippet name="WindowButton">
+			<Panel id="WindowButton" hittest="false" />
+		</snippet>
+		<snippet name="WindowPanel">
+			<Panel id="WindowPanel" hittest="false" />
+		</snippet>
+		<snippet name="Row">
+			<Panel id="Row" class="Row" hittest="false" />
+		</snippet>
+		<snippet name="AbilityChoise">
+			<Button id="AbilityChoise" class="AbilityChoise">
+				<DOTAAbilityImage id="AbilityImage" />
+			</Button>
+		</snippet>
+	</snippets>
+	<Panel class="AbilityIndexerRoot" hittest="true">
+		<Panel id="WindowRoot" class="hidden">
+			<Panel id="SearchBox" hittest="true">
+				<TextEntry id="SearchBoxInput" maxchars="100" placeholder="Search" oninputsubmit="OnSubmitSearch()" />
+                <ToggleButton id="NormalToggle" checked="true" text="Normal" onactivate="OnSubmitSearch()" />
+                <ToggleButton id="TalentToggle" checked="true" text="Talents" onactivate="OnSubmitSearch()" />
+				<Panel id="UnitSkillList" />
+			</Panel>
+			<Panel id="AbilityIndexerMain" />
+		</Panel>
+	</Panel>
+</root>

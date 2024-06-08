@@ -1,0 +1,21 @@
+.__ability_layout_edit {
+  visibility: collapse;
+}
+
+.edit_button {
+    width: 20px;
+    height: 20px;
+    horizontal-align: right;
+    vertical-align: top;
+    background-color: red;
+    border-radius: 10px;
+    border-color: rgb(161, 6, 6);
+    border-style: solid;
+    border: 2px;
+    z-index: 40000;
+}
+.edit_button:hover {
+    background-color: rgb(255, 126, 126);
+    border-color: rgb(255, 177, 177);
+    border: 2px;
+}

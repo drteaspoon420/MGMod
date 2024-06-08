@@ -25,7 +25,7 @@ end
 function modifier_drteaspoon_multicast:OnAbilityExecuted(event)
     if not IsServer() then return end
     if (event.unit ~= self:GetParent()) then return end
-    local fRoll = RandomFloat(0.0,100.0)
+    local fRoll = Script_RandomFloat(0.0,100.0)
     local x2chance = self:GetAbility():GetSpecialValueFor("multicast_2_times")
     local x3chance = self:GetAbility():GetSpecialValueFor("multicast_3_times")
     local x4chance = self:GetAbility():GetSpecialValueFor("multicast_4_times")

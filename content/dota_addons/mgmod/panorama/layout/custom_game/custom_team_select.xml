@@ -27,13 +27,13 @@
     </snippets>
 	<Panel class="CustomTeamSelect">
         <Panel id="ReadyBox">
-			<Panel id="ReadyButtonID" class="ReadyTimerClass" >
+			<Button id="ReadyButtonID" class="ReadyTimerClass" onactivate="ToggleTimerPause()">
 				<Panel class="Contents">
 					<Panel class="CustomIcon">
 						<Label id="ReadyButtonTimer" text="60"/>
 					</Panel>
 				</Panel>
-			</Panel>
+			</Button>
 			<Button id="AutoAssignButton" class="ReadyButtonClass" onactivate="OnAutoAssignPressed()">
 				<Image src="s2r://panorama/images/control_icons/shuffle_psd.vtex" />
 			</Button>

@@ -75,6 +75,7 @@
 		"ScriptFile"					"plugin_system/plugins/devstuff/abilities/kvscanner"
 		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"CustomList"					"testing"
         "AbilityValues"
         {
 			"none" "1"

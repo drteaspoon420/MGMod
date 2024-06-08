@@ -1,0 +1,52 @@
+.WindowRoot{
+    horizontal-align: center;
+    margin-top: 40px;
+}
+
+#WindowRoot{
+    flow-children: right;
+}
+
+.hidden{
+    visibility: collapse;
+}
+
+
+
+#Round{
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #244e24cc ), to( #326d32cc ) );
+    padding: 3px;
+    border-radius: 0px 0px 0px 10px;
+    width: 74px;
+}
+#RoundText{
+
+    vertical-align: center;
+    horizontal-align: center;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 3px;
+    letter-spacing: 0px;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    font-size: 23px;
+}
+#Timer{
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #24424ecc ), to( #32576dcc ) );
+    padding: 3px;
+    border-radius: 0px 0px 10px 0px;
+    width: 74px;
+
+}
+#TimerText{
+
+    vertical-align: center;
+    text-align: center;
+    font-weight: bold;
+    horizontal-align: center;
+    padding-top: 3px;
+    letter-spacing: 0px;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    font-size: 23px;
+}

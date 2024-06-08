@@ -24,5 +24,17 @@
 		<CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/custom_team_select.xml" />
 		<CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/plugin_settings.xml" />
 		<CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/links.xml" />
+		
+		<CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/core_ability_index.xml" />
+		<CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/core_item_index.xml" />
+		<CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/core_unit_index.xml" />
+
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/core_ability_index.xml" />
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/core_item_index.xml" />
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/core_unit_index.xml" />
+		
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/rounds.xml" />
+
+		
 	</Panel>
 </root>

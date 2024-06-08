@@ -1,0 +1,82 @@
+.UnitIndexerRoot{
+  margin-top: 50px;
+}
+ #WindowRoot{
+  flow-children: down;
+  width: 1425px;
+  height: 900px;
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #000000 ), to( #333333 ) );
+ }
+
+ #SearchBox{
+  flow-children: right;
+     width: 1361px;
+     height: 34px;
+     overflow: clip clip;
+ }
+
+ #SearchBoxInput{
+     width: 180px;
+     height: 34px;
+ }
+
+ #SlotInput{
+     width: 1061px;
+     height: 34px;
+ }
+
+ #UnitIndexerMain{
+  flow-children: down;
+     width: 100%;
+     overflow: clip scroll;
+ }
+
+ .hidden{
+
+  visibility: collapse;
+ }
+
+ #WindowPanel{
+  flow-children: right-wrap;
+     margin: 1px;
+ }
+ #Row{
+  flow-children: right;
+  height: 64px;
+ }
+ .UnitChoise{
+  height: 64px;
+  width: 106px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+     background-image: url("file://{images}/custom_game/no_ability_icon_png.png");
+ }
+ #UnitImage{
+  height: 64px;
+  width: 106px;
+ }
+ #ButtonBar_UnitIndexer{
+  height: 32px;
+  width: 32px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+     background-image: url("file://{images}/custom_game/ability_list_png.png");
+ }
+
+ #UnitSkillList{
+  flow-children: right;
+  height: 34px;
+ }
+ #UnitSkill{
+  height: 34px;
+  width: 34px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+     background-image: url("file://{images}/custom_game/no_ability_icon_png.png");
+ }
+ .active_slot{
+  box-shadow: inset #5eff00 0px 0px 0px 4px;
+}

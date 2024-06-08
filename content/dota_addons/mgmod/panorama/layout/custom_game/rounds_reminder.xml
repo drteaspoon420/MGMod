@@ -1,0 +1,14 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/rounds_notice.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/rounds_notice.js" />
+	</scripts>
+	<Panel class="WindowRoot">
+		<Panel id="WindowRoot">
+            <Label id="Message" text="Attackers must destroy a tower to win!" class="yellow"/>
+		</Panel>
+	</Panel>
+</root>

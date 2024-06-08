@@ -55,7 +55,7 @@ function XMax12Plugin:Day4Timer()
     local y_ = -8585
     local y = 8585
     local x = 8585
-    local vPos = Vector(RandomFloat(x_,x),RandomFloat(y_,y),0)
+    local vPos = Vector(Script_RandomFloat(x_,x),Script_RandomFloat(y_,y),0)
 
     
     CreateUnitByNameAsync("npc_barrel_of_fun",vPos, false, nil, nil, DOTA_TEAM_NEUTRALS,

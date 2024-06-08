@@ -47,10 +47,19 @@ tFilters["ModifyGoldFilter"] = "ModifyGoldFilters"
 tFilters["RuneSpawnFilter"] = "RuneSpawnFilters"
 tFilters["TrackingProjectileFilter"] = "TrackingProjectileFilters"
 
+
 --Loading all plugins
 function PluginSystem:Init()
     print("[PluginSystem] init")
+
+    --core data
+    PluginSystem:load_abilities()
+    PluginSystem:load_items()
+    PluginSystem:load_units()
+    --PluginSystem:load_modifiers()
     
+
+    --dvd
 	PluginSystem.dvd = LoadKeyValues('scripts/vscripts/plugin_system/dvd.txt')
 
     CustomGameEventManager:RegisterListener("settings_save_slot",function(i,tEvent) PluginSystem:settings_save_slot(tEvent) end)
@@ -58,6 +67,15 @@ function PluginSystem:Init()
     CustomGameEventManager:RegisterListener("settings_vote_unlock",function(i,tEvent) PluginSystem:settings_vote_unlock(tEvent) end)
     CustomGameEventManager:RegisterListener("setting_activate_mutator",PluginSystem.setting_activate_mutator)
     CustomGameEventManager:RegisterListener("setting_team_rescale",PluginSystem.setting_team_rescale)
+    
+    CustomGameEventManager:RegisterListener("core_ability_indexer",PluginSystem.core_ability_indexer)
+    CustomGameEventManager:RegisterListener("plugin_system_show_abilities",PluginSystem.plugin_system_show_abilities)
+    CustomGameEventManager:RegisterListener("core_item_indexer",PluginSystem.core_item_indexer)
+    CustomGameEventManager:RegisterListener("plugin_system_show_items",PluginSystem.plugin_system_show_items)
+    CustomGameEventManager:RegisterListener("core_unit_indexer",PluginSystem.core_unit_indexer)
+    CustomGameEventManager:RegisterListener("plugin_system_show_units",PluginSystem.plugin_system_show_units)
+
+    
     
     GameRules:SetSafeToLeave(true)
     --GameRules:SetCustomGameAccountRecordSaveFunction( Dynamic_Wrap( PluginSystem, "SaveHostSettings_PartA" ), self )
@@ -315,6 +333,9 @@ function PluginSystem:GetAllSetting(sPlugin)
                 if v.TYPE == "text" then
                     t[k] = v.VALUE
                 end
+                if v.TYPE == "core_picker" then
+                    t[k] = v.VALUE
+                end
                 if v.TYPE == "dropdown" then
                     if tonumber(v.VALUE) then
                         t[k] = tonumber(v.VALUE)
@@ -352,6 +373,8 @@ function PluginSystem:Sanitize(sPlugin,sSetting,sValue,bOverride)
         end
         PluginSystem.LobbySettings[sPlugin][sSetting].VALUE = sValue
     elseif PluginSystem.LobbySettings[sPlugin][sSetting].TYPE == "text" then
+        PluginSystem.LobbySettings[sPlugin][sSetting].VALUE = sValue
+    elseif PluginSystem.LobbySettings[sPlugin][sSetting].TYPE == "core_picker" then
         PluginSystem.LobbySettings[sPlugin][sSetting].VALUE = sValue
     elseif PluginSystem.LobbySettings[sPlugin][sSetting].TYPE == "boolean" then
         if sValue == "1" or sValue == "true" or sValue == "TRUE" or sValue == "True" or sValue == 1 or sValue == true then
@@ -993,8 +1016,248 @@ end
 
 function PluginSystem:Dvd(iPlayer)
     CustomUI:DynamicHud_Create(iPlayer,"dvd","file://{resources}/layout/custom_game/dvd.xml",nil)
-    Timers:CreateTimer( RandomFloat(10.0,20.0), function()
+    Timers:CreateTimer( Script_RandomFloat(10.0,20.0), function()
         CustomUI:DynamicHud_Destroy(iPlayer,"dvd")
         return nil
     end)
+end
+
+
+    
+function PluginSystem:load_kv_file_headers(file)
+    local t = {}
+    for k,v in pairs(file) do
+        if type(v) == "table" then
+            table.insert(t,k)
+        end
+    end
+    return t
+end
+
+function PluginSystem:load_kv_file_headers_custom(file)
+    local t = {}
+    for k,v in pairs(file) do
+        if type(v) == "table" then
+            if v.CustomList ~= nil then --some 
+                table.insert(t,k)
+            end
+        end
+    end
+    return t
+end
+
+
+function PluginSystem:load_abilities()
+    local core_abilities = {}
+    --PluginSystem.core_abilities = {}
+	local file = LoadKeyValues('scripts/npc/npc_abilities.txt')
+    if not (file == nil or not next(file)) then
+        core_abilities['neutral'] = PluginSystem:load_kv_file_headers(file)
+    end
+	local heroes_enabled = LoadKeyValues('scripts/npc/activelist.txt')
+    if not (heroes_enabled == nil or not next(heroes_enabled)) then
+        for k,v in pairs(heroes_enabled) do
+            local file = LoadKeyValues('scripts/npc/heroes/' .. k .. '.txt')
+            if not (file == nil or not next(file)) then
+                core_abilities[k] = PluginSystem:load_kv_file_headers(file)
+            end
+        end
+    end
+    
+	local file_custom = LoadKeyValues('scripts/npc/npc_abilities_custom.txt')
+    if not (file_custom == nil or not next(file_custom)) then
+        core_abilities["zcustom"] = PluginSystem:load_kv_file_headers_custom(file_custom)
+    end
+    local t_all = {}
+    for k,v in pairs(core_abilities) do
+        CustomNetTables:SetTableValue("core_data_abilities",k,v)
+        for j,l in pairs(v) do
+            table.insert(t_all,l)
+        end
+    end
+end
+
+
+
+function PluginSystem:load_items()
+    local core_items = {}
+    --PluginSystem.core_items = {}
+	local file = LoadKeyValues('scripts/npc/items.txt')
+    if not (file == nil or not next(file)) then
+        core_items['normal'] = PluginSystem:load_kv_file_headers(file)
+    end
+    
+	local file_custom = LoadKeyValues('scripts/npc/npc_items_custom.txt')
+    if not (file_custom == nil or not next(file_custom)) then
+        core_items["zcustom"] = PluginSystem:load_kv_file_headers_custom(file_custom)
+    end
+    local t_all = {}
+    for k,v in pairs(core_items) do
+        CustomNetTables:SetTableValue("core_data_items",k,v)
+        for j,l in pairs(v) do
+            table.insert(t_all,l)
+        end
+    end
+end
+
+function PluginSystem:load_units()
+    local core_units = {}
+    --PluginSystem.core_units = {}
+	local file = LoadKeyValues('scripts/npc/npc_units.txt')
+    if not (file == nil or not next(file)) then
+        core_units['normal'] = PluginSystem:load_kv_file_headers(file)
+    end
+    
+	local file = LoadKeyValues('scripts/npc/npc_heroes.txt')
+    if not (file == nil or not next(file)) then
+        core_units['heroes'] = PluginSystem:load_kv_file_headers(file)
+    end
+    
+	local file_custom = LoadKeyValues('scripts/npc/npc_units_custom.txt')
+    if not (file_custom == nil or not next(file_custom)) then
+        core_units["zcustom"] = PluginSystem:load_kv_file_headers_custom(file_custom)
+    end
+    local t_all = {}
+    for k,v in pairs(core_units) do
+        CustomNetTables:SetTableValue("core_data_units",k,v)
+        for j,l in pairs(v) do
+            table.insert(t_all,l)
+        end
+    end
+end
+
+function PluginSystem:load_modifiers()
+end
+
+function PluginSystem:paginate_send(data_table,sub_name,table_name,page_size)
+    table.sort(data_table)
+    local page_size = page_size or 20
+    local current_page = {}
+    local current_page_index = 0
+    local current_size = 0
+    for k,v in pairs(data_table) do
+        table.insert(current_page,v)
+        current_size = current_size + 1
+        v.page = current_page_index
+        if current_size > page_size then
+            CustomNetTables:SetTableValue(table_name,sub_name .. "_" .. current_page_index,v)
+            current_page_index = current_page_index + 1
+            current_size = 0
+            current_page = {}
+        end
+    end
+    if #current_page > 0 then
+        CustomNetTables:SetTableValue(table_name,sub_name .. "_" .. current_page_index,v)
+        current_page_index = current_page_index + 1
+    end
+end
+
+
+PluginSystem.ability_requests = {}
+function PluginSystem:ask_for_ability(category,callback,uuid,iPlayer)
+    if PluginSystem.ability_requests[uuid] ~= nil then return end
+    PluginSystem.ability_requests[uuid] = callback
+    local hPlayer = PlayerResource:GetPlayer(iPlayer)
+    local tEvent = {
+        name = category,
+        caller = uuid
+    }
+    if hPlayer ~= nil then
+        CustomGameEventManager:Send_ServerToPlayer(hPlayer,"core_ability_indexer",tEvent)
+    end
+
+end
+
+function PluginSystem:core_ability_indexer(tEvent)
+    local uuid = tEvent.caller
+    if PluginSystem.ability_requests[uuid] == nil then return end
+    PluginSystem.ability_requests[uuid](tEvent)
+    PluginSystem.ability_requests[uuid] = nil
+end
+
+function PluginSystem:plugin_system_show_abilities(tEvent)
+    local iPlayer = tEvent.PlayerID
+    local sCategory = tEvent.name
+    PluginSystem:ask_for_ability(sCategory,function(tData)
+        local hPlayer = PlayerResource:GetPlayer(iPlayer)
+        if hPlayer ~= nil then
+            local tEvent = {
+                name = tData.name
+            }
+            CustomGameEventManager:Send_ServerToPlayer(hPlayer,"plugin_system_show_abilities",tEvent)
+        end
+    end,"plugin_sys_" .. GetSystemTimeMS(),iPlayer)
+end
+
+
+PluginSystem.item_requests = {}
+function PluginSystem:ask_for_item(category,callback,uuid,iPlayer)
+    if PluginSystem.item_requests[uuid] ~= nil then return end
+    PluginSystem.item_requests[uuid] = callback
+    local hPlayer = PlayerResource:GetPlayer(iPlayer)
+    local tEvent = {
+        name = category,
+        caller = uuid
+    }
+    if hPlayer ~= nil then
+        CustomGameEventManager:Send_ServerToPlayer(hPlayer,"core_item_indexer",tEvent)
+    end
+end
+
+function PluginSystem:core_item_indexer(tEvent)
+    local uuid = tEvent.caller
+    if PluginSystem.item_requests[uuid] == nil then return end
+    PluginSystem.item_requests[uuid](tEvent)
+    PluginSystem.item_requests[uuid] = nil
+end
+
+function PluginSystem:plugin_system_show_items(tEvent)
+    local iPlayer = tEvent.PlayerID
+    local sCategory = tEvent.name
+    PluginSystem:ask_for_item(sCategory,function(tData)
+        local hPlayer = PlayerResource:GetPlayer(iPlayer)
+        if hPlayer ~= nil then
+            local tEvent = {
+                name = tData.name
+            }
+            CustomGameEventManager:Send_ServerToPlayer(hPlayer,"plugin_system_show_items",tEvent)
+        end
+    end,"plugin_sys_" .. GetSystemTimeMS(),iPlayer)
+end
+
+
+PluginSystem.unit_requests = {}
+function PluginSystem:ask_for_unit(category,callback,uuid,iPlayer)
+    if PluginSystem.unit_requests[uuid] ~= nil then return end
+    PluginSystem.unit_requests[uuid] = callback
+    local hPlayer = PlayerResource:GetPlayer(iPlayer)
+    local tEvent = {
+        name = category,
+        caller = uuid
+    }
+    if hPlayer ~= nil then
+        CustomGameEventManager:Send_ServerToPlayer(hPlayer,"core_unit_indexer",tEvent)
+    end
+
+end
+
+function PluginSystem:core_unit_indexer(tEvent)
+    local uuid = tEvent.caller
+    if PluginSystem.unit_requests[uuid] == nil then return end
+    PluginSystem.unit_requests[uuid](tEvent)
+    PluginSystem.unit_requests[uuid] = nil
+end
+
+function PluginSystem:plugin_system_show_units(tEvent)
+    local iPlayer = tEvent.PlayerID
+    local sCategory = tEvent.name
+    PluginSystem:ask_for_unit(sCategory,function(tData)
+        local hPlayer = PlayerResource:GetPlayer(iPlayer)
+        if hPlayer ~= nil then
+            local tEvent = {
+                name = tData.name
+            }
+            CustomGameEventManager:Send_ServerToPlayer(hPlayer,"plugin_system_show_units",tEvent)
+        end
+    end,"plugin_sys_" .. GetSystemTimeMS(),iPlayer)
 end

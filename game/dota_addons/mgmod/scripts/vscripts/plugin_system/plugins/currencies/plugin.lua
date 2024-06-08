@@ -51,7 +51,6 @@ function CurrenciesPlugin:ApplySettings()
             CurrenciesPlugin.currency_data[c].share = c_states[sts]
             CurrenciesPlugin:SecureOptions(c)
             local gold_buy = CurrenciesPlugin.settings[c .. "_gold_buy"]
-            print(gold_buy,c,"goldbuy")
             if gold_buy > 0 then
                 local gb = math.ceil(gold_buy)
                 local j = 1
@@ -94,16 +93,21 @@ function CurrenciesPlugin:AlterCurrency(sName,iPlayer,iCount)
     if CurrenciesPlugin.currency_data[sName] == nil then return end
     local t = CurrenciesPlugin.currency_data[sName]
     if t.share == 0 then
-        if t.amount[iPlayer] == nil then return end
+        if t.amount[iPlayer] == nil then
+            t.amount[iPlayer] = 0
+        end
         t.amount[iPlayer] = t.amount[iPlayer] + iCount
     elseif t.share == 1 then
         local iTeam = PlayerResource:GetTeam(iPlayer)
         if iTeam == nil then return end
         if  t.amount[iTeam] == nil then
-            t.amount[iTeam] = {}
+            t.amount[iTeam] = 0
         end
         t.amount[iTeam] = t.amount[iTeam] + iCount
     elseif t.share == 2 then
+        if t.amount[0] == nil then
+            t.amount[0] = 0
+        end
         t.amount[0] = t.amount[0] + iCount
     end
     CurrenciesPlugin.currency_data[sName] = t
@@ -174,7 +178,6 @@ function CurrenciesPlugin:CheckCurrency(sName,iPlayer,iCount)
 end
 
 function CurrenciesPlugin:SpendCurrency(sName,iPlayer,iCount)
-    print(sName,iPlayer,iCount)
     if CurrenciesPlugin.currency_data[sName] == nil then return false end
     local t = CurrenciesPlugin.currency_data[sName]
     if t.share == 0 then
@@ -240,8 +243,6 @@ function CurrenciesPlugin:RegisterSpendOption(sName,tOption)
     if tOption.option_name == nil then return end
     if tOption.team == nil then tOption.team = 1 end
     if tOption.autobuy == nil then tOption.autobuy = true end
-    print("all ok")
-    DeepPrintTable(tOption)
     local t = {
         plugin_name = tOption.plugin_name,
         cost = tOption.cost,
@@ -294,7 +295,6 @@ function CurrenciesPlugin:RegisterEarnOption(sName,tOption)
     CurrenciesPlugin:SecureOptions(sName)
     CurrenciesPlugin.earn_options[sName][t.fn] = tOption
     table.insert(CurrenciesPlugin.currency_data[sName].earn_options,t)
-    DeepPrintTable(CurrenciesPlugin.currency_data[sName])
     CustomNetTables:SetTableValue("currencies",sName,CurrenciesPlugin.currency_data[sName])
 end
 

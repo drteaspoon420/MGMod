@@ -1,0 +1,11 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/ability_layout_edit.js" />
+	</scripts>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/ability_layout_edit.css" />
+        <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+	</styles>
+	<Panel class="__ability_layout_edit">
+    </Panel>
+</root>

@@ -39,6 +39,8 @@
 #base "mutator_death_item_loss.txt"
 #base "mutator_dumb_bonk.txt"
 #base "mutator_underworld_strength.txt"
+#base "mutator_rounds.txt"
+
 "presets"
 {
 }

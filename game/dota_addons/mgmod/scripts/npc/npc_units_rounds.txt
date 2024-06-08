@@ -1,20 +1,32 @@
 "DOTAUnits"
 {
-	"npc_dota_tower_rounds"	
-	{
-		
-		"BaseClass"					"npc_dota_building"	// Class of entity of link to.
-        "Model"                     "models/props_structures/tower_good.vmdl"// Model.
+    "npc_dota_tower_rounds"
+    {
+        // General
+        //
+        "BaseClass"					"npc_dota_base_additive"
+        "Model"						"models/props_structures/tower_good.vmdl"// Model.
         "SoundSet"                  "Tower.Water"                   // Name of sound set.
         "MinimapIcon"               "minimap_tower90"
         "MinimapIconSize"           "320"
         "Level"                     "1"
+        // "wearable"                   "14293"
+        
+        // Abilities
+        //----------------------------------------------------------------
+        
         "Ability1"                  "creep_siege"           // Ability 1.
+
+        // Armor
+        //----------------------------------------------------------------
         "ArmorPhysical"             "0"     // Physical protection.
         "MagicalResistance"         "0"         // Magical protection.
+
+        // Attack
+        //----------------------------------------------------------------
         "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK"
-        "AttackDamageMin"           "90"        // Damage range min.
-        "AttackDamageMax"           "90"        // Damage range max.
+        "AttackDamageMin"           "80"        // Damage range min.
+        "AttackDamageMax"           "80"        // Damage range max.
         "AttackDamageType"          "DAMAGE_TYPE_ArmorPhysical"
         "BaseAttackSpeed"           "110"
         "AttackRate"                "0.9"       // Speed of attack.
@@ -23,7 +35,9 @@
         "AttackRange"               "700"       // Range within a target can be attacked.
         "ProjectileModel"           "particles/base_attacks/ranged_tower_good.vpcf"     // Particle system model for projectile.
         "ProjectileSpeed"           "750"       // Speed of projectile.
-		
+
+        // Attributes
+        //----------------------------------------------------------------
         "AttributePrimary"          "DOTA_ATTRIBUTE_STRENGTH"
         "AttributeBaseStrength"     "0"         // Base strength
         "AttributeStrengthGain"     "0"         // Strength bonus per level.
@@ -31,27 +45,39 @@
         "AttributeIntelligenceGain" "0"         // Intelligence bonus per level.
         "AttributeBaseAgility"      "0"         // Base agility
         "AttributeAgilityGain"      "0"         // Agility bonus per level.
-		
+
+        // Bounty
+        //----------------------------------------------------------------
         "BountyGoldMin"             "0"     // Gold earned min.
         "BountyGoldMax"             "0"     // Gold earned max.
-		
+
+        // Bounds
+        //----------------------------------------------------------------
         "BoundsHullName"            "DOTA_HULL_SIZE_TOWER"          // Hull type used for navigation/locomotion.
         "ProjectileCollisionSize"   "50"
         "RingRadius"                "130"
         "HealthBarOffset"           "260"
-		
+
+        // Movement
+        //----------------------------------------------------------------
         "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"           // Type of locomotion - ground, air
         "MovementSpeed"             "0"         // Speed
         "MovementTurnRate"          "1.0"           // Turning rate.
-		
+
+        // Status
+        //----------------------------------------------------------------
         "StatusHealth"              "800"       // Base health.
         "StatusHealthRegen"         "0"         // Health regeneration rate.
         "StatusMana"                "0"         // Base mana.
         "StatusManaRegen"           "0"         // Mana regeneration rate.
-		
+
+        // Team
+        //----------------------------------------------------------------
         "TeamName"                  "DOTA_TEAM_GOODGUYS"            // Team name.
         "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
-		
+        
+        // Vision
+        //----------------------------------------------------------------
         "VisionDaytimeRange"        "1400"      // Range of vision during day light.
         "VisionNighttimeRange"      "800"       // Range of vision at night time.
 
@@ -60,56 +86,5 @@
             "attack_normal_range"   "0"
             "attack_long_range"     "500"
         }
-	}
-	
-	"npc_dota_tower_rounds_team_2"
-	{
-		"include_keys_from" "npc_dota_tower_rounds"
-		"Model"						"models/props_structures/tower_good.vmdl"
-    }
-	"npc_dota_tower_rounds_team_3"
-	{
-		"include_keys_from" "npc_dota_tower_rounds"
-		"Model"						"models/props_structures/dire_tower002.vmdl"
-    }
-	"npc_dota_tower_rounds_team_6"
-	{
-		"include_keys_from" "npc_dota_tower_rounds"
-		"Model"						"models/props_structures/dire_tower002.vmdl"
-    }
-	"npc_dota_tower_rounds_team_7"
-	{
-		"include_keys_from" "npc_dota_tower_rounds"
-		"Model"						"models/props_structures/dire_tower002.vmdl"
-    }
-	"npc_dota_tower_rounds_team_8"
-	{
-		"include_keys_from" "npc_dota_tower_rounds"
-		"Model"						"models/props_structures/dire_tower002.vmdl"
-    }
-	"npc_dota_tower_rounds_team_9"
-	{
-		"include_keys_from" "npc_dota_tower_rounds"
-		"Model"						"models/props_structures/dire_tower002.vmdl"
-    }
-	"npc_dota_tower_rounds_team_10"
-	{
-		"include_keys_from" "npc_dota_tower_rounds"
-		"Model"						"models/props_structures/dire_tower002.vmdl"
-    }
-	"npc_dota_tower_rounds_team_11"
-	{
-		"include_keys_from" "npc_dota_tower_rounds"
-		"Model"						"models/props_structures/dire_tower002.vmdl"
-    }
-	"npc_dota_tower_rounds_team_12"
-	{
-		"include_keys_from" "npc_dota_tower_rounds"
-		"Model"						"models/props_structures/dire_tower002.vmdl"
-    }
-	"npc_dota_tower_rounds_team_13"
-	{
-		"include_keys_from" "npc_dota_tower_rounds"
-		"Model"						"models/props_structures/dire_tower002.vmdl"
     }
 }

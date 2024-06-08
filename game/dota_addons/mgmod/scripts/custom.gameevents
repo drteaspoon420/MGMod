@@ -247,4 +247,31 @@
 	"smithing_update"
 	{
 	}
+	"core_ability_indexer"
+	{
+		"name" "string"
+		"caller" "string"
+	}
+	"plugin_system_show_abilities"
+	{
+		"name" "string"
+	}
+	"core_item_indexer"
+	{
+		"name" "string"
+		"caller" "string"
+	}
+	"plugin_system_show_items"
+	{
+		"name" "string"
+	}
+	"core_unit_indexer"
+	{
+		"name" "string"
+		"caller" "string"
+	}
+	"plugin_system_show_units"
+	{
+		"name" "string"
+	}
 }

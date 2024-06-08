@@ -143,15 +143,28 @@
 		"Plugin_modifier_spawner_Option_host_bans" "Host Bans"
 
 		//GIVE ABILITY
-		"Plugin_give_all_ability" "Bonus Ability"
-		"Plugin_give_all_ability_Description" "Grant bonus ability to heroes, towers and/or creeps."
-		"Plugin_give_all_ability_Option_extra_ability_heroes" "Heroes"
-		"Plugin_give_all_ability_Option_extra_ability_towers" "Towers"
-		"Plugin_give_all_ability_Option_extra_ability_creeps" "Creeps"
+		"Plugin_give_all_ability" "Bonus Ability/Item"
+		"Plugin_give_all_ability_Description" "Grant bonus ability/item to heroes, towers and/or creeps."
+		"Plugin_give_all_ability_Option_extra_ability_heroes" "Hero Ability"
+		"Plugin_give_all_ability_Option_extra_ability_heroes_Description" "Includes summon hero like Lone Druid's bear"
+		"Plugin_give_all_ability_Option_extra_ability_towers" "Tower Ability"
+		"Plugin_give_all_ability_Option_extra_ability_creeps" "Creeps Ability"
+		"Plugin_give_all_ability_Option_extra_ability_creeps_Description"  "Includes neutrals and most non-ward summons."
+
+		"Plugin_give_all_ability_Option_extra_item_heroes" "Hero Item"
+		"Plugin_give_all_ability_Option_extra_item_heroes_Description" "Includes summon hero like Lone Druid's bear"
+		"Plugin_give_all_ability_Option_extra_item_creeps" "Creep Item"
+		"Plugin_give_all_ability_Option_extra_item_creeps_Description" "Includes neutrals and most non-ward summons. May cause issues. Untested"
+		"Plugin_give_all_ability_Option_extra_item_towers" "Tower Item"
 
 		//Soul Collector
 		"Plugin_souls_plugin" "Soul Collector"
 		"Plugin_souls_plugin_Option_grab_distance" "Grab Distance"
+		"Plugin_souls_plugin_Option_currency" "Building Currency"
+		"Plugin_souls_plugin_Option_currency_Drop_red" "Red"
+		"Plugin_souls_plugin_Option_currency_Drop_green" "Green"
+		"Plugin_souls_plugin_Option_currency_Drop_blue" "Blue"
+		"Plugin_souls_plugin_Option_currency_Drop_purple" "Purple"
 		"DOTA_Tooltip_modifier_soul_stack" "Collected Souls"
 		"DOTA_Tooltip_modifier_soul_stack_Description" "Return these to any shop!"
 
@@ -454,6 +467,23 @@
 		"Plugin_boosted_Option_RARE_MULTIPLIER" "Rare"
 		"Plugin_boosted_Option_ULTRA_MULTIPLIER" "Epic"
 
+		"Plugin_boosted_Option_base_list" "Ban/Nerf List"
+		"Plugin_boosted_Option_base_list_Drop_pre_crownfall" "Pre Crownfall"
+		"Plugin_boosted_Option_base_list_Drop_post_crownfall" "Post Crownfall"
+		"Plugin_boosted_Option_base_list_Drop_competitive" "Pre Crownfall Competitive"
+		"Plugin_boosted_Option_base_list_Drop_post_crownfall_comp" "Post Crownfall Competitive"
+		"Plugin_boosted_Option_base_list_Drop_all" "Ultimate"
+		"Plugin_boosted_Option_base_list_Drop_none" "None, do not use."
+
+		
+
+		"Plugin_boosted_Option_base_list_Description" "Pre Crownfall list is original list that will stay as is, unmaintained.<br/>Post Crownfall lists are fesh lists with less legacy bans/nerfs.<br/>Competitive versions are additions to either list with balance modifications preventing players from winning via ignoring their opponents and simply pushing waves/ratting, Maintained by the PwR Discord Community.<br/>Ultimate list is all combined"
+
+		"Plugin_boosted_Option_competitive" "Fairness Tweaks (Beta)"
+		"Plugin_boosted_Option_competitive_Description" "Game balance modifications preventing players from winning via ignoring their opponents and simply pushing waves/ratting. Maintained by the PwR Discord Community."
+	
+		"Plugin_boosted_Option_negative_one_block" "Block -1"
+		"Plugin_boosted_Option_negative_one_block_Description" "Changes are modifications that result to exactly -1 into -1.1. This should stop some abilities from gaining infinite duration."
 		"Plugin_boosted_Option_competitive" "Fairness Tweaks (Beta)"
 		"Plugin_boosted_Option_competitive_Description" "Game balance modifications preventing players from winning via ignoring their opponents and simply pushing waves/ratting. Maintained by the PwR Discord Community."
 	
@@ -578,7 +608,11 @@
 		"mutator_death_item_loss" "Dead Drops"
 		"mutator_dumb_bonk" "Dumb Bonk"
 		"mutator_underworld_strength" "Underworld Strength"
-		
+
+		"mutator_rounds" "Rounds"
+		"mutator_rounds_Description" "For that Counter-Strike style gameplay."
+		"DOTA_Tooltip_modifier_rounds_wait" "Rounds: Waiting for Round Start"
+
 		"mutator_10x_exp_Description" "Gain 10 times more Experience."
 		"mutator_10x_gold_Description" "Gain 10 times more Gold."
 		"mutator_100_clicks_Description" "Every 100 'commands' from player, their hero dies."
@@ -929,6 +963,41 @@
 
 		"SpendOption_smithing_smith" "Smith: "
 		"SpendOption_boosted_buy_upgrade" "Boost: "
+
+
+		"Plugin_unit_limits" "Unit Limits"
+		"Plugin_unit_limits_Description" "Attempts to remove units from the game if there are too many. Prioritizes illusions and temporary units."
+		"Plugin_unit_limits_Option_check_invernal" "Interval"
+		"Plugin_unit_limits_Option_check_invernal_Description" "How often game checks for too many units"
+		"Plugin_unit_limits_Option_max_units" "Max Units"
+		"Plugin_unit_limits_Option_max_units_Description" "How many units allowed before starting to delete stuff.<br/>Note: this counts lane/neutral creeps that are waiting to spawn next wave and recently dead units."
+
+
+		"npc_dota_tower_rounds" "Objective: Tower"
+	"Plugin_rounds" "Rounds"
+	"Plugin_rounds_Description" "Game mode that imitates games like Counter-Strike. Using 'Delete Dota' plugin recommended to remove most of dota 2's elements."
+	"Plugin_rounds_Option_max_rounds" "Max Rounds"
+	"Plugin_rounds_Option_max_rounds_Description" "How many rounds should match take, ties will extend the match with one round."
+	"Plugin_rounds_Option_pre_round_time" "Preparation Time"
+	"Plugin_rounds_Option_pre_round_time_Description" "How much time between each round before players can leave their base."
+	"Plugin_rounds_Option_round_time" "Round Duration"
+	"Plugin_rounds_Option_round_time_Description" "How long before defending team wins."
+	"Plugin_rounds_Option_alternate_mode" "Fast Swap Mode"
+	"Plugin_rounds_Option_alternate_mode_Description" "Instead of swaping sides at the mid point of match, swap every round."
+	"Plugin_rounds_Option_levels_per_round" "Levels Per Round"
+	"Plugin_rounds_Option_levels_per_round_Description" "When new round starts, all heroes will be given some experience to reach ideal level."
+	"Plugin_rounds_Option_gold_per_round" "Gold Per Round"
+	"Plugin_rounds_Option_gold_per_victory" "Gold Per Victory"
+	"Plugin_rounds_Option_neutral_tokens_every_x" "Neutral Token Timing"
+	"Plugin_rounds_Option_neutral_tokens_every_x_Description" "At what round interval are players granted Neutral Item Token. 0 = none"
+	"Plugin_rounds_Option_extra_objective_towers" "Towers Enabled"
+	"Plugin_rounds_Option_extra_objective_towers_Description" "Defending team has towers. If not enabled, round ending due to time running out makes the round a draw."
+	"Plugin_rounds_Option_extra_objective_towers_require" "Require Towers"
+	"Plugin_rounds_Option_extra_objective_towers_require_Description" "For Defending team to lose, Offence needs to destroy one tower. Team wipe is not enough."
+	"Plugin_rounds_Option_extra_objective_towers_hp_per_round" "Tower HP Increase"
+	"Plugin_rounds_Option_extra_objective_towers_hp_per_round_Description" "How much towers gain more health each round."
+	"Plugin_rounds_Option_extra_objective_towers_damage_per_round" "Tower Damage Increase"
+	"Plugin_rounds_Option_extra_objective_towers_damage_per_round_Description" "How much towers gain more damage each round."
 //Sword bacon
 
 		"Plugin_sb_mango_party" "Mango Party"

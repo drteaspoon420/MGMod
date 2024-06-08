@@ -1,0 +1,21 @@
+"plugin_settings"
+{
+    "Order" "299"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "check_invernal"
+    {
+        "Order" "2"
+        "TYPE" "number"
+        "UNIT" "s"
+        "DEFAULT" "10"
+    }
+    "max_units"
+    {
+        "Order" "3"
+        "TYPE" "number"
+        "DEFAULT" "300"
+    }
+}

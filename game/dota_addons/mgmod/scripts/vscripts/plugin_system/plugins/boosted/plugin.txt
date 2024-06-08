@@ -10,6 +10,9 @@
         "FilterRegistrations" {
             "ItemAddedToInventoryFilter" "ItemAddedToInventoryFilter"
         }
+        "CmdRegistrations" {
+            "-fixme" "FixMe"
+        }
         "ConflictTags" "special_override"
     }
 }

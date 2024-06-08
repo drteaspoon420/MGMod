@@ -37,6 +37,9 @@ function UpgradeOptionNew(data) {
     }
     var UpgradeOptionLabel = upgradePanel.FindChildTraverse("UpgradeOptionLabel");
 
+    upgradePanel.FindChildTraverse("AbilityChangeReport").SetPanelEvent( 'onactivate', function () {
+        GameEvents.SendCustomGameEventToServer( "upgrade_report", {ab: data.ability,kv: data.key});
+    } );
 
     if (data.rarity == 4) {
         //uniques 

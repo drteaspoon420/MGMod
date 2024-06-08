@@ -10,7 +10,10 @@ var PluginMutator = $.GetContextPanel().FindChildInLayoutFile("ExtraButtons");
 var current_open = "";
 var mutator_presets;
 var forced_mode;
-$.Msg("plugin_settings!!!!!!!!")
+
+// core data stuff
+var core_data_abilities;
+
 var local_player = Game.GetLocalPlayerInfo();
 const bHost = local_player.player_has_host_privileges;
 //index","player_selected_hero_entity_index":-1,"possible_hero_selection":"","player_level":0,"player_respawn_seconds":0,"player_gold":0,"player_networth":0,"player_team_id":5,"player_is_local":true,"player_has_host_privileges":true}
@@ -246,6 +249,11 @@ function UpdatePluginSettings(sPluginName) {
                 if (input.text != VALUE)
                     input.text = VALUE;
             }
+            if (TYPE == "core_picker") {
+                let input = panel.FindChildInLayoutFile("SettingTypeAbilityInput");
+                if (input.text != VALUE)
+                    input.text = VALUE;
+            }
         } else {
             $.Msg("could not find",key);
         }
@@ -275,6 +283,9 @@ function CreateSetting(sPluginName,sPluginSetting,sPluginSettingData,hParent) {
     }
     if (sPluginSettingData.TYPE == "text") {
         return CreateSettingText(sPluginName,sPluginSetting,sPluginSettingData,hParent);
+    }
+    if (sPluginSettingData.TYPE == "core_picker") {
+        return CreateSettingCorePicker(sPluginName,sPluginSetting,sPluginSettingData,hParent);
     }
     return undefined;
 }
@@ -462,6 +473,94 @@ function CreateSettingText(sPluginName,sPluginSetting,sPluginSettingData,hParent
     return SettingTypeText;
 }
 
+var focused_ability_option;
+var focused_ability_plugin_name;
+var focused_ability_plugin_setting;
+
+function CreateSettingCorePicker(sPluginName,sPluginSetting,sPluginSettingData,hParent) {
+    let sType = sPluginSettingData.CATEGORY;
+    let SettingTypeAbility = $.CreatePanel('Panel', hParent, sPluginSetting);
+    SettingTypeAbility.BLoadLayoutSnippet("SettingTypeAbility");
+    let SettingTypeAbilityLabel = SettingTypeAbility.FindChildInLayoutFile("SettingTypeAbilityLabel");
+    if (sPluginSettingData.UNIT != undefined) {
+        SettingTypeAbilityLabel.text = $.Localize("#Plugin_" +  sPluginName + "_Option_" + sPluginSetting) + " (" + sPluginSettingData.UNIT +")";
+    } else {
+        SettingTypeAbilityLabel.text = $.Localize("#Plugin_" +  sPluginName + "_Option_" + sPluginSetting);
+    }
+
+    let SettingTypeAbilityInput = SettingTypeAbility.FindChildInLayoutFile("SettingTypeAbilityInput");
+    SettingTypeAbilityInput.enabled = bHost;
+    SettingTypeAbilityInput.text = sPluginSettingData.VALUE;
+    SettingTypeAbilityInput.SetPanelEvent(
+        "onblur", 
+        function(){
+            SettingChange(sPluginName,sPluginSetting,SettingTypeAbilityInput.text);
+        }
+    );
+    SettingTypeAbilityInput.SetPanelEvent(
+        "oninputsubmit", 
+        function(){
+            SettingChange(sPluginName,sPluginSetting,SettingTypeAbilityInput.text);
+        }
+    );
+    let desc_dd = "#Plugin_" +  sPluginName + "_Option_" + sPluginSetting + "_Description";
+    let desc = $.Localize(desc_dd);
+    if (desc != desc_dd) {
+        SettingTypeAbilityLabel.SetPanelEvent(
+            "onmouseover", 
+            function(){
+                $.DispatchEvent("DOTAShowTextTooltip", SettingTypeAbilityLabel, desc);
+            }
+            )
+        SettingTypeAbilityLabel.SetPanelEvent(
+            "onmouseout", 
+            function(){
+            $.DispatchEvent("DOTAHideTextTooltip", SettingTypeAbilityLabel);
+            }
+        )
+    }
+    
+    let SettingTypeAbilityButton = SettingTypeAbility.FindChildInLayoutFile("SettingTypeAbilityButton");
+    if (bHost) {
+        if (sType == "ability") {
+            SettingTypeAbilityButton.SetPanelEvent(
+                "onactivate", 
+                function(){
+                    focused_ability_option = SettingTypeAbility;
+                    focused_ability_plugin_name = sPluginName;
+                    focused_ability_plugin_setting = sPluginSetting;
+                    
+                    GameEvents.SendCustomGameEventToServer("plugin_system_show_abilities",{name: ""});
+                }
+            );
+        }
+        if (sType == "item") {
+            SettingTypeAbilityButton.SetPanelEvent(
+                "onactivate", 
+                function(){
+                    focused_ability_option = SettingTypeAbility;
+                    focused_ability_plugin_name = sPluginName;
+                    focused_ability_plugin_setting = sPluginSetting;
+                    
+                    GameEvents.SendCustomGameEventToServer("plugin_system_show_items",{name: ""});
+                }
+            );
+        }
+        if (sType == "unit") {
+            SettingTypeAbilityButton.SetPanelEvent(
+                "onactivate", 
+                function(){
+                    focused_ability_option = SettingTypeAbility;
+                    focused_ability_plugin_name = sPluginName;
+                    focused_ability_plugin_setting = sPluginSetting;
+                    
+                    GameEvents.SendCustomGameEventToServer("plugin_system_show_units",{name: ""});
+                }
+            );
+        }
+    }
+    return SettingTypeAbility;
+}
 
 function SettingsUpdate( table_name, sPluginName, sPluginSettings) {
     if (sPluginName == "core_teams") return;
@@ -614,12 +713,17 @@ function unlock_remote() {
         }
         /* WindowRoot.SetHasClass("hidden",false); */
         PluginUnlockScreen.SetHasClass("hidden",true);
+        PluginMutator.SetHasClass("hidden",!bHost);
     } else {
         const f = c/d;
         const tr = forced_mode.vote_treshold * 0.01;
         const from_tr = (f/tr)*100;
         PluginUnlockBar.value = from_tr;
     }
+}
+function load_abilities() {
+    core_data_abilities = CustomNetTables.GetTableValue( "core_data_abilities","all" );
+    core_data_abilities.sort();
 }
 
 (function () {
@@ -656,6 +760,10 @@ function unlock_remote() {
     }
     CustomNetTables.SubscribeNetTableListener( "save_slots" , SlotsUpdate );
     CustomNetTables.SubscribeNetTableListener( "forced_mode" , forced_mode_update );
+    GameEvents.Subscribe( "plugin_system_show_abilities", plugin_system_show_core_pick);
+    GameEvents.Subscribe( "plugin_system_show_items", plugin_system_show_core_pick);
+    GameEvents.Subscribe( "plugin_system_show_units", plugin_system_show_core_pick);
+    //load_abilities();
 
 })();
 
@@ -731,4 +839,17 @@ function CreatePresetOption(sMutator,hParent) {
             });
         }
     );
+}
+
+function plugin_system_show_core_pick(tEvent) {
+    $.Msg(tEvent);
+    let value = tEvent.name;
+    let SettingTypeAbilityInput = focused_ability_option.FindChildInLayoutFile("SettingTypeAbilityInput");
+        
+        if (GameUI.IsControlDown() && SettingTypeAbilityInput.text != "") {
+            SettingTypeAbilityInput.text = SettingTypeAbilityInput.text + "," + value;
+        } else {
+            SettingTypeAbilityInput.text = value;
+        }
+    SettingChange(focused_ability_plugin_name,focused_ability_plugin_setting,SettingTypeAbilityInput.text);
 }

@@ -1,0 +1,38 @@
+
+"presets"
+{
+    "mutator_rounds"
+    {
+        "mutator" "1"
+        "settings"
+        {
+            "rounds"
+            {
+                "enabled" "1"
+            }
+            "dota_settings"
+            {
+                "univeral_Shop" "1"
+                "allow_neutral_drops" "0"
+                "allow_respawn" "0"
+                "allow_buyback" "0"
+                "pregame_time" "1"
+            }
+            "delete_dota"
+            {
+                "enabled" "1"
+                "delete_roshan" "1"
+                "delete_tier_1" "1"
+                "delete_tier_2" "1"
+                "delete_tier_3" "1"
+                "delete_tier_4" "1"
+                "delete_fountain" "1"
+                "delete_barracks" "1"
+                "delete_ancient" "1"
+                "delete_creep_spawning" "1"
+                "delete_fillers" "1"
+                "delete_neutral_spawns" "1"
+            }
+        }
+    }
+}

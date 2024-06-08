@@ -53,7 +53,7 @@ function xmas23_day2:GetModifierOverrideAbilitySpecial(kv)
 	local k = szAbilityName .. "|" .. szSpecialValueName
 	if self.boost[k] == nil then
         if IsServer() then
-            self:UpdateValue(k,RandomFloat(self.min_random,self.max_random))
+            self:UpdateValue(k,Script_RandomFloat(self.min_random,self.max_random))
             return 1
         end
         return 0

@@ -7,7 +7,7 @@
 #base "plugins/time_limit_plugin/plugin.txt"
 
 #base "plugins/currencies/plugin.txt"
-//#base "plugins/souls_plugin/plugin.txt"
+#base "plugins/souls_plugin/plugin.txt"
 
 #base "plugins/hero_builder/plugin.txt"
 #base "plugins/item_spawner/plugin.txt"
@@ -38,7 +38,7 @@
 #base "plugins/items_x/plugin.txt"
 #base "plugins/xmas_2023/plugin.txt"
 
-//#base "plugins/rounds/plugin.txt"
+#base "plugins/rounds/plugin.txt"
 
 #base "plugins/freeforall/plugin.txt"
 
@@ -48,6 +48,7 @@
 //sword bacon
 #base "plugins/sb_mango_party/plugin.txt"
 
+//#base "plugins/unit_limits/plugin.txt" //crash issues
 "Plugins"
 {
 }

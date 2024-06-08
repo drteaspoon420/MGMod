@@ -2,23 +2,5 @@
 {
     "all" {
         "var_type" "1"
-        "LinkedSpecialBonus" "1"
-        "ad_linked_abilities" "1"
-        "generic_hidden" "1"
-        "abyssal_underlord_portal_warp" "1"
-        "ability_capture" "1"
-        "RequiresScepter" "1"
-        "RequiresShard" "1"
-        "CalculateSpellDamageTooltip" "1"
-        "LinkedSpecialBonusField" "1"
-        "LinkedSpecialBonusOperation" "1"
-        "max_invoked_spells" "1"
-        "levelkey" "1"
-        "respawn" "1"
-        "DamageTypeTooltip" "1"
-        "special_bonus_attributes" "1"
-        "twin_gate_portal_warp" "1"
-        "ability_lamp_use" "1"
-        "ability_pluck_famango" "1"
     }
 }

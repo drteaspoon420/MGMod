@@ -42,5 +42,5 @@ function nurgle:GetModifierOverrideAbilitySpecial(kv)
     return 1
 end
 function nurgle:GetModifierOverrideAbilitySpecialValue( kv )
-    return kv.ability:GetLevelSpecialValueNoOverride(kv.ability_special_value,kv.ability_special_level) * RandomFloat(self.min_random,self.max_random)
+    return kv.ability:GetLevelSpecialValueNoOverride(kv.ability_special_value,kv.ability_special_level) * Script_RandomFloat(self.min_random,self.max_random)
 end

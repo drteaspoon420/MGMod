@@ -82,6 +82,7 @@ Slider.HorizontalSlider
     horizontal-align: center;
     vertical-align: bottom;
     margin-bottom: 22px;
+    border-radius: 0px 6px 6px 0px;
 }
 
 .ReadyButtonClass
@@ -98,10 +99,6 @@ Slider.HorizontalSlider
     margin-right: 1px;
 }
 
-#ReadyButtonID2 {
-    border-radius: 0px 6px 6px 0px;
-
-}
 .CancelReady {
     background-color: gradient( linear, 0% 0%, 0% 100%, from( #6b4f1c ), to( #8e7319 ) );
     border: 1px solid #a4bc39;
@@ -219,6 +216,11 @@ Slider.HorizontalSlider
     box-shadow: fill #fac97fa2 0px 0px 16px -5px;
 }
 .timer_paused {
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #5f6752 ), to( #6c7956 ) );
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #813c3c ), to( #761111 ) );
 
+}
+
+#ReadyButtonID:hover {
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #813c3c ), to( #953030 ) );
+    box-shadow: fill #fac97fa2 0px 0px 16px -5px;
 }

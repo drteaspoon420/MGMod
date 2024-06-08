@@ -65,6 +65,13 @@
 				<Label id="SettingTypeDropdownLabel" text="unknown" />
 			</Panel>
 		</snippet>
+		<snippet name="SettingTypeAbility">
+			<Panel id="SettingTypeAbility" class="SettingTypeAbility SettingGeneral">
+				<Button id="SettingTypeAbilityButton"/>
+				<TextEntry id="SettingTypeAbilityInput" text="unknown" />
+				<Label id="SettingTypeAbilityLabel" text="unknown" />
+			</Panel>
+		</snippet>
 		<snippet name="SettingsSaveSlot">
 			<Button id="SettingsSaveSlot" class="SettingsSaveSlot">
 				<Label id="SettingsSaveSlotText" text="§" />

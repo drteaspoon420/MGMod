@@ -25,19 +25,44 @@
     "extra_ability_heroes"
     {
         "Order" "0"
-        "TYPE" "text"
-        "DEFAULT" "ogre_bruiser_ogre_smash"
+        "TYPE" "core_picker"
+        "CATEGORY" "ability"
+        "DEFAULT" ""
     }
     "extra_ability_towers"
     {
         "Order" "1"
-        "TYPE" "text"
-        "DEFAULT" "miniboss_radiance"
+        "TYPE" "core_picker"
+        "CATEGORY" "ability"
+        "DEFAULT" ""
     }
     "extra_ability_creeps"
     {
         "Order" "2"
-        "TYPE" "text"
+        "TYPE" "core_picker"
+        "CATEGORY" "ability"
+        "DEFAULT" ""
+    }
+
+    "extra_item_heroes"
+    {
+        "Order" "4"
+        "TYPE" "core_picker"
+        "CATEGORY" "item"
+        "DEFAULT" ""
+    }
+    "extra_item_towers"
+    {
+        "Order" "51"
+        "TYPE" "core_picker"
+        "CATEGORY" "item"
+        "DEFAULT" ""
+    }
+    "extra_item_creeps"
+    {
+        "Order" "6"
+        "TYPE" "core_picker"
+        "CATEGORY" "item"
         "DEFAULT" ""
     }
 }

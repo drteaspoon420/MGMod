@@ -50,29 +50,43 @@
         "UNIT" "%"
         "DEFAULT" "200"
     }
-    "competitive" {
-        "Order" "11"
-        "TYPE" "boolean"
-        "DEFAULT" "0"
+
+    "base_list" {
+        "Order" "15"
+        "TYPE" "dropdown"
+        "DEFAULT" "all"
+        "OPTIONS" {
+            "pre_crownfall" "pre"
+            "post_crownfall" "post"
+            "competitive" "comp"
+            "post_crownfall_comp" "post_comp"
+            "all" "all"
+            "none" "none"
+        }
     }
     "custom_list" {
-        "Order" "12"
+        "Order" "17"
         "TYPE" "text"
         "DEFAULT" ""
     }
     "custom_list_patch" {
-        "Order" "13"
+        "Order" "18"
+        "TYPE" "boolean"
+        "DEFAULT" "1"
+    }
+    "negative_one_block" {
+        "Order" "19"
         "TYPE" "boolean"
         "DEFAULT" "1"
     }
     "cost" {
-        "Order" "16"
+        "Order" "29"
         "TYPE" "number"
         "DEFAULT" "100"
     }
     "currency"
     {
-        "Order" "18"
+        "Order" "28"
         "TYPE" "dropdown"
         "DEFAULT" "red"
         "OPTIONS" {
@@ -83,13 +97,13 @@
         }
     }
     "kv_bans" {
-        "Order" "20"
+        "Order" "30"
         "TYPE" "number"
         "DEFAULT" "5"
     }
     "only_slot"
     {
-        "Order"     "22"
+        "Order"     "32"
         "TYPE" "dropdown"
         "DEFAULT" "any"
         "OPTIONS" {
@@ -104,37 +118,37 @@
     }
     "MAX_MULTIPLIER"
     {
-        "Order" "25"
+        "Order" "35"
         "TYPE" "number"
         "UNIT" "%"
         "DEFAULT" "10000"
     }
     "MIN_MULTIPLIER"
     {
-        "Order" "26"
+        "Order" "36"
         "TYPE" "number"
         "UNIT" "%"
         "DEFAULT" "-10000"
     }
     "upgrade_count" {
-        "Order" "27"
+        "Order" "37"
         "TYPE" "number"
         "DEFAULT" "2"
     }
     "kv_count_bonus" {
-        "Order" "28"
+        "Order" "38"
         "TYPE" "number"
         "DEFAULT" "4"
     }
     
     "rare_chance" {
-        "Order" "30"
+        "Order" "40"
         "TYPE" "number"
         "UNIT" "%"
         "DEFAULT" "25"
     }
     "ultra_chance" {
-        "Order" "31"
+        "Order" "41"
         "TYPE" "number"
         "UNIT" "%"
         "DEFAULT" "1"
