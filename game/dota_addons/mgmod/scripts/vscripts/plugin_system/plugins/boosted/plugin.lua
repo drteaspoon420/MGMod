@@ -45,8 +45,6 @@ function BoostedPlugin:ApplySettings()
     else
         BoostedPlugin.kv_lists = {}
     end
-    print("BoostedPlugin:ApplySettings")
-    DeepPrintTable(BoostedPlugin.kv_lists)
     if BoostedPlugin.settings.base_list == "post_crownfall" then
         BoostedPlugin.official_url = BoostedPlugin.newdawn_url
     elseif BoostedPlugin.settings.base_list == "post_crownfall_comp" then
@@ -574,7 +572,6 @@ function BoostedPlugin:TriggerLinkedKVs(tEvent)
             tEvent.ability = targetAbility
             tEvent.key = targetKey
             -- print("[BoostedPlugin:TriggerLinkedKVs] will trigger" .. targetAbility .. " " .. targetKey)
-            DeepPrintTable(tEvent)
             BoostedPlugin:boost_player(tEvent)
         end
     end
