@@ -13,6 +13,7 @@ BoostedPlugin.newdawn_comp_url = "http://drteaspoon.fi:3000/list/newdawn_comp"
 BoostedPlugin.all_url = "http://drteaspoon.fi:3000/list/all"
 BoostedPlugin.none_url = "https://pastebin.com/raw/JQQQeQCR"
 BoostedPlugin.kv_bans = {}
+BoostedPlugin.linked_kv_bans = {} -- stores kvs that are linked and should not show as offers
 
 BoostedPlugin.player_boosters = {}
 
@@ -184,6 +185,15 @@ function BoostedPlugin:ApplyOnlineList(json,patch)
             BoostedPlugin.kv_lists.limitlist = Toolbox:PatchTable(BoostedPlugin.kv_lists.limitlist,data.limitlist)
         end
     end
+    if data.linklist == nil or type(data.linklist) ~= "table" or (next(data.linklist) == nil) then
+        print("link list empty")
+    else
+        if not patch or BoostedPlugin.kv_lists.linklist == nil or next(BoostedPlugin.kv_lists.linklist) == nil then
+            BoostedPlugin.kv_lists.linklist = data.linklist
+        else
+            BoostedPlugin.kv_lists.linklist = Toolbox:PatchTable(BoostedPlugin.kv_lists.linklist,data.linklist)
+        end
+    end
     if type(BoostedPlugin.kv_lists.blocklist) ~= "table" then 
         BoostedPlugin.kv_lists.blocklist = {
             all = {},
@@ -202,7 +212,42 @@ function BoostedPlugin:ApplyOnlineList(json,patch)
             wildcard = {}
         }
     end
+
+    if type(BoostedPlugin.kv_lists.linklist) ~= "table" then
+        print("link list set to empty")
+        BoostedPlugin.kv_lists.linklist = {
+            all = {},
+            wildcard = {}
+        }
+    end
+
+    BoostedPlugin:AutoblockLinkedKVs()
     return true
+end
+
+-- All linked kvs are put in a list to prevent them showing up as offers
+function BoostedPlugin:AutoblockLinkedKVs()
+    for sAbility, sAbilityValues in pairs(BoostedPlugin.kv_lists.linklist) do
+        for sKey, sKeyValues in pairs(sAbilityValues) do
+            for sKeyLinked, sKeyLinkedEnabled in pairs(sKeyValues) do
+                if sKeyLinkedEnabled == 1 then
+                    targetAbility, targetKey = sKeyLinked:match("([^.]+)[.]([^.]+)")
+                    if type(BoostedPlugin.linked_kv_bans[targetAbility]) ~= "table" then
+                        BoostedPlugin.linked_kv_bans[targetAbility] = {}
+                    end
+                    BoostedPlugin.linked_kv_bans[targetAbility][targetKey] = 1
+                end
+            end
+        end
+    end
+end
+
+-- Checks if the kv is blocked due to being linked
+function BoostedPlugin:IsNotBlockedByLinkedKV(ability, key)
+    if BoostedPlugin.linked_kv_bans == nil then return true end
+    if BoostedPlugin.linked_kv_bans[ability] == nil then return true end
+    if BoostedPlugin.linked_kv_bans[ability][key] == nil then return true end
+    return false
 end
 
 
@@ -532,6 +577,32 @@ function BoostedPlugin:boost_player(tEvent)
             end
         end
         hUnit = Entities:Next(hUnit)
+    end
+
+    -- process linked kvs
+    BoostedPlugin:TriggerLinkedKVs(tEvent)
+end
+
+-- checks if this should trigger linked kv updates and then generates events to do so
+function BoostedPlugin:TriggerLinkedKVs(tEvent)
+    local sAbility = tEvent.ability
+    local sKey = tEvent.key
+
+    if tEvent.is_linked == true then return end
+    if BoostedPlugin.kv_lists.linklist == nil then return end
+    if BoostedPlugin.kv_lists.linklist[sAbility] == nil then return end
+    if BoostedPlugin.kv_lists.linklist[sAbility][sKey] == nil then return end
+
+    -- add a link flag so that we don't wind up in an infinite loop or something due to nesting
+    tEvent.is_linked = true
+    for sKeyLinked, sKeyLinkedEnabled in pairs(BoostedPlugin.kv_lists.linklist[sAbility][sKey]) do
+        if sKeyLinkedEnabled == 1 then
+            targetAbility, targetKey = sKeyLinked:match("([^.]+)[.]([^.]+)")
+            tEvent.ability = targetAbility
+            tEvent.key = targetKey
+            -- print("[BoostedPlugin:TriggerLinkedKVs] will trigger" .. targetAbility .. " " .. targetKey)
+            BoostedPlugin:boost_player(tEvent)
+        end
     end
 end
 
@@ -1204,7 +1275,7 @@ function BoostedPlugin:IntoRng(ability,t,iPlayer,hAbility)
     end
     for k,v in pairs(t) do
 		if v ~= nil then
-            if BoostedPlugin.kv_bans[iPlayer][ability .. "&" .. k] == nil then
+            if BoostedPlugin.kv_bans[iPlayer][ability .. "&" .. k] == nil and BoostedPlugin:IsNotBlockedByLinkedKV(ability, k) then
                 local flBaseValue = hAbility:GetLevelSpecialValueNoOverride( k, nSpecialLevel )
                 if not (flBaseValue < 0.001 and flBaseValue > -0.001) then
                     table.insert(ti,k)

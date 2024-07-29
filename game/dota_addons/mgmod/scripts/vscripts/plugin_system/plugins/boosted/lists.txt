@@ -2540,4 +2540,117 @@
         "damage"    "0.3"
     }
 }
+"linklist"
+{
+    "faceless_void_time_walk"
+    {
+        "speed"
+        {
+            "faceless_void_time_walk_reverse.speed" "1"
+        }
+    }
+    "morphling_adaptive_strike_agi"
+    {
+        "projectile_speed"
+        {
+            "morphling_adaptive_strike_str.projectile_speed" "1"
+        }
+    }
+    "morphling_morph_agi"
+    {
+        "points_per_tick"
+        {
+            "morphling_morph_str.points_per_tick" "1"
+        }
+        "morph_cooldown"
+        {
+            "morphling_morph_str.morph_cooldown" "1"
+        }
+        "morph_rate_tooltip"
+        {
+            "morphling_morph_str.morph_rate_tooltip" "1"
+        }
+        "mana_cost"
+        {
+            "morphling_morph_str.mana_cost" "1"
+        }
+        "castable_while_stunned"
+        {
+            "morphling_morph_str.castable_while_stunned" "1"
+        }
+    }
+    "nevermore_shadowraze1"
+    {
+        "shadowraze_damage"
+        {
+            "nevermore_shadowraze2.shadowraze_damage" "1"
+            "nevermore_shadowraze3.shadowraze_damage" "1"
+        }
+        "shadowraze_radius"
+        {
+            "nevermore_shadowraze2.shadowraze_radius" "1"
+            "nevermore_shadowraze3.shadowraze_radius" "1"
+        }
+        "shadowraze_range"
+        {
+            "nevermore_shadowraze2.shadowraze_range" "1"
+            "nevermore_shadowraze3.shadowraze_range" "1"
+        }
+        "shadowraze_cooldown"
+        {
+            "nevermore_shadowraze2.shadowraze_cooldown" "1"
+            "nevermore_shadowraze3.shadowraze_cooldown" "1"
+        }
+        "stack_bonus_damage"
+        {
+            "nevermore_shadowraze2.stack_bonus_damage" "1"
+            "nevermore_shadowraze3.stack_bonus_damage" "1"
+        }
+        "duration"
+        {
+            "nevermore_shadowraze2.duration" "1"
+            "nevermore_shadowraze3.duration" "1"
+        }
+        "procs_attack"
+        {
+            "nevermore_shadowraze2.procs_attack" "1"
+            "nevermore_shadowraze3.procs_attack" "1"
+        }
+        "movement_speed_debuff"
+        {
+            "nevermore_shadowraze2.movement_speed_debuff" "1"
+            "nevermore_shadowraze3.movement_speed_debuff" "1"
+        }
+        "attack_speed_debuff"
+        {
+            "nevermore_shadowraze2.attack_speed_debuff" "1"
+            "nevermore_shadowraze3.attack_speed_debuff" "1"
+        }
+        "turn_rate_pct"
+        {
+            "nevermore_shadowraze2.turn_rate_pct" "1"
+            "nevermore_shadowraze3.turn_rate_pct" "1"
+        }
+        "cooldown_reduction_on_hero_hit"
+        {
+            "nevermore_shadowraze2.cooldown_reduction_on_hero_hit" "1"
+            "nevermore_shadowraze3.cooldown_reduction_on_hero_hit" "1"
+        }
+    }
+    "warlock_rain_of_chaos"
+    {
+        "golem_hp"
+        {
+            "warlock_rain_of_chaos.golem_hp_scepter" "1"
+        }
+        "golem_dmg"
+        {
+            "warlock_rain_of_chaos.golem_dmg_scepter" "1"
+        }
+        "golem_gold_bounty"
+        {
+            "warlock_rain_of_chaos.golem_gold_bounty_scepter" "1"
+        }
+    }
+}
 }
