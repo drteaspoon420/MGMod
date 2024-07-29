@@ -12,7 +12,25 @@
     "76561198072015344" //steamid
     {
         "name"  "Abraham Blink'in"
-        "description"   "Plugin Contributor"
+        "description"   "Contributor"
+        "css"   "contributor" //css style to be used in lobby screen. needs to be implemented
+    }
+    "76561198069396606" //steamid
+    {
+        "name"  "SwordBacon"
+        "description"   "Contributor"
+        "css"   "contributor" //css style to be used in lobby screen. needs to be implemented
+    }
+    "76561198000300459" //steamid
+    {
+        "name"  "Fahr3n"
+        "description"   "Contributor"
+        "css"   "contributor" //css style to be used in lobby screen. needs to be implemented
+    }
+    "76561197999284636" //steamid
+    {
+        "name"  "Diellan"
+        "description"   "Contributor"
         "css"   "contributor" //css style to be used in lobby screen. needs to be implemented
     }
 }

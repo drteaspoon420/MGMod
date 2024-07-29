@@ -703,7 +703,7 @@ function BoostedPlugin:NerfsKV(sAbility,sKey) -- returns 1.0 if normal.
     --check specific wildcard + kv
     for k,v in pairs(BoostedPlugin.kv_lists.nerflist.wildcard) do
         if string.find(sKey,k) ~= nil then
-            print("wildcard nerf",sAbility,sKey,k,v)
+            --print("wildcard nerf",sAbility,sKey,k,v)
             return v
         end
     end

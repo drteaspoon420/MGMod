@@ -3,6 +3,7 @@
 	<styles>
 		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
 		<include src="file://{resources}/styles/custom_game/custom_team_select.css" />
+		<include src="file://{resources}/styles/custom_game/credits.css" />
 	</styles>
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/custom_team_select.js" />

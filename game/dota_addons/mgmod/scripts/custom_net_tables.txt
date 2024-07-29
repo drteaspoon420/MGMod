@@ -9,6 +9,7 @@
     "core_data_modifiers",
 
     "dvd",
+    "credits",
     "plugin_settings",
     "mutator_presets",
     "forced_mode",

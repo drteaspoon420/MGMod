@@ -47,7 +47,6 @@ tFilters["ModifyGoldFilter"] = "ModifyGoldFilters"
 tFilters["RuneSpawnFilter"] = "RuneSpawnFilters"
 tFilters["TrackingProjectileFilter"] = "TrackingProjectileFilters"
 
-
 --Loading all plugins
 function PluginSystem:Init()
     print("[PluginSystem] init")
@@ -57,7 +56,7 @@ function PluginSystem:Init()
     PluginSystem:load_items()
     PluginSystem:load_units()
     --PluginSystem:load_modifiers()
-    
+    PluginSystem:load_credits()
 
     --dvd
 	PluginSystem.dvd = LoadKeyValues('scripts/vscripts/plugin_system/dvd.txt')
@@ -1260,4 +1259,11 @@ function PluginSystem:plugin_system_show_units(tEvent)
             CustomGameEventManager:Send_ServerToPlayer(hPlayer,"plugin_system_show_units",tEvent)
         end
     end,"plugin_sys_" .. GetSystemTimeMS(),iPlayer)
+end
+
+
+PluginSystem.credits = {}
+function PluginSystem:load_credits()
+	PluginSystem.credits = LoadKeyValues('scripts/credits.txt')
+    CustomNetTables:SetTableValue("credits","credits",PluginSystem.credits)
 end

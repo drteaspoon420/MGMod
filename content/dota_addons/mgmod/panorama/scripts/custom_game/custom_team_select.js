@@ -196,11 +196,16 @@ function CreateSlotPlayer(iTeam,iSlot,hParent,iPlayer) {
     let PlayerSlot = $.CreatePanel('Panel', hParent, "team_tray_" + iTeam + "_slot_" + iSlot);
     PlayerSlot.BLoadLayoutSnippet("PlayerSlot");
     const PlayerInfo = Game.GetPlayerInfo( iPlayer );
-    $.Msg(PlayerInfo);
 
     let PlayerAvatar = PlayerSlot.FindChildInLayoutFile("PlayerAvatar");
     let PlayerName = PlayerSlot.FindChildInLayoutFile("PlayerName");
     PlayerName.text = PlayerInfo.player_name;
+    if (credits_data != undefined && credits_data[PlayerInfo.player_steamid] != undefined) {
+        PlayerName.SetHasClass(credits_data[PlayerInfo.player_steamid].css,true)
+    }
+    if (PlayerInfo.player_has_host_privileges) {
+        PlayerName.SetHasClass("host",true)
+    }
     PlayerAvatar.steamid = PlayerInfo.player_steamid;
     
     return PlayerSlot;
@@ -337,9 +342,11 @@ function ToggleTimerPause() {
     }
 }
 
+var credits_data;
 
 (function () {
     forced_mode = CustomNetTables.GetTableValue( "forced_mode","initial" );
+    credits_data = CustomNetTables.GetTableValue( "credits","credits" );
     if (forced_mode == undefined) {
         forced_mode = {
             lock_level: -1,

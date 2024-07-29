@@ -1,7 +1,14 @@
 .lead_author {
-    text-shadow: 2px 2px 8px 3.0 #ff7300;
+    text-shadow: 0px 0px 4px 1.5 #a000df;
+    color: white;
 }
 
-.lead_author {
-    text-shadow: 2px 2px 8px 3.0 #1eff00;
+.contributor {
+    text-shadow: 0px 0px 4px 1.5 #a0df00;
+    color: white;
+}
+
+.host {
+    font-weight: bold;
+    letter-spacing: 2px;
 }
