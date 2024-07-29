@@ -58,9 +58,9 @@ function BoostedPlugin:ApplySettings()
 
     local url = BoostedPlugin.settings.custom_list
     if url ~= "" then
+        print("https://pastebin.com/raw/" .. url)
         if BoostedPlugin.settings.custom_list_patch then
-            BoostedPlugin:GetOnlineList(BoostedPlugin.official_url)
-            BoostedPlugin:GetOnlineList("https://pastebin.com/raw/" .. url,true)
+            BoostedPlugin:GetOnlineListPatch(BoostedPlugin.official_url,"https://pastebin.com/raw/" .. url)
         else
             BoostedPlugin:GetOnlineList("https://pastebin.com/raw/" .. url)
         end
@@ -103,6 +103,30 @@ function BoostedPlugin:ApplySettings()
         team = BoostedPlugin.settings.core_apply_team
     }
     CurrenciesPlugin:RegisterSpendOption(BoostedPlugin.settings.currency,tOption)
+end
+
+function BoostedPlugin:GetOnlineListPatch(url,patch_url)
+    local patch = false
+    local req = CreateHTTPRequestScriptVM("GET", url)
+    req:SetHTTPRequestHeaderValue("Dedicated-Server-Key", GetDedicatedServerKey("v1"))
+    req:Send(function(res)
+        if res.StatusCode ~= 200 then
+            if url ~= BoostedPlugin.official_url then
+                print("custom url was not valid")
+                BoostedPlugin:GetOnlineList(BoostedPlugin.official_url,false)
+            end
+            return
+        end
+        if not BoostedPlugin:ApplyOnlineList(res.Body,patch) then
+            if url ~= BoostedPlugin.official_url then
+                print("custom list was not valid")
+                BoostedPlugin:GetOnlineList(BoostedPlugin.official_url,false)
+            end
+        else
+            print("valid list at " .. url)
+            BoostedPlugin:GetOnlineList(patch_url,true)
+        end
+    end)
 end
 
 function BoostedPlugin:GetOnlineList(url,patch)
@@ -411,6 +435,7 @@ function BoostedPlugin:SpawnEvent(event)
             local hModifier = hUnit:AddNewModifier(hUnit,nil,"modifier_boosted",{negative_one_block = BoostedPlugin.settings.negative_one_block})
         else
             if hUnit:IsCourier() then return end
+            if hUnit:IsZombie() then return end
             local iPlayer = hUnit:GetMainControllingPlayer()
             if iPlayer < 0 then
                 iPlayer = hUnit:GetPlayerOwnerID()
@@ -471,14 +496,18 @@ function BoostedPlugin:boost_player(tEvent)
     if fValue < 0 then
         if fOld > 1.0000001 then
             BoostedPlugin.lists[iPlayer][sAbility][sKey] = BoostedPlugin:ModifiedUpgrade(sAbility,sKey,1.0)
+            RefundBoosts(iPlayer,sAbility,sKey)
         else
             BoostedPlugin.lists[iPlayer][sAbility][sKey] = BoostedPlugin:ModifiedUpgrade(sAbility,sKey,fOld - fDown)
+            FundBoosts(iPlayer,sAbility,sKey)
         end
     else
         if fOld < 0.9999999 then
             BoostedPlugin.lists[iPlayer][sAbility][sKey] = BoostedPlugin:ModifiedUpgrade(sAbility,sKey,1.0)
+            RefundBoosts(iPlayer,sAbility,sKey)
         else
             BoostedPlugin.lists[iPlayer][sAbility][sKey] = BoostedPlugin:ModifiedUpgrade(sAbility,sKey,fOld + fUp)
+            FundBoosts(iPlayer,sAbility,sKey)
         end
     end
 
@@ -603,6 +632,7 @@ function BoostedPlugin:NerfsKV(sAbility,sKey) -- returns 1.0 if normal.
     --check specific wildcard + kv
     for k,v in pairs(BoostedPlugin.kv_lists.nerflist.wildcard) do
         if string.find(sKey,k) ~= nil then
+            print("wildcard nerf",sAbility,sKey,k,v)
             return v
         end
     end
@@ -1440,15 +1470,22 @@ end
 BoostedPlugin.don_recreate = {
     meepo_divided_we_stand = 1,
     pudge_innate_graft_flesh = 1,
+    wisp_tether = 1,
+    wisp_tether_break = 1,
+    bloodseeker_blood_mist = 1,
+    storm_spirit_galvanized = 1,
+    silencer_brain_drain = 1,
 }
 
 function BoostedPlugin:RecreateAbility(hUnit,hAbility)
     local iLevel = hAbility:GetLevel()
+    local sName = hAbility:GetAbilityName()
     if iLevel < 1 then return end
     local sMod = hAbility:GetIntrinsicModifierName()
     local hMod = hUnit:FindModifierByName(sMod)
     if hMod == nil then return end
     if BoostedPlugin.don_recreate[sName] ~= nil then
+        print(sName, " no recreate")
         hMod:ForceRefresh()
         return
     end
@@ -1480,4 +1517,39 @@ function BoostedPlugin:RecreateAbility(hUnit,hAbility)
             end)
         end
     end)
+end
+
+BoostedPlugin.fund_points = {}
+function FundBoosts(iPlayer,sAbility,sKey)
+    if BoostedPlugin.fund_points[iPlayer] == nil then
+        BoostedPlugin.fund_points[iPlayer] = {}
+    end
+    if BoostedPlugin.fund_points[iPlayer][sAbility] == nil then
+        BoostedPlugin.fund_points[iPlayer][sAbility] = {}
+    end
+    if BoostedPlugin.fund_points[iPlayer][sAbility][sKey] == nil then
+        BoostedPlugin.fund_points[iPlayer][sAbility][sKey] = 1
+    else
+        BoostedPlugin.fund_points[iPlayer][sAbility][sKey] = BoostedPlugin.fund_points[iPlayer][sAbility][sKey] + 1
+    end
+end
+function RefundBoosts(iPlayer,sAbility,sKey)
+    if BoostedPlugin.fund_points[iPlayer] == nil then
+        BoostedPlugin.fund_points[iPlayer] = {}
+    end
+    if BoostedPlugin.fund_points[iPlayer][sAbility] == nil then
+        BoostedPlugin.fund_points[iPlayer][sAbility] = {}
+    end
+    if BoostedPlugin.fund_points[iPlayer][sAbility][sKey] == nil then
+        BoostedPlugin.fund_points[iPlayer][sAbility][sKey] = 0
+        return
+    else
+        local vboosts = BoostedPlugin.fund_points[iPlayer][sAbility][sKey] - 1
+        BoostedPlugin.fund_points[iPlayer][sAbility][sKey] = 0
+        if vboosts > 0 then
+            for i=1,vboosts do
+                BoostedPlugin:GrantPlayerUpgrade(iPlayer)
+            end
+        end
+    end
 end

@@ -280,6 +280,8 @@
 
 		//Tower Buffs
 		"Plugin_tower_buffs" "Tower Buffs"
+		"Plugin_tower_buffs_Option_game_end_time"	"Buff Time"
+		"Plugin_tower_buffs_Option_game_end_time_Description"	"How long will the protection of towers will last. This is to give effective time limit for the game. 0 = disabled"
 		"Plugin_tower_buffs_Option_backdoor_immunity"	"Backdoor Immunity"
 		"Plugin_tower_buffs_Option_bonus_hp"	"Bonus Health"
 		"Plugin_tower_buffs_Option_bonus_hp_regen"	"Bonus Health Regen"

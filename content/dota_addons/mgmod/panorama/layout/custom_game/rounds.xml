@@ -3,17 +3,22 @@
 	<styles>
 		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
 		<include src="file://{resources}/styles/custom_game/rounds.css" />
+		<include src="file://{resources}/styles/custom_game/cyber_vcss.css" />
 	</styles>
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/rounds.js" />
 	</scripts>
 	<Panel class="WindowRoot">
 		<Panel id="WindowRoot" class="hidden">
-			<Panel id="Round">
+			<Panel id="RadiantRole" class="role attacking left radiant">
+			</Panel>
+			<Panel id="Round" class="left neutral_secondary">
 			<Label id="RoundText" text="99/99"/>
 			</Panel>
-			<Panel id="Timer">
+			<Panel id="Timer" class="right neutral_main">
 			<Label id="TimerText" text="99:99"/>
+			</Panel>
+			<Panel id="DireRole" class="role defending right dire">
 			</Panel>
 		</Panel>
 	</Panel>

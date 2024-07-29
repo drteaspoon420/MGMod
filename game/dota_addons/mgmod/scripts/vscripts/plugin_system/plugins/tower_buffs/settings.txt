@@ -5,8 +5,14 @@
         "TYPE" "boolean"
         "DEFAULT" "0"
     }
-    "backdoor_immunity" {
+    "game_end_time" {
         "Order" "1"
+        "TYPE" "number"
+        "UNIT" "minutes"
+        "DEFAULT" "45"
+    }
+    "backdoor_immunity" {
+        "Order" "8"
         "TYPE" "boolean"
         "DEFAULT" "0"
     }

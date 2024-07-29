@@ -10,6 +10,8 @@ var PluginMutator = $.GetContextPanel().FindChildInLayoutFile("ExtraButtons");
 var current_open = "";
 var mutator_presets;
 var forced_mode;
+var focused;
+var focus_data;
 
 // core data stuff
 var core_data_abilities;
@@ -87,6 +89,7 @@ function SortElements(elements,changes) {
 function OpenPluginSettings(sPluginName) {
     let sPluginSettings = plugin_settings[sPluginName]
     PluginSettingsBox.RemoveAndDeleteChildren();
+    focused = undefined;
     let PluginSettings = $.CreatePanel('Panel', PluginSettingsBox, 'PluginSettings');
     PluginSettings.BLoadLayoutSnippet("PluginSettings");
     let PluginEnabled = PluginSettings.FindChildInLayoutFile("PluginEnabled");
@@ -353,6 +356,14 @@ function CreateSettingNumber(sPluginName,sPluginSetting,sPluginSettingData,hPare
         "onblur", 
         function(){
             SettingChange(sPluginName,sPluginSetting,SettingTypeNumberInput.text);
+            focused = undefined;
+        }
+    );
+    SettingTypeNumberInput.SetPanelEvent(
+        "onfocus", 
+        function(){
+            focus_data = [sPluginName,sPluginSetting,SettingTypeNumberInput.text]
+            focused = SettingTypeNumberInput;
         }
     );
     SettingTypeNumberInput.SetPanelEvent(
@@ -446,6 +457,14 @@ function CreateSettingText(sPluginName,sPluginSetting,sPluginSettingData,hParent
         "onblur", 
         function(){
             SettingChange(sPluginName,sPluginSetting,SettingTypeTextInput.text);
+            focused = undefined;
+        }
+    );
+    SettingTypeTextInput.SetPanelEvent(
+        "onfocus", 
+        function(){
+            focus_data = [sPluginName,sPluginSetting,SettingTypeTextInput.text]
+            focused = SettingTypeTextInput;
         }
     );
     SettingTypeTextInput.SetPanelEvent(
@@ -495,6 +514,14 @@ function CreateSettingCorePicker(sPluginName,sPluginSetting,sPluginSettingData,h
         "onblur", 
         function(){
             SettingChange(sPluginName,sPluginSetting,SettingTypeAbilityInput.text);
+            focused = undefined;
+        }
+    );
+    SettingTypeAbilityInput.SetPanelEvent(
+        "onfocus", 
+        function(){
+            focus_data = [sPluginName,sPluginSetting,SettingTypeAbilityInput.text]
+            focused = SettingTypeAbilityInput;
         }
     );
     SettingTypeAbilityInput.SetPanelEvent(
@@ -585,6 +612,7 @@ function SettingsUpdate( table_name, sPluginName, sPluginSettings) {
 
 function Cleanup() {
     PluginListInternalScroll.RemoveAndDeleteChildren();
+    focused = undefined;
     SettingsSaveSlots.RemoveAndDeleteChildren();
 }
 
@@ -727,6 +755,7 @@ function load_abilities() {
 }
 
 (function () {
+    text_update();
     mutator_presets = fixtable(CustomNetTables.GetAllTableValues( "mutator_presets" ));
     forced_mode = CustomNetTables.GetTableValue( "forced_mode","initial" );
     if (forced_mode == undefined || forced_mode.lock_level < 1) {
@@ -767,6 +796,16 @@ function load_abilities() {
 
 })();
 
+function text_update() {
+    $.Schedule(0.5,text_update);
+    if (focused == undefined) {
+        return;
+    }
+    if (focus_data[2] != focused.text) {
+        SettingChange(focus_data[0],focus_data[1],focused.text);
+        focus_data[2] = focused.text;
+    }
+}
 
 function mutator_mode(i) {
     if (bHost) GameEvents.SendCustomGameEventToServer("mutator_mode",{"count": i});
@@ -787,6 +826,7 @@ function mutator_mode_go() {
 
 function OpenPresetSelect() {
     PluginSettingsBox.RemoveAndDeleteChildren();
+    focused = undefined;
     let PresetSelect = $.CreatePanel('Panel', PluginSettingsBox, 'PresetSelect');
     PresetSelect.BLoadLayoutSnippet("PresetSelect");
     let PresetSelectInternalScroll = PresetSelect.FindChildInLayoutFile("PresetSelectInternalScroll");

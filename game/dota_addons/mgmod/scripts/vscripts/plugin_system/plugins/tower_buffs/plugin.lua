@@ -47,4 +47,41 @@ function TowerBuffsPlugin:ApplySettings()
             end
         end
     end
+    local iTime = TowerBuffsPlugin.settings.game_end_time
+    if iTime > 1 then
+        Timers:CreateTimer(iTime*60,function()
+            TowerBuffsPlugin:GameEnd()
+        end)
+    end
+end
+
+function TowerBuffsPlugin:GameEnd()
+    for _, building in pairs(Toolbox:AllTowers()) do
+        local hMod = building:FindModifierByName("tower_buffs_no_backdoor")
+        if hMod ~= nil then hMod:Destroy() end 
+        hMod = nil
+        hMod = building:FindModifierByName("tower_buffs_bonus_hp")
+
+        if hMod ~= nil then hMod:Destroy() end
+        hMod = building:FindModifierByName("tower_buffs_bonus_hp_regen")
+        hMod = nil
+
+        if hMod ~= nil then hMod:Destroy() end
+        hMod = building:FindModifierByName("tower_buffs_bonus_damage")
+        hMod = nil
+
+        if hMod ~= nil then hMod:Destroy() end
+        hMod = building:FindModifierByName("tower_buffs_bonus_armor")
+        hMod = nil
+
+        if hMod ~= nil then hMod:Destroy() end
+        hMod = building:FindModifierByName("tower_buffs_bonus_magic_resistance")
+        hMod = nil
+
+        if hMod ~= nil then hMod:Destroy() end
+
+        if building:HasAbility("miniboss_unyielding_shield") then
+            building:RemoveAbility("miniboss_unyielding_shield")
+        end
+    end
 end
