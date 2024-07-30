@@ -290,6 +290,13 @@
 		"Plugin_tower_buffs_Option_bonus_magic_resistance"	"Bonus Magic Resistance"
 		"Plugin_tower_buffs_Option_unyielding_shield"	"Unyielding Shield"
 
+		//Boost scaling
+		"Plugin_boost_scaling" "Boost Scaling"
+		"Plugin_boost_scaling_Option_tower_bonus_hp" "Tower Bonus Health per Boost"
+		"Plugin_boost_scaling_Option_tower_bonus_hp_regen"	"Tower Bonus Health Regen"
+		"Plugin_boost_scaling_Option_tower_bonus_damage"	"Tower Bonus Damage"
+		"Plugin_boost_scaling_Option_tower_bonus_armor"	"Tower Bonus Armor"
+		"Plugin_boost_scaling_Option_tower_bonus_magic_resistance"	"Tower Bonus Magic Resistance"
 
 		"Plugin_basic_commands" "Basic Chat Commands"
 		"Plugin_basic_commands_Option_min_diff" "Minimum kills behind for -gg"

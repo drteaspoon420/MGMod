@@ -1,0 +1,35 @@
+"plugin_settings"
+{
+    "Order" "96"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "tower_bonus_hp" {
+        "Order" "2"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    "tower_bonus_hp_regen" {
+        "Order" "3"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    "tower_bonus_damage" {
+        "Order" "4"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    "tower_bonus_armor" {
+        "Order" "5"
+        "TYPE" "number"
+        "DEFAULT" "0"
+    }
+// towers aparently cant have magic resistance :/
+    "tower_bonus_magic_resistance" {
+        "Order" "6"
+        "TYPE" "number"
+        "UNIT" "%"
+        "DEFAULT" "0"
+    }
+}

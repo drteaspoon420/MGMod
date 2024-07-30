@@ -12,6 +12,10 @@
         }
         "CmdRegistrations" {
             "-fixme" "FixMe"
+            "-addboosts" "AddBoostCommand"
+            "-clearboosts" "ClearBoostsCommand"
+            "-selfboost" "GrantOfferCommand"
+            "-teamboost" "GrantTeamOfferCommand"
         }
         "ConflictTags" "special_override"
     }

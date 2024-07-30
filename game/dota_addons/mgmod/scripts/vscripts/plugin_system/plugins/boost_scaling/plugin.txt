@@ -1,0 +1,10 @@
+"Plugins"
+{
+    "boost_scaling" {
+        "MainClass" "BoostScalingPlugin"
+        "InitFunction" "Init"
+        "StateRegistrations" {
+            "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
+        }
+    }
+}

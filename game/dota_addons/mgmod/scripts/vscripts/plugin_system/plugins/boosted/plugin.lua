@@ -1298,6 +1298,8 @@ function BoostedPlugin:GrantAllUpgrade()
             end
         end
     end
+
+    PluginSystem:InternalEvent_Call("boost_grant_all")
 end
 
 function BoostedPlugin:GrantTeamUpgrade(iTeam)
@@ -1312,6 +1314,10 @@ function BoostedPlugin:GrantTeamUpgrade(iTeam)
             end
         end
     end
+
+    PluginSystem:InternalEvent_Call("boost_grant_team", {
+        team = iTeam
+    })
 end
 
 function BoostedPlugin:GrantPlayerUpgrade(iPlayer)
@@ -1510,6 +1516,77 @@ function BoostedPlugin:FixMe(tArgs,bTeam,iPlayer)
                     end
                 end
             end
+        end
+    end
+end
+
+function BoostedPlugin:AddBoostCommand(tArgs,bTeam,iPlayer)
+    if GameRules:IsCheatMode() then
+        print("[BoostedPlugin:AddBoostCommand] AddBoost " .. iPlayer)
+        tEvent = {
+            PlayerID = iPlayer,
+            ability = tArgs[2],
+            key = tArgs[3],
+            rarity = tArgs[4],
+            value = tArgs[5]
+        }
+        BoostedPlugin:boost_player(tEvent)
+    end
+end
+
+function BoostedPlugin:ClearBoostsCommand(tArgs,bTeam,iPlayer)
+    if GameRules:IsCheatMode() then
+        print("[BoostedPlugin:ClearBoostsCommand] ClearBoosts " .. iPlayer)
+
+        for sAbility,hAbility in pairs(BoostedPlugin.lists[iPlayer]) do
+            for sKey, value in pairs(hAbility) do
+                if value ~= 1 then
+                    local tEvent = {
+                        PlayerID = iPlayer,
+                        ability = sAbility,
+                        key = sKey,
+                        rarity = 1,
+                        value = 1,
+                        is_linked = 1 -- for this we don't want to trigger linked because we'll be handling them ourselves
+                    }
+                    if value > 1.00001 then
+                        tEvent.value = -1
+                    end
+    
+                    BoostedPlugin:boost_player(tEvent) 
+                end
+            end
+        end
+    end
+end
+
+function BoostedPlugin:GrantOfferCommand(tArgs,bTeam,iPlayer)
+    if GameRules:IsCheatMode() then
+        local amount = tArgs[2]
+        if amount == nil then
+            amount = 1
+        else
+            amount = tonumber(amount)
+        end
+        print("[BoostedPlugin:GrantOfferCommand] GrantOffer " .. iPlayer .. " " .. amount)
+        for i=1,amount do
+            BoostedPlugin:GrantPlayerUpgrade(iPlayer)
+        end
+    end
+end
+
+function BoostedPlugin:GrantTeamOfferCommand(tArgs,bTeam,iPlayer)
+    if GameRules:IsCheatMode() then
+        local amount = tArgs[2]
+        if amount == nil then
+            amount = 1
+        else
+            amount = tonumber(amount)
+        end
+        local iTeam = PlayerResource:GetTeam(iPlayer)
+        print("[BoostedPlugin:GrantTeamOfferCommand] GrantTeamOffer " .. iTeam .. " " .. amount)
+        for i=1,amount do
+            BoostedPlugin:GrantTeamUpgrade(iTeam)
         end
     end
 end

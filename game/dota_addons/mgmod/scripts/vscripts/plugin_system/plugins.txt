@@ -34,6 +34,7 @@
 #base "plugins/boosted/plugin.txt"
 #base "plugins/time_scaling/plugin.txt"
 #base "plugins/tower_buffs/plugin.txt"
+#base "plugins/boost_scaling/plugin.txt"
 #base "plugins/thanksihateit/plugin.txt"
 #base "plugins/items_x/plugin.txt"
 #base "plugins/xmas_2023/plugin.txt"
