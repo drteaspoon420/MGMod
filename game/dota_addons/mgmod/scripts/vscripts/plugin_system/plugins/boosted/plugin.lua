@@ -75,6 +75,7 @@ function BoostedPlugin:ApplySettings()
 		return
 	end
 	BoostedPlugin.req_blocks = req_blocks
+    
     --CustomGameEventManager:RegisterListener("boost_player",BoostedPlugin.boost_player)
     CustomGameEventManager:RegisterListener("upgrade_hero",BoostedPlugin.upgrade_hero)
     CustomGameEventManager:RegisterListener("upgrade_report",BoostedPlugin.upgrade_report)
@@ -104,6 +105,7 @@ function BoostedPlugin:ApplySettings()
         team = BoostedPlugin.settings.core_apply_team
     }
     CurrenciesPlugin:RegisterSpendOption(BoostedPlugin.settings.currency,tOption)
+    BoostedPlugin:BlocksToNerfs()
 end
 
 function BoostedPlugin:GetOnlineListPatch(url,patch_url)
@@ -151,6 +153,17 @@ function BoostedPlugin:GetOnlineList(url,patch)
             print("valid list at " .. url)
         end
     end)
+end
+
+function BoostedPlugin:BlocksToNerfs()
+    for k,v in pairs(BoostedPlugin.kv_lists.blocklist) do
+        for h,j in pairs(v) do
+            if BoostedPlugin.kv_lists.nerflist[k] == nil then
+                BoostedPlugin.kv_lists.nerflist[k] = {}
+            end
+            BoostedPlugin.kv_lists.nerflist[k][h] = 0.0
+        end
+    end
 end
 
 function BoostedPlugin:ApplyOnlineList(json,patch)
@@ -222,20 +235,22 @@ function BoostedPlugin:ApplyOnlineList(json,patch)
     end
 
     BoostedPlugin:AutoblockLinkedKVs()
+    BoostedPlugin:BlocksToNerfs()
     return true
 end
 
 -- All linked kvs are put in a list to prevent them showing up as offers
 function BoostedPlugin:AutoblockLinkedKVs()
     for sAbility, sAbilityValues in pairs(BoostedPlugin.kv_lists.linklist) do
-        for sKey, sKeyValues in pairs(sAbilityValues) do
-            for sKeyLinked, sKeyLinkedEnabled in pairs(sKeyValues) do
-                if sKeyLinkedEnabled == 1 then
-                    targetAbility, targetKey = sKeyLinked:match("([^.]+)[.]([^.]+)")
-                    if type(BoostedPlugin.linked_kv_bans[targetAbility]) ~= "table" then
-                        BoostedPlugin.linked_kv_bans[targetAbility] = {}
+        for sKey, sLinkValues in pairs(sAbilityValues) do
+            for sAbilityLinked, sKeyValues in pairs(sLinkValues) do
+                for sKeyLinked, sKeyLinkedEnabled in pairs(sKeyValues) do
+                    if sKeyLinkedEnabled == 1 then
+                        if type(BoostedPlugin.linked_kv_bans[sAbilityLinked]) ~= "table" then
+                            BoostedPlugin.linked_kv_bans[sAbilityLinked] = {}
+                        end
+                        BoostedPlugin.linked_kv_bans[sAbilityLinked][sKeyLinked] = 1
                     end
-                    BoostedPlugin.linked_kv_bans[targetAbility][targetKey] = 1
                 end
             end
         end
@@ -365,7 +380,7 @@ function BoostedPlugin:UpdatePlayer_NetTable_Ability(iPlayer,hUnit,hAbility)
                                         if BoostedPlugin.lists[iPlayer][sAbility] == nil then 
                                             BoostedPlugin.lists[iPlayer][sAbility] = {}
                                         end
-                                        if BoostedPlugin.lists[iPlayer][sAbility][j] == nil then
+                                        if BoostedPlugin.lists[iPlayer][sAbility][k] == nil then
                                             BoostedPlugin.lists[iPlayer][sAbility][k] = 1.0
                                         end
                                     end
@@ -374,7 +389,7 @@ function BoostedPlugin:UpdatePlayer_NetTable_Ability(iPlayer,hUnit,hAbility)
                                 if BoostedPlugin.lists[iPlayer][sAbility] == nil then 
                                     BoostedPlugin.lists[iPlayer][sAbility] = {}
                                 end
-                                if BoostedPlugin.lists[iPlayer][sAbility][j] == nil then
+                                if BoostedPlugin.lists[iPlayer][sAbility][k] == nil then
                                     BoostedPlugin.lists[iPlayer][sAbility][k] = 1.0
                                 end
                             end
@@ -595,13 +610,13 @@ function BoostedPlugin:TriggerLinkedKVs(tEvent)
 
     -- add a link flag so that we don't wind up in an infinite loop or something due to nesting
     tEvent.is_linked = true
-    for sKeyLinked, sKeyLinkedEnabled in pairs(BoostedPlugin.kv_lists.linklist[sAbility][sKey]) do
-        if sKeyLinkedEnabled == 1 then
-            targetAbility, targetKey = sKeyLinked:match("([^.]+)[.]([^.]+)")
-            tEvent.ability = targetAbility
-            tEvent.key = targetKey
-            -- print("[BoostedPlugin:TriggerLinkedKVs] will trigger" .. targetAbility .. " " .. targetKey)
-            BoostedPlugin:boost_player(tEvent)
+    for sAbilityLinked, sKeyValues in pairs(BoostedPlugin.kv_lists.linklist[sAbility][sKey]) do
+        for sKeyLinked, sKeyLinkedEnabled in pairs(sKeyValues) do
+            if sKeyLinkedEnabled == 1 then
+                tEvent.ability = sAbilityLinked
+                tEvent.key = sKeyLinked
+                BoostedPlugin:boost_player(tEvent)
+            end
         end
     end
 end
@@ -640,53 +655,19 @@ function BoostedPlugin:RefreshItems(sAbility,hUnit)
 end
 
 function BoostedPlugin:BlocksAbility(sAbility) -- returns false if blocked
-    if BoostedPlugin.req_blocks ~= nil then
-        if BoostedPlugin.req_blocks.all ~= nil then
-            if BoostedPlugin.req_blocks.all[sAbility] ~= nil then
-                return false
-            end
-        end
+    return not IsZero(BoostedPlugin:NerfsKV("all",sAbility))
+end
+
+function IsZero(f)
+    if  (f > -0.0000001 and f < 0.0000001) then
+        return true
+    else
+        return false
     end
-    if BoostedPlugin.req_blocks ~= nil then
-        if BoostedPlugin.req_blocks.all ~= nil then
-            if BoostedPlugin.req_blocks.all[sAbility] ~= nil then
-                return false
-            end
-        end
-    end
-    if BoostedPlugin.kv_lists.blocklist == nil then return true end
-    if BoostedPlugin.kv_lists.blocklist.all == nil then return true end
-    if BoostedPlugin.kv_lists.blocklist.all[sAbility] == nil then return true end
-    return false
 end
 
 function BoostedPlugin:BlocksKV(sAbility,sKey) -- returns false if blocked
-    if BoostedPlugin.req_blocks ~= nil then
-        if BoostedPlugin.req_blocks.all ~= nil then
-            if BoostedPlugin.req_blocks.all[sAbility] ~= nil then
-                return false
-            end
-            if BoostedPlugin.req_blocks.all[sKey] ~= nil then
-                return false
-            end
-        end
-    end
-    --no block list
-    if BoostedPlugin.kv_lists.blocklist == nil then return true end
-    --check specific ability + kv
-    if BoostedPlugin.kv_lists.blocklist[sAbility] ~= nil and BoostedPlugin.kv_lists.blocklist[sAbility][sKey] ~= nil then
-        return false
-    end
-    --check specific all + kv
-    if BoostedPlugin.kv_lists.blocklist.all ~= nil and BoostedPlugin.kv_lists.blocklist.all[sKey] ~= nil then return false end
-    
-    --check specific wildcard + kv
-    for k,v in pairs(BoostedPlugin.kv_lists.blocklist.wildcard) do
-        if string.find(sKey,k) ~= nil then
-            return false
-        end
-    end
-    return true
+    return not IsZero(BoostedPlugin:NerfsKV(sAbility,sKey))
 end
 
 function BoostedPlugin:NerfsKV(sAbility,sKey) -- returns 1.0 if normal.
@@ -695,18 +676,24 @@ function BoostedPlugin:NerfsKV(sAbility,sKey) -- returns 1.0 if normal.
     if BoostedPlugin.kv_lists.nerflist == nil then return 1.0 end
     --check specific ability + kv
     if BoostedPlugin.kv_lists.nerflist[sAbility] ~= nil and BoostedPlugin.kv_lists.nerflist[sAbility][sKey] ~= nil then
+        print(sAbility,sKey,BoostedPlugin.kv_lists.nerflist[sAbility][sKey], "specific")
         return BoostedPlugin.kv_lists.nerflist[sAbility][sKey]
     end
     --check specific all + kv
-    if BoostedPlugin.kv_lists.nerflist.all ~= nil and BoostedPlugin.kv_lists.nerflist.all[sKey] ~= nil then return BoostedPlugin.kv_lists.nerflist.all[sKey] end
+    if BoostedPlugin.kv_lists.nerflist.all ~= nil and BoostedPlugin.kv_lists.nerflist.all[sKey] ~= nil then
+        print(sAbility,sKey,BoostedPlugin.kv_lists.nerflist.all[sKey], "all")
+        return BoostedPlugin.kv_lists.nerflist.all[sKey]
+    end
     
     --check specific wildcard + kv
     for k,v in pairs(BoostedPlugin.kv_lists.nerflist.wildcard) do
         if string.find(sKey,k) ~= nil then
             --print("wildcard nerf",sAbility,sKey,k,v)
+            print(sAbility,sKey,v, "wildcard")
             return v
         end
     end
+    print(sAbility,sKey,1,"default")
     return 1.0
 end
 --[[ 
