@@ -265,6 +265,15 @@ function Toolbox:AllTowers()
 	return buildings
 end
 
+function Toolbox:AllAncients()
+	local buildings = {}
+    local tbuildings = Entities:FindAllByClassname("npc_dota_fort")
+    for __, building in pairs(tbuildings) do
+        table.insert(buildings, building)
+    end
+	return buildings
+end
+
 function Toolbox:ContainsValue(t,val)
     for k,v in pairs(t) do
 		if v ~= nil and v == val then

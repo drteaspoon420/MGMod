@@ -8,7 +8,7 @@
     "tower_bonus_hp" {
         "Order" "2"
         "TYPE" "number"
-        "DEFAULT" "0"
+        "DEFAULT" "100"
     }
     "tower_bonus_hp_regen" {
         "Order" "3"
@@ -18,18 +18,42 @@
     "tower_bonus_damage" {
         "Order" "4"
         "TYPE" "number"
-        "DEFAULT" "0"
+        "DEFAULT" "10"
     }
     "tower_bonus_armor" {
         "Order" "5"
         "TYPE" "number"
-        "DEFAULT" "0"
+        "DEFAULT" "0.3"
     }
-// towers aparently cant have magic resistance :/
     "tower_bonus_magic_resistance" {
         "Order" "6"
         "TYPE" "number"
         "UNIT" "%"
-        "DEFAULT" "0"
+        "DEFAULT" "0.5"
+    }
+    "creep_bonus_hp" {
+        "Order" "20"
+        "TYPE" "number"
+        "DEFAULT" "10"
+    }
+    "creep_bonus_hp_regen" {
+        "Order" "21"
+        "TYPE" "number"
+        "DEFAULT" "0.2"
+    }
+    "creep_bonus_damage" {
+        "Order" "22"
+        "TYPE" "number"
+        "DEFAULT" "2"
+    }
+    "creep_bonus_armor" {
+        "Order" "23"
+        "TYPE" "number"
+        "DEFAULT" "0.2"
+    }
+    "creep_bonus_magic_resistance" {
+        "Order" "24"
+        "TYPE" "number"
+        "DEFAULT" "0.4"
     }
 }

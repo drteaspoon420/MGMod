@@ -16,6 +16,7 @@
             "-clearboosts" "ClearBoostsCommand"
             "-selfboost" "GrantOfferCommand"
             "-teamboost" "GrantTeamOfferCommand"
+            "-allboost" "GrantAllOfferCommand"
         }
         "ConflictTags" "special_override"
     }

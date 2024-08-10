@@ -265,14 +265,26 @@
         "Plugin_tower_buffs_Option_bonus_armor" "Дополнительная броня"
         "Plugin_tower_buffs_Option_bonus_magic_resistance" "Дополнительное сопротивление магии"
         "Plugin_tower_buffs_Option_unyielding_shield" "Неуступчивый щит"
-        
+
 		//Boost scaling
 		"Plugin_boost_scaling" "Boost Scaling"
 		"Plugin_boost_scaling_Option_tower_bonus_hp" "Tower Bonus Health per Boost"
-		"Plugin_boost_scaling_Option_tower_bonus_hp_regen"	"Tower Bonus Health Regen"
-		"Plugin_boost_scaling_Option_tower_bonus_damage"	"Tower Bonus Damage"
-		"Plugin_boost_scaling_Option_tower_bonus_armor"	"Tower Bonus Armor"
-		"Plugin_boost_scaling_Option_tower_bonus_magic_resistance"	"Tower Bonus Magic Resistance"
+		"Plugin_boost_scaling_Option_tower_bonus_hp_regen"	"Tower Bonus Health Regen per Boost"
+		"Plugin_boost_scaling_Option_tower_bonus_damage"	"Tower Bonus Damage per Boost"
+		"Plugin_boost_scaling_Option_tower_bonus_armor"	"Tower Bonus Armor per Boost"
+		"Plugin_boost_scaling_Option_tower_bonus_magic_resistance"	"Tower Bonus Magic Resistance per Boost"
+		"Plugin_boost_scaling_Option_creep_bonus_hp" "Creep Bonus Health per Boost"
+		"Plugin_boost_scaling_Option_creep_bonus_hp_regen"	"Creep Bonus Health Regen per Boost"
+		"Plugin_boost_scaling_Option_creep_bonus_damage"	"Creep Bonus Damage per Boost"
+		"Plugin_boost_scaling_Option_creep_bonus_armor"	"Creep Bonus Armor per Boost"
+		"Plugin_boost_scaling_Option_creep_bonus_magic_resistance"	"Creep Bonus Magic Resistance per Boost"
+		"DOTA_Tooltip_modifier_boost_scaling_tower" "Tower Scaling"
+		"DOTA_Tooltip_modifier_boost_scaling_tower_Description" "Boosting this tower's health by %dMODIFIER_PROPERTY_EXTRA_HEALTH_BONUS%, health regeneration by %fMODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT%, attack damage by %dMODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE%, magic resistance by %fMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%, and armor by %fMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%."
+		"DOTA_Tooltip_modifier_boost_scaling_creep_aura" "Creep Scaling Transmitter"
+		"DOTA_Tooltip_modifier_boost_scaling_creep_aura_Description" "Boosts all allied creeps upon spawn."
+		"DOTA_Tooltip_modifier_boost_scaling_creep_aura_effect" "Creep Scaling"
+		"DOTA_Tooltip_modifier_boost_scaling_creep_aura_effect_Description" "Boosting this creep's health by %dMODIFIER_PROPERTY_EXTRA_HEALTH_BONUS%, health regeneration by %fMODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT%, attack damage by %dMODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE%, magic resistance by %fMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%, and armor by %fMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%."
+
 
         // Основные чат-команды
         "Plugin_basic_commands" "Основные чат-команды"

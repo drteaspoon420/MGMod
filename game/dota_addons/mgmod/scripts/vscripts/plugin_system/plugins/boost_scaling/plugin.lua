@@ -9,37 +9,40 @@ end
 
 function BoostScalingPlugin:ApplySettings()
     BoostScalingPlugin.settings = PluginSystem:GetAllSetting("boost_scaling")
-    LinkLuaModifier("boost_scaling_bonus_hp", "plugin_system/plugins/boost_scaling/boost_scaling_bonus_hp.lua", LUA_MODIFIER_MOTION_NONE)
-    LinkLuaModifier("boost_scaling_bonus_hp_regen", "plugin_system/plugins/boost_scaling/boost_scaling_bonus_hp_regen.lua", LUA_MODIFIER_MOTION_NONE)
-    LinkLuaModifier("boost_scaling_bonus_damage", "plugin_system/plugins/boost_scaling/boost_scaling_bonus_damage.lua", LUA_MODIFIER_MOTION_NONE)
-    LinkLuaModifier("boost_scaling_bonus_armor", "plugin_system/plugins/boost_scaling/boost_scaling_bonus_armor.lua", LUA_MODIFIER_MOTION_NONE)
-    LinkLuaModifier("boost_scaling_bonus_magic_resistance", "plugin_system/plugins/boost_scaling/boost_scaling_bonus_magic_resistance.lua", LUA_MODIFIER_MOTION_NONE)
-    for _, building in pairs(Toolbox:AllTowers()) do
-        if BoostScalingPlugin.settings.tower_bonus_hp > 0 then
-            building:AddNewModifier(building, nil, "boost_scaling_bonus_hp", {})
-        end
-        if BoostScalingPlugin.settings.tower_bonus_hp_regen > 0 then
-            building:AddNewModifier(building, nil, "boost_scaling_bonus_hp_regen", {})
-        end
-        if BoostScalingPlugin.settings.tower_bonus_damage > 0 then
-            building:AddNewModifier(building, nil, "boost_scaling_bonus_damage", {})
-        end
-        if BoostScalingPlugin.settings.tower_bonus_armor > 0 then
-            building:AddNewModifier(building, nil, "boost_scaling_bonus_armor", {})
-        end
 
-        if BoostScalingPlugin.settings.tower_bonus_magic_resistance > 0 then
-            building:AddNewModifier(building, nil, "boost_scaling_bonus_magic_resistance", {})
-        end
+    -- tower scaling
+    LinkLuaModifier("modifier_boost_scaling_tower", "plugin_system/plugins/boost_scaling/modifier_boost_scaling_tower.lua", LUA_MODIFIER_MOTION_NONE)
+    for _, building in pairs(Toolbox:AllTowers()) do
+        building:AddNewModifier(building, nil, "modifier_boost_scaling_tower", {
+            tower_bonus_damage = BoostScalingPlugin.settings.tower_bonus_damage,
+            tower_bonus_magic_resistance = BoostScalingPlugin.settings.tower_bonus_magic_resistance,
+            tower_bonus_armor = BoostScalingPlugin.settings.tower_bonus_armor,
+            tower_bonus_hp_regen = BoostScalingPlugin.settings.tower_bonus_hp_regen,
+            tower_bonus_hp = BoostScalingPlugin.settings.tower_bonus_hp
+        })
+    end
+
+    -- unit scaling    
+    LinkLuaModifier("modifier_boost_scaling_creep_aura", "plugin_system/plugins/boost_scaling/modifier_boost_scaling_creep_aura.lua", LUA_MODIFIER_MOTION_NONE)
+    for _, building in pairs(Toolbox:AllAncients()) do
+        print("adding creep aura to tower")
+        building:AddNewModifier(building, nil, "modifier_boost_scaling_creep_aura", {
+            creep_bonus_hp = BoostScalingPlugin.settings.creep_bonus_hp,
+            creep_bonus_hp_regen = BoostScalingPlugin.settings.creep_bonus_hp_regen,
+            creep_bonus_armor = BoostScalingPlugin.settings.creep_bonus_armor,
+            creep_bonus_magic_resistance = BoostScalingPlugin.settings.creep_bonus_magic_resistance,
+            creep_bonus_damage = BoostScalingPlugin.settings.creep_bonus_damage
+        })
     end
 
     PluginSystem:InternalEvent_Register("boost_grant_all",function()
         BoostScalingPlugin:BoostTowersAll()
+        BoostScalingPlugin:BoostCreepsAll()
     end)
 
     PluginSystem:InternalEvent_Register("boost_grant_team",function(event)
-        DeepPrintTable(event)
         BoostScalingPlugin:BoostTowersTeam(event.team)
+        BoostScalingPlugin:BoostCreepsTeam(event.team)
     end)
 end
 
@@ -57,25 +60,30 @@ function BoostScalingPlugin:BoostTowersTeam(iTeam)
     end
 end
 
+function BoostScalingPlugin:BoostCreepsAll()
+    for _, building in pairs(Toolbox:AllAncients()) do
+        BoostScalingPlugin:BoostCreeps(building)
+    end
+end
+
+function BoostScalingPlugin:BoostCreepsTeam(iTeam)
+    for _, building in pairs(Toolbox:AllAncients()) do
+        if building:GetTeam() == iTeam then
+            BoostScalingPlugin:BoostCreeps(building)
+        end
+    end
+end
+
 function BoostScalingPlugin:BoostTower(tower)
-    if BoostScalingPlugin.settings.tower_bonus_hp > 0 then
-        local hMod = tower:FindAllModifiersByName("boost_scaling_bonus_hp")[1]
-        if hMod ~= nil then hMod:SetStackCount(hMod:GetStackCount() + BoostScalingPlugin.settings.tower_bonus_hp) end
+    local hMod = tower:FindAllModifiersByName("modifier_boost_scaling_tower")[1]
+    if hMod ~= nil then
+        hMod:SetStackCount(hMod:GetStackCount() + 1)
     end
-    if BoostScalingPlugin.settings.tower_bonus_hp_regen > 0 then
-        local hMod = tower:FindAllModifiersByName("boost_scaling_bonus_hp_regen")[1]
-        if hMod ~= nil then hMod:SetStackCount(hMod:GetStackCount() + BoostScalingPlugin.settings.tower_bonus_hp_regen) end
-    end
-    if BoostScalingPlugin.settings.tower_bonus_damage > 0 then
-        local hMod = tower:FindAllModifiersByName("boost_scaling_bonus_damage")[1]
-        if hMod ~= nil then hMod:SetStackCount(hMod:GetStackCount() + BoostScalingPlugin.settings.tower_bonus_damage) end
-    end
-    if BoostScalingPlugin.settings.tower_bonus_armor > 0 then
-        local hMod = tower:FindAllModifiersByName("boost_scaling_bonus_armor")[1]
-        if hMod ~= nil then hMod:SetStackCount(hMod:GetStackCount() + BoostScalingPlugin.settings.tower_bonus_armor) end
-    end
-    if BoostScalingPlugin.settings.tower_bonus_magic_resistance > 0 then
-        local hMod = tower:FindAllModifiersByName("boost_scaling_bonus_magic_resistance")[1]
-        if hMod ~= nil then hMod:SetStackCount(hMod:GetStackCount() + BoostScalingPlugin.settings.tower_bonus_magic_resistance) end
+end
+
+function BoostScalingPlugin:BoostCreeps(ancient)
+    local hMod = ancient:FindAllModifiersByName("modifier_boost_scaling_creep_aura")[1]
+    if hMod ~= nil then
+        hMod:SetStackCount(hMod:GetStackCount() + 1)
     end
 end

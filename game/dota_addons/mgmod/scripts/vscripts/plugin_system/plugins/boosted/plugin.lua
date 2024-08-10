@@ -1578,6 +1578,21 @@ function BoostedPlugin:GrantTeamOfferCommand(tArgs,bTeam,iPlayer)
     end
 end
 
+function BoostedPlugin:GrantAllOfferCommand(tArgs,bTeam,iPlayer)
+    if GameRules:IsCheatMode() then
+        local amount = tArgs[2]
+        if amount == nil then
+            amount = 1
+        else
+            amount = tonumber(amount)
+        end
+        print("[BoostedPlugin:GrantAllOfferCommand] GrantAllOffer " .. amount)
+        for i=1,amount do
+            BoostedPlugin:GrantAllUpgrade()
+        end
+    end
+end
+
 function BoostedPlugin:FixThis(hUnit)
     if hUnit == nil then
         return
