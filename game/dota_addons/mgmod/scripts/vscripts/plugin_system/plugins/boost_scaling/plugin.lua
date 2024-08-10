@@ -78,6 +78,7 @@ function BoostScalingPlugin:BoostTower(tower)
     local hMod = tower:FindAllModifiersByName("modifier_boost_scaling_tower")[1]
     if hMod ~= nil then
         hMod:SetStackCount(hMod:GetStackCount() + 1)
+        tower:CalculateGenericBonuses()
     end
 end
 
