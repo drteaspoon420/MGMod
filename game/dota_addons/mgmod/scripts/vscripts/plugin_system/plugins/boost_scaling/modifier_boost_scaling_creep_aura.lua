@@ -165,7 +165,7 @@ function modifier_boost_scaling_creep_aura_effect:GetModifierPreAttack_BonusDama
 end
 
 function modifier_boost_scaling_creep_aura_effect:GetModifierMagicalResistanceBonus()
-    return self:GetStackCount() * self.creep_bonus_magic_resistance
+    return math.min((1 - math.pow(1 - self.creep_bonus_magic_resistance * 0.01, self:GetStackCount())) * 100, 95)
 end
 
 function modifier_boost_scaling_creep_aura_effect:GetModifierPhysicalArmorBonus()

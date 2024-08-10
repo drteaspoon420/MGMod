@@ -92,7 +92,7 @@ function modifier_boost_scaling_tower:GetModifierPreAttack_BonusDamage()
 end
 
 function modifier_boost_scaling_tower:GetModifierMagicalResistanceBonus()
-    return self:GetStackCount() * self.tower_bonus_magic_resistance
+    return math.min((1 - math.pow(1 - self.tower_bonus_magic_resistance * 0.01, self:GetStackCount())) * 100, 95)
 end
 
 function modifier_boost_scaling_tower:GetModifierPhysicalArmorBonus()
