@@ -16,6 +16,10 @@ PluginSystem.locked = 0
 PluginSystem.dvd = {}
 
 
+PluginSystem.core_abilities = {}
+PluginSystem.core_items = {}
+PluginSystem.core_units = {}
+
 local JSON = require("utils/dkjson")
 GAMEMODE_SAVE_ID = "mgmod"
 
@@ -1047,28 +1051,27 @@ end
 
 
 function PluginSystem:load_abilities()
-    local core_abilities = {}
-    --PluginSystem.core_abilities = {}
+    PluginSystem.core_abilities = {}
 	local file = LoadKeyValues('scripts/npc/npc_abilities.txt')
     if not (file == nil or not next(file)) then
-        core_abilities['neutral'] = PluginSystem:load_kv_file_headers(file)
+        PluginSystem.core_abilities['neutral'] = PluginSystem:load_kv_file_headers(file)
     end
 	local heroes_enabled = LoadKeyValues('scripts/npc/activelist.txt')
     if not (heroes_enabled == nil or not next(heroes_enabled)) then
         for k,v in pairs(heroes_enabled) do
             local file = LoadKeyValues('scripts/npc/heroes/' .. k .. '.txt')
             if not (file == nil or not next(file)) then
-                core_abilities[k] = PluginSystem:load_kv_file_headers(file)
+                PluginSystem.core_abilities[k] = PluginSystem:load_kv_file_headers(file)
             end
         end
     end
     
 	local file_custom = LoadKeyValues('scripts/npc/npc_abilities_custom.txt')
     if not (file_custom == nil or not next(file_custom)) then
-        core_abilities["zcustom"] = PluginSystem:load_kv_file_headers_custom(file_custom)
+        PluginSystem.core_abilities["zcustom"] = PluginSystem:load_kv_file_headers_custom(file_custom)
     end
     local t_all = {}
-    for k,v in pairs(core_abilities) do
+    for k,v in pairs(PluginSystem.core_abilities) do
         CustomNetTables:SetTableValue("core_data_abilities",k,v)
         for j,l in pairs(v) do
             table.insert(t_all,l)
@@ -1079,19 +1082,18 @@ end
 
 
 function PluginSystem:load_items()
-    local core_items = {}
-    --PluginSystem.core_items = {}
+    PluginSystem.core_items = {}
 	local file = LoadKeyValues('scripts/npc/items.txt')
     if not (file == nil or not next(file)) then
-        core_items['normal'] = PluginSystem:load_kv_file_headers(file)
+        PluginSystem.core_items['normal'] = PluginSystem:load_kv_file_headers(file)
     end
     
 	local file_custom = LoadKeyValues('scripts/npc/npc_items_custom.txt')
     if not (file_custom == nil or not next(file_custom)) then
-        core_items["zcustom"] = PluginSystem:load_kv_file_headers_custom(file_custom)
+        PluginSystem.core_items["zcustom"] = PluginSystem:load_kv_file_headers_custom(file_custom)
     end
     local t_all = {}
-    for k,v in pairs(core_items) do
+    for k,v in pairs(PluginSystem.core_items) do
         CustomNetTables:SetTableValue("core_data_items",k,v)
         for j,l in pairs(v) do
             table.insert(t_all,l)
@@ -1100,24 +1102,23 @@ function PluginSystem:load_items()
 end
 
 function PluginSystem:load_units()
-    local core_units = {}
-    --PluginSystem.core_units = {}
+    PluginSystem.core_units = {}
 	local file = LoadKeyValues('scripts/npc/npc_units.txt')
     if not (file == nil or not next(file)) then
-        core_units['normal'] = PluginSystem:load_kv_file_headers(file)
+        PluginSystem.core_units['normal'] = PluginSystem:load_kv_file_headers(file)
     end
     
 	local file = LoadKeyValues('scripts/npc/npc_heroes.txt')
     if not (file == nil or not next(file)) then
-        core_units['heroes'] = PluginSystem:load_kv_file_headers(file)
+        PluginSystem.core_units['heroes'] = PluginSystem:load_kv_file_headers(file)
     end
     
 	local file_custom = LoadKeyValues('scripts/npc/npc_units_custom.txt')
     if not (file_custom == nil or not next(file_custom)) then
-        core_units["zcustom"] = PluginSystem:load_kv_file_headers_custom(file_custom)
+        PluginSystem.core_units["zcustom"] = PluginSystem:load_kv_file_headers_custom(file_custom)
     end
     local t_all = {}
-    for k,v in pairs(core_units) do
+    for k,v in pairs(PluginSystem.core_units) do
         CustomNetTables:SetTableValue("core_data_units",k,v)
         for j,l in pairs(v) do
             table.insert(t_all,l)

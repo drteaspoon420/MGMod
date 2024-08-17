@@ -44,6 +44,7 @@
 #base "plugins/freeforall/plugin.txt"
 
 #base "plugins/smithing/plugin.txt"
+//#base "plugins/ability_plus/plugin.txt"
 //#base "plugins/boxoffun_2024/plugin.txt"
 
 //sword bacon

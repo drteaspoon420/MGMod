@@ -24,3 +24,8 @@
 #discord {
     background-image: url("file://{images}/custom_game/discord.png");
 }
+
+
+#steamgame {
+    background-image: url("file://{images}/custom_game/steamgame.png");
+}

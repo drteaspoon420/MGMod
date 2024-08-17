@@ -23,6 +23,11 @@ function CreateWindow(sCategory,tAbilities) {
         AbilityImage.abilityname = sAbility;
         AbilityChoise.ability = sAbility;
         AbilityChoise.AddClass("ability_choise");
+        if (sAbility.startsWith == undefined) {
+            $.Msg("invalid ability?")
+            $.Msg(sAbility)
+            return;
+        }
         if (sAbility.startsWith("special_")) {
             AbilityChoise.AddClass("talent");
         } else {

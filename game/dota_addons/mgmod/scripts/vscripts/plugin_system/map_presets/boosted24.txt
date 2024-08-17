@@ -48,7 +48,7 @@
             "roshan_kill_reward_amount" "200"
             "red_state" "team"
             "red_gold_buy" "50"
-            //"lamp_capture_reward_amount" "25"
+            "lamp_capture_reward_amount" "25"
             "outpost_capture_reward_amount" "10"
             "tormentor_kill_reward_amount" "500"
         }
@@ -58,12 +58,14 @@
             "hp_max" "75"
             "status_resist" "0.6"
         }
+        "boost_scaling"
+        {
+            "enabled" "1"
+        }
         "tower_buffs"
         {
             "enabled" "1"
             "backdoor_immunity" "1"
-            "unyielding_shield" "1"
-            "bonus_hp" "4000"
         }
     }
 }

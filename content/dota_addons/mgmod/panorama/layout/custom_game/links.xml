@@ -8,5 +8,6 @@
 	<Panel class="links_root">
 		<Button class="link_button" id="discord" onactivate="ToUrl('https://discord.gg/6trEyanHh9');"/>
 		<Button class="link_button" id="github" onactivate="ToUrl('https://github.com/drteaspoon420/MGMod');"/>
+		<Button class="link_button" id="steamgame" onactivate="ToUrl('https://store.steampowered.com/app/3161850/Boosted_Survivors');"/>
     </Panel>
 </root>

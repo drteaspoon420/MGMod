@@ -24,6 +24,13 @@
 		"DOTA_Custom8"												"The Funk"
 		"Spectator"												"Spectators"
 
+		"Setuplink_github"		"GitHub"
+		"Setuplink_github_desc"		"MGMod is Open Source! Want to contribute? Want to make your own version? You can!"
+		"Setuplink_discord"		"Discord"
+		"Setuplink_discord_desc"		"Come chat with other players and contributors."
+		"Setuplink_steamgame"		"Boosted Survivors!"
+		"Setuplink_steamgame_desc"		"Our new game coming out soon! Releases on 29th of August for 0.99€ regional!"
+		
 		"DOTA_Tooltip_Ability_special_bonus_generic_talent"		"No Talent"
 		"DOTA_Tooltip_Ability_special_bonus_generic_talent_Description"		"You are pretty untalented."
 
