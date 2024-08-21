@@ -309,6 +309,7 @@
 		"Plugin_boost_scaling_Option_creep_bonus_damage"	"Creep Bonus Damage per Boost"
 		"Plugin_boost_scaling_Option_creep_bonus_armor"	"Creep Bonus Armor per Boost"
 		"Plugin_boost_scaling_Option_creep_bonus_magic_resistance"	"Creep Bonus Magic Resistance per Boost"
+		"Plugin_boost_scaling_Option_creep_bonus_building_damage"	"Creep Bonus Building Damage per Boost"
 		"DOTA_Tooltip_modifier_boost_scaling_tower" "Tower Scaling"
 		"DOTA_Tooltip_modifier_boost_scaling_tower_Description" "Boosting this tower's health by %dMODIFIER_PROPERTY_EXTRA_HEALTH_BONUS%, health regeneration by %fMODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT%, attack damage by %dMODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE%, magic resistance by %fMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%, and armor by %fMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%."
 		"DOTA_Tooltip_modifier_boost_scaling_creep_aura" "Creep Scaling Transmitter"

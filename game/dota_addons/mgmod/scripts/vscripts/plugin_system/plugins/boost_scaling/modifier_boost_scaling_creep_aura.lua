@@ -25,6 +25,12 @@ end
 
 function modifier_boost_scaling_creep_aura:OnCreated(kv)
 	if not IsServer() then return end
+	if kv.creep_bonus_building_damage ~= nil then
+		self.creep_bonus_building_damage = kv.creep_bonus_building_damage
+	else
+		self.creep_bonus_building_damage = 0
+	end
+
 	if kv.creep_bonus_damage ~= nil then
 		self.creep_bonus_damage = kv.creep_bonus_damage
 	else
@@ -66,7 +72,8 @@ function modifier_boost_scaling_creep_aura:AddCustomTransmitterData()
 		bonus_hp_regen = self.creep_bonus_hp_regen,
 		bonus_armor = self.creep_bonus_armor,
 		bonus_magic_resistance = self.creep_bonus_magic_resistance,
-		bonus_damage = self.creep_bonus_damage
+		bonus_damage = self.creep_bonus_damage,
+		bonus_building_damage = self.creep_bonus_building_damage
 	}
 end
 
@@ -77,6 +84,7 @@ function modifier_boost_scaling_creep_aura:HandleCustomTransmitterData( data )
 	self.creep_bonus_armor = data.bonus_armor
 	self.creep_bonus_magic_resistance = data.bonus_magic_resistance
 	self.creep_bonus_damage = data.bonus_damage
+	self.creep_bonus_building_damage = data.bonus_building_damage
 end
 
 function modifier_boost_scaling_creep_aura:OnRefresh()
@@ -102,12 +110,14 @@ function modifier_boost_scaling_creep_aura_effect:OnCreated(kv)
 	
 	if modifier ~= nil then
 		self.creep_bonus_damage = modifier.creep_bonus_damage
+		self.creep_bonus_building_damage = modifier.creep_bonus_building_damage
 		self.creep_bonus_magic_resistance = modifier.creep_bonus_magic_resistance
 		self.creep_bonus_armor = modifier.creep_bonus_armor
 		self.creep_bonus_hp_regen = modifier.creep_bonus_hp_regen
 		self.creep_bonus_hp = modifier.creep_bonus_hp
 		self:SetStackCount(modifier:GetStackCount())
 	else
+		self.creep_bonus_building_damage = 0
 		self.creep_bonus_damage = 0
 		self.creep_bonus_magic_resistance = 0
 		self.creep_bonus_armor = 0
@@ -126,7 +136,8 @@ function modifier_boost_scaling_creep_aura_effect:AddCustomTransmitterData()
 		bonus_hp_regen = self.creep_bonus_hp_regen,
 		bonus_armor = self.creep_bonus_armor,
 		bonus_magic_resistance = self.creep_bonus_magic_resistance,
-		bonus_damage = self.creep_bonus_damage
+		bonus_damage = self.creep_bonus_damage,
+		bonus_building_damage = self.creep_bonus_building_damage
 	}
 end
 
@@ -137,6 +148,7 @@ function modifier_boost_scaling_creep_aura_effect:HandleCustomTransmitterData( d
 	self.creep_bonus_armor = data.bonus_armor
 	self.creep_bonus_magic_resistance = data.bonus_magic_resistance
 	self.creep_bonus_damage = data.bonus_damage
+	self.creep_bonus_building_damage = data.bonus_building_damage
 end
 
 function modifier_boost_scaling_creep_aura_effect:OnRefresh()
@@ -151,6 +163,7 @@ end
 
 function modifier_boost_scaling_creep_aura_effect:DeclareFunctions()
 	local funcs = {
+		MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PHYSICAL,
         MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
 		MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
 		MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS,
@@ -158,6 +171,16 @@ function modifier_boost_scaling_creep_aura_effect:DeclareFunctions()
 		MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS
 	}
 	return funcs
+end
+
+
+function modifier_boost_scaling_creep_aura_effect:GetModifierProcAttack_BonusDamage_Physical(event)
+	if not IsServer() then return end
+	if event.attacker == nil then return end
+	if event.attacker ~= self:GetParent() then return end
+	if not event.attacker:IsCreep() then return end
+	if not event.target:IsBuilding() then return end
+	return self.creep_bonus_building_damage
 end
 
 function modifier_boost_scaling_creep_aura_effect:GetModifierPreAttack_BonusDamage()

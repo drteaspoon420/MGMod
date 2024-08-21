@@ -31,7 +31,8 @@ function BoostScalingPlugin:ApplySettings()
             creep_bonus_hp_regen = BoostScalingPlugin.settings.creep_bonus_hp_regen,
             creep_bonus_armor = BoostScalingPlugin.settings.creep_bonus_armor,
             creep_bonus_magic_resistance = BoostScalingPlugin.settings.creep_bonus_magic_resistance,
-            creep_bonus_damage = BoostScalingPlugin.settings.creep_bonus_damage
+            creep_bonus_damage = BoostScalingPlugin.settings.creep_bonus_damage,
+            creep_bonus_building_damage = BoostScalingPlugin.settings.creep_bonus_building_damage,
         })
     end
 
