@@ -115,12 +115,18 @@
     {
         "Order" "53"
         "TYPE" "number"
+        "DEFAULT" "0"
+    }
+    "hero_kill_reward_bounty"
+    {
+        "Order" "54"
+        "TYPE" "number"
         "DEFAULT" "25"
     }
     
     "observer_kill_reward_currency"
     {
-        "Order" "54"
+        "Order" "60"
         "TYPE" "dropdown"
         "DEFAULT" "red"
         "OPTIONS" {
@@ -132,14 +138,14 @@
     }
     "observer_kill_reward_amount"
     {
-        "Order" "55"
+        "Order" "61"
         "TYPE" "number"
         "DEFAULT" "25"
     }
     
     "observer_plant_reward_currency"
     {
-        "Order" "56"
+        "Order" "70"
         "TYPE" "dropdown"
         "DEFAULT" "red"
         "OPTIONS" {
@@ -151,14 +157,14 @@
     }
     "observer_plant_reward_amount"
     {
-        "Order" "57"
+        "Order" "71"
         "TYPE" "number"
         "DEFAULT" "50"
     }
     
     "timed_reward_currency"
     {
-        "Order" "58"
+        "Order" "80"
         "TYPE" "dropdown"
         "DEFAULT" "red"
         "OPTIONS" {
@@ -170,20 +176,20 @@
     }
     "timed_reward_amount"
     {
-        "Order" "59"
+        "Order" "81"
         "TYPE" "number"
         "DEFAULT" "100"
     }
     "timed_reward_rate"
     {
-        "Order" "60"
+        "Order" "82"
         "TYPE" "number"
         "DEFAULT" "60"
     }
     
     "tower_kill_reward_currency"
     {
-        "Order" "61"
+        "Order" "90"
         "TYPE" "dropdown"
         "DEFAULT" "red"
         "OPTIONS" {
@@ -196,14 +202,14 @@
 
     "tower_kill_reward_amount"
     {
-        "Order" "62"
+        "Order" "91"
         "TYPE" "number"
         "DEFAULT" "100"
     }
 
     "roshan_kill_reward_currency"
     {
-        "Order" "63"
+        "Order" "100"
         "TYPE" "dropdown"
         "DEFAULT" "red"
         "OPTIONS" {
@@ -216,14 +222,14 @@
 
     "roshan_kill_reward_amount"
     {
-        "Order" "64"
+        "Order" "101"
         "TYPE" "number"
         "DEFAULT" "200"
     }
     
     "lamp_capture_reward_currency"
     {
-        "Order" "73"
+        "Order" "110"
         "TYPE" "dropdown"
         "DEFAULT" "red"
         "OPTIONS" {
@@ -236,14 +242,14 @@
 
     "lamp_capture_reward_amount"
     {
-        "Order" "74"
+        "Order" "111"
         "TYPE" "number"
         "DEFAULT" "0"
     }
     
     "outpost_capture_reward_currency"
     {
-        "Order" "83"
+        "Order" "120"
         "TYPE" "dropdown"
         "DEFAULT" "red"
         "OPTIONS" {
@@ -256,7 +262,7 @@
 
     "outpost_capture_reward_amount"
     {
-        "Order" "84"
+        "Order" "121"
         "TYPE" "number"
         "DEFAULT" "10"
     }
@@ -264,7 +270,7 @@
 
     "tormentor_kill_reward_currency"
     {
-        "Order" "93"
+        "Order" "130"
         "TYPE" "dropdown"
         "DEFAULT" "red"
         "OPTIONS" {
@@ -277,7 +283,7 @@
 
     "tormentor_kill_reward_amount"
     {
-        "Order" "94"
+        "Order" "131"
         "TYPE" "number"
         "DEFAULT" "500"
     }
@@ -285,25 +291,25 @@
     //Starting amounts
     "red_start"
     {
-        "Order" "101"
+        "Order" "140"
         "TYPE" "number"
         "DEFAULT" "0"
     }
     "green_start"
     {
-        "Order" "102"
+        "Order" "141"
         "TYPE" "number"
         "DEFAULT" "0"
     }
     "blue_start"
     {
-        "Order" "103"
+        "Order" "142"
         "TYPE" "number"
         "DEFAULT" "0"
     }
     "purple_start"
     {
-        "Order" "104"
+        "Order" "143"
         "TYPE" "number"
         "DEFAULT" "0"
     }

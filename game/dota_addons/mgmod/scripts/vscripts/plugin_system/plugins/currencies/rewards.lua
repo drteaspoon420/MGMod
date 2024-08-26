@@ -125,3 +125,22 @@ function CurrenciesPlugin:ChannelFinished(tEvent)
         end
     end
 end
+
+function CurrenciesPlugin:ModifyGoldFilter(tEvent)
+    if tEvent.gold == nil then
+        print("[CurrenciesPlugin] modify gold event is fucking up again.")
+    end
+    
+    if tEvent.reason_const == DOTA_ModifyGold_HeroKill and CurrenciesPlugin.settings.hero_kill_reward_bounty > 0 then
+        local iReward = math.floor(tEvent.gold * CurrenciesPlugin.settings.hero_kill_reward_bounty / 100)
+        if iReward > 0 then
+            CurrenciesPlugin:AlterCurrency(CurrenciesPlugin.settings.hero_kill_reward_currency,tEvent.player_id_const,iReward)
+            local iPlayer = PlayerResource:GetPlayer(tEvent.player_id_const)
+            local hUnit = iPlayer and iPlayer:GetAssignedHero()
+            if hUnit then
+                CurrenciesPlugin:ShowEarnParticle(iReward,hUnit,hUnit:GetTeam(),CurrenciesPlugin.settings.hero_kill_reward_currency)
+            end
+        end
+    end
+    return {true, tEvent}
+end

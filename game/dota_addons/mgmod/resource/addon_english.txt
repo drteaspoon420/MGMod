@@ -797,6 +797,9 @@
 		"Plugin_currencies_Option_hero_kill_reward_amount" "Hero Kill Reward Amount"
 		"Plugin_currencies_Option_hero_kill_reward_amount_Description" "Last hitting enemy hero grants currency. 0 or less disables the feature."
 		
+		"Plugin_currencies_Option_hero_kill_reward_bounty" "Hero Kill Reward Bounty"
+		"Plugin_currencies_Option_hero_kill_reward_bounty_Description" "Last hitting enemy hero grants currency as percentage of their bounty. 0 or less disables the feature."
+		
 		"Plugin_currencies_Option_observer_kill_reward_currency" "Observer Kill Reward Type"
 		"Plugin_currencies_Option_observer_kill_reward_currency_Drop_red" "Red"
 		"Plugin_currencies_Option_observer_kill_reward_currency_Drop_green" "Green"

@@ -7,5 +7,9 @@
             "ApplySettings" "DOTA_GAMERULES_STATE_HERO_SELECTION"
             "ApplySettingsStartGame" "DOTA_GAMERULES_STATE_GAME_IN_PROGRESS"
         }
+        "FilterRegistrations" {
+            "ModifyGoldFilter" "ModifyGoldFilter"
+            "ModifyExperienceFilter" "ModifyExperienceFilter"
+        }
     }
 }

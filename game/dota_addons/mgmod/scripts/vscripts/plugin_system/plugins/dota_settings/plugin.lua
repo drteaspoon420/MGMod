@@ -338,8 +338,8 @@ function DotaSettingsPlugin:ModifyGoldFilter(event)
     if event.gold == nil then
         print("[DotaSettingsPlugin] modify gold event is fucking up again.")
     end
-	event.gold = event.gold * DotaSettingsPlugin.settings.gold_gain_percent
-    return true
+	event.gold = event.gold * DotaSettingsPlugin.settings.gold_gain_percent * 0.01
+    return {true, event}
 end
 
     
@@ -347,8 +347,8 @@ function DotaSettingsPlugin:ModifyExperienceFilter(event)
     if event.experience == nil then
         print("[DotaSettingsPlugin] modify experience event is fucking up again.")
     end
-	event.experience = event.experience * DotaSettingsPlugin.settings.xp_gain_percent
-    return true
+	event.experience = event.experience * DotaSettingsPlugin.settings.xp_gain_percent * 0.01
+    return {true, event}
 end
 
 
@@ -372,5 +372,3 @@ function DotaSettingsPlugin:SpawnEvent(event)
         end
     end
 end
-
-
