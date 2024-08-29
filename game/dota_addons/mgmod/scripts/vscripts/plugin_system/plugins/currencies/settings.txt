@@ -115,13 +115,13 @@
     {
         "Order" "53"
         "TYPE" "number"
-        "DEFAULT" "0"
+        "DEFAULT" "25"
     }
     "hero_kill_reward_bounty"
     {
         "Order" "54"
         "TYPE" "number"
-        "DEFAULT" "25"
+        "DEFAULT" "0"
     }
     
     "observer_kill_reward_currency"
