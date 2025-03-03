@@ -8,7 +8,7 @@ BsrpgPlugin.points = {}
 
 
 function BsrpgPlugin:Init()
-    print("[BsrpgPlugin] found")
+    --print("[BsrpgPlugin] found")
 end
 
 function BsrpgPlugin:ApplySettings()
@@ -20,7 +20,7 @@ function BsrpgPlugin:ApplySettings()
         BsrpgPlugin.kv_lists = {}
     end
 
-    print("[BsrpgPlugin] doing shit")
+    --print("[BsrpgPlugin] doing shit")
     if BsrpgPlugin.settings.bsrpg_mode == "points" or BsrpgPlugin.settings.bsrpg_mode == "free_form" then
         CustomGameEventManager:RegisterListener("boost_player",BsrpgPlugin.boost_player)
     end
@@ -46,7 +46,7 @@ function BsrpgPlugin:ApplySettings()
             BsrpgPlugin:SpawnEvent(event)
     end,nil)
     
-    print("[BsrpgPlugin] doing shit")
+    --print("[BsrpgPlugin] doing shit")
 end
 
 
@@ -58,7 +58,7 @@ end
 
 function BsrpgPlugin:UpdateEvent(event)
     local hUnit = EntIndexToHScript(event.entindex)
-    print(event.entindex,"dota_ability_changed")
+    --print(event.entindex,"dota_ability_changed")
     if not hUnit.IsRealHero then return end
     if hUnit:IsRealHero() then
         local iPlayer = hUnit:GetPlayerOwnerID()
@@ -227,18 +227,18 @@ function BsrpgPlugin:SpawnEvent(event)
             local hPlayer = PlayerResource:GetPlayer(iPlayer)
             if hPlayer == nil then return end
             local hHero = hPlayer:GetAssignedHero()
-            print("adding ",event.entindex)
+            --print("adding ",event.entindex)
             if hHero == nil then
-                print("hero was nill")
+                --print("hero was nill")
                 return
             end
             if hHero ~= hUnit then 
-                print("hero was not unit")
+                --print("hero was not unit")
                 return
             end
             BsrpgPlugin:UpdatePlayer_NetTable(iPlayer)
             local hModifier = hUnit:AddNewModifier(hUnit,nil,"modifier_bsrpg",{})
-            print("all should be good")
+            --print("all should be good")
             BsrpgPlugin.modifier_links[iPlayer] = hModifier
         end)
     end
@@ -255,15 +255,15 @@ function BsrpgPlugin:boost_player(tEvent)
     local sKey = tEvent.key
     local fValue = tonumber(tEvent.value)
     if BsrpgPlugin.lists[iPlayer] == nil then
-        print(iPlayer,"list nil")
+        --print(iPlayer,"list nil")
         return
     end
     if BsrpgPlugin.lists[iPlayer][sAbility] == nil then
-        print(iPlayer,"ability list nil")
+        --print(iPlayer,"ability list nil")
         return
     end
     if BsrpgPlugin.lists[iPlayer][sAbility][sKey] == nil then
-        print(iPlayer,"key in ability list nil")
+        --print(iPlayer,"key in ability list nil")
         return
     end
     
@@ -336,14 +336,14 @@ function BsrpgPlugin:boost_player(tEvent)
     CustomNetTables:SetTableValue("bsrpg_upgrades_" .. iPlayer,sAbility,BsrpgPlugin.lists[iPlayer][sAbility])
 
     if BsrpgPlugin.modifier_links[iPlayer] == nil then
-        print(iPlayer,"modifier is nil")
+        --print(iPlayer,"modifier is nil")
         return
     end
     local hMod = BsrpgPlugin.modifier_links[iPlayer]
     if hMod.UpdateValue ~= nil then
         hMod:UpdateValue(sAbility,sKey,BsrpgPlugin.lists[iPlayer][sAbility][sKey])
     else
-        print("could not update modifier")
+        --print("could not update modifier")
     end
 end
 function BsrpgPlugin:periodic_check_all()
@@ -382,17 +382,17 @@ function BsrpgPlugin:periodic_check(iPlayer)
     --DeepPrintTable(BsrpgPlugin.perdiodic_check_stats[iPlayer])
 
     if BsrpgPlugin.lists[iPlayer] == nil then
-        print(iPlayer,"list nil")
+        --print(iPlayer,"list nil")
         return
     end
 
     if BsrpgPlugin.modifier_links[iPlayer] == nil then
-        print(iPlayer,"modifier is nil")
+        --print(iPlayer,"modifier is nil")
         return
     end
     local hMod = BsrpgPlugin.modifier_links[iPlayer]
     if hMod.UpdateValue == nil then
-        print("could not update modifier")
+        --print("could not update modifier")
         return
     end
     local fMultSetting = BsrpgPlugin.settings.percent_per_attributes * 0.01

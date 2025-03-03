@@ -1,33 +1,33 @@
 
 function morph_to(hUnit,sUnit,iCost)
     if TremulousPlugin == nil then 
-        print("no tremulous?")
+        --print("no tremulous?")
         return
     end
     if TremulousPlugin.settings == nil then 
-        print("no tremulous settings?")
+        --print("no tremulous settings?")
         return
     end
     if TremulousPlugin.settings.currency == nil then 
-        print("no tremulous currency?")
+        --print("no tremulous currency?")
         return
     end
     local iPlayer = hUnit:GetPlayerOwnerID()
     if iPlayer == nil or iPlayer < 0 then
-        print("player id invalid")
+        --print("player id invalid")
         return
     end
     if TremulousPlugin.settings.currency == "gold" then
         iCost = iCost * 1000
         local iGold = PlayerResource:GetGold(iPlayer)
         if iGold < iCost then
-            print("player gold not enough", iCost,"/",iGold)
+            --print("player gold not enough", iCost,"/",iGold)
             return
         end
         PlayerResource:SpendGold(iPlayer,iCost,DOTA_ModifyGold_Building)
     else
         if not CurrenciesPlugin:SpendCurrency(TremulousPlugin.settings.currency,iPlayer,iCost) then
-            print("player currency not enough", iCost,"/",iGold)
+            --print("player currency not enough", iCost,"/",iGold)
             return
         end
     end

@@ -2,13 +2,13 @@ ItemsXPlugin = class({})
 _G.ItemsXPlugin = ItemsXPlugin
 
 function ItemsXPlugin:Init()
-    print("[ItemsXPlugin] found")
+    --print("[ItemsXPlugin] found")
 end
 
 function ItemsXPlugin:ApplySettings()
     ItemsXPlugin.settings = PluginSystem:GetAllSetting("items_x")
     LinkLuaModifier( "modifier_items_x", "plugin_system/plugins/items_x/modifier_items_x", LUA_MODIFIER_MOTION_NONE )
-    print("items_x settings!")
+    --print("items_x settings!")
     ListenToGameEvent("npc_spawned", function(event)
             if GameRules:State_Get() < DOTA_GAMERULES_STATE_HERO_SELECTION then return end
             ItemsXPlugin:SpawnEvent(event)

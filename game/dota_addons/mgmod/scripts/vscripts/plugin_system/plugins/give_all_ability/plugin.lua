@@ -9,7 +9,7 @@ ExtraAbilityPlugin.extra_ability_creeps = {}
 ExtraAbilityPlugin.extra_item_creeps = {}
 
 function ExtraAbilityPlugin:Init()
-    print("[ExtraAbilityPlugin] found")
+    --print("[ExtraAbilityPlugin] found")
 end
 
 function ExtraAbilityPlugin:ApplySettings()
@@ -79,7 +79,7 @@ end
 
 function ExtraAbilityPlugin:AddAbility(hUnit,sAbility)
     if sAbility == "" then return end
-    if not (ExtraAbilityPlugin.settings.core_apply_team == 1 or hUnit:GetTeam() == ExtraAbilityPlugin.settings.core_apply_team) then return end
+    if not (ExtraAbilityPlugin.settings.core_apply_team == 0 or hUnit:GetTeam() == ExtraAbilityPlugin.settings.core_apply_team) then return end
     if hUnit:HasAbility(sAbility) then return end
     local hAbility = hUnit:AddAbility(sAbility)
     if hAbility ~= nil then
@@ -95,6 +95,6 @@ end
 
 function ExtraAbilityPlugin:AddItem(hUnit,sItem)
     if sAbility == "" then return end
-    if not (ExtraAbilityPlugin.settings.core_apply_team == 1 or hUnit:GetTeam() == ExtraAbilityPlugin.settings.core_apply_team) then return end
+    if not (ExtraAbilityPlugin.settings.core_apply_team == 0 or hUnit:GetTeam() == ExtraAbilityPlugin.settings.core_apply_team) then return end
     hUnit:AddItemByName(sItem)
 end

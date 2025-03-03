@@ -3,7 +3,7 @@ _G.ItemCraftPlugin = ItemCraftPlugin
 
 
 function ItemCraftPlugin:Init()
-    print("[ItemCraftPlugin] found")
+    --print("[ItemCraftPlugin] found")
 end
 
 function ItemCraftPlugin:PreGameStuff()

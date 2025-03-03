@@ -3,7 +3,7 @@ _G.TwistedSpellsPlugin = TwistedSpellsPlugin
 TwistedSpellsPlugin.settings = {}
 
 function TwistedSpellsPlugin:Init()
-    print("[TwistedSpellsPlugin] found")
+    --print("[TwistedSpellsPlugin] found")
 end
 
 function TwistedSpellsPlugin:ApplySettings()
@@ -15,7 +15,7 @@ function TwistedSpellsPlugin:ApplySettings()
         if hUnit:IsRealHero() then
             if AttacksCastSpellsPlugin.unit_cache[event.entindex] ~= nil then return end
             AttacksCastSpellsPlugin.unit_cache[event.entindex] = true
-            print("giving hero Chaos Cast")
+            --print("giving hero Chaos Cast")
             local ability = hUnit:AddAbility( "ability_chaos_cast" )
             ability:SetLevel(1)
         end

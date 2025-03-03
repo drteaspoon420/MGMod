@@ -2,7 +2,7 @@ ThanksIHateItPlugin = class({})
 _G.ThanksIHateItPlugin = ThanksIHateItPlugin
 
 function ThanksIHateItPlugin:Init()
-    print("[ThanksIHateItPlugin] found")
+    --print("[ThanksIHateItPlugin] found")
 end
 
 function ThanksIHateItPlugin:ApplySettings()

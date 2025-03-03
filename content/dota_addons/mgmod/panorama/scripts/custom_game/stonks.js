@@ -221,7 +221,7 @@ function UpdateStonk( table_name, stonk, event) {
     plugin_settings = CustomNetTables.GetTableValue( "plugin_settings", this_window_id );
     let local_disable = plugin_settings.enabled.VALUE == 0;
 
-    if (!local_disable && plugin_settings.core_apply_team.VALUE != 1 && plugin_settings.core_apply_team.VALUE != local_team) {
+    if (!local_disable && plugin_settings.core_apply_team.VALUE != 0 && plugin_settings.core_apply_team.VALUE != local_team) {
         local_disable = true;
     }
 

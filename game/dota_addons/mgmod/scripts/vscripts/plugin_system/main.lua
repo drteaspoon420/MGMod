@@ -53,7 +53,7 @@ tFilters["TrackingProjectileFilter"] = "TrackingProjectileFilters"
 
 --Loading all plugins
 function PluginSystem:Init()
-    print("[PluginSystem] init")
+    --print("[PluginSystem] init")
 
     --core data
     PluginSystem:load_abilities()
@@ -96,7 +96,7 @@ function PluginSystem:Init()
 	local forced_file = LoadKeyValues('scripts/vscripts/plugin_system/map_presets/' .. GetMapName() .. '.txt')
     if not (forced_file == nil or not next(forced_file)) then
         PluginSystem.forced = forced_file
-        print("Preset file found, " .. GetMapName())
+        --print("Preset file found, " .. GetMapName())
         if PluginSystem.forced.teams ~= nil then
             for k,v in pairs(PluginSystem.forced.teams) do
                 GameRules:SetCustomGameTeamMaxPlayers(tonumber(k),tonumber(v))
@@ -118,7 +118,7 @@ function PluginSystem:Init()
                 PluginSystem:ApplyPreset(PluginSystem.forced.preset)
             end ]]
             PluginSystem.forced.votes = {}
-            print("[PluginSystem] Forced mode table set")
+            --print("[PluginSystem] Forced mode table set")
             CustomNetTables:SetTableValue("forced_mode","initial",PluginSystem.forced)
         end
     end
@@ -134,7 +134,7 @@ function PluginSystem:Init()
         else
             require("plugin_system/plugins/" ..sPlugin .. "/plugin")
         end
-        print("file loaded " .. sPlugin)
+        --print("file loaded " .. sPlugin)
         local main_class = tSettings.MainClass
         local state_regs = tSettings.StateRegistrations or {}
         local cmd_regs = tSettings.CmdRegistrations or {}
@@ -226,7 +226,7 @@ function PluginSystem:settings_vote_unlock(tEvent)
         iVotes = iVotes + 1
     end
     if iCount > 0 then
-        print(iCount,iVotes,PluginSystem.forced.vote_treshold)
+        --print(iCount,iVotes,PluginSystem.forced.vote_treshold)
         if (PluginSystem.forced.vote_treshold * 0.01 < iVotes/iCount) then
             PluginSystem.forced.lock_level = 0
         end
@@ -235,7 +235,7 @@ function PluginSystem:settings_vote_unlock(tEvent)
 end
 --settings
 function PluginSystem:ApplyPreset(sPreset)
-    print("loading preset",sPreset)
+    --print("loading preset",sPreset)
     if PluginSystem.presets == nil or PluginSystem.presets[sPreset] == nil then return end
     local tSettings = PluginSystem.presets[sPreset].settings
     if tSettings and type(tSettings) == "table" then
@@ -266,7 +266,7 @@ function PluginSystem:ApplyPreset(sPreset)
 end
 
 function PluginSystem:ApplyPresetAdditive(sPreset)
-    print("loading preset",sPreset)
+    --print("loading preset",sPreset)
     if PluginSystem.presets == nil or PluginSystem.presets[sPreset] == nil then return end
     local tSettings = PluginSystem.presets[sPreset].settings
     if tSettings and type(tSettings) == "table" then
@@ -462,7 +462,7 @@ function PluginSystem:ProcRegisteredGameStates(iState)
     if PluginSystem.StateRegistry[iState] ~= nil then
         for k,v in pairs(PluginSystem.StateRegistry[iState]) do
             if PluginSystem.LobbySettings[v.plugin_name].enabled.VALUE == 1 then
-                print(v.plugin_name,v.method)
+                --print(v.plugin_name,v.method)
                 v.plugin[v.method](v.plugin)
             end
         end
@@ -495,14 +495,14 @@ end
 
 function PluginSystem:InternalEvent_Call(sEvent,tEvent)
     if PluginSystem.InternalEvents[sEvent] == nil then return end
-    print(tEvent)
+    --print(tEvent)
     for k,v in pairs(PluginSystem.InternalEvents[sEvent]) do
         v(tEvent)
     end
 end
 
 function PluginSystem:RegisterCmd(sMain,hPlugin,hMethod,sPlugin)
-    print("registering",sMain,"for",sPlugin)
+    --print("registering",sMain,"for",sPlugin)
     if PluginSystem.CommandRegistery[sMain] == nil then PluginSystem.CommandRegistery[sMain] = {} end
     table.insert(PluginSystem.CommandRegistery[sMain],{plugin = hPlugin, method = hMethod, plugin_name = sPlugin})
 end
@@ -555,7 +555,7 @@ function PluginSystem:GenerateSave()
 	if string.len(s)  > 0 then
 		s = string.sub(s,1,-2)
 	end
-	print(s)
+	--print(s)
 	return s
 end
 
@@ -582,10 +582,10 @@ function PluginSystem:SendSettingSave(slot)
 
     req:Send(function(res)
         if res.StatusCode ~= 200 then
-			print(res.Body)
-            print("something went wrong")
+			--print(res.Body)
+            --print("something went wrong")
         else
-            print("all ok")
+            --print("all ok")
 			CustomNetTables:SetTableValue("save_slots", "slot_" .. slot, {data = save})
         end
     end)
@@ -595,7 +595,7 @@ function PluginSystem:GetSettingSave(slot)
 	local host = Toolbox:GetHostId()
     local steamid = tostring(PlayerResource:GetSteamID(host))
     if steamid == "0" then
-        print("nope, it's a bot!")
+        --print("nope, it's a bot!")
         return
     end
     local url = "http://drteaspoon.fi:3000/butmodes/settings?steamid=" .. steamid .. "&modeid=" .. GAMEMODE_SAVE_ID .. "&slot=" .. slot
@@ -604,11 +604,11 @@ function PluginSystem:GetSettingSave(slot)
 
     req:Send(function(res)
         if res.StatusCode ~= 200 then
-			print(res.Body)
-            print("something went wrong")
+			--print(res.Body)
+            --print("something went wrong")
         else
 			local data = JSON.decode(res.Body)
-            print(res.Body)
+            --print(res.Body)
 			if (#data == 1 and data[1] and data[1].result and #data[1].result == 1 and data[1].result[1].data) then
 				CustomNetTables:SetTableValue("save_slots", "slot_" .. slot, {data = data[1].result[1].data})
 			end
@@ -709,7 +709,7 @@ end
 
 function PluginSystem:RegisterFilter(sFilter,hPlugin,hMethod,sPlugin)
     if tFilters[sFilter] == nil then
-        print(sPlugin,"plugin tried to register non existant filter",sFilter)
+        --print(sPlugin,"plugin tried to register non existant filter",sFilter)
         return
     end
     if PluginSystem[tFilters[sFilter]] == nil then PluginSystem[tFilters[sFilter]] = {} end
@@ -866,7 +866,7 @@ end
 function PluginSystem:MutatorModeSelect(iCount)
     local tAvailable = {}
     for k,v in pairs(PluginSystem.presets) do
-        print(k)
+        --print(k)
         table.insert(tAvailable,k)
     end
     local tPicks = {}
@@ -875,7 +875,7 @@ function PluginSystem:MutatorModeSelect(iCount)
     local iTries = 0
     while iTries < 100 do
         local p = PluginSystem:PickRng(tAvailable)
-        print(p[1])
+        --print(p[1])
         if not (PluginSystem.presets[p[1]].overlap_tags ~= nil and Toolbox:table_contains(tTags,PluginSystem.presets[p[1]].overlap_tags)) then
             if not (PluginSystem.presets[p[1]].no_tags ~= nil and Toolbox:table_contains(tTags,PluginSystem.presets[p[1]].no_tags)) then
                 if not (PluginSystem.presets[p[1]].add_tags ~= nil and Toolbox:table_contains(tNoTags,PluginSystem.presets[p[1]].add_tags)) then

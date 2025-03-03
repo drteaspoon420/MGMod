@@ -242,7 +242,7 @@ function SplitSubcast( caster, chaos_ability, ability_name, origin, original_ang
       weak_abil.damage = damage_fl
       weak_abil.radius = radius_fl
 
-      -- print(unit)
+      -- --print(unit)
       local ability = unit:FindAbilityByName( ability_name )
       if ability == nil then
         ability = unit:AddAbility(ability_name)
@@ -345,9 +345,9 @@ function ability_chaos_cast:GetAllAbilitySpecials()
         local isTalentStuff = string.match( x, "LinkedSpecialBonus")
 
         if isVarType or isScepterCheck or isTooltipCal or isTalentStuff then
-          -- print("key is not useful")
+          -- --print("key is not useful")
         else
-          -- print("key", x, "is useful. Inserting into table")
+          -- --print("key", x, "is useful. Inserting into table")
           table.insert(specialsArray,x)
         end
 
@@ -532,7 +532,7 @@ function CreateSubcasters( hero, num )
   for i=1,num do
     local unit = CreateUnitByName( "npc_dota_subcaster", hero:GetOrigin(), false, nil, nil, hero:GetTeam() )
     unit.hero_parent = hero
-    -- print( unit.hero_parent:GetName() )
+    -- --print( unit.hero_parent:GetName() )
     unit:SetBaseDamageMin( hero:GetBaseDamageMin() )
     unit:SetBaseDamageMax( hero:GetBaseDamageMax() )
 

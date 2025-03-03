@@ -76,15 +76,15 @@ end
 function modifier_sunk_cost:OnDestroy(event)
 	if not IsServer() then return end
     if TremulousPlugin == nil then 
-        print("no tremulous?")
+        --print("no tremulous?")
         return false
     end
     if TremulousPlugin.settings == nil then 
-        print("no tremulous settings?")
+        --print("no tremulous settings?")
         return false
     end
     if TremulousPlugin.settings.currency == nil then 
-        print("no tremulous currency?")
+        --print("no tremulous currency?")
         return false
     end
     if TremulousPlugin.settings.currency == "gold" then

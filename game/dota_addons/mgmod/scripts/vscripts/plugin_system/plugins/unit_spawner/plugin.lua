@@ -9,7 +9,7 @@ UnitSpawnerPlugin.available_units = {
 
 
 function UnitSpawnerPlugin:Init()
-    print("[UnitSpawnerPlugin] found")
+    --print("[UnitSpawnerPlugin] found")
 end
 
 function UnitSpawnerPlugin:PreGameStuff()

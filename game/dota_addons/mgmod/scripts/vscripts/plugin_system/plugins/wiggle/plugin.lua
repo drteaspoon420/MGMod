@@ -3,7 +3,7 @@ _G.Wiggle = Wiggle
 Wiggle.hero_stacks = {}
 
 function Wiggle:Init()
-    print("[Wiggle] found")
+    --print("[Wiggle] found")
 end
 
 function Wiggle:PreGameStuff()

@@ -41,7 +41,7 @@ function day_7:OnIntervalThink()
         outgoing_damage_roshan = 0.0,
         duration = Script_RandomFloat(20.0,40.0),
     }
-   -- print("creating illusion of", hEnemy:GetUnitName(), "at", hParent:GetUnitName())
+   -- --print("creating illusion of", hEnemy:GetUnitName(), "at", hParent:GetUnitName())
     local hIllusion = CreateIllusions(hNeutral, hEnemy, illusion_keys, 1, 0, false, false)
     if hIllusion ~= nil and hIllusion[1] ~= nil and hIllusion[1].SetAbsOrigin ~= nil then
         hIllusion[1]:SetAbsOrigin(vPos)

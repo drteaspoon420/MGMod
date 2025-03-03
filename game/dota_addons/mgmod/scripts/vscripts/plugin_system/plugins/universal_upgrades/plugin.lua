@@ -3,7 +3,7 @@ _G.UniversalUpgradesPlugin = UniversalUpgradesPlugin
 
 
 function UniversalUpgradesPlugin:Init()
-    print("[UniversalUpgradesPlugin] found")
+    --print("[UniversalUpgradesPlugin] found")
 end
 
 function UniversalUpgradesPlugin:PreGameStuff()

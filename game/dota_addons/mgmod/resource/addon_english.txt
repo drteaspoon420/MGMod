@@ -23,13 +23,14 @@
 		"DOTA_Custom7"												"The Burgle"
 		"DOTA_Custom8"												"The Funk"
 		"Spectator"												"Spectators"
+		"DOTA_TEAM_SPECTATOR"														"Spectators"
 
 		"Setuplink_github"		"GitHub"
 		"Setuplink_github_desc"		"MGMod is Open Source! Want to contribute? Want to make your own version? You can!"
 		"Setuplink_discord"		"Discord"
 		"Setuplink_discord_desc"		"Come chat with other players and contributors."
 		"Setuplink_steamgame"		"Boosted Survivors!"
-		"Setuplink_steamgame_desc"		"Our new game coming out soon! Releases on 29th of August for 0.99€ regional!"
+		"Setuplink_steamgame_desc"		"Our new game is out! Boosted Survivors! For 0.99€ regional!"
 		
 		"DOTA_Tooltip_Ability_special_bonus_generic_talent"		"No Talent"
 		"DOTA_Tooltip_Ability_special_bonus_generic_talent_Description"		"You are pretty untalented."
@@ -1046,5 +1047,15 @@
 		"UpgradeReportReason_CrashesDota" "Crashes Dota"
 		"UpgradeReportReason_Overpowered" "Over Powered"
 		"UpgradeReport_Send" "Send Report"
+
+
+		
+		"Plugin_sudo" "Sudo"
+		"Plugin_sudo_Description" "Super User Do. Live code with Lua in your chat. Start messages with 'sudo '\nVery powerful tool, can crash the game. Don't play with people you don't trust to crash the game intentionally."
+		"Plugin_sudo_Option_host_allowed" "Host Only"
+		"Plugin_sudo_Option_host_allowed_Description" "Only host is allowed to use this. Overrides any team settings"
+		"Plugin_sudo_Option_team_only_allowed" "Allow Team Chat"
+		"Plugin_sudo_Option_team_only_allowed_Description" "If not enabled, doing the command in team chat does not work. All chat only.\nNote: There needs to be more than 1 player in spectators for team chat to work for them at all."
+
 	}
 }

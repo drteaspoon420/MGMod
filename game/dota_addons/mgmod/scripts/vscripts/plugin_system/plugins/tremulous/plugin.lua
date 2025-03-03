@@ -4,7 +4,7 @@ TremulousPlugin.death_times = {}
 TremulousPlugin.unit_cache = {}
 
 function TremulousPlugin:Init()
-    print("[TremulousPlugin] found")
+    --print("[TremulousPlugin] found")
 end
 
 function TremulousPlugin:ApplySettings()
@@ -145,7 +145,7 @@ function TremulousPlugin:building_pick(tEvent)
     local hItem = hMainHero:FindItemInInventory("item_tremulous_builder")
     if hItem ~= nil then
         if (TremulousPlugin.buildings[tEvent.name] ~= nil) then
-            print("attempting to spawn",tEvent.name)
+            --print("attempting to spawn",tEvent.name)
             hItem:TryBuild(TremulousPlugin.buildings[tEvent.name].sUnit,TremulousPlugin.buildings[tEvent.name].iCost)
         end
     end

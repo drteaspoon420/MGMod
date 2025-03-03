@@ -36,7 +36,7 @@ function modifier_kvscanner:GetModifierOverrideAbilitySpecial( params )
 		return 0
 	end
     if modifier_kvscanner.banned[params.ability_special_value] ~= nil then return 0 end
-    print("[kvscanner]: " .. params.ability_special_value)
+    --print("[kvscanner]: " .. params.ability_special_value)
     return 0
 end
 

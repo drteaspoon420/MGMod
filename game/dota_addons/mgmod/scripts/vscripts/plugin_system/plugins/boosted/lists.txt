@@ -1,2555 +1,5205 @@
 "lists"
 {
-"blocklist"
-{
-    "abaddon_frostmourne"
-    {
-        "curse_duration"    "1"
-        "slow_duration"    "1"
-    }
-    "abyssal_underlord_atrophy_aura"
-    {
-        "pit_duration"    "1"
-    }
-    "abyssal_underlord_dark_portal"
-    {
-        "duration"    "1"
-    }
-    "abyssal_underlord_pit_of_malice"
-    {
-        "ensnare_duration"    "1"
-        "pit_damage"    "1"
-    }
-    "alchemist_chemical_rage"
-    {
-        "bonus_health"    "1"
-        "bonus_mana_regen"    "1"
-        "scepter_gold_damage"    "1"
-    }
-    "alchemist_unstable_concoction"
-    {
-        "brew_time"    "1"
-        "max_damage"    "1"
-        "max_stun"    "1"
-        "min_damage"    "1"
-        "min_stun"    "1"
-        "radius"    "1"
-    }
-    "alchemist_unstable_concoction_throw"
-    {
-        "brew_time"    "1"
-        "max_damage"    "1"
-        "min_damage"    "1"
-        "vision_range"    "1"
-    }
-    "all"
-    {
-        "AbilityCastPoint"    "1"
-        "AbilityCastRange"    "1"
-        "AbilityCharges"    "1"
-        "AbilityCooldown"    "1"
-        "AbilityManaCost"    "1"
-        "CalculateSpellDamageTooltip"    "1"
-        "DamageTypeTooltip"    "1"
-        "LinkedSpecialBonus"    "1"
-        "LinkedSpecialBonusField"    "1"
-        "LinkedSpecialBonusOperation"    "1"
-        "RequiresScepter"    "1"
-        "RequiresShard"    "1"
-        "ability_capture"    "1"
-        "ability_lamp_use"    "1"
-        "ability_pluck_famango"    "1"
-        "abyssal_underlord_portal_warp"    "1"
-        "ad_linked_abilities"    "1"
-        "bonus_cdr"    "1"
-        "cannot_be_dispelled"    "1"
-        "cooldown_reduction"    "1"
-        "crit_chance"    "1"
-        "dispel"    "1"
-        "familiar_armor"    "1"
-        "familiar_attack_damage"    "1"
-        "familiar_hp"    "1"
-        "familiar_speed"    "1"
-        "generic_hidden"    "1"
-        "kunkka_x_marks_the_spot"    "1"
-        "levelkey"    "1"
-        "lycan_summon_wolves"    "1"
-        "max_invoked_spells"    "1"
-        "pierce_immunity"    "1"
-        "pierces_immunity"    "1"
-        "pierces_magic_immunity"    "1"
-        "respawn"    "1"
-        "special_bonus_attributes"    "1"
-        "tusk_frozen_sigil"    "1"
-        "twin_gate_portal_warp"    "1"
-        "undispellable"    "1"
-        "var_type"    "1"
-        "venomancer_plague_ward"    "1"
-        "visage_stone_form_self_cast"    "1"
-    }
-    "ancient_apparition_cold_feet"
-    {
-        "AbilityCharges"    "1"
-        "AbilityDuration"    "1"
-        "area_of_effect"    "1"
-    }
-    "ancient_apparition_ice_vortex"
-    {
-        "drag_speed"    "1"
-    }
-    "antimage_blink"
-    {
-        "min_blink_range"    "1"
-    }
-    "antimage_counterspell"
-    {
-        "min_blink_range"    "1"
-    }
-    "antimage_mana_break"
-    {
-        "silence_chance"    "1"
-        "silence_duration"    "1"
-    }
-    "arc_warden_tempest_double"
-    {
-        "tempest_double_cooldown_reduction"    "1"
-    }
-    "axe_counter_helix"
-    {
-        "cooldown"    "1"
-        "shard_bonus_chance"    "1"
-        "trigger_chance"    "1"
-    }
-    "axe_culling_blade"
-    {
-        "charge_speed"    "1"
-    }
-    "bane_nightmare"
-    {
-        "AbilityDuration"    "1"
-        "animation_rate"    "1"
-        "nightmare_invuln_time"    "1"
-    }
-    "batrider_flamebreak"
-    {
-        "collision_radius"    "1"
-        "knockback_height"    "1"
-    }
-    "batrider_flaming_lasso"
-    {
-        "allied_cooldown"    "1"
-        "grab_radius"    "1"
-    }
-    "beastmaster_drums_of_slom"
-    {
-        "AbilityDuration"    "1"
-        "movespeed_slow"    "1"
-    }
-    "beastmaster_inner_beast"
-    {
-        "scepter_cooldown"    "1"
-        "scepter_duration"    "1"
-        "scepter_manacost"    "1"
-        "scepter_multiplier"    "1"
-        "scepter_radius"    "1"
-    }
-    "beastmaster_wild_axes"
-    {
-        "range"    "1"
-        "scepter_cooldown"    "1"
-    }
-    "bounty_hunter_shuriken_toss"
-    {
-        "cast_range"    "1"
-        "scepter_cooldown"    "1"
-    }
-    "bounty_hunter_track"
-    {
-        "bonus_gold_radius"    "1"
-        "gold_steal"    "1"
-    }
-    "bounty_hunter_wind_walk"
-    {
-        "shard_damage_reduction_pct"    "1"
-    }
-    "brewmaster_drunken_brawler"
-    {
-        "slow_duration"    "1"
-    }
-    "bristleback_bristleback"
-    {
-        "back_angle"    "1"
-        "side_angle"    "1"
-    }
-    "centaur_double_edge"
-    {
-        "scepter_range"    "1"
-    }
-    "centaur_stampede"
-    {
-        "base_damage"    "1"
-    }
-    "chaos_knight_chaos_bolt"
-    {
-        "fake_bolt_distance"    "1"
-    }
-    "chaos_knight_chaos_strike"
-    {
-        "chance"    "1"
-    }
-    "chaos_knight_phantasm"
-    {
-        "magic_resistance"    "1"
-        "outgoing_damage"    "1"
-        "vision_radius"    "1"
-    }
-    "chaos_knight_reality_rift"
-    {
-        "cast_range"    "1"
-    }
-    "chen_divine_favor"
-    {
-        "teleport_delay"    "1"
-    }
-    "chen_hand_of_god"
-    {
-        "ancient_creeps_scepter"    "1"
-        "does_purge"    "1"
-    }
-    "chen_holy_persuasion"
-    {
-        "AbilityCharges"    "1"
-        "is_martyr"    "1"
-    }
-    "crystal_maiden_freezing_field"
-    {
-        "can_move"    "1"
-    }
-    "crystal_maiden_frostbite"
-    {
-        "tick_interval"    "1"
-    }
-    "dark_seer_ion_shell"
-    {
-        "tick_interval"    "1"
-    }
-    "dark_seer_surge"
-    {
-        "AbilityCharges"    "1"
-    }
-    "dark_seer_wall_of_replica"
-    {
-        "replica_damage_incoming"    "1"
-        "replica_damage_outgoing"    "1"
-        "replica_scale"    "1"
-    }
-    "dark_willow_bedlam"
-    {
-        "attack_targets"    "1"
-    }
-    "dark_willow_bramble_maze"
-    {
-        "initial_creation_delay"    "1"
-        "latch_creation_delay"    "1"
-        "latch_creation_interval"    "1"
-        "latch_range"    "1"
-        "placement_count"    "1"
-        "placement_range"    "1"
-    }
-    "dark_willow_shadow_realm"
-    {
-        "duration"    "1"
-        "scepter_radius"    "1"
-    }
-    "dark_willow_terrorize"
-    {
-        "starting_height"    "1"
-        "telegraph_to_enemies"    "1"
-    }
-    "dawnbreaker_fire_wreath"
-    {
-        "animation_rate"    "1"
-        "total_attacks"    "1"
-        "turn_rate"    "1"
-    }
-    "dawnbreaker_luminosity"
-    {
-        "attack_count"    "1"
-    }
-    "dazzle_poison_touch"
-    {
-        "bonus_damage"    "1"
-    }
-    "dazzle_shallow_grave"
-    {
-        "fx_halo_height"    "1"
-    }
-    "death_prophet_carrion_swarm"
-    {
-        "end_radius"    "1"
-        "start_radius"    "1"
-    }
-    "death_prophet_exorcism"
-    {
-        "average_damage"    "1"
-        "ghost_spawn_rate"    "1"
-        "give_up_distance"    "1"
-        "max_distance"    "1"
-        "radius"    "1"
-        "scepter_movespeed_slow"    "1"
-        "scepter_spirit_life_duration"    "1"
-        "spirit_speed"    "1"
-    }
-    "death_prophet_silence"
-    {
-        "projectile_speed"    "1"
-    }
-    "death_prophet_spirit_siphon"
-    {
-        "AbilityChargeRestoreTime"    "1"
-        "movement_steal"    "1"
-    }
-    "disruptor_glimpse"
-    {
-        "backtrack_time"    "1"
-        "cast_range"    "1"
-        "silence_duration"    "1"
-    }
-    "disruptor_kinetic_field"
-    {
-        "damage_per_second"    "1"
-    }
-    "doom_bringer_devour"
-    {
-        "armor"    "1"
-        "bonus_gold"    "1"
-        "creep_level"    "1"
-        "hero_ability_steal_time"    "1"
-    }
-    "doom_bringer_doom"
-    {
-        "deniable_pct"    "1"
-        "scepter_cooldown"    "1"
-    }
-    "doom_bringer_scorched_earth"
-    {
-        "damage_per_hero"    "1"
-    }
-    "dragon_knight_elder_dragon_form"
-    {
-        "bonus_attack_damage"    "1"
-        "magic_resistance"    "1"
-        "model_scale"    "1"
-    }
-    "dragon_knight_fireball"
-    {
-        "burn_interval"    "1"
-    }
-    "drow_ranger_multishot"
-    {
-        "arrow_count_per_wave"    "1"
-        "bypass_block"    "1"
-        "wave_count"    "1"
-    }
-    "earth_spirit_boulder_smash"
-    {
-        "rock_search_aoe"    "1"
-    }
-    "earth_spirit_geomagnetic_grip"
-    {
-        "total_pull_distance"    "1"
-    }
-    "earth_spirit_rolling_boulder"
-    {
-        "damage_str"    "1"
-    }
-    "earthshaker_enchant_totem"
-    {
-        "scepter_acceleration_horizontal"    "1"
-        "scepter_acceleration_z"    "1"
-        "scepter_cleave_ending_width"    "1"
-        "scepter_cleave_starting_width"    "1"
-        "scepter_height"    "1"
-        "scepter_height_arcbuffer"    "1"
-    }
-    "earthshaker_fissure"
-    {
-        "fissure_radius"    "1"
-        "fissure_range"    "1"
-    }
-    "elder_titan_ancestral_spirit"
-    {
-        "move_pct_cap"    "1"
-        "speed"    "1"
-    }
-    "elder_titan_earth_splitter"
-    {
-        "speed"    "1"
-        "total_steps"    "1"
-        "vision_duration"    "1"
-        "vision_interval"    "1"
-        "vision_step"    "1"
-        "vision_width"    "1"
-    }
-    "elder_titan_echo_stomp"
-    {
-        "animation_rate"    "1"
-        "cast_time"    "1"
-    }
-    "ember_spirit_activate_fire_remnant"
-    {
-        "charge_restore_time"    "1"
-        "damage"    "1"
-        "max_charges"    "1"
-        "scepter_mana_cost"    "1"
-        "shard_remnant_speed_pct"    "1"
-        "speed_multiplier"    "1"
-    }
-    "ember_spirit_fire_remnant"
-    {
-        "AbilityChargeRestoreTime"    "1"
-        "duration"    "1"
-    }
-    "ember_spirit_flame_guard"
-    {
-        "AbilityChargeRestoreTime"    "1"
-        "blind_pct"    "1"
-    }
-    "ember_spirit_searing_chains"
-    {
-        "radius_scepter"    "1"
-    }
-    "ember_spirit_sleight_of_fist"
-    {
-        "AbilityCharges"    "1"
-        "creep_damage_penalty"    "1"
-    }
-    "enchantress_bunny_hop"
-    {
-        "hop_duration"    "1"
-        "hop_height"    "1"
-    }
-    "enchantress_natures_attendants"
-    {
-        "heal_interval"    "1"
-        "movespeed"    "1"
-        "shard_permanent_wisp_count"    "1"
-    }
-    "enigma_black_hole"
-    {
-        "animation_rate"    "1"
-        "duration"    "1"
-        "tick_rate"    "1"
-        "vision_radius"    "1"
-    }
-    "enigma_midnight_pulse"
-    {
-        "duration"    "1"
-    }
-    "enraged_wildkin_tornado"
-    {
-        "AbilityChannelTime"    "1"
-    }
-    "faceless_void_chronosphere"
-    {
-        "bonus_attack_speed"    "1"
-        "vision_radius"    "1"
-    }
-    "furion_force_of_nature"
-    {
-        "treant_large_damage_bonus"    "1"
-        "treant_large_hp_bonus"    "1"
-    }
-    "furion_sprout"
-    {
-        "sprout_damage_inteval"    "1"
-        "vision_range"    "1"
-    }
-    "generic_hidden"
-    {
-        "duration"    "1"
-    }
-    "grimstroke_dark_artistry"
-    {
-        "abilitycastrange"    "1"
-        "end_radius"    "1"
-        "start_radius"    "1"
-    }
-    "grimstroke_ink_creature"
-    {
-        "hero_attack_multiplier"    "1"
-        "infection_search_radius"    "1"
-        "latched_unit_offset"    "1"
-        "latched_unit_offset_short"    "1"
-        "return_projectile_speed"    "1"
-        "spawn_time"    "1"
-        "tick_interval"    "1"
-    }
-    "grimstroke_soul_chain"
-    {
-        "chain_break_distance"    "1"
-        "creep_duration_pct"    "1"
-        "leash_limit_multiplier"    "1"
-        "leash_radius_buffer"    "1"
-    }
-    "grimstroke_spirit_walk"
-    {
-        "tick_rate"    "1"
-    }
-    "gyrocopter_call_down"
-    {
-        "damage_second_scepter"    "1"
-        "range_scepter"    "1"
-    }
-    "gyrocopter_flak_cannon"
-    {
-        "fire_rate"    "1"
-        "projectile_speed"    "1"
-        "scepter_radius"    "1"
-    }
-    "gyrocopter_homing_missile"
-    {
-        "attack_speed_bonus_pct"    "1"
-    }
-    "gyrocopter_rocket_barrage"
-    {
-        "rockets_per_second"    "1"
-    }
-    "hoodwink_acorn_shot"
-    {
-        "bounce_delay"    "1"
-    }
-    "hoodwink_bushwhack"
-    {
-        "animation_rate"    "1"
-        "visual_height"    "1"
-    }
-    "hoodwink_decoy"
-    {
-        "projectile_speed"    "1"
-    }
-    "invoker_chaos_meteor"
-    {
-        "end_vision_duration"    "1"
-        "meteor_count"    "1"
-        "vision_distance"    "1"
-    }
-    "invoker_deafening_blast"
-    {
-        "end_vision_duration"    "1"
-        "radius_end"    "1"
-        "radius_start"    "1"
-    }
-    "invoker_forge_spirit"
-    {
-        "armor_per_attack"    "1"
-        "extra_spirit_count_exort"    "1"
-        "extra_spirit_count_quas"    "1"
-    }
-    "invoker_ice_wall"
-    {
-        "num_wall_elements"    "1"
-        "wall_element_radius"    "1"
-        "wall_element_spacing"    "1"
-        "wall_place_distance"    "1"
-    }
-    "invoker_sun_strike"
-    {
-        "delay"    "1"
-        "vision_distance"    "1"
-        "vision_duration"    "1"
-    }
-    "invoker_tornado"
-    {
-        "end_vision_duration"    "1"
-        "quas_damage"    "1"
-        "vision_distance"    "1"
-    }
-    "item_aegis"
-    {
-        "disappear_time_turbo"    "1"
-    }
-    "item_aeon_disk"
-    {
-        "max_level"    "1"
-    }
-    "item_afterburner"
-    {
-        "tick_rate"    "1"
-    }
-    "item_armlet"
-    {
-        "unholy_bonus_attack_speed"    "1"
-    }
-    "item_black_king_bar"
-    {
-        "max_level"    "1"
-    }
-    "item_blade_mail"
-    {
-        "bonus_intellect"    "1"
-    }
-    "item_blink"
-    {
-        "blink_range"    "1"
-        "blink_range_clamp"    "1"
-    }
-    "item_bottle"
-    {
-        "max_charges"    "1"
-    }
-    "item_heart"
-    {
-        "bonus_strength"    "1"
-    }
-    "item_mirror_shield"
-    {
-        "block_cooldown"    "1"
-    }
-    "item_moon_shard"
-    {
-        "consumed_bonus"    "1"
-    }
-    "item_obsidian_pauldrons"
-    {
-        "tick_rate"    "1"
-    }
-    "item_octarine_core"
-    {
-        "bonus_cooldown"    "1"
-    }
-    "item_orb_of_contagion"
-    {
-        "tick_rate"    "1"
-    }
-    "item_power_treads"
-    {
-        "bonus_damage"    "1"
-    }
-    "item_quickening_charm"
-    {
-        "bonus_cooldown"    "1"
-    }
-    "item_radiance"
-    {
-        "upgrade_day_vision"    "1"
-    }
-    "item_ruthless_dagger"
-    {
-        "tick_rate"    "1"
-    }
-    "item_spell_prism"
-    {
-        "bonus_cooldown"    "1"
-    }
-    "item_tpscroll"
-    {
-        "AbilityChannelTime"    "1"
-        "minimun_distance"    "1"
-        "vision_radius"    "1"
-    }
-    "item_travel_boots_2"
-    {
-        "tp_channel_time"    "1"
-    }
-    "item_wand_of_the_brine"
-    {
-        "damage_reduction"    "1"
-    }
-    "jakiro_dual_breath"
-    {
-        "end_radius"    "1"
-        "fire_delay"    "1"
-        "range"    "1"
-        "speed"    "1"
-        "speed_fire"    "1"
-        "start_radius"    "1"
-    }
-    "jakiro_liquid_ice"
-    {
-        "stun_duration"    "1"
-    }
-    "jakiro_macropyre"
-    {
-        "burn_interval"    "1"
-        "cast_range"    "1"
-    }
-    "juggernaut_blade_dance"
-    {
-        "blade_dance_lifesteal"    "1"
-    }
-    "juggernaut_blade_fury"
-    {
-        "blade_fury_damage_tick"    "1"
-        "duration"    "1"
-    }
-    "keeper_of_the_light_blinding_light"
-    {
-        "AbilityCharges"    "1"
-    }
-    "keeper_of_the_light_chakra_magic"
-    {
-        "duration"    "1"
-        "mana_leak_pct"    "1"
-    }
-    "keeper_of_the_light_illuminate"
-    {
-        "channel_vision_duration"    "1"
-        "channel_vision_interval"    "1"
-        "channel_vision_radius"    "1"
-        "channel_vision_step"    "1"
-        "max_channel_time"    "1"
-        "vision_duration"    "1"
-    }
-    "keeper_of_the_light_spirit_form_illuminate"
-    {
-        "channel_vision_duration"    "1"
-        "channel_vision_interval"    "1"
-        "channel_vision_radius"    "1"
-        "channel_vision_step"    "1"
-        "max_channel_time"    "1"
-        "vision_duration"    "1"
-    }
-    "kunkka_tidebringer"
-    {
-        "cleave_ending_width"    "1"
-        "cleave_starting_width"    "1"
-    }
-    "legion_commander_duel"
-    {
-        "victory_range"    "1"
-    }
-    "legion_commander_moment_of_courage"
-    {
-        "buff_duration"    "1"
-        "trigger_chance"    "1"
-    }
-    "leshrac_diabolic_edict"
-    {
-        "abilityduration"    "1"
-        "shard_max_count"    "1"
-        "tower_bonus"    "1"
-    }
-    "leshrac_lightning_storm"
-    {
-        "interval_scepter"    "1"
-        "radius_scepter"    "1"
-    }
-    "leshrac_split_earth"
-    {
-        "shard_max_count"    "1"
-    }
-    "lich_chain_frost"
-    {
-        "vision_radius"    "1"
-    }
-    "lich_frost_shield"
-    {
-        "damage_reduction"    "1"
-        "duration"    "1"
-    }
-    "life_stealer_infest"
-    {
-        "damage_increase_pct"    "1"
-        "damage_threshold"    "1"
-    }
-    "life_stealer_rage"
-    {
-        "duration"    "1"
-    }
-    "lina_dragon_slave"
-    {
-        "AbilityDuration"    "1"
-        "dragon_slave_distance"    "1"
-        "dragon_slave_speed"    "1"
-    }
-    "lina_fiery_soul"
-    {
-        "fiery_soul_max_stacks"    "1"
-    }
-    "lina_flame_cloak"
-    {
-        "visualzdelta"    "1"
-    }
-    "lina_laguna_blade"
-    {
-        "cast_range_scepter"    "1"
-        "damage_delay"    "1"
-        "scepter_width"    "1"
-    }
-    "lion_finger_of_death"
-    {
-        "damage_delay"    "1"
-    }
-    "lion_impale"
-    {
-        "length_buffer"    "1"
-        "speed"    "1"
-    }
-    "lion_mana_drain"
-    {
-        "tick_interval"    "1"
-    }
-    "lone_druid_savage_roar"
-    {
-        "only_affects_player_units"    "1"
-    }
-    "lone_druid_spirit_bear"
-    {
-        "bear_armor"    "1"
-        "bear_hp"    "1"
-        "bear_regen_tooltip"    "1"
-        "cooldown_scepter"    "1"
-    }
-    "luna_lucent_beam"
-    {
-        "search_radius"    "1"
-    }
-    "lycan_summon_wolves_invisibility"
-    {
-        "fade_time"    "1"
-    }
-    "magnataur_empower"
-    {
-        "cleave_ending_width"    "1"
-        "cleave_starting_width"    "1"
-    }
-    "magnataur_horn_toss"
-    {
-        "destination_offset"    "1"
-        "pull_angle"    "1"
-        "pull_offset"    "1"
-    }
-    "magnataur_reverse_polarity"
-    {
-        "pull_duration"    "1"
-    }
-    "magnataur_skewer"
-    {
-        "skewer_cooldown"    "1"
-        "skewer_manacost"    "1"
-        "tool_attack_slow"    "1"
-    }
-    "marci_companion_run"
-    {
-        "impact_position_offset"    "1"
-        "max_acceleration"    "1"
-        "max_lob_travel_time"    "1"
-        "min_acceleration"    "1"
-        "min_height_above_highest"    "1"
-        "min_height_above_lowest"    "1"
-        "min_lob_travel_time"    "1"
-        "move_speed"    "1"
-        "scepter_armor"    "1"
-        "scepter_heal"    "1"
-        "target_abort_distance"    "1"
-        "vector_preview_radius"    "1"
-    }
-    "marci_grapple"
-    {
-        "pull_angle"    "1"
-        "pull_offset"    "1"
-    }
-    "marci_guardian"
-    {
-        "bonus_attack_range"    "1"
-    }
-    "marci_unleash"
-    {
-        "shard_push_length"    "1"
-    }
-    "mars_arena_of_blood"
-    {
-        "first_warrior_angle"    "1"
-        "formation_time"    "1"
-        "spear_distance_from_wall"    "1"
-        "warrior_count"    "1"
-        "warrior_fade_max_dist"    "1"
-        "warrior_fade_min_dist"    "1"
-        "width"    "1"
-    }
-    "mars_bulwark"
-    {
-        "forward_angle"    "1"
-        "redirect_chance"    "1"
-        "redirect_range"    "1"
-        "side_angle"    "1"
-        "soldier_count"    "1"
-        "soldier_offset"    "1"
-    }
-    "mars_gods_rebuke"
-    {
-        "activity_duration"    "1"
-        "scepter_cooldown"    "1"
-    }
-    "mars_spear"
-    {
-        "activity_duration"    "1"
-        "knockback_distance"    "1"
-        "knockback_duration"    "1"
-        "shard_interval"    "1"
-        "shard_trail_duration"    "1"
-    }
-    "medusa_cold_blooded"
-    {
-        "damage"    "1"
-    }
-    "medusa_mystic_snake"
-    {
-        "jump_delay"    "1"
-        "stone_form_scepter_base"    "1"
-    }
-    "meepo_poof"
-    {
-        "AbilityChannelTime"    "1"
-    }
-    "mirana_invis"
-    {
-        "duration"    "1"
-    }
-    "mirana_leap"
-    {
-        "leap_acceleration"    "1"
-    }
-    "monkey_king_boundless_strike"
-    {
-        "soldier_spawn_duration"    "1"
-    }
-    "monkey_king_tree_dance"
-    {
-        "perched_spot_height"    "1"
-        "range"    "1"
-        "top_level_height"    "1"
-    }
-    "monkey_king_wukongs_command"
-    {
-        "cast_range_scepter"    "1"
-        "duration"    "1"
-        "leadership_radius_buffer"    "1"
-        "outer_attack_buffer"    "1"
-    }
-    "morphling_morph_agi"
-    {
-        "bonus_attributes"    "1"
-        "castable_while_stunned"    "1"
-        "morph_cooldown"    "1"
-    }
-    "morphling_morph_str"
-    {
-        "bonus_attributes"    "1"
-        "castable_while_stunned"    "1"
-        "morph_cooldown"    "1"
-    }
-    "morphling_waveform"
-    {
-        "AbilityCharges"    "1"
-        "abilitycastrange"    "1"
-    }
-    "muerta_the_calling"
-    {
-        "debug_draw"    "1"
-        "rotation_direction"    "1"
-        "rotation_initial"    "1"
-        "show_warning"    "1"
-    }
-    "naga_siren_rip_tide"
-    {
-        "debuff_duration"    "1"
-    }
-    "naga_siren_song_of_the_siren"
-    {
-        "animation_rate"    "1"
-        "regen_rate"    "1"
-        "regen_rate_self"    "1"
-        "scepter_cooldown"    "1"
-    }
-    "necrolyte_death_pulse"
-    {
-        "projectile_speed"    "1"
-    }
-    "necrolyte_death_seeker"
-    {
-        "projectile_multiplier"    "1"
-    }
-    "necrolyte_heartstopper_aura"
-    {
-        "aura_radius"    "1"
-    }
-    "nevermore_necromastery"
-    {
-        "attack_range_bonus"    "1"
-        "necromastery_soul_release"    "1"
-    }
-    "nevermore_shadowraze1"
-    {
-        "shadowraze_cooldown"    "1"
-    }
-    "nevermore_shadowraze2"
-    {
-        "shadowraze_cooldown"    "1"
-    }
-    "nevermore_shadowraze3"
-    {
-        "shadowraze_cooldown"    "1"
-    }
-    "nyx_assassin_impale"
-    {
-        "length"    "1"
-        "width"    "1"
-    }
-    "nyx_assassin_mana_burn"
-    {
-        "aoe"    "1"
-    }
-    "nyx_assassin_spiked_carapace"
-    {
-        "bonus_armor"    "1"
-        "bonus_damage"    "1"
-        "bonus_intellect"    "1"
-    }
-    "nyx_assassin_vendetta"
-    {
-        "fade_time"    "1"
-        "health_regen_rate_scepter"    "1"
-        "mana_regen_rate_scepter"    "1"
-    }
-    "obsidian_destroyer_arcane_orb"
-    {
-        "bounce_radius"    "1"
-    }
-    "obsidian_destroyer_astral_imprisonment"
-    {
-        "scepter_range_bonus"    "1"
-    }
-    "obsidian_destroyer_equilibrium"
-    {
-        "mana_capacity_duration"    "1"
-        "mana_capacity_steal"    "1"
-        "shard_bonus_mana"    "1"
-        "shard_mana_duration"    "1"
-    }
-    "obsidian_destroyer_sanity_eclipse"
-    {
-        "cast_range"    "1"
-    }
-    "ogre_magi_bloodlust"
-    {
-        "modelscale"    "1"
-    }
-    "ogre_magi_smash"
-    {
-        "projectile_speed"    "1"
-    }
-    "oracle_false_promise"
-    {
-        "radius"    "1"
-    }
-    "oracle_fortunes_end"
-    {
-        "scepter_bonus_radius"    "1"
-        "scepter_bonus_range"    "1"
-        "scepter_stun_percentage"    "1"
-    }
-    "pangolier_gyroshell"
-    {
-        "tick_interval"    "1"
-        "turn_rate_boosted"    "1"
-    }
-    "pangolier_lucky_shot"
-    {
-        "slow"    "1"
-    }
-    "pangolier_rollup"
-    {
-        "bounce_duration"    "1"
-        "cast_time_tooltip"    "1"
-        "forward_move_speed"    "1"
-        "hit_radius"    "1"
-        "jump_recover_time"    "1"
-        "knockback_radius"    "1"
-        "radius"    "1"
-        "stun_duration"    "1"
-        "tick_interval"    "1"
-        "turn_rate"    "1"
-        "turn_rate_boosted"    "1"
-    }
-    "pangolier_shield_crash"
-    {
-        "duration"    "1"
-    }
-    "pangolier_swashbuckle"
-    {
-        "attack_interval"    "1"
-        "dash_range"    "1"
-        "end_radius"    "1"
-        "start_radius"    "1"
-    }
-    "phantom_assassin_fan_of_knives"
-    {
-        "degen"    "1"
-        "max_damage_initial"    "1"
-        "pct_health_damage"    "1"
-    }
-    "phantom_assassin_phantom_strike"
-    {
-        "AbilityCharges"    "1"
-        "abilitycastrange"    "1"
-    }
-    "phantom_assassin_stifling_dagger"
-    {
-        "attack_factor"    "1"
-    }
-    "phantom_lancer_doppelwalk"
-    {
-        "illusion_1_damage_in_pct"    "1"
-    }
-    "phantom_lancer_spirit_lance"
-    {
-        "fake_lance_distance"    "1"
-    }
-    "phoenix_fire_spirits"
-    {
-        "attackspeed_slow"    "1"
-        "damage_per_second"    "1"
-        "duration"    "1"
-        "radius"    "1"
-        "spirit_count"    "1"
-        "spirit_speed"    "1"
-        "tick_interval"    "1"
-    }
-    "phoenix_launch_fire_spirit"
-    {
-        "hp_cost_perc"    "1"
-        "spirit_count"    "1"
-        "spirit_duration"    "1"
-    }
-    "phoenix_sun_ray"
-    {
-        "tick_interval"    "1"
-        "turn_rate_initial"    "1"
-    }
-    "primal_beast_onslaught"
-    {
-        "chargeup_time"    "1"
-        "max_charge_time"    "1"
-    }
-    "primal_beast_pulverize"
-    {
-        "animation_rate"    "1"
-        "cast_range"    "1"
-        "pierce_immunity"    "1"
-    }
-    "primal_beast_rock_throw"
-    {
-        "bounce_travel_time"    "1"
-        "fragment_impact_distance"    "1"
-        "fragment_impact_radius"    "1"
-    }
-    "primal_beast_trample"
-    {
-        "step_distance"    "1"
-    }
-    "primal_beast_uproar"
-    {
-        "damage_max"    "1"
-        "damage_min"    "1"
-        "roared_bonus_attack_speed"    "1"
-        "should_dispell"    "1"
-    }
-    "pudge_dismember"
-    {
-        "abilitychanneltime"    "1"
-        "animation_rate"    "1"
-        "order_lock_duration"    "1"
-        "pull_distance_limit"    "1"
-        "pull_units_per_second"    "1"
-    }
-    "pudge_meat_hook"
-    {
-        "hook_distance"    "1"
-        "vector_target_distance"    "1"
-        "vision_duration"    "1"
-        "vision_radius"    "1"
-    }
-    "pudge_rot"
-    {
-        "rot_tick"    "1"
-    }
-    "pugna_decrepify"
-    {
-        "abilityduration"    "1"
-        "bonus_movement_speed_allies"    "1"
-    }
-    "pugna_life_drain"
-    {
-        "scepter_cooldown"    "1"
-        "tick_rate"    "1"
-    }
-    "pugna_nether_ward"
-    {
-        "mana_regen"    "1"
-        "spell_damage_reduction"    "1"
-    }
-    "queenofpain_scream_of_pain"
-    {
-        "projectile_speed"    "1"
-    }
-    "queenofpain_sonic_wave"
-    {
-        "starting_aoe"    "1"
-    }
-    "rattletrap_hookshot"
-    {
-        "cooldown_scepter"    "1"
-    }
-    "rattletrap_overclocking"
-    {
-        "bonus_movement_speed"    "1"
-        "buff_duration"    "1"
-        "rocket_flare_cooldown"    "1"
-        "rocket_flare_rockets"    "1"
-    }
-    "rattletrap_power_cogs"
-    {
-        "bonus_armor"    "1"
-        "extra_pull_buffer"    "1"
-        "leash"    "1"
-    }
-    "rattletrap_rocket_flare"
-    {
-        "AbilityCooldown"    "1"
-        "damage"    "1"
-    }
-    "razor_static_link"
-    {
-        "radius"    "1"
-        "vision_duration"    "1"
-        "vision_radiuss"    "1"
-    }
-    "riki_backstab"
-    {
-        "backstab_angle"    "1"
-    }
-    "riki_blink_strike"
-    {
-        "AbilityChargeRestoreTime"    "1"
-        "abilitycastrange"    "1"
-    }
-    "riki_smoke_screen"
-    {
-        "duration"    "1"
-    }
-    "riki_tricks_of_the_trade"
-    {
-        "AbilityChannelTime"    "1"
-        "damage_pct"    "1"
-        "dispel"    "1"
-        "scepter_cast_range"    "1"
-        "scepter_duration"    "1"
-    }
-    "rubick_telekinesis"
-    {
-        "fall_duration"    "1"
-        "shard_teammate_throw_delay"    "1"
-    }
-    "rubick_telekinesis_land"
-    {
-        "radius"    "1"
-    }
-    "rubick_telekinesis_land_self"
-    {
-        "radius"    "1"
-    }
-    "sandking_burrowstrike"
-    {
-        "burrow_anim_time"    "1"
-        "burrow_speed"    "1"
-        "burrow_speed_scepter"    "1"
-    }
-    "sandking_epicenter"
-    {
-        "epicenter_pulses"    "1"
-    }
-    "sandking_sand_storm"
-    {
-        "damage_tick_rate"    "1"
-        "fade_delay"    "1"
-    }
-    "shadow_demon_disruption"
-    {
-        "AbilityCharges"    "1"
-        "illusion_bounty_base"    "1"
-        "illusion_bounty_growth"    "1"
-    }
-    "shadow_demon_soul_catcher"
-    {
-        "illusion_incoming_damage"    "1"
-        "illusion_outgoing_damage"    "1"
-    }
-    "shadow_shaman_ether_shock"
-    {
-        "end_radius"    "1"
-        "start_radius"    "1"
-    }
-    "shadow_shaman_mass_serpent_ward"
-    {
-        "scepter_range"    "1"
-    }
-    "shadow_shaman_shackles"
-    {
-        "AbilityChannelTime"    "1"
-        "tick_interval"    "1"
-    }
-    "shredder_chakram"
-    {
-        "castpoint_scepter"    "1"
-        "damage_interval"    "1"
-    }
-    "shredder_chakram_2"
-    {
-        "castpoint_scepter"    "1"
-        "damage_interval"    "1"
-    }
-    "shredder_flamethrower"
-    {
-        "building_dmg_pct"    "1"
-    }
-    "shredder_timber_chain"
-    {
-        "chain_radius"    "1"
-    }
-    "shredder_whirling_death"
-    {
-        "whirling_tick"    "1"
-    }
-    "silencer_glaives_of_wisdom"
-    {
-        "AbilityDuration"    "1"
-    }
-    "silencer_last_word"
-    {
-        "scepter_bonus_damage"    "1"
-    }
-    "skeleton_king_vampiric_aura"
-    {
-        "gold_bounty"    "1"
-        "xp_bounty"    "1"
-    }
-    "skywrath_mage_arcane_bolt"
-    {
-        "bolt_vision"    "1"
-        "vision_duration"    "1"
-    }
-    "skywrath_mage_mystic_flare"
-    {
-        "damage_interval"    "1"
-    }
-    "skywrath_mage_shield_of_the_scion"
-    {
-        "stack_duration"    "1"
-    }
-    "slardar_amplify_damage"
-    {
-        "undispellable"    "1"
-    }
-    "slark_dark_pact"
-    {
-        "pulse_duration"    "1"
-        "pulse_interval"    "1"
-        "total_pulses"    "1"
-    }
-    "slark_pounce"
-    {
-        "pounce_acceleration"    "1"
-        "pounce_speed"    "1"
-    }
-    "slark_shadow_dance"
-    {
-        "activation_delay"    "1"
-        "fade_time"    "1"
-        "neutral_disable"    "1"
-    }
-    "snapfire_firesnap_cookie"
-    {
-        "jump_duration"    "1"
-        "jump_height"    "1"
-        "landing_gesture_duration"    "1"
-        "pre_hop_duration"    "1"
-        "pre_land_anim_time"    "1"
-        "self_cast_delay"    "1"
-        "target_heal"    "1"
-    }
-    "snapfire_mortimer_kisses"
-    {
-        "burn_interval"    "1"
-        "delay_after_last_projectile"    "1"
-        "dist_change_speed"    "1"
-        "max_lob_travel_time"    "1"
-        "min_lob_travel_time"    "1"
-        "projectile_count"    "1"
-        "projectile_speed"    "1"
-        "projectile_vision"    "1"
-        "projectile_width"    "1"
-        "turn_rate"    "1"
-    }
-    "snapfire_scatterblast"
-    {
-        "blast_speed"    "1"
-        "blast_width_end"    "1"
-        "blast_width_initial"    "1"
-        "point_blank_range"    "1"
-    }
-    "snapfire_spit_creep"
-    {
-        "burn_interval"    "1"
-        "dist_change_speed"    "1"
-        "max_acceleration"    "1"
-        "max_lob_travel_time"    "1"
-        "min_acceleration"    "1"
-        "min_height_above_highest"    "1"
-        "min_height_above_lowest"    "1"
-        "min_lob_travel_time"    "1"
-        "min_range"    "1"
-        "projectile_speed"    "1"
-        "projectile_vision"    "1"
-        "projectile_width"    "1"
-        "turn_rate"    "1"
-    }
-    "sniper_assassinate"
-    {
-        "abilitycastpoint"    "1"
-        "scatter_damage_pct"    "1"
-        "scatter_range"    "1"
-        "scatter_width"    "1"
-        "scepter_crit"    "1"
-    }
-    "sniper_shrapnel"
-    {
-        "AbilityCharges"    "1"
-    }
-    "spectre_haunt"
-    {
-        "attack_delay"    "1"
-    }
-    "spectre_haunt_single"
-    {
-        "attack_delay"    "1"
-    }
-    "spirit_breaker_charge_of_darkness"
-    {
-        "scepter_cast_point"    "1"
-        "scepter_speed"    "1"
-        "vision_duration"    "1"
-        "vision_radius"    "1"
-    }
-    "spirit_breaker_greater_bash"
-    {
-        "bonus_movespeed_pct"    "1"
-        "movespeed_duration"    "1"
-    }
-    "spirit_breaker_nether_strike"
-    {
-        "fade_time"    "1"
-        "shard_bonus_damage"    "1"
-        "shard_break_duration"    "1"
-        "shard_spell_immune_duration"    "1"
-    }
-    "storm_spirit_ball_lightning"
-    {
-        "ball_lightning_initial_mana_percentage"    "1"
-        "ball_lightning_travel_cost_base"    "1"
-        "ball_lightning_vision_radius"    "1"
-        "blocker_duration"    "1"
-    }
-    "storm_spirit_electric_vortex"
-    {
-        "abilityduration"    "1"
-    }
-    "sven_great_cleave"
-    {
-        "cleave_starting_width"    "1"
-    }
-    "sven_storm_bolt"
-    {
-        "vision_radius"    "1"
-    }
-    "techies_land_mines"
-    {
-        "AbilityChargeRestoreTime"    "1"
-        "cast_range_scepter_bonus"    "1"
-        "lifetime"    "1"
-    }
-    "techies_minefield_sign"
-    {
-        "aura_radius"    "1"
-        "lifetime"    "1"
-    }
-    "techies_sticky_bomb"
-    {
-        "acceleration"    "1"
-        "duration"    "1"
-        "pre_chase_time"    "1"
-        "secondary_slow_duration"    "1"
-        "speed"    "1"
-    }
-    "templar_assassin_psionic_trap"
-    {
-        "movement_speed_max"    "1"
-        "movement_speed_min"    "1"
-        "shard_bonus_vision"    "1"
-        "shard_max_silence_duration"    "1"
-        "shard_min_silence_duration"    "1"
-        "trap_bonus_damage"    "1"
-        "trap_duration"    "1"
-        "trap_max_charge_duration"    "1"
-        "trap_radius"    "1"
-    }
-    "templar_assassin_refraction"
-    {
-        "cast_while_disabled"    "1"
-    }
-    "templar_assassin_trap"
-    {
-        "shard_bonus_max_traps"    "1"
-        "trap_duration"    "1"
-    }
-    "templar_assassin_trap_teleport"
-    {
-        "movement_speed_max"    "1"
-        "movement_speed_min"    "1"
-        "trap_bonus_damage"    "1"
-        "trap_duration"    "1"
-        "trap_max_charge_duration"    "1"
-        "trap_radius"    "1"
-    }
-    "terrorblade_metamorphosis"
-    {
-        "speed_loss"    "1"
-    }
-    "terrorblade_reflection"
-    {
-        "illusion_outgoing_damage"    "1"
-    }
-    "tidehunter_anchor_smash"
-    {
-        "targets_buildings"    "1"
-    }
-    "tidehunter_arm_of_the_deep"
-    {
-        "duration_pct"    "1"
-    }
-    "tinker_heat_seeking_missile"
-    {
-        "radius_explosion"    "1"
-        "splash_pct"    "1"
-    }
-    "tinker_rearm"
-    {
-        "AbilityChannelTime"    "1"
-    }
-    "tiny_grow"
-    {
-        "attack_speed_reduction"    "1"
-    }
-    "tiny_toss"
-    {
-        "AbilityCharges"    "1"
-        "bonus_damage_pct"    "1"
-    }
-    "tiny_tree_channel"
-    {
-        "abilitychanneltime"    "1"
-        "bonus_damage"    "1"
-        "interval"    "1"
-        "range"    "1"
-    }
-    "tiny_tree_grab"
-    {
-        "bat_increase"    "1"
-        "speed_reduction"    "1"
-    }
-    "treant_eyes_in_the_forest"
-    {
-        "overgrowth_aoe"    "1"
-        "tree_respawn_seconds"    "1"
-        "vision_aoe"    "1"
-    }
-    "treant_leech_seed"
-    {
-        "projectile_speed"    "1"
-    }
-    "treant_natures_grasp"
-    {
-        "creation_interval"    "1"
-        "initial_latch_delay"    "1"
-        "latch_range"    "1"
-        "latch_vision"    "1"
-        "vine_spawn_interval"    "1"
-    }
-    "treant_natures_guise"
-    {
-        "shard_tree_movement_bonus_pct"    "1"
-    }
-    "treant_overgrowth"
-    {
-        "purgable"    "1"
-    }
-    "troll_warlord_battle_trance"
-    {
-        "scepter_duration_enemies"    "1"
-    }
-    "troll_warlord_berserkers_rage"
-    {
-        "bonus_hp"    "1"
-        "bonus_range"    "1"
-    }
-    "troll_warlord_whirling_axes_melee"
-    {
-        "max_range"    "1"
-    }
-    "tusk_ice_shards"
-    {
-        "shard_angle_step"    "1"
-        "shard_count"    "1"
-        "shard_distance"    "1"
-        "shard_width"    "1"
-        "turn_rate_slow"    "1"
-    }
-    "tusk_snowball"
-    {
-        "snowball_grow_rate"    "1"
-        "snowball_windup_radius"    "1"
-    }
-    "tusk_walrus_punch"
-    {
-        "push_length"    "1"
-    }
-    "undying_decay"
-    {
-        "str_scale_up"    "1"
-    }
-    "undying_tombstone"
-    {
-        "tombstone_health"    "1"
-    }
-    "ursa_earthshock"
-    {
-        "AbilityChargeRestoreTime"    "1"
-        "AbilityDuration"    "1"
-        "hop_duration"    "1"
-        "hop_height"    "1"
-    }
-    "ursa_enrage"
-    {
-        "cooldown_scepter"    "1"
-        "damage_reduction"    "1"
-        "duration"    "1"
-    }
-    "ursa_fury_swipes"
-    {
-        "stun_duration"    "1"
-    }
-    "vengefulspirit_nether_swap"
-    {
-        "damage_reduction"    "1"
-        "scepter_charge_reduction"    "1"
-        "scepter_radius"    "1"
-    }
-    "venomancer_poison_nova"
-    {
-        "aspd_slow"    "1"
-    }
-    "venomancer_venomous_gale"
-    {
-        "create_wards"    "1"
-        "shard_ward_count"    "1"
-    }
-    "viper_nethertoxin"
-    {
-        "projectile_speed"    "1"
-    }
-    "viper_poison_attack"
-    {
-        "bonus_range"    "1"
-    }
-    "viper_viper_strike"
-    {
-        "charge_restore_time"    "1"
-        "max_charges"    "1"
-    }
-    "visage_grave_chill"
-    {
-        "radius"    "1"
-    }
-    "visage_gravekeepers_cloak"
-    {
-        "max_damage_reduction"    "1"
-        "radius"    "1"
-    }
-    "void_spirit_aether_remnant"
-    {
-        "end_radius"    "1"
-        "projectile_speed"    "1"
-        "pull_destination"    "1"
-        "radius"    "1"
-        "remnant_watch_radius"    "1"
-        "start_radius"    "1"
-        "think_interval"    "1"
-        "watch_path_vision_radius"    "1"
-    }
-    "void_spirit_astral_step"
-    {
-        "AbilityChargeRestoreTime"    "1"
-        "AbilityCharges"    "1"
-        "ability_chance_pct"    "1"
-        "attack_chance_pct"    "1"
-        "min_travel_distance"    "1"
-    }
-    "void_spirit_dissimilate"
-    {
-        "destination_fx_radius"    "1"
-    }
-    "void_spirit_resonant_pulse"
-    {
-        "return_projectile_speed"    "1"
-        "speed"    "1"
-    }
-    "warlock_rain_of_chaos"
-    {
-        "bounty_reduction_scepter"    "1"
-        "hp_dmg_reduction_scepter"    "1"
-        "number_of_golems_scepter"    "1"
-    }
-    "weaver_geminate_attack"
-    {
-        "delay"    "1"
-    }
-    "weaver_shukuchi"
-    {
-        "AbilityCharges"    "1"
-    }
-    "wildcard"
-    {
-        "cooldown"    "1"
-        "interval"    "1"
-        "tooltip"    "1"
-    }
-    "windrunner_focusfire"
-    {
-        "focusfire_fire_on_the_move"    "1"
-    }
-    "windrunner_shackleshot"
-    {
-        "arrow_speed"    "1"
-        "shackle_angle"    "1"
-        "shackle_count"    "1"
-    }
-    "windrunner_windrun"
-    {
-        "duration"    "1"
-    }
-    "winter_wyvern_arctic_burn"
-    {
-        "tree_destruction_radius"    "1"
-    }
-    "winter_wyvern_splinter_blast"
-    {
-        "projectile_max_time"    "1"
-        "projectile_speed"    "1"
-        "secondary_projectile_speed"    "1"
-    }
-    "winter_wyvern_winters_curse"
-    {
-        "damage_amplification"    "1"
-        "early_out_timer"    "1"
-    }
-    "wisp_spirits"
-    {
-        "revolution_time"    "1"
-        "spirit_amount"    "1"
-        "spirit_duration"    "1"
-    }
-    "wisp_tether"
-    {
-        "latch_distance"    "1"
-        "radius"    "1"
-        "self_bonus"    "1"
-    }
-    "witch_doctor_death_ward"
-    {
-        "scepter_lifesteal"    "1"
-    }
-    "witch_doctor_maledict"
-    {
-        "abilityduration"    "1"
-        "bonus_damage_threshold"    "1"
-    }
-    "witch_doctor_paralyzing_cask"
-    {
-        "bounce_delay"    "1"
-    }
-    "witch_doctor_voodoo_restoration"
-    {
-        "enemy_damage_pct"    "1"
-        "heal_interval"    "1"
-    }
-    "zuus_cloud"
-    {
-        "cloud_duration"    "1"
-    }
-    "zuus_heavenly_jump"
-    {
-        "hop_duration"    "1"
-        "hop_height"    "1"
-    }
-    "zuus_lightning_bolt"
-    {
-        "sight_duration"    "1"
-    }
-    "zuus_static_field"
-    {
-        "damage_health_pct"    "1"
-    }
-    "zuus_thundergods_wrath"
-    {
-        "sight_duration"    "1"
-    }
-}
-
-"limitlist"
-{
-    "abaddon_borrowed_time"
-    {
-        "duration"
-        {
-            "max"    "250"
+  "blocklist" {
+    "all" {}
+    "wildcard" {}
+  }
+  "limitlist" {
+    "abaddon_borrowed_time" {
+      "duration" {
+        "max" "250"
+      }
+      "duration_scepter" {
+        "max" "250"
+      }
+    }
+    "abaddon_death_coil" {
+      "effect_radius" {
+        "max" "500"
+      }
+    }
+    "abaddon_font_of_avernus" {
+      "respawn_reduction" {
+        "max" "500"
+      }
+    }
+    "abyssal_underlord_atrophy_aura" {
+      "damage_reduction_pct" {
+        "max" "200"
+      }
+    }
+    "abyssal_underlord_dark_portal" {
+      "damage_reduction" {
+        "max" "300"
+      }
+    }
+    "abyssal_underlord_firestorm" {
+      "radius" {
+        "max" "200"
+      }
+    }
+    "alchemist_acid_spray" {
+      "radius" {
+        "max" "200"
+      }
+      "tick_rate" {
+        "min" "10"
+      }
+    }
+    "all" {
+      "item_blood_grenade" {
+        "min" "0"
+      }
+      "item_clarity" {
+        "min" "0"
+      }
+      "item_enchanted_mango" {
+        "min" "0"
+      }
+    }
+    "ancient_apparition_ice_blast" {
+      "kill_pct" {
+        "max" "200"
+      }
+    }
+    "ancient_apparition_ice_vortex" {
+      "radius" {
+        "max" "200"
+      }
+      "vortex_duration" {
+        "max" "200"
+      }
+    }
+    "antimage_counterspell" {
+      "duration" {
+        "max" "200"
+      }
+      "incoming_damage" {
+        "min" "4"
+      }
+      "magic_resistance" {
+        "max" "164"
+      }
+    }
+    "antimage_counterspell_ally" {
+      "duration" {
+        "max" "200"
+      }
+      "incoming_damage" {
+        "min" "20"
+      }
+    }
+    "antimage_mana_break" {
+      "mana_per_hit_pct" {
+        "max" "600"
+      }
+    }
+    "antimage_mana_overload" {
+      "illusion_incoming_damage" {
+        "min" "4"
+      }
+      "incoming_damage" {
+        "min" "20"
+      }
+    }
+    "arc_warden_spark_wraith" {
+      "base_activation_delay" {
+        "min" "0"
+      }
+    }
+    "axe_berserkers_call" {
+      "radius" {
+        "max" "150"
+      }
+    }
+    "axe_coat_of_blood" {
+      "armor_per_kill" {
+        "max" "200"
+      }
+    }
+    "bane_fiends_grip" {
+      "scepter_incoming_illusion_damage" {
+        "min" "4"
+      }
+    }
+    "batrider_firefly" {
+      "duration" {
+        "max" "200"
+      }
+    }
+    "batrider_flamebreak" {
+      "napalm_stacks" {
+        "max" "300"
+      }
+    }
+    "beastmaster_wild_axes" {
+      "max_throw_duration" {
+        "min" "0"
+      }
+      "min_throw_duration" {
+        "min" "0"
+      }
+    }
+    "bloodseeker_blood_mist" {
+      "radius" {
+        "max" "200"
+      }
+    }
+    "bloodseeker_thirst" {
+      "invis_threshold_pct" {
+        "max" "200"
+      }
+      "visibility_threshold_pct" {
+        "max" "200"
+      }
+    }
+    "bounty_hunter_wind_walk" {
+      "ally_fade_time" {
+        "min" "0"
+      }
+      "damage_reduction_pct" {
+        "max" "267"
+      }
+      "fade_time" {
+        "min" "0"
+      }
+    }
+    "bounty_hunter_wind_walk_ally" {
+      "fade_time" {
+        "min" "0"
+      }
+    }
+    "brewmaster_drunken_brawler" {
+      "bonus_status_resist" {
+        "max" "300"
+      }
+    }
+    "bristleback_quill_spray" {
+      "radius" {
+        "max" "200"
+      }
+    }
+    "centaur_rawhide" {
+      "upgrade_rate" {
+        "min" "9"
+      }
+    }
+    "chaos_knight_phantasm" {
+      "illusion_incoming_damage" {
+        "min" "4"
+      }
+      "incoming_damage" {
+        "min" "8"
+      }
+    }
+    "chaos_knight_phantasmagoria" {
+      "damage_reduction_pct" {
+        "max" "200"
+      }
+    }
+    "chaos_knight_reins_of_chaos" {
+      "bonus_illusion_count" {
+        "max" "300"
+      }
+    }
+    "chen_hand_of_god" {
+      "heal_amount" {
+        "max" "200"
+      }
+    }
+    "clinkz_bone_and_arrow" {
+      "attack_rate" {
+        "min" "50"
+      }
+    }
+    "clinkz_burning_army" {
+      "count" {
+        "max" "200"
+      }
+    }
+    "clinkz_wind_walk" {
+      "count" {
+        "max" "200"
+      }
+      "skeleton_count" {
+        "max" "200"
+      }
+    }
+    "crystal_maiden_crystal_nova" {
+      "radius" {
+        "max" "250"
+      }
+    }
+    "crystal_maiden_freezing_field" {
+      "explosion_max_dist" {
+        "max" "200"
+      }
+      "radius" {
+        "max" "200"
+      }
+    }
+    "death_prophet_mourning_ritual" {
+      "delay_pct" {
+        "max" "180"
+      }
+    }
+    "disruptor_electromagnetic_repulsion" {
+      "effect_radius" {
+        "max" "500"
+      }
+    }
+    "disruptor_kinetic_fence" {
+      "radius" {
+        "max" "200"
+      }
+      "wall_width" {
+        "max" "200"
+      }
+    }
+    "disruptor_static_storm" {
+      "duration" {
+        "max" "300"
+        "min" "300"
+      }
+    }
+    "doom_bringer_devour" {
+      "magic_resist" {
+        "max" "500"
+      }
+    }
+    "doom_bringer_doom" {
+      "upgrade_interval" {
+        "min" "10"
+      }
+    }
+    "doom_bringer_scorched_earth" {
+      "radius" {
+        "max" "150"
+      }
+    }
+    "earthshaker_aftershock" {
+      "aftershock_range" {
+        "max" "200"
+      }
+    }
+    "elder_titan_earth_splitter" {
+      "crack_width" {
+        "max" "300"
+      }
+    }
+    "enigma_black_hole" {
+      "AbilityChannelTime" {
+        "min" "4"
+      }
+      "scepter_drag_speed" {
+        "max" "300"
+      }
+    }
+    "enigma_gravity_well" {
+      "damage_reduction" {
+        "max" "500"
+      }
+    }
+    "enigma_midnight_pulse" {
+      "radius" {
+        "max" "200"
+      }
+    }
+    "faceless_void_chronosphere" {
+      "duration" {
+        "max" "300"
+      }
+    }
+    "faceless_void_distortion_field" {
+      "attack_projectile_slow" {
+        "max" "1000"
+      }
+      "radius" {
+        "max" "200"
+      }
+      "slow_distance_max" {
+        "max" "200"
+      }
+    }
+    "faceless_void_time_zone" {
+      "radius" {
+        "max" "200"
+      }
+    }
+    "furion_curse_of_the_forest" {
+      "range" {
+        "max" "300"
+      }
+    }
+    "furion_wrath_of_nature" {
+      "max_targets" {
+        "max" "150"
+      }
+    }
+    "generic_hidden" {
+      "duration" {
+        "max" "1"
+        "min" "1"
+      }
+    }
+    "grimstroke_dark_portrait" {
+      "images_take_damage_percent" {
+        "min" "20"
+      }
+    }
+    "gyrocopter_flak_cannon" {
+      "sidegunner_fire_rate" {
+        "min" -"2"
+      }
+      "sidegunner_radius" {
+        "max" "200"
+      }
+    }
+    "huskar_berserkers_blood" {
+      "hp_threshold_max" {
+        "max" "833"
+      }
+    }
+    "invoker_chaos_meteor" {
+      "travel_distance" {
+        "max" "200"
+      }
+      "travel_speed" {
+        "min" "33"
+      }
+    }
+    "invoker_forge_spirit" {
+      "spirit_count" {
+        "max" "500"
+      }
+    }
+    "invoker_tornado" {
+      "travel_speed" {
+        "min" "10"
+      }
+    }
+    "item_ghost" {
+      "extra_spell_damage_percent" {
+        "min" -"225"
+      }
+    }
+    "item_horrendous_halberd" {
+      "block_chance" {
+        "max" "1000"
+      }
+    }
+    "item_misericorde" {
+      "missing_hp" {
+        "min" "10"
+      }
+    }
+    "item_muertas_gun" {
+      "AbilityCastRange" {
+        "max" "200"
+        "min" "10"
+      }
+    }
+    "item_nemesis_curse" {
+      "debuff_self" {
+        "min" -"500"
+      }
+    }
+    "item_titan_sliver" {
+      "status_resistance" {
+        "max" "900"
+      }
+    }
+    "jakiro_dual_breath" {
+      "end_radius" {
+        "max" "1000"
+      }
+      "start_radius" {
+        "max" "1000"
+      }
+    }
+    "jakiro_macropyre" {
+      "path_width" {
+        "max" "350"
+      }
+    }
+    "keeper_of_the_light_illuminate" {
+      "speed" {
+        "min" "10"
+      }
+    }
+    "keeper_of_the_light_will_o_wisp" {
+      "radius" {
+        "max" "250"
+      }
+    }
+    "kez_kazurai_katana" {
+      "katana_attack_range" {
+        "max" "400"
+      }
+    }
+    "kez_raptor_dance" {
+      "max_health_damage_pct" {
+        "max" "500"
+      }
+      "radius" {
+        "max" "200"
+      }
+    }
+    "kez_shodo_sai" {
+      "sai_attack_range" {
+        "max" "400"
+      }
+    }
+    "kunkka_ghostship" {
+      "ghostship_absorb" {
+        "max" "200"
+      }
+    }
+    "kunkka_torrent_storm" {
+      "torrent_duration" {
+        "max" "420"
+      }
+      "torrent_max_distance" {
+        "max" "200"
+      }
+    }
+    "leshrac_defilement" {
+      "aoe_per_int" {
+        "max" "200"
+      }
+    }
+    "leshrac_diabolic_edict" {
+      "damage" {
+        "max" "300"
+      }
+      "num_explosions" {
+        "max" "200"
+      }
+      "radius" {
+        "max" "200"
+      }
+    }
+    "leshrac_greater_lightning_storm" {
+      "radius" {
+        "max" "200"
+      }
+    }
+    "leshrac_pulse_nova" {
+      "damage_resistance" {
+        "max" "400"
+      }
+      "radius" {
+        "max" "175"
+      }
+    }
+    "lich_death_charge" {
+      "radius" {
+        "max" "500"
+      }
+    }
+    "lich_frost_nova" {
+      "aoe_damage" {
+        "max" "3000"
+      }
+    }
+    "lich_frost_shield" {
+      "health_regen" {
+        "max" "300"
+      }
+    }
+    "lina_flame_cloak" {
+      "magic_resistance" {
+        "max" "250"
+      }
+    }
+    "luna_lunar_orbit" {
+      "rotating_glaives_damage_reduction" {
+        "max" "350"
+        "min" "0"
+      }
+    }
+    "luna_moon_glaive" {
+      "damage_reduction_percent" {
+        "max" "200"
+        "min" -"500"
+      }
+      "max" {
+        "max" "200"
+      }
+      "range" {
+        "max" "200"
+      }
+      "rotating_glaives_damage_reduction" {
+        "max" "200"
+      }
+    }
+    "magnataur_shockwave" {
+      "shock_speed" {
+        "min" "90"
+      }
+    }
+    "marci_unleash" {
+      "pulse_radius" {
+        "max" "200"
+      }
+      "recovery_fixed_attack_rate" {
+        "min" "0"
+      }
+    }
+    "mars_arena_of_blood" {
+      "radius" {
+        "max" "300"
+      }
+    }
+    "mars_spear" {
+      "spear_speed" {
+        "min" "100"
+      }
+    }
+    "medusa_gorgon_grasp" {
+      "radius" {
+        "max" "400"
+      }
+      "radius_grow" {
+        "max" "400"
+      }
+      "volley_count" {
+        "max" "300"
+      }
+    }
+    "medusa_mystic_snake" {
+      "radius" {
+        "max" "200"
+      }
+    }
+    "medusa_stone_gaze" {
+      "duration" {
+        "max" "500"
+      }
+      "stone_duration" {
+        "max" "1000"
+      }
+    }
+    "meepo_poof" {
+      "radius" {
+        "max" "200"
+      }
+    }
+    "mirana_arrow" {
+      "arrow_speed" {
+        "min" "10"
+      }
+    }
+    "monkey_king_wukongs_command" {
+      "num_first_soldiers" {
+        "max" "200"
+      }
+      "num_second_soldiers" {
+        "max" "200"
+      }
+    }
+    "morphling_hybrid" {
+      "illusion_damage_in_pct" {
+        "min" "4"
+      }
+    }
+    "morphling_morph_agi" {
+      "points_per_tick" {
+        "min" "1"
+      }
+    }
+    "morphling_morph_str" {
+      "points_per_tick" {
+        "min" "1"
+      }
+    }
+    "morphling_replicate" {
+      "scepter_illusion_incoming" {
+        "min" "4"
+      }
+    }
+    "muerta_gunslinger" {
+      "double_shot_chance" {
+        "max" "200"
+      }
+    }
+    "muerta_the_calling" {
+      "duration" {
+        "max" "300"
+      }
+      "num_revenants" {
+        "max" "250"
+      }
+    }
+    "naga_siren_mirror_image" {
+      "incoming_damage" {
+        "min" "4"
+      }
+    }
+    "naga_siren_song_of_the_siren" {
+      "duration" {
+        "max" "250"
+      }
+      "radius" {
+        "max" "200"
+      }
+    }
+    "necrolyte_heartstopper_aura" {
+      "aura_radius" {
+        "max" "200"
+      }
+      "heal_regen_to_damage" {
+        "max" "420"
+      }
+    }
+    "nevermore_requiem" {
+      "requiem_line_speed" {
+        "min" "15"
+      }
+    }
+    "nyx_assassin_burrow" {
+      "damage_reduction" {
+        "max" "200"
+      }
+    }
+    "nyx_assassin_innate_mana_burn" {
+      "mana_pct" {
+        "max" "250"
+      }
+    }
+    "nyx_assassin_spiked_carapace" {
+      "reflect_duration" {
+        "max" "250"
+      }
+    }
+    "omniknight_martyr" {
+      "duration" {
+        "max" "250"
+      }
+    }
+    "omniknight_purification" {
+      "recast_delay" {
+        "min" "50"
+      }
+      "recast_effectiveness_pct" {
+        "max" "200"
+      }
+    }
+    "omniknight_repel" {
+      "status_resistance" {
+        "max" "175"
+      }
+    }
+    "oracle_rain_of_destiny" {
+      "radius" {
+        "max" "200"
+      }
+    }
+    "pangolier_swashbuckle" {
+      "range" {
+        "max" "200"
+      }
+    }
+    "phantom_assassin_blur" {
+      "radius" {
+        "min" "40"
+      }
+    }
+    "phantom_lancer_doppelwalk" {
+      "hp_missing_per_extra_illusion_pct" {
+        "min" "35"
+      }
+      "illusion_"2"_damage_in_pct" {
+        "min" "4"
+      }
+    }
+    "phantom_lancer_juxtapose" {
+      "illusion_damage_in_pct" {
+        "min" "4"
+      }
+      "max_illusions" {
+        "max" "200"
+      }
+    }
+    "phantom_lancer_spirit_lance" {
+      "illusion_damage_in_pct" {
+        "min" "4"
+      }
+    }
+    "phoenix_supernova" {
+      "aura_radius" {
+        "max" "200"
+      }
+    }
+    "primal_beast_pulverize" {
+      "splash_radius" {
+        "max" "200"
+      }
+    }
+    "primal_beast_trample" {
+      "bonus_magic_resistance" {
+        "max" "350"
+      }
+    }
+    "primal_beast_uproar" {
+      "radius" {
+        "max" "200"
+      }
+      "split_delay" {
+        "min" "20"
+      }
+    }
+    "puck_illusory_orb" {
+      "orb_speed" {
+        "min" "20"
+      }
+    }
+    "puck_waning_rift" {
+      "radius" {
+        "max" "200"
+      }
+    }
+    "pugna_nether_ward" {
+      "AbilityDuration" {
+        "max" "200"
+      }
+      "attacks_to_destroy" {
+        "max" "500"
+      }
+    }
+    "queenofpain_scream_of_pain" {
+      "area_of_effect" {
+        "max" "300"
+      }
+    }
+    "rattletrap_battery_assault" {
+      "interval" {
+        "min" "15"
+      }
+    }
+    "rattletrap_rocket_flare" {
+      "projectile_vision_radius" {
+        "max" "500"
+      }
+    }
+    "razor_dynamo" {
+      "spell_amp_damage_divisor" {
+        "min" "50"
+      }
+      "spell_amp_mult" {
+        "min" "0"
+      }
+    }
+    "razor_eye_of_the_storm" {
+      "radius" {
+        "max" "200"
+      }
+    }
+    "riki_backstab" {
+      "damage_multiplier" {
+        "max" "500"
+      }
+    }
+    "riki_smoke_screen" {
+      "AbilityDuration" {
+        "max" "150"
+      }
+      "radius" {
+        "max" "250"
+      }
+    }
+    "ringmaster_impalement" {
+      "dagger_speed" {
+        "min" "10"
+      }
+    }
+    "sandking_sand_storm" {
+      "sand_storm_radius" {
+        "max" "200"
+      }
+    }
+    "shadow_demon_disruption" {
+      "illusion_incoming_damage" {
+        "min" "4"
+      }
+    }
+    "shadow_demon_disseminate" {
+      "health_lost" {
+        "max" "300"
+      }
+    }
+    "shadow_demon_soul_catcher" {
+      "illusion_incoming_damage" {
+        "min" "4"
+      }
+    }
+    "shadow_shaman_mass_serpent_ward" {
+      "ward_count" {
+        "max" "200"
+      }
+    }
+    "shadow_shaman_shackles" {
+      "shard_ward_count" {
+        "max" "200"
+      }
+    }
+    "shadow_shaman_voodoo" {
+      "ally_chicken_images_count" {
+        "max" "500"
+      }
+    }
+    "shredder_flamethrower" {
+      "length" {
+        "max" "200"
+      }
+    }
+    "silencer_curse_of_the_silent" {
+      "damage" {
+        "max" "600"
+      }
+    }
+    "silencer_glaives_of_wisdom" {
+      "int_steal_duration" {
+        "max" "150"
+      }
+    }
+    "skeleton_king_reincarnation" {
+      "scepter_duration" {
+        "max" "420"
+      }
+    }
+    "slardar_seaborn_sentinel" {
+      "puddle_status_resistance" {
+        "max" "200"
+      }
+    }
+    "slardar_sprint" {
+      "puddle_status_resistance" {
+        "max" "225"
+      }
+    }
+    "snapfire_lil_shredder" {
+      "buffed_attacks" {
+        "max" "300"
+      }
+    }
+    "sniper_keen_scope" {
+      "bonus_range" {
+        "max" "150"
+      }
+    }
+    "sniper_shrapnel" {
+      "duration" {
+        "max" "400"
+      }
+      "radius" {
+        "max" "250"
+      }
+    }
+    "spectre_dispersion" {
+      "activation_duration" {
+        "max" "200"
+      }
+      "damage_reflection_pct" {
+        "max" "350"
+      }
+    }
+    "spectre_haunt" {
+      "illusion_damage_incoming" {
+        "min" "4"
+      }
+    }
+    "spectre_haunt_single" {
+      "illusion_damage_incoming" {
+        "min" "4"
+      }
+    }
+    "spirit_breaker_bulldoze" {
+      "status_resistance" {
+        "max" "138"
+      }
+    }
+    "storm_spirit_electric_vortex" {
+      "AbilityDuration" {
+        "max" "500"
+      }
+      "electric_vortex_pull_distance" {
+        "max" "300"
+      }
+    }
+    "techies_land_mines" {
+      "activation_delay" {
+        "min" "0"
+      }
+      "outer_damage" {
+        "max" "250"
+      }
+    }
+    "templar_assassin_psi_blades" {
+      "bonus_attack_range" {
+        "max" "400"
+      }
+    }
+    "terrorblade_conjure_image" {
+      "illusion_duration" {
+        "max" "300"
+      }
+      "illusion_incoming_damage" {
+        "min" "4"
+      }
+    }
+    "terrorblade_metamorphosis" {
+      "base_attack_time" {
+        "min" "0"
+      }
+    }
+    "tinker_laser" {
+      "laser_damage" {
+        "max" "800"
+      }
+    }
+    "tinker_march_of_the_machines" {
+      "machines_per_sec" {
+        "max" "250"
+      }
+      "radius" {
+        "max" "150"
+      }
+    }
+    "tiny_avalanche" {
+      "radius" {
+        "max" "200"
+      }
+      "tick_count" {
+        "min" "25"
+      }
+      "total_duration" {
+        "max" "400"
+      }
+    }
+    "treant_leech_seed" {
+      "duration" {
+        "max" "250"
+      }
+      "radius" {
+        "max" "250"
+      }
+    }
+    "troll_warlord_battle_trance" {
+      "trance_duration" {
+        "max" "420"
+      }
+    }
+    "troll_warlord_berserkers_rage" {
+      "base_attack_time" {
+        "min" "0"
+      }
+    }
+    "tusk_ice_shards" {
+      "shard_duration" {
+        "max" "300"
+      }
+    }
+    "undying_tombstone" {
+      "duration" {
+        "max" "200"
+      }
+      "radius" {
+        "max" "200"
+      }
+    }
+    "ursa_enrage" {
+      "damage_reduction" {
+        "max" "125"
+      }
+      "status_resistance" {
+        "max" "129"
+      }
+    }
+    "vengefulspirit_command_aura" {
+      "illusion_damage_in_pct" {
+        "min" "4"
+      }
+      "scepter_illusion_damage_in_pct" {
+        "min" "20"
+      }
+    }
+    "vengefulspirit_nether_swap" {
+      "damage_reduction" {
+        "max" "180"
+      }
+    }
+    "venomancer_plague_ward" {
+      "max_charges" {
+        "max" "300"
+      }
+      "ward_model_scale" {
+        "max" "300"
+        "min" "20"
+      }
+    }
+    "venomancer_venomous_gale" {
+      "create_wards" {
+        "max" "200"
+      }
+    }
+    "viper_corrosive_skin" {
+      "bonus_magic_resistance" {
+        "max" "320"
+      }
+    }
+    "viper_nethertoxin" {
+      "max_duration" {
+        "max" "400"
+      }
+    }
+    "visage_lurker" {
+      "cooldown_speed_per_stack" {
+        "max" "400"
+      }
+    }
+    "warlock_upheaval" {
+      "AbilityChannelTime" {
+        "min" "4"
+      }
+    }
+    "wildcard" {
+      "AbilityChannelTime" {
+        "min" "1"
+      }
+      "aoe" {
+        "max" "300"
+      }
+      "area_of_effect" {
+        "max" "300"
+      }
+      "base_attack_time" {
+        "min" "0"
+      }
+      "illusion_damage_in" {
+        "min" "20"
+      }
+      "incoming_damage" {
+        "min" "20"
+      }
+      "linger_duration" {
+        "max" "420"
+      }
+      "radius" {
+        "max" "300"
+      }
+    }
+    "windrunner_windrun" {
+      "physical_damage_pct" {
+        "max" "200"
+      }
+    }
+    "winter_wyvern_dragon_sight" {
+      "attack_range_per_damage" {
+        "min" "1"
+      }
+    }
+    "wisp_overcharge" {
+      "bonus_mres" {
+        "max" "300"
+      }
+    }
+    "wisp_relocate" {
+      "cast_delay" {
+        "min" "0"
+      }
+    }
+    "wisp_spirits" {
+      "max_range" {
+        "max" "300"
+      }
+    }
+    "witch_doctor_maledict" {
+      "bonus_damage" {
+        "max" "1000"
+      }
+    }
+    "witch_doctor_voodoo_restoration" {
+      "radius" {
+        "max" "200"
+      }
+    }
+    "zuus_lightning_bolt" {
+      "ministun_duration" {
+        "max" "250"
+      }
+    }
+    "zuus_thundergods_wrath" {
+      "damage" {
+        "max" "200"
+      }
+      "damage_pct" {
+        "max" "300"
+      }
+    }
+  }
+  "linklist" {
+    "abaddon_borrowed_time" {
+      "duration" {
+        "abaddon_borrowed_time" {
+          "duration_scepter" "1"
         }
-        "duration_scepter"
-        {
-            "max"    "250"
+      }
+    }
+    "abaddon_frostmourne" {
+      "curse_duration" {
+        "abaddon_frostmourne" {
+          "slow_duration" "1"
         }
+      }
     }
-    "abyssal_underlord_atrophy_aura"
-    {
-        "damage_reduction_pct"
-        {
-            "max"    "200"
+    "alchemist_unstable_concoction" {
+      "brew_explosion" {
+        "alchemist_unstable_concoction_throw" {
+          "brew_explosion" "1"
         }
-    }
-    "abyssal_underlord_dark_portal"
-    {
-        "damage_reduction"
-        {
-            "max"    "300"
+      }
+      "brew_time" {
+        "alchemist_unstable_concoction_throw" {
+          "brew_time" "1"
         }
-    }
-    "bloodseeker_thirst"
-    {
-        "invis_threshold_pct"
-        {
-            "max"    "200"
+      }
+      "max_damage" {
+        "alchemist_unstable_concoction" {
+          "min_damage" "1"
         }
-        "visibility_threshold_pct"
-        {
-            "max"    "200"
+        "alchemist_unstable_concoction_throw" {
+          "max_damage" "1"
+          "min_damage" "1"
         }
-    }
-    "bounty_hunter_wind_walk"
-    {
-        "damage_reduction_pct"
-        {
-            "max"    "300"
+      }
+      "max_stun" {
+        "alchemist_unstable_concoction" {
+          "min_stun" "1"
         }
-    }
-    "faceless_void_chronosphere"
-    {
-        "duration"
-        {
-            "max"    "300"
+        "alchemist_unstable_concoction_throw" {
+          "max_stun" "1"
+          "min_stun" "1"
         }
-    }
-    "generic_hidden"
-    {
-        "duration"
-        {
-            "max"    "1"
-            "min"    "1"
+      }
+      "radius" {
+        "alchemist_unstable_concoction_throw" {
+          "midair_explosion_radius" "1"
         }
+      }
     }
-    "item_horrendous_halberd"
-    {
-        "block_chance"
-        {
-            "max"    "1000"
+    "ancient_apparition_ice_blast" {
+      "radius_max" {
+        "ancient_apparition_ice_blast" {
+          "radius_min" "1"
         }
+      }
     }
-    "item_misericorde"
-    {
-        "missing_hp"
-        {
-            "min"    "10"
+    "antimage_mana_overload" {
+      "duration" {
+        "antimage_counterspell" {
+          "duration_illusion" "1"
         }
-    }
-    "item_muertas_gun"
-    {
-        "AbilityCastRange"
-        {
-            "max"    "200"
-            "min"    "10"
+        "antimage_counterspell_ally" {
+          "duration_illusion" "1"
         }
-    }
-    "item_titan_sliver"
-    {
-        "status_resistance"
-        {
-            "max"    "900"
+      }
+      "incoming_damage" {
+        "antimage_counterspell" {
+          "incoming_damage" "1"
         }
-    }
-    "kunkka_ghostship"
-    {
-        "ghostship_absorb"
-        {
-            "max"    "200"
+        "antimage_counterspell_ally" {
+          "incoming_damage" "1"
         }
-    }
-    "kunkka_torrent_storm"
-    {
-        "torrent_duration"
-        {
-            "max"    "420"
+      }
+      "outgoing_damage" {
+        "antimage_counterspell" {
+          "outgoing_damage" "1"
         }
-    }
-    "leshrac_pulse_nova"
-    {
-        "damage_resistance"
-        {
-            "max"    "300"
+        "antimage_counterspell_ally" {
+          "outgoing_damage" "1"
         }
+      }
     }
-    "luna_moon_glaive"
-    {
-        "rotating_glaives_damage_reduction"
-        {
-            "max"    "400"
+    "arc_warden_flux" {
+      "damage_per_second" {
+        "arc_warden_flux" {
+          "tempest_damage_per_second" "1"
         }
-    }
-    "medusa_stone_gaze"
-    {
-        "duration"
-        {
-            "max"    "500"
+      }
+      "move_speed_slow_pct" {
+        "arc_warden_flux" {
+          "tempest_move_speed_slow_pct" "1"
         }
-        "stone_duration"
-        {
-            "max"    "1000"
+      }
+    }
+    "arc_warden_magnetic_field" {
+      "duration" {
+        "arc_warden_magnetic_field" {
+          "tempest_duration" "1"
         }
+      }
     }
-    "muerta_the_calling"
-    {
-        "duration"
-        {
-            "max"    "300"
+    "arc_warden_spark_wraith" {
+      "base_activation_delay" {
+        "arc_warden_spark_wraith" {
+          "scepter_activation_delay" "1"
+          "tempest_activation_delay" "1"
         }
-        "num_revenants"
-        {
-            "max"    "250"
+      }
+      "duration" {
+        "arc_warden_spark_wraith" {
+          "scepter_duration" "1"
         }
-    }
-    "naga_siren_song_of_the_siren"
-    {
-        "duration"
-        {
-            "max"    "420"
+      }
+      "ministun_duration" {
+        "arc_warden_spark_wraith" {
+          "ministun_duration_tempest" "1"
         }
-    }
-    "necrolyte_heartstopper_aura"
-    {
-        "heal_regen_to_damage"
-        {
-            "max"    "420"
+      }
+      "radius" {
+        "arc_warden_spark_wraith" {
+          "scepter_radius" "1"
         }
-    }
-    "nyx_assassin_burrow"
-    {
-        "damage_reduction"
-        {
-            "max"    "200"
+      }
+      "spark_damage_base" {
+        "arc_warden_spark_wraith" {
+          "spark_damage_tempest" "1"
         }
-    }
-    "skeleton_king_reincarnation"
-    {
-        "scepter_duration"
-        {
-            "max"    "420"
+      }
+      "wraith_speed_base" {
+        "arc_warden_spark_wraith" {
+          "wraith_speed_tempest" "1"
         }
+      }
     }
-    "slardar_sprint"
-    {
-        "puddle_status_resistance"
-        {
-            "max"    "225"
+    "batrider_flamebreak" {
+      "knockback_distance" {
+        "batrider_flamebreak" {
+          "knockback_height" "1"
         }
+      }
     }
-    "spectre_dispersion"
-    {
-        "activation_duration"
-        {
-            "max"    "200"
+    "batrider_flaming_lasso" {
+      "drag_distance" {
+        "batrider_flaming_lasso" {
+          "break_distance" "1"
         }
+      }
     }
-    "spirit_breaker_bulldoze"
-    {
-        "status_resistance"
-        {
-            "max"    "138"
+    "beastmaster_call_of_the_wild_boar" {
+      "boar_base_damage" {
+        "beastmaster_call_of_the_wild_boar" {
+          "boar_total_damage_tooltip" "1"
         }
+      }
     }
-    "tiny_avalanche"
-    {
-        "tick_count"
-        {
-            "min"    "25"
+    "beastmaster_call_of_the_wild_hawk" {
+      "max_move_speed" {
+        "beastmaster_call_of_the_wild_hawk" {
+          "min_move_speed" "1"
         }
+      }
     }
-    "troll_warlord_battle_trance"
-    {
-        "trance_duration"
-        {
-            "max"    "420"
+    "beastmaster_primal_roar" {
+      "duration" {
+        "beastmaster_primal_roar" {
+          "movement_speed_duration" "1"
+          "push_duration" "1"
+          "slow_duration" "1"
         }
+      }
     }
-    "vengefulspirit_nether_swap"
-    {
-        "damage_reduction"
-        {
-            "max"    "180"
+    "big_thunder_lizard_slam" {
+      "hero_duration" {
+        "big_thunder_lizard_slam" {
+          "non_hero_duration" "1"
         }
+      }
     }
-    "wildcard"
-    {
-        "linger_duration"
-        {
-            "max"    "420"
+    "centaur_khan_war_stomp" {
+      "hero_stun_duration" {
+        "centaur_khan_war_stomp" {
+          "non_hero_stun_duration" "1"
         }
+      }
     }
-    "zuus_thundergods_wrath"
-    {
-        "damage_pct"
-        {
-            "max"    "300"
+    "chen_holy_persuasion" {
+      "bonus_health_per_level" {
+        "chen_summon_convert" {
+          "bonus_health_per_level" "1"
         }
-    }
-}
-
-"nerflist"
-{
-    "abyssal_underlord_atrophy_aura"
-    {
-        "ensnare_duration"    "0.5"
-    }
-    "abyssal_underlord_firestorm"
-    {
-        "burn_damage"    "0.25"
-    }
-    "all"
-    {
-        "area_of_effect"    "0.2"
-        "attack_range_bonus"    "0.2"
-        "bonus_attack_range"    "0.2"
-        "interval"    "0.2"
-        "radius"    "0.2"
-        "sight_radius_day"    "0.2"
-        "sight_radius_night"    "0.2"
-        "splash_radius"    "0.2"
-        "think_interval"    "0.2"
-        "think_rate"    "0.2"
-        "tick_interval"    "0.2"
-        "tick_rate"    "0.2"
-        "travel_distance"    "0.2"
-        "true_sight_radius"    "0.2"
-    }
-    "ancient_apparition_ice_blast"
-    {
-        "kill_pct"    "0.4000000059604645"
-    }
-    "ancient_apparition_ice_vortex"
-    {
-        "vision_aoe"    "0.2"
-    }
-    "batrider_firefly"
-    {
-        "bonus_vision"    "0.2"
-        "tick_interval"    "0.1"
-    }
-    "bloodseeker_thirst"
-    {
-        "invis_threshold_pct"    "0.2"
-    }
-    "bristleback_bristleback"
-    {
-        "back_damage_reduction"    "0.1"
-        "quill_release_threshold"    "0.2"
-        "side_damage_reduction"    "0.1"
-    }
-    "crystal_maiden_freezing_field"
-    {
-        "explosion_max_dist"    "0.2"
-        "explosion_min_dist"    "0.2"
-    }
-    "dark_willow_bedlam"
-    {
-        "attack_interval"    "0.2"
-        "roaming_seconds_per_rotation"    "0.2"
-    }
-    "dazzle_shallow_grave"
-    {
-        "duration"    "0.1"
-    }
-    "drow_ranger_wave_of_silence"
-    {
-        "wave_length"    "0.4000000059604645"
-        "wave_width"    "0.2"
-    }
-    "earth_spirit_magnetize"
-    {
-        "damage_interval"    "0.2"
-    }
-    "earthshaker_aftershock"
-    {
-        "aftershock_range"    "0.2"
-    }
-    "enigma_midnight_pulse"
-    {
-        "damage_percent"    "0.25"
-    }
-    "faceless_void_chronosphere"
-    {
-        "duration"    "0.5"
-    }
-    "fiend_grip_tick_interval"
-    {
-        "kill_pct"    "0.1"
-    }
-    "furion_curse_of_the_forest"
-    {
-        "range"    "0.2"
-    }
-    "furion_wrath_of_nature"
-    {
-        "damage_percent_add"    "0.2"
-    }
-    "generic_hidden"
-    {
-        "duration"    "1"
-    }
-    "grimstroke_ink_creature"
-    {
-        "destroy_attacks"    "0.2"
-    }
-    "hoodwink_acorn_shot"
-    {
-        "bounce_range"    "0.2"
-    }
-    "hoodwink_sharpshooter"
-    {
-        "arrow_width"    "0.2"
-    }
-    "invoker_forge_spirit"
-    {
-        "spirit_attack_range"    "0.2"
-    }
-    "invoker_sun_strike"
-    {
-        "cataclysm_count"    "0.25"
-    }
-    "item_helm_of_the_undying"
-    {
-        "duration"    "0.3"
-    }
-    "jakiro_macropyre"
-    {
-        "linger_duration"    "0.2"
-    }
-    "juggernaut_blade_fury"
-    {
-        "shard_attack_rate"    "0.2"
-    }
-    "keeper_of_the_light_will_o_wisp"
-    {
-        "hit_count"    "0.2"
-    }
-    "kunkka_ghostship"
-    {
-        "ghostship_absorb"    "0.1"
-        "ghostship_distance"    "0.2"
-        "ghostship_width"    "0.2"
-    }
-    "leshrac_split_earth"
-    {
-        "shard_secondary_delay"    "0.2"
-    }
-    "lich_chain_frost"
-    {
-        "jump_range"    "0.2"
-    }
-    "lich_frost_shield"
-    {
-        "interval"    "0.2"
-    }
-    "lich_sinister_gaze"
-    {
-        "aoe_scepter"    "0.2"
-        "cast_range"    "0.2"
-    }
-    "life_stealer_infest"
-    {
-        "attack_rate"    "0.2"
-    }
-    "life_stealer_open_wounds"
-    {
-        "max_health_as_damage_pct"    "0.2"
-    }
-    "life_stealer_rage"
-    {
-        "AbilityDuration"    "0.2"
-    }
-    "lina_dragon_slave"
-    {
-        "dragon_slave_width_end"    "0.2"
-        "dragon_slave_width_initial"    "0.2"
-    }
-    "lina_laguna_blade"
-    {
-        "scepter_width"    "0.2"
-    }
-    "lina_light_strike_array"
-    {
-        "light_strike_array_aoe"    "0.2"
-        "light_strike_array_delay_time"    "0.1"
-    }
-    "lion_impale"
-    {
-        "width"    "0.2"
-    }
-    "luna_moon_glaive"
-    {
-        "range"    "0.2"
-    }
-    "magnataur_shockwave"
-    {
-        "scepter_range"    "0.2"
-        "scepter_width"    "0.2"
-        "shock_width"    "0.2"
-    }
-    "mars_arena_of_blood"
-    {
-        "spear_attack_interval"    "0.2"
-    }
-    "mars_bulwark"
-    {
-        "physical_damage_reduction"    "0.1"
-        "physical_damage_reduction_side"    "0.1"
-    }
-    "mars_spear"
-    {
-        "spear_width"    "0.2"
-    }
-    "monkey_king_wukongs_command"
-    {
-        "scepter_spawn_duration"    "0.2"
-        "scepter_spawn_interval"    "0.2"
-    }
-    "morphling_waveform"
-    {
-        "width"    "0.2"
-    }
-    "nevermore_necromastery"
-    {
-        "necromastery_max_souls"    "0.2"
-        "necromastery_max_souls_scepter"    "0.2"
-    }
-    "nyx_assassin_burrow"
-    {
-        "damage_reduction"    "0.2"
-    }
-    "ogre_magi_bloodlust"
-    {
-        "multicast_bloodlust_aoe"    "0.5"
-    }
-    "ogre_magi_ignite"
-    {
-        "ignite_multicast_aoe"    "0.2"
-    }
-    "ogre_magi_smash"
-    {
-        "multicast_fireshield_aoe"    "0.5"
-    }
-    "oracle_false_promise"
-    {
-        "duration"    "0.2"
-    }
-    "phantom_assassin_fan_of_knives"
-    {
-        "pct_health_damage_initial"    "0.2"
-    }
-    "puck_illusory_orb"
-    {
-        "orb_vision"    "0.2"
-    }
-    "puck_phase_shift"
-    {
-        "shard_attack_range_bonus"    "0.5"
-    }
-    "pugna_nether_blast"
-    {
-        "structure_damage_mod"    "0.2"
-    }
-    "pugna_nether_ward"
-    {
-        "shard_ward_bonus_cast_range"    "0.2"
-    }
-    "queenofpain_blink"
-    {
-        "shard_aoe"    "0.2"
-        "shard_duration"    "0.2"
-    }
-    "queenofpain_scream_of_pain"
-    {
-        "area_of_effect"    "0.2"
-    }
-    "queenofpain_shadow_strike"
-    {
-        "damage_interval"    "0.2"
-    }
-    "queenofpain_sonic_wave"
-    {
-        "distance"    "0.2"
-        "final_aoe"    "0.2"
-    }
-    "rattletrap_overclocking"
-    {
-        "rocket_flare_rockets"    "0.2"
-    }
-    "razor_eye_of_the_storm"
-    {
-        "strike_interval"    "0.2"
-    }
-    "rubick_arcane_supremacy"
-    {
-        "cast_range"    "0.25"
-    }
-    "rubick_telekinesis"
-    {
-        "max_land_distance"    "0.2"
-        "shard_max_land_distance_bonus_pct"    "0.2"
-    }
-    "sandking_epicenter"
-    {
-        "epicenter_radius"    "0.2"
-        "shard_radius"    "0.2"
-    }
-    "sandking_sand_storm"
-    {
-        "sand_storm_radius"    "0.2"
-    }
-    "shadow_demon_disseminate"
-    {
-        "damage_reflection_pct"    "0.2"
-    }
-    "shadow_demon_shadow_poison"
-    {
-        "radius"    "0.2"
-    }
-    "shadow_shaman_ether_shock"
-    {
-        "end_distance"    "0.2"
-    }
-    "shadow_shaman_mass_serpent_ward"
-    {
-        "ward_count"    "0.5"
-    }
-    "shadow_shaman_shackles"
-    {
-        "shard_ward_count"    "0.5"
-        "shard_ward_spawn_distance"    "0.2"
-    }
-    "silencer_glaives_of_wisdom"
-    {
-        "permanent_int_steal_range"    "0.2"
-        "shard_range"    "0.2"
-    }
-    "skywrath_mage_arcane_bolt"
-    {
-        "scepter_radius"    "0.2"
-    }
-    "skywrath_mage_concussive_shot"
-    {
-        "shot_vision"    "0.2"
-    }
-    "slark_shadow_dance"
-    {
-        "duration"    "0.2"
-    }
-    "spectre_dispersion"
-    {
-        "damage_reflection_pct"    "0.1"
-    }
-    "spirit_breaker_charge_of_darkness"
-    {
-        "movement_speed"    "0.5"
-    }
-    "storm_spirit_ball_lightning"
-    {
-        "ball_lightning_aoe"    "0.2"
-        "ball_lightning_move_speed"    "0.2"
-        "scepter_remnant_interval"    "0.2"
-    }
-    "storm_spirit_electric_vortex"
-    {
-        "electric_vortex_pull_tether_range"    "0.2"
-    }
-    "storm_spirit_overload"
-    {
-        "overload_aoe"    "0.2"
-    }
-    "techies_land_mines"
-    {
-        "building_damage_pct"    "0.25"
-        "mres_reduction"    "0.25"
-    }
-    "terrorblade_reflection"
-    {
-        "range"    "0.2"
-    }
-    "tidehunter_arm_of_the_deep"
-    {
-        "damage_pct"    "0.2"
-        "range_pct"    "0.2"
-    }
-    "tidehunter_kraken_shell"
-    {
-        "damage_cleanse"    "0.2"
-    }
-    "treant_leech_seed"
-    {
-        "damage_interval"    "0.2"
-    }
-    "troll_warlord_whirling_axes_melee"
-    {
-        "hit_radius"    "0.2"
-    }
-    "troll_warlord_whirling_axes_ranged"
-    {
-        "axe_range"    "0.2"
-        "axe_width"    "0.2"
-    }
-    "undying_tombstone"
-    {
-        "zombie_interval"    "0.2"
-    }
-    "ursa_earthshock"
-    {
-        "shard_enrage_duration"    "0.1"
-    }
-    "ursa_enrage"
-    {
-        "status_resistance"    "0.25"
-    }
-    "vengefulspirit_wave_of_terror"
-    {
-        "vision_aoe"    "0.2"
-        "wave_width"    "0.2"
-    }
-    "viper_corrosive_skin"
-    {
-        "effect_multiplier"    "0.1"
-    }
-    "viper_poison_attack"
-    {
-        "shard_building_dmg_pct"    "0.25"
-    }
-    "void_spirit_astral_step"
-    {
-        "max_travel_distance"    "0.2"
-    }
-    "warlock_fatal_bonds"
-    {
-        "shard_aoe"    "0.2"
-        "tick_interval"    "0.2"
-    }
-    "warlock_rain_of_chaos"
-    {
-        "aoe"    "0.2"
-    }
-    "warlock_upheaval"
-    {
-        "aoe"    "0.2"
-        "tick_interval"    "0.2"
-    }
-    "warpine_raider_seed_shot"
-    {
-        "bounce_range"    "0.2"
-    }
-    "weaver_the_swarm"
-    {
-        "attack_rate"    "0.1"
-        "destroy_attacks"    "0.2"
-    }
-    "wildcard"
-    {
-        "_aoe"    "0.2"
-        "distance"    "0.2"
-        "radius"    "0.2"
-        "range"    "0.2"
-    }
-    "windrunner_powershot"
-    {
-        "arrow_range"    "0.2"
-    }
-    "winter_wyvern_arctic_burn"
-    {
-        "attack_point"    "0.2"
-        "night_vision_bonus"    "0.2"
-    }
-    "winter_wyvern_cold_embrace"
-    {
-        "shard_splinter_range"    "0.2"
-    }
-    "witch_doctor_paralyzing_cask"
-    {
-        "bounce_range"    "0.2"
-    }
-    "zuus_arc_lightning"
-    {
-        "damage_health_pct"    "0.25"
-    }
-    "zuus_cloud"
-    {
-        "cloud_bolt_interval"    "0.2"
-    }
-    "zuus_heavenly_jump"
-    {
-        "range"    "0.2"
-    }
-    "zuus_lightning_bolt"
-    {
-        "spread_aoe"    "0.2"
-    }
-    "zuus_thundergods_wrath"
-    {
-        "damage"    "0.3"
-    }
-}
-"linklist"
-{
-    "faceless_void_time_walk"
-    {
-        "speed"
-        {
-            "faceless_void_time_walk_reverse" {
-			"speed" "1"
-		}
+      }
+      "health_min" {
+        "chen_summon_convert" {
+          "health_min" "1"
         }
+      }
     }
-}
+    "dark_seer_surge" {
+      "duration" {
+        "dark_seer_surge" {
+          "trail_duration" "1"
+        }
+      }
+    }
+    "dawnbreaker_fire_wreath" {
+      "swipe_damage" {
+        "dawnbreaker_fire_wreath" {
+          "smash_damage" "1"
+        }
+      }
+      "swipe_radius" {
+        "dawnbreaker_fire_wreath" {
+          "smash_radius" "1"
+        }
+      }
+    }
+    "dawnbreaker_luminosity" {
+      "heal_pct" {
+        "dawnbreaker_luminosity" {
+          "heal_from_creeps" "1"
+        }
+      }
+    }
+    "dawnbreaker_solar_guardian" {
+      "airtime_duration" {
+        "dawnbreaker_solar_guardian" {
+          "airtime_scepter_bonus" "1"
+        }
+      }
+    }
+    "dazzle_poison_touch" {
+      "end_radius" {
+        "dazzle_poison_touch" {
+          "start_radius" "1"
+        }
+      }
+      "slow" {
+        "dazzle_poison_touch" {
+          "bonus_slow" "1"
+        }
+      }
+    }
+    "death_prophet_exorcism" {
+      "hero_spirit_max_damage" {
+        "death_prophet_exorcism" {
+          "hero_spirit_min_damage" "1"
+        }
+      }
+      "max_damage" {
+        "death_prophet_exorcism" {
+          "min_damage" "1"
+        }
+      }
+    }
+    "disruptor_glimpse" {
+      "max_damage" {
+        "disruptor_glimpse" {
+          "min_damage" "1"
+        }
+      }
+    }
+    "dragon_knight_dragon_blood" {
+      "cleave_ending_width" {
+        "dragon_knight_dragon_blood" {
+          "cleave_starting_width" "1"
+        }
+      }
+    }
+    "drow_ranger_frost_arrows" {
+      "frost_arrows_movement_speed" {
+        "drow_ranger_frost_arrows" {
+          "shard_burst_move_slow_pct" "1"
+        }
+      }
+    }
+    "drow_ranger_glacier" {
+      "ramp_radius" {
+        "drow_ranger_glacier" {
+          "end_height" "1"
+          "hilltop_offset" "1"
+          "knockback_distance" "1"
+          "knockback_duration" "1"
+          "knockback_height" "1"
+          "shard_angle_step" "1"
+          "shard_count" "1"
+          "shard_distance" "1"
+          "shard_speed" "1"
+          "shard_width" "1"
+        }
+      }
+    }
+    "drow_ranger_wave_of_silence" {
+      "knockback_distance_max" {
+        "drow_ranger_wave_of_silence" {
+          "wave_length" "1"
+        }
+      }
+    }
+    "elder_titan_earth_splitter" {
+      "slow_duration" {
+        "elder_titan_earth_splitter" {
+          "slow_duration_scepter" "1"
+        }
+      }
+    }
+    "elder_titan_echo_stomp" {
+      "cast_time" {
+        "elder_titan_echo_stomp_spirit" {
+          "cast_time" "1"
+        }
+      }
+      "radius" {
+        "elder_titan_echo_stomp_spirit" {
+          "radius" "1"
+        }
+      }
+    }
+    "elder_titan_natural_order" {
+      "armor_per_tick" {
+        "elder_titan_natural_order_spirit" {
+          "armor_per_tick" "1"
+        }
+      }
+      "armor_reduction_pct" {
+        "elder_titan_natural_order_spirit" {
+          "armor_reduction_pct" "1"
+        }
+      }
+      "magic_resistance_pct" {
+        "elder_titan_natural_order_spirit" {
+          "magic_resistance_pct" "1"
+        }
+      }
+      "magic_resistance_per_tick" {
+        "elder_titan_natural_order_spirit" {
+          "magic_resistance_per_tick" "1"
+        }
+      }
+      "max_stacks" {
+        "elder_titan_natural_order_spirit" {
+          "max_stacks" "1"
+        }
+      }
+      "radius" {
+        "elder_titan_natural_order_spirit" {
+          "radius" "1"
+        }
+      }
+      "tick_rate" {
+        "elder_titan_natural_order_spirit" {
+          "tick_rate" "1"
+        }
+      }
+    }
+    "enchantress_bunny_hop" {
+      "hop_distance" {
+        "enchantress_bunny_hop" {
+          "hop_height" "1"
+        }
+      }
+      "hop_duration" {
+        "enchantress_bunny_hop" {
+          "hop_height" "1"
+        }
+      }
+    }
+    "forest_troll_high_priest_heal_amp_aura" {
+      "radius" {
+        "forest_troll_high_priest_mana_aura" {
+          "radius" "1"
+        }
+      }
+    }
+    "furion_force_of_nature" {
+      "treant_damage_max" {
+        "furion_force_of_nature" {
+          "treant_damage_min" "1"
+        }
+      }
+    }
+    "furion_wrath_of_nature" {
+      "scepter_max_entangle_duration" {
+        "furion_wrath_of_nature" {
+          "scepter_min_entangle_duration" "1"
+        }
+      }
+    }
+    "gnoll_assassin_envenomed_weapon" {
+      "hero_duration" {
+        "gnoll_assassin_envenomed_weapon" {
+          "non_hero_duration" "1"
+        }
+      }
+    }
+    "grimstroke_dark_artistry" {
+      "end_radius" {
+        "grimstroke_dark_artistry" {
+          "start_radius" "1"
+        }
+      }
+      "slow_duration" {
+        "grimstroke_dark_artistry" {
+          "vision_duration" "1"
+        }
+      }
+    }
+    "grimstroke_soul_chain" {
+      "chain_latch_radius" {
+        "grimstroke_soul_chain" {
+          "chain_break_distance" "1"
+        }
+      }
+    }
+    "hoodwink_bushwhack" {
+      "projectile_speed" {
+        "hoodwink_decoy" {
+          "projectile_speed" "1"
+        }
+      }
+      "trap_radius" {
+        "hoodwink_bushwhack" {
+          "visual_height" "1"
+        }
+      }
+    }
+    "hoodwink_decoy" {
+      "images_do_damage_percent" {
+        "hoodwink_scurry" {
+          "images_do_damage_percent" "1"
+        }
+      }
+      "images_take_damage_percent" {
+        "hoodwink_scurry" {
+          "images_take_damage_percent" "1"
+        }
+      }
+    }
+    "hoodwink_scurry" {
+      "decoy_detonate_radius" {
+        "hoodwink_decoy" {
+          "decoy_detonate_radius" "1"
+        }
+      }
+      "decoy_duration" {
+        "hoodwink_decoy" {
+          "duration" "1"
+        }
+      }
+      "decoy_stun_duration" {
+        "hoodwink_decoy" {
+          "decoy_stun_duration" "1"
+        }
+      }
+    }
+    "huskar_burning_spear" {
+      "duration" {
+        "huskar_burning_spear" {
+          "duration_for_nothl_conflagration" "1"
+        }
+      }
+    }
+    "item_quelling_blade" {
+      "damage_bonus" {
+        "item_quelling_blade" {
+          "damage_bonus_ranged" "1"
+        }
+      }
+    }
+    "jakiro_dual_breath" {
+      "end_radius" {
+        "jakiro_dual_breath" {
+          "start_radius" "1"
+        }
+      }
+      "speed" {
+        "jakiro_dual_breath" {
+          "speed_fire" "1"
+        }
+      }
+    }
+    "keeper_of_the_light_will_o_wisp" {
+      "off_duration" {
+        "keeper_of_the_light_will_o_wisp" {
+          "off_duration_initial" "1"
+        }
+      }
+    }
+    "kez_echo_slash" {
+      "katana_distance" {
+        "kez_echo_slash" {
+          "travel_distance" "1"
+        }
+      }
+    }
+    "kez_kazurai_katana" {
+      "AbilityDuration" {
+        "katana_base_attack_time" {
+          "katana_base_attack_time" "1"
+        }
+      }
+      "katana_attack_range" {
+        "kez_switch_weapons" {
+          "katana_attack_range" "1"
+        }
+      }
+      "katana_base_attack_time" {
+        "kez_switch_weapons" {
+          "katana_base_attack_time" "1"
+        }
+      }
+      "katana_bonus_damage" {
+        "kez_switch_weapons" {
+          "katana_bonus_damage" "1"
+        }
+      }
+    }
+    "kez_shodo_sai" {
+      "sai_attack_range" {
+        "kez_switch_weapons" {
+          "sai_attack_range" "1"
+        }
+      }
+      "sai_base_attack_time" {
+        "kez_switch_weapons" {
+          "sai_base_attack_time" "1"
+        }
+      }
+      "stun_duration" {
+        "kez_shodo_sai" {
+          "parry_stun_duration" "1"
+        }
+      }
+    }
+    "kunkka_ghostship" {
+      "buff_duration" {
+        "kunkka_admirals_rum" {
+          "buff_duration" "1"
+        }
+        "kunkka_x_marks_the_spot" {
+          "buff_duration" "1"
+        }
+      }
+      "ghostship_absorb" {
+        "kunkka_admirals_rum" {
+          "ghostship_absorb" "1"
+        }
+        "kunkka_x_marks_the_spot" {
+          "ghostship_absorb" "1"
+        }
+      }
+      "movespeed_bonus" {
+        "kunkka_admirals_rum" {
+          "movespeed_bonus" "1"
+        }
+        "kunkka_x_marks_the_spot" {
+          "movespeed_bonus" "1"
+        }
+      }
+    }
+    "kunkka_tidebringer" {
+      "cleave_ending_width" {
+        "kunkka_tidebringer" {
+          "cleave_starting_width" "1"
+        }
+      }
+    }
+    "lich_chain_frost" {
+      "jumps" {
+        "lich_chain_frost" {
+          "bonus_jumps_per_creep_killed" "1"
+          "bonus_jumps_per_hero_killed" "1"
+        }
+      }
+      "projectile_speed" {
+        "lich_chain_frost" {
+          "initial_projectile_speed" "1"
+        }
+      }
+    }
+    "lich_ice_spire" {
+      "max_hero_attacks" {
+        "lich_ice_spire" {
+          "max_creep_attacks" "1"
+        }
+      }
+    }
+    "lich_sinister_gaze" {
+      "channel_duration" {
+        "lich_sinister_gaze" {
+          "AbilityChannelTime" "1"
+        }
+      }
+    }
+    "lone_druid_savage_roar" {
+      "bonus_speed" {
+        "lone_druid_savage_roar_bear" {
+          "bonus_speed" "1"
+        }
+      }
+      "duration" {
+        "lone_druid_savage_roar" {
+          "shard_duration" "1"
+        }
+        "lone_druid_savage_roar_bear" {
+          "duration" "1"
+        }
+      }
+      "radius" {
+        "lone_druid_savage_roar" {
+          "shard_radius" "1"
+        }
+        "lone_druid_savage_roar_bear" {
+          "radius" "1"
+        }
+      }
+    }
+    "lone_druid_spirit_bear" {
+      "bear_armor" {
+        "lone_druid_spirit_bear" {
+          "bonus_bear_armor" "1"
+        }
+      }
+      "bear_hp" {
+        "lone_druid_spirit_bear" {
+          "bonus_bear_hp" "1"
+        }
+      }
+    }
+    "lone_druid_spirit_bear_entangle" {
+      "entangle_chance" {
+        "lone_druid_spirit_bear_entangle" {
+          "hero_entangle_chance" "1"
+        }
+      }
+    }
+    "lone_druid_spirit_bear_fetch" {
+      "drag_distance" {
+        "lone_druid_spirit_bear_fetch" {
+          "break_distance" "1"
+        }
+      }
+    }
+    "lone_druid_true_form" {
+      "transformation_time" {
+        "lone_druid_true_form_druid" {
+          "transformation_time" "1"
+        }
+      }
+    }
+    "luna_eclipse" {
+      "AbilityDuration" {
+        "luna_eclipse" {
+          "night_duration" "1"
+        }
+      }
+    }
+    "mud_golem_hurl_boulder" {
+      "damage" {
+        "mud_golem_hurl_boulder" {
+          "damage_creeps" "1"
+        }
+      }
+    }
+    "muerta_dead_shot" {
+      "AbilityCastRange" {
+        "muerta_dead_shot" {
+          "ricochet_distance_multiplier" "1"
+        }
+      }
+      "radius" {
+        "muerta_dead_shot" {
+          "ricochet_radius_end" "1"
+          "ricochet_radius_start" "1"
+        }
+      }
+    }
+    "muerta_the_calling" {
+      "speed_max" {
+        "muerta_the_calling" {
+          "acceleration" "1"
+          "speed_initial" "1"
+        }
+      }
+    }
+    "ogre_bruiser_ogre_smash" {
+      "damage" {
+        "ogre_bruiser_ogre_smash" {
+          "damage_pct" "1"
+        }
+      }
+    }
+    "phantom_lancer_juxtapose" {
+      "illusion_damage_in_pct" {
+        "phantom_lancer_doppelwalk" {
+          "illusion_"1"_damage_in_pct" "1"
+          "illusion_"2"_damage_in_pct" "1"
+        }
+        "phantom_lancer_spirit_lance" {
+          "illusion_damage_in_pct" "1"
+        }
+      }
+      "illusion_damage_out_pct" {
+        "phantom_lancer_doppelwalk" {
+          "illusion_"1"_damage_out_pct" "1"
+          "illusion_"2"_damage_out_pct" "1"
+        }
+        "phantom_lancer_spirit_lance" {
+          "illusion_damage_out_pct" "1"
+        }
+      }
+    }
+    "phantom_lancer_spirit_lance" {
+      "illusion_damage_in_pct" {
+        "phantom_lancer_spirit_lance" {
+          "tooltip_illusion_total_damage_in_pct" "1"
+        }
+      }
+    }
+    "phoenix_supernova" {
+      "max_hero_attacks" {
+        "phoenix_supernova" {
+          "max_hero_attacks_scepter" "1"
+        }
+      }
+    }
+    "primal_beast_onslaught" {
+      "turn_rate" {
+        "primal_beast_onslaught" {
+          "movement_turn_rate" "1"
+        }
+      }
+    }
+    "primal_beast_rock_throw" {
+      "impact_radius" {
+        "primal_beast_rock_throw" {
+          "fragment_impact_radius" "1"
+        }
+      }
+    }
+    "primal_beast_uproar" {
+      "damage_max" {
+        "primal_beast_uproar" {
+          "damage_min" "1"
+        }
+      }
+    }
+    "puck_phase_shift" {
+      "duration" {
+        "puck_phase_shift" {
+          "AbilityChannelTime" "1"
+        }
+      }
+    }
+    "rattletrap_jetpack" {
+      "turn_rate" {
+        "rattletrap_jetpack" {
+          "height" "1"
+        }
+        "rattletrap_overclocking" {
+          "jetpack_turn_rate" "1"
+        }
+      }
+    }
+    "ringmaster_funhouse_mirror" {
+      "health_bar_offset_"3"" {
+        "ringmaster_funhouse_mirror" {
+          "health_bar_offset_"1"" "1"
+          "health_bar_offset_"2"" "1"
+        }
+      }
+      "illusion_model_scale_"3"" {
+        "ringmaster_funhouse_mirror" {
+          "illusion_model_scale_"1"" "1"
+          "illusion_model_scale_"2"" "1"
+          "model_scale_animate_time" "1"
+        }
+      }
+    }
+    "ringmaster_spotlight" {
+      "duration" {
+        "ringmaster_spotlight" {
+          "AbilityDuration" "1"
+          "linger_duration" "1"
+        }
+      }
+    }
+    "ringmaster_strongman_tonic" {
+      "model_scale" {
+        "ringmaster_strongman_tonic" {
+          "model_scale_animate_time" "1"
+        }
+      }
+    }
+    "ringmaster_tame_the_beasts" {
+      "damage_max" {
+        "ringmaster_tame_the_beasts" {
+          "damage_min" "1"
+        }
+      }
+      "fear_duration_max" {
+        "ringmaster_tame_the_beasts" {
+          "fear_duration_min" "1"
+        }
+      }
+    }
+    "ringmaster_wheel" {
+      "knockback_distance" {
+        "ringmaster_wheel" {
+          "knockback_height" "1"
+        }
+      }
+    }
+    "ringmaster_whoopee_cushion" {
+      "fart_cloud_duration" {
+        "ringmaster_whoopee_cushion" {
+          "fart_cloud_aura_linger_duration" "1"
+        }
+      }
+      "leap_speed" {
+        "ringmaster_whoopee_cushion" {
+          "leap_acceleration" "1"
+        }
+      }
+    }
+    "rubick_telekinesis_land" {
+      "radius" {
+        "rubick_telekinesis_land_self" {
+          "radius" "1"
+        }
+      }
+    }
+    "spectre_haunt_single" {
+      "illusion_damage_incoming" {
+        "spectre_haunt" {
+          "illusion_damage_incoming" "1"
+          "tooltip_illusion_total_damage_incoming" "1"
+        }
+        "spectre_haunt_single" {
+          "tooltip_illusion_total_damage_incoming" "1"
+        }
+      }
+      "illusion_damage_outgoing" {
+        "spectre_haunt" {
+          "illusion_damage_outgoing" "1"
+          "tooltip_outgoing" "1"
+        }
+        "spectre_haunt_single" {
+          "illusion_damage_outgoing" "1"
+          "tooltip_outgoing" "1"
+        }
+      }
+    }
+    "spectre_spectral_dagger" {
+      "dagger_radius" {
+        "spectre_spectral_dagger" {
+          "path_radius" "1"
+          "vision_radius" "1"
+        }
+      }
+    }
+    "tiny_tree_channel" {
+      "range" {
+        "tiny_toss_tree" {
+          "range" "1"
+        }
+      }
+      "speed" {
+        "tiny_toss_tree" {
+          "speed" "1"
+        }
+      }
+      "splash_radius" {
+        "tiny_toss_tree" {
+          "splash_radius" "1"
+        }
+      }
+    }
+    "troll_warlord_berserkers_rage" {
+      "base_attack_time" {
+        "troll_warlord_switch_stance" {
+          "base_attack_time" "1"
+        }
+      }
+      "bonus_range" {
+        "troll_warlord_switch_stance" {
+          "bonus_range" "1"
+        }
+      }
+      "ensnare_chance" {
+        "troll_warlord_berserkers_rage" {
+          "maim_chance" "1"
+        }
+      }
+      "ensnare_duration" {
+        "troll_warlord_berserkers_rage" {
+          "maim_duration" "1"
+        }
+      }
+    }
+    "tusk_ice_shards" {
+      "shard_distance" {
+        "tusk_ice_shards" {
+          "aghs_shard_depth" "1"
+        }
+      }
+    }
+    "ursa_earthshock" {
+      "hop_duration" {
+        "ursa_earthshock" {
+          "hop_height" "1"
+        }
+      }
+    }
+    "ursa_enrage" {
+      "duration" {
+        "ursa_enrage" {
+          "damage_increase_duration" "1"
+        }
+      }
+    }
+    "ursa_fury_swipes" {
+      "bonus_reset_time" {
+        "ursa_fury_swipes" {
+          "bonus_reset_time_roshan" "1"
+        }
+      }
+    }
+    "vengefulspirit_wave_of_terror" {
+      "wave_width" {
+        "vengefulspirit_wave_of_terror" {
+          "vision_aoe" "1"
+        }
+      }
+    }
+    "viper_nethertoxin" {
+      "max_damage" {
+        "viper_nethertoxin" {
+          "min_damage" "1"
+        }
+      }
+    }
+    "warlock_imp_explode" {
+      "bonus_dmg" {
+        "warlock_imp_explode_major" {
+          "bonus_dmg" "1"
+        }
+      }
+      "bonus_hp" {
+        "warlock_imp_explode_major" {
+          "bonus_hp" "1"
+        }
+      }
+      "bonus_movespeed" {
+        "warlock_imp_explode_major" {
+          "bonus_movespeed" "1"
+        }
+      }
+      "explosion_delay" {
+        "warlock_imp_explode_major" {
+          "explosion_delay" "1"
+        }
+      }
+      "explosion_dmg" {
+        "warlock_imp_explode_major" {
+          "explosion_dmg" "1"
+        }
+      }
+      "explosion_nonhero_reduce" {
+        "warlock_imp_explode_major" {
+          "explosion_nonhero_reduce" "1"
+        }
+      }
+      "explosion_radius" {
+        "warlock_imp_explode_major" {
+          "explosion_radius" "1"
+        }
+      }
+    }
+    "zuus_lightning_bolt" {
+      "sight_radius_day" {
+        "zuus_lightning_bolt" {
+          "sight_radius_night" "1"
+        }
+      }
+    }
+    "zuus_thundergods_wrath" {
+      "sight_radius_day" {
+        "zuus_thundergods_wrath" {
+          "sight_radius_night" "1"
+        }
+      }
+    }
+  }
+  "nerflist" {
+    "abaddon_borrowed_time" {
+      "redirect_range_scepter" "0.5"
+    }
+    "abaddon_death_coil" {
+      "target_damage" "0.5"
+    }
+    "abaddon_frostmourne" {
+      "curse_duration" "0"
+      "hit_count" "0"
+      "slow_duration" "0"
+    }
+    "abaddon_the_quickening" {
+      "radius" "0.5"
+    }
+    "abyssal_underlord_atrophy_aura" {
+      "bonus_damage_from_creep" "1"
+      "bonus_damage_from_hero" "1"
+      "bonus_shared_by_allies_pct" "0"
+      "cleave_distance_base" "0.25"
+      "cleave_distance_per_stack" "0.25"
+      "cleave_starting_width" "0.25"
+      "ensnare_duration" "0.5"
+      "pit_duration" "0"
+      "radius" "0.3"
+    }
+    "abyssal_underlord_dark_portal" {
+      "duration" "0"
+      "spawn_pit_on_cast" "0"
+    }
+    "abyssal_underlord_firestorm" {
+      "burn_damage" "0.25"
+    }
+    "abyssal_underlord_pit_of_malice" {
+      "ensnare_duration" "0"
+      "pit_damage" "0"
+    }
+    "abyssal_underlord_raid_boss" {
+      "buff_duration" "0.25"
+      "damage_reduction" "0.25"
+    }
+    "alchemist_acid_spray" {
+      "armor_allies" "0"
+      "armor_reduction" "0.5"
+      "damage" "0.5"
+      "duration" "0"
+    }
+    "alchemist_chemical_rage" {
+      "bonus_health" "0"
+      "bonus_mana_regen" "0"
+      "scepter_gold_damage" "0"
+    }
+    "alchemist_goblins_greed" {
+      "starting_gold_bonus" "0"
+    }
+    "alchemist_unstable_concoction" {
+      "brew_time" "0"
+      "max_damage" "0"
+      "max_stun" "0"
+      "min_damage" "0"
+      "min_stun" "0"
+      "radius" "0"
+    }
+    "alchemist_unstable_concoction_throw" {
+      "brew_time" "0"
+      "max_damage" "0"
+      "min_damage" "0"
+      "vision_range" "0"
+    }
+    "all" {
+      "AbilityCastPoint" "0"
+      "AbilityCastRange" "0"
+      "AbilityCharges" "0"
+      "AbilityCooldown" "0"
+      "AbilityManaCost" "0"
+      "CalculateSpellDamageTooltip" "0"
+      "DamageTypeTooltip" "0"
+      "LinkedSpecialBonus" "0"
+      "LinkedSpecialBonusField" "0"
+      "LinkedSpecialBonusOperation" "0"
+      "RequiresScepter" "0"
+      "RequiresShard" "0"
+      "ability_capture" "0"
+      "ability_lamp_use" "0"
+      "ability_pluck_famango" "0"
+      "abyssal_underlord_portal_warp" "0"
+      "ad_linked_abilities" "0"
+      "area_of_effect" "0.2"
+      "attack_range_bonus" "0.2"
+      "bonus_attack_range" "0.2"
+      "bonus_cdr" "0"
+      "cannot_be_dispelled" "0"
+      "cooldown_reduction" "0"
+      "crit_chance" "0"
+      "dispel" "0"
+      "familiar_armor" "0"
+      "familiar_attack_damage" "0"
+      "familiar_hp" "0"
+      "familiar_speed" "0"
+      "generic_hidden" "0"
+      "interval" "0.2"
+      "item_belt_of_strength" "0"
+      "item_blades_of_attack" "0"
+      "item_boots_of_elves" "0"
+      "item_branches" "0"
+      "item_broadsword" "0"
+      "item_circlet" "0"
+      "item_cloak" "0"
+      "item_crown" "0"
+      "item_gauntlets" "0"
+      "item_gloves" "0"
+      "item_magic_stick" "0"
+      "item_mantle" "0"
+      "item_quarterstaff" "0"
+      "item_ring_of_protection" "0"
+      "item_ring_of_regen" "0"
+      "item_robe" "0"
+      "item_slippers" "0"
+      "item_sobi_mask" "0"
+      "item_talisman_of_evasion" "0"
+      "levelkey" "0"
+      "max_invoked_spells" "0"
+      "pierce_immunity" "0"
+      "pierces_immunity" "0"
+      "pierces_magic_immunity" "0"
+      "radius" "0.2"
+      "respawn" "0"
+      "sight_radius_day" "0.2"
+      "sight_radius_night" "0.2"
+      "special_bonus_attributes" "0"
+      "splash_radius" "0.2"
+      "think_interval" "0.2"
+      "think_rate" "0.2"
+      "tick_interval" "0.2"
+      "tick_rate" "0.2"
+      "travel_distance" "0.2"
+      "true_sight_radius" "0.2"
+      "twin_gate_portal_warp" "0"
+      "undispellable" "0"
+      "var_type" "0"
+    }
+    "alpha_wolf_command_aura" {
+      "radius" "0.25"
+    }
+    "alpha_wolf_critical_strike" {
+      "crit_chance" "1.5"
+    }
+    "ancient_apparition_chilling_touch" {
+      "slow" "0"
+    }
+    "ancient_apparition_cold_feet" {
+      "AbilityCharges" "0"
+      "AbilityDuration" "0"
+      "area_of_effect" "0"
+      "frost_stacks" "0.25"
+    }
+    "ancient_apparition_death_rime" {
+      "cast_slow" "0"
+      "damage" "0.2"
+      "slow" "0.5"
+      "strength_decrease" "0.5"
+    }
+    "ancient_apparition_ice_blast" {
+      "frostbite_duration" "0"
+      "kill_pct" "0.125"
+      "path_radius" "0.25"
+      "speed" "0"
+    }
+    "ancient_apparition_ice_vortex" {
+      "drag_speed" "0"
+      "frost_stacks" "0.125"
+      "movement_speed_pct" "0.5"
+      "radius" "0.08"
+      "spell_resist_pct" "0.08"
+      "vision_aoe" "0.2"
+    }
+    "ancient_rock_golem_weakening_aura" {
+      "radius" "0.5"
+    }
+    "antimage_blink" {
+      "min_blink_range" "0"
+    }
+    "antimage_counterspell" {
+      "castable_while_disabled" "0"
+      "does_reflect" "0"
+      "duration_illusion" "0"
+      "incoming_damage" "0"
+      "magic_resistance" "0.25"
+      "min_blink_range" "0"
+      "outgoing_damage" "0"
+    }
+    "antimage_mana_break" {
+      "empowered_max_burn_pct" "0"
+      "illusion_percentage" "0"
+      "mana_per_hit_pct" "0.5"
+      "silence_chance" "0"
+      "silence_duration" "0"
+    }
+    "antimage_mana_overload" {
+      "incoming_damage" "0"
+      "outgoing_damage" "0"
+    }
+    "antimage_mana_void" {
+      "bonus_attack_damage" "1.5"
+      "thirst_enabled" "0"
+      "thirst_range" "0.5"
+    }
+    "arc_warden_flux" {
+      "applies_silence" "0"
+      "search_radius" "0.25"
+      "think_interval" "0"
+    }
+    "arc_warden_magnetic_field" {
+      "attack_damage_bonus" "0.75"
+      "attack_magic_damage" "0"
+    }
+    "arc_warden_runic_infusion" {
+      "duration" "0.25"
+    }
+    "arc_warden_spark_wraith" {
+      "ministun_duration" "0"
+      "ministun_duration_tempest" "0"
+      "spark_damage_base" "0.5"
+      "think_interval" "0"
+      "wraith_vision_radius" "0.25"
+    }
+    "arc_warden_tempest_double" {
+      "penalty_distance" "0"
+      "tempest_double_cooldown_reduction" "0"
+    }
+    "axe_battle_hunger" {
+      "should_stack" "0"
+    }
+    "axe_berserkers_call" {
+      "applies_battle_hunger" "0"
+    }
+    "axe_coat_of_blood" {
+      "armor_per_kill" "0.125"
+      "culling_blade_multiplier" "0"
+    }
+    "axe_counter_helix" {
+      "cooldown" "0"
+      "shard_bonus_chance" "0"
+      "trigger_chance" "0"
+    }
+    "axe_culling_blade" {
+      "charge_speed" "0"
+      "damage" "0.5"
+      "speed_aoe" "0.5"
+    }
+    "axe_one_man_army" {
+      "armor_pct_as_strength" "0.25"
+    }
+    "bane_brain_sap" {
+      "brain_sap_damage" "0.35"
+    }
+    "bane_enfeeble" {
+      "damage_tick_rate" "0"
+    }
+    "bane_nightmare" {
+      "AbilityDuration" "0.08"
+      "animation_rate" "0"
+      "nightmare_invuln_time" "0"
+      "walk_speed" "0.125"
+    }
+    "batrider_firefly" {
+      "bonus_slow_resistance" "0"
+      "bonus_vision" "0.2"
+      "tick_interval" "0.1"
+    }
+    "batrider_flamebreak" {
+      "collision_radius" "0"
+      "knockback_height" "0"
+      "napalm_stacks" "0.25"
+    }
+    "batrider_flaming_lasso" {
+      "allied_cooldown" "0"
+      "grab_radius" "0"
+    }
+    "batrider_smoldering_resin" {
+      "total_ticks" "0.125"
+    }
+    "batrider_sticky_napalm" {
+      "attacks_apply_napalm_in_aoe" "0"
+      "base_applications_every_attack" "0"
+      "bonus_applications_every_other_attack" "1"
+      "building_damage_pct" "0"
+    }
+    "beastmaster_call_of_the_wild_boar" {
+      "boar_base_damage" "1"
+      "boar_base_max_health" "1.5"
+    }
+    "beastmaster_call_of_the_wild_hawk" {
+      "hawk_base_vision_range" "0.5"
+    }
+    "beastmaster_drums_of_slom" {
+      "AbilityDuration" "0"
+      "movespeed_slow" "0"
+    }
+    "beastmaster_inner_beast" {
+      "scepter_cooldown" "0"
+      "scepter_duration" "0"
+      "scepter_manacost" "0"
+      "scepter_multiplier" "0"
+      "scepter_radius" "0"
+    }
+    "beastmaster_rugged" {
+      "damage_block_pct_fifty_tooltip" "0"
+      "damage_block_pct_vs_creeps" "0"
+    }
+    "beastmaster_wild_axes" {
+      "range" "0"
+      "scepter_cooldown" "0"
+    }
+    "berserker_troll_break" {
+      "duration" "1"
+    }
+    "big_thunder_lizard_frenzy" {
+      "duration" "0.5"
+    }
+    "big_thunder_lizard_slam" {
+      "radius" "0.5"
+    }
+    "black_dragon_dragonhide_aura" {
+      "radius" "0.5"
+    }
+    "black_dragon_fireball" {
+      "damage" "1.25"
+      "duration" "0.25"
+      "radius" "0.75"
+    }
+    "bloodseeker_blood_bath" {
+      "delay" "0"
+    }
+    "bloodseeker_bloodrage" {
+      "spell_amp" "0"
+    }
+    "bloodseeker_rupture" {
+      "AbilityChargeRestoreTime" "0"
+      "hp_pct" "0.5"
+      "knockback" "1"
+    }
+    "bloodseeker_thirst" {
+      "bonus_movement_speed" "0"
+      "invis_threshold_pct" "0.2"
+      "min_bonus_pct" "0"
+    }
+    "bounty_hunter_shuriken_toss" {
+      "cast_range" "0"
+      "scepter_cooldown" "0"
+    }
+    "bounty_hunter_track" {
+      "bonus_gold_radius" "0"
+      "gold_steal" "0"
+    }
+    "bounty_hunter_wind_walk" {
+      "shard_damage_reduction_pct" "0"
+    }
+    "brewmaster_belligerent" {
+      "damage_duration_respawn" "0.25"
+      "damage_duration_split" "0.25"
+      "damage_pct" "0.5"
+    }
+    "brewmaster_drunken_brawler" {
+      "slow_duration" "0"
+    }
+    "bristleback_bristleback" {
+      "back_angle" "0"
+      "back_damage_reduction" "0.1"
+      "quill_release_threshold" "0.2"
+      "side_angle" "0"
+      "side_damage_reduction" "0.1"
+    }
+    "bristleback_hairball" {
+      "quill_stacks" "0.25"
+    }
+    "bristleback_prickly" {
+      "amp_pct" "0.25"
+      "angle" "0.25"
+    }
+    "bristleback_warpath" {
+      "active_bonus_attack_percent" "0.25"
+      "active_view_angle_restriction" "0.125"
+    }
+    "broodmother_incapacitating_bite" {
+      "attack_damage" "1.25"
+    }
+    "broodmother_spiders_milk" {
+      "kill_heal_aoe" "0.5"
+    }
+    "broodmother_sticky_snare" {
+      "width" "0.5"
+    }
+    "centaur_double_edge" {
+      "scepter_range" "0"
+    }
+    "centaur_horsepower" {
+      "move_speed_limit" "0"
+    }
+    "centaur_khan_war_stomp" {
+      "hero_stun_duration" "0.25"
+      "non_hero_stun_duration" "0.25"
+      "radius" "0.25"
+    }
+    "centaur_rawhide" {
+      "health_per_upgrade" "0.5"
+      "upgrade_rate" "0.5"
+    }
+    "centaur_stampede" {
+      "base_damage" "0"
+    }
+    "chaos_knight_chaos_bolt" {
+      "damage_max" "0.5"
+      "damage_min" "0.5"
+      "fake_bolt_distance" "0"
+    }
+    "chaos_knight_chaos_strike" {
+      "chance" "0"
+    }
+    "chaos_knight_phantasm" {
+      "illusion_duration" "0"
+      "magic_resistance" "0"
+      "outgoing_damage" "0"
+      "vision_radius" "0"
+    }
+    "chaos_knight_reality_rift" {
+      "cast_range" "0"
+    }
+    "chaos_knight_reins_of_chaos" {
+      "bonus_illusion_chance" "0.5"
+    }
+    "chen_divine_favor" {
+      "armor" "0"
+      "bonus_health_per_level" "2.5"
+      "duration" "0.3"
+      "heal_rate" "1.25"
+      "health_min" "2.5"
+      "teleport_delay" "0"
+    }
+    "chen_hand_of_god" {
+      "ancient_creeps_scepter" "0"
+      "does_purge" "0"
+      "heal_amount" "0.5"
+      "hot_duration" "0.125"
+    }
+    "chen_holy_persuasion" {
+      "AbilityCharges" "0"
+      "is_martyr" "0"
+    }
+    "chen_summon_convert" {
+      "bonus_health_per_level" "2.5"
+      "health_min" "2.5"
+      "summon_centaurs" "0"
+      "summon_hellbears" "0"
+      "summon_satyrs" "0"
+      "summon_trolls" "0"
+      "summon_wolves" "0"
+    }
+    "clinkz_bone_and_arrow" {
+      "skeleton_building_damage_reduction" "0"
+    }
+    "clinkz_burning_army" {
+      "count" "0.25"
+    }
+    "clinkz_burning_barrage" {
+      "damage_pct" "0.5"
+    }
+    "clinkz_strafe" {
+      "archer_attack_speed_pct" "0.5"
+      "attack_speed_bonus" "0.5"
+    }
+    "clinkz_tar_bomb" {
+      "has_multishot" "0"
+    }
+    "clinkz_wind_walk" {
+      "skeleton_count" "0.25"
+    }
+    "creep_piercing" {
+      "heavy_damage_penalty" "0"
+    }
+    "creep_siege" {
+      "bonus_building_damage" "0"
+    }
+    "crystal_maiden_brilliance_aura" {
+      "proximity_bonus_radius" "0.5"
+    }
+    "crystal_maiden_freezing_field" {
+      "can_move" "0"
+      "explosion_max_dist" "0.2"
+      "explosion_min_dist" "0.2"
+    }
+    "crystal_maiden_frostbite" {
+      "tick_interval" "0"
+    }
+    "dark_seer_ion_shell" {
+      "tick_interval" "0"
+    }
+    "dark_seer_surge" {
+      "AbilityCharges" "0"
+      "duration" "0.25"
+      "speed_boost" "0"
+      "trail_duration" "0.25"
+    }
+    "dark_seer_vacuum" {
+      "radius" "0.25"
+    }
+    "dark_seer_wall_of_replica" {
+      "replica_damage_incoming" "0"
+      "replica_damage_outgoing" "0"
+      "replica_scale" "0"
+    }
+    "dark_willow_bedlam" {
+      "attack_interval" "0.2"
+      "attack_targets" "0"
+      "roaming_seconds_per_rotation" "0.2"
+    }
+    "dark_willow_bramble_maze" {
+      "initial_creation_delay" "0"
+      "latch_creation_delay" "0"
+      "latch_creation_interval" "0"
+      "latch_range" "0"
+      "placement_count" "0"
+      "placement_range" "0"
+    }
+    "dark_willow_shadow_realm" {
+      "duration" "0"
+      "scepter_radius" "0"
+    }
+    "dark_willow_terrorize" {
+      "starting_height" "0"
+      "telegraph_to_enemies" "0"
+    }
+    "dawnbreaker_break_of_dawn" {
+      "reveal_duration" "0.5"
+      "reveal_radius" "0"
+    }
+    "dawnbreaker_celestial_hammer" {
+      "flare_radius" "0.5"
+      "hammer_aoe_radius" "0.25"
+    }
+    "dawnbreaker_fire_wreath" {
+      "animation_rate" "0"
+      "hammer_damage" "1"
+      "smash_damage" "1"
+      "swipe_damage" "1"
+      "total_attacks" "0"
+      "turn_rate" "0"
+    }
+    "dawnbreaker_luminosity" {
+      "attack_count" "0"
+      "proc_cooldown" "0"
+    }
+    "dawnbreaker_solar_guardian" {
+      "airtime_scepter_bonus" "0"
+      "max_offset_distance" "0.3"
+      "radius" "0.25"
+    }
+    "dazzle_poison_touch" {
+      "bonus_damage" "0"
+    }
+    "dazzle_shadow_wave" {
+      "scepter_heal_pct" "0"
+    }
+    "dazzle_shallow_grave" {
+      "duration" "0.1"
+      "fx_halo_height" "0"
+    }
+    "death_prophet_carrion_swarm" {
+      "damage" "0.5"
+      "end_radius" "0"
+      "start_radius" "0"
+    }
+    "death_prophet_exorcism" {
+      "average_damage" "0"
+      "ghost_spawn_rate" "0"
+      "give_up_distance" "0"
+      "max_distance" "0"
+      "radius" "0"
+      "scepter_movespeed_slow" "0"
+      "scepter_spirit_life_duration" "0"
+      "spirit_speed" "0"
+    }
+    "death_prophet_mourning_ritual" {
+      "delay_pct" "0.5"
+    }
+    "death_prophet_silence" {
+      "projectile_speed" "0"
+    }
+    "death_prophet_spirit_siphon" {
+      "AbilityChargeRestoreTime" "0"
+      "damage_pct" "0"
+      "movement_steal" "0"
+    }
+    "disruptor_electromagnetic_repulsion" {
+      "damage_threshold" "1"
+      "effect_radius" "0.5"
+      "knockback" "1"
+      "knockback_duration" "0.25"
+    }
+    "disruptor_glimpse" {
+      "backtrack_time" "0"
+      "cast_range" "0"
+      "damage_to_distance_pct" "1"
+      "max_damage" "1"
+      "min_damage" "1"
+      "silence_duration" "0"
+    }
+    "disruptor_kinetic_fence" {
+      "AbilityChargeRestoreTime" "0"
+    }
+    "disruptor_kinetic_field" {
+      "damage_per_second" "0"
+    }
+    "disruptor_static_storm" {
+      "damage_max" "1"
+    }
+    "disruptor_thunder_strike" {
+      "hits_units_inside_kinetic" "0"
+    }
+    "doom_bringer_devour" {
+      "armor" "0"
+      "bonus_gold" "0"
+      "creep_level" "0"
+      "hero_ability_steal_time" "0"
+      "magic_resist" "0.25"
+    }
+    "doom_bringer_doom" {
+      "applies_dispel_to_self" "0"
+      "deniable_pct" "0"
+      "does_break" "0"
+      "does_mute" "0"
+      "scepter_cooldown" "0"
+      "upgrade_amount" "0.25"
+      "upgrade_interval" "0.25"
+    }
+    "doom_bringer_infernal_blade" {
+      "burn_damage" "1.25"
+    }
+    "doom_bringer_scorched_earth" {
+      "damage_per_hero" "0"
+      "radius" "0.08"
+    }
+    "dragon_knight_breathe_fire" {
+      "damage" "0.5"
+      "dragon_form_bonus_pct" "0.5"
+      "range" "0.25"
+    }
+    "dragon_knight_dragon_blood" {
+      "cleave_distance" "0.25"
+      "cleave_ending_width" "0.25"
+      "cleave_starting_width" "0.25"
+    }
+    "dragon_knight_elder_dragon_form" {
+      "bonus_attack_damage" "0"
+      "duration" "0.5"
+      "magic_resistance" "0"
+      "model_scale" "0"
+    }
+    "dragon_knight_fireball" {
+      "burn_interval" "0"
+    }
+    "dragon_knight_inherited_vigor" {
+      "base_health_regen" "1.5"
+    }
+    "drow_ranger_frost_arrow" {
+      "damage" "1.25"
+      "shard_bonus_damage_per_stack" "1.25"
+    }
+    "drow_ranger_glacier" {
+      "end_height" "0"
+      "hilltop_offset" "0"
+      "knockback_distance" "0"
+      "knockback_duration" "0"
+      "knockback_height" "0"
+      "turn_rate_slow" "0"
+      "z_speed_override" "0"
+    }
+    "drow_ranger_marksmanship" {
+      "split_count" "0"
+      "split_damage_reduction" "0"
+      "split_range" "0"
+    }
+    "drow_ranger_multishot" {
+      "AbilityChannelTime" "0"
+      "arrow_count_per_wave" "0"
+      "arrow_damage_pct" "0"
+      "arrow_range_multiplier" "0"
+      "bypass_block" "0"
+      "multishot_movespeed" "2"
+      "wave_count" "0"
+    }
+    "drow_ranger_trueshot" {
+      "radius" "0.5"
+      "trueshot_agi_bonus_self" "0.75"
+    }
+    "drow_ranger_vantage_point" {
+      "damage_bonus" "0.25"
+    }
+    "drow_ranger_wave_of_silence" {
+      "gust_reveals_invis" "0"
+      "knockback_distance_max" "0.8"
+      "knockback_duration" "0.5"
+      "knockback_height" "0"
+      "miss_chance" "0"
+      "wave_length" "0"
+      "wave_width" "0.2"
+    }
+    "earth_spirit_boulder_smash" {
+      "rock_search_aoe" "0"
+    }
+    "earth_spirit_geomagnetic_grip" {
+      "total_pull_distance" "0"
+    }
+    "earth_spirit_magnetize" {
+      "damage_interval" "0.2"
+      "magnetized_rocks_buff_self" "0"
+    }
+    "earth_spirit_rolling_boulder" {
+      "damage_str" "0"
+    }
+    "earthshaker_aftershock" {
+      "aftershock_range" "0.08"
+      "aftershock_range_increase_per_level_interval" "0"
+      "aftershock_range_level_interval" "0"
+    }
+    "earthshaker_enchant_totem" {
+      "scepter_acceleration_horizontal" "0"
+      "scepter_acceleration_z" "0"
+      "scepter_cleave_ending_width" "0"
+      "scepter_cleave_starting_width" "0"
+      "scepter_height" "0"
+      "scepter_height_arcbuffer" "0"
+      "totem_damage_percentage" "0.5"
+    }
+    "earthshaker_fissure" {
+      "fissure_damage" "0.5"
+      "fissure_radius" "0"
+      "fissure_range" "0"
+      "stun_duration" "0.125"
+    }
+    "earthshaker_spirit_cairn" {
+      "fissure_radius" "0.5"
+    }
+    "elder_titan_ancestral_spirit" {
+      "move_pct_cap" "0"
+      "speed" "0"
+      "spirit_duration" "0"
+    }
+    "elder_titan_earth_splitter" {
+      "speed" "0"
+      "total_steps" "0"
+      "vision_duration" "0"
+      "vision_interval" "0"
+      "vision_step" "0"
+      "vision_width" "0"
+    }
+    "elder_titan_echo_stomp" {
+      "AbilityChannelTime" "0"
+      "animation_rate" "0"
+      "cast_time" "0"
+    }
+    "elder_titan_echo_stomp_spirit" {
+      "AbilityChannelTime" "0"
+      "animation_rate" "0"
+    }
+    "ember_spirit_activate_fire_remnant" {
+      "charge_restore_time" "0"
+      "damage" "0"
+      "max_charges" "0"
+      "scepter_mana_cost" "0"
+      "shard_remnant_speed_pct" "0"
+      "speed_multiplier" "0"
+    }
+    "ember_spirit_fire_remnant" {
+      "AbilityChargeRestoreTime" "0"
+      "duration" "0"
+    }
+    "ember_spirit_flame_guard" {
+      "AbilityChargeRestoreTime" "0"
+      "blind_pct" "0"
+    }
+    "ember_spirit_searing_chains" {
+      "radius_scepter" "0"
+    }
+    "ember_spirit_sleight_of_fist" {
+      "AbilityCharges" "0"
+      "creep_damage_penalty" "0"
+    }
+    "enchantress_bunny_hop" {
+      "hop_distance" "0.35"
+      "hop_duration" "0"
+      "hop_height" "0"
+    }
+    "enchantress_enchant" {
+      "level_req" "0"
+    }
+    "enchantress_impetus" {
+      "distance_cap" "0.5"
+      "distance_damage_pct" "0.5"
+    }
+    "enchantress_little_friends" {
+      "duration" "0.3"
+      "max_root" "1"
+    }
+    "enchantress_natures_attendants" {
+      "heal_interval" "0"
+      "movespeed" "0"
+      "shard_permanent_wisp_count" "0"
+    }
+    "enchantress_rabblerouser" {
+      "base_damage_amp" "1"
+      "damage_amp_per_level" "1.5"
+    }
+    "enigma_black_hole" {
+      "animation_rate" "0"
+      "duration" "0"
+      "pull_speed" "0.5"
+      "scepter_drag_speed" "0.25"
+      "tick_rate" "0"
+      "vision_radius" "0"
+    }
+    "enigma_demonic_conversion" {
+      "AbilityDuration" "0"
+      "life_extension" "0"
+    }
+    "enigma_gravity_well" {
+      "damage_reduction" "0.125"
+      "max_dist" "0.5"
+      "min_dist" "0.5"
+    }
+    "enigma_malefice" {
+      "eidolon_spawns_per_tick" "0"
+    }
+    "enigma_midnight_pulse" {
+      "damage_percent" "0.25"
+      "duration" "0"
+    }
+    "enigma_splitting_image" {
+      "damage_threshold" "0.25"
+      "eidolon_spawns" "0"
+    }
+    "enraged_wildkin_tornado" {
+      "AbilityChannelTime" "0"
+    }
+    "faceless_void_chronosphere" {
+      "bonus_attack_speed" "0"
+      "duration" "0.5"
+      "vision_radius" "0"
+    }
+    "faceless_void_time_lock" {
+      "chance_pct" "0.5"
+    }
+    "faceless_void_time_walk" {
+      "range" "0.25"
+    }
+    "fiend_grip_tick_interval" {
+      "kill_pct" "0.1"
+    }
+    "forest_troll_high_priest_heal_amp_aura" {
+      "radius" "0.5"
+    }
+    "forged_spirit_melting_strike" {
+      "armor_removed" "0"
+      "max_armor_removed" "0"
+    }
+    "frostbitten_golem_time_warp_aura" {
+      "bonus_cdr" "0"
+      "radius" "1"
+    }
+    "furion_curse_of_the_forest" {
+      "damage_per_tree" "0.5"
+      "radius" "0"
+      "range" "0.125"
+      "slow_per_tree" "0.5"
+    }
+    "furion_force_of_nature" {
+      "max_treants" "0.5"
+      "siege_treants" "0"
+      "treant_damage_max" "0.3"
+      "treant_duration" "0"
+      "treant_large_damage_bonus" "0"
+      "treant_large_hp_bonus" "0"
+      "treant_vision_day" "0.25"
+      "treant_vision_night" "0.25"
+      "treewalking" "0"
+    }
+    "furion_spirit_of_the_forest" {
+      "multiplier" "0"
+      "radius" "0"
+      "treant_damage_max" "0.2"
+    }
+    "furion_sprout" {
+      "leash" "0"
+      "sprout_damage_inteval" "0"
+      "vision_range" "0"
+    }
+    "furion_teleportation" {
+      "max_stacks" "0"
+    }
+    "furion_wrath_of_nature" {
+      "damage" "0.5"
+      "damage_percent_add" "0"
+      "kill_damage" "0"
+      "kill_damage_duration" "0"
+      "max_targets" "0.125"
+    }
+    "generic_hidden" {
+      "duration" "0"
+    }
+    "ghost_frost_attack" {
+      "duration" "0.5"
+    }
+    "granite_golem_hp_aura" {
+      "radius" "0.5"
+    }
+    "grimstroke_dark_artistry" {
+      "abilitycastrange" "0"
+      "end_radius" "0"
+      "start_radius" "0"
+    }
+    "grimstroke_ink_creature" {
+      "destroy_attacks" "0.2"
+      "hero_attack_multiplier" "0"
+      "infection_search_radius" "0"
+      "latched_unit_offset" "0"
+      "latched_unit_offset_short" "0"
+      "return_projectile_speed" "0"
+      "spawn_time" "0"
+      "tick_interval" "0"
+    }
+    "grimstroke_soul_chain" {
+      "chain_break_distance" "0"
+      "creep_duration_pct" "0"
+      "leash_limit_multiplier" "0"
+      "leash_radius_buffer" "0"
+    }
+    "grimstroke_spirit_walk" {
+      "can_end_early" "0"
+      "tick_rate" "0"
+    }
+    "gyrocopter_call_down" {
+      "damage" "0.5"
+      "damage_second_scepter" "0"
+      "range_scepter" "0"
+    }
+    "gyrocopter_flak_cannon" {
+      "fire_rate" "0"
+      "projectile_speed" "0"
+      "scepter_radius" "0"
+      "sidegunner_fire_rate" "0.6"
+    }
+    "gyrocopter_homing_missile" {
+      "attack_speed_bonus_pct" "0"
+      "hit_damage" "0.5"
+    }
+    "gyrocopter_rocket_barrage" {
+      "rocket_damage" "0.75"
+      "rockets_per_second" "0"
+    }
+    "harpy_storm_chain_lightning" {
+      "initial_damage" "1.25"
+      "jump_range" "0.25"
+    }
+    "hoodwink_acorn_shot" {
+      "bounce_delay" "0"
+      "bounce_range" "0.2"
+      "bounces_after_tree_bounce" "0"
+      "can_bounce_off_of_trees" "0"
+    }
+    "hoodwink_bushwhack" {
+      "animation_rate" "0"
+      "visual_height" "0"
+    }
+    "hoodwink_decoy" {
+      "projectile_speed" "0"
+    }
+    "hoodwink_scurry" {
+      "attack_range" "0.25"
+      "heal_amount" "0"
+      "heal_movement" "0"
+      "radius_increase" "0"
+    }
+    "hoodwink_sharpshooter" {
+      "arrow_range" "0.25"
+      "arrow_width" "0.2"
+      "max_damage" "0.5"
+    }
+    "huskar_berserkers_blood" {
+      "hp_threshold_max" "0.75"
+      "maximum_attack_speed" "0.75"
+      "maximum_health_regen" "0.75"
+    }
+    "huskar_burning_spear" {
+      "burn_damage" "0.3"
+      "burn_damage_max_pct" "0.125"
+      "duration" "0.3"
+      "health_cost" "0.3"
+      "max_health_cost" "0.25"
+    }
+    "huskar_inner_fire" {
+      "damage" "0.5"
+    }
+    "huskar_life_break" {
+      "health_cost_percent" "0.5"
+      "health_damage" "0.5"
+      "life_break_heal_pct" "0"
+      "life_break_heal_radius" "0.5"
+    }
+    "ice_shaman_incendiary_bomb" {
+      "building_damage_pct" "0.25"
+      "burn_damage" "1.5"
+      "duration" "0.25"
+    }
+    "invoker_chaos_meteor" {
+      "end_vision_duration" "0"
+      "meteor_count" "0"
+      "vision_distance" "0"
+    }
+    "invoker_deafening_blast" {
+      "end_vision_duration" "0"
+      "radius_end" "0"
+      "radius_start" "0"
+    }
+    "invoker_emp" {
+      "shard_drag_speed" "0.5"
+    }
+    "invoker_forge_spirit" {
+      "armor_per_attack" "0"
+      "extra_spirit_count_exort" "0"
+      "extra_spirit_count_quas" "0"
+      "spirit_attack_range" "0.2"
+      "spirit_duration" "0"
+    }
+    "invoker_ice_wall" {
+      "num_wall_elements" "0"
+      "wall_element_radius" "0"
+      "wall_element_spacing" "0"
+      "wall_place_distance" "0"
+    }
+    "invoker_sun_strike" {
+      "cataclysm_count" "0.25"
+      "delay" "0"
+      "vision_distance" "0"
+      "vision_duration" "0"
+    }
+    "invoker_tornado" {
+      "end_vision_duration" "0"
+      "quas_damage" "0"
+      "vision_distance" "0"
+    }
+    "item_aegis" {
+      "disappear_time_turbo" "0"
+    }
+    "item_aeon_disk" {
+      "max_level" "0"
+    }
+    "item_afterburner" {
+      "tick_rate" "0"
+    }
+    "item_armlet" {
+      "unholy_bonus_attack_speed" "0"
+    }
+    "item_black_king_bar" {
+      "max_level" "0"
+    }
+    "item_blade_mail" {
+      "bonus_intellect" "0"
+    }
+    "item_blink" {
+      "blink_range" "0"
+      "blink_range_clamp" "0"
+    }
+    "item_bottle" {
+      "max_charges" "0"
+    }
+    "item_branches" {
+      "bonus_all_stats" "0"
+      "tree_duration" "0"
+    }
+    "item_ceremonial_robe" {
+      "status_resistance" "0"
+    }
+    "item_circlet" {
+      "bonus_all_stats" "0"
+    }
+    "item_grandmasters_glaive" {
+      "sange_status_resistance" "0"
+    }
+    "item_heart" {
+      "bonus_strength" "0"
+    }
+    "item_helm_of_the_undying" {
+      "duration" "0.3"
+    }
+    "item_ironwood_tree" {
+      "bonus_all_stats" "0.25"
+    }
+    "item_magic_wand" {
+      "charge_radius" "0.5"
+    }
+    "item_mirror_shield" {
+      "block_cooldown" "0"
+    }
+    "item_moon_shard" {
+      "consumed_bonus" "0"
+    }
+    "item_obsidian_pauldrons" {
+      "tick_rate" "0"
+    }
+    "item_octarine_core" {
+      "bonus_cooldown" "0"
+    }
+    "item_orb_of_contagion" {
+      "tick_rate" "0"
+    }
+    "item_orb_of_destruction" {
+      "armor_reduction" "0"
+    }
+    "item_power_treads" {
+      "bonus_damage" "0"
+    }
+    "item_pupils_gift" {
+      "secondary_stats" "0.125"
+    }
+    "item_quickening_charm" {
+      "bonus_cooldown" "0"
+    }
+    "item_radiance" {
+      "upgrade_day_vision" "0"
+    }
+    "item_ruthless_dagger" {
+      "tick_rate" "0"
+    }
+    "item_safety_bubble" {
+      "restore_time" "0"
+    }
+    "item_sange_and_yasha" {
+      "status_resistance" "0"
+    }
+    "item_spell_prism" {
+      "bonus_cooldown" "0"
+    }
+    "item_timeless_relic" {
+      "debuff_amp" "0.125"
+      "spell_amp" "0"
+    }
+    "item_titan_sliver" {
+      "status_resistance" "0"
+    }
+    "item_tpscroll" {
+      "AbilityChannelTime" "0"
+      "minimun_distance" "0"
+      "vision_radius" "0"
+    }
+    "item_travel_boots_"2"" {
+      "tp_channel_time" "0"
+    }
+    "item_trident" {
+      "status_resistance" "0"
+    }
+    "item_wand_of_the_brine" {
+      "damage_reduction" "0"
+    }
+    "jakiro_dual_breath" {
+      "AbilityCastRange" "0.25"
+      "end_radius" "0.25"
+      "fire_delay" "0"
+      "range" "0"
+      "speed" "0"
+      "speed_fire" "0"
+      "start_radius" "0.25"
+    }
+    "jakiro_ice_path" {
+      "path_duration" "0.25"
+    }
+    "jakiro_liquid_fire" {
+      "AbilityDuration" "0"
+      "building_dmg_pct" "0"
+      "damage" "0.125"
+      "double_head" "0"
+      "tick_rate" "0"
+    }
+    "jakiro_liquid_ice" {
+      "double_head" "0"
+      "stun_duration" "0"
+    }
+    "jakiro_macropyre" {
+      "burn_interval" "0"
+      "cast_range" "0"
+      "duration" "0"
+      "linger_duration" "0.2"
+      "path_width" "0.5"
+      "pierces_magic_immunity" "0"
+      "pure_damage_type" "0"
+    }
+    "juggernaut_blade_dance" {
+      "blade_dance_lifesteal" "0"
+    }
+    "juggernaut_blade_fury" {
+      "blade_fury_aspd_multiplier" "0"
+      "blade_fury_damage_tick" "0"
+      "bonus_movespeed" "0.25"
+      "duration" "0"
+      "shard_attack_rate" "0.2"
+    }
+    "juggernaut_bladeform" {
+      "agi_bonus_pct_per_stack" "0.125"
+      "max_stacks" "0.125"
+      "stack_gain_time" "0.125"
+    }
+    "keeper_of_the_light_blinding_light" {
+      "AbilityCharges" "0"
+    }
+    "keeper_of_the_light_chakra_magic" {
+      "duration" "0"
+      "mana_leak_pct" "0"
+    }
+    "keeper_of_the_light_illuminate" {
+      "channel_vision_duration" "0"
+      "channel_vision_interval" "0"
+      "channel_vision_radius" "0"
+      "channel_vision_step" "0"
+      "max_channel_time" "0"
+      "vision_duration" "0"
+    }
+    "keeper_of_the_light_radiant_bind" {
+      "stun_duration" "0"
+    }
+    "keeper_of_the_light_spirit_form_illuminate" {
+      "channel_vision_duration" "0"
+      "channel_vision_interval" "0"
+      "channel_vision_radius" "0"
+      "channel_vision_step" "0"
+      "max_channel_time" "0"
+      "vision_duration" "0"
+    }
+    "keeper_of_the_light_will_o_wisp" {
+      "hit_count" "0.2"
+    }
+    "kez_echo_slash" {
+      "katana_radius" "0.5"
+    }
+    "kez_kazurai_katana" {
+      "katana_attack_range" "0.75"
+      "katana_base_attack_time" "0.25"
+      "katana_bonus_damage" "1"
+    }
+    "kez_raptor_dance" {
+      "hard_dispel" "0"
+      "lifesteal_pct" "0"
+      "magic_resist" "0"
+      "max_health_damage_pct" "0.125"
+    }
+    "kez_ravens_veil" {
+      "apply_parry_bonus" "0"
+      "basic_dispel" "0"
+      "bonus_ms" "0.5"
+    }
+    "kez_shodo_sai" {
+      "base_crit_pct" "0.5"
+      "sai_attack_range" "0.75"
+      "sai_proc_vuln_chance" "0.5"
+    }
+    "kez_switch_weapons" {
+      "katana_attack_range" "0.75"
+      "sai_attack_range" "0.75"
+    }
+    "kobold_taskmaster_speed_aura" {
+      "radius" "0.5"
+    }
+    "kobold_tunneler_prospecting" {
+      "radius" "0.5"
+    }
+    "kunkka_admirals_rum" {
+      "damage_threshold" "0.25"
+      "ghostship_absorb" "0.25"
+    }
+    "kunkka_ghostship" {
+      "fire_cannons" "0"
+      "ghostship_absorb" "0.25"
+      "ghostship_distance" "0.2"
+      "ghostship_width" "0.2"
+    }
+    "kunkka_tidebringer" {
+      "cleave_ending_width" "0"
+      "cleave_starting_width" "0"
+    }
+    "kunkka_torrent" {
+      "percent_instant" "0"
+    }
+    "kunkka_x_marks_the_spot" {
+      "ghostship_absorb" "0.25"
+    }
+    "legion_commander_duel" {
+      "victory_range" "0"
+    }
+    "legion_commander_moment_of_courage" {
+      "buff_duration" "0"
+      "trigger_chance" "0"
+    }
+    "legion_commander_overwhelming_odds" {
+      "armor_per_creep" "0"
+      "armor_per_hero" "0"
+      "bonus_attack_speed_creeps" "0"
+      "damage" "0.75"
+      "damage_per_hero" "0.75"
+      "damage_per_unit" "0.75"
+      "radius" "0.25"
+      "shield_duration" "0.5"
+      "shield_per_damage_pct" "1.25"
+    }
+    "legion_commander_press_the_attack" {
+      "hp_regen" "1.25"
+    }
+    "leshrac_defilement" {
+      "aoe_per_int" "0.08"
+    }
+    "leshrac_diabolic_edict" {
+      "abilityduration" "0"
+      "damage" "0.125"
+      "num_explosions" "0.25"
+      "shard_max_count" "0"
+      "tower_bonus" "0"
+    }
+    "leshrac_lightning_storm" {
+      "interval_scepter" "0"
+      "radius_scepter" "0"
+    }
+    "leshrac_pulse_nova" {
+      "damage" "0.5"
+      "damage_resistance" "0.125"
+    }
+    "leshrac_split_earth" {
+      "shard_max_count" "0"
+      "shard_secondary_delay" "0.2"
+    }
+    "lich_chain_frost" {
+      "bonus_jump_damage" "1.25"
+      "frostbound_duration" "0.4"
+      "has_unlimited_jumps" "0"
+      "jump_range" "0.25"
+      "jumps" "2"
+      "vision_radius" "0"
+    }
+    "lich_death_charge" {
+      "radius" "0.5"
+    }
+    "lich_frost_nova" {
+      "aoe_damage" "0.75"
+    }
+    "lich_frost_shield" {
+      "bonus_duration_per_creep_killed" "0.5"
+      "bonus_duration_per_hero_killed" "0.5"
+      "damage_reduction" "0"
+      "duration" "0"
+      "interval" "0.2"
+      "slow_duration" "0.3"
+    }
+    "lich_ice_spire" {
+      "aura_radius" "0.25"
+      "duration" "0.5"
+      "slow_duration" "0.3"
+    }
+    "lich_sinister_gaze" {
+      "aoe_scepter" "0.2"
+      "cast_range" "0.2"
+    }
+    "life_stealer_infest" {
+      "attack_rate" "0.2"
+      "damage_increase_pct" "0"
+      "damage_threshold" "0"
+    }
+    "life_stealer_open_wounds" {
+      "max_health_as_damage_pct" "0.2"
+    }
+    "life_stealer_rage" {
+      "AbilityDuration" "0.2"
+      "debuff_immunity" "0"
+      "duration" "0"
+    }
+    "lina_dragon_slave" {
+      "AbilityDuration" "0"
+      "dragon_slave_distance" "0"
+      "dragon_slave_speed" "0"
+      "dragon_slave_width_end" "0.2"
+      "dragon_slave_width_initial" "0.2"
+    }
+    "lina_fiery_soul" {
+      "fiery_soul_max_stacks" "0"
+    }
+    "lina_flame_cloak" {
+      "magic_resistance" "0.125"
+      "visualzdelta" "0"
+    }
+    "lina_laguna_blade" {
+      "cast_range_scepter" "0"
+      "damage" "0.35"
+      "damage_delay" "0"
+      "scepter_width" "0.2"
+    }
+    "lina_light_strike_array" {
+      "light_strike_array_aoe" "0.2"
+      "light_strike_array_delay_time" "0.1"
+    }
+    "lion_finger_of_death" {
+      "cleave_damage" "1"
+      "damage" "0.5"
+      "damage_delay" "0"
+      "damage_per_kill" "0.5"
+      "punch_attack_range" "0.25"
+      "punch_bonus_damage_base" "1"
+      "punch_bonus_damage_per_stack" "1"
+      "punch_duration" "0.3"
+    }
+    "lion_impale" {
+      "cone_shaped" "0"
+      "damage" "0.5"
+      "length_buffer" "0"
+      "lion_finger_of_death" "0.5"
+      "speed" "0"
+      "width" "0.2"
+    }
+    "lion_mana_drain" {
+      "tick_interval" "0"
+    }
+    "lone_druid_bear_necessities" {
+      "bonus_stat_percent" "0.35"
+      "item_slots" "0.35"
+    }
+    "lone_druid_savage_roar" {
+      "only_affects_player_units" "0"
+    }
+    "lone_druid_savage_roar_bear" {
+      "only_affects_player_units" "0"
+    }
+    "lone_druid_spirit_bear" {
+      "bear_armor" "0"
+      "bear_attack_leash_range" "0.5"
+      "bear_hp" "0"
+      "bear_magic_resistance" "0"
+      "bear_regen_tooltip" "0"
+      "cooldown_scepter" "0"
+    }
+    "lone_druid_spirit_bear_demolish" {
+      "bonus_building_damage" "0"
+      "spell_resistance" "0"
+      "true_form_bonus_building_damage" "0"
+    }
+    "lone_druid_spirit_bear_fetch" {
+      "self_slow" "0"
+    }
+    "lone_druid_spirit_link" {
+      "lifesteal_both_ways" "0"
+    }
+    "luna_eclipse" {
+      "beams" "0.5"
+    }
+    "luna_lucent_beam" {
+      "beam_damage" "0.25"
+      "beams" "0"
+      "damage_buff_from_eclipse_pct" "0"
+      "search_radius" "0"
+    }
+    "luna_lunar_blessing" {
+      "bonus_damage_per_level" "0.5"
+    }
+    "luna_lunar_orbit" {
+      "rotating_glaives" "0.5"
+      "rotating_glaives_collision_damage" "0"
+      "rotating_glaives_damage_reduction" "0.4"
+      "rotating_glaives_duration" "0.25"
+      "rotating_glaives_speed" "0.5"
+    }
+    "luna_moon_glaive" {
+      "damage_reduction_percent" "1"
+      "range" "0.2"
+    }
+    "lycan_howl" {
+      "total_attack_damage_reduction" "0"
+    }
+    "lycan_shapeshift" {
+      "speed" "0"
+    }
+    "lycan_summon_wolves" {
+      "bonus_health" "1"
+      "damage_per_wolf" "0.5"
+      "health_per_wolf" "0.5"
+      "wolf_damage" "1"
+      "wolf_duration" "0.125"
+      "wolf_hp" "1.25"
+    }
+    "lycan_summon_wolves_invisibility" {
+      "fade_time" "0"
+    }
+    "magnataur_empower" {
+      "cleave_ending_width" "0"
+      "cleave_starting_width" "0"
+    }
+    "magnataur_horn_toss" {
+      "destination_offset" "0"
+      "pull_angle" "0"
+      "pull_distance" "0.5"
+      "pull_offset" "0"
+    }
+    "magnataur_reverse_polarity" {
+      "pull_duration" "0"
+    }
+    "magnataur_shockwave" {
+      "scepter_range" "0.2"
+      "scepter_width" "0.2"
+      "shock_damage" "0.5"
+      "shock_width" "0.2"
+    }
+    "magnataur_skewer" {
+      "range" "0.25"
+      "skewer_cooldown" "0"
+      "skewer_manacost" "0"
+      "tool_attack_slow" "0"
+    }
+    "marci_bodyguard" {
+      "bodyguard_attack_range_buffer" "1"
+      "bodyguard_duration" "0.5"
+      "bonus_damage" "1.25"
+      "creep_lifesteal_reduction_pct" "1.5"
+    }
+    "marci_companion_run" {
+      "impact_position_offset" "0"
+      "max_acceleration" "0"
+      "max_lob_travel_time" "0"
+      "min_acceleration" "0"
+      "min_height_above_highest" "0"
+      "min_height_above_lowest" "0"
+      "min_lob_travel_time" "0"
+      "move_speed" "0"
+      "scepter_armor" "0"
+      "scepter_heal" "0"
+      "target_abort_distance" "0"
+      "vector_preview_radius" "0"
+    }
+    "marci_grapple" {
+      "impact_damage" "0.5"
+      "pull_angle" "0"
+      "pull_offset" "0"
+      "throw_distance_behind" "0.5"
+    }
+    "marci_guardian" {
+      "bonus_attack_range" "0"
+      "max_partner_distance" "0.5"
+    }
+    "marci_special_delivery" {
+      "bonus_levels" "0"
+      "courier_max_level" "0"
+    }
+    "marci_unleash" {
+      "bonus_movespeed" "2"
+      "shard_push_length" "0"
+    }
+    "mars_arena_of_blood" {
+      "first_warrior_angle" "0"
+      "formation_time" "0"
+      "spear_attack_interval" "0.2"
+      "spear_distance_from_wall" "0"
+      "warrior_count" "0"
+      "warrior_fade_max_dist" "0"
+      "warrior_fade_min_dist" "0"
+      "width" "0"
+    }
+    "mars_bulwark" {
+      "physical_damage_reduction" "0.1"
+      "physical_damage_reduction_side" "0.1"
+    }
+    "mars_gods_rebuke" {
+      "activity_duration" "0"
+      "crit_mult" "0.5"
+      "scepter_cooldown" "0"
+    }
+    "mars_spear" {
+      "activity_duration" "0"
+      "knockback_distance" "0"
+      "knockback_duration" "0"
+      "shard_interval" "0"
+      "shard_trail_duration" "0"
+      "spear_width" "0.2"
+    }
+    "medusa_cold_blooded" {
+      "damage" "0"
+    }
+    "medusa_gorgon_grasp" {
+      "damage_interval" "0"
+      "volley_count" "0.25"
+    }
+    "medusa_mana_shield" {
+      "aspd_increase_smoothness" "0"
+      "damage_per_mana" "0.25"
+      "illusion_damage_per_mana" "0.25"
+    }
+    "medusa_mystic_snake" {
+      "jump_delay" "0"
+      "snake_damage" "0.5"
+      "stone_form_scepter_base" "0"
+    }
+    "medusa_stone_gaze" {
+      "vision_cone" "0"
+    }
+    "medusa_venomed_volley" {
+      "cast_slow" "0.5"
+    }
+    "meepo_divided_we_stand" {
+      "levels_between_upgrades" "0"
+      "main_meepo_stats_pct" "0.5"
+    }
+    "meepo_megameepo" {
+      "stats_pct" "0.5"
+    }
+    "meepo_poof" {
+      "AbilityChannelTime" "0"
+    }
+    "mirana_invis" {
+      "duration" "0"
+    }
+    "mirana_leap" {
+      "leap_acceleration" "0"
+    }
+    "mirana_solar_flare" {
+      "ally_pct" "0.25"
+      "increase_rate" "0.5"
+    }
+    "mirana_starfall" {
+      "damage" "0.4"
+      "secondary_starfall_damage_percent" "0.5"
+    }
+    "monkey_king_boundless_strike" {
+      "soldier_spawn_duration" "0"
+    }
+    "monkey_king_tree_dance" {
+      "perched_spot_height" "0"
+      "range" "0"
+      "top_level_height" "0"
+    }
+    "monkey_king_wukongs_command" {
+      "cast_range_scepter" "0"
+      "duration" "0"
+      "leadership_radius_buffer" "0"
+      "outer_attack_buffer" "0"
+      "scepter_spawn_duration" "0.2"
+      "scepter_spawn_interval" "0.2"
+    }
+    "morphling_accumulation" {
+      "bonus_all_stats_per_level_of_attributes" "2"
+    }
+    "morphling_adaptive_strike_agi" {
+      "damage_base" "0.5"
+      "damage_max" "0.5"
+    }
+    "morphling_adaptive_strike_str" {
+      "knockback_max" "1.25"
+      "knockback_min" "1.25"
+    }
+    "morphling_hybrid" {
+      "illusion_damage_in_pct" "0"
+    }
+    "morphling_morph_agi" {
+      "bonus_attributes" "0"
+      "castable_while_stunned" "0"
+      "morph_cooldown" "0"
+      "points_per_tick" "2"
+    }
+    "morphling_morph_str" {
+      "bonus_attributes" "0"
+      "castable_while_stunned" "0"
+      "mana_cost" "2"
+      "morph_cooldown" "0"
+      "points_per_tick" "2"
+    }
+    "morphling_replicate" {
+      "scepter_additional_stats" "0"
+      "scepter_attack_speed" "0"
+      "scepter_spell_amplify" "0"
+      "scepter_stat_steal" "0"
+      "scepter_status_resist" "0"
+    }
+    "morphling_waveform" {
+      "AbilityCharges" "0"
+      "abilitycastrange" "0"
+      "speed" "0.125"
+      "width" "0.2"
+    }
+    "muerta_dead_shot" {
+      "damage" "0.5"
+    }
+    "muerta_ofrenda" {
+      "effect_radius" "0.5"
+    }
+    "muerta_pierce_the_veil" {
+      "base_damage_pct" "1.25"
+      "bonus_damage" "1"
+    }
+    "muerta_the_calling" {
+      "dead_zone_distance" "0.25"
+      "debug_draw" "0"
+      "rotation_direction" "0"
+      "rotation_initial" "0"
+      "show_warning" "0"
+    }
+    "naga_siren_eelskin" {
+      "radius" "0.5"
+    }
+    "naga_siren_ensnare" {
+      "can_target_invulnerable" "0"
+      "can_target_magic_immune" "0"
+    }
+    "naga_siren_mirror_image" {
+      "illusion_duration" "0"
+    }
+    "naga_siren_reel_in" {
+      "can_target_invulnerable" "0"
+      "can_target_magic_immune" "0"
+    }
+    "naga_siren_rip_tide" {
+      "debuff_duration" "0"
+    }
+    "naga_siren_song_of_the_siren" {
+      "animation_rate" "0"
+      "regen_rate" "0"
+      "regen_rate_self" "0"
+      "scepter_cooldown" "0"
+    }
+    "necrolyte_death_pulse" {
+      "projectile_speed" "0"
+    }
+    "necrolyte_death_seeker" {
+      "projectile_multiplier" "0"
+    }
+    "necrolyte_heartstopper_aura" {
+      "aura_damage" "0.5"
+      "aura_radius" "0"
+      "heal_regen_to_damage" "0.5"
+    }
+    "necrolyte_sadist" {
+      "bonus_aoe" "0"
+      "health_regen" "0.7"
+      "hero_multiplier" "0.5"
+      "regen_duration" "0.08"
+    }
+    "nevermore_dark_lord" {
+      "bonus_armor_per_stack" "0"
+      "kill_buff_duration" "0"
+    }
+    "nevermore_necromastery" {
+      "attack_range_bonus" "0"
+      "max_soul_increase_on_hero_kill" "0.75"
+      "necromastery_max_souls" "0.2"
+      "necromastery_max_souls_scepter" "0.2"
+      "necromastery_soul_release" "0"
+    }
+    "nevermore_shadowraze"1"" {
+      "procs_attack" "0"
+      "shadowraze_cooldown" "0"
+      "shadowraze_damage" "0.5"
+    }
+    "nevermore_shadowraze"2"" {
+      "procs_attack" "0"
+      "shadowraze_cooldown" "0"
+    }
+    "nevermore_shadowraze"3"" {
+      "procs_attack" "0"
+      "shadowraze_cooldown" "0"
+    }
+    "night_stalker_void" {
+      "damage" "0.5"
+    }
+    "nyx_assassin_burrow" {
+      "damage_reduction" "0.2"
+    }
+    "nyx_assassin_impale" {
+      "length" "0"
+      "width" "0"
+    }
+    "nyx_assassin_mana_burn" {
+      "aoe" "0"
+    }
+    "nyx_assassin_nyxth_sense" {
+      "radius" "0.25"
+    }
+    "nyx_assassin_spiked_carapace" {
+      "bonus_armor" "0"
+      "bonus_damage" "0"
+      "bonus_intellect" "0"
+    }
+    "nyx_assassin_vendetta" {
+      "fade_time" "0"
+      "health_regen_rate_scepter" "0"
+      "mana_regen_rate_scepter" "0"
+    }
+    "obsidian_destroyer_arcane_orb" {
+      "bounce_radius" "0"
+      "mana_pool_damage_pct" "0.5"
+    }
+    "obsidian_destroyer_astral_imprisonment" {
+      "mana_capacity_duration" "0"
+      "mana_capacity_steal" "0"
+      "scepter_range_bonus" "0"
+    }
+    "obsidian_destroyer_equilibrium" {
+      "mana_capacity_duration" "0"
+      "mana_capacity_steal" "0"
+      "shard_bonus_mana" "0"
+      "shard_mana_duration" "0"
+    }
+    "obsidian_destroyer_sanity_eclipse" {
+      "cast_range" "0"
+    }
+    "ogre_bruiser_ogre_smash" {
+      "damage" "1.5"
+      "hero_stun_duration" "0.5"
+      "radius" "0.5"
+    }
+    "ogre_magi_bloodlust" {
+      "modelscale" "0"
+      "multicast_bloodlust_aoe" "0.5"
+    }
+    "ogre_magi_fireblast" {
+      "fireblast_damage" "0.5"
+    }
+    "ogre_magi_ignite" {
+      "ignite_multicast_aoe" "0.2"
+    }
+    "ogre_magi_smash" {
+      "multicast_fireshield_aoe" "0.5"
+      "projectile_speed" "0"
+    }
+    "omniknight_purification" {
+      "heal" "0.5"
+      "recast_delay" "1.25"
+    }
+    "oracle_false_promise" {
+      "duration" "0.2"
+      "radius" "0"
+    }
+    "oracle_fortunes_end" {
+      "damage" "0.5"
+      "scepter_bonus_radius" "0"
+      "scepter_bonus_range" "0"
+      "scepter_stun_percentage" "0"
+    }
+    "oracle_purifying_flames" {
+      "damage" "0.5"
+    }
+    "oracle_rain_of_destiny" {
+      "damage" "0.5"
+      "duration" "0"
+      "tick_rate" "0.5"
+    }
+    "pangolier_gyroshell" {
+      "forward_move_speed" "0"
+      "tick_interval" "0"
+      "turn_rate_boosted" "0"
+    }
+    "pangolier_lucky_shot" {
+      "armor" "0.5"
+      "slow" "0"
+    }
+    "pangolier_rollup" {
+      "bounce_duration" "0"
+      "cast_time_tooltip" "0"
+      "forward_move_speed" "0"
+      "hit_radius" "0"
+      "jump_recover_time" "0"
+      "knockback_radius" "0"
+      "radius" "0"
+      "stun_duration" "0"
+      "tick_interval" "0"
+      "turn_rate" "0"
+      "turn_rate_boosted" "0"
+    }
+    "pangolier_shield_crash" {
+      "duration" "0"
+    }
+    "pangolier_swashbuckle" {
+      "attack_damage" "0.5"
+      "attack_interval" "0"
+      "damage" "0.5"
+      "dash_range" "0"
+      "end_radius" "0"
+      "start_radius" "0"
+      "strikes" "0.75"
+    }
+    "phantom_assassin_fan_of_knives" {
+      "degen" "0"
+      "max_damage_initial" "0"
+      "pct_health_damage" "0"
+      "pct_health_damage_initial" "0.5"
+    }
+    "phantom_assassin_phantom_strike" {
+      "AbilityCharges" "0"
+      "abilitycastrange" "0"
+      "creep_lifesteal_penalty" "0"
+    }
+    "phantom_assassin_stifling_dagger" {
+      "attack_factor" "0"
+    }
+    "phantom_lancer_doppelwalk" {
+      "illusion_"1"_damage_in_pct" "0"
+      "illusion_"1"_damage_out_pct" "0"
+      "search_radius" "1"
+    }
+    "phantom_lancer_illusory_armaments" {
+      "bonus_to_base" "0.5"
+      "bonus_to_base_illusions" "0.5"
+    }
+    "phantom_lancer_phantom_edge" {
+      "agility_duration" "1"
+      "bonus_agility" "1.5"
+      "max_distance" "0.5"
+      "min_distance" "0.5"
+    }
+    "phantom_lancer_spirit_lance" {
+      "fake_lance_distance" "0"
+    }
+    "phoenix_dying_light" {
+      "damage_pct" "1.25"
+      "radius" "0.25"
+    }
+    "phoenix_fire_spirits" {
+      "attackspeed_slow" "0"
+      "damage_per_second" "1"
+      "duration" "0"
+      "radius" "0"
+      "spirit_count" "0"
+      "spirit_speed" "0"
+      "tick_interval" "0"
+    }
+    "phoenix_icarus_dive" {
+      "damage_per_second" "1.25"
+      "dash_length" "0.25"
+    }
+    "phoenix_launch_fire_spirit" {
+      "hp_cost_perc" "0"
+      "spirit_count" "0"
+      "spirit_duration" "0"
+    }
+    "phoenix_sun_ray" {
+      "base_damage" "1"
+      "tick_interval" "0"
+      "turn_rate_initial" "0"
+    }
+    "primal_beast_colossal" {
+      "bonus_building_damage" "0"
+    }
+    "primal_beast_onslaught" {
+      "chargeup_time" "0"
+      "knockback_distance" "0.25"
+      "knockback_radius" "0.25"
+      "max_charge_time" "0"
+    }
+    "primal_beast_pulverize" {
+      "animation_rate" "0"
+      "bonus_aoe_duration" "0"
+      "bonus_aoe_pct_per_hit" "0"
+      "cast_range" "0"
+      "pierce_immunity" "0"
+    }
+    "primal_beast_rock_throw" {
+      "bounce_travel_time" "0"
+      "fragment_impact_distance" "0.25"
+      "fragment_impact_radius" "0"
+      "min_range" "0.25"
+    }
+    "primal_beast_trample" {
+      "attack_damage" "1"
+      "base_damage" "1"
+      "bonus_magic_resistance" "0.25"
+      "step_distance" "0"
+      "unslowable" "0"
+    }
+    "primal_beast_uproar" {
+      "bonus_damage" "1.25"
+      "bonus_damage_per_stack" "1.25"
+      "damage_limit" "1"
+      "damage_max" "0"
+      "damage_min" "0"
+      "max_split_amount" "0"
+      "projectile_damage" "1"
+      "projectiles_per_stack" "0"
+      "radius" "0.5"
+      "roared_bonus_attack_speed" "0"
+      "should_dispell" "0"
+      "splinter_angle" "0.25"
+    }
+    "puck_dream_coil" {
+      "coil_initial_damage" "0.5"
+      "coil_rapid_fire_rate" "0"
+    }
+    "puck_illusory_orb" {
+      "damage" "0.5"
+      "orb_vision" "0.2"
+    }
+    "puck_phase_shift" {
+      "shard_attack_range_bonus" "0.5"
+    }
+    "puck_waning_rift" {
+      "damage" "0.5"
+    }
+    "pudge_dismember" {
+      "abilitychanneltime" "0"
+      "animation_rate" "0"
+      "order_lock_duration" "0"
+      "pull_distance_limit" "0"
+      "pull_units_per_second" "0"
+    }
+    "pudge_meat_hook" {
+      "damage" "0.5"
+      "distance_to_damage" "0"
+      "hook_distance" "0"
+      "vector_target_distance" "0"
+      "vision_duration" "0"
+      "vision_radius" "0"
+    }
+    "pudge_rot" {
+      "rot_damage" "0.5"
+      "rot_tick" "0"
+    }
+    "pugna_decrepify" {
+      "abilityduration" "0"
+      "bonus_movement_speed_allies" "0"
+      "bonus_spell_damage_pct" "0.5"
+    }
+    "pugna_life_drain" {
+      "health_drain" "0.125"
+      "scepter_cooldown" "0"
+      "tick_rate" "0.5"
+    }
+    "pugna_nether_blast" {
+      "blast_damage" "0.25"
+      "structure_damage_mod" "0"
+    }
+    "pugna_nether_ward" {
+      "AbilityDuration" "0.125"
+      "attacks_to_destroy" "0.25"
+      "base_damage" "0.5"
+      "mana_multiplier" "1"
+      "mana_regen" "0"
+      "radius" "0"
+      "self_restoration_range" "0"
+      "shard_ward_bonus_cast_range" "0.2"
+      "spell_damage_reduction" "0"
+    }
+    "pugna_oblivion_savant" {
+      "tower_scale" "0.08"
+    }
+    "queenofpain_blink" {
+      "shard_aoe" "0.2"
+      "shard_duration" "0.2"
+    }
+    "queenofpain_masochist" {
+      "spell_amplification" "0.5"
+      "spell_amplification_per_level" "0"
+    }
+    "queenofpain_scream_of_pain" {
+      "area_of_effect" "0.2"
+      "damage" "0.75"
+      "projectile_speed" "0"
+    }
+    "queenofpain_shadow_strike" {
+      "damage_interval" "0.2"
+      "duration_heal" "0"
+    }
+    "queenofpain_sonic_wave" {
+      "distance" "0.2"
+      "final_aoe" "0.2"
+      "knockback_distance" "0.5"
+      "starting_aoe" "0"
+      "tick_rate" "0"
+    }
+    "rattletrap_hookshot" {
+      "cooldown_scepter" "0"
+    }
+    "rattletrap_jetpack" {
+      "duration" "0.25"
+    }
+    "rattletrap_overclocking" {
+      "bonus_movement_speed" "0"
+      "buff_duration" "0"
+      "hookshot_damage_bonus_pct" "0"
+      "rocket_flare_cooldown" "0"
+      "rocket_flare_rockets" "0.2"
+    }
+    "rattletrap_power_cogs" {
+      "bonus_armor" "0"
+      "extra_pull_buffer" "0"
+      "leash" "0"
+      "push_length" "1"
+    }
+    "rattletrap_rocket_flare" {
+      "AbilityCooldown" "0"
+      "damage" "0"
+      "projectile_vision_radius" "0.3"
+    }
+    "razor_dynamo" {
+      "spell_amp_damage_divisor" "0.25"
+      "spell_amp_mult" "0.25"
+    }
+    "razor_eye_of_the_storm" {
+      "strike_interval" "0"
+    }
+    "razor_plasma_field" {
+      "damage_max" "0.5"
+      "damage_min" "0.5"
+    }
+    "razor_static_link" {
+      "drain_length" "0.25"
+      "min_pull_range" "0.25"
+      "radius" "0"
+      "vision_duration" "0.5"
+      "vision_radiuss" "0"
+    }
+    "razor_storm_surge" {
+      "strike_cd_reduction_during_storm" "0.125"
+      "strike_damage" "0.25"
+    }
+    "riki_backstab" {
+      "backstab_angle" "0"
+    }
+    "riki_blink_strike" {
+      "AbilityChargeRestoreTime" "0"
+      "abilitycastrange" "0"
+    }
+    "riki_innate_backstab" {
+      "damage_multiplier" "0.5"
+    }
+    "riki_smoke_screen" {
+      "duration" "0"
+    }
+    "riki_tricks_of_the_trade" {
+      "AbilityChannelTime" "0"
+      "agility_pct" "0.5"
+      "attack_count" "0.5"
+      "damage_pct" "0.5"
+      "dispel" "0"
+      "radius" "0"
+      "scepter_cast_range" "0"
+      "scepter_duration" "0"
+    }
+    "ringmaster_dark_carnival_souvenirs" {
+      "souvenir_collection_range" "0.5"
+    }
+    "ringmaster_funhouse_mirror" {
+      "AbilityChargeRestoreTime" "0"
+      "AbilityCharges" "0"
+      "InitialAbilityCharges" "0"
+      "illusion_model_scale_"1"" "0"
+      "vision_radius" "0.25"
+    }
+    "ringmaster_impalement" {
+      "AbilityChargeRestoreTime" "0"
+      "AbilityCharges" "0.75"
+      "bleed_health_pct" "0.75"
+      "dagger_pass_through" "0"
+      "dagger_vision" "0.5"
+      "damage_impact" "1"
+      "slow_percent" "0"
+    }
+    "ringmaster_spotlight" {
+      "radius" "0.25"
+    }
+    "ringmaster_strongman_tonic" {
+      "AbilityChargeRestoreTime" "0"
+      "AbilityCharges" "0"
+      "InitialAbilityCharges" "0"
+    }
+    "ringmaster_tame_the_beasts" {
+      "has_debuff_immunity" "0"
+      "max_multiplier" "0"
+      "whip_channel_reduction" "0"
+      "whip_cooldown_reduction" "0"
+    }
+    "ringmaster_the_box" {
+      "grant_debuff_immunity" "0"
+      "grant_flying" "0"
+      "strong_dispel" "0"
+    }
+    "ringmaster_wheel" {
+      "damage_per_second" "0"
+      "vision_radius" "0.25"
+    }
+    "ringmaster_whoopee_cushion" {
+      "AbilityChargeRestoreTime" "0"
+      "AbilityCharges" "0"
+      "InitialAbilityCharges" "0"
+      "fart_cloud_radius" "0.3"
+      "leap_distance" "0.25"
+    }
+    "rubick_arcane_supremacy" {
+      "aoe_bonus" "0"
+      "aoe_bonus_duration" "0"
+      "cast_range" "0.08"
+      "spell_amp" "0.3"
+    }
+    "rubick_fade_bolt" {
+      "damage" "0.25"
+    }
+    "rubick_might_and_magus" {
+      "bonus_damage_pct" "0.125"
+      "magic_resist_pct" "0"
+    }
+    "rubick_telekinesis" {
+      "fall_duration" "0"
+      "max_land_distance" "0.5"
+      "shard_max_land_distance_bonus_pct" "0.2"
+      "shard_teammate_throw_delay" "0"
+    }
+    "rubick_telekinesis_land" {
+      "radius" "0"
+    }
+    "rubick_telekinesis_land_self" {
+      "radius" "0"
+    }
+    "sandking_burrowstrike" {
+      "burrow_anim_time" "0"
+      "burrow_speed" "0"
+      "burrow_speed_scepter" "0"
+    }
+    "sandking_epicenter" {
+      "epicenter_pulses" "0"
+      "epicenter_radius" "0.2"
+      "epicenter_radius_increment" "0"
+      "scepter_explosion_radius_pct" "0"
+      "shard_radius" "0.2"
+    }
+    "sandking_sand_storm" {
+      "damage_tick_rate" "0"
+      "fade_delay" "0"
+      "sand_storm_radius" "0"
+      "spine_tick_rate" "0"
+    }
+    "satyr_hellcaller_unholy_aura" {
+      "radius" "0.5"
+    }
+    "satyr_soulstealer_mana_burn" {
+      "burn_amount" "2"
+    }
+    "shadow_demon_disruption" {
+      "AbilityCharges" "0"
+      "illusion_bounty_base" "0"
+      "illusion_bounty_growth" "0"
+    }
+    "shadow_demon_disseminate" {
+      "damage_reflection_pct" "0.2"
+      "health_lost" "0.25"
+    }
+    "shadow_demon_shadow_poison" {
+      "radius" "0.2"
+    }
+    "shadow_demon_soul_catcher" {
+      "illusion_incoming_damage" "0"
+      "illusion_outgoing_damage" "0"
+    }
+    "shadow_shaman_ether_shock" {
+      "damage" "0.5"
+      "end_distance" "0.2"
+      "end_radius" "0"
+      "start_radius" "0"
+    }
+    "shadow_shaman_mass_serpent_ward" {
+      "duration" "0"
+      "is_mega_ward" "0"
+      "scepter_range" "0"
+      "ward_count" "0.5"
+    }
+    "shadow_shaman_shackles" {
+      "AbilityChannelTime" "0"
+      "shard_ward_count" "0.5"
+      "shard_ward_duration" "0"
+      "shard_ward_spawn_distance" "0.2"
+      "tick_interval" "0"
+    }
+    "shadow_shaman_voodoo" {
+      "can_target_allies" "0"
+    }
+    "shredder_chakram" {
+      "castpoint_scepter" "0"
+      "damage_interval" "0.5"
+      "damage_per_second" "0.5"
+      "pass_damage" "0.5"
+    }
+    "shredder_chakram_"2"" {
+      "castpoint_scepter" "0"
+      "damage_interval" "0.5"
+      "damage_per_second" "0.5"
+      "pass_damage" "0.5"
+    }
+    "shredder_flamethrower" {
+      "building_dmg_pct" "0"
+      "length" "0.125"
+    }
+    "shredder_timber_chain" {
+      "chain_radius" "0"
+    }
+    "shredder_whirling_death" {
+      "stat_loss_pct" "0.5"
+      "stat_loss_univ" "0.5"
+      "whirling_tick" "0"
+    }
+    "silencer_brain_drain" {
+      "permanent_int_steal_amount" "0"
+    }
+    "silencer_curse_of_the_silent" {
+      "damage" "0.75"
+      "duration" "0.125"
+    }
+    "silencer_glaives_of_wisdom" {
+      "AbilityDuration" "0"
+      "int_steal_duration" "0.08"
+      "permanent_int_steal_amount" "0"
+      "permanent_int_steal_range" "0.2"
+      "shard_range" "0.2"
+    }
+    "silencer_global_silence" {
+      "applies_curse" "0"
+    }
+    "silencer_last_word" {
+      "scepter_bonus_damage" "0"
+    }
+    "skeleton_king_spectral_blade" {
+      "cursed_damage" "0.3"
+    }
+    "skeleton_king_vampiric_aura" {
+      "gold_bounty" "0"
+      "xp_bounty" "0"
+    }
+    "skywrath_mage_arcane_bolt" {
+      "bolt_damage" "0.5"
+      "bolt_vision" "0"
+      "int_multiplier" "0.5"
+      "scepter_radius" "0.2"
+      "total_bolt_count" "1.5"
+      "vision_duration" "0"
+    }
+    "skywrath_mage_concussive_shot" {
+      "damage" "0.5"
+      "shot_vision" "0.2"
+    }
+    "skywrath_mage_mystic_flare" {
+      "damage_interval" "0"
+    }
+    "skywrath_mage_shield_of_the_scion" {
+      "stack_duration" "0"
+    }
+    "slardar_amplify_damage" {
+      "undispellable" "0"
+    }
+    "slardar_seaborn_sentinel" {
+      "puddle_status_resistance" "0.125"
+    }
+    "slark_dark_pact" {
+      "pulse_duration" "0"
+      "pulse_interval" "0"
+      "total_pulses" "0"
+    }
+    "slark_depth_shroud" {
+      "duration" "0.125"
+    }
+    "slark_pounce" {
+      "essence_stacks" "0"
+      "max_charges" "0"
+      "pounce_acceleration" "0"
+      "pounce_speed" "0"
+    }
+    "slark_shadow_dance" {
+      "activation_delay" "0"
+      "duration" "0.08"
+      "fade_time" "0"
+      "neutral_disable" "0"
+    }
+    "snapfire_buckshot" {
+      "damage_amp" "0.5"
+      "glancing_shot_damage_pct" "0.5"
+      "split_shot_damage_pct" "0.5"
+    }
+    "snapfire_firesnap_cookie" {
+      "jump_duration" "0"
+      "jump_height" "0"
+      "landing_gesture_duration" "0"
+      "pre_hop_duration" "0"
+      "pre_land_anim_time" "0"
+      "self_cast_delay" "0"
+      "target_heal" "0"
+    }
+    "snapfire_lil_shredder" {
+      "armor_reduction_per_attack" "0"
+      "attack_range_bonus" "0"
+      "buffed_attacks" "0.5"
+    }
+    "snapfire_mortimer_kisses" {
+      "burn_interval" "0"
+      "delay_after_last_projectile" "0"
+      "dist_change_speed" "0"
+      "max_lob_travel_time" "0"
+      "min_lob_travel_time" "0"
+      "min_range" "0.25"
+      "projectile_count" "0"
+      "projectile_speed" "0"
+      "projectile_vision" "0"
+      "projectile_width" "0"
+      "turn_rate" "0"
+    }
+    "snapfire_scatterblast" {
+      "blast_speed" "0"
+      "blast_width_end" "0"
+      "blast_width_initial" "0"
+      "bonus_applies_at_long_range" "0"
+      "point_blank_range" "0"
+      "shard_knockback_distance" "0.5"
+    }
+    "snapfire_spit_creep" {
+      "burn_interval" "0"
+      "dist_change_speed" "0"
+      "max_acceleration" "0"
+      "max_lob_travel_time" "0"
+      "min_acceleration" "0"
+      "min_height_above_highest" "0"
+      "min_height_above_lowest" "0"
+      "min_lob_travel_time" "0"
+      "min_range" "0"
+      "projectile_speed" "0"
+      "projectile_vision" "0"
+      "projectile_width" "0"
+      "turn_rate" "0"
+    }
+    "sniper_assassinate" {
+      "AbilityDamage" "0.5"
+      "abilitycastpoint" "0"
+      "scatter_damage_pct" "0"
+      "scatter_range" "0"
+      "scatter_width" "0"
+      "scepter_crit" "0"
+    }
+    "sniper_headshot" {
+      "damage" "1.25"
+    }
+    "sniper_keen_scope" {
+      "bonus_range" "0.08"
+    }
+    "sniper_shrapnel" {
+      "AbilityCharges" "0"
+      "shrapnel_damage" "0.35"
+    }
+    "spectre_dispersion" {
+      "damage_reflection_pct" "0.25"
+    }
+    "spectre_haunt" {
+      "attack_delay" "0"
+      "destroy_if_target_is_dead" "0"
+    }
+    "spectre_haunt_single" {
+      "attack_delay" "0"
+      "destroy_if_target_is_dead" "0"
+    }
+    "spectre_reality" {
+      "cast_dagger_on_target" "0"
+    }
+    "spectre_spectral_dagger" {
+      "dagger_path_duration" "0.5"
+      "hero_path_duration" "0.125"
+    }
+    "spirit_breaker_bulldoze" {
+      "duration" "0"
+      "movement_speed" "0"
+      "status_resistance" "0"
+    }
+    "spirit_breaker_charge_of_darkness" {
+      "charge_for_max_linger" "0"
+      "linger_time_max" "0"
+      "linger_time_min" "0"
+      "min_movespeed_bonus_pct" "0"
+      "movement_speed" "0"
+      "scepter_cast_point" "0"
+      "scepter_speed" "0"
+      "stun_duration" "0"
+      "vision_duration" "1"
+      "vision_radius" "0.25"
+      "windup_time" "0"
+    }
+    "spirit_breaker_greater_bash" {
+      "bonus_movespeed_pct" "0"
+      "damage" "0.125"
+      "movespeed_duration" "0"
+    }
+    "spirit_breaker_nether_strike" {
+      "fade_time" "0"
+      "shard_bonus_damage" "0"
+      "shard_break_duration" "0"
+      "shard_spell_immune_duration" "0"
+    }
+    "storm_spirit_ball_lightning" {
+      "ball_lightning_aoe" "0.2"
+      "ball_lightning_initial_mana_percentage" "0"
+      "ball_lightning_move_speed" "0.2"
+      "ball_lightning_travel_cost_base" "0"
+      "ball_lightning_travel_cost_percent" "0"
+      "ball_lightning_vision_radius" "0"
+      "blocker_duration" "0"
+      "scepter_remnant_interval" "0.2"
+    }
+    "storm_spirit_electric_vortex" {
+      "AbilityDuration" "0.125"
+      "abilityduration" "0"
+      "electric_vortex_pull_tether_range" "0.2"
+      "enemy_overload_duration" "0.25"
+    }
+    "storm_spirit_galvanized" {
+      "charges_per_death" "0"
+      "mp_per_kill" "0"
+    }
+    "storm_spirit_overload" {
+      "overload_aoe" "0.2"
+      "overload_cast_range" "0"
+    }
+    "storm_spirit_static_remnant" {
+      "AbilityDuration" "0"
+      "is_point_targeted" "0"
+    }
+    "sven_great_cleave" {
+      "cleave_starting_width" "0"
+    }
+    "sven_storm_bolt" {
+      "AbilityDamage" "0.5"
+      "vision_radius" "0"
+    }
+    "sven_warcry" {
+      "duration" "0.3"
+    }
+    "techies_land_mines" {
+      "AbilityChargeRestoreTime" "0"
+      "activation_delay" "0"
+      "building_damage_pct" "0"
+      "cast_range_scepter_bonus" "0"
+      "damage" "0.5"
+      "lifetime" "0"
+      "mres_reduction" "0"
+      "outer_damage" "0.5"
+    }
+    "techies_minefield_sign" {
+      "aura_radius" "0"
+      "lifetime" "0"
+    }
+    "techies_sticky_bomb" {
+      "acceleration" "0"
+      "damage" "0.5"
+      "duration" "0"
+      "pre_chase_time" "0"
+      "secondary_slow_duration" "0"
+      "speed" "0"
+    }
+    "techies_suicide" {
+      "damage" "0.5"
+    }
+    "templar_assassin_psi_blades" {
+      "attack_spill_range" "0.25"
+      "bonus_attack_range" "0.5"
+      "meld_strike_spills" "0"
+    }
+    "templar_assassin_psionic_trap" {
+      "instant_trap_damage" "0"
+      "movement_speed_max" "0"
+      "movement_speed_min" "0"
+      "shard_bonus_vision" "0"
+      "shard_max_silence_duration" "0"
+      "shard_min_silence_duration" "0"
+      "trap_bonus_damage" "0"
+      "trap_duration" "0"
+      "trap_max_charge_duration" "0"
+      "trap_radius" "0"
+    }
+    "templar_assassin_refraction" {
+      "bonus_damage" "1.25"
+      "cast_while_disabled" "0"
+    }
+    "templar_assassin_trap" {
+      "shard_bonus_max_traps" "0"
+      "trap_duration" "0"
+    }
+    "templar_assassin_trap_teleport" {
+      "movement_speed_max" "0"
+      "movement_speed_min" "0"
+      "trap_bonus_damage" "0"
+      "trap_duration" "0"
+      "trap_max_charge_duration" "0"
+      "trap_radius" "0"
+    }
+    "terrorblade_conjure_image" {
+      "appear_as_illusion" "0"
+      "illusion_duration" "0.08"
+      "illusion_outgoing_damage" "1"
+      "illusions_spawn_with_full_hp" "0"
+      "show_particle_effect" "0"
+    }
+    "terrorblade_dark_unity" {
+      "inside_radius_bonus_damage_pct" "1"
+      "outside_radius_bonus_damage_pct" "1"
+    }
+    "terrorblade_metamorphosis" {
+      "bonus_damage" "1.25"
+      "bonus_range" "0.25"
+      "speed_loss" "0"
+      "transformation_time" "0"
+    }
+    "terrorblade_reflection" {
+      "illusion_outgoing_damage" "1"
+      "range" "0.2"
+    }
+    "terrorblade_sunder" {
+      "ignore_minimum_pct_for_enemies" "0"
+    }
+    "tidehunter_anchor_smash" {
+      "targets_buildings" "0"
+    }
+    "tidehunter_arm_of_the_deep" {
+      "damage_pct" "0.2"
+      "duration_pct" "0"
+      "range_pct" "0.2"
+    }
+    "tidehunter_kraken_shell" {
+      "bonus_reduction_per_kill" "2"
+      "damage_cleanse" "0.2"
+      "damage_reduction" "2"
+    }
+    "tidehunter_krill_eater" {
+      "attack_range_per_level" "0.25"
+    }
+    "tinker_defense_matrix" {
+      "status_resistance" "0"
+    }
+    "tinker_heat_seeking_missile" {
+      "radius_explosion" "0"
+      "splash_pct" "0"
+    }
+    "tinker_laser" {
+      "laser_damage" "0.3"
+      "scepter_reduction_pct" "0"
+      "tinker_heat_seeking_missile" "0.5"
+    }
+    "tinker_march_of_the_machines" {
+      "damage" "0.5"
+      "machines_per_sec" "0.5"
+      "radius" "0.5"
+    }
+    "tinker_rearm" {
+      "AbilityChannelTime" "0"
+    }
+    "tiny_avalanche" {
+      "avalanche_damage" "0.5"
+      "radius" "0.125"
+      "tick_count" "0.5"
+    }
+    "tiny_grow" {
+      "attack_speed_reduction" "0"
+    }
+    "tiny_insurmountable" {
+      "str_to_status_resist_pct" "0"
+    }
+    "tiny_toss" {
+      "AbilityCharges" "0"
+      "bonus_damage_pct" "0"
+      "toss_damage" "0.25"
+    }
+    "tiny_tree_channel" {
+      "abilitychanneltime" "0"
+      "bonus_damage" "0"
+      "interval" "0"
+      "range" "0"
+    }
+    "tiny_tree_grab" {
+      "bat_increase" "0"
+      "bonus_damage_buildings" "0"
+      "speed_reduction" "0"
+    }
+    "treant_eyes_in_the_forest" {
+      "overgrowth_aoe" "0"
+      "tree_respawn_seconds" "0"
+      "vision_aoe" "0"
+    }
+    "treant_innate_attack_damage" {
+      "attack_damage_per_level" "1"
+    }
+    "treant_leech_seed" {
+      "damage_interval" "0.2"
+      "leech_damage" "1"
+      "projectile_speed" "0"
+    }
+    "treant_living_armor" {
+      "bonus_armor" "0.5"
+      "duration" "0"
+    }
+    "treant_natures_grasp" {
+      "creation_interval" "0"
+      "initial_latch_delay" "0"
+      "latch_range" "0"
+      "latch_vision" "0"
+      "vine_spawn_interval" "0"
+      "vines_duration" "0"
+    }
+    "treant_natures_guise" {
+      "damage" "1.5"
+      "shard_damage" "1.5"
+      "shard_tree_movement_bonus_pct" "0"
+    }
+    "treant_overgrowth" {
+      "damage" "1.5"
+      "purgable" "0"
+    }
+    "troll_warlord_battle_trance" {
+      "range" "0.5"
+      "scepter_duration_enemies" "0"
+    }
+    "troll_warlord_berserkers_rage" {
+      "base_attack_time" "0.75"
+      "bonus_hp" "0"
+      "bonus_range" "0"
+    }
+    "troll_warlord_whirling_axes_melee" {
+      "hit_radius" "0.2"
+      "max_range" "0"
+      "pierces_magic_immunity" "0"
+    }
+    "troll_warlord_whirling_axes_ranged" {
+      "axe_range" "0.125"
+      "axe_speed" "10"
+      "axe_width" "0.2"
+      "pierces_magic_immunity" "0"
+    }
+    "tusk_drinking_buddies" {
+      "max_distance" "0.3"
+      "min_distance" "0.3"
+    }
+    "tusk_ice_shards" {
+      "shard_angle_step" "0"
+      "shard_count" "0"
+      "shard_distance" "0.3"
+      "shard_duration" "0.5"
+      "shard_width" "0"
+      "turn_rate_slow" "0"
+    }
+    "tusk_snowball" {
+      "snowball_damage_bonus" "2"
+      "snowball_duration" "1"
+      "snowball_grow_rate" "0"
+      "snowball_windup_radius" "0"
+      "stun_duration" "0.5"
+    }
+    "tusk_walrus_punch" {
+      "push_length" "0"
+    }
+    "undying_decay" {
+      "str_scale_up" "0"
+      "str_steal" "0.5"
+    }
+    "undying_flesh_golem" {
+      "str_percentage" "0.5"
+    }
+    "undying_tombstone" {
+      "tombstone_health" "0"
+      "zombie_interval" "0.2"
+    }
+    "ursa_earthshock" {
+      "AbilityChargeRestoreTime" "0"
+      "AbilityDuration" "0"
+      "hop_distance" "0.3"
+      "hop_duration" "0"
+      "hop_height" "0"
+      "shard_enrage_duration" "0.1"
+    }
+    "ursa_enrage" {
+      "cooldown_scepter" "0"
+      "damage_increase" "0.5"
+      "damage_reduction" "0.125"
+      "duration" "0.08"
+      "status_resistance" "0.125"
+    }
+    "ursa_fury_swipes" {
+      "damage_per_stack" "1.25"
+      "stun_duration" "0"
+    }
+    "vengefulspirit_magic_missile" {
+      "magic_missile_damage" "0.35"
+    }
+    "vengefulspirit_nether_swap" {
+      "damage" "0.5"
+      "damage_reduction" "0"
+      "damage_reduction_duration" "0"
+      "scepter_charge_reduction" "0"
+      "scepter_radius" "0"
+    }
+    "vengefulspirit_retribution" {
+      "bonus_damage" "1.25"
+    }
+    "vengefulspirit_wave_of_terror" {
+      "armor_reduction" "1.25"
+      "vision_aoe" "0.2"
+      "vision_duration" "0.25"
+      "wave_width" "0.3"
+    }
+    "venomancer_plague_ward" {
+      "duration" "0"
+      "max_charges" "0.25"
+      "ward_multiplier" "0.3"
+    }
+    "venomancer_poison_nova" {
+      "aspd_slow" "0"
+    }
+    "venomancer_poison_sting" {
+      "movement_speed" "0.5"
+    }
+    "venomancer_sepsis" {
+      "apply_from_ward_attacks" "0"
+      "bonus_dmg_per_debuff_pct" "0.25"
+    }
+    "venomancer_venomous_gale" {
+      "create_wards" "0.5"
+      "shard_ward_count" "0"
+    }
+    "viper_corrosive_skin" {
+      "bonus_magic_resistance" "0.25"
+      "effect_multiplier" "0.1"
+    }
+    "viper_nethertoxin" {
+      "projectile_speed" "0"
+    }
+    "viper_poison_attack" {
+      "bonus_range" "0"
+      "shard_building_dmg_pct" "0.25"
+    }
+    "viper_predator" {
+      "damage_base" "1.25"
+      "damage_per_level" "1"
+    }
+    "viper_viper_strike" {
+      "charge_restore_time" "0"
+      "max_charges" "0"
+    }
+    "visage_grave_chill" {
+      "radius" "0"
+    }
+    "visage_gravekeepers_cloak" {
+      "max_damage_reduction" "0"
+      "radius" "0"
+    }
+    "visage_lurker" {
+      "cooldown_speed_per_stack" "0.25"
+      "max_stacks" "0"
+    }
+    "visage_summon_familiars" {
+      "familiar_hp" "1.5"
+    }
+    "void_spirit_aether_remnant" {
+      "creep_damage_pct" "0"
+      "damage_tick_rate" "0"
+      "duration" "0.3"
+      "end_radius" "0"
+      "pierces_creeps" "0"
+      "projectile_speed" "0"
+      "pull_destination" "0"
+      "radius" "0"
+      "remnant_watch_distance" "0.4"
+      "remnant_watch_radius" "0"
+      "start_radius" "0"
+      "think_interval" "0"
+      "watch_path_vision_radius" "0"
+    }
+    "void_spirit_astral_step" {
+      "AbilityChargeRestoreTime" "0"
+      "AbilityCharges" "0"
+      "ability_chance_pct" "0"
+      "attack_chance_pct" "0"
+      "damage" "0.5"
+      "max_travel_distance" "0.2"
+      "min_travel_distance" "0"
+      "pop_damage" "0.5"
+    }
+    "void_spirit_dissimilate" {
+      "destination_fx_radius" "0"
+    }
+    "void_spirit_intrinsic_edge" {
+      "secondary_stat_bonus_pct" "0.125"
+    }
+    "void_spirit_resonant_pulse" {
+      "absorb_per_hero_hit" "1.25"
+      "base_absorb_amount" "1.25"
+      "buff_duration" "0.25"
+      "charge_restore_time" "0"
+      "return_projectile_speed" "0"
+      "speed" "0"
+    }
+    "warlock_eldritch_summoning" {
+      "golem_can_summon" "0"
+      "imp_level" "0"
+      "minor_imp_duration" "0.25"
+    }
+    "warlock_fatal_bonds" {
+      "shard_aoe" "0.2"
+      "tick_interval" "0.2"
+    }
+    "warlock_golem_permanent_immolation" {
+      "health_bonus_pct" "0"
+      "manaboost_scale_mult" "0"
+      "share_damage" "0"
+    }
+    "warlock_rain_of_chaos" {
+      "aoe" "0.2"
+      "bounty_reduction_scepter" "0"
+      "hp_dmg_reduction_scepter" "0"
+      "number_of_golems_scepter" "0"
+    }
+    "warlock_shadow_word" {
+      "damage" "1.25"
+    }
+    "warlock_upheaval" {
+      "aoe" "0.2"
+      "major_imp_duration" "0"
+      "minor_imp_duration" "0"
+      "tick_interval" "0.2"
+    }
+    "warpine_raider_seed_shot" {
+      "bounce_range" "0.2"
+      "damage" "1.5"
+      "slow" "0"
+    }
+    "weaver_geminate_attack" {
+      "delay" "0"
+    }
+    "weaver_rewoven" {
+      "attack_range_increase_per_stack" "0.35"
+    }
+    "weaver_shukuchi" {
+      "AbilityCharges" "0"
+      "min_movespeed_override" "0"
+    }
+    "weaver_the_swarm" {
+      "attack_rate" "0.1"
+      "destroy_attacks" "0.2"
+    }
+    "wildcard" {
+      "AbilityChargeRestoreTime" "0"
+      "IsBreakable" "0"
+      "_aoe" "0.125"
+      "all_stats" "0.125"
+      "bonus_magical_armor" "0"
+      "cooldown" "0"
+      "crit" "0.75"
+      "damage" "0.6"
+      "distance" "0.125"
+      "health_regen" "1.25"
+      "interval" "0"
+      "length" "0.125"
+      "magic_resist" "0"
+      "necrolyte_sadist" "0.7"
+      "process_procs" "0"
+      "radius" "0.125"
+      "range" "0.125"
+      "spell_amplification" "0.5"
+      "spell_resist" "0"
+      "tooltip" "0"
+      "vision_radius" "0.5"
+      "width" "0.125"
+    }
+    "windrunner_easy_breezy" {
+      "max_movespeed" "0"
+      "min_movespeed" "0"
+    }
+    "windrunner_focusfire" {
+      "attacks_per_second" "0"
+      "bonus_attack_speed" "0.25"
+      "bonus_range" "0"
+      "cooldown_reduction_per_kill" "0"
+      "focusfire_damage_reduction" "0.25"
+      "focusfire_fire_on_the_move" "0"
+    }
+    "windrunner_powershot" {
+      "arrow_range" "0.125"
+      "powershot_damage" "0.75"
+    }
+    "windrunner_shackleshot" {
+      "arrow_speed" "0"
+      "shackle_angle" "0"
+      "shackle_count" "0"
+    }
+    "windrunner_windrun" {
+      "duration" "0"
+      "movespeed_bonus_pct" "0"
+      "physical_damage_pct" "0"
+    }
+    "winter_wyvern_arctic_burn" {
+      "attack_point" "0.2"
+      "night_vision_bonus" "0.2"
+      "tree_destruction_radius" "0"
+    }
+    "winter_wyvern_cold_embrace" {
+      "shard_splinter_range" "0.2"
+    }
+    "winter_wyvern_dragon_sight" {
+      "attack_range_per_damage" "0.25"
+      "damage_per_ten_attack_range_tooltip" "1"
+    }
+    "winter_wyvern_splinter_blast" {
+      "damage" "0.5"
+      "projectile_max_time" "0"
+      "projectile_speed" "0"
+      "secondary_projectile_speed" "0"
+    }
+    "winter_wyvern_winters_curse" {
+      "damage_amplification" "0"
+      "early_out_timer" "0"
+    }
+    "wisp_spirits" {
+      "hero_damage" "1"
+      "revolution_time" "0"
+      "spirit_amount" "0"
+      "spirit_duration" "0"
+    }
+    "wisp_tether" {
+      "latch_distance" "0.5"
+      "radius" "0"
+      "self_bonus" "0"
+    }
+    "witch_doctor_death_ward" {
+      "scepter_lifesteal" "0"
+    }
+    "witch_doctor_maledict" {
+      "abilityduration" "0"
+      "bonus_damage" "0.25"
+      "bonus_damage_threshold" "0"
+      "ticks" "0.25"
+    }
+    "witch_doctor_paralyzing_cask" {
+      "bounce_delay" "0"
+      "bounce_range" "0.2"
+    }
+    "witch_doctor_voodoo_restoration" {
+      "enemy_damage_pct" "0"
+      "heal" "0.25"
+      "heal_interval" "0"
+      "radius" "0"
+    }
+    "zuus_arc_lightning" {
+      "damage_health_pct" "0.25"
+    }
+    "zuus_cloud" {
+      "cloud_bolt_interval" "0"
+      "cloud_duration" "0"
+    }
+    "zuus_heavenly_jump" {
+      "hop_duration" "0"
+      "hop_height" "0"
+      "range" "0.2"
+    }
+    "zuus_lightning_bolt" {
+      "AbilityDamage" "0.5"
+      "sight_duration" "0"
+      "spread_aoe" "0.2"
+    }
+    "zuus_static_field" {
+      "damage_health_pct" "0.125"
+      "damage_health_pct_max_close" "0"
+    }
+    "zuus_thundergods_wrath" {
+      "damage" "0.125"
+      "grow_kill_amp" "0"
+      "sight_duration" "0"
+    }
+  }
 }

@@ -8,7 +8,7 @@ ItemSpawnerPlugin.npc_items_custom = {}
 CustomShopsPlugin.shops = {}
 
 function CustomShopsPlugin:Init()
-    print("[CustomShopsPlugin] found")
+    --print("[CustomShopsPlugin] found")
 end
 
 function CustomShopsPlugin:ApplySettings()
@@ -57,7 +57,7 @@ end
 
 function CustomShopsPlugin:UpdateLists()
     for k,v in pairs(CustomShopsPlugin.shops) do
-        print(k)
+        --print(k)
         DeepPrintTable(v)
         CustomNetTables:SetTableValue("custom_shops", k, v)
     end
@@ -71,7 +71,7 @@ function CustomShopsPlugin:CustomBuy(sItem)
     end
     local tItemRecipeData = GetAbilityKeyValuesByName(sRecipeName)
     if tItemRecipeData ~= nil then
-        print("item has recipe")
+        --print("item has recipe")
         DeepPrintTable(tItemRecipeData)
     else
         CustomShopsPlugin:TryBuy(sItem)

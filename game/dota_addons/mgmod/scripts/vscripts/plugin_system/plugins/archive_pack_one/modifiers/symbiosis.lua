@@ -24,7 +24,7 @@ end
 function symbiosis:OnCreated(event)
 	if IsServer() then
 		if self:ApplyHorizontalMotionController() == false then
-			print('woops, something went wrong')
+			--print('woops, something went wrong')
 			self:Destroy()
 			return
 		end
@@ -46,7 +46,7 @@ end
 function symbiosis:OnHorizontalMotionInterrupted()
 	if IsServer() then
 		if self:ApplyHorizontalMotionController() == false then
-			print('woops, something went wrong')
+			--print('woops, something went wrong')
 			self:Destroy()
 			return
 		end
@@ -112,7 +112,7 @@ function symbiosis:OnSetLocation (kv)
 		if kv.unit ~= self:GetParent() then return end
 		self:GetParent():RemoveHorizontalMotionController( self )
 		if self:ApplyHorizontalMotionController() == false then
-			print('woops, something went wrong')
+			--print('woops, something went wrong')
 			self:Destroy()
 			return
 		end

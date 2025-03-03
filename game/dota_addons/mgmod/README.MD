@@ -7,6 +7,11 @@ People who have directly contributed to the project in one way or another in cho
 Lead developer
 ## Abraham Blink'in
 Plugin Contributor
+## Sword Bacon
+Co-plugin contributor. Some of his code was re-implemented from dota 2 mod into a plugin.
+## Fahr3n
+Boosted nerf/ban list maintaining.
+
 
 # Special Thanks
 ## Mod Dota Community

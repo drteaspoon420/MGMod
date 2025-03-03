@@ -4,7 +4,7 @@ HalloweenPlugin.settings = {
 }
 
 function HalloweenPlugin:Init()
-    print("[HalloweenPlugin] found")
+    --print("[HalloweenPlugin] found")
 end
 
 function HalloweenPlugin:ApplySettings()

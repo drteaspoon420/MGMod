@@ -3,7 +3,7 @@ _G.SmithingPlugin = SmithingPlugin
 SmithingPlugin.settings = {}
 
 function SmithingPlugin:Init()
-    print("[SmithingPlugin] found")
+    --print("[SmithingPlugin] found")
 end
 
 function SmithingPlugin:ApplySettings()
@@ -23,8 +23,8 @@ function SmithingPlugin:ApplySettings()
         option_name = "smith",
 		autobuy = false,
     }
-    print(SmithingPlugin.settings.currency)
-    print(SmithingPlugin.settings.cost)
+    --print(SmithingPlugin.settings.currency)
+    --print(SmithingPlugin.settings.cost)
     CurrenciesPlugin:RegisterSpendOption(SmithingPlugin.settings.currency,tOption)
 end
 
@@ -50,7 +50,9 @@ function SmithingPlugin:buy_smith(tEvent,tExtra)
 		local hItem = hHero:GetItemInSlot(i)
 		SmithingPlugin:UpgradeItem(hItem,hHero)
 	end
-	local hItem = hHero:GetItemInSlot(DOTA_ITEM_NEUTRAL_SLOT);
+	local hItem = hHero:GetItemInSlot(DOTA_ITEM_NEUTRAL_ACTIVE_SLOT);
+	SmithingPlugin:UpgradeItem(hItem,hHero)
+	local hItem = hHero:GetItemInSlot(DOTA_ITEM_NEUTRAL_PASSIVE_SLOT);
 	SmithingPlugin:UpgradeItem(hItem,hHero)
     CustomGameEventManager:Send_ServerToPlayer(hPlayer,"smithing_update",{})
 end

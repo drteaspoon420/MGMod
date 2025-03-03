@@ -5,7 +5,7 @@ SoulsPlugin.settings = {
 
 
 function SoulsPlugin:Init()
-    print("[SoulsPlugin] found")
+    --print("[SoulsPlugin] found")
 end
 
 function SoulsPlugin:ApplySettings()

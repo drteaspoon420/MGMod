@@ -21,7 +21,7 @@ end
 
 function modifier_death_item_loss:OnCreated(kv)
     if not IsServer() then return end
-    print("added item dropping")
+    --print("added item dropping")
 end
 
 function modifier_death_item_loss:OnDeath(kv)
@@ -36,7 +36,7 @@ function modifier_death_item_loss:OnDeath(kv)
             table.insert(tItems,hItem)
         end
     end
-    print("item droping",#tItems)
+    --print("item droping",#tItems)
     if #tItems > 0 then
         local n = Toolbox:GetRandomKey(tItems)
         local hDropItem = tItems[n]

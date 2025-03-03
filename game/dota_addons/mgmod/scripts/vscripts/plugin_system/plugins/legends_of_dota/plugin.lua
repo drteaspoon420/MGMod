@@ -20,7 +20,7 @@ LegendsOfDotaPlugin.cache = {}
 LegendsOfDotaPlugin.player_data = {}
 
 function LegendsOfDotaPlugin:Init()
-    print("[LegendsOfDotaPlugin] found")
+    --print("[LegendsOfDotaPlugin] found")
 end
 
 function LegendsOfDotaPlugin:ApplySettings()
@@ -129,10 +129,10 @@ function LegendsOfDotaPlugin:LoadBanList(pastebin)
     local req = CreateHTTPRequestScriptVM("GET", url)
     req:Send(function(res)
         if res.StatusCode ~= 200 then
-            print(res.Body)
-            print("something went wrong")
+            --print(res.Body)
+            --print("something went wrong")
         else
-            print(res.Body)
+            --print(res.Body)
 			local data = JSON.decode(res.Body)
             LegendsOfDotaPlugin.ban_list = data.ban_list
         end
@@ -491,7 +491,7 @@ function LegendsOfDotaPlugin:hero_pick(tEvent)
         LegendsOfDotaPlugin:RandomBuild(Toolbox:GetSteamID(iPlayer) .. GetSystemDate() .. tEvent.hero,iPlayer)
     elseif LegendsOfDotaPlugin.settings.pick_mode == "steamid_monthly" then
         local moth = string.gsub(GetSystemDate(), "/(.*)/", "XX")
-        print(moth)
+        --print(moth)
         LegendsOfDotaPlugin:RandomBuild(Toolbox:GetSteamID(iPlayer) .. moth .. tEvent.hero,iPlayer)
     end
     CustomNetTables:SetTableValue("heroselection_rework", "player_data", LegendsOfDotaPlugin.player_data)
@@ -653,7 +653,7 @@ function LegendsOfDotaPlugin:ReplaceTalent(hUnit,sAbility,iLevel,iSlot)
     end
     if iTalentStart == 0 then return true end
     iSlot = iTalentStart + iSlot
-    print(iSlot,sAbility)
+    --print(iSlot,sAbility)
     local hOldAbility = hUnit:GetAbilityByIndex(iSlot)
     if hOldAbility then
         hUnit:RemoveAbilityByHandle(hOldAbility)
@@ -687,10 +687,10 @@ function LegendsOfDotaPlugin:ReplaceAbility(hUnit,sAbility,iLevel,iSlot,bForce)
         i = i + 1
     end
     if iSlot > iTalentStart-1 and iSlot < iTalentStart+9 then
-        print("original slot",iSlot)
+        --print("original slot",iSlot)
         iSlot = iSlot - (iTalentStart-(iTalentStart-9))
     end
-    print(iSlot,sAbility)
+    --print(iSlot,sAbility)
     local hOldAbility = hUnit:GetAbilityByIndex(iSlot)
     local sOldAbility
     if hOldAbility ~= nil then 
@@ -739,21 +739,24 @@ function LegendsOfDotaPlugin:DestroyTestDummy(iPlayer)
     LegendsOfDotaPlugin.test_dummy[iPlayer].hNpc:Destroy()
 end
 function LegendsOfDotaPlugin:TestDummy(sAbility,iPlayer)
-    if LegendsOfDotaPlugin.test_dummy == nil then print("game has no test dummy table") return true end
-    if LegendsOfDotaPlugin.test_dummy[iPlayer] == nil then print(iPlayer .. " has no test dummy table") return true end
+    if LegendsOfDotaPlugin.test_dummy == nil then --print("game has no test dummy table")
+        return true end
+    if LegendsOfDotaPlugin.test_dummy[iPlayer] == nil then --print(iPlayer .. " has no test dummy table")
+        return true end
     LegendsOfDotaPlugin.test_dummy[iPlayer].iAttempts = LegendsOfDotaPlugin.test_dummy[iPlayer].iAttempts + 1
-    if LegendsOfDotaPlugin.test_dummy[iPlayer].hNpc == nil then print(iPlayer .. " has no test dummy npc") return true end
+    if LegendsOfDotaPlugin.test_dummy[iPlayer].hNpc == nil then --print(iPlayer .. " has no test dummy npc")
+        return true end
     local hAbility = LegendsOfDotaPlugin.test_dummy[iPlayer].hNpc:AddAbility(sAbility)
     if hAbility ~= nil then
         LegendsOfDotaPlugin.test_dummy[iPlayer].hNpc:RemoveAbilityByHandle(hAbility)
         if (LegendsOfDotaPlugin.test_dummy[iPlayer].iAttempts > 100) then
-            print(iPlayer .. " max attempts reached, respawning dummy")
+            --print(iPlayer .. " max attempts reached, respawning dummy")
             LegendsOfDotaPlugin:DestroyTestDummy(iPlayer)
             LegendsOfDotaPlugin:SpawnTestDummy(iPlayer)
         end
         return true
     end
-    print(sAbility .. " was invalid ability!")
+    --print(sAbility .. " was invalid ability!")
     return false
 end
 
@@ -779,7 +782,7 @@ function LegendsOfDotaPlugin:ExportBanList(tArgs,bTeam,iPlayer)
     end
     str = str .. "}}"
     CustomGameEventManager:Send_ServerToAllClients("ban_list_export",{list = str})
-    print(str)
+    --print(str)
 end
 
 

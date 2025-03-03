@@ -46,7 +46,7 @@ function modifier_rounds_tower_protect:OnCreated(kv)
 		local iCount = self:GetParent():GetModifierCount()
 		for i=0,iCount do
 			local sName = self:GetParent():GetModifierNameByIndex(i)
-			print(sName)
+			--print(sName)
 		end
 		self:GetParent():FindModifierByName("modifier_invulnerable"):Destroy()
 	end

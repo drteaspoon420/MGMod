@@ -4,7 +4,7 @@ BotsPlugin.settings = {
 }
 
 function BotsPlugin:Init()
-    print("[BotsPlugin] found")
+    --print("[BotsPlugin] found")
 end
 
 function BotsPlugin:ApplySettings()

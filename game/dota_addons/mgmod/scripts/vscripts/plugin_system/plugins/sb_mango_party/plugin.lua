@@ -3,7 +3,7 @@ _G.MangoPartyPlugin = MangoPartyPlugin
 MangoPartyPlugin.settings = {}
 
 function MangoPartyPlugin:Init()
-    print("[MangoPartyPlugin] found")
+    --print("[MangoPartyPlugin] found")
 end
 
 function MangoPartyPlugin:ApplySettings()

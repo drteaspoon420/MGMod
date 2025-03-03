@@ -77,8 +77,8 @@ function Timers:new( o )
 end
 
 function Timers:_xpcall (f, ...)
-  print(f)
-  print({...})
+  --print(f)
+  --print({...})
   PrintTable({...})
   local result = xpcall (function () return f(unpack(arg)) end,
     function (msg)
@@ -86,7 +86,7 @@ function Timers:_xpcall (f, ...)
       return msg..'\n'..debug.traceback()..'\n'
     end)
 
-  print(result)
+  --print(result)
   PrintTable(result)
   if not result[1] then
     -- throw an error
@@ -176,7 +176,7 @@ function Timers:Think()
 end
 
 function Timers:HandleEventError(name, event, err)
-  print(err)
+  --print(err)
 
   -- Ensure we have data
   name = tostring(name or 'unknown')
@@ -210,7 +210,7 @@ function Timers:CreateTimer(name, args, context)
   end
   if not args then error("Timer function is nil",2) end
   if not args.callback then
-    print("Invalid timer created: "..name)
+    --print("Invalid timer created: "..name)
     return
   end
 

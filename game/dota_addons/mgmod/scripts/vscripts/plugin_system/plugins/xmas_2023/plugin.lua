@@ -2,7 +2,7 @@ XMax23Plugin = class({})
 _G.XMax23Plugin = XMax23Plugin
 
 function XMax23Plugin:Init()
-    print("[XMax23Plugin] found")
+    --print("[XMax23Plugin] found")
 end
 
 function XMax23Plugin:ApplySettings()

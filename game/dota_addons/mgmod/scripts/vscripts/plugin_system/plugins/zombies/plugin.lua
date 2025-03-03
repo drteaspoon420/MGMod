@@ -4,7 +4,7 @@ ZombiesPlugin.settings = {
 }
 
 function ZombiesPlugin:Init()
-    print("[ZombiesPlugin] found")
+    --print("[ZombiesPlugin] found")
 end
 
 function ZombiesPlugin:ApplySettings()

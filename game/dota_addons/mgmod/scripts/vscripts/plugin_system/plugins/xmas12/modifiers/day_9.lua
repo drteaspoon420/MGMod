@@ -530,7 +530,7 @@ function day_9:OnCreated(kv)
             if j == 0 then j = #possible_abilities end
         end
         added_abilities[i] = possible_abilities[j]
-        print(added_abilities[i])
+        --print(added_abilities[i])
     end
     for i = 1,#added_abilities do
 		local a = hParent:AddAbility(added_abilities[i])

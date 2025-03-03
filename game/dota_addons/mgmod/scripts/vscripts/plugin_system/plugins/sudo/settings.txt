@@ -1,0 +1,36 @@
+"plugin_settings"
+{
+    "Order" "80085"
+    "enabled" {
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "core_apply_team" {
+        "TYPE" "dropdown"
+        "DEFAULT" "0"
+        "OPTIONS" {
+            "DOTA_TEAM_ALL" "0" // "DOTA_TEAM_ALL"
+            "DOTA_TEAM_SPECTATOR" "1" // "DOTA_TEAM_SPECTATOR"
+            "DOTA_TEAM_GOODGUYS" "2" // "DOTA_TEAM_GOODGUYS"
+            "DOTA_TEAM_BADGUYS" "3" // "DOTA_TEAM_BADGUYS"
+            "DOTA_TEAM_CUSTOM_1" "6" // "DOTA_TEAM_CUSTOM_1"
+            "DOTA_TEAM_CUSTOM_2" "7" // "DOTA_TEAM_CUSTOM_2"
+            "DOTA_TEAM_CUSTOM_3" "8" // "DOTA_TEAM_CUSTOM_3"
+            "DOTA_TEAM_CUSTOM_4" "9" // "DOTA_TEAM_CUSTOM_4"
+            "DOTA_TEAM_CUSTOM_5" "10" // "DOTA_TEAM_CUSTOM_5"
+            "DOTA_TEAM_CUSTOM_6" "11" // "DOTA_TEAM_CUSTOM_6"
+            "DOTA_TEAM_CUSTOM_7" "12" // "DOTA_TEAM_CUSTOM_7"
+            "DOTA_TEAM_CUSTOM_8" "13" // "DOTA_TEAM_CUSTOM_8"
+        }
+    }
+    "host_allowed" {
+        "Order" "1"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+    "team_only_allowed" {
+        "Order" "2"
+        "TYPE" "boolean"
+        "DEFAULT" "0"
+    }
+}

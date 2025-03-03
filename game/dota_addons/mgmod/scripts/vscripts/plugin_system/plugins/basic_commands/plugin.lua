@@ -4,7 +4,7 @@ BasicCommandsPlugin.settings = {}
 BasicCommandsPlugin.unit_cache = {}
 
 function BasicCommandsPlugin:Init()
-    print("[BasicCommandsPlugin] found")
+    --print("[BasicCommandsPlugin] found")
 end
 
 function BasicCommandsPlugin:ApplySettings()

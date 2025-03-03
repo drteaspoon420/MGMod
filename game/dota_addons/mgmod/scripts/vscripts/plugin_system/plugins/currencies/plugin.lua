@@ -22,7 +22,7 @@ local c_colors = {
 }
 
 function CurrenciesPlugin:Init()
-    print("[CurrenciesPlugin] found")
+    --print("[CurrenciesPlugin] found")
 end
 
 CurrenciesPlugin.teams = {
@@ -54,7 +54,7 @@ function CurrenciesPlugin:ApplySettings()
             if gold_buy > 0 then
                 local gb = math.ceil(gold_buy)
                 local j = 1
-                print(gold_buy,gb,j)
+                --print(gold_buy,gb,j)
                 while(gb < 99999 and j < 1000000) do
                     CurrenciesPlugin:RegisterEarnOption(c,{
                         plugin = CurrenciesPlugin,
@@ -234,14 +234,14 @@ function CurrenciesPlugin:SecureOptions(sName)
 end
 
 function CurrenciesPlugin:RegisterSpendOption(sName,tOption)
-    print("[CurrenciesPlugin] adding option")
-    print(sName)
+    --print("[CurrenciesPlugin] adding option")
+    --print(sName)
     if tOption.plugin == nil then return end
     if tOption.plugin_name == nil then return end
     if tOption.cost == nil then return end
     if tOption.call_fn == nil then return end
     if tOption.option_name == nil then return end
-    if tOption.team == nil then tOption.team = 1 end
+    if tOption.team == nil then tOption.team = 0 end
     if tOption.autobuy == nil then tOption.autobuy = true end
     local t = {
         plugin_name = tOption.plugin_name,
@@ -258,32 +258,32 @@ function CurrenciesPlugin:RegisterSpendOption(sName,tOption)
 end
 
 function CurrenciesPlugin:RegisterEarnOption(sName,tOption)
-    print("registering",sName,"earn option")
+    --print("registering",sName,"earn option")
     if tOption.plugin == nil then
-        print("plugin not found")
+        --print("plugin not found")
         return
     end
     if tOption.plugin_name == nil then
-        print("plugin_name not found")
+        --print("plugin_name not found")
         return
     end
     if tOption.cost == nil then
-        print("cost not found")
+        --print("cost not found")
         return
     end
     if tOption.earn == nil then
-        print("earn not found")
+        --print("earn not found")
         return
     end
     if tOption.call_fn == nil then
-        print("call_fn not found")
+        --print("call_fn not found")
         return
     end
     if tOption.option_name == nil then
-        print("option_name not found")
+        --print("option_name not found")
         return
     end
-    if tOption.team == nil then tOption.team = 1 end
+    if tOption.team == nil then tOption.team = 0 end
     local t = {
         plugin_name = tOption.plugin_name,
         cost = tOption.cost,
@@ -315,16 +315,16 @@ end
 function CurrenciesPlugin:UserSpendingOption(iPlayer,sName,fn)
     local t = CurrenciesPlugin.spend_options[sName][fn]
     if t.plugin == nil then
-        print("invalid plugin")
+        --print("invalid plugin")
         return false
     end
     if t.plugin[t.call_fn] == nil then
-        print("invalid plugin function",t.call_fn)
+        --print("invalid plugin function",t.call_fn)
         return false
     end
     local iTeam = PlayerResource:GetTeam(iPlayer)
-    if not (t.team == 1 or iTeam == t.team) then
-        print("invalid team")
+    if not (t.team == 0 or iTeam == t.team) then
+        --print("invalid team")
         return false
     end
     if CurrenciesPlugin:SpendCurrency(sName,iPlayer,t.cost) then
@@ -342,16 +342,16 @@ end
 function CurrenciesPlugin:UserEarningOption(iPlayer,sName,fn)
     local t = CurrenciesPlugin.earn_options[sName][fn]
     if t.plugin == nil then
-        print("invalid plugin")
+        --print("invalid plugin")
          return false 
     end
     if t.plugin[t.call_fn] == nil then
-        print("invalid plugin function",t.call_fn)
+        --print("invalid plugin function",t.call_fn)
          return false
     end
     local iTeam = PlayerResource:GetTeam(iPlayer)
-    if not (t.team == 1 or iTeam == t.team) then
-        print("invalid team")
+    if not (t.team == 0 or iTeam == t.team) then
+        --print("invalid team")
         return false
     end
     local extra = t.extra or {}
@@ -369,7 +369,7 @@ function CurrenciesPlugin:CheckForSingleSpendOption(sName,iPlayer)
     local fn
     for k,v in pairs(CurrenciesPlugin.spend_options[sName]) do
         if v.autobuy == false then c = 99 end
-        if v.team == 1 or iTeam == v.team then
+        if v.team == 0 or iTeam == v.team then
             fn = k
             c = c + 1
         end

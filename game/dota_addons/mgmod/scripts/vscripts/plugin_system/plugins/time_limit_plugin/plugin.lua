@@ -4,7 +4,7 @@ TimeLimitPlugin.settings = {
 }
 
 function TimeLimitPlugin:Init()
-    print("[TimeLimitPlugin] found")
+    --print("[TimeLimitPlugin] found")
 end
 
 function TimeLimitPlugin:ApplySettings()

@@ -12,7 +12,7 @@ ItemSpawnerPlugin.available_items = {
 
 
 function ItemSpawnerPlugin:Init()
-    print("[ItemSpawnerPlugin] found")
+    --print("[ItemSpawnerPlugin] found")
 end
 
 function ItemSpawnerPlugin:PreGameStuff()

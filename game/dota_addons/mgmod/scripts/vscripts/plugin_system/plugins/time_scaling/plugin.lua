@@ -3,13 +3,13 @@ _G.TimeScalingPlugin = TimeScalingPlugin
 TimeScalingPlugin.unit_cache = {}
 
 function TimeScalingPlugin:Init()
-    print("[TimeScalingPlugin] found")
+    --print("[TimeScalingPlugin] found")
 end
 
 function TimeScalingPlugin:ApplySettings()
     TimeScalingPlugin.settings = PluginSystem:GetAllSetting("time_scaling")
     LinkLuaModifier( "modifier_time_scaling_heroes", "plugin_system/plugins/time_scaling/modifier_time_scaling_heroes", LUA_MODIFIER_MOTION_NONE )
-    print("time_scaling settings!")
+    --print("time_scaling settings!")
     ListenToGameEvent("npc_spawned", function(event)
             if GameRules:State_Get() < DOTA_GAMERULES_STATE_HERO_SELECTION then return end
             TimeScalingPlugin:SpawnEvent(event)

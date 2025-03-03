@@ -31,14 +31,14 @@ FreeForAllPlugin.teams_debug_colors = {
 FreeForAllPlugin.spawns = {}
 
 function FreeForAllPlugin:Init()
-    print("[FreeForAllPlugin] found")
+    --print("[FreeForAllPlugin] found")
 end
 
 function FreeForAllPlugin:ApplySettings()
     FreeForAllPlugin.settings = PluginSystem:GetAllSetting("freeforall")
     FreeForAllPlugin.dummyunit = CreateUnitByName( "npc_dota_creep_badguys_ranged", Vector(0,0,0), false, nil, nil, DOTA_TEAM_NEUTRALS)
     if FreeForAllPlugin.dummyunit == nil then
-        print("[FreeForAllPlugin] roshan required")
+        --print("[FreeForAllPlugin] roshan required")
         return
     end
     FreeForAllPlugin.original_pos = FreeForAllPlugin.dummyunit:GetAbsOrigin()

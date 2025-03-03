@@ -9,7 +9,7 @@ ModifierSpawnerPlugin.available_modifiers = {
 }
 
 function ModifierSpawnerPlugin:Init()
-    print("[ModifierSpawnerPlugin] found")
+    --print("[ModifierSpawnerPlugin] found")
 end
 
 function ModifierSpawnerPlugin:PreGameStuff()
@@ -130,12 +130,12 @@ end
 function ModifierSpawnerPlugin:AddModifier(hUnit,sModifier,sData,iPlayer)
     local hPlayer = PlayerResource:GetPlayer(iPlayer)
     if hPlayer == nil then
-        print("hPlayer nil?",iPlayer)
+        --print("hPlayer nil?",iPlayer)
         return true
     end
     local hHero = hPlayer:GetAssignedHero()
     if hHero == nil then
-        print("hHero nil?",iPlayer)
+        --print("hHero nil?",iPlayer)
         return true
     end
     local hAbility
@@ -149,7 +149,7 @@ function ModifierSpawnerPlugin:AddModifier(hUnit,sModifier,sData,iPlayer)
         i = i + 1
     end
     if hAbility == nil then
-        print("hAbility nil?",iPlayer)
+        --print("hAbility nil?",iPlayer)
         return true
     end
 

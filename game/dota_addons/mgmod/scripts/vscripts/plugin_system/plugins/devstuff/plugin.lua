@@ -4,7 +4,7 @@ DevStuffPlugin.settings = {}
 DevStuffPlugin.unit_cache = {}
 
 function DevStuffPlugin:Init()
-    print("[DevStuffPlugin] found")
+    --print("[DevStuffPlugin] found")
 end
 
 function DevStuffPlugin:ApplySettings()
@@ -12,7 +12,7 @@ function DevStuffPlugin:ApplySettings()
     GameRules:SetRiverPaint(2,999)
     
     CustomGameEventManager:RegisterListener("debug_unit",function(i,tEvent) DevStuffPlugin:debug_unit(tEvent) end)
-    print("dev stuff!")
+    --print("dev stuff!")
 --[[     ListenToGameEvent("npc_spawned", function(event)
         if GameRules:State_Get() < DOTA_GAMERULES_STATE_HERO_SELECTION then return end
         DevStuffPlugin:SpawnEvent(event)
@@ -233,7 +233,7 @@ function DevStuffPlugin:debug_unit(tEvent)
         end
     end
 
-    print("sending data!")
+    --print("sending data!")
     
     CustomNetTables:SetTableValue("debug_data", "unit_debug", data)    
 end
@@ -255,10 +255,10 @@ function DevStuffPlugin:DoHeroes(hUnit)
         hUnit:SetModel("models/attach_patch.vmdl")
         hUnit:SetMaterialGroup("material")
     else
-        print("[DevStuffPlugin] attach thing")
+        --print("[DevStuffPlugin] attach thing")
         CreateUnitByNameAsync("npc_dota_thinker",Vector(0,0,0),false,nil,nil,0,
         function(hAttachment)
-            print("Spawned npc_dota_thinker")
+            --print("Spawned npc_dota_thinker")
             if hAttachment ~= nil then
                 hAttachment:SetModel("models/attach_patch.vmdl")
                 hAttachment:FollowEntity(hUnit,true)
@@ -266,30 +266,30 @@ function DevStuffPlugin:DoHeroes(hUnit)
                 hAttachment:SetParent(hUnit,"attach_hitloc")
                 
             else
-                print("failed to create info_attach_dev")
+                --print("failed to create info_attach_dev")
             end
 
-            print("attach_hitloc",hUnit:ScriptLookupAttachment("attach_hitloc"))
-            print("attach_orb1",hUnit:ScriptLookupAttachment("attach_orb1"))
-            print("attach_orb2",hUnit:ScriptLookupAttachment("attach_orb2"))
-            print("attach_orb3",hUnit:ScriptLookupAttachment("attach_orb3"))
-            print("attach_weapon_core_fx",hUnit:ScriptLookupAttachment("attach_weapon_core_fx"))
-            print("attach_orb1 on new",hAttachment:ScriptLookupAttachment("attach_orb1"))
-            print("attach_orb2 on new",hAttachment:ScriptLookupAttachment("attach_orb2"))
-            print("attach_orb3 on new",hAttachment:ScriptLookupAttachment("attach_orb3"))
-            print("attach_weapon_core_fx on new",hAttachment:ScriptLookupAttachment("attach_weapon_core_fx"))
+            --print("attach_hitloc",hUnit:ScriptLookupAttachment("attach_hitloc"))
+            --print("attach_orb1",hUnit:ScriptLookupAttachment("attach_orb1"))
+            --print("attach_orb2",hUnit:ScriptLookupAttachment("attach_orb2"))
+            --print("attach_orb3",hUnit:ScriptLookupAttachment("attach_orb3"))
+            --print("attach_weapon_core_fx",hUnit:ScriptLookupAttachment("attach_weapon_core_fx"))
+            --print("attach_orb1 on new",hAttachment:ScriptLookupAttachment("attach_orb1"))
+            --print("attach_orb2 on new",hAttachment:ScriptLookupAttachment("attach_orb2"))
+            --print("attach_orb3 on new",hAttachment:ScriptLookupAttachment("attach_orb3"))
+            --print("attach_weapon_core_fx on new",hAttachment:ScriptLookupAttachment("attach_weapon_core_fx"))
 
             Timers:CreateTimer(2,function()
-                print("with delay")
-                print("attach_hitloc",hUnit:ScriptLookupAttachment("attach_hitloc"))
-                print("attach_orb1",hUnit:ScriptLookupAttachment("attach_orb1"))
-                print("attach_orb2",hUnit:ScriptLookupAttachment("attach_orb2"))
-                print("attach_orb3",hUnit:ScriptLookupAttachment("attach_orb3"))
-                print("attach_weapon_core_fx",hUnit:ScriptLookupAttachment("attach_weapon_core_fx"))
-                print("attach_orb1 on new",hAttachment:ScriptLookupAttachment("attach_orb1"))
-                print("attach_orb2 on new",hAttachment:ScriptLookupAttachment("attach_orb2"))
-                print("attach_orb3 on new",hAttachment:ScriptLookupAttachment("attach_orb3"))
-                print("attach_weapon_core_fx on new",hAttachment:ScriptLookupAttachment("attach_weapon_core_fx"))
+                --print("with delay")
+                --print("attach_hitloc",hUnit:ScriptLookupAttachment("attach_hitloc"))
+                --print("attach_orb1",hUnit:ScriptLookupAttachment("attach_orb1"))
+                --print("attach_orb2",hUnit:ScriptLookupAttachment("attach_orb2"))
+                --print("attach_orb3",hUnit:ScriptLookupAttachment("attach_orb3"))
+                --print("attach_weapon_core_fx",hUnit:ScriptLookupAttachment("attach_weapon_core_fx"))
+                --print("attach_orb1 on new",hAttachment:ScriptLookupAttachment("attach_orb1"))
+                --print("attach_orb2 on new",hAttachment:ScriptLookupAttachment("attach_orb2"))
+                --print("attach_orb3 on new",hAttachment:ScriptLookupAttachment("attach_orb3"))
+                --print("attach_weapon_core_fx on new",hAttachment:ScriptLookupAttachment("attach_weapon_core_fx"))
             end)
         end)
     end
@@ -297,24 +297,24 @@ end
 
 
 function DevStuffPlugin:ShortCutMods(tArgs,bTeam,iPlayer)
-    print("looking for mods")
+    --print("looking for mods")
     local hPlayer = PlayerResource:GetPlayer(iPlayer)
     if hPlayer == nil then
-        print("no Player?")
+        --print("no Player?")
         return
     end
 	local hUnit = hPlayer:GetAssignedHero()
     if hUnit == nil then
-        print("no GetQueryUnit?")
+        --print("no GetQueryUnit?")
         return
     end
     if (hUnit) then
         for m,mod in pairs(hUnit:FindAllModifiers()) do
             local hAbility = mod:GetAbility()
             if hAbility ~= nil then
-                print("Modifier:",mod:GetName()," of ", hAbility:GetAbilityName())
+                --print("Modifier:",mod:GetName()," of ", hAbility:GetAbilityName())
             else
-                print("Modifier:",mod:GetName()," without ability parent")
+                --print("Modifier:",mod:GetName()," without ability parent")
             end
         end
     end

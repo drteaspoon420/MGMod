@@ -4,7 +4,7 @@ BoostScalingPlugin.settings = {}
 BoostScalingPlugin.unit_cache = {}
 
 function BoostScalingPlugin:Init()
-    print("[BoostScalingPlugin] found")
+    --print("[BoostScalingPlugin] found")
 end
 
 function BoostScalingPlugin:ApplySettings()
@@ -25,7 +25,7 @@ function BoostScalingPlugin:ApplySettings()
     -- unit scaling    
     LinkLuaModifier("modifier_boost_scaling_creep_aura", "plugin_system/plugins/boost_scaling/modifier_boost_scaling_creep_aura.lua", LUA_MODIFIER_MOTION_NONE)
     for _, building in pairs(Toolbox:AllAncients()) do
-        print("adding creep aura to tower")
+        --print("adding creep aura to tower")
         building:AddNewModifier(building, nil, "modifier_boost_scaling_creep_aura", {
             creep_bonus_hp = BoostScalingPlugin.settings.creep_bonus_hp,
             creep_bonus_hp_regen = BoostScalingPlugin.settings.creep_bonus_hp_regen,

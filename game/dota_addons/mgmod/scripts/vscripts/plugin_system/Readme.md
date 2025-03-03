@@ -61,11 +61,11 @@ Also include any functions referenced in your StateRegistrations block. You can 
 You can also include an init function as referenced in the plugins.txt entry.
 ```
 function ExamplePlugin:Init()
-    print("[ExamplePlugin] found, we should arrive to custom game setup soon.")
+    --print("[ExamplePlugin] found, we should arrive to custom game setup soon.")
 end
 
 function ExamplePlugin:PreGameStuff()
-    print("[ExamplePlugin] hero selection has started")
+    --print("[ExamplePlugin] hero selection has started")
 end
 ```
 If you added anything in 'FilterRegistrations' block, you also need to have those in your plugin script. Here is example damage filter.
@@ -87,9 +87,9 @@ NOTE: we return table of two values. First is boolean, usually in filters this m
 If you added anything in 'CmdRegistrations' block, you also need to have those in your plugin script. These are 'chat' command. Here is example command.
 ```
 function ExamplePlugin:TestCmd(tArgs,bTeam,iPlayer)
-    print("this cmd was used in team chat? " .. bTeam)
-    print("this cmd was used by player: " .. iPlayer)
-    print("this cmd had following arguments:")
+    --print("this cmd was used in team chat? " .. bTeam)
+    --print("this cmd was used by player: " .. iPlayer)
+    --print("this cmd had following arguments:")
     DeepPrintTable(tArgs)
 end
 ```

@@ -29,8 +29,8 @@ end
 
 
 function drteaspoon_spawn_a_thing:OnRoomReadyToSpawn(hSpawnGroupHandle)
-    print("ready to spawn")
+    --print("ready to spawn")
 end
 function drteaspoon_spawn_a_thing:OnSpawnRoomComplete(hSpawnGroupHandle)
-    print("spawn complete")
+    --print("spawn complete")
 end

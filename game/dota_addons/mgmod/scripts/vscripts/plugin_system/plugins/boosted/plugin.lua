@@ -6,12 +6,9 @@ BoostedPlugin.unit_cache = {}
 BoostedPlugin.lists = {}
 BoostedPlugin.points = {}
 BoostedPlugin.main_modifier_name = "modifier_boosted"
-BoostedPlugin.official_url = "http://drteaspoon.fi:3000/list"
-BoostedPlugin.competitive_url = "http://drteaspoon.fi:3000/list/competitive"
-BoostedPlugin.newdawn_url = "http://drteaspoon.fi:3000/list/newdawn"
-BoostedPlugin.newdawn_comp_url = "http://drteaspoon.fi:3000/list/newdawn_comp"
-BoostedPlugin.all_url = "http://drteaspoon.fi:3000/list/all"
 BoostedPlugin.none_url = "https://pastebin.com/raw/JQQQeQCR"
+BoostedPlugin.all_url = "https://pastebin.com/raw/k1P7vF4x"
+
 BoostedPlugin.kv_bans = {}
 BoostedPlugin.linked_kv_bans = {} -- stores kvs that are linked and should not show as offers
 
@@ -30,7 +27,7 @@ local only_slot_map = {
 
 
 function BoostedPlugin:Init()
-    print("[BoostedPlugin] found")
+    --print("[BoostedPlugin] found")
 end
 
 function BoostedPlugin:ApplySettings()
@@ -45,21 +42,15 @@ function BoostedPlugin:ApplySettings()
     else
         BoostedPlugin.kv_lists = {}
     end
-    if BoostedPlugin.settings.base_list == "post_crownfall" then
-        BoostedPlugin.official_url = BoostedPlugin.newdawn_url
-    elseif BoostedPlugin.settings.base_list == "post_crownfall_comp" then
-        BoostedPlugin.official_url = BoostedPlugin.newdawn_comp_url
-    elseif BoostedPlugin.settings.base_list == "all" then
+    if BoostedPlugin.settings.base_list == "all" then
         BoostedPlugin.official_url = BoostedPlugin.all_url
-    elseif BoostedPlugin.settings.base_list == "competitive" then
-        BoostedPlugin.official_url = BoostedPlugin.competitive_url
     elseif BoostedPlugin.settings.base_list == "none" then
         BoostedPlugin.official_url = BoostedPlugin.none_url
     end
 
     local url = BoostedPlugin.settings.custom_list
     if url ~= "" then
-        print("https://pastebin.com/raw/" .. url)
+        --print("https://pastebin.com/raw/" .. url)
         if BoostedPlugin.settings.custom_list_patch then
             BoostedPlugin:GetOnlineListPatch(BoostedPlugin.official_url,"https://pastebin.com/raw/" .. url)
         else
@@ -71,7 +62,7 @@ function BoostedPlugin:ApplySettings()
 
 	local req_blocks = LoadKeyValues('scripts/vscripts/plugin_system/plugins/boosted/req_blocks.txt')
 	if req_blocks == nil or not next(req_blocks) then
-		print("empty req_blocks :/")
+		--print("empty req_blocks :/")
 		return
 	end
 	BoostedPlugin.req_blocks = req_blocks
@@ -156,12 +147,14 @@ function BoostedPlugin:GetOnlineList(url,patch)
 end
 
 function BoostedPlugin:BlocksToNerfs()
-    for k,v in pairs(BoostedPlugin.kv_lists.blocklist) do
-        for h,j in pairs(v) do
-            if BoostedPlugin.kv_lists.nerflist[k] == nil then
-                BoostedPlugin.kv_lists.nerflist[k] = {}
+    if BoostedPlugin.kv_lists.blocklist ~= nil then
+        for k,v in pairs(BoostedPlugin.kv_lists.blocklist) do
+            for h,j in pairs(v) do
+                if BoostedPlugin.kv_lists.nerflist[k] == nil then
+                    BoostedPlugin.kv_lists.nerflist[k] = {}
+                end
+                BoostedPlugin.kv_lists.nerflist[k][h] = 0.0
             end
-            BoostedPlugin.kv_lists.nerflist[k][h] = 0.0
         end
     end
 end
@@ -172,7 +165,7 @@ function BoostedPlugin:ApplyOnlineList(json,patch)
     if data == nil then return false end
     print(type(data.blocklist))
     if data.blocklist == nil or type(data.blocklist) ~= "table" or (next(data.blocklist) == nil) then
-        print("block list empty")
+    print("block list empty")
     else
         if not patch or BoostedPlugin.kv_lists.blocklist == nil or next(BoostedPlugin.kv_lists.blocklist) == nil then
             BoostedPlugin.kv_lists.blocklist = data.blocklist
@@ -227,7 +220,7 @@ function BoostedPlugin:ApplyOnlineList(json,patch)
     end
 
     if type(BoostedPlugin.kv_lists.linklist) ~= "table" then
-        print("link list set to empty")
+        --print("link list set to empty")
         BoostedPlugin.kv_lists.linklist = {
             all = {},
             wildcard = {}
@@ -330,7 +323,7 @@ function BoostedPlugin:GetAbilitiesOfUnit(hUnit)
             end
         end
         if hUnit:HasInventory() then
-            for i=DOTA_ITEM_SLOT_1, DOTA_ITEM_NEUTRAL_SLOT do
+            for i=DOTA_ITEM_SLOT_1, DOTA_ITEM_NEUTRAL_PASSIVE_SLOT do
                 local item = hUnit:GetItemInSlot(i);
                 if item ~= nil then
                     table.insert(t,item)
@@ -474,7 +467,7 @@ function BoostedPlugin:SpawnEvent(event)
     local hUnit = EntIndexToHScript(event.entindex)
     if not hUnit.IsRealHero then return end
     Timers:CreateTimer(0,function()
-        if not (BoostedPlugin.settings.core_apply_team == 1 or hUnit:GetTeam() == BoostedPlugin.settings.core_apply_team) then return end
+        if not (BoostedPlugin.settings.core_apply_team == 0 or hUnit:GetTeam() == BoostedPlugin.settings.core_apply_team) then return end
         if hUnit:IsRealHero() then
             --if BoostedPlugin.unit_cache[event.entindex] ~= nil then return end
             --BoostedPlugin.unit_cache[event.entindex] = true
@@ -484,11 +477,11 @@ function BoostedPlugin:SpawnEvent(event)
             if hPlayer == nil then return end
 --[[             local hHero = hPlayer:GetAssignedHero()
             if hHero == nil then
-                print("hero was nill")
+                --print("hero was nill")
                 return
             end
             if hHero ~= hUnit then 
-                print("hero was not unit")
+                --print("hero was not unit")
                 return
             end ]]
             BoostedPlugin:UpdatePlayer_NetTable(iPlayer,hUnit)
@@ -517,27 +510,27 @@ function BoostedPlugin:boost_player(tEvent)
     local iPlayer = tEvent.PlayerID
     local hPlayer = PlayerResource:GetPlayer(iPlayer)
     if hPlayer == nil then
-        print("not a real player",iPlayer)
+        --print("not a real player",iPlayer)
         return
     end
     local hHero = hPlayer:GetAssignedHero()
     if hHero == nil then
-        print("not a real hero",iPlayer)
+        --print("not a real hero",iPlayer)
         return
     end
     local sAbility = tEvent.ability
     local sKey = tEvent.key
     local fValue = tonumber(tEvent.value)
     if BoostedPlugin.lists[iPlayer] == nil then
-        print(iPlayer,"list nil")
+        --print(iPlayer,"list nil")
         return
     end
     if BoostedPlugin.lists[iPlayer][sAbility] == nil then
-        print(iPlayer,"ability list nil")
+        --print(iPlayer,"ability list nil")
         return
     end
     if BoostedPlugin.lists[iPlayer][sAbility][sKey] == nil then
-        print(iPlayer,"key in ability list nil")
+        --print(iPlayer,"key in ability list nil")
         return
     end
     
@@ -643,7 +636,16 @@ function BoostedPlugin:RefreshItems(sAbility,hUnit)
             end
         end
     end
-    local item = hUnit:GetItemInSlot(DOTA_ITEM_NEUTRAL_SLOT);
+    local item = hUnit:GetItemInSlot(DOTA_ITEM_NEUTRAL_ACTIVE_SLOT);
+    if item ~= nil then
+        if item:GetName() == sAbility then
+            item:OnUnequip()
+            Timers:CreateTimer( 0, function()
+                item:OnEquip()
+            end)
+        end
+    end
+    local item = hUnit:GetItemInSlot(DOTA_ITEM_NEUTRAL_PASSIVE_SLOT);
     if item ~= nil then
         if item:GetName() == sAbility then
             item:OnUnequip()
@@ -676,12 +678,12 @@ function BoostedPlugin:NerfsKV(sAbility,sKey) -- returns 1.0 if normal.
     if BoostedPlugin.kv_lists.nerflist == nil then return 1.0 end
     --check specific ability + kv
     if BoostedPlugin.kv_lists.nerflist[sAbility] ~= nil and BoostedPlugin.kv_lists.nerflist[sAbility][sKey] ~= nil then
-        print(sAbility,sKey,BoostedPlugin.kv_lists.nerflist[sAbility][sKey], "specific")
+        --print(sAbility,sKey,BoostedPlugin.kv_lists.nerflist[sAbility][sKey], "specific")
         return BoostedPlugin.kv_lists.nerflist[sAbility][sKey]
     end
     --check specific all + kv
     if BoostedPlugin.kv_lists.nerflist.all ~= nil and BoostedPlugin.kv_lists.nerflist.all[sKey] ~= nil then
-        print(sAbility,sKey,BoostedPlugin.kv_lists.nerflist.all[sKey], "all")
+        --print(sAbility,sKey,BoostedPlugin.kv_lists.nerflist.all[sKey], "all")
         return BoostedPlugin.kv_lists.nerflist.all[sKey]
     end
     
@@ -689,11 +691,11 @@ function BoostedPlugin:NerfsKV(sAbility,sKey) -- returns 1.0 if normal.
     for k,v in pairs(BoostedPlugin.kv_lists.nerflist.wildcard) do
         if string.find(sKey,k) ~= nil then
             --print("wildcard nerf",sAbility,sKey,k,v)
-            print(sAbility,sKey,v, "wildcard")
+            --print(sAbility,sKey,v, "wildcard")
             return v
         end
     end
-    print(sAbility,sKey,1,"default")
+    --print(sAbility,sKey,1,"default")
     return 1.0
 end
 --[[ 
@@ -798,17 +800,17 @@ function BoostedPlugin:GetKvCount(hHero,iPlayer)
 end
 
 function BoostedPlugin:upgrade_hero(tEvent)
-    if not (BoostedPlugin.settings.core_apply_team == 1 or PlayerResource:GetTeam(tEvent.PlayerID) == BoostedPlugin.settings.core_apply_team) then return end
+    if not (BoostedPlugin.settings.core_apply_team == 0 or PlayerResource:GetTeam(tEvent.PlayerID) == BoostedPlugin.settings.core_apply_team) then return end
 	BoostedPlugin:SelectOffer(tEvent)
 end
 function BoostedPlugin:SelectOffer(tEvent)
 	local iPlayer = tEvent.PlayerID
     if BoostedPlugin.player_offers[iPlayer] == nil then
-        print("offer is nill?")
+        --print("offer is nill?")
         return
     end
     if BoostedPlugin.player_offers[iPlayer] == {} then
-        print("offer is empty?")
+        --print("offer is empty?")
         return
     end
     local id = tEvent.id
@@ -889,7 +891,13 @@ function BoostedPlugin:FindItemByName(unit, itemName)
                 end
             end
         end
-        local item = unit:GetItemInSlot(DOTA_ITEM_NEUTRAL_SLOT);
+        local item = unit:GetItemInSlot(DOTA_ITEM_NEUTRAL_ACTIVE_SLOT);
+        if item ~= nil then
+            if item:GetName() == itemName then
+                return item
+            end
+        end
+        local item = unit:GetItemInSlot(DOTA_ITEM_NEUTRAL_PASSIVE_SLOT);
         if item ~= nil then
             if item:GetName() == itemName then
                 return item
@@ -947,7 +955,7 @@ function BoostedPlugin:ProcessOffer(iPlayer,normal,rare,ultra)
         local offer = oo[1]
         tt = oo[2]
         if offer.key == nil then
-            print("something went wrong")
+            --print("something went wrong")
             attempts = attempts + 1
             if attempts > max_attempts then break end
         elseif used_key_pairs[offer.ability .. "_" .. offer.key] == nil and offer.ability ~= "generic_hidden" then
@@ -1011,7 +1019,7 @@ end
         local offer = oo[1]
         tt = oo[2]
         if offer.key == nil then
-            print("something went wrong")
+            --print("something went wrong")
             attempts = attempts + 1
             if attempts > max_attempts then break end
         elseif used_key_pairs[offer.ability .. "_" .. offer.key] == nil and offer.ability ~= "generic_hidden" then
@@ -1058,7 +1066,7 @@ end
         local offer = oo[1]
         tt = oo[2]
         if offer.key == nil then
-            print("something went wrong")
+            --print("something went wrong")
             attempts = attempts + 1
             if attempts > max_attempts then break end
         elseif used_key_pairs[offer.ability .. "_" .. offer.key] == nil and offer.ability ~= "generic_hidden" then
@@ -1224,7 +1232,12 @@ function BoostedPlugin:GetAllAbilities(hUnit,iPlayer)
             end
         end
         if BoostedPlugin.settings.upgrade_neutral_items then
-            local hItem = hUnit:GetItemInSlot(DOTA_ITEM_NEUTRAL_SLOT );
+            local hItem = hUnit:GetItemInSlot(DOTA_ITEM_NEUTRAL_ACTIVE_SLOT);
+            if hItem ~= nil then
+                --sAbility = hItem:GetName()
+                table.insert(t,hItem)
+            end
+            local hItem = hUnit:GetItemInSlot(DOTA_ITEM_NEUTRAL_PASSIVE_SLOT);
             if hItem ~= nil then
                 --sAbility = hItem:GetName()
                 table.insert(t,hItem)
@@ -1279,7 +1292,7 @@ function BoostedPlugin:GrantAllUpgrade()
             local player = PlayerResource:GetPlayer(i)
             if player ~= nil then
                 local iTeam = PlayerResource:GetTeam(i)
-                if (BoostedPlugin.settings.core_apply_team == 1 or iTeam == BoostedPlugin.settings.core_apply_team) then
+                if (BoostedPlugin.settings.core_apply_team == 0 or iTeam == BoostedPlugin.settings.core_apply_team) then
                     BoostedPlugin:GrantPlayerUpgrade(i)
                 end
             end
@@ -1290,7 +1303,7 @@ function BoostedPlugin:GrantAllUpgrade()
 end
 
 function BoostedPlugin:GrantTeamUpgrade(iTeam)
-    if not (BoostedPlugin.settings.core_apply_team == 1 or iTeam == BoostedPlugin.settings.core_apply_team) then return end
+    if not (BoostedPlugin.settings.core_apply_team == 0 or iTeam == BoostedPlugin.settings.core_apply_team) then return end
     for i=0, DOTA_MAX_TEAM_PLAYERS do
         if PlayerResource:IsValidPlayer(i) then
             local player = PlayerResource:GetPlayer(i)
@@ -1309,7 +1322,7 @@ end
 
 function BoostedPlugin:GrantPlayerUpgrade(iPlayer)
     local iTeam = PlayerResource:GetTeam(iPlayer)
-    if not (BoostedPlugin.settings.core_apply_team == 1 or iTeam == BoostedPlugin.settings.core_apply_team) then return end
+    if not (BoostedPlugin.settings.core_apply_team == 0 or iTeam == BoostedPlugin.settings.core_apply_team) then return end
     if BoostedPlugin.player_boosters[iPlayer] == nil then
         BoostedPlugin.player_boosters[iPlayer] = 1
     else
@@ -1456,9 +1469,9 @@ function BoostedPlugin:upgrade_report_done(tEvent)
 
     req:Send(function(res)
         if res.StatusCode ~= 200 then
-            print("something went wrong")
+            --print("something went wrong")
         else
-            print("all ok")
+            --print("all ok")
         end
     end)
 end
@@ -1498,7 +1511,7 @@ function BoostedPlugin:FixMe(tArgs,bTeam,iPlayer)
                 if sMod ~= nil and sMod ~= "" then
                     local hMod = hUnit:FindModifierByName(sMod)
                     if hMod ~= nil then
-                        print("fixing: ",hAbility:GetAbilityName(), " ", sMod)
+                        --print("fixing: ",hAbility:GetAbilityName(), " ", sMod)
                         BoostedPlugin:RecreateAbility(hUnit,hAbility)
                     end
                 end
@@ -1509,7 +1522,7 @@ end
 
 function BoostedPlugin:AddBoostCommand(tArgs,bTeam,iPlayer)
     if GameRules:IsCheatMode() then
-        print("[BoostedPlugin:AddBoostCommand] AddBoost " .. iPlayer)
+        --print("[BoostedPlugin:AddBoostCommand] AddBoost " .. iPlayer)
         tEvent = {
             PlayerID = iPlayer,
             ability = tArgs[2],
@@ -1523,7 +1536,7 @@ end
 
 function BoostedPlugin:ClearBoostsCommand(tArgs,bTeam,iPlayer)
     if GameRules:IsCheatMode() then
-        print("[BoostedPlugin:ClearBoostsCommand] ClearBoosts " .. iPlayer)
+        --print("[BoostedPlugin:ClearBoostsCommand] ClearBoosts " .. iPlayer)
 
         for sAbility,hAbility in pairs(BoostedPlugin.lists[iPlayer]) do
             for sKey, value in pairs(hAbility) do
@@ -1555,7 +1568,7 @@ function BoostedPlugin:GrantOfferCommand(tArgs,bTeam,iPlayer)
         else
             amount = tonumber(amount)
         end
-        print("[BoostedPlugin:GrantOfferCommand] GrantOffer " .. iPlayer .. " " .. amount)
+        --print("[BoostedPlugin:GrantOfferCommand] GrantOffer " .. iPlayer .. " " .. amount)
         for i=1,amount do
             BoostedPlugin:GrantPlayerUpgrade(iPlayer)
         end
@@ -1571,7 +1584,7 @@ function BoostedPlugin:GrantTeamOfferCommand(tArgs,bTeam,iPlayer)
             amount = tonumber(amount)
         end
         local iTeam = PlayerResource:GetTeam(iPlayer)
-        print("[BoostedPlugin:GrantTeamOfferCommand] GrantTeamOffer " .. iTeam .. " " .. amount)
+        --print("[BoostedPlugin:GrantTeamOfferCommand] GrantTeamOffer " .. iTeam .. " " .. amount)
         for i=1,amount do
             BoostedPlugin:GrantTeamUpgrade(iTeam)
         end
@@ -1586,7 +1599,7 @@ function BoostedPlugin:GrantAllOfferCommand(tArgs,bTeam,iPlayer)
         else
             amount = tonumber(amount)
         end
-        print("[BoostedPlugin:GrantAllOfferCommand] GrantAllOffer " .. amount)
+        --print("[BoostedPlugin:GrantAllOfferCommand] GrantAllOffer " .. amount)
         for i=1,amount do
             BoostedPlugin:GrantAllUpgrade()
         end
@@ -1635,7 +1648,7 @@ function BoostedPlugin:RecreateAbility(hUnit,hAbility)
     local hMod = hUnit:FindModifierByName(sMod)
     if hMod == nil then return end
     if BoostedPlugin.don_recreate[sName] ~= nil then
-        print(sName, " no recreate")
+        --print(sName, " no recreate")
         hMod:ForceRefresh()
         return
     end

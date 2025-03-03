@@ -21,7 +21,7 @@ RoundsPlugin.round_data = {}
 
 
 function RoundsPlugin:Init()
-    print("[RoundsPlugin] found")
+    --print("[RoundsPlugin] found")
 end
 
 function RoundsPlugin:ApplySettings()
@@ -144,7 +144,7 @@ end
 function RoundsPlugin:RetryPrepHeroForPlayer(iPlayer,iRetrys)
     iRetrys = iRetrys + 1
     if iRetrys > 15 then
-        print("[RoundsPlugin] player " .. iPlayer .. " could not be initialized [RetryPrepHeroForPlayer]")
+        --print("[RoundsPlugin] player " .. iPlayer .. " could not be initialized [RetryPrepHeroForPlayer]")
         return
     end
     Timers:CreateTimer(1,function() RoundsPlugin:PrepHeroForPlayer(iPlayer,iRetrys) end)
@@ -196,7 +196,7 @@ function RoundsPlugin:CleanupHeroes()
             end
         end
         
-        for i=DOTA_ITEM_SLOT_1, DOTA_ITEM_NEUTRAL_SLOT do
+        for i=DOTA_ITEM_SLOT_1, DOTA_ITEM_NEUTRAL_PASSIVE_SLOT do
             local hItem = hHero:GetItemInSlot(i)
             if hItem ~= nil then
                 hItem:RefreshCharges()
@@ -437,7 +437,7 @@ function RoundsPlugin:EndRound_Stage2()
     local midpoint = math.floor(RoundsPlugin.settings.max_rounds / 2)
     local remaining = RoundsPlugin.settings.max_rounds - RoundsPlugin.current_round
     local score_dif = math.abs(RoundsPlugin.score_dire-RoundsPlugin.score_radiant)
-    print(midpoint," mid ", remaining, " remaining ", score_dif, " dif")
+    --print(midpoint," mid ", remaining, " remaining ", score_dif, " dif")
     if score_dif > remaining then
         if RoundsPlugin.score_dire > RoundsPlugin.score_radiant then
             RoundsPlugin:EndMatch(DOTA_TEAM_BADGUYS)

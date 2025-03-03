@@ -4,7 +4,7 @@ LevelTimingsPlugin.settings = {
 }
 
 function LevelTimingsPlugin:Init()
-    print("[LevelTimingsPlugin] found")
+    --print("[LevelTimingsPlugin] found")
 end
 
 function LevelTimingsPlugin:ApplySettings()

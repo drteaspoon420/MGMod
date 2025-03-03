@@ -4,7 +4,7 @@ KillLimitPlugin.settings = {
 }
 
 function KillLimitPlugin:Init()
-    print("[KillLimitPlugin] found")
+    --print("[KillLimitPlugin] found")
 end
 
 function KillLimitPlugin:ApplySettings()

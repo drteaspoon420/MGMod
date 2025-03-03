@@ -3,7 +3,7 @@ _G.XMax12Plugin = XMax12Plugin
 XMax12Plugin.unit_cache = {}
 
 function XMax12Plugin:Init()
-    print("[XMax12Plugin] found")
+    --print("[XMax12Plugin] found")
 end
 
 function XMax12Plugin:ApplySettings()

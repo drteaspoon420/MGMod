@@ -2,7 +2,7 @@ BoxOfFun23Plugin = class({})
 _G.BoxOfFun23Plugin = BoxOfFun23Plugin
 
 function BoxOfFun23Plugin:Init()
-    print("[BoxOfFun23Plugin] found")
+    --print("[BoxOfFun23Plugin] found")
 end
 
 function BoxOfFun23Plugin:ApplySettings()

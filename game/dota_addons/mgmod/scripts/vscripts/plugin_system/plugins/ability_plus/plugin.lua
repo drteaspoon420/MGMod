@@ -5,7 +5,7 @@ AbilityPlusPlugin.unit_cache = {}
 AbilityPlusPlugin.core_abilities = {}
 
 function AbilityPlusPlugin:Init()
-    print("[AbilityPlusPlugin] found")
+    --print("[AbilityPlusPlugin] found")
 end
 
 function AbilityPlusPlugin:ApplySettings()
@@ -70,9 +70,9 @@ function AbilityPlusPlugin:DotheDebug(hAbility)
             AbilityPlusPlugin:DotheDebug(hAbility)
             return
         end
-        print("ability linking")
-        print(sName)
-        print(sAbility)
+        --print("ability linking")
+        --print(sName)
+        --print(sAbility)
     end
 end
 

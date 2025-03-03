@@ -42,7 +42,7 @@ function modifier_boosted:OnDominated(kv)
 	if not IsServer() then return end
 	if not self:GetParent():IsRealHero() then return end
 	Timers:CreateTimer( 0, function()
-		print("DOMINATION!")
+		--print("DOMINATION!")
 		local playerId = self:GetParent():GetPlayerID()
 		if playerId == nil or playerId < 0 then return end
 		local iPlayer = kv.unit:GetMainControllingPlayer()
@@ -52,14 +52,14 @@ function modifier_boosted:OnDominated(kv)
 		if iPlayer < 0 then
 			return
 		end
-		print("VALID DOMINATION!")
+		--print("VALID DOMINATION!")
 		if iPlayer ~= nil and iPlayer == playerId then
-			print("SUPER VALID DOMINATION!")
+			--print("SUPER VALID DOMINATION!")
 			local hMod = kv.unit:AddNewModifier(kv.unit, nil, BoostedPlugin.main_modifier_name, {})
 			
 			Timers:CreateTimer( 0, function()
 				if hMod.RequestFull ~= nil then
-					print("SUPER VALID DOMINATION BOOSTED!")
+					--print("SUPER VALID DOMINATION BOOSTED!")
 					BoostedPlugin:UpdatePlayer_NetTable(iPlayer,kv.unit)
 					hMod:RequestFull()
 				end
@@ -111,7 +111,7 @@ function modifier_boosted:GetModifierOverrideAbilitySpecial( params )
 	local szSpecialValueName = params.ability_special_value
 	local k = szAbilityName .. "|" .. szSpecialValueName
 --[[ 	if IsInToolsMode() then
-		print(k)
+		--print(k)
 	end ]]
 	if self.boost[k] == nil then return 0 end
 	if self.boost[k] == 1 then return 0 end
@@ -128,7 +128,7 @@ function modifier_boosted:GetModifierOverrideAbilitySpecialValue( params )
 	local fRet = flBaseValue * fBoost
 	if IsServer() then
 		if self.negative_one_block == 1 and fRet < -0.99 and fRet > -1.01 then
-			print("self.negative_one_block", fRet)
+			--print("self.negative_one_block", fRet)
 			return -1.1
 		end
 	end

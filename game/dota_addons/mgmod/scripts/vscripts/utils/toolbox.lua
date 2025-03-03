@@ -394,22 +394,25 @@ function Toolbox:DestroyTestDummy(iPlayer)
     Toolbox.test_dummy[iPlayer].hNpc:Destroy()
 end
 function Toolbox:TestDummy(sAbility,iPlayer)
-    if Toolbox.test_dummy == nil then print("game has no test dummy table") return true end
-    if Toolbox.test_dummy[iPlayer] == nil then print(iPlayer .. " has no test dummy table") return true end
+    if Toolbox.test_dummy == nil then --print("game has no test dummy table")
+        return true end
+    if Toolbox.test_dummy[iPlayer] == nil then --print(iPlayer .. " has no test dummy table")
+        return true end
     Toolbox.test_dummy[iPlayer].iAttempts = Toolbox.test_dummy[iPlayer].iAttempts + 1
-    if Toolbox.test_dummy[iPlayer].hNpc == nil then print(iPlayer .. " has no test dummy npc") return true end
+    if Toolbox.test_dummy[iPlayer].hNpc == nil then --print(iPlayer .. " has no test dummy npc")
+        return true end
     local hAbility = Toolbox.test_dummy[iPlayer].hNpc:AddAbility(sAbility)
     if hAbility ~= nil then
         if hAbility:GetAssociatedSecondaryAbilities() ~= "" then return end
         Toolbox.test_dummy[iPlayer].hNpc:RemoveAbilityByHandle(hAbility)
         if (Toolbox.test_dummy[iPlayer].iAttempts > 100) then
-            print(iPlayer .. " max attempts reached, respawning dummy")
+            --print(iPlayer .. " max attempts reached, respawning dummy")
             Toolbox:DestroyTestDummy(iPlayer)
             Toolbox:SpawnTestDummy(iPlayer)
         end
         return true
     end
-    print(sAbility .. " was invalid ability!")
+    --print(sAbility .. " was invalid ability!")
     return false
 end
 

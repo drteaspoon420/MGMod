@@ -4,7 +4,7 @@ UnitLimitsPlugin.settings = {}
 UnitLimitsPlugin.unit_cache = {}
 
 function UnitLimitsPlugin:Init()
-    print("[UnitLimitsPlugin] found")
+    --print("[UnitLimitsPlugin] found")
 end
 
 function UnitLimitsPlugin:ApplySettings()
@@ -64,6 +64,6 @@ function UnitLimitsPlugin:CheckUnitCount()
 end
 
 function UnitLimitsPlugin:NpcDestroy(hUnit)
-    print("[Unit limit reached, deleting]: ",hUnit:GetName())
+    --print("[Unit limit reached, deleting]: ",hUnit:GetName())
     hUnit:Destroy()
 end

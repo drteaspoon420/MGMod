@@ -3,7 +3,7 @@ _G.ArchiveOnePlugin = ArchiveOnePlugin
 ArchiveOnePlugin.unit_cache = {}
 
 function ArchiveOnePlugin:Init()
-    print("[ArchiveOnePlugin] found")
+    --print("[ArchiveOnePlugin] found")
 end
 
 function ArchiveOnePlugin:ApplySettings()

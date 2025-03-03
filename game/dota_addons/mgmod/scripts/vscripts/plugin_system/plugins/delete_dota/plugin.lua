@@ -4,7 +4,7 @@ DeleteDotaPlugin.settings = {}
 DeleteDotaPlugin.storrage = {}
 
 function DeleteDotaPlugin:Init()
-    print("[DeleteDotaPlugin] found")
+    --print("[DeleteDotaPlugin] found")
 end
 
 function DeleteDotaPlugin:ApplySettings()
@@ -183,7 +183,7 @@ function DeleteDotaPlugin:ThanosSnap(tArgs,bTeam,iPlayer)
                 while e do
                     if e.IsBaseNPC and e:IsBaseNPC() and e.IsRealHero and not e:IsRealHero() then
                         local dice = Script_RandomFloat(0,100)
-                        print(chance,"/",dice)
+                        --print(chance,"/",dice)
                         if chance > dice then
                             e:Destroy()
                         end

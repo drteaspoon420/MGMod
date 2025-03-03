@@ -4,13 +4,13 @@ DotaSettingsPlugin.settings = {}
 
 DotaSettingsPlugin.unit_cache = {}
 function DotaSettingsPlugin:Init()
-    print("[DotaSettingsPlugin] found")
+    --print("[DotaSettingsPlugin] found")
 end
 
 function DotaSettingsPlugin:ApplySettings()
     local gm = GameRules:GetGameModeEntity()
     if gm == nil then
-        print("[DotaSettingsPlugin] something went horribly wrong!")
+        --print("[DotaSettingsPlugin] something went horribly wrong!")
         return
     end
 	local contxt = {}
@@ -58,17 +58,9 @@ function DotaSettingsPlugin:ApplySettings()
         LinkLuaModifier( "modifier_courier_speed", "plugin_system/plugins/dota_settings/modifier_courier_speed", LUA_MODIFIER_MOTION_NONE )
     end
 
-    if DotaSettingsPlugin.settings.xp_gain_percent ~= 100 then
-        DotaSettingsPlugin.settings.xp_gain_percent = DotaSettingsPlugin.settings.xp_gain_percent * 0.01
-        GameRules:GetGameModeEntity():SetModifyExperienceFilter( DotaSettingsPlugin.ModifyExperienceFilter, contxt )
-    end
-    if DotaSettingsPlugin.settings.gold_gain_percent ~= 100 then
-        DotaSettingsPlugin.settings.gold_gain_percent = DotaSettingsPlugin.settings.gold_gain_percent * 0.01
-        GameRules:GetGameModeEntity():SetModifyGoldFilter( DotaSettingsPlugin.ModifyGoldFilter, contxt )
-    end
     if DotaSettingsPlugin.settings.death_time_percent ~= 100 then
         --link modifier
-        print("[DotaSettingsPlugin] death time is not default")
+        --print("[DotaSettingsPlugin] death time is not default")
         --LinkLuaModifier( "modifier_death_percentage", "plugin_system/plugins/dota_settings/modifier_death_percentage", LUA_MODIFIER_MOTION_NONE )
         --register spawn listener to add modifier to heroes on first spawn
 	    GameRules:GetGameModeEntity():SetRespawnTimeScale(DotaSettingsPlugin.settings.death_time_percent * 0.01)
@@ -94,7 +86,7 @@ function DotaSettingsPlugin:ApplySettings()
     end
 	--GameRules:GetGameModeEntity():SetCustomBackpackCooldownPercent(DotaSettingsPlugin.settings.backback_cooldown)
     --[[local heroId = DOTAGameManager:GetHeroIDByName(DotaSettingsPlugin.settings.force_hero)
-     print(DotaSettingsPlugin.settings.force_hero,"is",heroId)
+     --print(DotaSettingsPlugin.settings.force_hero,"is",heroId)
     if (DotaSettingsPlugin.settings.force_hero ~= "none") then
         if DOTAGameManager:GetHeroIDByName(DotaSettingsPlugin.settings.force_hero) ~= -1 then
             GameRules:GetGameModeEntity():SetCustomGameForceHero(DotaSettingsPlugin.settings.force_hero)
@@ -194,7 +186,7 @@ function DotaSettingsPlugin:ApplySettings()
             end
             
             if file == nil or not next(file) then
-                print("empty whitelist")
+                --print("empty whitelist")
             else
                 for hero_name, enabled in pairs(file) do
                     if enabled == 1 then
@@ -336,7 +328,7 @@ end
 
 function DotaSettingsPlugin:ModifyGoldFilter(event)
     if event.gold == nil then
-        print("[DotaSettingsPlugin] modify gold event is fucking up again.")
+        --print("[DotaSettingsPlugin] modify gold event is fucking up again.")
     end
 	event.gold = event.gold * DotaSettingsPlugin.settings.gold_gain_percent * 0.01
     return {true, event}
@@ -345,7 +337,7 @@ end
     
 function DotaSettingsPlugin:ModifyExperienceFilter(event)
     if event.experience == nil then
-        print("[DotaSettingsPlugin] modify experience event is fucking up again.")
+        --print("[DotaSettingsPlugin] modify experience event is fucking up again.")
     end
 	event.experience = event.experience * DotaSettingsPlugin.settings.xp_gain_percent * 0.01
     return {true, event}

@@ -37,7 +37,7 @@ STONKS_TABLE = {
 }
 
 function StonksPlugin:Init()
-    print("[StonksPlugin] found")
+    --print("[StonksPlugin] found")
 end
 
 function StonksPlugin:ApplySettings()
@@ -68,7 +68,7 @@ function StonksPlugin:ApplySettings()
     
     
     Timers:CreateTimer( StonksPlugin.RandomTimer)
-    print('stonks fully initiated')
+    --print('stonks fully initiated')
 
 end
 
@@ -126,7 +126,7 @@ function StonksPlugin:Buy(playerID,stonk,ammount)
 	local gold = PlayerResource:GetGold(playerID)
 	local hHero = player:GetAssignedHero()
 
-    if not (StonksPlugin.settings.core_apply_team == 1 or hHero:GetTeam() == StonksPlugin.settings.core_apply_team) then return end
+    if not (StonksPlugin.settings.core_apply_team == 0 or hHero:GetTeam() == StonksPlugin.settings.core_apply_team) then return end
 
     if not hHero:IsAlive() then
 		CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerID), "show_center_message", { message = "Cannot buy while dead." })
@@ -151,7 +151,7 @@ function StonksPlugin:Buy(playerID,stonk,ammount)
     hHero:AddNewModifier(hHero,nil,stonk,{stack = will_buy})
     self:SendState(stonk)
     local sName = PlayerResource:GetSelectedHeroName(playerID)
-    print(PlayerResource:GetPlayerName(playerID),playerID)
+    --print(PlayerResource:GetPlayerName(playerID),playerID)
     local iTeam = player:GetTeam()
     GameRules:SendCustomMessageToTeam("" .. sName .. " <font color='#33ff33'>bought</font> " .. will_buy .. " " .. string.upper(string.sub(stonk, 8)),iTeam,playerID,playerID)
 end
@@ -161,7 +161,7 @@ function StonksPlugin:Sell(playerID,stonk,ammount)
 	local gold = PlayerResource:GetGold(playerID)
 	local hHero = player:GetAssignedHero()
     
-    if not (StonksPlugin.settings.core_apply_team == 1 or hHero:GetTeam() == StonksPlugin.settings.core_apply_team) then return end
+    if not (StonksPlugin.settings.core_apply_team == 0 or hHero:GetTeam() == StonksPlugin.settings.core_apply_team) then return end
 
     if not hHero:IsAlive() then
 		CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerID), "show_center_message", { message = "Cannot sell while dead." })

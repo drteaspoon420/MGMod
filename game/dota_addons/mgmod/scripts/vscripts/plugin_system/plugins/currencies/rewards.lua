@@ -128,7 +128,7 @@ end
 
 function CurrenciesPlugin:ModifyGoldFilter(tEvent)
     if tEvent.gold == nil then
-        print("[CurrenciesPlugin] modify gold event is fucking up again.")
+        --print("[CurrenciesPlugin] modify gold event is fucking up again.")
     end
     
     if tEvent.reason_const == DOTA_ModifyGold_HeroKill and CurrenciesPlugin.settings.hero_kill_reward_bounty > 0 then

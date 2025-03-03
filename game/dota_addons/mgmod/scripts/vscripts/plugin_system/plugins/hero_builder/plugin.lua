@@ -28,7 +28,7 @@ HeroBuilderPlugin.settings = {
 }
 
 function HeroBuilderPlugin:Init()
-    print("[HeroBuilderPlugin] found")
+    --print("[HeroBuilderPlugin] found")
 end
 
 function HeroBuilderPlugin:PreGameStuff()
@@ -124,14 +124,14 @@ function HeroBuilderPlugin:AddTalent(sAbility,data)
 end
 
 function HeroBuilderPlugin:AddBasic(sAbility,data)
-    print(sAbility)
+    --print(sAbility)
     if HeroBuilderPlugin.ban_list[sAbility] == nil then
         table.insert(HeroBuilderPlugin.available_abilities.basic,sAbility)
     end
 end
 
 function HeroBuilderPlugin:AddUltimate(sAbility,data)
-    print(sAbility)
+    --print(sAbility)
     if HeroBuilderPlugin.ban_list[sAbility] == nil then
         table.insert(HeroBuilderPlugin.available_abilities.basic,sAbility)
     end
@@ -152,7 +152,7 @@ end
 
 function HeroBuilderPlugin:BanAbility(tEvent)
     local iPlayer = tEvent.PlayerID
-    if not (HeroBuilderPlugin.settings.core_apply_team == 1 or PlayerResource:GetTeam(tEvent.PlayerID) == HeroBuilderPlugin.settings.core_apply_team) then return end
+    if not (HeroBuilderPlugin.settings.core_apply_team == 0 or PlayerResource:GetTeam(tEvent.PlayerID) == HeroBuilderPlugin.settings.core_apply_team) then return end
     if not HeroBuilderPlugin.settings.host_bans then return end
     if Toolbox:IsHost(iPlayer) then
         local sAbility = tEvent.ability
@@ -198,7 +198,7 @@ end
 
 function HeroBuilderPlugin:GiveUnitAbility_listen(tEvent)
     
-    if not (HeroBuilderPlugin.settings.core_apply_team == 1 or PlayerResource:GetTeam(tEvent.PlayerID) == HeroBuilderPlugin.settings.core_apply_team) then return end
+    if not (HeroBuilderPlugin.settings.core_apply_team == 0 or PlayerResource:GetTeam(tEvent.PlayerID) == HeroBuilderPlugin.settings.core_apply_team) then return end
     if HeroBuilderPlugin.settings.disable_after_prematch and GameRules:State_Get() > DOTA_GAMERULES_STATE_PRE_GAME then return end
     if tonumber(tEvent.slot) < 0 then tEvent.slot = "0" end
     if HeroBuilderPlugin.settings.slot_id_limit > -1 and tonumber(tEvent.slot) > HeroBuilderPlugin.settings.slot_id_limit then return end
@@ -214,7 +214,7 @@ function HeroBuilderPlugin:GiveUnitAbility_listen(tEvent)
     end
 end
 function HeroBuilderPlugin:GiveUnitTalent_listen(tEvent)
-    if not (HeroBuilderPlugin.settings.core_apply_team == 1 or PlayerResource:GetTeam(tEvent.PlayerID) == HeroBuilderPlugin.settings.core_apply_team) then return end
+    if not (HeroBuilderPlugin.settings.core_apply_team == 0 or PlayerResource:GetTeam(tEvent.PlayerID) == HeroBuilderPlugin.settings.core_apply_team) then return end
     if HeroBuilderPlugin.settings.disable_after_prematch and GameRules:State_Get() > DOTA_GAMERULES_STATE_PRE_GAME then return end
 
     HeroBuilderPlugin:GiveUnitTalent(tEvent)
@@ -631,7 +631,7 @@ function HeroBuilderPlugin:ExportBanList(tArgs,bTeam,iPlayer)
     end
     str = str .. "}}"
     CustomGameEventManager:Send_ServerToAllClients("ban_list_export",{list = str})
-    print(str)
+    --print(str)
 end
 
 function HeroBuilderPlugin:LoadBanList(pastebin)
@@ -639,10 +639,10 @@ function HeroBuilderPlugin:LoadBanList(pastebin)
     local req = CreateHTTPRequestScriptVM("GET", url)
     req:Send(function(res)
         if res.StatusCode ~= 200 then
-            print(res.Body)
-            print("something went wrong")
+            --print(res.Body)
+            --print("something went wrong")
         else
-            print(res.Body)
+            --print(res.Body)
 			local data = JSON.decode(res.Body)
             HeroBuilderPlugin.ban_list = data.ban_list
         end

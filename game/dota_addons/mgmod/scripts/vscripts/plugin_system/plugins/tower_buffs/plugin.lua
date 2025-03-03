@@ -4,7 +4,7 @@ TowerBuffsPlugin.settings = {}
 TowerBuffsPlugin.unit_cache = {}
 
 function TowerBuffsPlugin:Init()
-    print("[TowerBuffsPlugin] found")
+    --print("[TowerBuffsPlugin] found")
 end
 
 function TowerBuffsPlugin:ApplySettings()

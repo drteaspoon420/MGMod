@@ -21,7 +21,8 @@
 				<Panel id="PluginSettingsHeader" class="PluginSettingsHeader">
 					<ToggleButton id="PluginEnabled" text="unknown" />
 					<DropDown id="PluginTeamSelect">
-						<Label text="#DOTA_TEAM_ALL" id="1"/>
+						<Label text="#DOTA_TEAM_ALL" id="0"/>
+						<Label text="#DOTA_TEAM_SPECTATOR" id="1"/>
 						<Label text="#DOTA_GoodGuys" id="2"/>
 						<Label text="#DOTA_BadGuys" id="3"/>
 						<Label text="#DOTA_TEAM_CUSTOM_1" id="6"/>
